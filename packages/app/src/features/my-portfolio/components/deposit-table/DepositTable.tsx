@@ -13,6 +13,7 @@ import { SwitchCell } from '@/ui/molecules/data-table/components/SwitchCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
 
 export interface DepositTableProps {
   assets: Deposit[]
@@ -89,7 +90,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
                       onClick={() => {
                         openDialog(depositDialogConfig, { token })
                       }}
-                      disabled={reserveStatus === 'frozen'}
+                      disabled={reserveStatus === 'frozen' || token.symbol === TokenSymbol('USDXL')}
                     >
                       Deposit
                     </Button>
