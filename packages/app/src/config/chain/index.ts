@@ -85,6 +85,9 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         [TokenSymbol('USDT')]: {
           type: 'fixed',
         },
+        [TokenSymbol('USDXL')]: {
+          type: 'fixed',
+        },
       },
     },
     savings: undefined,

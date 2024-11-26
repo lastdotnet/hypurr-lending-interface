@@ -1,12 +1,14 @@
 import BigNumber from 'bignumber.js'
 
 import { NormalizedUnitNumber } from '../types/NumericValues'
+import { CheckedAddress } from '../types/CheckedAddress'
 
 interface GetBorrowMaxValueParams {
   asset: {
     availableLiquidity: NormalizedUnitNumber
     totalDebt: NormalizedUnitNumber
     borrowCap?: NormalizedUnitNumber
+    address?: CheckedAddress
   }
   user: {
     maxBorrowBasedOnCollateral: NormalizedUnitNumber
@@ -30,7 +32,11 @@ export function getBorrowMaxValue({ asset, user, validationIssue }: GetBorrowMax
   }
 
   const ceilings = [
-    asset.availableLiquidity,
+    // @NOTE: USDXL needs a custom limit since its liquidity is 0
+    // @TODO: Get this custom limit from facilitator limit and/or mint limit
+    asset.address === CheckedAddress('0x17a44c591ac723D76050Fe6bf02B49A0CC8F3994')
+      ? 100000000
+      : asset.availableLiquidity,
     user.maxBorrowBasedOnCollateral.multipliedBy(0.99), // take 99% of the max borrow value to ensure that liquidation is not triggered right after the borrow
   ]
 

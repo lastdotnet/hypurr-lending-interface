@@ -1,6 +1,7 @@
 import { bigNumberify } from '@/utils/bigNumber'
 
 import { AaveFormattedReserve } from './aave-data-layer/query'
+import { TokenSymbol } from '../types/TokenSymbol'
 
 export type ReserveStatus = 'active' | 'frozen' | 'paused' | 'not-active'
 export function getReserveStatus(reserve: AaveFormattedReserve): ReserveStatus {
@@ -21,7 +22,7 @@ export function getReserveStatus(reserve: AaveFormattedReserve): ReserveStatus {
 
 export type SupplyAvailabilityStatus = 'yes' | 'supply-cap-reached' | 'no'
 export function getSupplyAvailabilityStatus(reserve: AaveFormattedReserve): SupplyAvailabilityStatus {
-  if (!reserve.isActive || reserve.isFrozen) {
+  if (!reserve.isActive || reserve.isFrozen || reserve.symbol === TokenSymbol('USDXL')) {
     return 'no'
   }
 
