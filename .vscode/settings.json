@@ -19,5 +19,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "cSpell.words": ["Borrowable", "Depositable", "Hypurr"]
+  "cSpell.words": ["Borrowable", "Depositable", "Hypurr", "PURRL"]
 }
