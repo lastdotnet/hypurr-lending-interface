@@ -25,7 +25,9 @@ export function MarketsView({
   return (
     <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
       <div className="flex flex-row items-center gap-4">
-        <Typography variant="h2">Markets</Typography>
+        <Typography variant="h2" className="text-primary-bg">
+          Markets
+        </Typography>
       </div>
       <SummaryTiles marketStats={marketStats} />
       <Panel.Wrapper className="flex flex-col gap-5 p-4 lg:p-8">

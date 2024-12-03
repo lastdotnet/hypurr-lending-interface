@@ -31,9 +31,9 @@ export function Tile({ icon, title, USDValue, description, 'data-testid': dataTe
             </Tooltip>
           )}
         </div>
-        <div className="flex gap-1 font-semibold text-base md:gap-2 lg:text-2xl md:text-xl">
-          <div className="text-white/80">$</div>
-          <div>{USD_MOCK_TOKEN.format(USDValue, { style: 'compact' })}</div>
+        <div className="mt-2 flex gap-1 font-semibold font-serif text-base md:gap-2 lg:text-2xl md:text-xl">
+          <div className="font-medium text-white/80">$</div>
+          <div className="font-medium">{USD_MOCK_TOKEN.format(USDValue, { style: 'compact' })}</div>
         </div>
       </div>
     </div>

@@ -19,11 +19,11 @@ export function AirdropBadge({ 'data-testid': dataTestId }: AirdropBadgeProps) {
         <TooltipContentLayout>
           <TooltipContentLayout.Header>
             <TooltipContentLayout.Icon src={assets.hypurrLogo} />
-            <TooltipContentLayout.Title>Eligible for Hypurr points</TooltipContentLayout.Title>
+            <TooltipContentLayout.Title>Eligible for PURRL points</TooltipContentLayout.Title>
           </TooltipContentLayout.Header>
 
           <TooltipContentLayout.Body>
-            DAI borrowers with volatile assets and ETH depositors will be eligible for a future Hypurr points airdrop.
+            DAI borrowers with volatile assets and ETH depositors will be eligible for a future PURRL points.
             {/* Please read the details on the{' '}
             <Link to={links.docs.sparkAirdrop} external>
               Last Docs
