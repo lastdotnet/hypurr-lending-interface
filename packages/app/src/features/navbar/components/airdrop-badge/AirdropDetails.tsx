@@ -18,9 +18,9 @@ export function AirdropDetails({ amount, precision, isLoading, isGrowing }: Aird
   return (
     <div className="flex w-[calc(100vw-48px)] flex-col text-basics-dark-grey text-xs lg:w-auto">
       <div className="flex flex-col gap-1 border-basics-grey/50 border-b p-4">
-        LAST points
+        Hypurr points
         <div className="flex items-center gap-2">
-          <img src={assets.lastLogo} className="h-7 lg:h-6" />
+          <img src={assets.hypurrLogo} className="h-7 lg:h-6" />
           {isLoading ? (
             <Skeleton className="h-5 w-7" />
           ) : (

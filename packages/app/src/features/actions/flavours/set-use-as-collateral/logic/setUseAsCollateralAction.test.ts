@@ -7,11 +7,11 @@ import { setupUseContractActionRenderer } from '@/test/integration/setupUseContr
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createSetUseAsCollateralActionConfig } from './setUseAsCollateralAction'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const collateral = getMockToken({ symbol: TokenSymbol('TEST') })
 const account = testAddresses.alice
-const chainId = lastSepolia.id
+const chainId = hyperTestnet.id
 
 const hookRenderer = setupUseContractActionRenderer({
   account,

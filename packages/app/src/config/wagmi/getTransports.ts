@@ -1,7 +1,7 @@
 import { http, Chain, Transport } from 'viem'
 import { VIEM_TIMEOUT_ON_FORKS } from './config.e2e'
 import { getInjectedNetwork } from './getInjectedNetwork'
-import { lastSepolia } from '../chain/constants'
+import { hyperTestnet } from '../chain/constants'
 
 export interface GetTransportsParamsOptions {
   forkChain?: Chain
@@ -12,7 +12,7 @@ export type GetTransportsResult = Record<number, Transport>
 
 export function getTransports({ forkChain, baseDevNetChain }: GetTransportsParamsOptions): GetTransportsResult {
   const transports: Record<number, Transport> = {
-    [lastSepolia.id]: http('https://rpc-devnet-a62hx4f2t5.t.conduit.xyz'),
+    [hyperTestnet.id]: http('https://rpc-devnet-a62hx4f2t5.t.conduit.xyz'),
   }
 
   if (forkChain) {

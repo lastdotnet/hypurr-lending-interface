@@ -1,5 +1,5 @@
 import { getChainConfigEntry } from '@/config/chain'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 import { Path, getSupportedPages, paths } from '@/config/paths'
 import { matchPath, useLocation } from 'react-router-dom'
 import { useChainId } from 'wagmi'
@@ -28,7 +28,7 @@ export function usePageChainId(): UsePageChainIdResult {
     return { chainId, pageSupported: true, pageName }
   }
 
-  return { chainId: lastSepolia.id, pageSupported: false, pageName }
+  return { chainId: hyperTestnet.id, pageSupported: false, pageName }
 }
 
 const pageNamesMap: Record<Path, string> = {

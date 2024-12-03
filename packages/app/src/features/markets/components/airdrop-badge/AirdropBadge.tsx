@@ -13,17 +13,17 @@ export function AirdropBadge({ 'data-testid': dataTestId }: AirdropBadgeProps) {
   return (
     <Tooltip>
       <TooltipTrigger>
-        <IconPill icon={assets.lastLogo} data-testid={dataTestId} />
+        <IconPill icon={assets.hypurrLogo} data-testid={dataTestId} />
       </TooltipTrigger>
       <TooltipContentLong>
         <TooltipContentLayout>
           <TooltipContentLayout.Header>
-            <TooltipContentLayout.Icon src={assets.lastLogo} />
-            <TooltipContentLayout.Title>Eligible for LAST points</TooltipContentLayout.Title>
+            <TooltipContentLayout.Icon src={assets.hypurrLogo} />
+            <TooltipContentLayout.Title>Eligible for Hypurr points</TooltipContentLayout.Title>
           </TooltipContentLayout.Header>
 
           <TooltipContentLayout.Body>
-            DAI borrowers with volatile assets and ETH depositors will be eligible for a future LAST points airdrop.
+            DAI borrowers with volatile assets and ETH depositors will be eligible for a future Hypurr points airdrop.
             {/* Please read the details on the{' '}
             <Link to={links.docs.sparkAirdrop} external>
               Last Docs

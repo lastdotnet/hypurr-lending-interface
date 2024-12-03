@@ -1,8 +1,8 @@
 import { getOriginChainId } from '../hooks/useOriginChainId'
 import { useStore } from '../state'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
-const MAKER_INFO_SUPPORTED_CHAIN_IDS = [lastSepolia].map((chain) => chain.id)
+const MAKER_INFO_SUPPORTED_CHAIN_IDS = [hyperTestnet].map((chain) => chain.id)
 
 export function getIsChainSupported(chainId: number): boolean {
   const sandbox = useStore.getState().sandbox.network

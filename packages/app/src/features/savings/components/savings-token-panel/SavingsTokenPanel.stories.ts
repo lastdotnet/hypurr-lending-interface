@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { SavingsTokenPanel } from './SavingsTokenPanel'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const meta: Meta<typeof SavingsTokenPanel> = {
   title: 'Features/Savings/Components/SavingsTokenPanel',
@@ -21,7 +21,7 @@ const meta: Meta<typeof SavingsTokenPanel> = {
       depositedAssetsPrecision: 4,
     }),
     APY: Percentage(0.05),
-    originChainId: lastSepolia.id,
+    originChainId: hyperTestnet.id,
     savingsMetaItem: {
       savingsToken: TokenSymbol('sDAI'),
       stablecoin: TokenSymbol('DAI'),

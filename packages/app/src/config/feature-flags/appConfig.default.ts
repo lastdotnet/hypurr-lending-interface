@@ -1,12 +1,12 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { AppConfig } from '.'
 import { clientEnv } from './clientEnv'
-import { lastSepolia } from '../chain/constants'
+import { hyperTestnet } from '../chain/constants'
 
 export function getDefaultAppConfig(): AppConfig {
   return {
     sandbox: featureFlag('VITE_FEATURE_SANDBOX') && {
-      originChainId: lastSepolia.id,
+      originChainId: hyperTestnet.id,
       chainName: 'Sandbox Mode',
 
       mintBalances: {

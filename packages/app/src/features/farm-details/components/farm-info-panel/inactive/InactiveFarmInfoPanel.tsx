@@ -1,5 +1,5 @@
 import { getChainConfigEntry } from '@/config/chain'
-import { farmAddresses, lastSepolia } from '@/config/chain/constants'
+import { farmAddresses, hyperTestnet } from '@/config/chain/constants'
 import { formatPercentage } from '@/domain/common/format'
 import { AssetsGroup, Farm } from '@/domain/farms/types'
 import { USD_MOCK_TOKEN } from '@/domain/types/Token'
@@ -86,7 +86,7 @@ function PointsFarmDetails({
 }: { farm: Farm; assetsGroupType: AssetsGroup['type']; chainId: number }) {
   const isChroniclePointsFarm =
     farm.address === farmAddresses[mainnet.id].chroniclePoints &&
-    getChainConfigEntry(chainId).originChainId === lastSepolia.id
+    getChainConfigEntry(chainId).originChainId === hyperTestnet.id
 
   return (
     <div className="flex flex-col gap-4">

@@ -23,7 +23,7 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
   supply: (
     <>
       <p>
-        The APY for supplying assets on Last is a dynamic metric that adjusts based on the utilization rate of each
+        The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each
         reserve pool.
       </p>
       <p>
@@ -42,7 +42,7 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
   borrow: (
     <>
       <p>
-        The interest rate for borrowing on Last is a live metric that adjusts with each block confirmation, reflecting
+        The interest rate for borrowing on Hypurr is a live metric that adjusts with each block confirmation, reflecting
         the most recent data based on the token pool's utilization rate.
       </p>
       <p>

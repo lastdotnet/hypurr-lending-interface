@@ -27,7 +27,7 @@ export function WalletComposition({
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'sm' }}>
       <Panel.Header>
         <Panel.Title>Your wallet</Panel.Title>
-        <Info>List of assets in your wallet supported by Last.</Info>
+        <Info>List of assets in your wallet supported by Hypurr.</Info>
         {hasCollaterals && (
           <div className="ml-5 flex items-center gap-2">
             <Checkbox
