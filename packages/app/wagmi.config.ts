@@ -13,7 +13,7 @@ import { capAutomatorABI } from './abis/evm/capAutomator'
 
 import 'dotenv/config'
 
-const HYPEREVM_TESTNEST_ID = 11457
+const HYPEREVM_TESTNET_ID = 998
 
 const config: ReturnType<typeof defineConfig> = defineConfig({
   out: 'src/config/contracts-generated.ts',
@@ -22,56 +22,56 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       name: 'LendingPoolAddressProvider',
       abi: lendingPoolAddressProviderABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x270542372e5a73c39E4290291AB88e2901cCEF2D',
+        [HYPEREVM_TESTNET_ID]: '0x270542372e5a73c39E4290291AB88e2901cCEF2D',
       },
     },
     {
       name: 'LendingPool',
       abi: lendingPoolABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0xBD2f32C02140641f497B0Db7B365122214f7c548',
+        [HYPEREVM_TESTNET_ID]: '0xBD2f32C02140641f497B0Db7B365122214f7c548',
       },
     },
     {
       name: 'WETHGateway',
       abi: wethGatewayABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x54C14149c74AF0C1c117E37516F801260E96000e',
+        [HYPEREVM_TESTNET_ID]: '0x54C14149c74AF0C1c117E37516F801260E96000e',
       },
     },
     {
       name: 'WalletBalanceProvider',
       abi: walletBalanceProviderABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x6fB399569c7959F5c528f46ac61De7bE903451F4',
+        [HYPEREVM_TESTNET_ID]: '0x6fB399569c7959F5c528f46ac61De7bE903451F4',
       },
     },
     {
       name: 'UiPoolDataProvider',
       abi: uiPoolDataProviderABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x3B8e43c8C826897b9EF64254e52d0236b830901A',
+        [HYPEREVM_TESTNET_ID]: '0x3B8e43c8C826897b9EF64254e52d0236b830901A',
       },
     },
     {
       name: 'UiIncentiveDataProvider',
       abi: uiIncentiveDataProviderABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0xfaefbF2ab3cC90dEAE255B061D32e27EccE4af4d',
+        [HYPEREVM_TESTNET_ID]: '0xfaefbF2ab3cC90dEAE255B061D32e27EccE4af4d',
       },
     },
     {
       name: 'Collector',
       abi: collectorABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x38cbCe65475b55571F65DbEf551397B790631943',
+        [HYPEREVM_TESTNET_ID]: '0x38cbCe65475b55571F65DbEf551397B790631943',
       },
     },
     {
       name: 'CapAutomator',
       abi: capAutomatorABI,
       address: {
-        [HYPEREVM_TESTNEST_ID]: '0x1E056d8993f8E09815aa70C81D9e505bC9900ECD',
+        [HYPEREVM_TESTNET_ID]: '0x1E056d8993f8E09815aa70C81D9e505bC9900ECD',
       },
     },
   ],
