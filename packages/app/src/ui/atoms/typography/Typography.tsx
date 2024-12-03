@@ -5,13 +5,13 @@ import { cn } from '@/ui/utils/style'
 
 export type BaseElement = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span'
 
-const typographyVariants = cva('text-primary', {
+const typographyVariants = cva('text-foreground', {
   variants: {
     variant: {
-      h1: 'font-semibold text-5xl leading-none tracking-tight',
-      h2: 'font-semibold text-3xl leading-none tracking-tight',
-      h3: 'font-semibold text-2xl leading-none tracking-tight',
-      h4: 'font-semibold text-base leading-none tracking-tight',
+      h1: 'font-medium font-serif text-5xl leading-none tracking-tight',
+      h2: 'font-medium font-serif text-3xl leading-none tracking-tight',
+      h3: 'font-medium font-serif text-2xl leading-none tracking-tight',
+      h4: 'font-medium text-base leading-none tracking-tight',
       p: 'font-normal text-base',
       span: 'font-normal text-base',
       prompt: 'text-prompt-foreground text-xs leading-none tracking-tight',

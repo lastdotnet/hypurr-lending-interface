@@ -16,11 +16,12 @@ export default {
         ...require(join(__dirname, 'src/config/tailwind')).screensOverrides,
       },
       opacity: {
+        '4': '0.04',
         inactive: '0.3',
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        grotesk: ['BDLifelessGrotesk', ...defaultTheme.fontFamily.sans],
+        serif: ['Newsreader', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         basics: {
@@ -39,14 +40,14 @@ export default {
         sec: {
           green: 'rgba(var(--sec-green) / <alpha-value>)',
         },
-        border: 'hsl(var(--border) / .1)',
-        input: 'hsl(var(--input)/ .1)',
+        border: 'hsl(var(--border) / .04)',
+        input: 'hsl(var(--input)/ .04)',
         ring: 'hsl(var(--ring))',
         body: 'hsl(var(--body-background))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'var(--primary)',
+          DEFAULT: 'hsla(var(--primary) / <alpha-value>)',
           bg: 'hsl(var(--primary-bg))',
           foreground: 'hsl(var(--primary-foreground))',
           hover: 'hsl(var(--primary-hover))',
@@ -82,7 +83,7 @@ export default {
           border: 'var(--panel-border)',
           bg: 'hsla(var(--panel-bg) / .44)',
         },
-        'input-background': 'hsla(var(--input-background) / .1)',
+        'input-background': 'hsla(var(--input-background) / .04)',
         'icon-foreground': 'rgba(var(--icon-foreground) / <alpha-value>)',
         'product-blue': 'rgba(var(--product-blue) / <alpha-value>)',
         'product-green': 'rgba(var(--product-green) / <alpha-value>)',

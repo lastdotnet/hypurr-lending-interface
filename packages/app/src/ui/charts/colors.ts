@@ -4,6 +4,6 @@ export const colors = {
   dotStroke: 'white',
   backgroundLine: 'hsla(0, 0%, 100%, 0.3)',
   axisTickLabel: 'hsla(0, 0%, 100%, 0.5)',
-  primary: 'hsl(251.6 80.6% 75.3%)',
+  primary: 'hsl(161 94% 81%)',
   secondary: '#F2A52B',
 }

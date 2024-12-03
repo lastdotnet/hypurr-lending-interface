@@ -19,7 +19,7 @@ export function TokenSummary({ position, type, maxSymbols = 3 }: TokenSummaryPro
   const tokenIconPaths = position.tokens.map((token) => getTokenImage(token.symbol))
 
   return (
-    <div className="flex items-center rounded-xl bg-light-blue/10 p-4">
+    <div className="flex items-center rounded-xl bg-white/4 p-4">
       <IconStack paths={tokenIconPaths} maxIcons={maxSymbols} />
       <Typography className="ml-3 font-semibold text-secondary tracking-wide" variant="prompt">
         {summary}
