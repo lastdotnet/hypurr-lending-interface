@@ -15,7 +15,6 @@ import { I18nAppProvider } from './domain/i18n/I18nAppProvider'
 import { useStore } from './domain/state'
 import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
-import { AppBg } from './ui/atoms/app-bg/AppBg'
 import { lastSepoliaDynamic } from './config/chain/constants'
 
 function App() {
@@ -44,8 +43,6 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <DynamicWagmiConnector>
             <I18nAppProvider>
-              <AppBg />
-
               <Toaster position="top-right" containerClassName="toast-notifications" />
               <TooltipProvider delayDuration={0}>
                 <RouterProvider router={rootRouter} />

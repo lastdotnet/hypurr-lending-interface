@@ -127,8 +127,8 @@ const contentVariants = cva('flex h-full w-full flex-row items-center gap-1 text
 const textVariants = cva('flex h-full w-full flex-row items-center', {
   variants: {
     selected: {
-      true: 'text-nav-primary lg:text-primary',
-      false: 'lg:first:opacity-50 lg:hover:opacity-100',
+      true: 'text-white',
+      false: 'text-white/50 hover:text-white',
     },
     shady: {
       true: 'first:opacity-50 hover:first:opacity-100',

@@ -11,7 +11,7 @@ export function GuestView({ openConnectModal, openSandboxModal }: GuestViewProps
   return (
     <PageLayout className="max-w-6xl">
       <ConnectOrSandboxCTAPanel
-        header="Connect your wallet to use Last"
+        header="Connect your wallet to use Hypurr"
         iconPaths={WALLET_ICONS_PATHS}
         action={openConnectModal}
         buttonText="Connect wallet"

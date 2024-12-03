@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --body-background: 0 0% 0%;
+    --body-background: 171 61% 6%;
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
@@ -14,19 +14,19 @@
     --popover: 0 0 0%;
     --popover-foreground: 210 40% 98%;
 
-    --card: 273 40% 5%;
+    --card: 0 0% 5%;
     --card-foreground: 255 0% 100%;
 
     --border: 0 0% 100%;
     --input: 0 0% 100%;
-    --ring: 258.8 60.6% 50%;
+    --ring: 172 42% 56%;
 
-    --primary-bg: 258.8 60.6% 50%;
-    --primary-hover: 251.6 80.6% 75.3%;
-    --primary: 258.8 60.6% 50%;
+    --primary-bg: 172 42% 56%;
+    --primary-hover: 172 42% 46%;
+    --primary: 166 94% 81%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 251.6 80.6% 75.3%;
+    --secondary: 172 42% 56%;
     --secondary-foreground: 255 0% 100%;
 
     --accent: 0 0% 5%;
@@ -35,19 +35,19 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --nav-primary: 251.6 80.6% 75.3%;
+    --nav-primary: 0 0% 100%;
     --nav-shadow: 0 0% 0%;
 
     --tooltip-shadow: rgba(9, 24, 44, 0.07);
 
     --radius: 1rem;
 
-    --panel-border: rgba(35, 66, 84, 0.1);
+    --panel-border: rgba(255, 255, 255, 0.04);
     --panel-bg: 0 0% 5%;
     --input-background: 0 0% 100%;
     --icon-foreground: 106 118 146;
 
-    --product-green: 111 230 122;
+    --product-green: 96 190 177;
     --product-orange: 255 140 57;
     --product-red: 252 56 151;
     --product-blue: 62 100 239;
@@ -75,7 +75,7 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 171 61% 6%;
     --foreground: 0 0% 98%;
 
     --muted: 240 3.7% 15.9%;
@@ -111,7 +111,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-body text-foreground slashed-zero relative min-h-screen font-grotesk;
+    @apply bg-body text-foreground relative min-h-screen font-sans;
   }
   input {
     background: none;

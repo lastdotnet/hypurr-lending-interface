@@ -52,7 +52,7 @@ export function HealthFactorGauge(props: HealthFactorGaugeProps) {
           <text x="0" y="-15">
             1
           </text>
-          <text x="-25" y="0" fontSize="12" textAnchor="start">
+          <text x="-25" y="10" fontSize="12" textAnchor="start" className="font-extralight font-sans">
             Liquidation
           </text>
         </g>
