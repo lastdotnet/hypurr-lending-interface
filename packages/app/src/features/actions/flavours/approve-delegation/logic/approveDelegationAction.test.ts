@@ -13,12 +13,12 @@ import { waitFor } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 import { createApproveDelegationActionConfig } from './approveDelegationAction'
 import { getBorrowAllowanceQueryKey } from './query'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const approveValue = NormalizedUnitNumber(1)
 const token = getMockToken({ symbol: TokenSymbol('ETH'), address: NATIVE_ASSET_MOCK_ADDRESS })
 const account = testAddresses.alice
-const chainId = lastSepolia.id
+const chainId = hyperTestnet.id
 const marketInfo = getMockMarketInfo()
 const debtTokenAddress = marketInfo.findOneReserveByToken(token).variableDebtTokenAddress
 const wethGateway = wethGatewayAddress[chainId]

@@ -7,10 +7,10 @@ import { setupUseContractActionRenderer } from '@/test/integration/setupUseContr
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createSetUserEModeActionConfig } from './setUserEModeAction'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const account = testAddresses.alice
-const chainId = lastSepolia.id
+const chainId = hyperTestnet.id
 
 const hookRenderer = setupUseContractActionRenderer({
   account,

@@ -4,7 +4,7 @@ import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { SavingsOpportunityGuestMode } from './SavingsOpportunityGuestMode'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const meta: Meta<typeof SavingsOpportunityGuestMode> = {
   title: 'Features/Savings/Components/SavingsOpportunityGuestMode',
@@ -12,7 +12,7 @@ const meta: Meta<typeof SavingsOpportunityGuestMode> = {
   decorators: [WithTooltipProvider(), WithClassname('max-w-5xl flex flex-col gap-6 sm:grid sm:grid-cols-2')],
   args: {
     APY: Percentage(0.065),
-    originChainId: lastSepolia.id,
+    originChainId: hyperTestnet.id,
     openConnectModal: () => {},
     savingsMeta: {
       primary: {

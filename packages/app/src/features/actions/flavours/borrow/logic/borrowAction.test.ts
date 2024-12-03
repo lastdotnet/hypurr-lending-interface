@@ -1,5 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
-import { InterestRate, NATIVE_ASSET_MOCK_ADDRESS, LAST_UI_REFERRAL_CODE } from '@/config/consts'
+import { InterestRate, NATIVE_ASSET_MOCK_ADDRESS, HYPURR_UI_REFERRAL_CODE } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
@@ -10,15 +10,15 @@ import { toBigInt } from '@/utils/bigNumber'
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createBorrowActionConfig } from './borrowAction'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const borrowValue = NormalizedUnitNumber(1)
 const borrowToken = getMockToken({ symbol: TokenSymbol('TEST') })
 const nativeAsset = getMockToken({ address: NATIVE_ASSET_MOCK_ADDRESS })
 const account = testAddresses.alice
-const chainId = lastSepolia.id
+const chainId = hyperTestnet.id
 const interestRateMode = BigInt(InterestRate.Variable)
-const referralCode = LAST_UI_REFERRAL_CODE
+const referralCode = HYPURR_UI_REFERRAL_CODE
 
 const hookRenderer = setupUseContractActionRenderer({
   account,

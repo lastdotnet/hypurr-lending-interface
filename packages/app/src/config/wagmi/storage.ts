@@ -1,5 +1,5 @@
 import { createStorage, noopStorage } from 'wagmi'
-import { lastSepolia, SUPPORTED_CHAINS } from '../chain/constants'
+import { hyperTestnet, SUPPORTED_CHAINS } from '../chain/constants'
 
 export function createWagmiStorage(): ReturnType<typeof createStorage> {
   const defaultStorage = createStorage({
@@ -30,7 +30,7 @@ function wrapGetItem(defaultStorage: ReturnType<typeof createStorage>): any {
       )
       const newChainId = SUPPORTED_CHAINS.some((chain) => chain.id === persistedChainId)
         ? persistedChainId
-        : lastSepolia.id
+        : hyperTestnet.id
 
       return {
         ...originalValue,

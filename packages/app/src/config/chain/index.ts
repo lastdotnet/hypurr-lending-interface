@@ -8,7 +8,7 @@ import { assets } from '@/ui/assets'
 import { base } from 'viem/chains'
 import { AppConfig } from '../feature-flags'
 import { PLAYWRIGHT_USDS_CONTRACTS_NOT_AVAILABLE_KEY } from '../wagmi/config.e2e'
-import { lastSepolia } from './constants'
+import { hyperTestnet } from './constants'
 import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
 
@@ -26,8 +26,8 @@ const _PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE =
   import.meta.env.VITE_PLAYWRIGHT === '1' && (window as any)[PLAYWRIGHT_USDS_CONTRACTS_NOT_AVAILABLE_KEY] === true
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
-  [lastSepolia.id]: {
-    originChainId: lastSepolia.id,
+  [hyperTestnet.id]: {
+    originChainId: hyperTestnet.id,
     daiSymbol: TokenSymbol('USDC'),
     sdaiSymbol: TokenSymbol('USDC'),
     usdsSymbol: undefined,

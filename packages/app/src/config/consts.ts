@@ -19,7 +19,7 @@ export const infoSkyApiUrl = import.meta.env.VITE_INFO_SKY_API_URL ?? '/info-sky
 // @note: all sandboxes created by the app begin (when expressed as strings) with this chain id. Ex: 30301719211032
 export const SANDBOX_NETWORKS_CHAIN_ID_PREFIX = 3030
 
-export const LAST_UI_REFERRAL_CODE = 0 // 0x0
-export const LAST_UI_REFERRAL_CODE_BIGINT = BigInt(LAST_UI_REFERRAL_CODE)
+export const HYPURR_UI_REFERRAL_CODE = 0 // 0x0
+export const HYPURR_UI_REFERRAL_CODE_BIGINT = BigInt(HYPURR_UI_REFERRAL_CODE)
 
 export const USDXL_ADDRESS = CheckedAddress('0x17a44c591ac723D76050Fe6bf02B49A0CC8F3994')

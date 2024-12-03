@@ -5,7 +5,7 @@ import { base, mainnet } from 'viem/chains'
 
 import { type Chain } from 'viem'
 
-export const lastSepolia = {
+export const hyperTestnet = {
   id: 11457,
   name: 'Last Sepolia',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
@@ -22,22 +22,22 @@ export const lastSepolia = {
   },
 } as const satisfies Chain
 
-export const lastSepoliaDynamic = {
-  blockExplorerUrls: [lastSepolia.blockExplorers.default.url],
-  chainId: lastSepolia.id,
-  networkId: lastSepolia.id,
+export const hyperTestnetDynamic = {
+  blockExplorerUrls: [hyperTestnet.blockExplorers.default.url],
+  chainId: hyperTestnet.id,
+  networkId: hyperTestnet.id,
   chainName: 'devnet-a62hx4f2t5',
-  name: lastSepolia.name,
-  vanityName: lastSepolia.name,
+  name: hyperTestnet.name,
+  vanityName: hyperTestnet.name,
   iconUrls: ['https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/assets/configs/network_icon_dark.png'],
   nativeCurrency: {
-    ...lastSepolia.nativeCurrency,
+    ...hyperTestnet.nativeCurrency,
     iconUrl: 'https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/assets/configs/network_icon_dark.png',
   },
-  rpcUrls: [lastSepolia.rpcUrls.default.http[0]],
+  rpcUrls: [hyperTestnet.rpcUrls.default.http[0]],
 }
 
-export const SUPPORTED_CHAINS = [lastSepolia] as const
+export const SUPPORTED_CHAINS = [hyperTestnet] as const
 export const SUPPORTED_CHAIN_IDS = SUPPORTED_CHAINS.map((chain) => chain.id)
 
 export const farmStablecoinsEntryGroup: Record<1 | 8453, AssetsGroup> = {

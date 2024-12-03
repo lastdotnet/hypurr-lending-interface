@@ -1,5 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
-import { NATIVE_ASSET_MOCK_ADDRESS, LAST_UI_REFERRAL_CODE } from '@/config/consts'
+import { NATIVE_ASSET_MOCK_ADDRESS, HYPURR_UI_REFERRAL_CODE } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
@@ -13,14 +13,14 @@ import { generatePrivateKey } from 'viem/accounts'
 import { describe, test } from 'vitest'
 import { createPermitStore } from '../../../logic/permits'
 import { createDepositActionConfig } from './depositAction'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const depositValue = NormalizedUnitNumber(1)
 const depositToken = getMockToken({ symbol: TokenSymbol('TEST') })
 const nativeAsset = getMockToken({ address: NATIVE_ASSET_MOCK_ADDRESS })
 const account = testAddresses.alice
-const chainId = lastSepolia.id
-const referralCode = LAST_UI_REFERRAL_CODE
+const chainId = hyperTestnet.id
+const referralCode = HYPURR_UI_REFERRAL_CODE
 
 const hookRenderer = setupUseContractActionRenderer({
   account,
@@ -34,10 +34,10 @@ describe(createDepositActionConfig.name, () => {
       args: { action: { type: 'deposit', token: nativeAsset, value: depositValue }, enabled: true },
       extraHandlers: [
         handlers.contractCall({
-          to: wethGatewayAddress[lastSepolia.id],
+          to: wethGatewayAddress[hyperTestnet.id],
           abi: wethGatewayAbi,
           functionName: 'depositETH',
-          args: [lendingPoolAddress[lastSepolia.id], account, referralCode],
+          args: [lendingPoolAddress[hyperTestnet.id], account, referralCode],
           from: account,
           result: undefined,
           value: toBigInt(nativeAsset.toBaseUnit(depositValue)),
@@ -61,7 +61,7 @@ describe(createDepositActionConfig.name, () => {
     const { result } = hookRenderer({
       extraHandlers: [
         handlers.contractCall({
-          to: lendingPoolAddress[lastSepolia.id],
+          to: lendingPoolAddress[hyperTestnet.id],
           abi: poolAbi,
           functionName: 'supply',
           args: [depositToken.address, toBigInt(depositToken.toBaseUnit(depositValue)), account, referralCode],
@@ -100,7 +100,7 @@ describe(createDepositActionConfig.name, () => {
     const { result } = hookRenderer({
       extraHandlers: [
         handlers.contractCall({
-          to: lendingPoolAddress[lastSepolia.id],
+          to: lendingPoolAddress[hyperTestnet.id],
           abi: poolAbi,
           functionName: 'supplyWithPermit',
           args: [

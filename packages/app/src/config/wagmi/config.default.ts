@@ -7,7 +7,7 @@ import { SandboxNetwork } from '@/domain/state/sandbox'
 import { getChains } from './getChains'
 import { getTransports } from './getTransports'
 import { createWagmiStorage } from './storage'
-import { lastSepolia } from '../chain/constants'
+import { hyperTestnet } from '../chain/constants'
 
 export function getConfig(sandboxNetwork?: SandboxNetwork): Config {
   const forkChain = getForkChainFromSandboxConfig(sandboxNetwork)
@@ -32,8 +32,8 @@ function getForkChainFromSandboxConfig(sandboxNetwork?: SandboxNetwork): Chain |
   }
 
   const base = (() => {
-    if (sandboxNetwork.originChainId === lastSepolia.id) {
-      return lastSepolia
+    if (sandboxNetwork.originChainId === hyperTestnet.id) {
+      return hyperTestnet
     }
     throw new Error(`Unsupported origin chain = ${sandboxNetwork.originChainId}!`)
   })()

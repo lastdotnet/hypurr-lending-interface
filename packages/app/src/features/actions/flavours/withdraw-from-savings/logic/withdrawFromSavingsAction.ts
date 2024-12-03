@@ -1,5 +1,5 @@
 import { basePsm3Abi, basePsm3Address } from '@/config/abis/basePsm3Abi'
-import { LAST_UI_REFERRAL_CODE_BIGINT } from '@/config/consts'
+import { HYPURR_UI_REFERRAL_CODE_BIGINT } from '@/config/consts'
 import {
   migrationActionsConfig,
   psmActionsConfig,
@@ -128,7 +128,7 @@ export function createWithdrawFromSavingsActionConfig(
                 argsAmount,
                 minAmountOut,
                 receiver,
-                LAST_UI_REFERRAL_CODE_BIGINT,
+                HYPURR_UI_REFERRAL_CODE_BIGINT,
               ],
             })
           }
@@ -148,7 +148,7 @@ export function createWithdrawFromSavingsActionConfig(
               argsAmount,
               maxAmountIn,
               receiver,
-              LAST_UI_REFERRAL_CODE_BIGINT,
+              HYPURR_UI_REFERRAL_CODE_BIGINT,
             ],
           })
         }

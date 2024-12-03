@@ -9,7 +9,7 @@ import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { mockDsrChartData, mockSsrChartData } from '../components/savings-charts/fixtures/mockSavingsRateChartData'
 import { SavingsTokenDetails } from '../logic/useSavings'
 import { GuestView } from './GuestView'
-import { lastSepolia } from '@/config/chain/constants'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const myEarningsInfo = {
   queryResult: {
@@ -65,7 +65,7 @@ const meta: Meta<typeof GuestView> = {
     layout: 'fullscreen',
   },
   args: {
-    originChainId: lastSepolia.id,
+    originChainId: hyperTestnet.id,
     openConnectModal: () => {},
     savingsMeta: {
       primary: {
