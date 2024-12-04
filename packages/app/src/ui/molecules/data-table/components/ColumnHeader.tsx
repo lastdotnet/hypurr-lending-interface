@@ -24,16 +24,22 @@ export function ColumnHeader<T>({ column, columnDefinition }: ColumnHeaderProps<
       <Button
         variant="text"
         className={cn(
-          'h-4 cursor-auto p-0 font-bold text-primary text-xs',
+          'h-4 cursor-auto p-0 font-bold text-white text-xs',
           sortable && 'cursor-pointer hover:text-secondary-foreground',
         )}
         onClick={() => sortable && column.toggleSorting(column.getIsSorted() === 'asc')}
         postfixIcon={
           sortable &&
           (column.getIsSorted() !== false ? (
-            <>{column.getIsSorted() === 'asc' ? <ChevronDown size={16} /> : <ChevronUp size={16} />}</>
+            <>
+              {column.getIsSorted() === 'asc' ? (
+                <ChevronDown className="text-white/35" size={16} />
+              ) : (
+                <ChevronUp className="text-white/35" size={16} />
+              )}
+            </>
           ) : (
-            <ChevronsUpDown size={16} />
+            <ChevronsUpDown className="text-white/35" size={16} />
           ))
         }
       >

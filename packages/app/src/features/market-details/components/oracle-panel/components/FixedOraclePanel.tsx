@@ -11,7 +11,7 @@ export function FixedOraclePanel({ chainId, price, priceOracleAddress, token }: 
       <div>
         <div className="mb-1 text-sm text-white/50 leading-none sm:text-xs sm:leading-none">Oracle type</div>
         <Panel.Header className="flex items-center gap-2">
-          <Panel.Title className="text-xl">Fixed Price</Panel.Title>
+          <Panel.Title className="font-inter text-xl">Fixed Price</Panel.Title>
         </Panel.Header>
       </div>
       <Panel.Content className="flex flex-col gap-4 sm:gap-6">
