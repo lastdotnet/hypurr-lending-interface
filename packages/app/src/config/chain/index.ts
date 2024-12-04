@@ -32,29 +32,29 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     sdaiSymbol: TokenSymbol('USDC'),
     usdsSymbol: undefined,
     susdsSymbol: undefined,
-    psmStables: [TokenSymbol('USDC'), TokenSymbol('USDT')],
+    psmStables: [TokenSymbol('USDC'), TokenSymbol('sUSDe'), TokenSymbol('USDXL')],
     meta: {
-      name: 'Last Sepolia',
-      logo: assets.lastLogo,
+      name: 'Hyperliquid EVM Testnet',
+      logo: assets.hypurrLogo,
     },
     permitSupport: {
-      [CheckedAddress('0x04f42e29D6057B7D70Ea1cab8E516C0029420B64')]: true, // USDC
-      [CheckedAddress('0xc9Fc065b2e986f29138Bd398E6FaAbd291c58B8E')]: true, // USDT
-      // [CheckedAddress('0x7eA65834587ABF89A94d238a404C4A638Fc7641B')]: false, // WETH
-      [CheckedAddress('0x1A86bA62361DDCc680b2B230c7b3CcF5D777ed7E')]: false, // testWETH
+      // [CheckedAddress('0x04f42e29D6057B7D70Ea1cab8E516C0029420B64')]: false, // USDC
+      // [CheckedAddress('0xc9Fc065b2e986f29138Bd398E6FaAbd291c58B8E')]: false, // USDT
+      // // [CheckedAddress('0x7eA65834587ABF89A94d238a404C4A638Fc7641B')]: false, // WETH
+      // [CheckedAddress('0x1A86bA62361DDCc680b2B230c7b3CcF5D777ed7E')]: false, // testWETH
     },
     tokensWithMalformedApprove: [],
     airdrop: {},
     extraTokens: [
       {
-        symbol: TokenSymbol('USDC'),
+        symbol: TokenSymbol('sUSDe'),
         oracleType: 'fixed-usd',
-        address: CheckedAddress('0x04f42e29D6057B7D70Ea1cab8E516C0029420B64'),
+        address: CheckedAddress('0x2222c34a8dd4ea29743bf8ec4ff165e059839782'),
       },
       {
-        symbol: TokenSymbol('USDT'),
+        symbol: TokenSymbol('USDC'),
         oracleType: 'fixed-usd',
-        address: CheckedAddress('0xc9Fc065b2e986f29138Bd398E6FaAbd291c58B8E'),
+        address: CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094'),
       },
       {
         symbol: TokenSymbol('USDXL'),
@@ -66,23 +66,23 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       defaultAssetToBorrow: TokenSymbol('USDXL'),
       nativeAssetInfo: {
         nativeAssetName: 'Ethereum',
-        wrappedNativeAssetSymbol: TokenSymbol('testWETH'),
-        wrappedNativeAssetAddress: CheckedAddress('0x1A86bA62361DDCc680b2B230c7b3CcF5D777ed7E'),
         nativeAssetSymbol: TokenSymbol('ETH'),
+        wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
+        wrappedNativeAssetAddress: CheckedAddress('0x8bf86549d308e50Db889cF843AEBd6b7B0d7BB9a'),
         minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
       },
       tokenSymbolToReplacedName: {
         ...commonTokenSymbolToReplacedName,
       },
       oracles: {
-        [TokenSymbol('testWETH')]: {
+        [TokenSymbol('WHYPE')]: {
           type: 'market-price',
           providedBy: ['chainlink', 'chronicle'],
         },
         [TokenSymbol('USDC')]: {
           type: 'fixed',
         },
-        [TokenSymbol('USDT')]: {
+        [TokenSymbol('sUSDe')]: {
           type: 'fixed',
         },
         [TokenSymbol('USDXL')]: {
@@ -93,170 +93,6 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     savings: undefined,
     farms: undefined,
   },
-  // [mainnet.id]: {
-  //   originChainId: mainnet.id,
-  //   daiSymbol: TokenSymbol('DAI'),
-  //   sdaiSymbol: TokenSymbol('sDAI'),
-  //   usdsSymbol: PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE ? undefined : TokenSymbol('USDS'),
-  //   susdsSymbol: PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE ? undefined : TokenSymbol('sUSDS'),
-  //   psmStables: [TokenSymbol('DAI'), TokenSymbol('USDC'), TokenSymbol('USDS')],
-  //   meta: {
-  //     name: 'Ethereum Mainnet',
-  //     logo: assets.chain.ethereum,
-  //   },
-  //   permitSupport: {
-  //     [CheckedAddress('0x6b175474e89094c44da98b954eedeac495271d0f')]: false, // DAI
-  //     [CheckedAddress('0x83f20f44975d03b1b09e64809b757c47f942beea')]: true, // sDAI
-  //     [CheckedAddress('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48')]: false, // USDC
-  //     [CheckedAddress('0xdAC17F958D2ee523a2206206994597C13D831ec7')]: false, // USDT
-  //     [CheckedAddress('0x2260fac5e5542a773aa44fbcfedf7c193bc2c599')]: false, // WBTC
-  //     [CheckedAddress('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2')]: false, // WETH
-  //     [CheckedAddress('0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0')]: true, // wstETH
-  //     [CheckedAddress('0xae78736Cd615f374D3085123A210448E74Fc6393')]: false, // rETH
-  //     [CheckedAddress('0x6810e776880C02933D47DB1b9fc05908e5386b96')]: false, // GNO
-  //   },
-  //   tokensWithMalformedApprove: [CheckedAddress('0xdac17f958d2ee523a2206206994597c13d831ec7')], // USDT
-  //   airdrop: {
-  //     [TokenSymbol('ETH')]: {
-  //       deposit: [TokenSymbol('SPK')],
-  //       borrow: [],
-  //     },
-  //     [TokenSymbol('WETH')]: {
-  //       deposit: [TokenSymbol('SPK')],
-  //       borrow: [],
-  //     },
-  //     [TokenSymbol('DAI')]: {
-  //       deposit: [],
-  //       borrow: [TokenSymbol('SPK')],
-  //     },
-  //   },
-  //   extraTokens: [
-  //     {
-  //       symbol: TokenSymbol('DAI'),
-  //       oracleType: 'fixed-usd',
-  //       address: CheckedAddress('0x6b175474e89094c44da98b954eedeac495271d0f'),
-  //     },
-  //     {
-  //       symbol: TokenSymbol('USDC'),
-  //       oracleType: 'fixed-usd',
-  //       address: CheckedAddress('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'),
-  //     },
-  //     {
-  //       symbol: TokenSymbol('sDAI'),
-  //       oracleType: 'vault',
-  //       address: CheckedAddress('0x83f20f44975d03b1b09e64809b757c47f942beea'),
-  //     },
-  //     ...(PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE
-  //       ? []
-  //       : ([
-  //           {
-  //             symbol: TokenSymbol('sUSDS'),
-  //             oracleType: 'vault',
-  //             address: susdsAddresses[mainnet.id],
-  //           },
-  //           {
-  //             symbol: TokenSymbol('USDS'),
-  //             oracleType: 'fixed-usd',
-  //             address: CheckedAddress('0xdC035D45d973E3EC169d2276DDab16f1e407384F'),
-  //           },
-  //           {
-  //             symbol: TokenSymbol('SKY'),
-  //             oracleType: 'zero-price',
-  //             address: CheckedAddress('0x56072C95FAA701256059aa122697B133aDEd9279'),
-  //           },
-  //         ] as const)),
-  //   ],
-  //   markets: {
-  //     defaultAssetToBorrow: TokenSymbol('DAI'),
-  //     nativeAssetInfo: {
-  //       nativeAssetName: 'Ethereum',
-  //       wrappedNativeAssetSymbol: TokenSymbol('WETH'),
-  //       wrappedNativeAssetAddress: CheckedAddress('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'),
-  //       nativeAssetSymbol: TokenSymbol('ETH'),
-  //       minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
-  //     },
-  //     tokenSymbolToReplacedName: {
-  //       ...commonTokenSymbolToReplacedName,
-  //     },
-  //     oracles: {
-  //       [TokenSymbol('WETH')]: {
-  //         type: 'market-price',
-  //         providedBy: ['chainlink', 'chronicle'],
-  //       },
-  //       [TokenSymbol('WBTC')]: {
-  //         type: 'market-price',
-  //         providedBy: ['chainlink'],
-  //       },
-  //       [TokenSymbol('wstETH')]: {
-  //         type: 'yielding-fixed',
-  //         baseAssetSymbol: TokenSymbol('WETH'),
-  //         providedBy: ['chainlink', 'chronicle'],
-  //         oracleFetcher: fetchWstethOracleInfoMainnet,
-  //       },
-  //       [TokenSymbol('rETH')]: {
-  //         type: 'yielding-fixed',
-  //         baseAssetSymbol: TokenSymbol('WETH'),
-  //         providedBy: ['chainlink', 'chronicle'],
-  //         oracleFetcher: fetchRethOracleInfo,
-  //       },
-  //       [TokenSymbol('weETH')]: {
-  //         type: 'yielding-fixed',
-  //         baseAssetSymbol: TokenSymbol('WETH'),
-  //         providedBy: ['chainlink', 'chronicle'],
-  //         oracleFetcher: fetchWeethOracleInfo,
-  //       },
-  //       [TokenSymbol('USDC')]: {
-  //         type: 'fixed',
-  //       },
-  //       [TokenSymbol('USDT')]: {
-  //         type: 'fixed',
-  //       },
-  //       [TokenSymbol('DAI')]: {
-  //         type: 'fixed',
-  //       },
-  //       [TokenSymbol('cbBTC')]: {
-  //         type: 'underlying-asset',
-  //         asset: 'BTC',
-  //       },
-  //     },
-  //   },
-  //   savings: {
-  //     savingsDaiInfoQuery: mainnetSavingsDaiInfoQuery,
-  //     savingsUsdsInfoQuery: PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE ? undefined : mainnetSavingsUsdsInfoQuery,
-  //     inputTokens: [
-  //       TokenSymbol('DAI'),
-  //       TokenSymbol('USDC'),
-  //       ...(PLAYWRIGHT_MAINNET_USDS_CONTRACTS_NOT_AVAILABLE ? [] : [TokenSymbol('USDS')]),
-  //     ],
-  //     getEarningsApiUrl: (address) => `${infoSkyApiUrl}/savings-rate/wallets/${address.toLowerCase()}/?days_ago=9999`,
-  //     savingsRateApiUrl: `${infoSkyApiUrl}/savings-rate/`,
-  //   },
-  //   farms: {
-  //     configs: [
-  //       {
-  //         rewardType: 'token',
-  //         address: farmAddresses[mainnet.id].skyUsds,
-  //         entryAssetsGroup: farmStablecoinsEntryGroup[mainnet.id],
-  //         historyCutoff: new Date('2024-09-17T00:00:00.000Z'),
-  //       },
-  //       {
-  //         // Chronicle farm
-  //         rewardType: 'points',
-  //         address: farmAddresses[mainnet.id].chroniclePoints,
-  //         entryAssetsGroup: farmStablecoinsEntryGroup[mainnet.id],
-  //         historyCutoff: new Date('2024-09-17T00:00:00.000Z'),
-  //         rewardPoints: new Token({
-  //           address: CheckedAddress(zeroAddress),
-  //           decimals: 18,
-  //           name: 'Chronicle',
-  //           symbol: TokenSymbol('CLE'),
-  //           unitPriceUsd: '0',
-  //         }),
-  //       },
-  //     ],
-  //     getFarmDetailsApiUrl: (address) => `${infoSkyApiUrl}/farms/${address.toLowerCase()}/historic/`,
-  //   },
-  // },
   ...(typeof import.meta.env.VITE_DEV_BASE_DEVNET_RPC_URL === 'string'
     ? {
         [base.id]: {

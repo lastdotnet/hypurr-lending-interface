@@ -7,8 +7,8 @@ import { type Chain } from 'viem'
 
 export const hyperTestnet = {
   id: 998,
-  name: 'HyperEVM Testnet',
-  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  name: 'Hyperliquid Testnet',
+  nativeCurrency: { name: 'Eth', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
   },
@@ -17,7 +17,7 @@ export const hyperTestnet = {
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
     },
   },
 } as const satisfies Chain

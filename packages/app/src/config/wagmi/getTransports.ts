@@ -12,7 +12,7 @@ export type GetTransportsResult = Record<number, Transport>
 
 export function getTransports({ forkChain, baseDevNetChain }: GetTransportsParamsOptions): GetTransportsResult {
   const transports: Record<number, Transport> = {
-    [hyperTestnet.id]: http('https://rpc-devnet-a62hx4f2t5.t.conduit.xyz'),
+    [hyperTestnet.id]: http('https://api.hyperliquid-testnet.xyz/evm'),
   }
 
   if (forkChain) {
