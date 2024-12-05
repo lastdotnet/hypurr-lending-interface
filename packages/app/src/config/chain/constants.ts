@@ -29,10 +29,9 @@ export const hyperTestnetDynamic = {
   chainName: 'HyperEVM Testnet',
   name: hyperTestnet.name,
   vanityName: hyperTestnet.name,
-  iconUrls: ['https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/assets/configs/network_icon_dark.png'],
+  iconUrls: ['/hyper-evm-logo.png'],
   nativeCurrency: {
     ...hyperTestnet.nativeCurrency,
-    iconUrl: 'https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/assets/configs/network_icon_dark.png',
   },
   rpcUrls: [hyperTestnet.rpcUrls.default.http[0]],
 }
