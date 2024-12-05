@@ -35,6 +35,7 @@ export interface UseWriteResult {
   resimulate: () => void
   reset: () => void
   status: WriteStatus
+  txReceipt: TransactionReceipt | undefined
   pending: boolean
 }
 
@@ -170,6 +171,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     write: finalWrite,
     resimulate,
     status,
+    txReceipt,
     pending: isTxReceiptLoading || isTxSending,
   }
 }

@@ -7,7 +7,7 @@ export function FaucetPanel({ children }: PropsWithChildren) {
   return (
     <PageLayout>
       <Panel.Wrapper className="flex min-w-full max-w-3xl flex-col self-center p-4 md:p-8">
-        <Typography variant="h1" className="text-3xl">
+        <Typography variant="h1" className="text-3xl text-primary-bg">
           Testnet Token Faucet
         </Typography>
 
@@ -25,8 +25,11 @@ export function FaucetPanel({ children }: PropsWithChildren) {
           <ol className="space-y-2 text-secondary-foreground">
             <li>1. Connect your wallet to the testnet</li>
             <li>2. Click "Mint" to receive your test tokens</li>
-            <li>3. Wait 24 hours before requesting more tokens</li>
+            <li>3. Use your tokens to explore the app</li>
           </ol>
+          <p className="mt-4 text-white/50 text-xs">
+            There is a 24-hour cooldown period between mints for each token type.
+          </p>
         </div>
         {children}
       </Panel.Wrapper>
