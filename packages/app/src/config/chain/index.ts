@@ -29,7 +29,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     psmStables: [TokenSymbol('USDC'), TokenSymbol('sUSDe'), TokenSymbol('USDXL')],
     meta: {
       name: 'Hyperliquid EVM Testnet',
-      logo: assets.hypurrLogo,
+      logo: assets.hyperEvmLogo,
     },
     permitSupport: {
       // [CheckedAddress('0x04f42e29D6057B7D70Ea1cab8E516C0029420B64')]: false, // USDC
@@ -60,7 +60,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       defaultAssetToBorrow: TokenSymbol('USDXL'),
       nativeAssetInfo: {
         nativeAssetName: 'Ethereum',
-        nativeAssetSymbol: TokenSymbol('ETH'),
+        nativeAssetSymbol: TokenSymbol('HYPE'),
         wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
         wrappedNativeAssetAddress: CheckedAddress('0x8bf86549d308e50Db889cF843AEBd6b7B0d7BB9a'),
         minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
