@@ -10,7 +10,7 @@ export const hyperTestnet = {
   name: 'Hyperliquid Testnet',
   nativeCurrency: { name: 'Eth', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
+    default: { http: ['https://evm.hyperstats.xyz/api/eth-rpc'] },
   },
   blockExplorers: {
     default: { name: 'Blockscout', url: 'https://evm.hyperstats.xyz/' },
