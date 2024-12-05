@@ -285,7 +285,7 @@ export const capAutomatorAbi = [
  *
  */
 export const capAutomatorAddress = {
-  11457: '0x1E056d8993f8E09815aa70C81D9e505bC9900ECD',
+  998: '0x14b22fE50ac34Eb6F5D4a653926a26636b5cB990',
 } as const
 
 /**
@@ -780,7 +780,7 @@ export const collectorAbi = [
  *
  */
 export const collectorAddress = {
-  11457: '0x38cbCe65475b55571F65DbEf551397B790631943',
+  998: '0xF1fde486413AdAC1f4fC5E54EFa06fdA0BdD92b6',
 } as const
 
 /**
@@ -2665,7 +2665,7 @@ export const lendingPoolAbi = [
  *
  */
 export const lendingPoolAddress = {
-  11457: '0xBD2f32C02140641f497B0Db7B365122214f7c548',
+  998: '0x370c9a6a2b18596A5F33117c67e62b892fcf637E',
 } as const
 
 /**
@@ -3117,7 +3117,7 @@ export const lendingPoolAddressProviderAbi = [
  *
  */
 export const lendingPoolAddressProviderAddress = {
-  11457: '0x270542372e5a73c39E4290291AB88e2901cCEF2D',
+  998: '0x7d01f1BA6fAcF734649e9589670DB16F9172Be2C',
 } as const
 
 /**
@@ -5729,7 +5729,7 @@ export const uiIncentiveDataProviderAbi = [
  *
  */
 export const uiIncentiveDataProviderAddress = {
-  11457: '0xfaefbF2ab3cC90dEAE255B061D32e27EccE4af4d',
+  998: '0xBeFB51e2F9E2B2A7073C07e7ad19f21db7D25089',
 } as const
 
 /**
@@ -6089,7 +6089,7 @@ export const uiPoolDataProviderAbi = [
  *
  */
 export const uiPoolDataProviderAddress = {
-  11457: '0x3B8e43c8C826897b9EF64254e52d0236b830901A',
+  998: '0x108D9de78e1cC851531813A38ec0520d6A900198',
 } as const
 
 /**
@@ -6880,7 +6880,7 @@ export const wethGatewayAbi = [
  *
  */
 export const wethGatewayAddress = {
-  11457: '0x54C14149c74AF0C1c117E37516F801260E96000e',
+  998: '0x6aF2F841DDF7f8da94f2829B9AAc82875773a0f8',
 } as const
 
 /**
@@ -6939,7 +6939,7 @@ export const walletBalanceProviderAbi = [
  *
  */
 export const walletBalanceProviderAddress = {
-  11457: '0x6fB399569c7959F5c528f46ac61De7bE903451F4',
+  998: '0x2cAeb673189257fff77f04c6a601194bbE1c8F4A',
 } as const
 
 /**

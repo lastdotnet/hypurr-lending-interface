@@ -6,18 +6,18 @@ import { base, mainnet } from 'viem/chains'
 import { type Chain } from 'viem'
 
 export const hyperTestnet = {
-  id: 11457,
-  name: 'Last Sepolia',
-  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  id: 998,
+  name: 'Hyperliquid Testnet',
+  nativeCurrency: { name: 'Eth', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://rpc-devnet-a62hx4f2t5.t.conduit.xyz'] },
+    default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
   },
   blockExplorers: {
-    default: { name: 'Conduit', url: 'https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/' },
+    default: { name: 'Blockscout', url: 'https://evm.hyperstats.xyz/' },
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
     },
   },
 } as const satisfies Chain
@@ -26,7 +26,7 @@ export const hyperTestnetDynamic = {
   blockExplorerUrls: [hyperTestnet.blockExplorers.default.url],
   chainId: hyperTestnet.id,
   networkId: hyperTestnet.id,
-  chainName: 'devnet-a62hx4f2t5',
+  chainName: 'HyperEVM Testnet',
   name: hyperTestnet.name,
   vanityName: hyperTestnet.name,
   iconUrls: ['https://explorer-devnet-a62hx4f2t5.t.conduit.xyz/assets/configs/network_icon_dark.png'],
