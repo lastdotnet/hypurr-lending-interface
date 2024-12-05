@@ -18,7 +18,7 @@ const MINT_ABI = [
   },
 ] as const
 
-const MINT_AMOUNT = '1'
+const MINT_AMOUNT = '10'
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
 const STORAGE_KEY = {
   USDC: 'lastFaucetMint_USDC',
