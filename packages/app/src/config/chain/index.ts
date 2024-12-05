@@ -59,7 +59,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     markets: {
       defaultAssetToBorrow: TokenSymbol('USDXL'),
       nativeAssetInfo: {
-        nativeAssetName: 'Ethereum',
+        nativeAssetName: 'Hype',
         nativeAssetSymbol: TokenSymbol('HYPE'),
         wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
         wrappedNativeAssetAddress: CheckedAddress('0x8bf86549d308e50Db889cF843AEBd6b7B0d7BB9a'),

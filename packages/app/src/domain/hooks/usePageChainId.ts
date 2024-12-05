@@ -39,4 +39,5 @@ const pageNamesMap: Record<Path, string> = {
   savings: 'Savings',
   farms: 'Farms',
   farmDetails: 'Farm',
+  faucet: 'Faucet',
 }
