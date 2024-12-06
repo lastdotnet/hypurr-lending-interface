@@ -3,6 +3,7 @@ import { TokenWithBalance } from '@/domain/common/types'
 import { MarketInfo, Reserve, UserPosition } from '@/domain/market-info/marketInfo'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { UpgradeOptions } from './useUpgradeOptions'
 
 const blacklistedDepositableAssets = ['USDXL']
 export function getDepositableAssets(positions: UserPosition[], walletInfo: MarketWalletInfo): TokenWithBalance[] {
@@ -20,7 +21,11 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
 
 const whitelistedBorrowableAssets = ['USDXL', 'USDC', 'sUSDe', 'WHYPE']
 
-export function getBorrowableAssets(reserves: Reserve[], walletInfo: MarketWalletInfo): TokenWithBalance[] {
+export function getBorrowableAssets(
+  reserves: Reserve[],
+  walletInfo: MarketWalletInfo,
+  _upgradeOptions?: UpgradeOptions,
+): TokenWithBalance[] {
   const marketTokens = reserves
     .filter((r) => whitelistedBorrowableAssets.includes(r.token.symbol))
     .map((r) => ({ token: r.token, balance: walletInfo.findWalletBalanceForToken(r.token) }))
