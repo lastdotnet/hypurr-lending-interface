@@ -37,6 +37,11 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
       label: 'Markets',
       onClick: handleNavigate,
     },
+    {
+      to: paths.faucet,
+      label: 'Faucet',
+      onClick: handleNavigate,
+    },
   ]
 
   return (

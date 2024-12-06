@@ -35,6 +35,8 @@ export interface UseWriteResult {
   resimulate: () => void
   reset: () => void
   status: WriteStatus
+  txReceipt: TransactionReceipt | undefined
+  pending: boolean
 }
 
 export interface UseWriteCallbacks {
@@ -91,7 +93,11 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     reset,
   } = useWriteContract({ mutationKey: getWriteContractMutationKey(args as any) })
 
-  const { data: txReceipt, error: txReceiptError } = useWaitForTransactionReceiptUniversal({
+  const {
+    data: txReceipt,
+    error: txReceiptError,
+    isLoading: isTxReceiptLoading,
+  } = useWaitForTransactionReceiptUniversal({
     hash: txHash,
   })
   const txSubmissionError = enabled ? _txSubmissionError : undefined
@@ -165,6 +171,8 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     write: finalWrite,
     resimulate,
     status,
+    txReceipt,
+    pending: isTxReceiptLoading || isTxSending,
   }
 }
 
