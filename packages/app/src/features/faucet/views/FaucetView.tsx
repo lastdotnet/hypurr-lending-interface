@@ -20,10 +20,7 @@ const MINT_ABI = [
 
 const MINT_AMOUNT = '10'
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
-const STORAGE_KEY = {
-  USDC: 'lastFaucetMint_USDC',
-  SUSDE: 'lastFaucetMint_SUSDE',
-} as const
+const STORAGE_KEY = 'lastFaucetMint' as const
 
 function isMintLimitError(error: Error) {
   return error.message.includes('MINT_LIMIT_EXCEEDED')
@@ -38,18 +35,15 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
   assert(susdeAddress, 'sUSDe address not found')
 
   const { primaryWallet } = useDynamicContext()
-  const [lastUsdcMintTime, setLastUsdcMintTime] = useState<number | null>(null)
-  const [lastSusdeMintTime, setLastSusdeMintTime] = useState<number | null>(null)
+  const [lastMintTime, setLastMintTime] = useState<number | null>(null)
 
-  const isUsdcOnCooldown = !!lastUsdcMintTime && Date.now() - lastUsdcMintTime < MINT_COOLDOWN
-  const isSusdeOnCooldown = !!lastSusdeMintTime && Date.now() - lastSusdeMintTime < MINT_COOLDOWN
+  const isOnCooldown = !!lastMintTime && Date.now() - lastMintTime < MINT_COOLDOWN
 
   useEffect(() => {
-    const storedUsdc = localStorage.getItem(STORAGE_KEY.USDC)
-    const storedSusde = localStorage.getItem(STORAGE_KEY.SUSDE)
-
-    if (storedUsdc) setLastUsdcMintTime(Number.parseInt(storedUsdc))
-    if (storedSusde) setLastSusdeMintTime(Number.parseInt(storedSusde))
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      setLastMintTime(Number.parseInt(stored))
+    }
   }, [])
 
   const {
@@ -62,7 +56,7 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
     abi: MINT_ABI,
     functionName: 'mint',
     args: [parseUnits(MINT_AMOUNT, 6)],
-    enabled: !!primaryWallet && !isUsdcOnCooldown,
+    enabled: !!primaryWallet && !isOnCooldown,
   })
 
   const {
@@ -75,76 +69,44 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
     abi: MINT_ABI,
     functionName: 'mint',
     args: [parseUnits(MINT_AMOUNT, 18)],
-    enabled: !!primaryWallet && !isSusdeOnCooldown,
+    enabled: !!primaryWallet && !isOnCooldown,
   })
 
   // Update local storage with the time of the last mint
   useEffect(() => {
-    if (usdcTxReceipt) {
+    if (usdcTxReceipt && susdeTxReceipt) {
       const now = Date.now()
-      localStorage.setItem(STORAGE_KEY.USDC, now.toString())
-      setLastUsdcMintTime(now)
+      localStorage.setItem(STORAGE_KEY, now.toString())
+      setLastMintTime(now)
+      setSuccess(true)
     }
-  }, [usdcTxReceipt])
-
-  useEffect(() => {
-    if (susdeTxReceipt) {
-      const now = Date.now()
-      localStorage.setItem(STORAGE_KEY.SUSDE, now.toString())
-      setLastSusdeMintTime(now)
-    }
-  }, [susdeTxReceipt])
-
-  // Set success state if both mints are successful and the cooldowns have been set
-  useEffect(() => {
-    if (usdcTxReceipt && susdeTxReceipt && isUsdcOnCooldown && isSusdeOnCooldown) setSuccess(true)
-  }, [usdcTxReceipt, susdeTxReceipt, setSuccess, isUsdcOnCooldown, isSusdeOnCooldown])
+  }, [usdcTxReceipt, susdeTxReceipt, setSuccess])
 
   const usdcLimitExceeded = usdcWriteStatus.kind === 'error' && isMintLimitError(usdcWriteStatus.error)
   const susdeLimitExceeded = susdeWriteStatus.kind === 'error' && isMintLimitError(susdeWriteStatus.error)
 
   return (
-    <div className="flex gap-4">
-      <Button
-        disabled={usdcWritePending || usdcWriteStatus.kind === 'success' || usdcLimitExceeded || isUsdcOnCooldown}
-        onClick={usdcWrite}
-        className="flex-1"
-      >
-        {(() => {
-          switch (true) {
-            case usdcWritePending:
-              return 'Minting USDC...'
-            case usdcLimitExceeded:
-              return 'USDC mint limit exceeded'
-            case usdcWriteStatus.kind === 'success' || !!usdcTxReceipt:
-              return 'Mint successful'
-            case isUsdcOnCooldown:
-              return 'USDC on cooldown'
-            default:
-              return 'Mint USDC'
-          }
-        })()}
-      </Button>
-      <Button
-        disabled={susdeWritePending || susdeWriteStatus.kind === 'success' || susdeLimitExceeded || isSusdeOnCooldown}
-        onClick={susdeWrite}
-        className="flex-1"
-      >
-        {(() => {
-          switch (true) {
-            case susdeWritePending:
-              return 'Minting sUSDe...'
-            case susdeLimitExceeded:
-              return 'sUSDe mint limit exceeded'
-            case susdeWriteStatus.kind === 'success' || !!susdeTxReceipt:
-              return 'Mint successful'
-            case isSusdeOnCooldown:
-              return 'sUSDe on cooldown'
-            default:
-              return 'Mint sUSDe'
-          }
-        })()}
-      </Button>
-    </div>
+    <Button
+      disabled={usdcWritePending || usdcWriteStatus.kind === 'success' || usdcLimitExceeded || isOnCooldown}
+      onClick={() => {
+        usdcWrite()
+        susdeWrite()
+      }}
+    >
+      {(() => {
+        switch (true) {
+          case usdcWritePending || susdeWritePending:
+            return 'Minting...'
+          case usdcLimitExceeded || susdeLimitExceeded:
+            return 'Mint limit exceeded'
+          case !!usdcTxReceipt && !!susdeTxReceipt:
+            return 'Mint successful'
+          case isOnCooldown:
+            return 'Minting is on cooldown'
+          default:
+            return 'Mint USDC and sUSDe'
+        }
+      })()}
+    </Button>
   )
 }

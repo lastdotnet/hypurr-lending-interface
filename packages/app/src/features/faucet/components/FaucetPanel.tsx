@@ -27,9 +27,7 @@ export function FaucetPanel({ children }: PropsWithChildren) {
             <li>2. Click "Mint" to receive your test tokens</li>
             <li>3. Use your tokens to explore the app</li>
           </ol>
-          <p className="mt-4 text-white/50 text-xs">
-            There is a 24-hour cooldown period between mints for each token type.
-          </p>
+          <p className="mt-4 text-white/50 text-xs">There is a 24-hour cooldown period between mints.</p>
         </div>
         {children}
       </Panel.Wrapper>

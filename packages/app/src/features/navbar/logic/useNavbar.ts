@@ -17,7 +17,7 @@ import { PageLinksInfo } from '../components/PageLinks'
 import { AirdropInfo, ConnectedWalletInfo, RewardsInfo, SavingsInfoQueryResults, SupportedChain } from '../types'
 import { generateWalletAvatar } from './generateWalletAvatar'
 import { getWalletIcon } from './getWalletIcon'
-import { useAirdropInfo } from './use-airdrop-info/useAirdropInfo'
+// import { useAirdropInfo } from './use-airdrop-info/useAirdropInfo'
 import { useDisconnect } from './useDisconnect'
 import { useNavbarSavingsInfo } from './useNavbarSavingsInfo'
 import { useNetworkChange } from './useNetworkChange'
@@ -60,7 +60,7 @@ export function useNavbar(): UseNavbarResults {
       : skipToken,
     select: useMemo(() => marketInfoSelectFn(), []),
   })
-  const airdropInfo = useAirdropInfo({ refreshIntervalInMs: 100 })
+  // const airdropInfo = useAirdropInfo({ refreshIntervalInMs: 100 })
   const { isInSandbox, isSandboxEnabled, isEphemeralAccount, deleteSandbox } = useSandboxState()
   const { changeNetworkAsync } = useNetworkChange()
   const { disconnect } = useDisconnect({
@@ -126,7 +126,11 @@ export function useNavbar(): UseNavbarResults {
     openSelectNetworkDialog,
     savingsInfo,
     connectedWalletInfo,
-    airdropInfo,
+    airdropInfo: {
+      airdrop: undefined,
+      isLoading: false,
+      isError: false,
+    },
     rewardsInfo,
     openSandboxDialog,
     isSandboxEnabled,
