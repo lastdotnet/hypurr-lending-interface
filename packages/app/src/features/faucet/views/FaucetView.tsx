@@ -5,8 +5,50 @@ import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { Button } from '@/ui/atoms/button/Button'
 import { assert } from '@/utils/assert'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { parseUnits } from 'viem'
+import { WidgetInstance } from 'friendly-challenge'
+
+function FriendlyCaptcha({
+  setCaptchaSolution,
+}: {
+  setCaptchaSolution: (solution: string) => void
+}) {
+  const container = useRef<HTMLDivElement>(null)
+  const widget = useRef<WidgetInstance | null>(null)
+
+  const doneCallback = useCallback(
+    (solution: string) => {
+      setCaptchaSolution(solution)
+    },
+    [setCaptchaSolution],
+  )
+
+  useEffect(() => {
+    if (!widget.current && container.current) {
+      widget.current = new WidgetInstance(container.current, {
+        startMode: 'none',
+        // skipStyleInjection: true,
+        doneCallback,
+      })
+    }
+
+    return () => {
+      if (widget.current !== undefined) widget.current?.reset()
+    }
+  }, [doneCallback])
+
+  return (
+    <div
+      ref={container}
+      className="frc-captcha dark"
+      data-sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY}
+      data-theme="dark"
+    />
+  )
+}
+
+export default FriendlyCaptcha
 
 const MINT_ABI = [
   {
@@ -36,6 +78,7 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
 
   const { primaryWallet } = useDynamicContext()
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
+  const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
 
   const isOnCooldown = !!lastMintTime && Date.now() - lastMintTime < MINT_COOLDOWN
 
@@ -85,6 +128,14 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
   const usdcLimitExceeded = usdcWriteStatus.kind === 'error' && isMintLimitError(usdcWriteStatus.error)
   const susdeLimitExceeded = susdeWriteStatus.kind === 'error' && isMintLimitError(susdeWriteStatus.error)
 
+  if (isOnCooldown) {
+    return <p className="text-center font-medium">Minting is on cooldown</p>
+  }
+
+  if (!captchaSolution) {
+    return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+  }
+
   return (
     <Button
       disabled={usdcWritePending || usdcWriteStatus.kind === 'success' || usdcLimitExceeded || isOnCooldown}
@@ -101,8 +152,6 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
             return 'Mint limit exceeded'
           case !!usdcTxReceipt && !!susdeTxReceipt:
             return 'Mint successful'
-          case isOnCooldown:
-            return 'Minting is on cooldown'
           default:
             return 'Mint USDC and sUSDe'
         }
