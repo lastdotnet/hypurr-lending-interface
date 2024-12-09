@@ -128,7 +128,15 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
   const usdcLimitExceeded = usdcWriteStatus.kind === 'error' && isMintLimitError(usdcWriteStatus.error)
   const susdeLimitExceeded = susdeWriteStatus.kind === 'error' && isMintLimitError(susdeWriteStatus.error)
 
-  return captchaSolution ? (
+  if (isOnCooldown) {
+    return <p className="text-center font-medium">Minting is on cooldown</p>
+  }
+
+  if (!captchaSolution) {
+    return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+  }
+
+  return (
     <Button
       disabled={usdcWritePending || usdcWriteStatus.kind === 'success' || usdcLimitExceeded || isOnCooldown}
       onClick={() => {
@@ -144,14 +152,10 @@ export function FaucetView({ setSuccess }: { setSuccess: (success: boolean) => v
             return 'Mint limit exceeded'
           case !!usdcTxReceipt && !!susdeTxReceipt:
             return 'Mint successful'
-          case isOnCooldown:
-            return 'Minting is on cooldown'
           default:
             return 'Mint USDC and sUSDe'
         }
       })()}
     </Button>
-  ) : (
-    <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
   )
 }
