@@ -95,12 +95,14 @@ import usdxl from './tokens/usdxl.svg'
 import susde from './tokens/susde.png'
 import hype from './tokens/hype.png'
 import catFaucet from './cat-faucet.svg'
+import hypurrLogoText from './hypurr-logo-text.svg'
 
 export const assets = {
   catFaucet,
   hyperEvmLogo,
   surrf,
   hypurrLogo,
+  hypurrLogoText,
   sparkLogo,
   sparkIcon,
   lifiLogo,
