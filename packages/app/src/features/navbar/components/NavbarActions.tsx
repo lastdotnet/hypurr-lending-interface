@@ -1,9 +1,10 @@
 import { cn } from '@/ui/utils/style'
 
-import { DynamicWidget } from '@dynamic-labs/sdk-react-core'
+import { DynamicWidget, useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { ConnectedWalletInfo, RewardsInfo } from '../types'
 import { RewardsBadge } from './rewards-badge/RewardsBadge'
 import { SettingsDropdown } from './settings-dropdown/SettingsDropdown'
+import ConnectButton from './ConnectButton'
 
 export interface NavbarActionsProps {
   mobileMenuCollapsed: boolean
@@ -19,6 +20,7 @@ export function NavbarActions({
   openSandboxDialog,
   isSandboxEnabled,
 }: NavbarActionsProps) {
+  const { primaryWallet } = useDynamicContext()
   return (
     <div
       className={cn(
@@ -28,7 +30,7 @@ export function NavbarActions({
       )}
     >
       <RewardsBadge {...rewardsInfo} />
-      <DynamicWidget innerButtonComponent="Connect" />
+      {primaryWallet ? <DynamicWidget innerButtonComponent="Connect" /> : <ConnectButton />}
       <SettingsDropdown onSandboxModeClick={openSandboxDialog} isSandboxEnabled={isSandboxEnabled} />
     </div>
   )
