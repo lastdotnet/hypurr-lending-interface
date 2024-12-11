@@ -94,8 +94,10 @@ import hyperEvmLogo from './hyper-evm-logo.png'
 import usdxl from './tokens/usdxl.svg'
 import susde from './tokens/susde.png'
 import hype from './tokens/hype.png'
+import catFaucet from './cat-faucet.svg'
 
 export const assets = {
+  catFaucet,
   hyperEvmLogo,
   surrf,
   hypurrLogo,
