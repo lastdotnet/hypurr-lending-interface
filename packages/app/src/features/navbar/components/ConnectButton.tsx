@@ -5,7 +5,7 @@ function ConnectButton() {
 
   return (
     <button
-      className="connect-button relative flex items-center gap-2 overflow-hidden rounded-lg bg-white/[.04] px-4 py-3 text-sm"
+      className="connect-button relative flex items-center gap-2 overflow-hidden rounded-md bg-white/[.04] px-4 py-3 text-sm"
       onClick={() => setShowAuthFlow(true)}
     >
       <KittyIcon /> Connect
