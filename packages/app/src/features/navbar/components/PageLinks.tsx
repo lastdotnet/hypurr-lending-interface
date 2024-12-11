@@ -1,5 +1,6 @@
 import { paths } from '@/config/paths'
 import { cn } from '@/ui/utils/style'
+import { FeedbackFish } from '@feedback-fish/react'
 
 import { SavingsInfoQueryResults } from '../types'
 import { NavLink } from './nav-link/NavLink'
@@ -57,6 +58,12 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
           {link.label}
         </NavLink>
       ))}
+
+      <FeedbackFish projectId={import.meta.env.VITE_FEEDBACK_FISH_PROJECT_ID}>
+        <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+          Give us feedback
+        </button>
+      </FeedbackFish>
     </div>
   )
 }
