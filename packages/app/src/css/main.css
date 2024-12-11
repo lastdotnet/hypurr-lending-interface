@@ -202,3 +202,16 @@
 .frc-banner > b {
   opacity: 0.6;
 }
+
+.connect-button:hover .connect-button-circle {
+  opacity: .3;
+  box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 10px 0px inset;
+  transform: translate(-50%, -4px);
+}
+
+.connect-button-circle {
+  transform: translate(-50%, 0);
+  opacity: .2;
+  transition: all 0.3s ease-in-out;
+  background-color: rgb(161, 252, 231);
+}
