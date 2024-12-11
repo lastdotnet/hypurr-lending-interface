@@ -6,19 +6,19 @@ import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { FaucetPanel } from './components/FaucetPanel'
 
 function FaucetContainer() {
-  const [success, setSuccess] = useState(false)
+  const [mintTx, setMintTx] = useState<string | null>(null)
   const { primaryWallet } = useDynamicContext()
 
   return (
     <FaucetPanel key={primaryWallet?.address}>
       {(() => {
         switch (true) {
-          case success:
-            return <SuccessView />
+          case !!mintTx:
+            return <SuccessView mintTx={mintTx} />
           case !primaryWallet:
             return <GuestView />
           default:
-            return <FaucetView setSuccess={setSuccess} />
+            return <FaucetView setMintTx={setMintTx} />
         }
       })()}
     </FaucetPanel>
