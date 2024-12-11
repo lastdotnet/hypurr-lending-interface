@@ -13,12 +13,12 @@ export function BorrowRateBanner({ assetsToBorrowMeta }: BorrowRateBannerProps) 
     <div className="flex flex-col items-center md:mt-12">
       <div className="flex items-center gap-2">
         <img src={assets.surrf} alt="Surrf" className="" />
-        <Typography variant="h1" className="font-normal text-4xl text-primary md:text-5xl">
-          Mint USDxl
+        <Typography variant="h1" className="text-4xl text-primary md:text-5xl">
+          Mint USDXL
         </Typography>
       </div>
-      <Typography variant="h3" className="mt-6 text-center font-medium text-lg text-primary-bg/70 md:text-2xl">
-        Borrow USDxl at <span className="text-white">{formatPercentage(borrowRate)}</span> from Hypurr
+      <Typography variant="h3" className="mt-6 text-center text-lg text-primary-bg/70 md:text-2xl">
+        Borrow USDXL at <span className="text-white">{formatPercentage(borrowRate)}</span> from Hypurr
       </Typography>
     </div>
   )

@@ -32,8 +32,9 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
       )}
     >
       <div className="flex h-20 shrink-0 flex-row items-center justify-between">
-        <Link to="/">
-          <img src={assets.hypurrLogo} alt="Hypurr logo" style={{ height: '1.875rem' }} />
+        <Link to="/" className="inline-flex items-center gap-2">
+          <img src={assets.hypurrLogo} alt="Hypurr logo" className="w-20" />
+          <img src={assets.hypurrLogoText} alt="Hypurr logo" className="w-[74px]" />
         </Link>
 
         <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
