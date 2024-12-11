@@ -49,7 +49,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
     <div
       className={cn(
         'flex flex-1 flex-col gap-6 py-6 font-sans',
-        'lg:flex lg:flex-row lg:justify-normal lg:py-0 lg:pt-0',
+        'lg:flex lg:flex-row lg:justify-center lg:py-0 lg:pt-0',
         mobileMenuCollapsed && 'hidden lg:flex',
       )}
     >

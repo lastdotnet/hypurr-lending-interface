@@ -94,11 +94,13 @@ import hyperEvmLogo from './hyper-evm-logo.png'
 import usdxl from './tokens/usdxl.svg'
 import susde from './tokens/susde.png'
 import hype from './tokens/hype.png'
+import hypurrLogoText from './hypurr-logo-text.svg'
 
 export const assets = {
   hyperEvmLogo,
   surrf,
   hypurrLogo,
+  hypurrLogoText,
   sparkLogo,
   sparkIcon,
   lifiLogo,

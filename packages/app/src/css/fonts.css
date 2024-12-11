@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'Newsreader';
   font-style: normal;
-  font-weight: 400 500;
+  font-weight: 300 400 500 600 700;
   font-display: block;
   font-named-instance: 'Regular';
   src: url('../fonts/Newsreader-Variable.ttf') format('truetype');
