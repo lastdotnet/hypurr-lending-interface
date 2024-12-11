@@ -2,6 +2,7 @@ import { Button } from '@/ui/atoms/button/Button'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { WidgetInstance } from 'friendly-challenge'
+import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
 
 function FriendlyCaptcha({
   setCaptchaSolution,
@@ -108,6 +109,14 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
 
   if (!captchaSolution) {
     return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+  }
+
+  if (mintPending) {
+    return (
+      <div className="-mt-4 -mb-4 flex items-center justify-center">
+        <CatSpinner />
+      </div>
+    )
   }
 
   return (
