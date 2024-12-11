@@ -19,9 +19,9 @@ export function FaucetPanel({ children }: PropsWithChildren) {
           </p>
         </div>
 
-        <div className="mb-8 flex flex-col-reverse justify-between gap-8 rounded-lg bg-white/4 px-12 pt-8 pb-10 md:flex-row">
+        <div className="mb-8 flex flex-col-reverse justify-between gap-8 rounded-lg bg-white/4 p-2 px-14 pb-10 md:flex-row">
           <div>
-            <Typography variant="h2" className="mb-3 text-xl">
+            <Typography variant="h2" className="mb-3 text-2xl md:pt-8">
               How to use the faucet
             </Typography>
             <ol className="space-y-2 text-secondary-foreground">
@@ -32,7 +32,7 @@ export function FaucetPanel({ children }: PropsWithChildren) {
             <p className="mt-4 text-white/50 text-xs">There is a 24-hour cooldown period between mints.</p>
           </div>
 
-          <div>
+          <div className="max-w-56">
             <img src={assets.catFaucet} alt="cat faucet" />
           </div>
         </div>
