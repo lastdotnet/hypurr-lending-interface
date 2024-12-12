@@ -123,7 +123,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
   return (
     <div className="w-full">
       <Button className="w-full" disabled={mintPending} onClick={mint}>
-        Mint HYPE, USDC, and sUSDe
+        Claim Faucet
       </Button>
 
       {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
