@@ -111,7 +111,9 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
 
     return (
       <p className="text-center font-medium">
-        You can mint testnet tokens again in {hoursLeft} hours and {minutesLeft} minutes
+        You can mint testnet tokens again in {hoursLeft > 0 && `${hoursLeft} hour${hoursLeft !== 1 ? 's' : ''}`}{' '}
+        {hoursLeft > 0 && minutesLeft > 0 && ' and '}{' '}
+        {minutesLeft > 0 && `${minutesLeft} minute${minutesLeft !== 1 ? 's' : ''}`}
       </p>
     )
   }
