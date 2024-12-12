@@ -152,6 +152,57 @@
   }
 }
 
+/* Friendly Captcha */
+.frc-captcha {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.frc-icon {
+  display: none;
+}
+
+.frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
+  color: white !important;
+}
+
+.frc-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.frc-text {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.frc-button {
+  background-color: hsl(172 42% 56%) !important;
+  border-radius: 4px !important ;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.2s ease-in-out !important;
+  margin-bottom: 8px !important;
+}
+
+.frc-button:hover {
+  background-color: hsl(172 42% 46%) !important;
+}
+
+.frc-banner {
+  font-size: 10px;
+  position: relative;
+  right: unset !important;
+}
+
+
+.frc-banner > a,
+.frc-banner > b {
+  opacity: 0.6;
+}
+
 .connect-button:hover .connect-button-circle {
   opacity: .3;
   box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 10px 0px inset;
