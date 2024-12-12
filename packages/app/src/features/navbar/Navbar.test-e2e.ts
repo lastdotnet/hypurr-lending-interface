@@ -120,7 +120,7 @@ test.describe('Navbar', () => {
 
     test('Does not display badge when no rewards', async ({ page }) => {
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
         },

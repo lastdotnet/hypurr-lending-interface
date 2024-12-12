@@ -2,7 +2,7 @@ export interface DoughnutChartProps {
   data: {
     value: number
     color: string
-    assetName: string
+    assetName?: string
   }[]
   innerRadius?: number
   outerRadius?: number
@@ -19,19 +19,22 @@ export function DoughnutChart({ data, innerRadius = 160, outerRadius = 200, clas
       viewBox={`0 0 ${2 * outerRadius} ${2 * outerRadius}`}
       className={className}
     >
-      {arcs.map((point, index) => (
-        <path
-          d={`M${point.x1} ${point.y1}
+      {arcs.map((point, index) => {
+        const assetName = normalizedData?.[index]?.assetName
+        return (
+          <path
+            d={`M${point.x1} ${point.y1}
               A${outerRadius} ${outerRadius} 0 ${point.angle > Math.PI ? '1' : '0'} 1 ${point.x2} ${point.y2}
               L${point.x3} ${point.y3}
               A${innerRadius} ${innerRadius} 0 ${point.angle > Math.PI ? '1' : '0'} 0 ${point.x4} ${point.y4}
               Z`}
-          fill={point.color}
-          key={`${point.x1}${point.y1}${point.x2}${point.y2}`}
-        >
-          <title>{normalizedData?.[index]?.assetName}</title>
-        </path>
-      ))}
+            fill={point.color}
+            key={`${point.x1}${point.y1}${point.x2}${point.y2}`}
+          >
+            {assetName && <title>{assetName}</title>}
+          </path>
+        )
+      })}
     </svg>
   )
 }
