@@ -23,7 +23,7 @@ export const rootRouter = createBrowserRouter([
             element: <EasyBorrowPage />,
           },
           {
-            path: paths.myPortfolio,
+            path: paths.dashboard,
             element: <MyPortfolioPage />,
           },
           // {
@@ -60,7 +60,7 @@ export const rootRouter = createBrowserRouter([
             //   aliases: ['/farm-details/:chainId/:address'],
             // },
             {
-              path: paths.myPortfolio,
+              path: paths.dashboard,
               aliases: ['/dashboard'],
             },
             // {

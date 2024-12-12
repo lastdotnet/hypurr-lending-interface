@@ -10,8 +10,8 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
   return (
     <div className="flex flex-col">
       <p className="mb-4">You've minted your tokens 🎉</p>
-      <LinkButton className="w-full" to={paths.myPortfolio}>
-        Go to portfolio
+      <LinkButton className="w-full" to={paths.dashboard}>
+        View in dashboard
       </LinkButton>
       <a
         href={`${blockExplorerLink}/tx/${mintTx}`}
