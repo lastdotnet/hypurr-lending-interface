@@ -9,8 +9,8 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
 
   return (
     <div className="flex flex-col">
-      <p className="mb-4">You've minted your tokens 🎉</p>
-      <LinkButton className="w-full" to={paths.dashboard}>
+      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC and 0.01 HYPE (testnet)</p>
+      <LinkButton className="w-full" to={`${paths.dashboard}#your-wallet`}>
         View in dashboard
       </LinkButton>
       <a

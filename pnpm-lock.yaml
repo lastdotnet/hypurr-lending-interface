@@ -199,6 +199,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hash-link:
+        specifier: ^1.0.2
+        version: 1.0.2(react@18.2.0)
       react-hook-form:
         specifier: ^7.48.2
         version: 7.48.2(react@18.2.0)
@@ -8670,6 +8673,11 @@ packages:
       '@types/react':
         optional: true
 
+  react-hash-link@1.0.2:
+    resolution: {integrity: sha512-fiTlptVRwfWfw17+imVm50S5wlptCfUnm6oIl8GXn5I1bS+wZ4Ejqp/Bx8hhJPK59uNeoce4sJty5pIVaAUAcw==}
+    peerDependencies:
+      react: '>=16'
+
   react-hook-form@7.48.2:
     resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
     engines: {node: '>=12.22.0'}
@@ -8717,6 +8725,11 @@ packages:
 
   react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+
+  react-loadable@5.5.0:
+    resolution: {integrity: sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==}
+    peerDependencies:
+      react: '*'
 
   react-native-get-random-values@1.11.0:
     resolution: {integrity: sha512-4BTbDbRmS7iPdhYLRcz3PGFIpFJBwNZg9g42iwa2P6FOv9vZj/xJc678RZXnLNZzd0qd7Q3CCF6Yd+CU2eoXKQ==}
@@ -20723,6 +20736,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.14
 
+  react-hash-link@1.0.2(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-loadable: 5.5.0(react@18.2.0)
+
   react-hook-form@7.48.2(react@18.2.0):
     dependencies:
       react: 18.2.0
@@ -20770,6 +20788,11 @@ snapshots:
   react-is@18.1.0: {}
 
   react-is@18.2.0: {}
+
+  react-loadable@5.5.0(react@18.2.0):
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
 
   react-native-get-random-values@1.11.0(react-native@0.74.0(@babel/core@7.25.8)(@babel/preset-env@7.24.6(@babel/core@7.25.8))(@types/react@18.2.14)(bufferutil@4.0.8)(react@18.2.0)):
     dependencies:

@@ -46,6 +46,7 @@ export function PositionView({
       </div>
       <DepositTable assets={deposits} openDialog={openDialog} />
       <BorrowTable assets={borrows} eModeCategoryId={eModeCategoryId} openDialog={openDialog} />
+      <div id="your-wallet" />
       <WalletComposition {...walletComposition} />
     </PageLayout>
   )
