@@ -5,6 +5,10 @@
       "destination": "https://api-v2.spark.fi/api/v1/:path*"
     },
     {
+      "source": "/claim-with-gas",
+      "destination": "https://faucet-ashy.vercel.app/claim-with-gas"
+    },
+    {
       "source": "/(.*)",
       "destination": "/"
     }
