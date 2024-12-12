@@ -53,7 +53,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/info-sky-api/, ''),
       },
       '/claim-with-gas': {
-        target: 'https://faucet-ashy.vercel.app/claim-with-gas',
+        target: 'https://faucet-ashy.vercel.app/claim-with-gas/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/claim-with-gas/, ''),
       },
