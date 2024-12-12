@@ -6,12 +6,13 @@ import { Panel } from '@/ui/atoms/panel/Panel'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { PageLayout } from '@/ui/layouts/PageLayout'
-import { Confetti } from '@/ui/molecules/confetti/Confetti'
+import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
 import { UsdsUpgradeAlert } from '../components/UsdsUpgradeAlert'
 import { BorrowDetails } from '../logic/useEasyBorrow'
+import { useEffect } from 'react'
 
 export interface SuccessViewProps {
   deposited: TokenWithValue[]
@@ -20,12 +21,18 @@ export interface SuccessViewProps {
   runConfetti: boolean
 }
 
-export function SuccessView({ deposited, borrowed, runConfetti, borrowDetails }: SuccessViewProps) {
+export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti }: SuccessViewProps) {
   const desktop = useBreakpoint('md')
+  const { runAnimation } = useConfettiContext()
+
+  useEffect(() => {
+    if (runConfetti) {
+      runAnimation()
+    }
+  }, [runConfetti, runAnimation])
 
   return (
     <PageLayout className={cn('pt-8', desktop && 'pt-28')}>
-      <Confetti run={runConfetti} recycle={false} numberOfPieces={1000} data-testid="react-confetti" />
       <div className="flex flex-col items-center justify-center">
         <img src={assets.success} alt="success-img" />
         <Typography variant={desktop ? 'h1' : 'h3'} className="mt-8 text-center">

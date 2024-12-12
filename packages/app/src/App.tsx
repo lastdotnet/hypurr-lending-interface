@@ -16,6 +16,7 @@ import { useStore } from './domain/state'
 import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
 import { hyperTestnetDynamic } from './config/chain/constants'
+import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
 function App() {
   const sandboxNetwork = useStore((state) => state.sandbox.network)
@@ -44,10 +45,12 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <DynamicWagmiConnector>
             <I18nAppProvider>
-              <Toaster position="top-right" containerClassName="toast-notifications" />
-              <TooltipProvider delayDuration={0}>
-                <RouterProvider router={rootRouter} />
-              </TooltipProvider>
+              <ConfettiProvider>
+                <Toaster position="top-right" containerClassName="toast-notifications" />
+                <TooltipProvider delayDuration={0}>
+                  <RouterProvider router={rootRouter} />
+                </TooltipProvider>
+              </ConfettiProvider>
             </I18nAppProvider>
           </DynamicWagmiConnector>
         </QueryClientProvider>

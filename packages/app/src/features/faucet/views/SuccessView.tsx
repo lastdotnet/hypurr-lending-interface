@@ -2,10 +2,17 @@ import { hyperTestnet } from '@/config/chain/constants'
 import { paths } from '@/config/paths'
 import { useBlockExplorerLink } from '@/domain/hooks/useBlockExplorerLink'
 import { LinkButton } from '@/ui/atoms/button/Button'
+import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { ArrowUpRight } from 'lucide-react'
+import { useEffect } from 'react'
 
 export function SuccessView({ mintTx }: { mintTx: string }) {
   const blockExplorerLink = useBlockExplorerLink(hyperTestnet.id)
+  const { runAnimation } = useConfettiContext()
+
+  useEffect(() => {
+    runAnimation()
+  }, [runAnimation])
 
   return (
     <div className="flex flex-col">

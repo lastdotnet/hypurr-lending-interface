@@ -193,9 +193,6 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
-      react-confetti:
-        specifier: ^6.1.0
-        version: 6.1.0(react@18.2.0)
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
@@ -220,6 +217,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.6
         version: 1.0.6(tailwindcss@3.4.3)
+      use-confetti-svg:
+        specifier: ^1.0.2
+        version: 1.0.2(react@18.2.0)
       viem:
         specifier: ^2.9.21
         version: 2.9.21(bufferutil@4.0.8)(typescript@5.6.3)(zod@3.22.4)
@@ -5813,6 +5813,10 @@ packages:
     engines: {node: ^14.13.0 || >=16.0.0}
     hasBin: true
 
+  confetti-js@https://codeload.github.com/userexec/confetti-js/tar.gz/737672a039d2d6862c1b756ff84dcb15564aa960:
+    resolution: {tarball: https://codeload.github.com/userexec/confetti-js/tar.gz/737672a039d2d6862c1b756ff84dcb15564aa960}
+    version: 0.0.18
+
   connect@3.7.0:
     resolution: {integrity: sha512-ZqRXc+tZukToSNmh5C2iWMSoV3X1YUcPbqEM4DkEG5tNQXrQUZCNVGGv3IuicnkMtPfGf3Xtp8WCXs295iQ1pQ==}
     engines: {node: '>= 0.10.0'}
@@ -9906,6 +9910,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-confetti-svg@1.0.2:
+    resolution: {integrity: sha512-Zh+pXcXeB8nFess7+D6WeQ0jYOVLo9wT6WYO3VGWMH/rOjDR5+Xddvo5QWIFC9wltjleBYLcCNDo18ML0n/2iA==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      react: '>=17.0.0'
 
   use-sidecar@1.1.2:
     resolution: {integrity: sha512-epTbsLuzZ7lPClpz2TyryBfztm7m+28DlEv2ZCQ3MDr5ssiwyOwGH/e5F9CkfWjJ1t4clvI58yF822/GUkjjhw==}
@@ -17463,6 +17473,8 @@ snapshots:
       tree-kill: 1.2.2
       yargs: 17.7.2
 
+  confetti-js@https://codeload.github.com/userexec/confetti-js/tar.gz/737672a039d2d6862c1b756ff84dcb15564aa960: {}
+
   connect@3.7.0:
     dependencies:
       debug: 2.6.9
@@ -22084,6 +22096,11 @@ snapshots:
       tslib: 2.6.2
     optionalDependencies:
       '@types/react': 18.2.14
+
+  use-confetti-svg@1.0.2(react@18.2.0):
+    dependencies:
+      confetti-js: https://codeload.github.com/userexec/confetti-js/tar.gz/737672a039d2d6862c1b756ff84dcb15564aa960
+      react: 18.2.0
 
   use-sidecar@1.1.2(@types/react@18.2.14)(react@18.2.0):
     dependencies:
