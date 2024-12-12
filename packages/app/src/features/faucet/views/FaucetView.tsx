@@ -105,7 +105,15 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
   }
 
   if (isOnCooldown) {
-    return <p className="text-center font-medium">Minting is on cooldown</p>
+    const timeLeft = MINT_COOLDOWN - (Date.now() - lastMintTime)
+    const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60))
+    const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+
+    return (
+      <p className="text-center font-medium">
+        You can mint testnet tokens again in {hoursLeft} hours and {minutesLeft} minutes
+      </p>
+    )
   }
 
   if (!captchaSolution) {
