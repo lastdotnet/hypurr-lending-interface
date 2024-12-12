@@ -20,6 +20,7 @@ export function WalletComposition({
   const chartData = assets.map((asset) => ({
     value: asset.token.toUSD(asset.value).toNumber(),
     color: getTokenColor(asset.token.symbol, { fallback: getRandomColor() }),
+    assetName: asset.token.symbol,
   }))
   const sm = useBreakpoint('sm')
 
