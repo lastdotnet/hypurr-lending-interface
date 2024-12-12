@@ -3,6 +3,7 @@ import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { WidgetInstance } from 'friendly-challenge'
 import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
+import { faucetUrl } from '@/config/consts'
 
 function FriendlyCaptcha({
   setCaptchaSolution,
@@ -44,7 +45,6 @@ function FriendlyCaptcha({
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
-const MINT_URL = ''
 
 export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void }) {
   const { primaryWallet } = useDynamicContext()
@@ -71,7 +71,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
       setMintPending(true)
       setMintError(null)
 
-      const response = await fetch(MINT_URL, {
+      const response = await fetch(faucetUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,6 +97,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
       setLastMintTime(now)
       setMintTx(data.txHash)
     } catch (error) {
+      console.error(error)
       setMintError(error instanceof Error ? error.message : 'An unknown error occurred while minting')
     } finally {
       setMintPending(false)
