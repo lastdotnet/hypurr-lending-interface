@@ -11,8 +11,8 @@ export function Meta() {
       <meta name="description" content="Hypurr" />
       <meta property="og:title" content="Hypurr Lending Market" />
       <meta property="og:description" content="Hypurr" />
-      <meta property="og:image" content="/hypurr-meta-logo.jpg" />
-      <meta name="twitter:image" content="/hypurr-meta-logo.jpg" />
+      <meta property="og:image" content="https://app.hypurr.fi/hypurr-meta-logo.jpg" />
+      <meta name="twitter:image" content="https://app.hypurr.fi/hypurr-meta-logo.jpg" />
       <meta name="twitter:image:alt" content="Hypurr logo" />
       <meta name="twitter:site" content="@hypurrfi" />
       <meta property="twitter:card" content="summary_large_image" />
