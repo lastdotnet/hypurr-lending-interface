@@ -32,7 +32,7 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
             url="https://app.hypurr.fi/"
             hashtags={['AwesomeSite', 'CheckItOut']}
           />
-          <CopyLinkButton link={`${blockExplorerLink}/tx/${mintTx}`} />
+          <CopyLinkButton link="https://app.hypurr.fi/" />
         </div>
 
         <a
