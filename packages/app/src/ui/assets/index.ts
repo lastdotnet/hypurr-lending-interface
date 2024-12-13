@@ -242,7 +242,6 @@ const tokenColors: Record<TokenSymbol, `${number} ${number} ${number}`> = {
   [TokenSymbol('sDAI')]: '53 181 82',
   [TokenSymbol('sUSDS')]: '53 181 82',
   [TokenSymbol('stETH')]: '143 146 236',
-  [TokenSymbol('USDC')]: '51 146 248',
   [TokenSymbol('USDC.e')]: '51 146 248',
   [TokenSymbol('USDT')]: '38 161 123',
   [TokenSymbol('WBTC')]: '240 146 66',
@@ -252,4 +251,10 @@ const tokenColors: Record<TokenSymbol, `${number} ${number} ${number}`> = {
   [TokenSymbol('WXDAI')]: '253 177 31',
   [TokenSymbol('XDAI')]: '255 192 70',
   [TokenSymbol('CLE')]: '47 208 91',
+  //
+  [TokenSymbol('USDXL')]: '255 230 106',
+  [TokenSymbol('sUSDe')]: '50 157 200',
+  [TokenSymbol('USDC')]: '157 222 247',
+  [TokenSymbol('HYPE')]: '157 217 175',
+  [TokenSymbol('WHYPE')]: '161 252 231',
 }

@@ -55,7 +55,7 @@ export const testIds = makeTestIds({
       borrowed: true,
     },
   },
-  myPortfolio: {
+  dashboard: {
     deposited: true,
     borrowed: true,
     depositDialog: {

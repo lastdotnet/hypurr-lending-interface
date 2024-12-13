@@ -481,7 +481,7 @@ test.describe('Withdraw dialog', () => {
 
     test.beforeEach(async ({ page }) => {
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ETH: 10, wstETH: 5, rETH: 1, WBTC: 1 },

@@ -33,7 +33,7 @@ export function usePageChainId(): UsePageChainIdResult {
 
 const pageNamesMap: Record<Path, string> = {
   easyBorrow: 'Easy Borrow',
-  myPortfolio: 'Portfolio',
+  dashboard: 'Dashboard',
   markets: 'Markets',
   marketDetails: 'Market',
   savings: 'Savings',

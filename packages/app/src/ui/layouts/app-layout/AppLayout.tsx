@@ -1,10 +1,9 @@
 import { cx } from 'class-variance-authority'
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { usePageChainId } from '@/domain/hooks/usePageChainId'
 import { useBannerVisibility } from '@/domain/state/bannersVisibility'
-import { useOpenDialog } from '@/domain/state/dialogs'
-import { selectNetworkDialogConfig } from '@/features/dialogs/select-network/SelectNetworkDialog'
 import { Navbar } from '@/features/navbar/Navbar'
 import { cn } from '@/ui/utils/style'
 import {
@@ -12,6 +11,8 @@ import {
   SkyMigrationTopBanner,
 } from '../../atoms/sky-migration-top-banner/SkyMigrationTopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { hyperTestnet } from '@/config/chain/constants'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -20,8 +21,9 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuCollapsed, setMobileMenuCollapsed] = useState(true)
   const { pageSupported, pageName } = usePageChainId()
+  const { primaryWallet, network } = useDynamicContext()
   const { handleCloseBanner, showBanner } = useBannerVisibility(SKY_MIGRATION_TOP_BANNER_ID)
-  const openDialog = useOpenDialog()
+  const isWrongNetwork = primaryWallet?.connector.supportsNetworkSwitching() && network && network !== hyperTestnet.id
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
@@ -35,16 +37,15 @@ export function AppLayout({ children }: AppLayoutProps) {
       />
       <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden lg:flex')}>
         {children}
-        {!pageSupported && (
-          <>
-            <div className="fixed inset-0 z-10 bg-black/30 backdrop-blur-[1.5px]" aria-hidden="true" />
+        {(!pageSupported || isWrongNetwork) &&
+          createPortal(
             <PageNotSupportedWarning
               pageName={pageName}
-              openNetworkSelectDialog={() => openDialog(selectNetworkDialogConfig, {})}
-              className="z-20"
-            />
-          </>
-        )}
+              openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
+              className="z-[1000]"
+            />,
+            document.body,
+          )}
       </main>
     </div>
   )

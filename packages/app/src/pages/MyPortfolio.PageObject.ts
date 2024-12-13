@@ -77,20 +77,20 @@ export class MyPortfolioPageObject extends BasePageObject {
   }
 
   async goToMyPortfolioAction(): Promise<void> {
-    await this.page.goto(buildUrl('myPortfolio'))
+    await this.page.goto(buildUrl('dashboard'))
   }
   // #endregion
 
   // #region assertions
   async expectPositionToBeEmpty(): Promise<void> {
-    const deposit = this.page.getByTestId(testIds.myPortfolio.deposited)
-    const borrow = this.page.getByTestId(testIds.myPortfolio.borrowed)
+    const deposit = this.page.getByTestId(testIds.dashboard.deposited)
+    const borrow = this.page.getByTestId(testIds.dashboard.borrowed)
     await expect(deposit).toHaveText('-')
     await expect(borrow).toHaveText('-')
   }
 
   async expectBorrowedAssetsToBeEmpty(): Promise<void> {
-    const borrow = this.page.getByTestId(testIds.myPortfolio.borrowed)
+    const borrow = this.page.getByTestId(testIds.dashboard.borrowed)
     await expect(borrow).toHaveText('-')
   }
 
@@ -100,12 +100,12 @@ export class MyPortfolioPageObject extends BasePageObject {
   }
 
   async expectDepositedAssets(total: number): Promise<void> {
-    const locator = this.page.getByTestId(testIds.myPortfolio.deposited)
+    const locator = this.page.getByTestId(testIds.dashboard.deposited)
     await expect(locator).toHaveText(USD_MOCK_TOKEN.formatUSD(NormalizedUnitNumber(total), { compact: true }))
   }
 
   async expectBorrowedAssets(total: number): Promise<void> {
-    const locator = this.page.getByTestId(testIds.myPortfolio.borrowed)
+    const locator = this.page.getByTestId(testIds.dashboard.borrowed)
     await expect(locator).toHaveText(USD_MOCK_TOKEN.formatUSD(NormalizedUnitNumber(total), { compact: true }))
   }
 

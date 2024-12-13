@@ -17,7 +17,7 @@ test.describe('MyPortfolio', () => {
       account: {
         type: 'not-connected',
       },
-      initialPage: 'myPortfolio',
+      initialPage: 'dashboard',
     })
     const myPortfolioPage = new MyPortfolioPageObject(page)
 
@@ -28,7 +28,7 @@ test.describe('MyPortfolio', () => {
 
   test('empty account', async ({ page }) => {
     await setup(page, fork, {
-      initialPage: 'myPortfolio',
+      initialPage: 'dashboard',
       account: {
         type: 'connected-random',
       },
@@ -49,7 +49,7 @@ test.describe('MyPortfolio', () => {
       WETH: 1,
     }
     await setup(page, fork, {
-      initialPage: 'myPortfolio',
+      initialPage: 'dashboard',
       account: {
         type: 'connected-random',
         assetBalances,

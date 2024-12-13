@@ -24,7 +24,7 @@ function RepayDialogContentContainer({ token, closeDialog }: DialogContentContai
         objectiveType="repay"
         tokenWithValue={repaymentAsset}
         onProceed={closeDialog}
-        proceedText="View in portfolio"
+        proceedText="View in dashboard"
       />
     )
   }

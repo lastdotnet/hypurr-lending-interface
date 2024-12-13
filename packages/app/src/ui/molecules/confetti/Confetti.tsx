@@ -1,17 +1,46 @@
-import * as Portal from '@radix-ui/react-portal'
-import ReactConfetti, { Props as ReactConfettiProps } from 'react-confetti'
+import { createContext, useContext, useState, PropsWithChildren, useCallback } from 'react'
+import { useConfetti } from 'use-confetti-svg'
+import { assets } from '@/ui/assets'
+interface ConfettiContextProps {
+  runAnimation: () => Promise<void>
+  animating: boolean
+}
 
-import { useWindowSize } from '@/ui/utils/useWindowSize'
+const ConfettiContext = createContext<ConfettiContextProps | undefined>(undefined)
 
-// @note: Without explicitly setting dimensions of ReactConfetti component,
-// canvas size will default to initial window size and won't update on resize
-// which can cause document to be stretched after layout changes.
-// Rendered in portal to be independent of parent layout
-export function Confetti(props: ReactConfettiProps) {
-  const { width, height } = useWindowSize()
+export function ConfettiProvider({ children }: PropsWithChildren) {
+  const [animating, setAnimating] = useState(false)
+
+  const { runAnimation } = useConfetti({
+    images: [
+      {
+        src: assets.surrf,
+        size: 48,
+      },
+    ],
+    duration: 1000,
+    fadeOut: 400,
+    particleCount: 25,
+  })
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  const handleRunAnimation = useCallback(async () => {
+    setAnimating(true)
+    await runAnimation()
+    setAnimating(false)
+  }, [])
+
   return (
-    <Portal.Root>
-      <ReactConfetti {...props} width={width} height={height} />
-    </Portal.Root>
+    <ConfettiContext.Provider value={{ runAnimation: handleRunAnimation, animating }}>
+      {children}
+    </ConfettiContext.Provider>
   )
+}
+
+export function useConfettiContext() {
+  const context = useContext(ConfettiContext)
+  if (!context) {
+    throw new Error('useConfettiContext must be used within a ConfettiProvider')
+  }
+  return context
 }

@@ -44,7 +44,7 @@ export class BorrowPageObject extends BasePageObject {
   }
 
   async viewInMyPortfolioAction(): Promise<void> {
-    await this.page.getByRole('link', { name: 'View in portfolio' }).click()
+    await this.page.getByRole('link', { name: 'View in dashboard' }).click()
   }
 
   async viewInSavingsAction(): Promise<void> {
