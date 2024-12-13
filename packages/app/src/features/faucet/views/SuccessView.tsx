@@ -30,7 +30,6 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
           <TweetButton
             text="Just claimed my free tokens from the HypurrFi faucet! 🚀💰 @hypurrfi"
             url="https://app.hypurr.fi/"
-            hashtags={['AwesomeSite', 'CheckItOut']}
           />
           <CopyLinkButton link="https://app.hypurr.fi/" />
         </div>
@@ -69,8 +68,8 @@ function CopyLinkButton({ link }: { link: string }) {
   )
 }
 
-function TweetButton({ text, url, hashtags }: { text: string; url: string; hashtags: string[] }) {
-  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%0A&url=${encodeURIComponent(url)}%0A&hashtags=${hashtags.join(',')}`
+function TweetButton({ text, url }: { text: string; url: string }) {
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%0A&url=${encodeURIComponent(url)}`
 
   return (
     <a
