@@ -12,15 +12,14 @@ import { rootRouter } from './RootRouter'
 import { queryClient } from './config/query-client'
 import { useViteErrorOverlay } from './domain/errors/useViteErrorOverlay'
 import { I18nAppProvider } from './domain/i18n/I18nAppProvider'
-import { useStore } from './domain/state'
 import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
 import { hyperTestnetDynamic } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
+import { Meta } from './features/meta/Meta'
 
 function App() {
-  const sandboxNetwork = useStore((state) => state.sandbox.network)
-  const config = getConfig(sandboxNetwork)
+  const config = getConfig()
   if (import.meta.env.VITE_PLAYWRIGHT === '1' || import.meta.env.MODE === 'development') {
     // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
     useAutoConnect({ config })
@@ -48,6 +47,7 @@ function App() {
               <ConfettiProvider>
                 <Toaster position="top-right" containerClassName="toast-notifications" />
                 <TooltipProvider delayDuration={0}>
+                  <Meta />
                   <RouterProvider router={rootRouter} />
                 </TooltipProvider>
               </ConfettiProvider>

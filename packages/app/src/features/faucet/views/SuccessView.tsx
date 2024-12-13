@@ -5,7 +5,7 @@ import { buttonVariants } from '@/ui/atoms/button/Button'
 import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { ArrowUpRight } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { HashLink } from 'react-router-hash-link'
 
 export function SuccessView({ mintTx }: { mintTx: string }) {
@@ -25,14 +25,60 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
       >
         View in dashboard
       </HashLink>
-      <a
-        href={`${blockExplorerLink}/tx/${mintTx}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-2 inline-flex items-center gap-1 self-end text-sm opacity-50 hover:opacity-80"
-      >
-        View Transaction <ArrowUpRight className="h-4 w-4" />
-      </a>
+      <div className="mt-5 flex justify-between gap-4">
+        <div className="flex gap-4">
+          <TweetButton
+            text="Just claimed my free tokens from the HypurrFi faucet! 🚀💰 @hypurrfi"
+            url="https://app.hypurr.fi/"
+          />
+          <CopyLinkButton link="https://app.hypurr.fi/" />
+        </div>
+
+        <a
+          href={`${blockExplorerLink}/tx/${mintTx}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-sm opacity-50 hover:opacity-80"
+        >
+          View Transaction <ArrowUpRight className="h-4 w-4" />
+        </a>
+      </div>
     </div>
+  )
+}
+
+function CopyLinkButton({ link }: { link: string }) {
+  const [isCopied, setIsCopied] = useState(false)
+
+  async function copyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(link)
+      setIsCopied(true)
+    } catch (error) {
+      console.error('Failed to copy the link: ', error)
+    }
+  }
+
+  return isCopied ? (
+    <p>Link copied to clipboard!</p>
+  ) : (
+    <button onClick={copyToClipboard} className="text-sm opacity-50 hover:opacity-80">
+      Copy link
+    </button>
+  )
+}
+
+function TweetButton({ text, url }: { text: string; url: string }) {
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%0A&url=${encodeURIComponent(url)}`
+
+  return (
+    <a
+      href={tweetUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded border border-white/4 bg-white/10 px-4 py-1 text-sm text-white transition-colors hover:bg-primary-bg/70"
+    >
+      Share on X
+    </a>
   )
 }
