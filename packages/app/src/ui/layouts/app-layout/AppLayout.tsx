@@ -13,7 +13,6 @@ import {
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
-import HashLinkObserver from 'react-hash-link'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -36,7 +35,6 @@ export function AppLayout({ children }: AppLayoutProps) {
         setMobileMenuCollapsed={setMobileMenuCollapsed}
         className="z-20"
       />
-      <HashLinkObserver />
       <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden lg:flex')}>
         {children}
         {(!pageSupported || isWrongNetwork) &&
