@@ -120,6 +120,10 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0px' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         'sprinkle-spin': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(180deg)' },
@@ -135,6 +139,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'sprinkle-spin': 'sprinkle-spin 1s linear',
         'sprinkle-come-in-out': 'sprinkle-come-in-out 700ms forwards',
+        'fade-in': 'fade-in 0.2s ease-in-out forwards',
       },
     },
   },

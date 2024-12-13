@@ -26,12 +26,12 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
         View in dashboard
       </HashLink>
       <div className="mt-5 flex justify-between gap-4">
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <TweetButton
             text="Just claimed my free tokens from the HypurrFi faucet! 🚀💰 @hypurrfi"
-            url="https://app.hypurr.fi/"
+            url="https://app.hypurr.fi/faucet"
           />
-          <CopyLinkButton link="https://app.hypurr.fi/" />
+          <CopyLinkButton link="https://app.hypurr.fi/faucet" />
         </div>
 
         <a
@@ -59,10 +59,22 @@ function CopyLinkButton({ link }: { link: string }) {
     }
   }
 
+  useEffect(() => {
+    if (isCopied) {
+      const timer = setTimeout(() => {
+        setIsCopied(false)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [isCopied])
+
   return isCopied ? (
-    <p>Link copied to clipboard!</p>
+    <p className="animate-fade-in text-primary-bg text-sm">Link copied to clipboard!</p>
   ) : (
-    <button onClick={copyToClipboard} className="text-sm opacity-50 hover:opacity-80">
+    <button
+      onClick={copyToClipboard}
+      className="animate-fade-in text-sm text-white/50 transition-colors hover:text-white/80"
+    >
       Copy link
     </button>
   )
