@@ -112,7 +112,7 @@ describe(getWithdrawMaxValue.name, () => {
           unitPriceUsd: NormalizedUnitNumber(1),
           decimals: 18,
           usageAsCollateralEnabledOnUser: true,
-          eModeCategory,
+          eModeCategories: [eModeCategory],
         },
       }),
     ).toEqual(NormalizedUnitNumber(44))
