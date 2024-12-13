@@ -68,7 +68,7 @@ export function makeMarketOverview({
       maxLtv: e.category.ltv,
       liquidationThreshold: e.category.liquidationThreshold,
       liquidationPenalty: e.category.liquidationBonus,
-      categoryId: e.category.id,
+      categoryId: e.category.id === 1 || e.category.id === 2 ? e.category.id : 0,
       eModeCategoryTokens,
     })),
   }

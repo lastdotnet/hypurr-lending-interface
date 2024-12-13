@@ -122,7 +122,7 @@ export interface UserConfiguration {
 }
 
 export interface EModeCategory {
-  id: 0 | 1 | 2
+  id: number
   name: string
   ltv: Percentage
   liquidationThreshold: Percentage

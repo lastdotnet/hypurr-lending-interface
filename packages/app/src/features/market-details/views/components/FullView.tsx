@@ -39,7 +39,7 @@ export function FullView({
           {marketOverview.supply && <SupplyStatusPanel token={token} {...marketOverview.supply} />}
           {marketOverview.lend && <LendStatusPanel {...marketOverview.lend} />}
           <CollateralStatusPanel {...marketOverview.collateral} />
-          {marketOverview.eMode && <EModeStatusPanel {...marketOverview.eMode} />}
+          {marketOverview.eModes.length > 0 && <EModeStatusPanel eModes={marketOverview.eModes} />}
           <BorrowStatusPanel token={token} {...marketOverview.borrow} />
           <OraclePanel {...oracleInfo} />
         </div>
