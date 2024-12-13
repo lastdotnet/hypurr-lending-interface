@@ -62,14 +62,14 @@ export interface MarketOverview {
     totalLent: NormalizedUnitNumber
     apy: Percentage | undefined
   }
-  eMode?: {
+  eModes: {
     maxLtv: Percentage
     liquidationThreshold: Percentage
     liquidationPenalty: Percentage
     categoryId: EModeCategoryId
     eModeCategoryTokens: TokenSymbol[]
     token?: Token
-  }
+  }[]
   summary:
     | {
         type: 'default'

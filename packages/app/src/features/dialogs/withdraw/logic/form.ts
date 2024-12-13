@@ -40,7 +40,7 @@ export function getWithdrawDialogFormValidator({
       asset: {
         status: reserve.status,
         unborrowedLiquidity: reserve.unborrowedLiquidity,
-        eModeCategory: reserve.eModes[0]?.category,
+        eModeCategories: reserve.eModes.map((e) => e.category),
       },
       user: {
         deposited,
@@ -88,7 +88,7 @@ export function getFormFieldsForWithdrawDialog(
       unitPriceUsd: position.reserve.token.unitPriceUsd,
       decimals: position.reserve.token.decimals,
       usageAsCollateralEnabledOnUser: position.reserve.usageAsCollateralEnabledOnUser,
-      eModeCategory: position.reserve.eModes[0]?.category,
+      eModeCategories: position.reserve.eModes.map((e) => e.category),
     },
   })
 

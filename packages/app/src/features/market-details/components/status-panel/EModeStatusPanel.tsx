@@ -18,73 +18,76 @@ import { InfoTilesGrid } from './components/InfoTilesGrid'
 import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { StatusIcon } from './components/status-icon/StatusIcon'
 import { TokenBadge } from './components/token-badge/TokenBadge'
+import { Fragment } from 'react'
 
 export interface EModeStatusPanelProps {
-  maxLtv: Percentage
-  liquidationThreshold: Percentage
-  liquidationPenalty: Percentage
-  categoryId: EModeCategoryId
-  eModeCategoryTokens: TokenSymbol[]
-  token?: Token
+  eModes: {
+    maxLtv: Percentage
+    liquidationThreshold: Percentage
+    liquidationPenalty: Percentage
+    categoryId: EModeCategoryId
+    eModeCategoryTokens: TokenSymbol[]
+    token?: Token
+  }[]
 }
 
-export function EModeStatusPanel({
-  maxLtv,
-  liquidationThreshold,
-  liquidationPenalty,
-  categoryId,
-  eModeCategoryTokens,
-  token,
-}: EModeStatusPanelProps) {
-  const categoryName = eModeCategoryIdToName[categoryId]
-
+export function EModeStatusPanel({ eModes }: EModeStatusPanelProps) {
   return (
     <Panel.Wrapper>
       <StatusPanelGrid>
         <StatusIcon status="yes" />
         <Header status="yes" variant="e-mode" />
-        {token && <TokenBadge symbol={token.symbol} />}
-        <InfoTilesGrid>
-          <InfoTile>
-            <InfoTile.Label>Max LTV</InfoTile.Label>
-            <InfoTile.Value>
-              <WithArrow>{formatPercentage(maxLtv)}</WithArrow>
-            </InfoTile.Value>
-          </InfoTile>
-          <InfoTile>
-            <InfoTile.Label>Liquidation threshold</InfoTile.Label>
-            <InfoTile.Value>
-              <WithArrow>{formatPercentage(liquidationThreshold)}</WithArrow>
-            </InfoTile.Value>
-          </InfoTile>
-          <InfoTile>
-            <InfoTile.Label>Liquidation penalty</InfoTile.Label>
-            <InfoTile.Value>
-              <WithArrow reverseArrow>{formatPercentage(liquidationPenalty)}</WithArrow>
-            </InfoTile.Value>
-          </InfoTile>
-          <InfoTile>
-            <InfoTile.Label>Category</InfoTile.Label>
-            <InfoTile.Value>
-              <EModeBadge categoryId={categoryId} />
-            </InfoTile.Value>
-          </InfoTile>
-          <p className="col-span-1 text-white/50 text-xs sm:col-span-3">
-            E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means that when
-            E-Mode is enabled, you will have higher borrowing power for assets in this category:{' '}
-            {eModeCategoryTokens.join(', ')}. You can enter E-Mode from your{' '}
-            <DocsLink to={paths.myPortfolio}>My portfolio</DocsLink>. To learn more about E-Mode and its applied
-            restrictions, visit the{' '}
-            {/* <DocsLink to={links.docs.eMode} external>
+        {eModes.map((eMode) => {
+          const { maxLtv, liquidationThreshold, liquidationPenalty, categoryId, eModeCategoryTokens, token } = eMode
+          const categoryName = eModeCategoryIdToName[categoryId]
+
+          return (
+            <Fragment key={categoryId}>
+              {token && <TokenBadge symbol={token.symbol} />}
+              <InfoTilesGrid>
+                <InfoTile>
+                  <InfoTile.Label>Max LTV</InfoTile.Label>
+                  <InfoTile.Value>
+                    <WithArrow>{formatPercentage(maxLtv)}</WithArrow>
+                  </InfoTile.Value>
+                </InfoTile>
+                <InfoTile>
+                  <InfoTile.Label>Liquidation threshold</InfoTile.Label>
+                  <InfoTile.Value>
+                    <WithArrow>{formatPercentage(liquidationThreshold)}</WithArrow>
+                  </InfoTile.Value>
+                </InfoTile>
+                <InfoTile>
+                  <InfoTile.Label>Liquidation penalty</InfoTile.Label>
+                  <InfoTile.Value>
+                    <WithArrow reverseArrow>{formatPercentage(liquidationPenalty)}</WithArrow>
+                  </InfoTile.Value>
+                </InfoTile>
+                <InfoTile>
+                  <InfoTile.Label>Category</InfoTile.Label>
+                  <InfoTile.Value>
+                    <EModeBadge categoryId={categoryId} />
+                  </InfoTile.Value>
+                </InfoTile>
+                <p className="col-span-1 text-white/50 text-xs sm:col-span-3">
+                  E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means
+                  that when E-Mode is enabled, you will have higher borrowing power for assets in this category:{' '}
+                  {eModeCategoryTokens.join(', ')}. You can enter E-Mode from your{' '}
+                  <DocsLink to={paths.myPortfolio}>My portfolio</DocsLink>. To learn more about E-Mode and its applied
+                  restrictions, visit the{' '}
+                  {/* <DocsLink to={links.docs.eMode} external>
               FAQ
             </DocsLink>{' '}
             or the{' '} */}
-            <DocsLink to={links.aaveTechnicalPaper} external>
-              Aave V3 Technical Paper
-            </DocsLink>
-            .
-          </p>
-        </InfoTilesGrid>
+                  <DocsLink to={links.aaveTechnicalPaper} external>
+                    Aave V3 Technical Paper
+                  </DocsLink>
+                  .
+                </p>
+              </InfoTilesGrid>
+            </Fragment>
+          )
+        })}
       </StatusPanelGrid>
     </Panel.Wrapper>
   )
