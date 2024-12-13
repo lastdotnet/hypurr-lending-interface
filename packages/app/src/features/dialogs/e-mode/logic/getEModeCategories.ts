@@ -16,11 +16,15 @@ export function getEModeCategories(
     : 0
 
   function getEModeCategory(eModeCategoryId: EModeCategoryId): EModeCategory {
+    const tokens = reserves
+      .filter((reserve) =>
+        eModeCategoryId === 0 ? true : reserve.eModes?.find((e) => e.category.id === eModeCategoryId),
+      )
+      .map((reserve) => reserve.token)
+
     return {
       name: eModeCategoryIdToName[eModeCategoryId],
-      tokens: reserves
-        .filter((reserve) => (eModeCategoryId === 0 ? true : eModeCategoryId === reserve.eModes[0]?.category.id))
-        .map((reserve) => reserve.token),
+      tokens,
       isActive: currentEModeCategoryId === eModeCategoryId,
       isSelected: selectedEModeCategoryId === eModeCategoryId,
       onSelect: () => setSelectedEModeCategoryId(eModeCategoryId),
@@ -29,7 +33,7 @@ export function getEModeCategories(
 
   return {
     'No E-Mode': getEModeCategory(0),
-    'ETH Correlated': getEModeCategory(1),
-    Stablecoins: getEModeCategory(2),
+    Stablecoins: getEModeCategory(1),
+    'ETH Correlated': getEModeCategory(2),
   }
 }

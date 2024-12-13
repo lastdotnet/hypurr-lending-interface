@@ -19,7 +19,7 @@ export interface ValidateBorrowParams {
     borrowCap?: NormalizedUnitNumber
     isSiloed: boolean
     borrowableInIsolation: boolean
-    eModeCategory: number
+    eModeCategories: number[]
   }
 
   user: {
@@ -58,7 +58,7 @@ export function validateBorrow({
     borrowCap,
     isSiloed,
     borrowableInIsolation,
-    eModeCategory: assetEModeCategory,
+    eModeCategories: assetEModeCategories,
   },
   user: {
     maxBorrowBasedOnCollateral,
@@ -111,7 +111,7 @@ export function validateBorrow({
     }
   }
 
-  if (userEModeCategory !== 0 && userEModeCategory !== assetEModeCategory) {
+  if (userEModeCategory !== 0 && !assetEModeCategories.includes(userEModeCategory)) {
     return 'emode-category-mismatch'
   }
 
@@ -150,6 +150,7 @@ export function getValidateBorrowArgs(
   _userSummary?: UserPositionSummary,
 ): ValidateBorrowParams {
   const userSummary = _userSummary ?? marketInfo.userPositionSummary
+  const eModeCategories = reserve.eModes.map((e) => e.category.id)
 
   return {
     value,
@@ -162,7 +163,7 @@ export function getValidateBorrowArgs(
       borrowCap: reserve.borrowCap,
       isSiloed: reserve.isSiloedBorrowing,
       borrowableInIsolation: reserve.isBorrowableInIsolation,
-      eModeCategory: reserve.eModes[0]?.category.id ?? 0,
+      eModeCategories: eModeCategories.length > 0 ? eModeCategories : [0],
     },
     user: {
       maxBorrowBasedOnCollateral: calculateMaxBorrowBasedOnCollateral({

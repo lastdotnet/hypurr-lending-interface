@@ -122,7 +122,7 @@ export interface UserConfiguration {
 }
 
 export interface EModeCategory {
-  id: number
+  id: 0 | 1 | 2
   name: string
   ltv: Percentage
   liquidationThreshold: Percentage
@@ -284,6 +284,7 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
         borrowEligibilityStatus,
 
         isIsolated: r.reserve.isIsolated,
+
         eModes:
           r.reserve.eModes?.map((eMode) => ({
             category: eModeCategories[eMode.id] ?? raise(`EMode category ${eMode.id} not found`),
