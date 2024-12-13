@@ -17,7 +17,7 @@ const meta: Meta<typeof SuccessView> = {
       value: NormalizedUnitNumber(2000),
     },
     onProceed: () => {},
-    proceedText: 'View in portfolio',
+    proceedText: 'View in dashboard',
   },
 }
 
@@ -64,7 +64,7 @@ export const ZeroPriceToken = getMobileStory({
       value: NormalizedUnitNumber(2000),
     },
     onProceed: () => {},
-    proceedText: 'View in portfolio',
+    proceedText: 'View in dashboard',
   },
 })
 export const ZeroPriceTokenMobile = getMobileStory(ZeroPriceToken)

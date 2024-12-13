@@ -6,8 +6,8 @@ import { assets } from '@/ui/assets'
 
 export function FaucetPanel({ children }: PropsWithChildren) {
   return (
-    <PageLayout>
-      <Panel.Wrapper className="flex min-w-full max-w-3xl flex-col self-center p-8 md:p-14">
+    <PageLayout className="max-w-6xl px-3 lg:px-0">
+      <Panel.Wrapper className="flex min-w-full flex-col self-center p-8 md:p-14">
         <Typography variant="h1" className="text-3xl text-primary-bg">
           Testnet Token Faucet
         </Typography>

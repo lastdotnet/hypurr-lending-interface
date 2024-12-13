@@ -349,7 +349,7 @@ test.describe('Borrow dialog', () => {
 
     test.beforeEach(async ({ page }) => {
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ...initialDeposits },
@@ -400,7 +400,7 @@ test.describe('Borrow dialog', () => {
 
     test.beforeEach(async ({ page }) => {
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ...initialDeposits },

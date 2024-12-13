@@ -29,8 +29,8 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
       onClick: handleNavigate,
     },
     {
-      to: paths.myPortfolio,
-      label: 'My portfolio',
+      to: paths.dashboard,
+      label: 'Dashboard',
       onClick: handleNavigate,
     },
     {

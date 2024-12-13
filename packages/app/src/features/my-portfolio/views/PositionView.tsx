@@ -44,9 +44,12 @@ export function PositionView({
         <Position className="order-3 flex-grow md:order-2" positionSummary={positionSummary} />
         {!positionSummary.hasDeposits && <CreatePositionPanel className="order-2 flex-grow md:order-3" />}
       </div>
+
+      <div id="your-wallet" />
+      <WalletComposition {...walletComposition} />
+
       <DepositTable assets={deposits} openDialog={openDialog} />
       <BorrowTable assets={borrows} eModeCategoryId={eModeCategoryId} openDialog={openDialog} />
-      <WalletComposition {...walletComposition} />
     </PageLayout>
   )
 }

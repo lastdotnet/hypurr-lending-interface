@@ -2,7 +2,7 @@ import { ChainConfigEntry } from './chain/types'
 
 export const paths = {
   easyBorrow: '/',
-  myPortfolio: '/my-portfolio',
+  dashboard: '/dashboard',
   markets: '/markets',
   savings: '/savings',
   farms: '/farms',
@@ -14,7 +14,7 @@ export const paths = {
 export type Path = keyof typeof paths
 
 export const pathGroups = {
-  borrow: ['easyBorrow', 'myPortfolio', 'markets', 'marketDetails'],
+  borrow: ['easyBorrow', 'dashboard', 'markets', 'marketDetails'],
   savings: ['savings'],
   farms: ['farms', 'farmDetails'],
   faucet: ['faucet'],

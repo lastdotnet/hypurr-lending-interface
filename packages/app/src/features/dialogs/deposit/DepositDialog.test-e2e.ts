@@ -371,7 +371,7 @@ test.describe('Deposit dialog', () => {
       }
 
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ...initialBalances },
@@ -413,7 +413,7 @@ test.describe('Deposit dialog', () => {
       }
 
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ...initialBalances },
@@ -446,7 +446,7 @@ test.describe('Deposit dialog', () => {
 
     test('retains some native asset when depositing max', async ({ page }) => {
       await setup(page, fork, {
-        initialPage: 'myPortfolio',
+        initialPage: 'dashboard',
         account: {
           type: 'connected-random',
           assetBalances: { ETH: 1 },
