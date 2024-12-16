@@ -17,6 +17,7 @@ const commonTokenSymbolToReplacedName = {
   [TokenSymbol('GNO')]: { name: 'Gnosis Token', symbol: TokenSymbol('GNO') },
   [TokenSymbol('WETH')]: { name: 'Ethereum', symbol: TokenSymbol('ETH') },
   [TokenSymbol('weETH')]: { name: 'Ether.fi Staked ETH', symbol: TokenSymbol('weETH') },
+  [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
