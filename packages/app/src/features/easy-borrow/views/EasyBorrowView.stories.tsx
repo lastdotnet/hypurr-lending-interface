@@ -93,6 +93,7 @@ function EasyBorrowViewStory(props: EasyBorrowViewStoryProps) {
     onProceedToForm: () => {},
     goToSuccessScreen: () => {},
     submitForm: () => {},
+    resetForm: () => {},
   }
   const healthFactorPanelRef = useRef<HTMLDivElement>(null)
 
