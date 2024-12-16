@@ -9,6 +9,7 @@ export interface PageStatus {
   onProceedToForm: () => void
   goToSuccessScreen: () => void
   submitForm: () => void
+  resetForm: () => void
 }
 
 export interface ExistingPosition {
