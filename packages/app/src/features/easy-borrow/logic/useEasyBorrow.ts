@@ -22,7 +22,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useRef, useState } from 'react'
 import { UseFormReturn, useForm } from 'react-hook-form'
 import { useAccount } from 'wagmi'
-import { getBorrowableAssets, getDepositableAssets, imputeNativeAsset, sortByDecreasingBalances } from './assets'
+import { getBorrowableAssets, getDepositableAssets, sortByDecreasingBalances } from './assets'
 import {
   FormFieldsForAssetClass,
   getDefaultFormValues,
@@ -87,7 +87,10 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   const [pageStatus, setPageStatus] = useState<PageState>('form')
   const healthFactorPanelRef = useRef<HTMLDivElement>(null)
 
-  const userPositions = imputeNativeAsset(marketInfo, nativeAssetInfo)
+  const userPositions = [
+    ...marketInfo.userPositions,
+    marketInfo.findOnePositionBySymbol(nativeAssetInfo.nativeAssetSymbol),
+  ]
   const alreadyDeposited = useConditionalFreeze(
     {
       tokens: userPositions
