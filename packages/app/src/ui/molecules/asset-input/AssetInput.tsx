@@ -82,6 +82,11 @@ export const AssetInput = forwardRef<HTMLInputElement, AssetInputProps>(
               onChange={(e) => {
                 e.target.value = e.target.value.replace(/,/g, '.')
                 e.target.value = e.target.value.replace(/\s/g, '')
+
+                // Prepend '0' if the input starts with a period
+                if (e.target.value.startsWith('.')) {
+                  e.target.value = `0${e.target.value}`
+                }
                 const value = e.target.value
                 if (
                   !value ||
