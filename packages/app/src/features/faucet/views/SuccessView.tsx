@@ -27,10 +27,7 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
       </HashLink>
       <div className="mt-5 flex justify-between gap-4">
         <div className="flex items-center gap-4">
-          <TweetButton
-            text="Just claimed my free tokens from the HypurrFi faucet! 🚀💰 @hypurrfi"
-            url="https://app.hypurr.fi/faucet"
-          />
+          <TweetButton text="Got gassed up and ready to purr! 😼💰 @hypurrfi" url="https://app.hypurr.fi/faucet" />
           <CopyLinkButton link="https://app.hypurr.fi/faucet" />
         </div>
 
