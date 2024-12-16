@@ -18,7 +18,7 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
 
   return (
     <div className="flex flex-col">
-      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC and 0.01 HYPE (testnet)</p>
+      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and 0.01 HYPE (testnet)</p>
       <HashLink
         className={cn(buttonVariants({ variant: 'primary', size: 'md' }), 'w-full')}
         to={`${paths.dashboard}#your-wallet`}

@@ -51,6 +51,11 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         address: CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094'),
       },
       {
+        symbol: TokenSymbol('SolvBTC'),
+        oracleType: 'vault',
+        address: CheckedAddress('0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8'),
+      },
+      {
         symbol: TokenSymbol('USDXL'),
         oracleType: 'fixed-usd',
         address: USDXL_ADDRESS,
@@ -70,6 +75,10 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       },
       oracles: {
         [TokenSymbol('WHYPE')]: {
+          type: 'market-price',
+          providedBy: [],
+        },
+        [TokenSymbol('SolvBTC')]: {
           type: 'market-price',
           providedBy: [],
         },
