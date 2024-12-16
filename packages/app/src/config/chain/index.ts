@@ -52,7 +52,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       },
       {
         symbol: TokenSymbol('SolvBTC'),
-        oracleType: 'vault',
+        oracleType: 'fixed-usd',
         address: CheckedAddress('0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8'),
       },
       {
