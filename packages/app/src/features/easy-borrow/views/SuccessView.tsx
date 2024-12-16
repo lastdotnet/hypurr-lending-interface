@@ -1,7 +1,7 @@
 import { paths } from '@/config/paths'
 import { TokenWithValue } from '@/domain/common/types'
 import { assets } from '@/ui/assets'
-import { LinkButton } from '@/ui/atoms/button/Button'
+import { Button, LinkButton } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { Typography } from '@/ui/atoms/typography/Typography'
@@ -19,9 +19,10 @@ export interface SuccessViewProps {
   borrowed: TokenWithValue[]
   borrowDetails: BorrowDetails
   runConfetti: boolean
+  resetForm: () => void
 }
 
-export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti }: SuccessViewProps) {
+export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti, resetForm }: SuccessViewProps) {
   const desktop = useBreakpoint('md')
   const { runAnimation } = useConfettiContext()
 
@@ -71,9 +72,14 @@ export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti }:
               <UsdsUpgradeAlert borrowDetails={borrowDetails} variant="success" className="mt-2" />
             )}
 
-            <LinkButton size="lg" className="mt-8 w-full" to={paths.dashboard}>
-              Go to Dashboard
-            </LinkButton>
+            <div className="mt-8 flex gap-4">
+              <Button className="flex-1 bg-white/10" onClick={resetForm}>
+                Close
+              </Button>
+              <LinkButton className="flex-1" to={paths.dashboard}>
+                View in Dashboard
+              </LinkButton>
+            </div>
           </Panel.Content>
         </Panel>
       </div>

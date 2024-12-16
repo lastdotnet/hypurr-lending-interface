@@ -236,6 +236,10 @@ export function useEasyBorrow(): UseEasyBorrowResults {
       onProceedToForm: () => setPageStatus('form'),
       goToSuccessScreen: () => setPageStatus('success'),
       submitForm: () => setPageStatus('confirmation'),
+      resetForm: () => {
+        setPageStatus('form')
+        easyBorrowForm.reset()
+      },
     },
     actions,
     tokensToBorrow,
