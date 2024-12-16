@@ -96,6 +96,7 @@ import susde from './tokens/susde.png'
 import hype from './tokens/hype.png'
 import catFaucet from './cat-faucet.svg'
 import hypurrLogoText from './hypurr-logo-text.svg'
+import solvbtc from './tokens/solvBtc.png'
 
 export const assets = {
   catFaucet,
@@ -190,6 +191,7 @@ export const assets = {
     susde,
     hype,
     whype: hype,
+    solvbtc,
     unknown,
   },
   walletIcons: {
@@ -257,4 +259,5 @@ const tokenColors: Record<TokenSymbol, `${number} ${number} ${number}`> = {
   [TokenSymbol('USDC')]: '157 222 247',
   [TokenSymbol('HYPE')]: '157 217 175',
   [TokenSymbol('WHYPE')]: '161 252 231',
+  [TokenSymbol('SolvBTC')]: '235 175 76',
 }

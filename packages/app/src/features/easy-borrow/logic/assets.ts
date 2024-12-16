@@ -19,7 +19,7 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
   )
 }
 
-const whitelistedBorrowableAssets = ['USDXL', 'USDC', 'sUSDe', 'WHYPE']
+const whitelistedBorrowableAssets = ['USDXL', 'USDC', 'sUSDe', 'WHYPE', 'SolvBTC']
 
 export function getBorrowableAssets(
   reserves: Reserve[],
