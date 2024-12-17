@@ -8,7 +8,7 @@ import { type Chain } from 'viem'
 export const hyperTestnet = {
   id: 998,
   name: 'HyperEVM',
-  nativeCurrency: { name: 'Eth', symbol: 'ETH', decimals: 18 },
+  nativeCurrency: { name: 'Hype', symbol: 'HYPE', decimals: 18 },
   rpcUrls: {
     default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
   },
@@ -32,7 +32,7 @@ export const hyperTestnetDynamic = {
   iconUrls: ['/hyper-evm-logo.png'],
   nativeCurrency: {
     ...hyperTestnet.nativeCurrency,
-    iconUrl: 'https://app.dynamic.xyz/assets/networks/polygon.svg',
+    iconUrl: '/hyper-evm-logo.png',
   },
   rpcUrls: [hyperTestnet.rpcUrls.default.http[0]],
 }
