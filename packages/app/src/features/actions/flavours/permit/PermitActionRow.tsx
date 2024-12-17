@@ -26,7 +26,7 @@ export function PermitActionRow({ index, action, variant, actionHandlerState, on
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         Permit
       </ActionRow.Action>
     </ActionRow>

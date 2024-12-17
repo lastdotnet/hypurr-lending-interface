@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { WidgetInstance } from 'friendly-challenge'
 import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
 import { faucetUrl } from '@/config/consts'
+import { trackEvent } from '@/utils/fathom'
 
 function FriendlyCaptcha({
   setCaptchaSolution,
@@ -68,6 +69,8 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
     }
 
     try {
+      trackEvent('faucet_claim_attempt')
+
       setMintPending(true)
       setMintError(null)
 
@@ -92,12 +95,14 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
         throw new Error('Failed to mint tokens')
       }
 
+      trackEvent('faucet_claim_success')
       const now = Date.now()
       localStorage.setItem(STORAGE_KEY, now.toString())
       setLastMintTime(now)
       setMintTx(data.txHash)
     } catch (error) {
       console.error(error)
+      trackEvent('faucet_claim_error')
       setMintError(error instanceof Error ? error.message : 'An unknown error occurred while minting')
     } finally {
       setMintPending(false)

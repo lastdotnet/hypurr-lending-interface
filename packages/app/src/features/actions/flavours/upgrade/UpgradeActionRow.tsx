@@ -28,7 +28,7 @@ export function UpgradeActionRow({ action, index, actionHandlerState, onAction, 
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         Upgrade
       </ActionRow.Action>
     </ActionRow>

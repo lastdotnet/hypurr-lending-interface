@@ -10,12 +10,13 @@ export interface WithdrawFromSavingsActionRowProps extends ActionRowBaseProps {
 }
 
 export function WithdrawFromSavingsActionRow({
-  action: { savingsToken, token, amount, mode },
+  action,
   index,
   actionHandlerState,
   onAction,
   variant,
 }: WithdrawFromSavingsActionRowProps) {
+  const { savingsToken, token, amount, mode } = action
   const tokenIconPaths = [getTokenImage(savingsToken.symbol), getTokenImage(token.symbol)]
   const status = actionHandlerState.status
   const successMessage = `Converted${mode === 'send' ? ' and sent' : ''} ${savingsToken.format(amount, { style: 'auto' })} ${token.symbol}!`
@@ -35,7 +36,7 @@ export function WithdrawFromSavingsActionRow({
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         {mode === 'send' ? 'Send' : 'Convert'}
       </ActionRow.Action>
     </ActionRow>

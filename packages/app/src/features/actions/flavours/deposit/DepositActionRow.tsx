@@ -29,7 +29,7 @@ export function DepositActionRow({ index, action, actionHandlerState, onAction, 
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         Deposit
       </ActionRow.Action>
     </ActionRow>

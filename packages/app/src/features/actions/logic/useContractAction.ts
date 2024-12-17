@@ -26,6 +26,7 @@ import { createUpgradeActionConfig } from '../flavours/upgrade/logic/upgradeActi
 import { createWithdrawFromSavingsActionConfig } from '../flavours/withdraw-from-savings/logic/withdrawFromSavingsAction'
 import { createWithdrawActionConfig } from '../flavours/withdraw/logic/withdrawAction'
 import { ActionConfig, ActionContext, InitialParamsQueryResult, VerifyTransactionResult } from './types'
+import { getEventNameByAction, trackEvent } from '@/utils/fathom'
 
 export interface UseContractActionParams {
   context: ActionContext
@@ -56,6 +57,11 @@ export function useContractAction({ action, context, enabled }: UseContractActio
     {
       onTransactionSettled: (txReceipt) => {
         invalidates().map((queryKey) => void queryClient.invalidateQueries({ queryKey }))
+        if (txReceipt.status === 'success') {
+          trackEvent(`${getActionName(action)}_success`)
+        } else {
+          trackEvent(`${getActionName(action)}_failure`)
+        }
         context.txReceipts.push([action, txReceipt])
       },
     },
@@ -85,6 +91,12 @@ interface MapStatusesToActionStateParams {
   write: UseWriteResult
   verifyTransactionData: VerifyTransactionResult
   enabled: boolean
+}
+
+function getActionName(action: Action): string {
+  const type = action.type.replace(/\s+/g, '_').toLowerCase()
+  const descriptor = getEventNameByAction(action)
+  return `action_${type}_${descriptor}`
 }
 
 function mapStatusesToActionState({
