@@ -13,7 +13,7 @@ export const hyperTestnet = {
     default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
   },
   blockExplorers: {
-    default: { name: 'Blockscout', url: 'https://evm.hyperstats.xyz/' },
+    default: { name: 'Purrsec', url: 'https://testnet.purrsec.com' },
   },
   contracts: {
     multicall3: {
