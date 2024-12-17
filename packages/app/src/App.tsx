@@ -34,6 +34,7 @@ function App() {
         environmentId: import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID || '',
         walletConnectors: [EthereumWalletConnectors],
         initialAuthenticationMode: 'connect-only',
+        mobileExperience: 'redirect',
         overrides: {
           evmNetworks: [hyperTestnetDynamic],
         },
