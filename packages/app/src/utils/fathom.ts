@@ -1,11 +1,7 @@
 import { Action } from '@/features/actions/logic/types'
 
 export function trackEvent(eventName: string, value?: number): void {
-  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  console.log('mode', import.meta.env.MODE)
   if (typeof window !== 'undefined' && window.fathom) {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log('fathom', window.fathom)
     if (import.meta.env.MODE !== 'production') return
     const options = value !== undefined ? { _value: value } : undefined
     window.fathom.trackEvent(eventName, options)
