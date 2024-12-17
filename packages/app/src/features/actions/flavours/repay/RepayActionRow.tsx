@@ -30,7 +30,7 @@ export function RepayActionRow({ index, action, actionHandlerState, onAction, va
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={actionHandlerState.status}>
+      <ActionRow.Action onAction={onAction} status={actionHandlerState.status} action={action}>
         Repay
       </ActionRow.Action>
     </ActionRow>

@@ -28,7 +28,7 @@ export function StakeActionRow({ action, index, actionHandlerState, onAction, va
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         Deposit
       </ActionRow.Action>
     </ActionRow>

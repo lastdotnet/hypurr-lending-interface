@@ -1,7 +1,7 @@
 import { assets } from '@/ui/assets'
 import MagicWand from '@/ui/assets/magic-wand.svg?react'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
-import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
+// import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
 
 import { Alert } from '../../common/components/alert/Alert'
 
@@ -16,15 +16,15 @@ export interface SandboxDialogViewProps {
 }
 
 export function SandboxDialogView({
-  isInSandbox,
-  startSandbox,
-  closeDialog,
-  isPending,
-  isSuccess,
+  // isInSandbox,
+  // startSandbox,
+  // closeDialog,
+  // isPending,
+  // isSuccess,
   isError,
   error,
 }: SandboxDialogViewProps) {
-  const onActionButtonClick = isSuccess || isInSandbox ? closeDialog : startSandbox
+  // const onActionButtonClick = isSuccess || isInSandbox ? closeDialog : startSandbox
 
   return (
     <div className="flex max-w-xl flex-col gap-5">
@@ -52,7 +52,7 @@ export function SandboxDialogView({
         ))}
       </ul>
       {isError && error && <Alert variant="warning">{error.message}</Alert>}
-      <ActionButton
+      {/* <ActionButton
         isLoading={isPending}
         onClick={onActionButtonClick}
         isDone={isInSandbox}
@@ -60,7 +60,7 @@ export function SandboxDialogView({
         size="lg"
       >
         {isInSandbox ? 'Sandbox Mode already activated' : 'Activate Sandbox Mode'}
-      </ActionButton>
+      </ActionButton> */}
     </div>
   )
 }

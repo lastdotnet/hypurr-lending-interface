@@ -9,6 +9,7 @@ import { useIsTruncated } from '@/ui/utils/useIsTruncated'
 
 import { ActionHandlerState } from '../../logic/types'
 import { ActionRowVariant } from './types'
+import { Action as ActionType } from '@/features/actions/logic/types'
 
 interface ActionRowProps {
   children: ReactNode
@@ -152,11 +153,13 @@ function ErrorWarningCompact({ actionHandlerState }: { actionHandlerState: Actio
 function Action({
   children,
   status,
+  action,
   onAction,
 }: {
   children: ReactNode
   status: ActionHandlerState['status']
   onAction: () => void
+  action: ActionType
 }) {
   return (
     <ActionButton
@@ -168,6 +171,7 @@ function Action({
       isLoading={status === 'loading'}
       disabled={status === 'disabled'}
       onClick={onAction}
+      action={action}
     >
       {children}
     </ActionButton>

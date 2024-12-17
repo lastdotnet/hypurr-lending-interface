@@ -33,7 +33,7 @@ export function SetUseAsCollateralActionRow({
 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
-      <ActionRow.Action onAction={onAction} status={status}>
+      <ActionRow.Action onAction={onAction} status={status} action={action}>
         {actionTitle}
       </ActionRow.Action>
     </ActionRow>
