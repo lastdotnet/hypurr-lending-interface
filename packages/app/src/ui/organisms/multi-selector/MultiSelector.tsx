@@ -21,6 +21,7 @@ export interface MultiAssetSelectorProps {
   disabled?: boolean
   showError?: boolean
   maxSelectedFieldName?: string
+  resetBorrowStatus?: () => void
 }
 
 export function MultiAssetSelector({
@@ -34,6 +35,7 @@ export function MultiAssetSelector({
   disabled,
   showError,
   maxSelectedFieldName,
+  resetBorrowStatus,
 }: MultiAssetSelectorProps) {
   return (
     <div>
@@ -51,6 +53,7 @@ export function MultiAssetSelector({
               disabled={disabled}
               showError={showError}
               maxSelectedFieldName={maxSelectedFieldName && `${fieldName}.${index}.${maxSelectedFieldName}`}
+              resetBorrowStatus={resetBorrowStatus}
             />
           </div>
         )
@@ -71,6 +74,7 @@ interface ControlledMultiSelectorAssetInputProps {
   showError?: boolean // defaults to show error if field is touched or dirty
   variant?: AssetInputProps['variant']
   walletIconLabel?: string
+  resetBorrowStatus?: () => void
 }
 
 export function ControlledMultiSelectorAssetInput({
@@ -85,6 +89,7 @@ export function ControlledMultiSelectorAssetInput({
   showError,
   variant,
   walletIconLabel,
+  resetBorrowStatus,
 }: ControlledMultiSelectorAssetInputProps) {
   const { setValue, trigger, getValues } = useFormContext()
 
@@ -120,7 +125,7 @@ export function ControlledMultiSelectorAssetInput({
             onRemove={onRemove}
             balance={balance}
             error={showError ? error?.message : undefined}
-            disabled={disabled}
+            disabled={disabled && !resetBorrowStatus}
             variant={variant}
             walletIconLabel={walletIconLabel}
             setMax={setMaxValue}
@@ -128,6 +133,9 @@ export function ControlledMultiSelectorAssetInput({
             autoComplete="off"
             onChange={(e) => {
               field.onChange(e)
+              if (disabled) {
+                resetBorrowStatus?.()
+              }
               if (maxSelectedFieldName) {
                 setValue(maxSelectedFieldName, false, {
                   shouldValidate: true,

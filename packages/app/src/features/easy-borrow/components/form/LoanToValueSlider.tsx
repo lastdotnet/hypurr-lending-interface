@@ -114,7 +114,7 @@ export function LoanToValueSlider({
         <SliderPrimitive.Range className="absolute h-full bg-transparent" />
       </SliderPrimitive.Track>
 
-      <SliderPrimitive.Thumb className="blockshadow transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50">
+      <SliderPrimitive.Thumb className="blockshadow transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none">
         <img
           className={cn('transform transition-transform', !disabled && 'hover:scale-125')}
           src={assets.sliderThumb}
