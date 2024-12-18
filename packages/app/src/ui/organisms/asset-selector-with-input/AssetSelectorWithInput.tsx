@@ -24,6 +24,7 @@ export interface AssetSelectorWithInputProps<TFieldValues extends FieldValues> {
   className?: string
   variant?: AssetInputProps['variant']
   walletIconLabel?: string
+  resetBorrowStatus?: () => void
 }
 
 export function AssetSelectorWithInput<TFieldValues extends FieldValues>({
@@ -40,6 +41,7 @@ export function AssetSelectorWithInput<TFieldValues extends FieldValues>({
   variant,
   walletIconLabel,
   maxSelectedFieldName,
+  resetBorrowStatus,
 }: AssetSelectorWithInputProps<TFieldValues>) {
   if (selectorAssets.length > 1 && !setSelectedAsset) {
     raise('When more than one option to choose from, asset selection setter must be provided')
@@ -51,6 +53,7 @@ export function AssetSelectorWithInput<TFieldValues extends FieldValues>({
         selectedAsset={selectedAsset.token}
         setSelectedAsset={(newAsset) => setSelectedAsset?.(newAsset)}
         disabled={disabled}
+        resetBorrowStatus={resetBorrowStatus}
       />
       <ControlledMultiSelectorAssetInput
         fieldName={fieldName}
@@ -64,6 +67,7 @@ export function AssetSelectorWithInput<TFieldValues extends FieldValues>({
         showError={showError}
         variant={variant}
         walletIconLabel={walletIconLabel}
+        resetBorrowStatus={resetBorrowStatus}
       />
     </div>
   )
