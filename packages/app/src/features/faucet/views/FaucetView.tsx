@@ -86,6 +86,9 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
       })
 
       if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Claiming is available once every 24 hours. Please try again later.')
+        }
         throw new Error('Failed to mint tokens')
       }
 
