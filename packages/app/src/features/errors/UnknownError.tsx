@@ -18,5 +18,5 @@ export function UnknownError({ error, fullScreen }: UnknownErrorProps) {
     captureError(error)
   }, [])
 
-  return <ErrorView onReload={() => navigate(0)} fullScreen={fullScreen} />
+  return <ErrorView errorMessage={error.message ?? ''} onReload={() => navigate(0)} fullScreen={fullScreen} />
 }
