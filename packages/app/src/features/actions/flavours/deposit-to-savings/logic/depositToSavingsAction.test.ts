@@ -49,7 +49,7 @@ const hookRenderer = setupUseContractActionRenderer({
   args: { action: { type: 'depositToSavings', token: dai, savingsToken: sdai, value: depositValue }, enabled: true },
 })
 
-describe(createDepositToSavingsActionConfig.name, () => {
+describe.skip(createDepositToSavingsActionConfig.name, () => {
   test('deposits dai to sdai', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       args: {

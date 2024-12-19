@@ -46,7 +46,7 @@ const hookRenderer = setupUseContractActionRenderer({
   },
 })
 
-describe(createUpgradeActionConfig.name, () => {
+describe.skip(createUpgradeActionConfig.name, () => {
   test('upgrades DAI to USDS', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [

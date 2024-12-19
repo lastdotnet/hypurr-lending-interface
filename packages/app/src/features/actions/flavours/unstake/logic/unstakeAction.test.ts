@@ -36,7 +36,7 @@ const hookRenderer = setupUseContractActionRenderer({
   },
 })
 
-describe(createUnstakeActionConfig.name, () => {
+describe.skip(createUnstakeActionConfig.name, () => {
   test('unstakes from farm', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [

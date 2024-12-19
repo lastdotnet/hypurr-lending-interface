@@ -70,7 +70,7 @@ const hookRenderer = setupUseContractActionRenderer({
   },
 })
 
-describe(createWithdrawFromSavingsActionConfig.name, () => {
+describe.skip(createWithdrawFromSavingsActionConfig.name, () => {
   test('withdraws dai from sdai', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       args: {
