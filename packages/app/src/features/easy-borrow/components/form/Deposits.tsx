@@ -25,6 +25,7 @@ export interface DepositsProps {
   control: Control<EasyBorrowFormSchema>
   maxSelectedFieldName?: string
   disabled?: boolean
+  resetBorrowStatus?: () => void
 }
 
 export function Deposits(props: DepositsProps) {

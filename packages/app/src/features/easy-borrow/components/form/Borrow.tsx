@@ -17,9 +17,18 @@ interface BorrowProps {
   alreadyBorrowed: ExistingPosition
   control: Control<EasyBorrowFormSchema>
   disabled: boolean
+  resetBorrowStatus?: () => void
 }
 
-export function Borrow({ selectedAssets, allAssets, changeAsset, alreadyBorrowed, control, disabled }: BorrowProps) {
+export function Borrow({
+  selectedAssets,
+  allAssets,
+  changeAsset,
+  alreadyBorrowed,
+  control,
+  disabled,
+  resetBorrowStatus,
+}: BorrowProps) {
   const { token } = selectedAssets[0] ?? raise('No borrow token selected')
 
   return (
@@ -36,12 +45,14 @@ export function Borrow({ selectedAssets, allAssets, changeAsset, alreadyBorrowed
           selectedAsset={token}
           setSelectedAsset={(newAsset) => changeAsset(0, newAsset)}
           disabled={disabled}
+          resetBorrowStatus={resetBorrowStatus}
         />
         <ControlledMultiSelectorAssetInput
           fieldName="assetsToBorrow.0.value"
           control={control}
           disabled={disabled}
           token={token}
+          resetBorrowStatus={resetBorrowStatus}
         />
       </div>
     </div>

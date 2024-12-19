@@ -18,6 +18,7 @@ interface AssetSelectorProps {
   withFormControl?: boolean
   disabled?: boolean
   open?: boolean
+  resetBorrowStatus?: () => void
 }
 
 export function AssetSelector({
@@ -27,6 +28,7 @@ export function AssetSelector({
   withFormControl,
   disabled,
   open,
+  resetBorrowStatus,
 }: AssetSelectorProps) {
   const Wrapper = withFormControl ? FormControl : React.Fragment
 
@@ -49,8 +51,21 @@ export function AssetSelector({
   }
 
   return (
-    <Select open={open} value={selectedAsset?.symbol} onValueChange={setSelectedAsset}>
-      <SelectTrigger disabled={disabled} className="h-14 w-36" data-testid={testIds.component.AssetSelector.trigger}>
+    <Select
+      open={open}
+      value={selectedAsset?.symbol}
+      onValueChange={(value) => {
+        if (disabled && resetBorrowStatus) {
+          resetBorrowStatus()
+        }
+        setSelectedAsset?.(TokenSymbol(value))
+      }}
+    >
+      <SelectTrigger
+        disabled={disabled && !resetBorrowStatus}
+        className="h-14 w-36"
+        data-testid={testIds.component.AssetSelector.trigger}
+      >
         <Wrapper>
           <div className="flex flex-row items-center gap-2">
             {selectedAsset && <TokenIcon token={selectedAsset} className="h-6 w-6" />}

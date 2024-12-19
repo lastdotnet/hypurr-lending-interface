@@ -9,7 +9,7 @@ import { Trans } from '@lingui/macro'
 import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../../logic/form/form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
-import { ExistingPosition } from '../../logic/types'
+import { ExistingPosition, PageStatus } from '../../logic/types'
 import { EasyBorrowNote } from '../note/EasyBorrowNote'
 import { Borrow } from './Borrow'
 import { Deposits } from './Deposits'
@@ -30,6 +30,7 @@ interface EasyBorrowFlowProps {
   guestMode: boolean
   openConnectModal: () => void
   openSandboxModal: () => void
+  pageStatus: PageStatus
 }
 
 export function EasyBorrowForm(props: EasyBorrowFlowProps) {
@@ -64,6 +65,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             alreadyDeposited={alreadyDeposited}
             control={form.control}
             disabled={disabled}
+            resetBorrowStatus={props.pageStatus.onProceedToForm}
           />
           <div>
             <img src={assets.link} className="m-2 mt-16 hidden md:block" />
@@ -75,6 +77,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             alreadyBorrowed={alreadyBorrowed}
             control={form.control}
             disabled={disabled}
+            resetBorrowStatus={props.pageStatus.onProceedToForm}
           />
         </div>
 
@@ -89,8 +92,12 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
           ltv={updatedPositionSummary.loanToValue}
           maxAvailableLtv={nonZeroOrDefault(updatedPositionSummary.maxLoanToValue, Percentage(0.8))}
           liquidationLtv={nonZeroOrDefault(updatedPositionSummary.currentLiquidationThreshold, Percentage(0.825))}
-          onLtvChange={setDesiredLoanToValue}
-          disabled={disabled}
+          onLtvChange={(e) => {
+            if (disabled) {
+              props.pageStatus.onProceedToForm()
+            }
+            setDesiredLoanToValue(e)
+          }}
         />
 
         <EasyBorrowNote borrowRate={borrowRate} />
