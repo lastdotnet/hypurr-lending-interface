@@ -50,7 +50,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       name: 'UiPoolDataProvider',
       abi: uiPoolDataProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x108D9de78e1cC851531813A38ec0520d6A900198',
+        [HYPEREVM_TESTNET_ID]: '0xF56300492ac37E75c45673DCA23Fa4935b1ecaa5',
       },
     },
     {
