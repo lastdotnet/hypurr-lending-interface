@@ -7,6 +7,7 @@ import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { testAddresses } from '@/test/integration/constants'
 
 import { getLiquidationDetails } from './getLiquidationDetails'
+import { hyperTestnet } from '@/config/chain/constants'
 
 describe(getLiquidationDetails.name, () => {
   it('returns undefined when no collaterals and no borrows', () => {
@@ -93,6 +94,7 @@ describe(getLiquidationDetails.name, () => {
       marketInfo,
       liquidationThreshold: Percentage(0.8),
     })
+
     expect(result).toStrictEqual({
       liquidationPrice: NormalizedUnitNumber(25000),
       tokenWithPrice: {
@@ -116,47 +118,44 @@ describe(getLiquidationDetails.name, () => {
       marketInfo,
       liquidationThreshold: Percentage(0.8),
     })
+
     expect(result).toStrictEqual({
       liquidationPrice: NormalizedUnitNumber(1000),
       tokenWithPrice: {
         priceInUSD: NormalizedUnitNumber(2000),
-        symbol: TokenSymbol('ETH'),
+        symbol: TokenSymbol('HYPE'),
       },
     })
   })
 })
 
 function getMockedMarketInfo(): MarketInfo {
-  function findReserveBySymbol(symbol: string): { token: Token; eModeCategory?: { id: number } } {
-    if (['ETH', 'WETH'].includes(symbol)) {
+  function findReserveBySymbol(symbol: string): { token: Token; eModes: { category: { id: number } }[] } {
+    if (['ETH', 'WETH', 'HYPE', 'WHYPE'].includes(symbol)) {
       return {
         token: ethLike,
-        eModeCategory: {
-          id: 1, // ETH Correlated
-        },
+        eModes: [{ category: { id: 2 } }],
       }
     }
 
     if (symbol === 'wstETH') {
       return {
         token: wstETHLike,
-        eModeCategory: {
-          id: 1, // ETH Correlated
-        },
+        eModes: [{ category: { id: 2 } }],
       }
     }
 
-    if (symbol === 'DAI') {
+    if (symbol === 'USDXL') {
       return {
         token: daiLike,
-        eModeCategory: undefined,
+        eModes: [],
       }
     }
 
     if (symbol === 'BTC') {
       return {
         token: btcLike,
-        eModeCategory: undefined,
+        eModes: [],
       }
     }
 
@@ -172,16 +171,16 @@ function getMockedMarketInfo(): MarketInfo {
     findReserveBySymbol,
     findOneTokenBySymbol: findTokenBySymbol,
     findTokenBySymbol,
-    chainId: 1,
+    chainId: hyperTestnet.id,
   } as unknown as MarketInfo
 }
 
 const address = testAddresses.token
 const ethLike = new Token({
   address,
-  symbol: TokenSymbol('ETH'),
+  symbol: TokenSymbol('HYPE'),
   decimals: 18,
-  name: 'ETH Token',
+  name: 'HYPE Token',
   unitPriceUsd: '2000',
 })
 const wstETHLike = new Token({
@@ -200,7 +199,7 @@ const btcLike = new Token({
 })
 const daiLike = new Token({
   address,
-  symbol: TokenSymbol('DAI'),
+  symbol: TokenSymbol('USDXL'),
   decimals: 18,
   name: 'DAI Token',
   unitPriceUsd: '1',

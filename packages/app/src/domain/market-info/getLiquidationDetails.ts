@@ -32,19 +32,24 @@ export function getLiquidationDetails({
 }: GetLiquidationDetailsParams): LiquidationDetails | undefined {
   const { defaultAssetToBorrow } =
     getChainConfigEntry(marketInfo.chainId).markets ?? raise('Markets config is not defined on this chain')
-
   if (borrows.length !== 1 || borrows[0]!.token.symbol !== defaultAssetToBorrow) {
     return undefined
   }
   const borrowInUSD = borrows[0]!.value.multipliedBy(marketInfo.findOneTokenBySymbol(defaultAssetToBorrow).unitPriceUsd)
 
-  const collateralEModeIds = collaterals.flatMap((collateral) =>
-    marketInfo.findOneReserveBySymbol(collateral.token.symbol).eModes.map((e) => e.category.id),
-  )
-  const allCollateralsETHCorrelated = collateralEModeIds.every(
-    (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
-  )
-  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WETH'))?.unitPriceUsd
+  const collateralEModeIds = collaterals.flatMap((collateral) => {
+    const reserve = marketInfo.findOneReserveBySymbol(collateral.token.symbol)
+    return reserve.eModes.length > 0 ? reserve.eModes.map((e) => e.category.id) : [0]
+  })
+
+  const allCollateralsETHCorrelated =
+    collateralEModeIds.length > 0 &&
+    collateralEModeIds.every(
+      (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
+    )
+
+  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WHYPE'))?.unitPriceUsd
+
   if (allCollateralsETHCorrelated && WETHPrice) {
     const totalCollateralInWETH = collaterals.reduce((sum, collateral) => {
       const collateralPrice = marketInfo.findOneTokenBySymbol(collateral.token.symbol).unitPriceUsd
@@ -60,7 +65,7 @@ export function getLiquidationDetails({
       liquidationPrice,
       tokenWithPrice: {
         priceInUSD: NormalizedUnitNumber(WETHPrice),
-        symbol: TokenSymbol('ETH'),
+        symbol: TokenSymbol('HYPE'),
       },
     }
   }
