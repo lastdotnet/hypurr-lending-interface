@@ -2,13 +2,11 @@ import { SupportedChainId } from './SupportedChainId'
 
 describe(SupportedChainId.name, () => {
   it('works with a supported chain id', () => {
-    expect(SupportedChainId(1)).toEqual(1)
-    expect(SupportedChainId(100)).toEqual(100)
+    expect(SupportedChainId(998)).toEqual(998)
   })
 
   it('works with supported chain id passed as a string', () => {
-    expect(SupportedChainId('1')).toEqual(1)
-    expect(SupportedChainId('100')).toEqual(100)
+    expect(SupportedChainId('998')).toEqual(998)
   })
 
   it('throws with unsupported chain id', () => {

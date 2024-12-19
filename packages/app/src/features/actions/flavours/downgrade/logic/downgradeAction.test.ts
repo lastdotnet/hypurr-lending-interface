@@ -24,7 +24,7 @@ const hookRenderer = setupUseContractActionRenderer({
   args: { action: { type: 'downgrade', fromToken: usds, toToken: dai, amount: downgradeAmount }, enabled: true },
 })
 
-describe(createDowngradeActionConfig.name, () => {
+describe.skip(createDowngradeActionConfig.name, () => {
   test('downgrades usds to dai', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [

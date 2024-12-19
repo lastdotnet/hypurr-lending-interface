@@ -14,6 +14,7 @@ import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { zeroAddress } from 'viem'
+import { hyperTestnet } from '@/config/chain/constants'
 
 export const testAddresses = {
   alice: createDummyAddress('a11ce'),
@@ -237,7 +238,7 @@ export function getMockMarketInfo(
     },
     {},
     new Date('2024-06-04T10:21:19Z').getTime() / 1000,
-    chainId ?? 1,
+    chainId ?? hyperTestnet.id,
     [], // no user rewards
     nativeAssetInfo ?? {
       nativeAssetName: 'Ethereum',

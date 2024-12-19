@@ -1,9 +1,9 @@
 import { Address, type Chain, type Transport, createWalletClient } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
-import { mainnet } from 'viem/chains'
 import { createConfig } from 'wagmi'
 
 import { createMockConnector } from '../../domain/wallet/createMockConnector'
+import { hyperTestnet } from '@/config/chain/constants'
 
 export type WalletOptions = { address: Address } | { privateKey: `0x${string}` }
 export interface CreateWagmiTestConfigOptions {
@@ -15,7 +15,7 @@ export interface CreateWagmiTestConfigOptions {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createWagmiTestConfig(options: CreateWagmiTestConfigOptions) {
   const { transport, wallet } = options
-  const chain = options.chain ?? mainnet
+  const chain = options.chain ?? hyperTestnet
 
   const connectors = wallet ? getWagmiConnectors({ chain, transport, ...wallet }) : []
 

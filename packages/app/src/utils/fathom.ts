@@ -1,13 +1,15 @@
 import { Action } from '@/features/actions/logic/types'
 
 export function trackEvent(eventName: string, value?: number): void {
+  if (import.meta.env.MODE !== 'production') return
+
   if (typeof window !== 'undefined' && window.fathom) {
-    if (import.meta.env.MODE !== 'production') return
     const options = value !== undefined ? { _value: value } : undefined
     window.fathom.trackEvent(eventName, options)
-  } else {
-    console.warn('Fathom is not loaded')
+    return
   }
+
+  console.warn('Fathom is not loaded')
 }
 
 export function getEventNameByAction(action: Action): string {

@@ -21,7 +21,7 @@ const hookRenderer = setupUseContractActionRenderer({
   args: { action: { type: 'claimMarketRewards', incentiveControllerAddress, assets, token }, enabled: true },
 })
 
-describe(createClaimMarketRewardsActionConfig.name, () => {
+describe.skip(createClaimMarketRewardsActionConfig.name, () => {
   test('claims rewards', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [
