@@ -5,14 +5,14 @@ import { handlers } from '@/test/integration/mockTransport'
 import { setupHookRenderer } from '@/test/integration/setupHookRenderer'
 import { waitFor } from '@testing-library/react'
 import { erc20Abi, erc4626Abi, parseEther, zeroAddress } from 'viem'
-import { gnosis, mainnet } from 'viem/chains'
 import { describe, test } from 'vitest'
 import { useTokensInfo } from './useTokensInfo'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const token = testAddresses.token
 const alice = testAddresses.alice
 
-const chainIdCall = handlers.chainIdCall({ chainId: mainnet.id })
+const chainIdCall = handlers.chainIdCall({ chainId: hyperTestnet.id })
 
 const hookRenderer = setupHookRenderer({
   hook: useTokensInfo,
@@ -221,8 +221,8 @@ describe(useTokensInfo.name, () => {
   test('fetches data for native asset with fixed-usd oracle', async () => {
     const balance = 12322429456834n
     const decimals = 18
-    const symbol = 'XDAI'
-    const name = 'XDAI'
+    const symbol = 'HYPE'
+    const name = 'Hype'
 
     const { result } = hookRenderer({
       account: alice,
@@ -232,10 +232,10 @@ describe(useTokensInfo.name, () => {
           balance,
         }),
         handlers.chainIdCall({
-          chainId: gnosis.id,
+          chainId: hyperTestnet.id,
         }),
       ],
-      chain: gnosis,
+      chain: hyperTestnet,
       args: {
         tokens: [
           {
@@ -265,8 +265,8 @@ describe(useTokensInfo.name, () => {
   test('fetches data for native asset when user is not connected', async () => {
     const balance = 12322429456834n
     const decimals = 18
-    const symbol = 'XDAI'
-    const name = 'XDAI'
+    const symbol = 'HYPE'
+    const name = 'Hype'
 
     const { result } = hookRenderer({
       handlers: [
@@ -279,10 +279,10 @@ describe(useTokensInfo.name, () => {
           balance,
         }),
         handlers.chainIdCall({
-          chainId: gnosis.id,
+          chainId: hyperTestnet.id,
         }),
       ],
-      chain: gnosis,
+      chain: hyperTestnet,
       args: {
         tokens: [
           {
