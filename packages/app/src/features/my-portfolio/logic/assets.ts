@@ -33,7 +33,7 @@ export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo }: GetDepo
   return marketInfo.userPositions
     .map((position) => {
       return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo })([
-        hideDaiWhenLendingDisabled,
+        // hideDaiWhenLendingDisabled,
         hideFrozenAssetIfNotDeposited,
         transformNativeAssetDeposit,
         transformDefaultDeposit,
@@ -79,7 +79,7 @@ function transformDefaultDeposit({ position, walletInfo }: DepositTransformerPar
   }
 }
 
-function hideDaiWhenLendingDisabled({ position, marketInfo }: DepositTransformerParams): null | undefined {
+function _hideDaiWhenLendingDisabled({ position, marketInfo }: DepositTransformerParams): null | undefined {
   if (
     import.meta.env.VITE_FEATURE_DISABLE_DAI_LEND === '1' &&
     position.reserve.token.symbol === marketInfo.DAI.symbol
