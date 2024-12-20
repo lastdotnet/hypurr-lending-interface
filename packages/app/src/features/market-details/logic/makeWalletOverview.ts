@@ -8,6 +8,7 @@ import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { assert } from '@/utils/assert'
 import { WalletOverview } from '../types'
+import { getWithdrawMaxValue } from '@/domain/action-max-value-getters/getWithdrawMaxValue'
 
 export interface MakeWalletOverviewParams {
   reserve: Reserve
@@ -115,6 +116,26 @@ function makeBaseWalletOverview({ reserve, marketInfo, walletInfo }: MakeWalletO
     asset: borrowValidationArgs.asset,
   })
 
+  const position = marketInfo.findOnePositionBySymbol(token.symbol)
+
+  const maxWithdrawValue = getWithdrawMaxValue({
+    user: {
+      deposited: position.collateralBalance,
+      healthFactor: marketInfo.userPositionSummary.healthFactor,
+      totalBorrowsUSD: marketInfo.userPositionSummary.totalBorrowsUSD,
+      eModeState: marketInfo.userConfiguration.eModeState,
+    },
+    asset: {
+      status: position.reserve.status,
+      liquidationThreshold: position.reserve.liquidationThreshold,
+      unborrowedLiquidity: position.reserve.unborrowedLiquidity,
+      unitPriceUsd: position.reserve.token.unitPriceUsd,
+      decimals: position.reserve.token.decimals,
+      usageAsCollateralEnabledOnUser: position.reserve.usageAsCollateralEnabledOnUser,
+      eModeCategories: position.reserve.eModes.map((e) => e.category),
+    },
+  })
+
   return {
     guestMode: false,
     token,
@@ -128,6 +149,12 @@ function makeBaseWalletOverview({ reserve, marketInfo, walletInfo }: MakeWalletO
       available: availableToBorrow,
       eligibility: reserve.borrowEligibilityStatus,
     },
+    ...(maxWithdrawValue.gt(0) && {
+      withdraw: {
+        token,
+        available: maxWithdrawValue,
+      },
+    }),
   }
 }
 
