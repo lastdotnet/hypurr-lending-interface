@@ -1,6 +1,5 @@
 import { waitFor } from '@testing-library/react'
 import { erc20Abi } from 'viem'
-import { mainnet } from 'viem/chains'
 
 import { testAddresses } from '@/test/integration/constants'
 import { handlers } from '@/test/integration/mockTransport'
@@ -8,6 +7,7 @@ import { setupHookRenderer } from '@/test/integration/setupHookRenderer'
 import { getTestTrigger } from '@/test/integration/trigger'
 
 import { useWrite } from './useWrite'
+import { hyperTestnet } from '@/config/chain/constants'
 
 describe(useWrite.name, () => {
   it('simulates the transaction', async () => {
@@ -119,7 +119,7 @@ describe(useWrite.name, () => {
 })
 
 const balanceCall = handlers.balanceCall({ balance: 0n, address: testAddresses.alice })
-const chainIdCall = handlers.chainIdCall({ chainId: mainnet.id })
+const chainIdCall = handlers.chainIdCall({ chainId: hyperTestnet.id })
 
 const simulateCallHandler = handlers.contractCall({
   to: testAddresses.token,

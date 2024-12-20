@@ -8,15 +8,15 @@ import { setupUseContractActionRenderer } from '@/test/integration/setupUseContr
 import { toBigInt } from '@/utils/bigNumber'
 import { waitFor } from '@testing-library/react'
 import { erc20Abi } from 'viem'
-import { mainnet } from 'viem/chains'
 import { describe, test } from 'vitest'
 import { createApproveActionConfig } from './approveAction'
+import { hyperTestnet } from '@/config/chain/constants'
 
 const defaultValue = NormalizedUnitNumber(1)
 const token = getMockToken({ symbol: TokenSymbol('TEST') })
 const account = testAddresses.alice
 const spender = testAddresses.bob
-const chainId = mainnet.id
+const chainId = hyperTestnet.id
 
 const hookRenderer = setupUseContractActionRenderer({
   account,

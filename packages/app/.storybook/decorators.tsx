@@ -9,10 +9,10 @@ import { TooltipProvider } from '@/ui/atoms/tooltip/Tooltip'
 
 import { Dialog, DialogContent } from '@/ui/atoms/dialog/Dialog'
 import { erc20Abi } from 'viem'
-import { mainnet } from 'viem/chains'
 import { mock } from 'wagmi/connectors'
 import { DevContainer } from './DevContainer'
 import { STORYBOOK_TIMESTAMP } from './consts'
+import { hyperTestnet } from '@/config/chain/constants'
 
 export function WithTooltipProvider() {
   return function WithTooltipProvider(Story: StoryFn) {
@@ -46,9 +46,9 @@ export function WithDevContainer() {
 
 export function ZeroAllowanceWagmiDecorator({ requestFnOverride }: { requestFnOverride?: () => Promise<string> } = {}) {
   const config = createConfig({
-    chains: [mainnet],
+    chains: [hyperTestnet],
     transports: {
-      [mainnet.id]: custom({
+      [hyperTestnet.id]: custom({
         request:
           requestFnOverride ??
           (async (): Promise<string> => {

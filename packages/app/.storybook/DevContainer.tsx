@@ -21,13 +21,13 @@ export function DevContainer({ children }: DevContainerProps) {
   const config = getConfig()
 
   return (
-    <StorybookErrorBoundary>
-      <DynamicContextProvider
-        settings={{
-          environmentId: import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID || '',
-          walletConnectors: [EthereumWalletConnectors],
-        }}
-      >
+    <DynamicContextProvider
+      settings={{
+        environmentId: import.meta.env.VITE_DYNAMIC_ENVIRONMENT_ID || '',
+        walletConnectors: [EthereumWalletConnectors],
+      }}
+    >
+      <StorybookErrorBoundary>
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <I18nAppProvider>
@@ -37,8 +37,8 @@ export function DevContainer({ children }: DevContainerProps) {
             </I18nAppProvider>
           </QueryClientProvider>
         </WagmiProvider>
-      </DynamicContextProvider>
-    </StorybookErrorBoundary>
+      </StorybookErrorBoundary>
+    </DynamicContextProvider>
   )
 }
 

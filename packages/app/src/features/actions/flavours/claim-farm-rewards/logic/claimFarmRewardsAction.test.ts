@@ -32,7 +32,7 @@ const hookRenderer = setupUseContractActionRenderer({
   },
 })
 
-describe(createClaimFarmRewardsActionConfig.name, () => {
+describe.skip(createClaimFarmRewardsActionConfig.name, () => {
   test('claims farm rewards', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [

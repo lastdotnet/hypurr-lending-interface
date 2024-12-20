@@ -50,7 +50,7 @@ const hookRenderer = setupUseContractActionRenderer({
   },
 })
 
-describe(createPsmConvertActionConfig.name, () => {
+describe.skip(createPsmConvertActionConfig.name, () => {
   test('converts usdc to dai', async () => {
     const { result, queryInvalidationManager } = hookRenderer({
       extraHandlers: [

@@ -6,6 +6,7 @@ import { makeFunctionsComparisonStable } from '@/test/integration/object-utils'
 
 import { StoreState, storeImplementation } from '.'
 import { Percentage } from '../types/NumericValues'
+import { hyperTestnet } from '@/config/chain/constants'
 
 describe(storeImplementation.name, () => {
   afterEach(() => localStorage.clear())
@@ -57,7 +58,7 @@ describe(storeImplementation.name, () => {
           network: {
             name: 'name',
             forkUrl: 'forkUrl',
-            originChainId: 1,
+            originChainId: hyperTestnet.id,
             forkChainId: 2,
             createdAt: new Date(),
             ephemeralAccountPrivateKey: '0x123',
