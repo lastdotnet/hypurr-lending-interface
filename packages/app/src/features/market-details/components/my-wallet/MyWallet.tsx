@@ -10,6 +10,7 @@ import { BorrowRow } from './components/BorrowRow'
 import { TokenBalance } from './components/TokenBalance'
 import { WalletPanelContent } from './components/WalletPanelContent'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 
 export interface MyWalletProps {
   token: Token
@@ -27,10 +28,14 @@ export interface MyWalletProps {
     token: Token
     eligibility: BorrowEligibilityStatus
   }
+  withdraw?: {
+    available: NormalizedUnitNumber
+    token: Token
+  }
   openDialog: OpenDialogFunction
 }
 
-export function MyWallet({ token, tokenBalance, lend, deposit, borrow, openDialog }: MyWalletProps) {
+export function MyWallet({ token, tokenBalance, lend, deposit, borrow, withdraw, openDialog }: MyWalletProps) {
   return (
     <Panel.Wrapper>
       <WalletPanelContent>
@@ -52,6 +57,15 @@ export function MyWallet({ token, tokenBalance, lend, deposit, borrow, openDialo
             onAction={() => openDialog(depositDialogConfig, { token: deposit.token })}
             label={token.symbol === 'DAI' ? 'Deposit DAI as collateral' : 'Available to deposit'}
             buttonText="Deposit"
+          />
+        )}
+        {withdraw && (
+          <ActionRow
+            token={withdraw.token}
+            value={withdraw.available}
+            onAction={() => openDialog(withdrawDialogConfig, { token: withdraw.token })}
+            label="Available to withdraw"
+            buttonText="Withdraw"
           />
         )}
         <BorrowRow
