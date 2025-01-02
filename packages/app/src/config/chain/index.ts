@@ -18,7 +18,6 @@ const commonTokenSymbolToReplacedName = {
   [TokenSymbol('WETH')]: { name: 'Ethereum', symbol: TokenSymbol('ETH') },
   [TokenSymbol('weETH')]: { name: 'Ether.fi Staked ETH', symbol: TokenSymbol('weETH') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
-  [TokenSymbol('stTESTH')]: { name: 'Staked HYPE', symbol: TokenSymbol('stHYPE') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
