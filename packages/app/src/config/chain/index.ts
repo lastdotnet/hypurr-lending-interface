@@ -18,6 +18,7 @@ const commonTokenSymbolToReplacedName = {
   [TokenSymbol('WETH')]: { name: 'Ethereum', symbol: TokenSymbol('ETH') },
   [TokenSymbol('weETH')]: { name: 'Ether.fi Staked ETH', symbol: TokenSymbol('weETH') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
+  [TokenSymbol('stTESTH')]: { name: 'Staked HYPE', symbol: TokenSymbol('stHYPE') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
@@ -57,6 +58,11 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         address: CheckedAddress('0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8'),
       },
       {
+        symbol: TokenSymbol('stTESTH'),
+        oracleType: 'fixed-usd',
+        address: CheckedAddress('0xe2fbc9cb335a65201fcde55323ae0f4e8a96a616'),
+      },
+      {
         symbol: TokenSymbol('USDXL'),
         oracleType: 'fixed-usd',
         address: USDXL_ADDRESS,
@@ -80,6 +86,10 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
           providedBy: [],
         },
         [TokenSymbol('SolvBTC')]: {
+          type: 'market-price',
+          providedBy: [],
+        },
+        [TokenSymbol('stTESTH')]: {
           type: 'market-price',
           providedBy: [],
         },
