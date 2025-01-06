@@ -53,6 +53,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
   const [mintPending, setMintPending] = useState(false)
   const [mintError, setMintError] = useState<string | null>(null)
+  const [followStatus, setFollowStatus] = useState<'initial' | 'pending' | 'success'>('initial')
 
   const isOnCooldown = !!lastMintTime && Date.now() - lastMintTime < MINT_COOLDOWN
 
@@ -123,6 +124,38 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
         {hoursLeft > 0 && minutesLeft > 0 && ' and '}{' '}
         {minutesLeft > 0 && `${minutesLeft} minute${minutesLeft !== 1 ? 's' : ''}`}
       </p>
+    )
+  }
+
+  if (followStatus !== 'success') {
+    return (
+      <div>
+        {followStatus === 'pending' ? (
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="follow"
+              id="follow"
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setFollowStatus('success')
+                }
+              }}
+            />
+            <label htmlFor="follow">I have followed you</label>
+          </div>
+        ) : (
+          <a
+            href="https://x.com/hypurrfi"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setFollowStatus('pending')}
+            className="rounded border border-white/4 bg-white/10 px-4 py-1 text-sm text-white transition-colors hover:bg-primary-bg/70"
+          >
+            Follow us on X
+          </a>
+        )}
+      </div>
     )
   }
 
