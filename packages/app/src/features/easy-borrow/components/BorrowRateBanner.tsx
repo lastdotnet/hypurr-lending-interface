@@ -13,8 +13,8 @@ export function BorrowRateBanner({ assetsToBorrowMeta }: BorrowRateBannerProps) 
     <div className="flex flex-col items-center md:mt-12">
       <div className="flex items-center gap-2">
         <img src={assets.surrf} alt="Surrf" className="" />
-        <Typography variant="h1" className="text-4xl text-primary md:text-5xl">
-          Mint USDXL
+        <Typography variant="h1" gradient className="text-4xl md:text-5xl">
+          Borrow USDXL
         </Typography>
       </div>
       <Typography variant="h3" className="mt-6 text-center text-lg text-primary-bg/70 md:text-2xl">
