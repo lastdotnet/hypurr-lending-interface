@@ -53,7 +53,9 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
   const [mintPending, setMintPending] = useState(false)
   const [mintError, setMintError] = useState<string | null>(null)
-  const [followStatus, setFollowStatus] = useState<'initial' | 'pending' | 'success'>('initial')
+  const [followStatus, setFollowStatus] = useState<'initial' | 'pending' | 'awaitingConfirmation' | 'confirmed'>(
+    'initial',
+  )
 
   const isOnCooldown = !!lastMintTime && Date.now() - lastMintTime < MINT_COOLDOWN
 
@@ -63,6 +65,16 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
       setLastMintTime(Number.parseInt(stored))
     }
   }, [])
+
+  useEffect(() => {
+    if (followStatus === 'pending') {
+      const timer = setTimeout(() => {
+        setFollowStatus('awaitingConfirmation')
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [followStatus])
 
   async function mint() {
     if (!captchaSolution || isOnCooldown || !primaryWallet) {
@@ -127,24 +139,10 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
     )
   }
 
-  if (followStatus !== 'success') {
-    return (
-      <div>
-        {followStatus === 'pending' ? (
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              name="follow"
-              id="follow"
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setFollowStatus('success')
-                }
-              }}
-            />
-            <label htmlFor="follow">I have followed you</label>
-          </div>
-        ) : (
+  if (followStatus !== 'confirmed') {
+    switch (followStatus) {
+      case 'initial':
+        return (
           <a
             href="https://x.com/hypurrfi"
             target="_blank"
@@ -154,9 +152,26 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
           >
             Follow us on X
           </a>
-        )}
-      </div>
-    )
+        )
+      case 'pending':
+        return <p>pending...</p>
+      case 'awaitingConfirmation':
+        return (
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="follow"
+              id="follow"
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setFollowStatus('confirmed')
+                }
+              }}
+            />
+            <label htmlFor="follow">I have followed you</label>
+          </div>
+        )
+    }
   }
 
   if (!captchaSolution) {
