@@ -83,6 +83,10 @@ export default {
           border: 'var(--panel-border)',
           bg: 'hsla(var(--panel-bg) / .44)',
         },
+        gradient: {
+          yellow: 'rgba(var(--gradient-yellow) / <alpha-value>)',
+          green: 'rgba(var(--gradient-green) / <alpha-value>)',
+        },
         'input-background': 'hsla(var(--input-background) / .04)',
         'icon-foreground': 'rgba(var(--icon-foreground) / <alpha-value>)',
         'product-blue': 'rgba(var(--product-blue) / <alpha-value>)',

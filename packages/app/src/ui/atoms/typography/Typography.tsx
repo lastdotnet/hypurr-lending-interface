@@ -16,6 +16,10 @@ const typographyVariants = cva('text-foreground', {
       span: 'font-normal text-base',
       prompt: 'text-prompt-foreground text-xs leading-none tracking-tight',
     },
+    gradient: {
+      true: 'inline-block bg-gradient-to-r from-gradient-yellow to-gradient-green bg-clip-text text-transparent',
+      false: null,
+    },
   },
   defaultVariants: {
     variant: 'p',
@@ -24,6 +28,7 @@ const typographyVariants = cva('text-foreground', {
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof typographyVariants> {
   element?: BaseElement
+  gradient?: boolean
 }
 
 function variantToElement(variant: VariantProps<typeof typographyVariants>['variant']): BaseElement {
@@ -31,11 +36,13 @@ function variantToElement(variant: VariantProps<typeof typographyVariants>['vari
   return variant ?? 'p'
 }
 
-const Typography = React.forwardRef<HTMLElement, TypographyProps>(({ element, variant, className, ...props }, ref) => {
-  const Element = element ?? variantToElement(variant)
+const Typography = React.forwardRef<HTMLElement, TypographyProps>(
+  ({ element, variant, gradient, className, ...props }, ref) => {
+    const Element = element ?? variantToElement(variant)
 
-  return <Element className={cn(typographyVariants({ variant, className }))} ref={ref as any} {...props} />
-})
+    return <Element className={cn(typographyVariants({ variant, gradient, className }))} ref={ref as any} {...props} />
+  },
+)
 Typography.displayName = 'Typography'
 
 export { Typography, type TypographyProps }
