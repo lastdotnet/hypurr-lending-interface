@@ -102,6 +102,9 @@ export default {
         'light-blue': 'rgba(var(--nav-primary) / <alpha-value>)',
         'product-dark-blue': 'rgb(var(--product-dark-blue))',
       },
+      fontSize: {
+        '5.5xl': '3.5rem',
+      },
       boxShadow: {
         nav: '0px 20px 40px 0px var(--nav-shadow)',
         tooltip: '0px 4px 30px 7px var(--tooltip-shadow)',
