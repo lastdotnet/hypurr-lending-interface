@@ -8,7 +8,7 @@ export function FaucetPanel({ children }: PropsWithChildren) {
   return (
     <PageLayout className="max-w-6xl px-3 lg:px-0">
       <Panel.Wrapper className="flex min-w-full flex-col self-center p-8 md:p-14">
-        <Typography variant="h1" className="text-3xl text-primary-bg">
+        <Typography variant="h1" gradient className="self-start text-4xl">
           Testnet Token Faucet
         </Typography>
 

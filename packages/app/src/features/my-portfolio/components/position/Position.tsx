@@ -35,7 +35,9 @@ export function Position({
   return (
     <Panel className={className}>
       <Panel.Header>
-        <Panel.Title className="text-xl sm:text-2xl">Your position</Panel.Title>
+        <Panel.Title className="text-xl sm:text-2xl" gradient>
+          Your position
+        </Panel.Title>
         <Info>Amount of all your assets supplied to the protocol.</Info>
       </Panel.Header>
 

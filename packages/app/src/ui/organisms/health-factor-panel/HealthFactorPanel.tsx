@@ -22,10 +22,12 @@ export interface HealthFactorPanelProps {
 export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelProps>(
   ({ hf, liquidationDetails, variant, className }, ref) => {
     return (
-      <Panel className={cn('w-full bg-panel-bg/50 px-6 py-4', className)} ref={ref}>
+      <Panel className={cn('w-full bg-panel-bg px-6 py-4', className)} ref={ref}>
         <Panel.Header className="flex w-full flex-row justify-between">
           <div className="flex flex-row items-center gap-1">
-            <Panel.Title className="text-xl sm:text-2xl">Health Factor</Panel.Title>
+            <Panel.Title className="text-xl sm:text-2xl" gradient>
+              Health Factor
+            </Panel.Title>
             <Info>
               <p>
                 The health factor is a number that shows how safe your assets are in the protocol. It's calculated by

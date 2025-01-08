@@ -24,7 +24,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
   return (
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }}>
       <Panel.Header>
-        <Panel.Title>Deposit</Panel.Title>
+        <Panel.Title gradient>Deposit</Panel.Title>
       </Panel.Header>
 
       <Panel.Content>

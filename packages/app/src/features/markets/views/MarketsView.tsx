@@ -25,7 +25,7 @@ export function MarketsView({
   return (
     <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
       <div className="flex flex-row items-center gap-4">
-        <Typography variant="h2" className="text-primary-bg">
+        <Typography variant="h2" gradient>
           Markets
         </Typography>
       </div>

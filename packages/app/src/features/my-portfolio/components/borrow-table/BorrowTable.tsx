@@ -25,7 +25,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
   return (
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }}>
       <Panel.Header>
-        <Panel.Title>Borrow</Panel.Title>
+        <Panel.Title gradient>Borrow</Panel.Title>
         <EModeIndicator
           eModeCategoryId={eModeCategoryId}
           onButtonClick={() => {

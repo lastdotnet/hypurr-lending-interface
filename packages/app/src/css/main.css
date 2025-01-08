@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --body-background: 0 0% 0%;
+    --body-background: 240 8% 5%;
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
@@ -19,15 +19,15 @@
 
     --border: 0 0% 100%;
     --input: 0 0% 100%;
-    --ring: 172 42% 56%;
+    --ring: 172 42% 53%;
 
-    --primary-bg: 172 42% 56%;
+    --primary-bg: 172 42% 53%;
     --primary-hover: 172 42% 46%;
     --primary: 166 94% 81%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 172 42% 56%;
-    --secondary-foreground: 255 0% 100%;
+    --secondary: 166 94% 81%;
+    --secondary-foreground: 0 0% 100%;
 
     --accent: 0 0% 5%;
     --accent-foreground: 210 40% 98%;
@@ -43,7 +43,7 @@
     --radius: 1rem;
 
     --panel-border: rgba(255, 255, 255, 0.04);
-    --panel-bg: 0 0% 15%;
+    --panel-bg: 0 0% 5%;
     --input-background: 0 0% 100%;
     --icon-foreground: 106 118 146;
 
@@ -51,6 +51,7 @@
     --product-orange: 240 181 122;
     --product-blue: 95 190 177;
     --product-red: 252 56 151;
+    --product-light-green: 161 252 231;
 
     --gradient-yellow: 252 229 114;
     --gradient-green: 161 252 231;
@@ -182,7 +183,7 @@
 }
 
 .frc-button {
-  background-color: hsl(172 42% 56%) !important;
+  background-color: hsl(172 42% 53%) !important;
   border-radius: 4px !important ;
   padding: 8px 16px !important;
   font-weight: 600 !important;

@@ -90,6 +90,7 @@ export default {
         'icon-foreground': 'rgba(var(--icon-foreground) / <alpha-value>)',
         'product-blue': 'rgba(var(--product-blue) / <alpha-value>)',
         'product-green': 'rgba(var(--product-green) / <alpha-value>)',
+        'product-light-green': 'rgba(var(--product-light-green) / <alpha-value>)',
         'product-orange': 'rgba(var(--product-orange) / <alpha-value>)',
         'product-red': 'rgba(var(--product-red) / <alpha-value>)',
         'product-dai': 'rgba(var(--product-dai) / <alpha-value>)',
@@ -116,6 +117,7 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xs: 'calc(var(--radius) - 8px)',
       },
       keyframes: {
         'accordion-down': {

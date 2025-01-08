@@ -9,8 +9,8 @@ const typographyVariants = cva('text-foreground', {
   variants: {
     variant: {
       h1: 'font-bold text-5.5xl leading-none',
-      h2: 'font-normal text-3xl leading-none',
-      h3: 'font-normal text-2xl leading-none',
+      h2: 'font-bold text-4xl leading-none',
+      h3: 'font-bold text-2xl leading-none',
       h4: 'font-normal text-base leading-none',
       p: 'font-normal text-base',
       span: 'font-normal text-base',
