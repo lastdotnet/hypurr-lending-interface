@@ -31,6 +31,7 @@
     "@aave/math-utils": "^1.30.5",
     "@dynamic-labs/ethereum": "^3.4.4",
     "@dynamic-labs/sdk-react-core": "^3.4.4",
+    "@dynamic-labs/types": "^3.4.4",
     "@dynamic-labs/wagmi-connector": "^3.4.4",
     "@feedback-fish/react": "^1.2.2",
     "@hookform/resolvers": "^3.3.2",

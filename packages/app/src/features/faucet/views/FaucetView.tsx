@@ -1,10 +1,11 @@
-import { Button } from '@/ui/atoms/button/Button'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Button, buttonVariants } from '@/ui/atoms/button/Button'
+import { useAuthenticateConnectedUser, useDynamicContext, useSocialAccounts } from '@dynamic-labs/sdk-react-core'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { WidgetInstance } from 'friendly-challenge'
 import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
 import { faucetUrl } from '@/config/consts'
 import { trackEvent } from '@/utils/fathom'
+import { ProviderEnum } from '@dynamic-labs/types'
 
 function FriendlyCaptcha({
   setCaptchaSolution,
@@ -126,10 +127,6 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
     )
   }
 
-  if (!captchaSolution) {
-    return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
-  }
-
   if (mintPending) {
     return (
       <div className="-mt-4 -mb-4 flex items-center justify-center">
@@ -139,12 +136,120 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
   }
 
   return (
-    <div className="w-full">
-      <Button className="w-full" disabled={mintPending} onClick={mint}>
-        Claim Faucet
-      </Button>
+    <div className="flex flex-col gap-4">
+      <ConnectXButtonGroup />
 
-      {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
+      {!captchaSolution ? (
+        <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+      ) : (
+        <div className="w-full">
+          <Button className="w-full" disabled={mintPending} onClick={mint}>
+            Claim Faucet
+          </Button>
+
+          {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
+        </div>
+      )}
+    </div>
+  )
+}
+
+const ConnectXButtonGroup = () => {
+  const [following, setFollowing] = useState(false)
+  const [followButtonClicked, setFollowButtonClicked] = useState(false)
+  const [checkingIfFollowing, setCheckingIfFollowing] = useState(false)
+
+  const {
+    error,
+    linkSocialAccount,
+    isProcessing,
+    isLinked,
+    // getLinkedAccountInformation
+  } = useSocialAccounts()
+  const { user } = useDynamicContext()
+  const { authenticateUser } = useAuthenticateConnectedUser()
+  const provider = ProviderEnum.Twitter as any
+  const isXLinked = isLinked(provider)
+  // const connectedAccountInfo = getLinkedAccountInformation(provider)
+
+  const handleSignIn = async () => {
+    if (!user) {
+      await authenticateUser()
+    }
+    linkSocialAccount(provider)
+  }
+
+  const checkIfFollowing = useCallback(async () => {
+    setCheckingIfFollowing(true)
+    return new Promise<boolean>((resolve) => {
+      setTimeout(() => {
+        const isFollowing = Math.random() < 0.5 // Randomly returns true or false
+        setFollowing(isFollowing)
+        resolve(isFollowing)
+        setCheckingIfFollowing(false)
+      }, 2000)
+    })
+  }, [])
+
+  const handleRefocus = useCallback(() => {
+    if (!following && isXLinked && followButtonClicked) {
+      checkIfFollowing()
+    }
+  }, [checkIfFollowing, following, isXLinked, followButtonClicked])
+
+  useEffect(() => {
+    window.addEventListener('focus', handleRefocus)
+    return () => {
+      window.removeEventListener('focus', handleRefocus)
+    }
+  }, [handleRefocus])
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (!following && isXLinked) {
+      checkIfFollowing()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (error) {
+      console.error(error)
+    }
+  }, [error])
+
+  if (following) {
+    return <p className="rounded-lg bg-white/4 p-4 text-center font-medium">You are earning 2X HYPE!</p>
+  }
+
+  if (!user || !isXLinked) {
+    return (
+      <Button onClick={handleSignIn} className="w-full">
+        Sign and connect/follow on X - (2X HYPE boost)
+      </Button>
+    )
+  }
+
+  return (
+    <div>
+      {checkingIfFollowing || isProcessing ? (
+        <p className="text-center">Loading...</p>
+      ) : (
+        <div className="flex flex-col">
+          <a
+            href="https://x.com/hypurrfi"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setFollowButtonClicked(true)}
+            className={buttonVariants({ variant: 'primary' })}
+          >
+            Step 2. Follow @hypurrfi on X - (2X HYPE boost)
+          </a>
+          <Button variant="text" onClick={checkIfFollowing} className="font-normal text-sm">
+            I'm already following
+          </Button>
+        </div>
+      )}
+      {error && <p className="text-center text-red-500 text-sm">Error linking X account</p>}
     </div>
   )
 }

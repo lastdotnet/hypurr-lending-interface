@@ -143,7 +143,6 @@
 
   .bg-last-noise {
     opacity: 60%;
-
     background-image: url('/backgrounds/noise.webp');
     background-size: cover;
     background-repeat: no-repeat;
@@ -156,17 +155,22 @@
 }
 
 /* Friendly Captcha */
-.frc-captcha {
-  background-color: transparent !important;
-  border: none !important;
-}
-
-.frc-icon {
-  display: none;
+.frc-captcha, .frc-container, .frc-button {
+  width: 100% !important;
 }
 
 .frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
   color: white !important;
+}
+
+.frc-captcha {
+  background-color: transparent !important;
+  border: none !important;
+  max-width: unset !important;
+}
+
+.frc-icon {
+  display: none;
 }
 
 .frc-content {
@@ -183,11 +187,13 @@
 
 .frc-button {
   background-color: hsl(172 42% 56%) !important;
-  border-radius: 4px !important ;
-  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  padding: 7px 16px !important;
   font-weight: 600 !important;
   transition: background-color 0.2s ease-in-out !important;
   margin-bottom: 8px !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
 }
 
 .frc-button:hover {
