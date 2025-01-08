@@ -127,29 +127,25 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
     )
   }
 
-  if (mintPending) {
-    return (
-      <div className="-mt-4 -mb-4 flex items-center justify-center">
-        <CatSpinner />
-      </div>
-    )
-  }
-
   return (
     <div className="flex flex-col gap-4">
       <ConnectXButtonGroup />
+      {(() => {
+        switch (true) {
+          case !captchaSolution:
+            return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+          case mintPending:
+            return (
+              <div className="-mt-4 -mb-4 flex items-center justify-center">
+                <CatSpinner />
+              </div>
+            )
+          default:
+            return <Button onClick={mint}>Claim Faucet</Button>
+        }
+      })()}
 
-      {!captchaSolution ? (
-        <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
-      ) : (
-        <div className="w-full">
-          <Button className="w-full" disabled={mintPending} onClick={mint}>
-            Claim Faucet
-          </Button>
-
-          {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
-        </div>
-      )}
+      {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
     </div>
   )
 }
@@ -183,7 +179,8 @@ const ConnectXButtonGroup = () => {
     setCheckingIfFollowing(true)
     return new Promise<boolean>((resolve) => {
       setTimeout(() => {
-        const isFollowing = Math.random() < 0.5 // Randomly returns true or false
+        const isFollowing = false
+        // Math.random() < 0.5 // Randomly returns true or false
         setFollowing(isFollowing)
         resolve(isFollowing)
         setCheckingIfFollowing(false)
@@ -217,7 +214,7 @@ const ConnectXButtonGroup = () => {
     }
   }, [error])
 
-  if (following) {
+  if (following && isXLinked) {
     return <p className="rounded-lg bg-white/4 p-4 text-center font-medium">You are earning 2X HYPE!</p>
   }
 
@@ -232,7 +229,7 @@ const ConnectXButtonGroup = () => {
   return (
     <div>
       {checkingIfFollowing || isProcessing ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center text-sm italic opacity-80">Loading...</p>
       ) : (
         <div className="flex flex-col">
           <a
