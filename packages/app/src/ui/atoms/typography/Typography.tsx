@@ -8,9 +8,9 @@ export type BaseElement = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span'
 const typographyVariants = cva('text-foreground', {
   variants: {
     variant: {
-      h1: 'font-normal font-serif text-5xl leading-none tracking-tight',
-      h2: 'font-normal font-serif text-3xl leading-none tracking-tight',
-      h3: 'font-normal font-serif text-2xl leading-none tracking-tight',
+      h1: 'font-normal  text-5xl leading-none tracking-tight',
+      h2: 'font-normal  text-3xl leading-none tracking-tight',
+      h3: 'font-normal  text-2xl leading-none tracking-tight',
       h4: 'font-normal text-base leading-none tracking-tight',
       p: 'font-normal text-base',
       span: 'font-normal text-base',

@@ -54,7 +54,7 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
           <div className={cn('flex flex-col justify-center gap-4', variant === 'full-details' && 'sm:flex-row')}>
             <div
               className={cn(
-                'flex flex-col justify-end px-4 font-serif',
+                'flex flex-col justify-end px-4 ',
                 variant === 'full-details' ? 'min-w-[60%]' : 'w-full items-center',
                 liquidationDetails && variant === 'with-liquidation-price' && 'h-32',
               )}

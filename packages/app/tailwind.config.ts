@@ -20,8 +20,7 @@ export default {
         inactive: '0.3',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        serif: ['Newsreader', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         basics: {
