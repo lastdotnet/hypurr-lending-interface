@@ -140,7 +140,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
 
   return (
     <div className="w-full">
-      <Button className="w-full" disabled={mintPending} onClick={mint}>
+      <Button className="w-full" disabled={mintPending} onClick={mint} rounded="full">
         Claim Faucet
       </Button>
 

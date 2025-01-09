@@ -25,7 +25,9 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
       <Panel className={cn('w-full bg-panel-bg px-6 py-4', className)} ref={ref}>
         <Panel.Header className="flex w-full flex-row justify-between">
           <div className="flex flex-row items-center gap-1">
-            <Panel.Title className="text-xl sm:text-2xl">Health Factor</Panel.Title>
+            <Panel.Title className="text-xl" gradient>
+              Health Factor
+            </Panel.Title>
             <Info>
               <p>
                 The health factor is a number that shows how safe your assets are in the protocol. It's calculated by
@@ -54,7 +56,7 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
           <div className={cn('flex flex-col justify-center gap-4', variant === 'full-details' && 'sm:flex-row')}>
             <div
               className={cn(
-                'flex flex-col justify-end px-4 font-serif',
+                'flex flex-col justify-end px-4 ',
                 variant === 'full-details' ? 'min-w-[60%]' : 'w-full items-center',
                 liquidationDetails && variant === 'with-liquidation-price' && 'h-32',
               )}

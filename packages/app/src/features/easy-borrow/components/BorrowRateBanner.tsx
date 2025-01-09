@@ -1,24 +1,19 @@
-import { formatPercentage } from '@/domain/common/format'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { BorrowDetails } from '../logic/useEasyBorrow'
-import { assets } from '@/ui/assets'
-
 export interface BorrowRateBannerProps {
   assetsToBorrowMeta: BorrowDetails
 }
 
-export function BorrowRateBanner({ assetsToBorrowMeta }: BorrowRateBannerProps) {
-  const { borrowRate } = assetsToBorrowMeta
+export function BorrowRateBanner() {
   return (
     <div className="flex flex-col items-center md:mt-12">
       <div className="flex items-center gap-2">
-        <img src={assets.surrf} alt="Surrf" className="" />
-        <Typography variant="h1" className="text-4xl text-primary md:text-5xl">
-          Mint USDXL
+        <Typography variant="h1" gradient>
+          Borrow USDXL
         </Typography>
       </div>
-      <Typography variant="h3" className="mt-6 text-center text-lg text-primary-bg/70 md:text-2xl">
-        Borrow USDXL at <span className="text-white">{formatPercentage(borrowRate)}</span> from Hypurr
+      <Typography variant="h2" className="mt-6 text-center font-normal text-base text-white/60">
+        Deposit native Hyperliquid assets and borrow USDXL for leveraged yield that purrrrrrs.
       </Typography>
     </div>
   )

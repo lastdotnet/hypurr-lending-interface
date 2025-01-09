@@ -63,12 +63,14 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
         disabled={pageStatus.state !== 'form'}
       />
 
-      <HealthFactorPanel
-        hf={updatedPositionSummary.healthFactor}
-        liquidationDetails={liquidationDetails}
-        variant="full-details"
-        ref={healthFactorPanelRef}
-      />
+      <div className="mt-6">
+        <HealthFactorPanel
+          hf={updatedPositionSummary.healthFactor}
+          liquidationDetails={liquidationDetails}
+          variant="full-details"
+          ref={healthFactorPanelRef}
+        />
+      </div>
 
       {pageStatus.state === 'confirmation' && (
         <div className="mt-6 flex flex-col gap-6">

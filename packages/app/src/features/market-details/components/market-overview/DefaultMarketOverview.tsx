@@ -33,7 +33,7 @@ export function DefaultMarketOverview({
   return (
     <Panel.Wrapper>
       <MarketOverviewContent>
-        <h4 className="font-regular font-serif text-base md:text-xl">Market Overview</h4>
+        <h4 className="font-normal text-base md:text-xl">Market Overview</h4>
         <MarketOverviewChart data={chartData}>
           <Legend token={token} utilized={borrowed} total={marketSize} utilizationRate={utilizationRate} />
         </MarketOverviewChart>

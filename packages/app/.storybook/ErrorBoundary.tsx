@@ -38,7 +38,11 @@ function ErrorComponent({ error }: { error: Error }) {
   const { setShowAuthFlow } = useDynamicContext()
 
   if (error instanceof NotConnectedError) {
-    return <Button onClick={() => setShowAuthFlow(true)}>Connect wallet</Button>
+    return (
+      <Button onClick={() => setShowAuthFlow(true)} rounded="full">
+        Connect wallet
+      </Button>
+    )
   }
   return <>Unknown error: {error.message}</>
 }
