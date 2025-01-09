@@ -12,7 +12,7 @@ export function BorrowRateBanner() {
           Borrow USDXL
         </Typography>
       </div>
-      <Typography variant="h2" className="mt-6 text-center text-base text-white/60">
+      <Typography variant="h2" className="mt-6 text-center font-normal text-base text-white/60">
         Deposit native Hyperliquid assets and borrow USDXL for leveraged yield that purrrrrrs.
       </Typography>
     </div>
