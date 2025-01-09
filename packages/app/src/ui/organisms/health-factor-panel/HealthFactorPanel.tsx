@@ -25,7 +25,7 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
       <Panel className={cn('w-full bg-panel-bg px-6 py-4', className)} ref={ref}>
         <Panel.Header className="flex w-full flex-row justify-between">
           <div className="flex flex-row items-center gap-1">
-            <Panel.Title className="text-xl sm:text-2xl" gradient>
+            <Panel.Title className="text-xl" gradient>
               Health Factor
             </Panel.Title>
             <Info>

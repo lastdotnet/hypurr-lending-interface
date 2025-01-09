@@ -25,9 +25,11 @@ export function WalletComposition({
   const sm = useBreakpoint('sm')
 
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'sm' }}>
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'sm' }} className="bg-panel-bg">
       <Panel.Header>
-        <Panel.Title gradient>Your wallet</Panel.Title>
+        <Panel.Title className="text-xl" gradient>
+          Your wallet
+        </Panel.Title>
         <Info>List of assets in your wallet supported by Hypurr.</Info>
         {hasCollaterals && (
           <div className="ml-5 flex items-center gap-2">

@@ -76,7 +76,7 @@ export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti, r
               <Button className="flex-1 bg-white/10" onClick={resetForm}>
                 Close
               </Button>
-              <LinkButton className="flex-1" to={paths.dashboard}>
+              <LinkButton className="flex-1" to={paths.dashboard} rounded="full">
                 View in Dashboard
               </LinkButton>
             </div>

@@ -23,7 +23,9 @@ export function ConnectOrSandboxCTAButtonGroup({
     <div className={cn('flex w-full flex-col gap-6', className)}>
       <div className="flex flex-col gap-3">
         <h4 className="text-center font-semibold text-base sm:text-xl">{header}</h4>
-        <Button onClick={action}>{buttonText}</Button>
+        <Button onClick={action} rounded="full">
+          {buttonText}
+        </Button>
       </div>
 
       {(isDevSandboxEnabled || isSandboxEnabled) && (

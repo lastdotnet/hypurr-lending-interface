@@ -6,22 +6,18 @@ import { assets } from '@/ui/assets'
 
 export function FaucetPanel({ children }: PropsWithChildren) {
   return (
-    <PageLayout className="max-w-6xl px-3 lg:px-0">
+    <PageLayout className="px-3 lg:px-0">
       <Panel.Wrapper className="flex min-w-full flex-col self-center p-8 md:p-14">
-        <Typography variant="h1" gradient className="self-start text-4xl">
-          Testnet Token Faucet
-        </Typography>
-
-        <div className="mt-2 mb-8">
-          <p className="text-secondary-foreground">
-            Get test tokens to explore and interact with our protocol on testnet. These tokens are for testing purposes
-            only and have no real value.
-          </p>
+        <div className="mb-16 flex items-center gap-2">
+          <Typography variant="h1" gradient className="self-start text-4xl">
+            Testnet Token Faucet
+          </Typography>
+          <span className="text-4xl">🚰</span>
         </div>
 
-        <div className="mb-8 flex flex-col-reverse justify-between gap-8 rounded-lg bg-white/4 p-2 px-14 pb-10 md:flex-row">
+        <div className="mb-8 flex flex-col-reverse items-center justify-between gap-8 rounded-lg bg-white/4 p-2 px-14 pb-10 md:flex-row">
           <div>
-            <Typography variant="h2" className="mb-3 text-2xl md:pt-8">
+            <Typography variant="h2" className="mb-4 text-base md:pt-8">
               How to use the faucet
             </Typography>
             <ol className="space-y-2 text-secondary-foreground">
@@ -32,8 +28,8 @@ export function FaucetPanel({ children }: PropsWithChildren) {
             <p className="mt-4 text-white/50 text-xs">There is a 24-hour cooldown period between mints.</p>
           </div>
 
-          <div className="max-w-56">
-            <img src={assets.catFaucet} alt="cat faucet" />
+          <div className="max-w-80">
+            <img src={assets.faucetPurr} alt="cat faucet" className="w-full" />
           </div>
         </div>
         {children}

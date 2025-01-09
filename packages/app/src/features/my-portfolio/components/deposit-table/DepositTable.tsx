@@ -22,9 +22,11 @@ export interface DepositTableProps {
 
 export function DepositTable({ assets, openDialog }: DepositTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }}>
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
       <Panel.Header>
-        <Panel.Title gradient>Deposit</Panel.Title>
+        <Panel.Title className="text-xl" gradient>
+          Deposit
+        </Panel.Title>
       </Panel.Header>
 
       <Panel.Content>

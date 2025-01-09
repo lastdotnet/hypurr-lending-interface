@@ -10,8 +10,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-product-light-green text-body hover:bg-primary-hover hover:text-body',
-        secondary: 'bg-product-light-green text-body hover:bg-primary-hover hover:text-body',
+        primary: 'bg-primary-bg text-primary-foreground hover:bg-primary-hover hover:text-body',
+        secondary: 'bg-primary-bg text-primary-foreground hover:bg-primary-hover hover:text-body',
         text: 'border-none text-secondary disabled:bg-transparent',
         icon: 'border-none',
         green: 'bg-sec-green text-basics-white hover:bg-green-700',
@@ -85,17 +85,17 @@ export type LinkButtonProps = VariantProps<typeof buttonVariants> &
   LinkProps & { disabled?: boolean; prefixIcon?: React.ReactNode; postfixIcon?: React.ReactNode }
 
 export const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
-  ({ className, variant, size, spaceAround, disabled, prefixIcon, postfixIcon, ...props }, ref) => {
+  ({ className, variant, rounded, size, spaceAround, disabled, prefixIcon, postfixIcon, ...props }, ref) => {
     return (
       <>
         {disabled ? (
-          <Button disabled className={cn(buttonVariants({ variant, size, spaceAround, className }))}>
+          <Button disabled className={cn(buttonVariants({ variant, rounded, size, spaceAround, className }))}>
             {prefixIcon}
             {props.children}
             {postfixIcon}
           </Button>
         ) : (
-          <Link className={cn(buttonVariants({ variant, size, spaceAround, className }))} ref={ref} {...props}>
+          <Link className={cn(buttonVariants({ variant, rounded, size, spaceAround, className }))} ref={ref} {...props}>
             {prefixIcon}
             {props.children}
             {postfixIcon}
