@@ -11,6 +11,12 @@ export interface NavLinkProps extends NavLinkComponentProps {
   withIndicator?: boolean
 }
 
+export interface ExternalNavLinkProps extends NavLinkComponentProps {
+  href: string
+  className?: string
+  withIndicator?: boolean
+}
+
 export function NavLink({ to, children, onClick, className, ...rest }: NavLinkProps) {
   const selected = !!useMatch(`${to}/*`)
 
@@ -28,6 +34,23 @@ export function NavLink({ to, children, onClick, className, ...rest }: NavLinkPr
         {children}
       </NavLinkComponent>
     </Link>
+  )
+}
+
+export function ExternalNavLink({ href, children, className, ...rest }: ExternalNavLinkProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        'rounded-md text-white/50 text-xl hover:text-white lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+    </a>
   )
 }
 
@@ -116,7 +139,6 @@ const contentVariants = cva('flex h-full w-full flex-row items-center gap-1 text
       horizontal: 'lg:justify-center',
       vertical: 'p-4',
     },
-
     size: {
       sm: 'text-base lg:text-sm',
       md: 'text-xl lg:text-base',
