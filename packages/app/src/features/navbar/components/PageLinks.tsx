@@ -60,7 +60,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
         </NavLink>
       ))}
 
-      <ExternalNavLink href="https://hypurr.mintlify.app/introduction/hypurrfi">Docs</ExternalNavLink>
+      <ExternalNavLink href="http://docs.hypurr.fi/">Docs</ExternalNavLink>
 
       <Tooltip>
         <TooltipTrigger asChild>
