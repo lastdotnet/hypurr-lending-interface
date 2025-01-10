@@ -9,7 +9,7 @@ interface SuccessViewProceedButtonProps {
 
 export function SuccessViewProceedButton({ onProceed, children }: SuccessViewProceedButtonProps) {
   return (
-    <Button className="mt-4 w-full" onClick={onProceed}>
+    <Button className="mt-4 w-full" onClick={onProceed} rounded="full">
       {children}
     </Button>
   )

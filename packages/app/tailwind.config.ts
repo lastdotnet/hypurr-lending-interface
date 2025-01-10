@@ -20,8 +20,7 @@ export default {
         inactive: '0.3',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-        serif: ['Newsreader', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         basics: {
@@ -103,6 +102,9 @@ export default {
         'light-blue': 'rgba(var(--nav-primary) / <alpha-value>)',
         'product-dark-blue': 'rgb(var(--product-dark-blue))',
       },
+      fontSize: {
+        '5.5xl': '3.5rem',
+      },
       boxShadow: {
         nav: '0px 20px 40px 0px var(--nav-shadow)',
         tooltip: '0px 4px 30px 7px var(--tooltip-shadow)',
@@ -114,6 +116,7 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xs: 'calc(var(--radius) - 8px)',
       },
       keyframes: {
         'accordion-down': {

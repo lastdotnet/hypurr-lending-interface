@@ -104,7 +104,11 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
               </div>
             )
           default:
-            return <Button onClick={mint}>Claim Faucet</Button>
+            return (
+              <Button className="w-full" rounded="full" onClick={mint}>
+                Claim Faucet
+              </Button>
+            )
         }
       })()}
 

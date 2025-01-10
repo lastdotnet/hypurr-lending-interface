@@ -94,13 +94,13 @@ import hyperEvmLogo from './hyper-evm-logo.png'
 import usdxl from './tokens/usdxl.svg'
 import susde from './tokens/susde.png'
 import hype from './tokens/hype.png'
-import catFaucet from './cat-faucet.svg'
+import faucetPurr from './faucet-purr.webp'
 import hypurrLogoText from './hypurr-logo-text.svg'
 import solvbtc from './tokens/solvBtc.png'
 import sttesth from './tokens/sttesth.svg'
 
 export const assets = {
-  catFaucet,
+  faucetPurr,
   hyperEvmLogo,
   surrf,
   hypurrLogo,

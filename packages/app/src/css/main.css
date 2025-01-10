@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --body-background: 171 61% 6%;
+    --body-background: 240 8% 5%;
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
@@ -19,15 +19,15 @@
 
     --border: 0 0% 100%;
     --input: 0 0% 100%;
-    --ring: 172 42% 56%;
+    --ring: 166 94% 81%;
 
-    --primary-bg: 172 42% 56%;
-    --primary-hover: 172 42% 46%;
+    --primary-bg: 166 94% 81%;
+    --primary-hover: 166 94% 71%;
     --primary: 166 94% 81%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 240 8% 5%;
 
-    --secondary: 172 42% 56%;
-    --secondary-foreground: 255 0% 100%;
+    --secondary: 166 94% 81%;
+    --secondary-foreground: 0 0% 100%;
 
     --accent: 0 0% 5%;
     --accent-foreground: 210 40% 98%;
@@ -43,14 +43,14 @@
     --radius: 1rem;
 
     --panel-border: rgba(255, 255, 255, 0.04);
-    --panel-bg: 0 0% 5%;
+    --panel-bg: 240 7% 8%;
     --input-background: 0 0% 100%;
     --icon-foreground: 106 118 146;
 
     --product-green: 93 189 176;
     --product-orange: 240 181 122;
     --product-blue: 95 190 177;
-    --product-red: 252 56 151;
+    --product-red: 248 116 189;
 
     --gradient-yellow: 252 229 114;
     --gradient-green: 161 252 231;
@@ -76,37 +76,6 @@
 
     --sec-green: 109 194 117;
   }
-
-  .dark {
-    --background: 171 61% 6%;
-    --foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-
-    --ring: 240 3.7% 15.9%;
-  }
 }
 
 @layer base {
@@ -121,33 +90,6 @@
     @apply slashed-zero;
   }
 
-  .bg-last-gradient {
-    background-image: radial-gradient(
-        circle at center,
-        hsl(20, 100%, 54%),
-        transparent
-      ),
-      radial-gradient(circle at center, rgb(43, 27, 218), transparent);
-    background-size:
-      689px 639px,
-      1276px 1276px;
-    background-position:
-      150px 100px,
-      center -170px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    filter: blur(120px);
-    opacity: 0.6;
-  }
-
-  .bg-last-noise {
-    opacity: 60%;
-    background-image: url('/backgrounds/noise.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
 
   .TooltipContent[data-side="bottom"] > span >svg {
     transform: translateY(100%);
@@ -157,6 +99,20 @@
 /* Friendly Captcha */
 .frc-captcha, .frc-container, .frc-button {
   width: 100% !important;
+}
+
+.frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
+  color: white !important;
+}
+
+.frc-captcha {
+  background-color: transparent !important;
+  border: none !important;
+  max-width: unset !important;
+}
+
+.frc-icon {
+  display: none;
 }
 
 .frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
@@ -186,18 +142,19 @@
 }
 
 .frc-button {
-  background-color: hsl(172 42% 56%) !important;
-  border-radius: 4px !important;
+  background-color: hsl(var(--primary-bg)) !important;
+  border-radius: 100px !important;
   padding: 7px 16px !important;
   font-weight: 600 !important;
   transition: background-color 0.2s ease-in-out !important;
   margin-bottom: 8px !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
+  color: hsl(var(--primary-foreground)) !important;
 }
 
 .frc-button:hover {
-  background-color: hsl(172 42% 46%) !important;
+  background-color: hsl(var(--primary-hover)) !important;
 }
 
 .frc-banner {
@@ -222,5 +179,5 @@
   transform: translate(-50%, 0);
   opacity: .2;
   transition: all 0.3s ease-in-out;
-  background-color: rgb(161, 252, 231);
+  background-color: hsl(var(--primary-bg));
 }

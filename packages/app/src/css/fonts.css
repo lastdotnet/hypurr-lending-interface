@@ -1,17 +1,8 @@
 @font-face {
-  font-family: 'Inter var';
+  font-family: 'Manrope';
   font-style: normal;
-  font-weight: 100 400 500 600 700 800 900;
+  font-weight: 100 900;
   font-display: block;
   font-named-instance: 'Regular';
-  src: url('../fonts/InterVariable.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-weight: 300 400 500 600 700;
-  font-display: block;
-  font-named-instance: 'Regular';
-  src: url('../fonts/Newsreader-Variable.ttf') format('truetype');
+  src: url('../fonts/Manrope-Variable.ttf') format('truetype');
 }

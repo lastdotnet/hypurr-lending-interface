@@ -9,6 +9,7 @@ export const WalletButton = forwardRef<HTMLButtonElement, ButtonProps>(({ classN
       ref={ref}
       variant="secondary"
       size="md"
+      rounded="full"
       className={cn('h-auto w-full justify-start gap-2 bg-white px-2 lg:h-10 lg:w-52', className)}
       data-testid="wallet-button"
       {...rest}
