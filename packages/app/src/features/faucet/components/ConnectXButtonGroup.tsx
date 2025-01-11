@@ -6,24 +6,21 @@ import { useSocialAccounts } from '@dynamic-labs/sdk-react-core'
 import { ProviderEnum } from '@dynamic-labs/types'
 import { buttonVariants } from '@/ui/atoms/button/Button'
 import { Button } from '@/ui/atoms/button/Button'
+import { twitterFollowUrl } from '@/config/consts'
+import { cn } from '@/ui/utils/style'
 
 const ConnectXButtonGroup = () => {
   const [following, setFollowing] = useState(false)
   const [followButtonClicked, setFollowButtonClicked] = useState(false)
   const [checkingIfFollowing, setCheckingIfFollowing] = useState(false)
+  const [checkingError, setCheckingError] = useState(false)
 
-  const {
-    error,
-    linkSocialAccount,
-    isProcessing,
-    isLinked,
-    // getLinkedAccountInformation
-  } = useSocialAccounts()
+  const { error, linkSocialAccount, isProcessing, isLinked, getLinkedAccountInformation } = useSocialAccounts()
   const { user } = useDynamicContext()
   const { authenticateUser } = useAuthenticateConnectedUser()
   const provider = ProviderEnum.Twitter as any
   const isXLinked = isLinked(provider)
-  // const connectedAccountInfo = getLinkedAccountInformation(provider)
+  const connectedAccountInfo = getLinkedAccountInformation(provider)
 
   const handleSignAndConnect = async () => {
     if (!user) {
@@ -34,17 +31,29 @@ const ConnectXButtonGroup = () => {
 
   // TODO: replace with actual API call
   const checkIfFollowing = useCallback(async () => {
-    setCheckingIfFollowing(true)
-    return new Promise<boolean>((resolve) => {
-      setTimeout(() => {
-        const isFollowing = false
-        // Math.random() < 0.5 // Randomly returns true or false
-        setFollowing(isFollowing)
-        resolve(isFollowing)
-        setCheckingIfFollowing(false)
-      }, 2000)
-    })
-  }, [])
+    if (!connectedAccountInfo?.username) {
+      return
+    }
+
+    try {
+      setCheckingIfFollowing(true)
+      setCheckingError(false)
+
+      const response = await fetch(`${twitterFollowUrl}/${connectedAccountInfo?.username}`)
+
+      if (!response.ok) {
+        throw new Error('Failed to mint tokens')
+      }
+
+      const data = (await response.json()) as { isFollowing: boolean }
+      setFollowing(data.isFollowing)
+    } catch (error) {
+      console.error('Error checking if following:', error)
+      setCheckingError(true)
+    } finally {
+      setCheckingIfFollowing(false)
+    }
+  }, [connectedAccountInfo?.username])
 
   // Automatically check if following when the user refocuses the window
   // after opening link to profile
@@ -81,7 +90,7 @@ const ConnectXButtonGroup = () => {
 
   if (!user || !isXLinked) {
     return (
-      <Button onClick={handleSignAndConnect} className="w-full">
+      <Button onClick={handleSignAndConnect} className="w-full" rounded="full">
         Sign and connect/follow on X - (2X HYPE boost)
       </Button>
     )
@@ -98,16 +107,20 @@ const ConnectXButtonGroup = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setFollowButtonClicked(true)}
-            className={buttonVariants({ variant: 'primary' })}
+            className={cn(buttonVariants({ variant: 'primary', rounded: 'full' }))}
           >
             Step 2. Follow @hypurrfi on X - (2X HYPE boost)
           </a>
-          <Button variant="text" onClick={checkIfFollowing} className="font-normal text-sm">
+          <button
+            onClick={checkIfFollowing}
+            className="mt-2 self-center p-1 font-normal text-primary text-sm hover:text-primary-hover"
+          >
             I'm already following
-          </Button>
+          </button>
         </div>
       )}
       {error && <p className="text-center text-red-500 text-sm">Error linking X account</p>}
+      {checkingError && <p className="text-center text-red-500 text-sm">Error checking if following on X</p>}
     </div>
   )
 }
