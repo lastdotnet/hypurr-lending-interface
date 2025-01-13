@@ -6,11 +6,12 @@ import { faucetUrl } from '@/config/consts'
 import { trackEvent } from '@/utils/fathom'
 import ConnectXButtonGroup from '../components/ConnectXButtonGroup'
 import FriendlyCaptcha from '../components/FriendlyCaptcha'
+import { Address } from 'viem'
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
 
-export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void }) {
+export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void }) {
   const { primaryWallet } = useDynamicContext()
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
@@ -55,7 +56,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
         throw new Error('Failed to mint tokens')
       }
 
-      const data = (await response.json()) as { success: boolean; txHash: string }
+      const data = (await response.json()) as { success: boolean; txHash: `0x${string}` }
 
       if (!data.success || !data.txHash) {
         throw new Error('Failed to mint tokens')

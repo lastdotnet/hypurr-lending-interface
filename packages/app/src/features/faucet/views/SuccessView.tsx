@@ -7,8 +7,9 @@ import { cn } from '@/ui/utils/style'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { HashLink } from 'react-router-hash-link'
+import { Address } from 'viem'
 
-export function SuccessView({ mintTx }: { mintTx: string }) {
+export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmount: string }) {
   const blockExplorerLink = useBlockExplorerLink(hyperTestnet.id)
   const { runAnimation } = useConfettiContext()
 
@@ -18,7 +19,7 @@ export function SuccessView({ mintTx }: { mintTx: string }) {
 
   return (
     <div className="flex flex-col">
-      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and 0.01 HYPE (testnet)</p>
+      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)</p>
       <HashLink
         className={cn(buttonVariants({ variant: 'primary', size: 'md', rounded: 'full' }), 'w-full')}
         to={`${paths.dashboard}#your-wallet`}
