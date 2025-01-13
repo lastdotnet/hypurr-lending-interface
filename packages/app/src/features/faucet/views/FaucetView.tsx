@@ -13,6 +13,7 @@ const STORAGE_KEY = 'lastFaucetMint' as const
 
 export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void }) {
   const { primaryWallet } = useDynamicContext()
+  const [handle, setHandle] = useState<string | null>(null)
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
   const [mintPending, setMintPending] = useState(false)
@@ -46,6 +47,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
         body: JSON.stringify({
           captchaToken: captchaSolution,
           walletAddress: primaryWallet.address,
+          handle,
         }),
       })
 
@@ -92,7 +94,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
 
   return (
     <div className="flex flex-col gap-4">
-      <ConnectXButtonGroup />
+      <ConnectXButtonGroup setHandle={setHandle} />
 
       {(() => {
         switch (true) {

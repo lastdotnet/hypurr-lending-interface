@@ -9,7 +9,7 @@ import { Button } from '@/ui/atoms/button/Button'
 import { twitterFollowUrl } from '@/config/consts'
 import { cn } from '@/ui/utils/style'
 
-const ConnectXButtonGroup = () => {
+const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => void }) => {
   const [following, setFollowing] = useState(false)
   const [followButtonClicked, setFollowButtonClicked] = useState(false)
   const [checkingIfFollowing, setCheckingIfFollowing] = useState(false)
@@ -29,7 +29,6 @@ const ConnectXButtonGroup = () => {
     linkSocialAccount(provider)
   }
 
-  // TODO: replace with actual API call
   const checkIfFollowing = useCallback(async () => {
     if (!connectedAccountInfo?.username) {
       return
@@ -46,14 +45,18 @@ const ConnectXButtonGroup = () => {
       }
 
       const data = (await response.json()) as { isFollowing: boolean }
+
       setFollowing(data.isFollowing)
+      if (data.isFollowing) {
+        setHandle(connectedAccountInfo.username)
+      }
     } catch (error) {
       console.error('Error checking if following:', error)
       setCheckingError(true)
     } finally {
       setCheckingIfFollowing(false)
     }
-  }, [connectedAccountInfo?.username])
+  }, [connectedAccountInfo?.username, setHandle])
 
   // Automatically check if following when the user refocuses the window
   // after opening link to profile
