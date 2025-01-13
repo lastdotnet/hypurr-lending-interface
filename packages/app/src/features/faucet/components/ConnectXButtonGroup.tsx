@@ -17,10 +17,11 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
 
   const { error, linkSocialAccount, isProcessing, isLinked, getLinkedAccountInformation } = useSocialAccounts()
   const { user } = useDynamicContext()
-  const { authenticateUser } = useAuthenticateConnectedUser()
+  const { authenticateUser, isAuthenticating } = useAuthenticateConnectedUser()
   const provider = ProviderEnum.Twitter as any
   const isXLinked = isLinked(provider)
   const connectedAccountInfo = getLinkedAccountInformation(provider)
+  const verificationPending = isAuthenticating || isProcessing
 
   const handleSignAndConnect = async () => {
     if (!user) {
@@ -61,11 +62,11 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   // Automatically check if following when the user refocuses the window
   // after opening link to profile
   const handleRefocus = useCallback(() => {
-    if (!following && isXLinked && followButtonClicked) {
+    if (!following && isXLinked && followButtonClicked && !verificationPending) {
       checkIfFollowing()
       setFollowButtonClicked(false)
     }
-  }, [checkIfFollowing, following, isXLinked, followButtonClicked])
+  }, [checkIfFollowing, following, isXLinked, followButtonClicked, verificationPending])
 
   useEffect(() => {
     window.addEventListener('focus', handleRefocus)
@@ -76,10 +77,10 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
 
   // Automatically check if following when the user connects their X account
   useEffect(() => {
-    if (!following && isXLinked && !isProcessing) {
+    if (!following && isXLinked && !verificationPending) {
       checkIfFollowing()
     }
-  }, [checkIfFollowing, following, isXLinked, isProcessing])
+  }, [checkIfFollowing, following, isXLinked, verificationPending])
 
   useEffect(() => {
     if (error) {
@@ -101,7 +102,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
 
   return (
     <div>
-      {checkingIfFollowing || isProcessing ? (
+      {checkingIfFollowing || verificationPending ? (
         <p className="text-center text-sm italic opacity-80">Loading...</p>
       ) : (
         <div className="flex flex-col">
