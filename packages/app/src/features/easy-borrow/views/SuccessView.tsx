@@ -73,7 +73,7 @@ export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti, r
             )}
 
             <div className="mt-8 flex gap-4">
-              <Button className="flex-1 bg-white/10" onClick={resetForm}>
+              <Button className="flex-1 bg-white/10 text-primary" onClick={resetForm} rounded="full">
                 Close
               </Button>
               <LinkButton className="flex-1" to={paths.dashboard} rounded="full">
