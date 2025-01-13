@@ -39,6 +39,10 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
       setMintPending(true)
       setMintError(null)
 
+      if (handle) {
+        trackEvent('claim_with_x_handle')
+      }
+
       const response = await fetch(faucetUrl, {
         method: 'POST',
         headers: {

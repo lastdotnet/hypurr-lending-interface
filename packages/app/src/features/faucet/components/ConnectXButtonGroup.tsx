@@ -8,6 +8,7 @@ import { buttonVariants } from '@/ui/atoms/button/Button'
 import { Button } from '@/ui/atoms/button/Button'
 import { twitterFollowUrl } from '@/config/consts'
 import { cn } from '@/ui/utils/style'
+import { trackEvent } from '@/utils/fathom'
 
 const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => void }) => {
   const [following, setFollowing] = useState(false)
@@ -28,6 +29,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
       await authenticateUser()
     }
     linkSocialAccount(provider)
+    trackEvent('initiate_sign_and_connect_x')
   }
 
   const checkIfFollowing = useCallback(async () => {
