@@ -91,7 +91,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   }, [error])
 
   if (following && isXLinked) {
-    return <p className="rounded-lg bg-white/4 p-4 text-center font-medium">You are earning 2X HYPE!</p>
+    return <p className="rounded-lg bg-white/4 p-4 text-center font-medium">You are claiming 2X testnet HYPE!</p>
   }
 
   if (!user || !isXLinked) {
