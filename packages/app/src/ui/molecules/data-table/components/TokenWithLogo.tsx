@@ -3,6 +3,7 @@ import { Token } from '@/domain/types/Token'
 import { ColorFilter } from '@/ui/atoms/color-filter/ColorFilter'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { cn } from '@/ui/utils/style'
+import { Info } from '@/ui/molecules/info/Info'
 
 import { FrozenPill } from '../../frozen-pill/FrozenPill'
 import { PausedPill } from '../../paused-pill/PausedPill'
@@ -10,9 +11,10 @@ import { PausedPill } from '../../paused-pill/PausedPill'
 interface TokenWithLogoProps {
   token: Token
   reserveStatus: ReserveStatus
+  isCombinedBalance?: boolean
 }
 
-export function TokenWithLogo({ token, reserveStatus }: TokenWithLogoProps) {
+export function TokenWithLogo({ token, reserveStatus, isCombinedBalance }: TokenWithLogoProps) {
   const isPaused = reserveStatus === 'paused'
   const isFrozen = reserveStatus === 'frozen'
 
@@ -26,6 +28,7 @@ export function TokenWithLogo({ token, reserveStatus }: TokenWithLogoProps) {
       <div className={cn(isPaused && 'text-basics-red')}>{token.symbol}</div>
       {isFrozen && <FrozenPill />}
       {isPaused && <PausedPill />}
+      {isCombinedBalance && <Info>WHYPE and HYPE balances are combined.</Info>}
     </div>
   )
 }
