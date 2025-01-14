@@ -132,7 +132,7 @@ function makeBaseWalletOverview({ reserve, marketInfo, walletInfo }: MakeWalletO
       unitPriceUsd: position.reserve.token.unitPriceUsd,
       decimals: position.reserve.token.decimals,
       usageAsCollateralEnabledOnUser: position.reserve.usageAsCollateralEnabledOnUser,
-      eModeCategories: position.reserve.eModes.map((e) => e.category),
+      eModeCategory: position.reserve.eModeCategory,
     },
   })
 
