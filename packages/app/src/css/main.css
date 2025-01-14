@@ -97,7 +97,6 @@
 }
 
 /* Friendly Captcha */
-
 .frc-captcha, .frc-container, .frc-button {
   width: 100% !important;
 }
@@ -118,6 +117,16 @@
 
 .frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
   color: white !important;
+}
+
+.frc-captcha {
+  background-color: transparent !important;
+  border: none !important;
+  max-width: unset !important;
+}
+
+.frc-icon {
+  display: none;
 }
 
 .frc-content {

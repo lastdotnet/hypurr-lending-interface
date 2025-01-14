@@ -57,6 +57,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/claim-with-gas/, ''),
       },
+      '/verify-follow': {
+        target: 'https://faucet-ashy.vercel.app/verify-follow/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/verify-follow/, ''),
+      },
     },
   },
 

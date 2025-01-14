@@ -1,54 +1,19 @@
 import { Button } from '@/ui/atoms/button/Button'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { WidgetInstance } from 'friendly-challenge'
+import { useEffect, useState } from 'react'
 import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
 import { faucetUrl } from '@/config/consts'
 import { trackEvent } from '@/utils/fathom'
-
-function FriendlyCaptcha({
-  setCaptchaSolution,
-}: {
-  setCaptchaSolution: (solution: string) => void
-}) {
-  const container = useRef<HTMLDivElement>(null)
-  const widget = useRef<WidgetInstance | null>(null)
-
-  const doneCallback = useCallback(
-    (solution: string) => {
-      setCaptchaSolution(solution)
-    },
-    [setCaptchaSolution],
-  )
-
-  useEffect(() => {
-    if (!widget.current && container.current) {
-      widget.current = new WidgetInstance(container.current, {
-        startMode: 'none',
-        doneCallback,
-      })
-    }
-
-    return () => {
-      if (widget.current !== undefined) widget.current?.reset()
-    }
-  }, [doneCallback])
-
-  return (
-    <div
-      ref={container}
-      className="frc-captcha dark"
-      data-sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY}
-      data-theme="dark"
-    />
-  )
-}
+import ConnectXButtonGroup from '../components/ConnectXButtonGroup'
+import FriendlyCaptcha from '../components/FriendlyCaptcha'
+import { Address } from 'viem'
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
 
-export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void }) {
+export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void }) {
   const { primaryWallet } = useDynamicContext()
+  const [handle, setHandle] = useState<string | null>(null)
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
   const [mintPending, setMintPending] = useState(false)
@@ -74,6 +39,10 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
       setMintPending(true)
       setMintError(null)
 
+      if (handle) {
+        trackEvent('claim_with_x_handle')
+      }
+
       const response = await fetch(faucetUrl, {
         method: 'POST',
         headers: {
@@ -82,6 +51,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
         body: JSON.stringify({
           captchaToken: captchaSolution,
           walletAddress: primaryWallet.address,
+          handle,
         }),
       })
 
@@ -92,7 +62,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
         throw new Error('Failed to mint tokens')
       }
 
-      const data = (await response.json()) as { success: boolean; txHash: string }
+      const data = (await response.json()) as { success: boolean; txHash: `0x${string}` }
 
       if (!data.success || !data.txHash) {
         throw new Error('Failed to mint tokens')
@@ -126,23 +96,28 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: string) => void 
     )
   }
 
-  if (!captchaSolution) {
-    return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
-  }
-
-  if (mintPending) {
-    return (
-      <div className="-mt-4 -mb-4 flex items-center justify-center">
-        <CatSpinner />
-      </div>
-    )
-  }
-
   return (
-    <div className="w-full">
-      <Button className="w-full" disabled={mintPending} onClick={mint} rounded="full">
-        Claim Faucet
-      </Button>
+    <div className="flex flex-col gap-4">
+      <ConnectXButtonGroup setHandle={setHandle} />
+
+      {(() => {
+        switch (true) {
+          case !captchaSolution:
+            return <FriendlyCaptcha setCaptchaSolution={setCaptchaSolution} />
+          case mintPending:
+            return (
+              <div className="-mt-4 -mb-4 flex items-center justify-center">
+                <CatSpinner />
+              </div>
+            )
+          default:
+            return (
+              <Button className="w-full" rounded="full" onClick={mint}>
+                Claim Faucet
+              </Button>
+            )
+        }
+      })()}
 
       {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
     </div>
