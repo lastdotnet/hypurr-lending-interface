@@ -139,7 +139,10 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
     const rawUserReserves = userReserves.map((r) => ({
       ...r,
       scaledATokenBalance: r.scaledATokenBalance.toString(),
+      stableBorrowRate: r.stableBorrowRate.toString(),
       scaledVariableDebt: r.scaledVariableDebt.toString(),
+      principalStableDebt: r.principalStableDebt.toString(),
+      stableBorrowLastUpdateTimestamp: Number(r.stableBorrowLastUpdateTimestamp),
     }))
 
     const reserveIncentives = reservesIncentiveData.map((r) => ({
@@ -147,6 +150,17 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       aIncentiveData: {
         ...r.aIncentiveData,
         rewardsTokenInformation: r.aIncentiveData.rewardsTokenInformation.map((rawRewardInfo) => ({
+          ...rawRewardInfo,
+          emissionPerSecond: rawRewardInfo.emissionPerSecond.toString(),
+          incentivesLastUpdateTimestamp: Number(rawRewardInfo.incentivesLastUpdateTimestamp),
+          tokenIncentivesIndex: rawRewardInfo.tokenIncentivesIndex.toString(),
+          emissionEndTimestamp: Number(rawRewardInfo.emissionEndTimestamp),
+          rewardPriceFeed: rawRewardInfo.rewardPriceFeed.toString(),
+        })),
+      },
+      sIncentiveData: {
+        ...r.sIncentiveData,
+        rewardsTokenInformation: r.sIncentiveData.rewardsTokenInformation.map((rawRewardInfo) => ({
           ...rawRewardInfo,
           emissionPerSecond: rawRewardInfo.emissionPerSecond.toString(),
           incentivesLastUpdateTimestamp: Number(rawRewardInfo.incentivesLastUpdateTimestamp),
@@ -179,6 +193,15 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
           rewardPriceFeed: rawRewardInfo.rewardPriceFeed.toString(),
         })),
       },
+      sTokenIncentivesUserData: {
+        ...r.sTokenIncentivesUserData,
+        userRewardsInformation: r.sTokenIncentivesUserData.userRewardsInformation.map((rawRewardInfo) => ({
+          ...rawRewardInfo,
+          userUnclaimedRewards: rawRewardInfo.userUnclaimedRewards.toString(),
+          tokenIncentivesUserIndex: rawRewardInfo.tokenIncentivesUserIndex.toString(),
+          rewardPriceFeed: rawRewardInfo.rewardPriceFeed.toString(),
+        })),
+      },
       vTokenIncentivesUserData: {
         ...r.vTokenIncentivesUserData,
         userRewardsInformation: r.vTokenIncentivesUserData.userRewardsInformation.map((rawRewardInfo) => ({
@@ -195,20 +218,23 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       currentTimestamp,
       marketReferencePriceInUsd: baseCurrency.marketReferenceCurrencyPriceInUsd,
       marketReferenceCurrencyDecimals: baseCurrency.marketReferenceCurrencyDecimals,
-      reserves: reserves.map((r, i) => ({
+      reserves: reserves.map((r) => ({
         ...r,
         id: `${chainId}-${r.underlyingAsset}-${lendingPoolAddressProvider}`,
-        originalId: i,
         decimals: Number(r.decimals),
         reserveFactor: r.reserveFactor.toString(),
         baseLTVasCollateral: r.baseLTVasCollateral.toString(),
+        averageStableRate: r.averageStableRate.toString(),
+        stableDebtLastUpdateTimestamp: Number(r.stableDebtLastUpdateTimestamp),
         liquidityIndex: r.liquidityIndex.toString(),
         reserveLiquidationThreshold: r.reserveLiquidationThreshold.toString(),
         reserveLiquidationBonus: r.reserveLiquidationBonus.toString(),
         variableBorrowIndex: r.variableBorrowIndex.toString(),
         variableBorrowRate: r.variableBorrowRate.toString(),
         availableLiquidity: r.availableLiquidity.toString(),
+        stableBorrowRate: r.stableBorrowRate.toString(),
         liquidityRate: r.liquidityRate.toString(),
+        totalPrincipalStableDebt: r.totalPrincipalStableDebt.toString(),
         totalScaledVariableDebt: r.totalScaledVariableDebt.toString(),
         borrowCap: r.borrowCap.toString(),
         supplyCap: r.supplyCap.toString(),
@@ -219,10 +245,12 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
         priceInMarketReferenceCurrency: r.priceInMarketReferenceCurrency.toString(),
         variableRateSlope1: r.variableRateSlope1.toString(),
         variableRateSlope2: r.variableRateSlope2.toString(),
+        stableRateSlope1: r.stableRateSlope1.toString(),
+        stableRateSlope2: r.stableRateSlope2.toString(),
+        baseStableBorrowRate: r.baseStableBorrowRate.toString(),
         baseVariableBorrowRate: r.baseVariableBorrowRate.toString(),
         optimalUsageRatio: r.optimalUsageRatio.toString(),
         accruedToTreasury: r.accruedToTreasury.toString(),
-        virtualUnderlyingBalance: r.virtualUnderlyingBalance.toString(),
       })),
     })
 
