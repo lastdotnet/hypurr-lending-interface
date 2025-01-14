@@ -35,7 +35,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
           columnDefinition={{
             symbol: {
               header: 'Assets',
-              renderCell: ({ token, reserveStatus }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} />,
+              renderCell: ({ token, reserveStatus, isCombinedBalance }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />,
             },
             inWallet: {
               header: 'In Wallet',

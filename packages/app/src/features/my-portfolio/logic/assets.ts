@@ -13,7 +13,8 @@ export interface Deposit {
   balance: NormalizedUnitNumber
   deposit: NormalizedUnitNumber
   supplyAPY: Percentage | undefined
-  isUsedAsCollateral: boolean
+  isUsedAsCollateral: boolean,
+  isCombinedBalance?: boolean
 }
 
 export interface Borrow {
@@ -60,11 +61,13 @@ function transformNativeAssetDeposit({
 
   return {
     ...deposit,
+    token: marketInfo.findTokenBySymbol(nativeAssetInfo.nativeAssetSymbol)!,
     balance: NormalizedUnitNumber(
       walletInfo
         .findWalletBalanceForToken(position.reserve.token)
         .plus(walletInfo.findWalletBalanceForSymbol(nativeAssetInfo.nativeAssetSymbol)),
     ),
+    isCombinedBalance: true
   }
 }
 
