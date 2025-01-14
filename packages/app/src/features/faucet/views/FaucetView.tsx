@@ -7,12 +7,15 @@ import { trackEvent } from '@/utils/fathom'
 import ConnectXButtonGroup from '../components/ConnectXButtonGroup'
 import FriendlyCaptcha from '../components/FriendlyCaptcha'
 import { Address } from 'viem'
+import { marketBalancesQueryKey } from '@/domain/wallet/marketBalances'
+import { useQueryClient } from '@tanstack/react-query'
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
 
 export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void }) {
-  const { primaryWallet } = useDynamicContext()
+  const queryClient = useQueryClient()
+  const { primaryWallet, network } = useDynamicContext()
   const [handle, setHandle] = useState<string | null>(null)
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
@@ -73,6 +76,13 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
       localStorage.setItem(STORAGE_KEY, now.toString())
       setLastMintTime(now)
       setMintTx(data.txHash)
+
+      queryClient.invalidateQueries({
+        queryKey: marketBalancesQueryKey({
+          account: primaryWallet.address as Address,
+          chainId: Number(network),
+        }),
+      })
     } catch (error) {
       console.error(error)
       trackEvent('faucet_claim_error')
