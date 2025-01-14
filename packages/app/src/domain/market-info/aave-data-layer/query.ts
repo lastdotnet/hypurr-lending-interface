@@ -102,12 +102,6 @@ function aaveDataLayerQueryFn({
           functionName: 'getUserReservesIncentivesData',
           args: [lendingPoolAddressProvider, account ?? uiPoolDataProvider],
         },
-        {
-          address: uiPoolDataProvider,
-          abi: uiPoolDataProviderAbi,
-          functionName: 'getEModes',
-          args: [lendingPoolAddressProvider],
-        },
       ],
     })
 
@@ -125,13 +119,12 @@ export interface AaveDataLayerSelectFnParams {
 
 export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnParams = {}) {
   return (data: AaveDataLayerQueryReturnType) => {
-    const { contractData } = data
+    const { contractData, chainId, lendingPoolAddressProvider } = data
     const [
       [reserves, baseCurrencyInfo],
       reservesIncentiveData,
       [userReserves, userEmodeCategoryId],
       userReserveIncentivesData,
-      eModes,
     ] = contractData
 
     const currentTimestamp = Math.floor(Date.now() / 1000) + (timeAdvance ?? 0)
@@ -197,27 +190,14 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       },
     }))
 
-    const eModeData = eModes.map((e) => ({
-      ...e,
-      eMode: {
-        ...e.eMode,
-        ltv: e.eMode.ltv.toString(),
-        liquidationThreshold: e.eMode.liquidationThreshold.toString(),
-        liquidationBonus: e.eMode.liquidationBonus.toString(),
-        collateralBitmap: e.eMode.collateralBitmap.toString(2).padStart(256, '0'),
-        borrowableBitmap: e.eMode.borrowableBitmap.toString(2).padStart(256, '0'),
-      },
-    }))
-
     const formattedReserves = formatReservesAndIncentives({
       reserveIncentives,
       currentTimestamp,
       marketReferencePriceInUsd: baseCurrency.marketReferenceCurrencyPriceInUsd,
       marketReferenceCurrencyDecimals: baseCurrency.marketReferenceCurrencyDecimals,
-      eModes: eModeData,
       reserves: reserves.map((r, i) => ({
         ...r,
-        id: i.toString(),
+        id: `${chainId}-${r.underlyingAsset}-${lendingPoolAddressProvider}`,
         originalId: i,
         decimals: Number(r.decimals),
         reserveFactor: r.reserveFactor.toString(),

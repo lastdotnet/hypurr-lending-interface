@@ -59,6 +59,6 @@ export function makeDaiMarketOverview({ reserve, marketInfo, D3MInfo }: MakeDaiM
         lastUpdateBlock: D3MInfo.lastUpdateBlock,
       },
     },
-    eModes: baseOverview.eModes,
+    eMode: baseOverview.eMode,
   }
 }

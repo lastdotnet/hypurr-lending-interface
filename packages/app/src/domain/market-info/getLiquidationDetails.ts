@@ -37,19 +37,13 @@ export function getLiquidationDetails({
   }
   const borrowInUSD = borrows[0]!.value.multipliedBy(marketInfo.findOneTokenBySymbol(defaultAssetToBorrow).unitPriceUsd)
 
-  const collateralEModeIds = collaterals.flatMap((collateral) => {
-    const reserve = marketInfo.findOneReserveBySymbol(collateral.token.symbol)
-    return reserve.eModes.length > 0 ? reserve.eModes.map((e) => e.category.id) : [0]
-  })
-
-  const allCollateralsETHCorrelated =
-    collateralEModeIds.length > 0 &&
-    collateralEModeIds.every(
-      (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
-    )
-
-  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WHYPE'))?.unitPriceUsd
-
+  const collateralEModeIds = collaterals.map(
+    (collateral) => marketInfo.findOneReserveBySymbol(collateral.token.symbol).eModes[0]?.category.id,
+  )
+  const allCollateralsETHCorrelated = collateralEModeIds.every(
+    (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
+  )
+  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WETH'))?.unitPriceUsd
   if (allCollateralsETHCorrelated && WETHPrice) {
     const totalCollateralInWETH = collaterals.reduce((sum, collateral) => {
       const collateralPrice = marketInfo.findOneTokenBySymbol(collateral.token.symbol).unitPriceUsd

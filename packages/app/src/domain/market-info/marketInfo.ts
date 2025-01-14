@@ -284,7 +284,6 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
         borrowEligibilityStatus,
 
         isIsolated: r.reserve.isIsolated,
-
         eModes:
           r.reserve.eModes?.map((eMode) => ({
             category: eModeCategories[eMode.id] ?? raise(`EMode category ${eMode.id} not found`),
