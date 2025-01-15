@@ -1,8 +1,4 @@
 import { Typography } from '@/ui/atoms/typography/Typography'
-import { BorrowDetails } from '../logic/useEasyBorrow'
-export interface BorrowRateBannerProps {
-  assetsToBorrowMeta: BorrowDetails
-}
 
 export function BorrowRateBanner() {
   return (
