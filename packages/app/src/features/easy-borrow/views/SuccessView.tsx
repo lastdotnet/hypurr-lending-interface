@@ -10,19 +10,16 @@ import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
-import { UsdsUpgradeAlert } from '../components/UsdsUpgradeAlert'
-import { BorrowDetails } from '../logic/useEasyBorrow'
 import { useEffect } from 'react'
 
 export interface SuccessViewProps {
   deposited: TokenWithValue[]
   borrowed: TokenWithValue[]
-  borrowDetails: BorrowDetails
   runConfetti: boolean
   resetForm: () => void
 }
 
-export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti, resetForm }: SuccessViewProps) {
+export function SuccessView({ deposited, borrowed, runConfetti, resetForm }: SuccessViewProps) {
   const desktop = useBreakpoint('md')
   const { runAnimation } = useConfettiContext()
 
@@ -67,10 +64,6 @@ export function SuccessView({ deposited, borrowed, borrowDetails, runConfetti, r
                 ))}
               </div>
             </div>
-
-            {borrowDetails.isUpgradingToUsds && (
-              <UsdsUpgradeAlert borrowDetails={borrowDetails} variant="success" className="mt-2" />
-            )}
 
             <div className="mt-8 flex gap-4">
               <Button className="flex-1 bg-white/10 text-primary" onClick={resetForm} rounded="full">

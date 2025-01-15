@@ -12,7 +12,6 @@ import { updatePositionSummary } from '@/domain/market-info/updatePositionSummar
 import { useMarketInfo } from '@/domain/market-info/useMarketInfo'
 import { useOpenDialog } from '@/domain/state/dialogs'
 import { Percentage } from '@/domain/types/NumericValues'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { useMarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { useTokensInfo } from '@/domain/wallet/useTokens/useTokensInfo'
 import { InjectedActionsContext, Objective } from '@/features/actions/logic/types'
@@ -39,9 +38,6 @@ import { useUpgradeOptions } from './useUpgradeOptions'
 
 export interface BorrowDetails {
   borrowRate: Percentage
-  dai: TokenSymbol
-  usds?: TokenSymbol
-  isUpgradingToUsds: boolean
 }
 
 export interface UseEasyBorrowResults {
@@ -73,7 +69,7 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   const { aaveData } = useAaveDataLayer({ chainId })
   const { marketInfo } = useMarketInfo({ chainId })
   const { marketInfo: marketInfoIn1Epoch } = useMarketInfo({ timeAdvance: EPOCH_LENGTH, chainId })
-  const { extraTokens, daiSymbol, usdsSymbol, markets } = getChainConfigEntry(marketInfo.chainId)
+  const { extraTokens, daiSymbol, markets } = getChainConfigEntry(marketInfo.chainId)
   const { nativeAssetInfo, defaultAssetToBorrow } = markets ?? {}
   assert(
     nativeAssetInfo && defaultAssetToBorrow && daiSymbol,
@@ -187,10 +183,7 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   })
 
   const borrowDetails = {
-    dai: daiSymbol,
-    usds: usdsSymbol,
     borrowRate: marketInfo.findOneReserveBySymbol(defaultAssetToBorrow).variableBorrowApy ?? raise('No borrow rate'),
-    isUpgradingToUsds: formValues.borrows[0]?.token.symbol === usdsSymbol,
   }
 
   // biome-ignore lint/correctness/useExhaustiveDependencies:

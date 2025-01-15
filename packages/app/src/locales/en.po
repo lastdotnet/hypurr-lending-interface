@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:50
+#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
 #: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
 msgid "Borrow"
 msgstr ""
