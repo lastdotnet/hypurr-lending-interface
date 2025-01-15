@@ -28,7 +28,6 @@ export function makeWalletOverview({
   const overview = applyTransformers({ reserve, marketInfo, walletInfo, connectedChainId, nativeAssetInfo })([
     makeGuestModeOverview,
     makeChainMismatchOverview,
-    makeDaiOverview,
     makeWalletNativeAssetOverview,
     makeBaseWalletOverview,
   ])
@@ -155,29 +154,6 @@ function makeBaseWalletOverview({ reserve, marketInfo, walletInfo }: MakeWalletO
         available: maxWithdrawValue,
       },
     }),
-  }
-}
-
-function makeDaiOverview({ reserve, marketInfo, ...rest }: MakeWalletOverviewParams): WalletOverview | undefined {
-  if (reserve.token.symbol !== marketInfo.DAI.symbol) {
-    return undefined
-  }
-
-  const baseOverview = makeBaseWalletOverview({ reserve, marketInfo, ...rest })
-  const sDaiReserve = marketInfo.findOneReserveByToken(marketInfo.sDAI)
-  const sDaiOverview = makeBaseWalletOverview({ reserve: sDaiReserve, marketInfo, ...rest })
-
-  return {
-    ...baseOverview,
-    lend:
-      import.meta.env.VITE_FEATURE_DISABLE_DAI_LEND !== '1'
-        ? {
-            ...baseOverview.deposit,
-          }
-        : undefined,
-    deposit: {
-      ...sDaiOverview.deposit,
-    },
   }
 }
 

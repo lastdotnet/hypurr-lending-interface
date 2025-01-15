@@ -10,7 +10,7 @@ export interface MarketStats {
   totalBorrowsUSD: NormalizedUnitNumber
 }
 
-export function aggregateStats(marketInfo: MarketInfo, D3MInfo: D3MInfo | undefined): MarketStats {
+export function aggregateStats(marketInfo: MarketInfo, _D3MInfo: D3MInfo | undefined): MarketStats {
   const aggregatedValues = marketInfo.reserves.reduce(
     (acc, reserve) => {
       acc.totalDebtUSD = acc.totalDebtUSD.plus(reserve.totalDebtUSD)
@@ -23,15 +23,15 @@ export function aggregateStats(marketInfo: MarketInfo, D3MInfo: D3MInfo | undefi
     },
   )
   const totalAvailableUSD = aggregatedValues.totalLiquidityUSD.minus(aggregatedValues.totalDebtUSD)
-  const daiReserve = marketInfo.findReserveByToken(marketInfo.DAI)
-  const totalValueLockedUSD =
-    D3MInfo && daiReserve
-      ? NormalizedUnitNumber(totalAvailableUSD.minus(D3MInfo.D3MCurrentDebtUSD.minus(daiReserve.totalVariableDebtUSD)))
-      : undefined
+  // const daiReserve = marketInfo.findReserveByToken(marketInfo.DAI)
+  // const totalValueLockedUSD =
+  //   D3MInfo && daiReserve
+  //     ? NormalizedUnitNumber(totalAvailableUSD.minus(D3MInfo.D3MCurrentDebtUSD.minus(daiReserve.totalVariableDebtUSD)))
+  //     : undefined
 
   return {
     totalMarketSizeUSD: NormalizedUnitNumber(aggregatedValues.totalLiquidityUSD),
-    totalValueLockedUSD,
+    totalValueLockedUSD: undefined,
     totalAvailableUSD: NormalizedUnitNumber(totalAvailableUSD),
     totalBorrowsUSD: NormalizedUnitNumber(aggregatedValues.totalDebtUSD),
   }

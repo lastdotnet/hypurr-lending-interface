@@ -10,21 +10,15 @@ import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
 
 const commonTokenSymbolToReplacedName = {
-  [TokenSymbol('DAI')]: { name: 'DAI Stablecoin', symbol: TokenSymbol('DAI') },
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },
-  [TokenSymbol('wstETH')]: { name: 'Lido Staked ETH', symbol: TokenSymbol('wstETH') },
-  [TokenSymbol('rETH')]: { name: 'Rocket Pool Staked ETH', symbol: TokenSymbol('rETH') },
-  [TokenSymbol('GNO')]: { name: 'Gnosis Token', symbol: TokenSymbol('GNO') },
-  [TokenSymbol('WETH')]: { name: 'Ethereum', symbol: TokenSymbol('ETH') },
-  [TokenSymbol('weETH')]: { name: 'Ether.fi Staked ETH', symbol: TokenSymbol('weETH') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
   [hyperTestnet.id]: {
     originChainId: hyperTestnet.id,
-    daiSymbol: TokenSymbol('USDC'),
-    sdaiSymbol: TokenSymbol('USDC'),
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
     usdsSymbol: undefined,
     susdsSymbol: undefined,
     psmStables: [TokenSymbol('USDC'), TokenSymbol('sUSDe'), TokenSymbol('USDXL')],
