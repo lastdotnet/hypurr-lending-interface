@@ -34,7 +34,6 @@ import { EasyBorrowFormSchema, getEasyBorrowFormValidator } from './form/validat
 import { ExistingPosition, PageState, PageStatus } from './types'
 import { useCreateObjectives } from './useCreateObjectives'
 import { useLiquidationDetails } from './useLiquidationDetails'
-import { useUpgradeOptions } from './useUpgradeOptions'
 
 export interface BorrowDetails {
   borrowRate: Percentage
@@ -69,16 +68,11 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   const { aaveData } = useAaveDataLayer({ chainId })
   const { marketInfo } = useMarketInfo({ chainId })
   const { marketInfo: marketInfoIn1Epoch } = useMarketInfo({ timeAdvance: EPOCH_LENGTH, chainId })
-  const { extraTokens, daiSymbol, markets } = getChainConfigEntry(marketInfo.chainId)
+  const { extraTokens, markets } = getChainConfigEntry(marketInfo.chainId)
   const { nativeAssetInfo, defaultAssetToBorrow } = markets ?? {}
-  assert(
-    nativeAssetInfo && defaultAssetToBorrow && daiSymbol,
-    'Markets config and dai symbol are required for easy borrow',
-  )
+  assert(nativeAssetInfo && defaultAssetToBorrow, 'Markets config and dai symbol are required for easy borrow')
   const { tokensInfo } = useTokensInfo({ tokens: extraTokens, chainId })
   const walletInfo = useMarketWalletInfo({ chainId })
-
-  const upgradeOptions = useUpgradeOptions({ chainId, daiSymbol })
 
   const [pageStatus, setPageStatus] = useState<PageState>('form')
   const healthFactorPanelRef = useRef<HTMLDivElement>(null)
@@ -108,7 +102,7 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   )
 
   const depositableAssets = sortByDecreasingBalances(getDepositableAssets(userPositions, walletInfo))
-  const borrowableAssets = getBorrowableAssets(marketInfo.reserves, walletInfo, upgradeOptions)
+  const borrowableAssets = getBorrowableAssets(marketInfo.reserves, walletInfo)
   const formAssets = [...depositableAssets, ...borrowableAssets]
 
   assert(depositableAssets.length > 0, 'No depositable assets')
@@ -121,7 +115,6 @@ export function useEasyBorrow(): UseEasyBorrowResults {
         marketInfo,
         aaveData,
         formAssets,
-        upgradeOptions,
         guestMode,
         alreadyDeposited,
         nativeAssetInfo,
@@ -159,7 +152,6 @@ export function useEasyBorrow(): UseEasyBorrowResults {
   const formValuesAsUnderlyingReserves = mapFormTokensToReserves({
     formValues,
     marketInfo,
-    upgradeOptions,
   })
   const updatedUserSummary = useConditionalFreeze(
     updatePositionSummary({
