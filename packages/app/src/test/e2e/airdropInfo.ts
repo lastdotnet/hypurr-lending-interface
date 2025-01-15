@@ -30,7 +30,8 @@ function getMockResponse(shouldFail?: boolean, noAirdrop?: boolean) {
 }
 
 const airdropApi = {
-  endpoint: 'https://spark-api.blockanalitica.com/api/airdrop/',
+  // @TODO: add url
+  endpoint: '',
   response: {
     token_reward: '7467547',
     token_v1_reward: '7467413',
