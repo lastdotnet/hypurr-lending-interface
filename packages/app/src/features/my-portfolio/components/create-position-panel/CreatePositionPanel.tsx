@@ -1,12 +1,13 @@
 import { paths } from '@/config/paths'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { getTokenImage } from '@/ui/assets'
-import { LinkButton } from '@/ui/atoms/button/Button'
+import { buttonVariants, LinkButton } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
+import { cn } from '@/ui/utils/style'
 
-const TOKEN_ICON_PATHS = ['DAI', 'ETH', 'USDC', 'WBTC'].map(TokenSymbol).map(getTokenImage)
+const TOKEN_ICON_PATHS = ['HYPE', 'USDC', 'SolvBTC', 'sUSDe'].map(TokenSymbol).map(getTokenImage)
 
 interface CreatePositionPanelProps {
   className?: string
@@ -22,7 +23,9 @@ export function CreatePositionPanel({ className }: CreatePositionPanelProps) {
             Quickly deposit your assets and borrow USDXL with our Easy Borrow Flow
           </Typography>
         </div>
-        <LinkButton to={paths.easyBorrow}>Create position</LinkButton>
+        <LinkButton className={cn(buttonVariants({ rounded: 'full' }))} to={paths.easyBorrow}>
+          Create position
+        </LinkButton>
       </Panel.Content>
     </Panel.Wrapper>
   )
