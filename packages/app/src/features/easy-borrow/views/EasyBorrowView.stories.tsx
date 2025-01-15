@@ -423,6 +423,7 @@ const depositErc20ActionArgs: Partial<EasyBorrowViewStoryProps> = {
   ],
   riskAcknowledgement: {
     onStatusChange: () => {},
+    value: false,
     warning: { type: 'liquidation-warning-borrow' },
   },
   actionsEnabled: false,
