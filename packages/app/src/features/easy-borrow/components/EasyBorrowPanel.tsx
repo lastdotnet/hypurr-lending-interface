@@ -16,7 +16,6 @@ import { FormFieldsForAssetClass } from '../logic/form/form'
 import { EasyBorrowFormSchema } from '../logic/form/validation'
 import { ExistingPosition, PageStatus } from '../logic/types'
 import { BorrowDetails } from '../logic/useEasyBorrow'
-import { UsdsUpgradeAlert } from './UsdsUpgradeAlert'
 import { EasyBorrowForm } from './form/EasyBorrowForm'
 
 export interface EasyBorrowPanelProps {
@@ -80,9 +79,7 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
               warning={props.riskAcknowledgement.warning}
             />
           )}
-          {props.borrowDetails.isUpgradingToUsds && (
-            <UsdsUpgradeAlert borrowDetails={props.borrowDetails} variant="borrow" />
-          )}
+
           <ActionsContainer
             objectives={objectives}
             context={actionsContext}
