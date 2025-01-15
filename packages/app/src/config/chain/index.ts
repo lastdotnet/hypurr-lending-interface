@@ -23,8 +23,8 @@ const commonTokenSymbolToReplacedName = {
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
   [hyperTestnet.id]: {
     originChainId: hyperTestnet.id,
-    daiSymbol: TokenSymbol('USDC'),
-    sdaiSymbol: TokenSymbol('USDC'),
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
     usdsSymbol: undefined,
     susdsSymbol: undefined,
     psmStables: [TokenSymbol('USDC'), TokenSymbol('sUSDe'), TokenSymbol('USDXL')],
