@@ -1,83 +1,83 @@
 export const walletBalanceProviderABI = [
   {
-    type: 'receive',
-    stateMutability: 'payable',
+    "type": "receive",
+    "stateMutability": "payable"
   },
   {
-    type: 'function',
-    name: 'balanceOf',
-    inputs: [
+    "type": "function",
+    "name": "balanceOf",
+    "inputs": [
       {
-        name: 'user',
-        type: 'address',
-        internalType: 'address',
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        name: 'token',
-        type: 'address',
-        internalType: 'address',
-      },
+        "name": "token",
+        "type": "address",
+        "internalType": "address"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'uint256',
-        internalType: 'uint256',
-      },
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'batchBalanceOf',
-    inputs: [
+    "type": "function",
+    "name": "batchBalanceOf",
+    "inputs": [
       {
-        name: 'users',
-        type: 'address[]',
-        internalType: 'address[]',
+        "name": "users",
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        name: 'tokens',
-        type: 'address[]',
-        internalType: 'address[]',
-      },
+        "name": "tokens",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'uint256[]',
-        internalType: 'uint256[]',
-      },
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'getUserWalletBalances',
-    inputs: [
+    "type": "function",
+    "name": "getUserWalletBalances",
+    "inputs": [
       {
-        name: 'provider',
-        type: 'address',
-        internalType: 'address',
+        "name": "provider",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        name: 'user',
-        type: 'address',
-        internalType: 'address',
-      },
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'address[]',
-        internalType: 'address[]',
+        "name": "",
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        name: '',
-        type: 'uint256[]',
-        internalType: 'uint256[]',
-      },
+        "name": "",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
     ],
-    stateMutability: 'view',
-  },
+    "stateMutability": "view"
+  }
 ] as const

@@ -10,24 +10,23 @@ export function extractEmodeInfoFromReserves(reserves: AaveFormattedReserve[]): 
   const emodeCategories: EModeCategories = {}
 
   for (const reserve of reserves) {
-    if (!reserve.eModes?.length) {
+    if (reserve.eModeCategoryId === 0) {
       continue
     }
 
-    for (const eMode of reserve.eModes) {
-      if (eMode.id === 0 || emodeCategories[eMode.id]) {
-        continue
-      }
+    const eModeCategoryId = reserve.eModeCategoryId
+    if (emodeCategories[eModeCategoryId]) {
+      continue
+    }
 
-      emodeCategories[eMode.id] = {
-        id: eMode.id,
-        name: eMode.eMode.label,
-        ltv: parseRawPercentage(eMode.eMode.ltv),
-        liquidationBonus: Percentage(
-          parseRawPercentage(eMode.eMode.liquidationBonus, { allowMoreThan1: true }).minus(1),
-        ),
-        liquidationThreshold: parseRawPercentage(eMode.eMode.liquidationThreshold),
-      }
+    emodeCategories[eModeCategoryId] = {
+      id: eModeCategoryId,
+      name: reserve.eModeLabel,
+      ltv: parseRawPercentage(reserve.eModeLtv),
+      liquidationBonus: Percentage(
+        parseRawPercentage(reserve.eModeLiquidationBonus, { allowMoreThan1: true }).minus(1),
+      ),
+      liquidationThreshold: parseRawPercentage(reserve.eModeLiquidationThreshold),
     }
   }
 

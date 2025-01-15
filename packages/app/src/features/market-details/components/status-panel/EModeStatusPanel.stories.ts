@@ -13,15 +13,11 @@ const meta: Meta<typeof EModeStatusPanel> = {
   component: EModeStatusPanel,
   decorators: [WithTooltipProvider(), WithClassname('max-w-2xl'), withRouter],
   args: {
-    eModes: [
-      {
-        maxLtv: Percentage(0.95),
-        liquidationThreshold: Percentage(0.9),
-        liquidationPenalty: Percentage(0.02),
-        categoryId: 1,
-        eModeCategoryTokens: [tokens.WETH.symbol, tokens.wstETH.symbol, tokens.rETH.symbol],
-      },
-    ],
+    maxLtv: Percentage(0.95),
+    liquidationThreshold: Percentage(0.9),
+    liquidationPenalty: Percentage(0.02),
+    categoryId: 1,
+    eModeCategoryTokens: [tokens.WETH.symbol, tokens.wstETH.symbol, tokens.rETH.symbol],
   },
 }
 
@@ -43,16 +39,9 @@ export const ETHTablet: Story = {
 export const DAIDesktop: Story = {
   name: 'DAI Correlated',
   args: {
-    eModes: [
-      {
-        maxLtv: Percentage(0.95),
-        liquidationThreshold: Percentage(0.9),
-        liquidationPenalty: Percentage(0.02),
-        categoryId: 2,
-        token: tokens.sDAI,
-        eModeCategoryTokens: [tokens.sDAI.symbol, tokens.USDC.symbol, tokens.USDT.symbol],
-      },
-    ],
+    categoryId: 2,
+    token: tokens.sDAI,
+    eModeCategoryTokens: [tokens.sDAI.symbol, tokens.USDC.symbol, tokens.USDT.symbol],
   },
 }
 export const DAIMobile: Story = {

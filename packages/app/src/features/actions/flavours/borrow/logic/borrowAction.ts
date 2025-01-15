@@ -26,7 +26,7 @@ export function createBorrowActionConfig(action: BorrowAction, context: ActionCo
           abi: wethGatewayConfig.abi,
           address: wethGatewayAddress,
           functionName: 'borrowETH',
-          args: [lendingPoolAddress, borrowAmount, HYPURR_UI_REFERRAL_CODE],
+          args: [lendingPoolAddress, borrowAmount, interestRateMode, HYPURR_UI_REFERRAL_CODE],
         })
       }
 

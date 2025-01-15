@@ -22,56 +22,56 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       name: 'LendingPoolAddressProvider',
       abi: lendingPoolAddressProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x7d01f1BA6fAcF734649e9589670DB16F9172Be2C',
+        [HYPEREVM_TESTNET_ID]: '0xC37cFFCe99422D4589616D7386E21A3eB890Db0F',
       },
     },
     {
       name: 'LendingPool',
       abi: lendingPoolABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x370c9a6a2b18596A5F33117c67e62b892fcf637E',
+        [HYPEREVM_TESTNET_ID]: '0x7978057A0d15e745473CEAD4456091c2b4c75e8C',
       },
     },
     {
       name: 'WETHGateway',
       abi: wethGatewayABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x6aF2F841DDF7f8da94f2829B9AAc82875773a0f8',
+        [HYPEREVM_TESTNET_ID]: '0x3BC0B783B3936b8391473a8840397DF22996d7aC',
       },
     },
     {
       name: 'WalletBalanceProvider',
       abi: walletBalanceProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x2cAeb673189257fff77f04c6a601194bbE1c8F4A',
+        [HYPEREVM_TESTNET_ID]: '0x032B5abd1657b867D43cad6874238f015E5E65bb',
       },
     },
     {
       name: 'UiPoolDataProvider',
       abi: uiPoolDataProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xF56300492ac37E75c45673DCA23Fa4935b1ecaa5',
+        [HYPEREVM_TESTNET_ID]: '0x855bB3a6099c4cA0d01c4402FE11D4B4CF85a49d',
       },
     },
     {
       name: 'UiIncentiveDataProvider',
       abi: uiIncentiveDataProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xBeFB51e2F9E2B2A7073C07e7ad19f21db7D25089',
+        [HYPEREVM_TESTNET_ID]: '0x87551477ceD10d50ec08682A3d3f7f4d91E892C7',
       },
     },
     {
       name: 'Collector',
       abi: collectorABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xF1fde486413AdAC1f4fC5E54EFa06fdA0BdD92b6',
+        [HYPEREVM_TESTNET_ID]: '0x875133496eBf9A8d2DdC786efDD394f518Ce987d',
       },
     },
     {
       name: 'CapAutomator',
       abi: capAutomatorABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x14b22fE50ac34Eb6F5D4a653926a26636b5cB990',
+        [HYPEREVM_TESTNET_ID]: '0x99e71778dfbf301779161E46F78B2EF2af7FA8e3',
       },
     },
   ],

@@ -46,7 +46,6 @@ const args: MarketDetailsViewProps = {
     },
   },
   marketOverview: {
-    eModes: [],
     supply: {
       hasSparkAirdrop: true,
       status: 'yes',

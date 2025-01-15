@@ -16,8 +16,7 @@ export function makeMarketOverview({
   marketInfo,
   capAutomatorInfo,
 }: MakeMarketOverviewParams): MarketOverview {
-  const _eModeCategoryIds = reserve.eModes.map((e) => e.category.id)
-
+  const eModeCategoryId = reserve.eModeCategory?.id
   const eModeCategoryTokens = getReserveEModeCategoryTokens(marketInfo, reserve)
   const { hasAirdropForBorrowing, hasAirdropForSupplying } = getSparkAirdropDetails({
     marketInfo,
@@ -64,12 +63,16 @@ export function makeMarketOverview({
       borrowed: reserve.totalDebt,
       available: reserve.availableLiquidity,
     },
-    eModes: reserve.eModes.map((e) => ({
-      maxLtv: e.category.ltv,
-      liquidationThreshold: e.category.liquidationThreshold,
-      liquidationPenalty: e.category.liquidationBonus,
-      categoryId: e.category.id === 1 || e.category.id === 2 ? e.category.id : 0,
-      eModeCategoryTokens,
-    })),
+    ...(eModeCategoryId === 1 || eModeCategoryId === 2
+      ? {
+          eMode: {
+            maxLtv: reserve.eModeCategory!.ltv,
+            liquidationThreshold: reserve.eModeCategory!.liquidationThreshold,
+            liquidationPenalty: reserve.eModeCategory!.liquidationBonus,
+            categoryId: eModeCategoryId,
+            eModeCategoryTokens,
+          },
+        }
+      : {}),
   }
 }

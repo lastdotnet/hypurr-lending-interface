@@ -16,7 +16,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -41,7 +41,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -66,7 +66,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -91,7 +91,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(200),
@@ -117,7 +117,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(200),
@@ -143,7 +143,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(5),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(200),
@@ -168,7 +168,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: false,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -193,7 +193,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: true,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -218,7 +218,7 @@ describe(validateBorrow.name, () => {
           totalDebt: NormalizedUnitNumber(0),
           isSiloed: true,
           borrowableInIsolation: false,
-          eModeCategories: [0],
+          eModeCategory: 0,
         },
         user: {
           maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -245,7 +245,7 @@ describe(validateBorrow.name, () => {
             totalDebt: NormalizedUnitNumber(0),
             isSiloed: false,
             borrowableInIsolation: false,
-            eModeCategories: [0],
+            eModeCategory: 0,
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -273,7 +273,7 @@ describe(validateBorrow.name, () => {
             totalDebt: NormalizedUnitNumber(0),
             isSiloed: false,
             borrowableInIsolation: true,
-            eModeCategories: [0],
+            eModeCategory: 0,
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -300,7 +300,7 @@ describe(validateBorrow.name, () => {
             totalDebt: NormalizedUnitNumber(0),
             isSiloed: false,
             borrowableInIsolation: true,
-            eModeCategories: [0],
+            eModeCategory: 0,
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -329,7 +329,7 @@ describe(validateBorrow.name, () => {
             totalDebt: NormalizedUnitNumber(0),
             isSiloed: false,
             borrowableInIsolation: true,
-            eModeCategories: [1],
+            eModeCategory: 1,
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
@@ -356,7 +356,7 @@ describe(validateBorrow.name, () => {
             totalDebt: NormalizedUnitNumber(0),
             isSiloed: false,
             borrowableInIsolation: true,
-            eModeCategories: [2],
+            eModeCategory: 2,
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
