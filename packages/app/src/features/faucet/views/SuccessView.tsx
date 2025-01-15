@@ -79,7 +79,7 @@ function CopyLinkButton({ link }: { link: string }) {
 }
 
 function TweetButton({ text, url }: { text: string; url: string }) {
-  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%0A&url=${encodeURIComponent(url)}`
+  const tweetUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}%0A%0A&url=${encodeURIComponent(url)}`
 
   return (
     <a
