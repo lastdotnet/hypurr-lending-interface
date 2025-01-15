@@ -22,7 +22,7 @@ export function useLiquidationRiskWarning({
   updatedHealthFactor,
 }: UseLiquidationRiskWarningParams): UseRiskWarningResult {
   const [riskAcknowledged, setRiskAcknowledged] = useState(false)
-  const riskAcknowledgement = { onStatusChange: setRiskAcknowledged }
+  const riskAcknowledgement = { value: riskAcknowledged, onStatusChange: setRiskAcknowledged }
   const showWarning = determineIfRiskWarning(updatedHealthFactor, currentHealthFactor, isFormValid)
 
   return {

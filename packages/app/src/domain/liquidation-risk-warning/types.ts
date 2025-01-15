@@ -13,6 +13,7 @@ export type RiskWarning =
     }
 
 export interface RiskAcknowledgementInfo {
+  value: boolean
   onStatusChange: (acknowledged: boolean) => void
   warning?: RiskWarning
 }
