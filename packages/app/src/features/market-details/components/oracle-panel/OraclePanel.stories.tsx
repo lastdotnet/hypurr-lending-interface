@@ -38,7 +38,7 @@ export const FixedTablet = getTabletStory(FixedDesktop)
 
 const marketPriceData: MarketPriceOracleInfo = {
   type: 'market-price',
-  providedBy: ['chainlink'],
+  providedBy: ['redstone'],
   token: tokens.WETH,
   price: NormalizedUnitNumber(2235.0672),
   chainId: 1,
@@ -53,7 +53,7 @@ export const MarketPriceRedundantDesktop: Story = {
   args: {
     data: {
       ...marketPriceData,
-      providedBy: ['chainlink', 'chronicle'],
+      providedBy: ['redstone'],
     },
   },
 }
@@ -78,7 +78,7 @@ export const UnderlyingAssetTablet = getTabletStory(UnderlyingAssetDesktop)
 const yieldingFixedData: YieldingFixedOracleInfo = {
   type: 'yielding-fixed',
   baseAssetSymbol: TokenSymbol('ETH'),
-  providedBy: ['chainlink'],
+  providedBy: ['redstone'],
   ratio: NormalizedUnitNumber(2.137),
   price: NormalizedUnitNumber(4776.34),
   token: tokens.weETH,
@@ -97,7 +97,7 @@ export const YieldingFixedRedundantDesktop: Story = {
   args: {
     data: {
       ...yieldingFixedData,
-      providedBy: ['chainlink', 'chronicle'],
+      providedBy: ['redstone'],
     },
   },
 }
