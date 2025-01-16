@@ -10,7 +10,6 @@ import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../../logic/form/form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition, PageStatus } from '../../logic/types'
-import { EasyBorrowNote } from '../note/EasyBorrowNote'
 import { Borrow } from './Borrow'
 import { Deposits } from './Deposits'
 import { LoanToValue } from './LoanToValue'
@@ -44,7 +43,6 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
     updatedPositionSummary,
     setDesiredLoanToValue,
     disabled,
-    borrowRate,
     guestMode,
     openConnectModal,
     openSandboxModal,
@@ -99,8 +97,6 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             setDesiredLoanToValue(e)
           }}
         />
-
-        <EasyBorrowNote borrowRate={borrowRate} />
 
         {guestMode ? (
           <ConnectOrSandboxCTAButtonGroup
