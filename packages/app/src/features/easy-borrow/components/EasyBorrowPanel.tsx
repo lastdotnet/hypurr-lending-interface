@@ -75,6 +75,7 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
         <div className="mt-6 flex flex-col gap-6">
           {props.riskAcknowledgement.warning && (
             <RiskAcknowledgement
+              riskAcknowledged={props.riskAcknowledgement.value}
               onStatusChange={props.riskAcknowledgement.onStatusChange}
               warning={props.riskAcknowledgement.warning}
             />
