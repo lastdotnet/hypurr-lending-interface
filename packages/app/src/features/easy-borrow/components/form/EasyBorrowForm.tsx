@@ -25,7 +25,6 @@ interface EasyBorrowFlowProps {
   onSubmit: () => void
   setDesiredLoanToValue: (desiredLtv: Percentage) => void
   disabled: boolean // whole form is disabled when when user submitted the form and actions are in progress
-  borrowRate: Percentage
   guestMode: boolean
   openConnectModal: () => void
   openSandboxModal: () => void

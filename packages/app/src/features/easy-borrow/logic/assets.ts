@@ -4,6 +4,7 @@ import { MarketInfo, Reserve, UserPosition } from '@/domain/market-info/marketIn
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { UpgradeOptions } from './useUpgradeOptions'
+import { Token } from '@/domain/types/Token'
 
 const blacklistedDepositableAssets = ['USDXL']
 export function getDepositableAssets(positions: UserPosition[], walletInfo: MarketWalletInfo): TokenWithBalance[] {
@@ -21,6 +22,10 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
 
 const whitelistedBorrowableAssets = ['USDXL', 'USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH']
 
+function isTokenSymbol(token: Token, symbol: string) {
+  return token.symbol === TokenSymbol(symbol)
+}
+
 export function getBorrowableAssets(
   reserves: Reserve[],
   walletInfo: MarketWalletInfo,
@@ -29,10 +34,15 @@ export function getBorrowableAssets(
   const marketTokens = reserves
     .filter((r) => whitelistedBorrowableAssets.includes(r.token.symbol))
     .map((r) => ({ token: r.token, balance: walletInfo.findWalletBalanceForToken(r.token) }))
-  const usdxl = marketTokens.find((t) => t.token.symbol === TokenSymbol('USDXL'))
-  const otherTokens = marketTokens.filter((t) => t.token.symbol !== TokenSymbol('USDXL'))
 
-  return usdxl ? [usdxl, ...otherTokens] : marketTokens
+  const usdxl = marketTokens.find(({ token }) => isTokenSymbol(token, 'USDXL'))
+  const wHype = marketTokens.find(({ token }) => isTokenSymbol(token, 'WHYPE'))
+
+  const otherTokens = marketTokens.filter(
+    ({ token }) => !isTokenSymbol(token, 'USDXL') && !isTokenSymbol(token, 'WHYPE'),
+  )
+
+  return [...(usdxl ? [usdxl] : []), ...(wHype ? [wHype] : []), ...otherTokens]
 }
 
 export function sortByDecreasingBalances(tokens: TokenWithBalance[]): TokenWithBalance[] {

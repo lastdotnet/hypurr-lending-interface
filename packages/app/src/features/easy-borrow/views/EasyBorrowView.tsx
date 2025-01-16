@@ -15,7 +15,7 @@ import { BorrowDetails } from '../logic/useEasyBorrow'
 
 export interface EasyBorrowViewProps {
   pageStatus: PageStatus
-  borrowDetails: BorrowDetails
+  borrowDetails?: BorrowDetails
   form: UseFormReturn<EasyBorrowFormSchema>
   assetsToBorrowFields: FormFieldsForAssetClass
   assetsToDepositFields: FormFieldsForAssetClass

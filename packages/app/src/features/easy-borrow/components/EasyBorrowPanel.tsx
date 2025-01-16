@@ -30,7 +30,7 @@ export interface EasyBorrowPanelProps {
   liquidationDetails?: LiquidationDetails
   riskAcknowledgement: RiskAcknowledgementInfo
   objectives: Objective[]
-  borrowDetails: BorrowDetails
+  borrowDetails?: BorrowDetails
   guestMode: boolean
   openConnectModal: () => void
   openSandboxModal: () => void
@@ -55,12 +55,7 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
         )}
       </div>
 
-      <EasyBorrowForm
-        {...props}
-        borrowRate={props.borrowDetails.borrowRate}
-        onSubmit={pageStatus.submitForm}
-        disabled={pageStatus.state !== 'form'}
-      />
+      <EasyBorrowForm {...props} onSubmit={pageStatus.submitForm} disabled={pageStatus.state !== 'form'} />
 
       <div className="mt-6">
         <HealthFactorPanel
