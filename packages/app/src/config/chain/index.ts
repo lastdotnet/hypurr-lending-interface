@@ -10,21 +10,15 @@ import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
 
 const commonTokenSymbolToReplacedName = {
-  [TokenSymbol('DAI')]: { name: 'DAI Stablecoin', symbol: TokenSymbol('DAI') },
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },
-  [TokenSymbol('wstETH')]: { name: 'Lido Staked ETH', symbol: TokenSymbol('wstETH') },
-  [TokenSymbol('rETH')]: { name: 'Rocket Pool Staked ETH', symbol: TokenSymbol('rETH') },
-  [TokenSymbol('GNO')]: { name: 'Gnosis Token', symbol: TokenSymbol('GNO') },
-  [TokenSymbol('WETH')]: { name: 'Ethereum', symbol: TokenSymbol('ETH') },
-  [TokenSymbol('weETH')]: { name: 'Ether.fi Staked ETH', symbol: TokenSymbol('weETH') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
   [hyperTestnet.id]: {
     originChainId: hyperTestnet.id,
-    daiSymbol: TokenSymbol('USDC'),
-    sdaiSymbol: TokenSymbol('USDC'),
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
     usdsSymbol: undefined,
     susdsSymbol: undefined,
     psmStables: [TokenSymbol('USDC'), TokenSymbol('sUSDe'), TokenSymbol('USDXL')],
@@ -53,12 +47,12 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       },
       {
         symbol: TokenSymbol('SolvBTC'),
-        oracleType: 'fixed-usd',
+        oracleType: 'zero-price',
         address: CheckedAddress('0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8'),
       },
       {
         symbol: TokenSymbol('stTESTH'),
-        oracleType: 'fixed-usd',
+        oracleType: 'zero-price',
         address: CheckedAddress('0xe2fbc9cb335a65201fcde55323ae0f4e8a96a616'),
       },
       {
@@ -82,7 +76,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       oracles: {
         [TokenSymbol('WHYPE')]: {
           type: 'market-price',
-          providedBy: [],
+          providedBy: ['redstone'],
         },
         [TokenSymbol('SolvBTC')]: {
           type: 'market-price',
@@ -90,7 +84,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         },
         [TokenSymbol('stTESTH')]: {
           type: 'market-price',
-          providedBy: [],
+          providedBy: ['redstone'],
         },
         [TokenSymbol('USDC')]: {
           type: 'fixed',

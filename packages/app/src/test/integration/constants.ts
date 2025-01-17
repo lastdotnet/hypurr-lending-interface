@@ -243,8 +243,6 @@ export function getMockMarketInfo(
   userConfiguration?: UserConfiguration,
   chainId?: number,
   nativeAssetInfo?: NativeAssetInfo,
-  daiSymbol?: TokenSymbol,
-  sdaiSymbol?: TokenSymbol,
 ): MarketInfo {
   return new MarketInfo(
     reserves,
@@ -266,8 +264,6 @@ export function getMockMarketInfo(
       nativeAssetSymbol: TokenSymbol('ETH'),
       minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
     },
-    daiSymbol ?? TokenSymbol('DAI'),
-    sdaiSymbol ?? TokenSymbol('sDAI'),
   )
 }
 

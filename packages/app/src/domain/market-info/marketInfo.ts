@@ -146,8 +146,6 @@ export class MarketInfo {
     public readonly chainId: number,
     public readonly userRewards: UserReward[],
     public readonly nativeAssetInfo: NativeAssetInfo,
-    public readonly daiSymbol: TokenSymbol,
-    public readonly sDaiSymbol: TokenSymbol,
   ) {
     const wrappedNativeAssetPosition =
       userPositions.find((p) => p.reserve.token.symbol === nativeAssetInfo.wrappedNativeAssetSymbol) ??
@@ -165,14 +163,6 @@ export class MarketInfo {
       ...wrappedNativeAssetPosition,
       reserve: nativeReserve,
     }
-  }
-
-  get DAI(): Token {
-    return this.findOneTokenBySymbol(this.daiSymbol)
-  }
-
-  get sDAI(): Token {
-    return this.findOneTokenBySymbol(this.sDaiSymbol)
   }
 
   findTokenBySymbol(symbol: TokenSymbol): Token | undefined {
@@ -241,8 +231,8 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
   return (data: AaveDataLayerQueryReturnType) => {
     const rawAaveData = aaveDataLayerSelectFn({ timeAdvance })(data)
     const chainId = data.chainId
-    const { markets, daiSymbol, sdaiSymbol } = getChainConfigEntry(chainId)
-    assert(markets && daiSymbol && sdaiSymbol, 'Markets config, dai and sdai symbols are required for market info')
+    const { markets } = getChainConfigEntry(chainId)
+    assert(markets, 'Markets config is required for market info')
     const tokens = rawAaveData.userSummary.userReservesData.map(
       (r): Token =>
         new Token({
@@ -390,8 +380,6 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
       chainId,
       userRewards,
       markets.nativeAssetInfo,
-      daiSymbol,
-      sdaiSymbol,
     )
   }
 }

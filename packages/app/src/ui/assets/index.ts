@@ -42,9 +42,7 @@ import menu from './menu.svg'
 import moreIconVertical from './more-icon-vertical.svg'
 import moreIcon from './more-icon.svg'
 import multiply from './multiply.svg'
-import chainlink from './oracle-providers/chainlink.svg'
-import chronicle from './oracle-providers/chronicle.svg'
-import lido from './oracle-providers/lido.svg'
+import redstone from './oracle-providers/redstone.svg'
 import pause from './pause.svg'
 import rocket from './rocket.svg'
 import sliderThumb from './slider-thumb.svg'
@@ -211,9 +209,7 @@ export const assets = {
     newSavingsWelcome,
   },
   oracleProviders: {
-    chainlink,
-    chronicle,
-    lido,
+    redstone,
   },
 }
 
@@ -235,27 +231,6 @@ export function getTokenColor(symbol: TokenSymbol, options?: { alpha?: Percentag
 }
 
 const tokenColors: Record<TokenSymbol, `${number} ${number} ${number}`> = {
-  [TokenSymbol('DAI')]: '255 192 70',
-  [TokenSymbol('ETH')]: '124 192 255',
-  [TokenSymbol('EURe')]: '0 134 194',
-  [TokenSymbol('GNO')]: '62 105 87',
-  [TokenSymbol('MKR')]: '26 171 155',
-  [TokenSymbol('SKY')]: '178 104 252',
-  [TokenSymbol('USDS')]: '255 192 70',
-  [TokenSymbol('rETH')]: '255 151 125',
-  [TokenSymbol('sDAI')]: '53 181 82',
-  [TokenSymbol('sUSDS')]: '53 181 82',
-  [TokenSymbol('stETH')]: '143 146 236',
-  [TokenSymbol('USDC.e')]: '51 146 248',
-  [TokenSymbol('USDT')]: '38 161 123',
-  [TokenSymbol('WBTC')]: '240 146 66',
-  [TokenSymbol('weETH')]: '90 68 190',
-  [TokenSymbol('WETH')]: '134 168 239',
-  [TokenSymbol('wstETH')]: '0 163 255',
-  [TokenSymbol('WXDAI')]: '253 177 31',
-  [TokenSymbol('XDAI')]: '255 192 70',
-  [TokenSymbol('CLE')]: '47 208 91',
-  //
   [TokenSymbol('USDXL')]: '255 230 106',
   [TokenSymbol('sUSDe')]: '50 157 200',
   [TokenSymbol('USDC')]: '157 222 247',

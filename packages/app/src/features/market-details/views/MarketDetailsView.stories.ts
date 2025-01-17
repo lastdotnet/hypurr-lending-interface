@@ -100,7 +100,7 @@ const args: MarketDetailsViewProps = {
       baseAssetPrice: NormalizedUnitNumber(tokens.WETH.unitPriceUsd),
       type: 'yielding-fixed',
       baseAssetSymbol: TokenSymbol('WETH'),
-      providedBy: ['chainlink'],
+      providedBy: ['redstone'],
       baseAssetOracle: CheckedAddress('0x69115a2826Eb47FE9DFD1d5CA8D8642697c8b68A'),
     },
   },

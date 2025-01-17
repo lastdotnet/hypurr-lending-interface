@@ -13,7 +13,7 @@ export interface Deposit {
   balance: NormalizedUnitNumber
   deposit: NormalizedUnitNumber
   supplyAPY: Percentage | undefined
-  isUsedAsCollateral: boolean,
+  isUsedAsCollateral: boolean
   isCombinedBalance?: boolean
 }
 
@@ -67,7 +67,7 @@ function transformNativeAssetDeposit({
         .findWalletBalanceForToken(position.reserve.token)
         .plus(walletInfo.findWalletBalanceForSymbol(nativeAssetInfo.nativeAssetSymbol)),
     ),
-    isCombinedBalance: true
+    isCombinedBalance: true,
   }
 }
 
@@ -79,15 +79,6 @@ function transformDefaultDeposit({ position, walletInfo }: DepositTransformerPar
     deposit: position.collateralBalance,
     supplyAPY: position.reserve.supplyAPY,
     isUsedAsCollateral: position.reserve.usageAsCollateralEnabledOnUser,
-  }
-}
-
-function _hideDaiWhenLendingDisabled({ position, marketInfo }: DepositTransformerParams): null | undefined {
-  if (
-    import.meta.env.VITE_FEATURE_DISABLE_DAI_LEND === '1' &&
-    position.reserve.token.symbol === marketInfo.DAI.symbol
-  ) {
-    return null
   }
 }
 
