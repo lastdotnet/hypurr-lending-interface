@@ -20,7 +20,7 @@ export function CreatePositionPanel({ className }: CreatePositionPanelProps) {
         <div className="flex flex-col items-center gap-6">
           <IconStack paths={TOKEN_ICON_PATHS} size="lg" stackingOrder="first-on-top" />
           <Typography variant="p" className="font-semibold sm:text-2xl">
-            Quickly deposit your assets and borrow USDXL with our Easy Borrow Flow
+            Quickly deposit your assets and borrow with our Easy Borrow Flow
           </Typography>
         </div>
         <LinkButton className={cn(buttonVariants({ rounded: 'full' }))} to={paths.easyBorrow}>
