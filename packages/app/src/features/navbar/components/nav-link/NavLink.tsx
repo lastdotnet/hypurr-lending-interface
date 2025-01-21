@@ -17,6 +17,11 @@ export interface ExternalNavLinkProps extends NavLinkComponentProps {
   withIndicator?: boolean
 }
 
+export interface PlaceholderNavLinkProps extends NavLinkComponentProps {
+  className?: string
+  withIndicator?: boolean
+}
+
 export function NavLink({ to, children, onClick, className, ...rest }: NavLinkProps) {
   const selected = !!useMatch(`${to}/*`)
 
@@ -44,13 +49,37 @@ export function ExternalNavLink({ href, children, className, ...rest }: External
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'rounded-md text-white/50 text-xl hover:text-white lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        'rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
         className,
       )}
-      {...rest}
     >
-      {children}
+      <NavLinkComponent selected={false} {...rest}>
+        {children}
+      </NavLinkComponent>
     </a>
+  )
+}
+export function PlaceholderNavLink({ children, className, ...rest }: NavLinkComponentProps) {
+  return (
+    <span
+      className={cn(
+        'cursor-default rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+        className,
+      )}
+    >
+      <NavLinkComponent
+        {...rest}
+        isPlaceholder
+        withIndicator={true}
+        postfix={
+          <span className="ml-1 block self-start rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
+            Soon
+          </span>
+        }
+      >
+        {children}
+      </NavLinkComponent>
+    </span>
   )
 }
 
@@ -61,6 +90,7 @@ interface NavLinkComponentProps {
   variant?: 'horizontal' | 'vertical'
   size?: 'sm' | 'md'
   shady?: boolean
+  isPlaceholder?: boolean
   className?: string
   withIndicator?: boolean
 }
@@ -73,12 +103,14 @@ export function NavLinkComponent({
   shady,
   className,
   withIndicator = false,
+  isPlaceholder,
 }: NavLinkComponentProps) {
   return (
     <NavLinkBox>
       <NavLinkBox.Content
         shady={shady}
         selected={selected}
+        isPlaceholder={isPlaceholder}
         postfix={postfix}
         variant={variant}
         size={size}
@@ -93,19 +125,16 @@ export function NavLinkComponent({
 
 export function NavLinkBox({ children, className, ...rest }: React.HTMLProps<HTMLDivElement>) {
   return (
-    <div
-      className={cn('relative isolate flex h-full w-full flex-row justify-between lg:flex-col', className)}
-      {...rest}
-    >
+    <span className={cn('relative isolate flex h-full flex-row justify-between xl:flex-col', className)} {...rest}>
       {children}
-    </div>
+    </span>
   )
 }
 
-const pseudoElementVariants = cva('-z-10 absolute bottom-0 left-0 hidden lg:block', {
+const pseudoElementVariants = cva('-z-10 absolute bottom-0 left-0 hidden xl:block', {
   variants: {
     variant: {
-      horizontal: 'h-1.5 w-full rounded-t-lg',
+      horizontal: 'h-1.5 rounded-t-lg',
       vertical: 'h-full w-1.5 rounded-r-lg',
     },
     selected: {
@@ -133,20 +162,20 @@ export function NavLinkIndicator({
   )
 }
 
-const contentVariants = cva('flex h-full w-full flex-row items-center gap-1 text-primary', {
+const contentVariants = cva('flex h-full flex-row items-center gap-1 text-primary', {
   variants: {
     variant: {
-      horizontal: 'lg:justify-center',
+      horizontal: 'xl:justify-center',
       vertical: 'p-4',
     },
     size: {
-      sm: 'text-base lg:text-sm',
-      md: 'text-xl lg:text-base',
+      sm: 'text-base xl:text-sm',
+      md: 'text-xl xl:text-base',
     },
   },
 })
 
-const textVariants = cva('flex h-full w-full flex-row items-center', {
+const textVariants = cva('flex h-full flex-row items-center', {
   variants: {
     selected: {
       true: 'text-white',
@@ -154,6 +183,9 @@ const textVariants = cva('flex h-full w-full flex-row items-center', {
     },
     shady: {
       true: 'first:opacity-50 hover:first:opacity-100',
+    },
+    isPlaceholder: {
+      true: 'text-white/50',
     },
   },
 })
@@ -163,13 +195,15 @@ export function NavLinkContent({
   variant = 'horizontal',
   shady,
   selected,
+  isPlaceholder,
   size = 'md',
   children,
   postfix,
   ...rest
-}: Omit<React.HTMLProps<HTMLDivElement>, 'size'> & { postfix?: React.ReactNode } & VariantProps<
-    typeof contentVariants
-  > &
+}: Omit<React.HTMLProps<HTMLDivElement>, 'size'> & {
+  isPlaceholder?: boolean
+  postfix?: React.ReactNode
+} & VariantProps<typeof contentVariants> &
   VariantProps<typeof textVariants>) {
   return (
     <span
@@ -186,6 +220,7 @@ export function NavLinkContent({
         className={textVariants({
           shady: shady && !selected,
           selected,
+          isPlaceholder,
         })}
       >
         {children}

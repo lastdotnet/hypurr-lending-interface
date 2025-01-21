@@ -14,7 +14,7 @@ export function MobileMenuButton({ mobileMenuCollapsed, setMobileMenuCollapsed }
     <Button
       variant="icon"
       data-testid="mobile-menu-button"
-      className="text-white/70 lg:hidden hover:text-white"
+      className="text-white/70 xl:hidden hover:text-white"
       onClick={() => {
         setMobileMenuCollapsed(!mobileMenuCollapsed)
       }}

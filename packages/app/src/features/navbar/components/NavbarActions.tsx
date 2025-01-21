@@ -28,8 +28,8 @@ export function NavbarActions({
     <div
       className={cn(
         'mb-2 flex flex-col items-center justify-center gap-6',
-        'lg:mb-0 lg:flex-row lg:justify-end lg:gap-2.5',
-        mobileMenuCollapsed ? 'hidden lg:flex' : 'flex',
+        'xl:mb-0 xl:flex-row xl:justify-end xl:gap-2.5',
+        mobileMenuCollapsed ? 'hidden xl:flex' : 'flex',
       )}
     >
       <RewardsBadge {...rewardsInfo} />

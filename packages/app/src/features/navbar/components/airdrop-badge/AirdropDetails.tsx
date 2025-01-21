@@ -25,11 +25,11 @@ export function AirdropDetails({ amount, precision, isLoading, isGrowing, placeh
   }
 
   return (
-    <div className="w-[calc(100vw-48px)] text-xs lg:w-auto">
+    <div className="w-[calc(100vw-48px)] text-xs xl:w-auto">
       <div className="flex flex-col gap-1 border-basics-grey/50 border-b p-4">
         Hypurr points
         <div className="flex items-center gap-2">
-          <img src={assets.hypurrLogo} className="h-7 lg:h-6" />
+          <img src={assets.hypurrLogo} className="h-7 xl:h-6" />
           {isLoading ? (
             <Skeleton className="h-5 w-7" />
           ) : (

@@ -3,7 +3,7 @@ import { cn } from '@/ui/utils/style'
 import { FeedbackFish } from '@feedback-fish/react'
 
 import { SavingsInfoQueryResults } from '../types'
-import { ExternalNavLink, NavLink } from './nav-link/NavLink'
+import { ExternalNavLink, NavLink, PlaceholderNavLink } from './nav-link/NavLink'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -51,9 +51,9 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
   return (
     <div
       className={cn(
-        'flex flex-1 flex-col gap-6 py-6 font-sans',
-        'lg:flex lg:flex-row lg:justify-center lg:py-0 lg:pt-0',
-        mobileMenuCollapsed && 'hidden lg:flex',
+        'flex flex-1 flex-col items-start gap-6 py-6 font-sans',
+        'xl:flex xl:flex-row xl:justify-center xl:py-0 xl:pt-0',
+        mobileMenuCollapsed && 'hidden xl:flex',
       )}
     >
       {links.map((link) =>
@@ -62,20 +62,16 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
             {link.label}
           </NavLink>
         ) : (
-          <span key={link.label} className="flex gap-2 text-white/50 text-xl lg:text-base">
+          <PlaceholderNavLink key={link.label} withIndicator={false}>
             {link.label}
-
-            <span className="block rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
-              Soon
-            </span>
-          </span>
+          </PlaceholderNavLink>
         ),
       )}
 
       <ExternalNavLink href="http://docs.hypurr.fi/">Docs</ExternalNavLink>
 
       <FeedbackFish projectId={import.meta.env.VITE_FEEDBACK_FISH_PROJECT_ID}>
-        <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white xl:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
           Feedback
         </button>
       </FeedbackFish>
