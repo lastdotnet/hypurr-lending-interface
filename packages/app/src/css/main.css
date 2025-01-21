@@ -73,8 +73,8 @@
     --spark: 242 166 43;
 
     --main-blue: 64 102 239;
-
     --sec-green: 109 194 117;
+    --gradient-border-base: oklch(70% 0.155 360);
   }
 }
 
@@ -97,7 +97,7 @@
 }
 
 
-/* Friendly Captcha */
+/**************** Friendly Captcha ***************** */
 .frc-captcha, .frc-container, .frc-button {
   width: 100% !important;
 }
@@ -183,65 +183,87 @@
   background-color: hsl(var(--primary-bg));
 }
 
-/********************************* */
 
+/**************** Gradient Border ***************** */
 .gradient-border {
-  --borderWidth: 1px;
-  background: #000;
+  --border: hsl(240 7% 18%);
+  border-radius: 12px;
+  border: calc(var(--border-width, 2) * 1px) solid #0000;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
   position: relative;
-  border-radius: 8px;
+  padding:  0.3rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.325rem;
+  transform-style: preserve-3d;
+  transition: outline-color 1s;
+
+  background: linear-gradient(#000 0 0) padding-box,
+    linear-gradient(0deg, #0000 0, var(--border) 18px) border-box,
+    linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0) border-box 0 0 /
+      400% 100%;
+
+  /* ::after is used as the :focus-visible outline, do not remove */
+  &::after {
+    content: '';
+    position: absolute;
+    border: calc(var(--border-width, 2) * 1px) solid #0000;
+    inset: -8px;
+    border-radius: 14px;
+    opacity: 0;
+    background: linear-gradient(#0000 0 0) padding-box,
+    linear-gradient(#0000 0 0) border-box,
+    linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0) border-box 0 0 /
+      400% 100%;
+  mask: linear-gradient(#0000 0 0), linear-gradient(#fff 0 0);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    filter: blur(calc(var(--blur, 10) * 1px))
+      brightness(var(--brightness, 1.25));
+    inset: 60% 0 0 0;
+    border-radius: 50% 50% 6px 6px / 50% 50% 6px 6px;
+    transform-origin: 50% 25%;
+    opacity: 1;
+    scale: 0.6 0.4;
+    transform: translate3d(0, 0, -1px);
+    transition: transform 1s, opacity 0s 1s, outline-color 1s, scale 0.25s;
+    background: linear-gradient(#0000 0 0), linear-gradient(#0000 0 0),
+    linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0) border-box 0 0 /
+      400% 100%;
+  }
+
+  &,
+  &::before,
+  &::after {
+    animation-composition: add;
+    animation: rainbow 12s infinite linear,
+      rainbow 6s infinite linear var(--state, paused);
+  }
+
 }
 
-.gradient-border:before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  background: linear-gradient(60deg,
-    rgb(var(--gradient-yellow)) 30%,
-    rgb(var(--gradient-green)) 70%,
-    rgb(var(--gradient-yellow))
-  );
-  animation: animatedgradient 4s ease alternate infinite;
-  background-size: 200% 200%;
-  transform: translate3d(0, 0, calc(var(--i, 1) * 50px));
-  transition: scale 0.25s 0.1s, transform 1s 1s, outline-color 1s 1s;
-  filter: blur(calc(var(--blur, 10) * 1px)) brightness(var(--brightness, 1.25));
-  inset: 60% 0 0 0;
-  border-radius: 50% 50% 6px 6px / 50% 50% 6px 6px;
-  transform-origin: 50% 25%;
-  opacity: 1;
-  scale: 0.6 0.4;
-  transition: scale 0.24s;
-}
-.gradient-border:hover:before {
-  scale: 1.1 1.25;
-}
-.gradient-border:after {
-  content: '';
-  position: absolute;
-  top: calc(-1 * var(--borderWidth, 1px));
-  left: calc(-1 * var(--borderWidth, 1px));
-  height: calc(100% + var(--borderWidth, 1px) * 2);
-  width: calc(100% + var(--borderWidth, 1px) * 2);
-  background: linear-gradient(60deg,
-    rgb(var(--gradient-yellow)) 30%,
-    rgb(var(--gradient-green)) 70%,
-    rgb(var(--gradient-yellow))
-  );
-  border-radius: 8px;
-  z-index: -1;
-  animation: animatedgradient 4s ease alternate infinite;
-  background-size: 200% 200%;
+.gradient-border:is(:hover, :focus-visible)::before {
+  scale: 1.1 1.15;
 }
 
-@keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 100% 50%;
-	}
+.gradient-border:focus-visible::after {
+  opacity: 0.6;
+}
+
+.gradient-border:is(:hover) {
+  --state: running;
+}
+
+@keyframes rainbow {
+  to {
+    background-position: 0 0, 0 0, 400% 0;
+  }
 }

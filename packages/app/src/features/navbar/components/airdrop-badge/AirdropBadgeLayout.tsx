@@ -27,19 +27,19 @@ export function AirdropBadgeLayout({
         <DropdownMenuTrigger asChild>
           <div>
             <button
-              className="gradient-border block rounded focus:outline-none"
+              className="gradient-border"
               data-testid={testIds.navbar.airdropBadge}
             >
-              <div className="flex items-center gap-1.5 px-2">
-                <img src={assets.hypurrPaw} className="block h-7 pt-1" />
+              <span className="flex items-center gap-1.5">
+                <img src={assets.hypurrPaw} className="block h-6 pt-1" />
                 {isLoading ? (
                   <Skeleton className="h-5 w-7" />
                 ) : (
-                  <div className="font-bold text-xs" data-chromatic="ignore">
+                  <span className="text-sm text-white/70" data-chromatic="ignore">
                     {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
-                  </div>
+                  </span>
                 )}
-              </div>
+              </span>
             </button>
           </div>
         </DropdownMenuTrigger>
