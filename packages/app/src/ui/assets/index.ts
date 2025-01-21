@@ -96,8 +96,10 @@ import faucetPurr from './faucet-purr.webp'
 import hypurrLogoText from './hypurr-logo-text.svg'
 import solvbtc from './tokens/solvBtc.png'
 import sttesth from './tokens/sttesth.svg'
+import referralCats from './referral-cats.png'
 
 export const assets = {
+  referralCats,
   faucetPurr,
   hyperEvmLogo,
   surrf,
