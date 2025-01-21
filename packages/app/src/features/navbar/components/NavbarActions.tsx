@@ -27,8 +27,8 @@ export function NavbarActions({
   return (
     <div
       className={cn(
-        'mb-2 flex flex-col items-center justify-center gap-6',
-        'xl:mb-0 xl:flex-row xl:justify-end xl:gap-2.5',
+        'mb-2 flex flex-col items-start justify-center gap-6',
+        'xl:mb-0 xl:flex-row xl:items-center xl:justify-end xl:gap-2.5',
         mobileMenuCollapsed ? 'hidden xl:flex' : 'flex',
       )}
     >
