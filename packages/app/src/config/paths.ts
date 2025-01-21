@@ -8,6 +8,7 @@ export const paths = {
   farms: '/farms',
   marketDetails: '/markets/:chainId/:asset',
   faucet: '/faucet',
+  referrals: '/referrals',
   farmDetails: '/farms/:chainId/:address',
 } as const
 
@@ -18,7 +19,8 @@ export const pathGroups = {
   savings: ['savings'],
   farms: ['farms', 'farmDetails'],
   faucet: ['faucet'],
-} satisfies Record<'borrow' | 'savings' | 'farms' | 'faucet', Path[]>
+  referrals: ['referrals'],
+} satisfies Record<'borrow' | 'savings' | 'farms' | 'faucet' | 'referrals', Path[]>
 
 export function getSupportedPages(chainConfigEntry: ChainConfigEntry): Path[] {
   return [
@@ -26,5 +28,6 @@ export function getSupportedPages(chainConfigEntry: ChainConfigEntry): Path[] {
     ...(chainConfigEntry.savings ? pathGroups.savings : []),
     ...(chainConfigEntry.farms ? pathGroups.farms : []),
     ...pathGroups.faucet,
+    ...pathGroups.referrals,
   ]
 }

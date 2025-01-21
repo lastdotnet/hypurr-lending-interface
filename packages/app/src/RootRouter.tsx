@@ -9,6 +9,7 @@ import { Markets } from './pages/Markets'
 import { MyPortfolioPage } from './pages/MyPortfolio'
 import { FaucetPage } from './pages/Faucet'
 import { RootRoute } from './pages/Root'
+import { ReferralsPage } from './pages/Referrals'
 
 export const rootRouter = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const rootRouter = createBrowserRouter([
           {
             path: paths.faucet,
             element: <FaucetPage />,
+          },
+          {
+            path: paths.referrals,
+            element: <ReferralsPage />,
           },
           // {
           //   path: paths.farms,

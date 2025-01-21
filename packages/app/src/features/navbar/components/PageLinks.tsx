@@ -44,6 +44,11 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
       label: 'Faucet',
       onClick: handleNavigate,
     },
+    {
+      to: paths.referrals,
+      label: 'Referrals',
+      onClick: handleNavigate,
+    },
   ]
 
   return (
