@@ -26,7 +26,10 @@ export function AirdropBadgeLayout({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div>
-            <button className="gradient-border rounded focus:outline-none" data-testid={testIds.navbar.airdropBadge}>
+            <button
+              className="gradient-border block rounded focus:outline-none"
+              data-testid={testIds.navbar.airdropBadge}
+            >
               <div className="flex items-center gap-1.5 px-2">
                 <img src={assets.hypurrPaw} className="block h-7 pt-1" />
                 {isLoading ? (
