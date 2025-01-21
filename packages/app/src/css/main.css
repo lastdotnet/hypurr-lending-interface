@@ -213,7 +213,7 @@
   scale: 0.6 0.4;
   transition: scale 0.24s;
 }
-.gradient-border:hover:before, .gradient-border:focus:before {
+.gradient-border:hover:before {
   scale: 1.1 1.25;
 }
 .gradient-border:after {

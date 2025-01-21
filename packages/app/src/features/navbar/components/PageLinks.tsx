@@ -4,7 +4,6 @@ import { FeedbackFish } from '@feedback-fish/react'
 
 import { SavingsInfoQueryResults } from '../types'
 import { ExternalNavLink, NavLink } from './nav-link/NavLink'
-import { Tooltip, TooltipContentShort, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -40,6 +39,9 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
       onClick: handleNavigate,
     },
     {
+      label: 'Isolated markets',
+    },
+    {
       to: paths.faucet,
       label: 'Faucet',
       onClick: handleNavigate,
@@ -54,22 +56,23 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
         mobileMenuCollapsed && 'hidden lg:flex',
       )}
     >
-      {links.map((link) => (
-        <NavLink key={link.to} to={link.to} onClick={link.onClick}>
-          {link.label}
-        </NavLink>
-      ))}
+      {links.map((link) =>
+        link.to ? (
+          <NavLink key={link.to} to={link.to} onClick={link.onClick}>
+            {link.label}
+          </NavLink>
+        ) : (
+          <span key={link.label} className="flex gap-2 text-white/50 text-xl lg:text-base">
+            {link.label}
+
+            <span className="block rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
+              Soon
+            </span>
+          </span>
+        ),
+      )}
 
       <ExternalNavLink href="http://docs.hypurr.fi/">Docs</ExternalNavLink>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <span className="hidden text-white/30 lg:inline hover:cursor-default">Points</span>
-        </TooltipTrigger>
-        <TooltipContentShort>Coming soon!</TooltipContentShort>
-      </Tooltip>
-
-      <span className="text-white/30 text-xl lg:hidden hover:cursor-default">Points (Coming soon!)</span>
 
       <FeedbackFish projectId={import.meta.env.VITE_FEEDBACK_FISH_PROJECT_ID}>
         <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white lg:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">

@@ -172,7 +172,7 @@ export function NavLinkContent({
   > &
   VariantProps<typeof textVariants>) {
   return (
-    <div
+    <span
       className={cn(
         contentVariants({
           size,
@@ -182,16 +182,16 @@ export function NavLinkContent({
       )}
       {...rest}
     >
-      <div
+      <span
         className={textVariants({
           shady: shady && !selected,
           selected,
         })}
       >
         {children}
-      </div>
+      </span>
       {postfix}
-    </div>
+    </span>
   )
 }
 

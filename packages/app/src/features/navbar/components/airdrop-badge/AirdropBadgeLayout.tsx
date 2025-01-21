@@ -22,21 +22,23 @@ export function AirdropBadgeLayout({
   isGrowing,
 }: AirdropBadgeLayoutProps) {
   return (
-    <NavbarActionWrapper label="Airdrop info">
+    <NavbarActionWrapper label="">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="gradient-border rounded focus:outline-none" data-testid={testIds.navbar.airdropBadge}>
-            <div className="flex items-center gap-1.5 px-2">
-              <img src={assets.hypurrPaw} className="block h-7 pt-1" />
-              {isLoading ? (
-                <Skeleton className="h-5 w-7" />
-              ) : (
-                <div className="font-bold text-xs" data-chromatic="ignore">
-                  {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
-                </div>
-              )}
-            </div>
-          </button>
+          <div>
+            <button className="gradient-border rounded focus:outline-none" data-testid={testIds.navbar.airdropBadge}>
+              <div className="flex items-center gap-1.5 px-2">
+                <img src={assets.hypurrPaw} className="block h-7 pt-1" />
+                {isLoading ? (
+                  <Skeleton className="h-5 w-7" />
+                ) : (
+                  <div className="font-bold text-xs" data-chromatic="ignore">
+                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
+                  </div>
+                )}
+              </div>
+            </button>
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="mt-2 border border-white/20 p-0">
           <AirdropDetails
