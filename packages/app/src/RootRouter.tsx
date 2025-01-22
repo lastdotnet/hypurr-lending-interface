@@ -7,7 +7,7 @@ import { EasyBorrowPage } from './pages/Borrow'
 import { MarketDetails } from './pages/MarketDetails'
 import { Markets } from './pages/Markets'
 import { MyPortfolioPage } from './pages/MyPortfolio'
-import { FaucetPage } from './pages/Faucet'
+// import { FaucetPage } from './pages/Faucet'
 import { RootRoute } from './pages/Root'
 
 export const rootRouter = createBrowserRouter([
@@ -38,10 +38,10 @@ export const rootRouter = createBrowserRouter([
             path: paths.marketDetails,
             element: <MarketDetails />,
           },
-          {
-            path: paths.faucet,
-            element: <FaucetPage />,
-          },
+          // {
+          //   path: paths.faucet,
+          //   element: <FaucetPage />,
+          // },
           // {
           //   path: paths.farms,
           //   element: <Farms />,
