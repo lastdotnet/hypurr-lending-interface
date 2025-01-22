@@ -29,12 +29,7 @@ describe(validateSetUserEMode.name, () => {
           requestedEModeCategory,
           user: {
             eModeCategoryId: 0,
-            reserves: [
-              {
-                eModes: [{ id: 2, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(1),
-              },
-            ],
+            reserves: [{ eModeCategoryId: 2, borrowBalance: NormalizedUnitNumber(1) }],
           },
         }),
       ).toBe('borrowed-assets-emode-category-mismatch')
@@ -45,14 +40,8 @@ describe(validateSetUserEMode.name, () => {
           user: {
             eModeCategoryId: 0,
             reserves: [
-              {
-                eModes: [{ id: 1, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(2),
-              },
-              {
-                eModes: [{ id: 2, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(1),
-              },
+              { eModeCategoryId: 1, borrowBalance: NormalizedUnitNumber(2) },
+              { eModeCategoryId: 2, borrowBalance: NormalizedUnitNumber(1) },
             ],
           },
         }),
@@ -104,18 +93,9 @@ describe(validateSetUserEMode.name, () => {
           user: {
             eModeCategoryId: 0,
             reserves: [
-              {
-                eModes: [{ id: 1, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(1),
-              },
-              {
-                eModes: [{ id: 1, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(2),
-              },
-              {
-                eModes: [{ id: 2, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(0),
-              },
+              { eModeCategoryId: 1, borrowBalance: NormalizedUnitNumber(1) },
+              { eModeCategoryId: 1, borrowBalance: NormalizedUnitNumber(2) },
+              { eModeCategoryId: 2, borrowBalance: NormalizedUnitNumber(0) },
             ],
           },
         }),
@@ -134,14 +114,8 @@ describe(validateSetUserEMode.name, () => {
           user: {
             eModeCategoryId: 1,
             reserves: [
-              {
-                eModes: [{ id: 1, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(1),
-              },
-              {
-                eModes: [{ id: 1, borrowingEnabled: true, collateralEnabled: true }],
-                borrowBalance: NormalizedUnitNumber(2),
-              },
+              { eModeCategoryId: 1, borrowBalance: NormalizedUnitNumber(1) },
+              { eModeCategoryId: 1, borrowBalance: NormalizedUnitNumber(2) },
             ],
           },
         }),

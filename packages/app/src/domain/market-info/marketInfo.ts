@@ -44,11 +44,7 @@ export interface Reserve {
   isIsolated: boolean
   isBorrowableInIsolation: boolean // in practice this is true only for stablecoins
   isSiloedBorrowing: boolean
-  eModes: {
-    category: EModeCategory
-    borrowingEnabled: boolean
-    collateralEnabled: boolean
-  }[]
+  eModeCategory?: EModeCategory
   // @note: available liquidity respects borrow cap, so it can be negative when the cap is reached and breached (interests)
   availableLiquidity: NormalizedUnitNumber
   availableLiquidityUSD: NormalizedUnitNumber
@@ -274,13 +270,11 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
         borrowEligibilityStatus,
 
         isIsolated: r.reserve.isIsolated,
-
-        eModes:
-          r.reserve.eModes?.map((eMode) => ({
-            category: eModeCategories[eMode.id] ?? raise(`EMode category ${eMode.id} not found`),
-            borrowingEnabled: eMode.borrowingEnabled,
-            collateralEnabled: eMode.collateralEnabled,
-          })) ?? [],
+        eModeCategory:
+          r.reserve.eModeCategoryId !== 0
+            ? eModeCategories[r.reserve.eModeCategoryId] ??
+              raise(`EMode category ${r.reserve.eModeCategoryId} not found`)
+            : undefined,
         isSiloedBorrowing: r.reserve.isSiloedBorrowing,
         isBorrowableInIsolation: r.reserve.borrowableInIsolation,
 
@@ -358,6 +352,7 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
         [
           { data: reserve.aIncentivesData, address: reserve.aTokenAddress },
           { data: reserve.vIncentivesData, address: reserve.variableDebtTokenAddress },
+          { data: reserve.sIncentivesData, address: reserve.stableDebtTokenAddress },
         ]
           .filter(({ data }) => data && data.length > 0)
           .map(({ address }) => CheckedAddress(address)),
