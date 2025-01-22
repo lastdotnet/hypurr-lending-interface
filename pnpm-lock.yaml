@@ -38,8 +38,8 @@ importers:
   packages/app:
     dependencies:
       '@aave/math-utils':
-        specifier: ^1.30.5
-        version: 1.30.5(bignumber.js@9.1.2)(tslib@2.7.0)
+        specifier: ^1.20.0
+        version: 1.20.0(bignumber.js@9.1.2)(tslib@2.7.0)
       '@dynamic-labs/ethereum':
         specifier: ^3.4.4
         version: 3.4.4(@babel/core@7.25.8)(@babel/preset-env@7.24.6(@babel/core@7.25.8))(@dynamic-labs/logger@3.4.4(eventemitter3@5.0.1))(@dynamic-labs/rpc-providers@3.4.4(eventemitter3@5.0.1))(@react-native-async-storage/async-storage@1.22.0(react-native@0.74.0(@babel/core@7.25.8)(@babel/preset-env@7.24.6(@babel/core@7.25.8))(@types/react@18.2.14)(bufferutil@4.0.8)(react@18.2.0)))(@types/react@18.2.14)(bufferutil@4.0.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(viem@2.9.21(bufferutil@4.0.8)(typescript@5.6.3)(zod@3.22.4))
@@ -408,8 +408,8 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  '@aave/math-utils@1.30.5':
-    resolution: {integrity: sha512-aBAHCK6p3sMuyD4mipxH0vF+kn22Ocu7TzotCPzvKgkifVvGWFY7XsM5CNWubvDksL1+uNSoUvX2v3LOr23UHA==}
+  '@aave/math-utils@1.20.0':
+    resolution: {integrity: sha512-s6o2x1Gx1aqA+w0Hk8KzKsdqBA2A/iT7WGNkIAelfyxLJol2JC3Ap6tzDTlEny2zzLIfl+vpQjdWhabFMgqv4Q==}
     peerDependencies:
       bignumber.js: ^9.x
       tslib: ^2.4.x
@@ -10413,7 +10413,7 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-  '@aave/math-utils@1.30.5(bignumber.js@9.1.2)(tslib@2.7.0)':
+  '@aave/math-utils@1.20.0(bignumber.js@9.1.2)(tslib@2.7.0)':
     dependencies:
       bignumber.js: 9.1.2
       tslib: 2.7.0

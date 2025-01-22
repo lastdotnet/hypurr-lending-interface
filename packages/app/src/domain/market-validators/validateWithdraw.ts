@@ -15,7 +15,7 @@ export interface ValidateWithdrawArgs {
   asset: {
     status: ReserveStatus
     unborrowedLiquidity: NormalizedUnitNumber
-    eModeCategories?: EModeCategory[]
+    eModeCategory?: EModeCategory
   }
   user: {
     deposited: NormalizedUnitNumber
@@ -46,10 +46,9 @@ export function validateWithdraw({ value, asset, user }: ValidateWithdrawArgs): 
     return 'exceeds-unborrowed-liquidity'
   }
 
-  const userEModeState = user.eModeState
   const liquidationThreshold =
-    userEModeState.enabled && asset.eModeCategories?.some((e) => e.id === userEModeState.category.id)
-      ? userEModeState.category.liquidationThreshold
+    user.eModeState.enabled && user.eModeState.category.id === asset.eModeCategory?.id
+      ? user.eModeState.category.liquidationThreshold
       : user.liquidationThreshold
   if (user.ltvAfterWithdrawal.gt(liquidationThreshold)) {
     return 'exceeds-ltv'

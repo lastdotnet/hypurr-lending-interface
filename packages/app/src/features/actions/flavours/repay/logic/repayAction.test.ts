@@ -85,7 +85,7 @@ describe(createRepayActionConfig.name, () => {
           to: wethGatewayAddress[hyperTestnet.id],
           abi: wethGatewayAbi,
           functionName: 'repayETH',
-          args: [lendingPoolAddress[hyperTestnet.id], repayValueBigInt, account],
+          args: [lendingPoolAddress[hyperTestnet.id], repayValueBigInt, interestRateMode, account],
           from: account,
           result: undefined,
           value: repayValueBigInt,

@@ -180,7 +180,7 @@ describe(validateWithdraw.name, () => {
         asset: {
           status: 'active',
           unborrowedLiquidity: NormalizedUnitNumber(100),
-          eModeCategories: [eModeCategory],
+          eModeCategory,
         },
         user: {
           deposited: NormalizedUnitNumber(10),
@@ -196,7 +196,7 @@ describe(validateWithdraw.name, () => {
         asset: {
           status: 'active',
           unborrowedLiquidity: NormalizedUnitNumber(100),
-          eModeCategories: [eModeCategory],
+          eModeCategory,
         },
         user: {
           deposited: NormalizedUnitNumber(10),
