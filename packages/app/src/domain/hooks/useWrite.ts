@@ -13,12 +13,10 @@ import { JSONStringifyRich } from '@/utils/object'
 import { useOnDepsChange } from '@/utils/useOnDepsChange'
 import { MutationKey, useMutation } from '@tanstack/react-query'
 import { writeContractMutationOptions } from 'wagmi/query'
-import { recordEvent } from '../analytics'
 import { sanityCheckTx } from './sanityChecks'
 import { useIncreasedGasLimit } from './useIncreasedGasLimit'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
-import { useWalletType } from './useWalletType'
 
 export type WriteStatus =
   | { kind: 'disabled' }
@@ -59,7 +57,6 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   // used to reset the write state when the args change
 
   const { address: account } = useAccount()
-  const walletType = useWalletType() // needed for analytics
 
   const {
     data: gasLimit,
@@ -147,21 +144,6 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
       ? () => {
           sanityCheckTx(parameters.request, chainId)
           callbacks.onBeforeWrite?.()
-
-          if (walletType === 'sandbox') {
-            recordEvent('sandbox-tx-sent', {
-              receiver: parameters.request.address,
-              method: parameters.request.functionName,
-            })
-          } else {
-            recordEvent('tx-sent', {
-              walletType,
-              chainId,
-              receiver: parameters.request.address,
-              method: parameters.request.functionName,
-            })
-          }
-
           writeContract(parameters.request as any)
         }
       : () => {}
