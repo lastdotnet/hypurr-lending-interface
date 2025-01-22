@@ -159,8 +159,8 @@ export const USD_MOCK_TOKEN = new Token({
 
 export const SPK_MOCK_TOKEN = new Token({
   address: CheckedAddress(zeroAddress),
-  symbol: TokenSymbol('SPK'),
-  name: 'Spark Token',
+  symbol: TokenSymbol('PURRL'),
+  name: 'Purrl',
   decimals: 18,
   unitPriceUsd: '10',
 })

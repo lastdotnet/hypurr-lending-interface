@@ -27,8 +27,8 @@ export function NavbarActions({ mobileMenuCollapsed, rewardsInfo }: NavbarAction
       )}
     >
       <RewardsBadge {...rewardsInfo} />
-
       <AirdropBadge airdrop={undefined} isLoading={false} isError={false} />
+
       {primaryWallet ? <UserProfileButton /> : <ConnectButton />}
     </div>
   )

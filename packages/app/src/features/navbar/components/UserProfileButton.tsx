@@ -13,7 +13,7 @@ export function UserProfileButton() {
     <>
       <button
         onClick={() => setShowDynamicUserProfile(true)}
-        className="flex items-center gap-2 self-start rounded px-2 py-1 text-sm transition-opacity hover:bg-white/10"
+        className="flex items-center gap-2 rounded px-2 py-1 text-sm transition-opacity hover:bg-white/10"
       >
         {networkIcon && <img src={networkIcon} alt="" className="h-4 w-4" />}
 
