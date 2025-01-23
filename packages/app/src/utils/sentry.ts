@@ -18,7 +18,7 @@ Sentry.init({
     'User rejected the request', // Rejecting a request using browser wallet
     'User rejected methods', // Happens sometimes with mobile wallets
     'User disapproved requested methods', // Happens when user rejects transaction using mobile wallet (connected by WalletConnect)
-    'connector.disconnect is not a function',
+    'disconnect is not a function',
   ],
   beforeSend(event, hint) {
     const error = hint.originalException
