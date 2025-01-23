@@ -9,8 +9,8 @@ import FriendlyCaptcha from '../components/FriendlyCaptcha'
 import { Address } from 'viem'
 import { marketBalancesQueryKey } from '@/domain/wallet/marketBalances'
 import { useQueryClient } from '@tanstack/react-query'
-
-class FaucetTimeoutError extends Error {}
+import { captureError } from '@/utils/sentry'
+import { FaucetError, FaucetTimeoutError } from '@/domain/errors/faucet'
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
@@ -48,30 +48,8 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
         trackEvent('claim_with_x_handle')
       }
 
-      const response = await fetch(faucetUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          captchaToken: captchaSolution,
-          walletAddress: primaryWallet.address,
-          handle,
-        }),
-      })
-
-      if (!response.ok) {
-        if (response.status === 429) {
-          throw new FaucetTimeoutError('Claiming is available once every 24 hours. Please try again later.')
-        }
-        throw new Error('Failed to mint tokens')
-      }
-
-      const data = (await response.json()) as { success: boolean; txHash: `0x${string}` }
-
-      if (!data.success || !data.txHash) {
-        throw new Error('Failed to mint tokens')
-      }
+      const response = await fetchFaucet(primaryWallet.address, captchaSolution, handle)
+      const data = await parseResponse(response)
 
       trackEvent('faucet_claim_success')
       const now = Date.now()
@@ -86,13 +64,16 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
         }),
       })
     } catch (error) {
+      if (error instanceof Error) {
+        captureError(error)
+      }
+
       if (error instanceof FaucetTimeoutError) {
         trackEvent('faucet_claim_timeout_error')
       } else {
         trackEvent('faucet_claim_error')
       }
 
-      console.error(error)
       setMintError(error instanceof Error ? error.message : 'An unknown error occurred while minting')
     } finally {
       setMintPending(false)
@@ -139,4 +120,54 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
       {mintError && <p className="mt-2 text-center text-red-500 text-sm">{mintError}</p>}
     </div>
   )
+}
+
+async function fetchFaucet(walletAddress: string, captchaToken: string, handle: string | null): Promise<Response> {
+  try {
+    const response = await fetch(faucetUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        captchaToken,
+        walletAddress,
+        handle,
+      }),
+    })
+
+    if (!response.ok) {
+      if (response.status === 429) {
+        throw new FaucetTimeoutError('Claiming is available once every 24 hours. Please try again later.')
+      }
+      throw new FaucetError(`Server error: ${response.status} ${response.statusText}`)
+    }
+
+    return response
+  } catch (error) {
+    if (error instanceof FaucetTimeoutError) {
+      throw error
+    }
+
+    throw new FaucetError(
+      error instanceof Error ? `Connection error: ${error.message}` : 'Failed to connect to faucet service',
+    )
+  }
+}
+
+async function parseResponse(response: Response) {
+  try {
+    const data = (await response.json()) as { success: boolean; txHash: `0x${string}` }
+
+    if (!data.success || !data.txHash) {
+      throw new FaucetError('Invalid response data: missing success or txHash')
+    }
+
+    return data
+  } catch (error) {
+    if (error instanceof FaucetError) {
+      throw error
+    }
+    throw new FaucetError('Invalid response format from faucet service')
+  }
 }

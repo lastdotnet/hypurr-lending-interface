@@ -1,4 +1,3 @@
-import { apiUrl } from '@/config/consts'
 import * as Sentry from '@sentry/react'
 
 if (import.meta.env.VITE_SENTRY_DSN) {
@@ -8,7 +7,6 @@ if (import.meta.env.VITE_SENTRY_DSN) {
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
-  tunnel: `${apiUrl}/sentry/tunnel`,
   environment: import.meta.env.VITE_ENV_NAME,
   integrations: [],
   tracesSampleRate: 0,
@@ -20,6 +18,7 @@ Sentry.init({
     'User rejected the request', // Rejecting a request using browser wallet
     'User rejected methods', // Happens sometimes with mobile wallets
     'User disapproved requested methods', // Happens when user rejects transaction using mobile wallet (connected by WalletConnect)
+    'connector.disconnect is not a function',
   ],
   beforeSend(event, hint) {
     const error = hint.originalException
@@ -34,7 +33,7 @@ Sentry.init({
 })
 
 function shouldErrorBeTracked(error: Error): boolean {
-  const trackedErrors = ['TypeError', 'AssertionError', 'ZodError']
+  const trackedErrors = ['TypeError', 'AssertionError', 'ZodError', 'FaucetError']
 
   return trackedErrors.some((errorName) => error.name === errorName)
 }
