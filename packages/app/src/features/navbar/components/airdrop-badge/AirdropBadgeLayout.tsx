@@ -2,10 +2,11 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { SPK_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
-import { Tooltip, TooltipContentLong, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { testIds } from '@/ui/utils/testIds'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { AirdropDetails } from './AirdropDetails'
+import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
+import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber
@@ -19,32 +20,39 @@ export function AirdropBadgeLayout({
   precision = 0,
   isLoading,
   isGrowing,
-  setEnableCounter,
 }: AirdropBadgeLayoutProps) {
   return (
-    <NavbarActionWrapper label="Airdrop info">
-      <Tooltip onOpenChange={(open) => setEnableCounter?.(open)}>
-        <TooltipTrigger asChild>
-          <button
-            className="rounded-[18px] bg-gradient-to-t from-product-orange to-basics-grey/50 p-[1px]"
-            data-testid={testIds.navbar.airdropBadge}
-          >
-            <div className="flex h-11 items-center gap-1.5 rounded-lg bg-black p-2 lg:h-[38px]">
-              <img src={assets.hypurrLogo} className="h-7 lg:h-6" />
-              {isLoading ? (
-                <Skeleton className="h-5 w-7" />
-              ) : (
-                <div className="font-semibold" data-chromatic="ignore">
-                  {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
-                </div>
-              )}
-            </div>
-          </button>
-        </TooltipTrigger>
-        <TooltipContentLong align="start" className="p-0">
-          <AirdropDetails amount={amount} precision={precision} isLoading={isLoading} isGrowing={isGrowing} />
-        </TooltipContentLong>
-      </Tooltip>
+    <NavbarActionWrapper label="">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div>
+            <button
+              className="gradient-border px-[.6rem] py-[.3rem]"
+              data-testid={testIds.navbar.airdropBadge}
+            >
+              <span className="flex items-center gap-1.5">
+                <img src={assets.hypurrPaw} className="block h-6 pt-1" />
+                {isLoading ? (
+                  <Skeleton className="h-5 w-7" />
+                ) : (
+                  <span className="text-sm text-white/70" data-chromatic="ignore">
+                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
+                  </span>
+                )}
+              </span>
+            </button>
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="mt-2 border border-white/20 p-0">
+          <AirdropDetails
+            amount={amount}
+            precision={precision}
+            isLoading={isLoading}
+            isGrowing={isGrowing}
+            placeholder
+          />
+        </DropdownMenuContent>
+      </DropdownMenu>
     </NavbarActionWrapper>
   )
 }

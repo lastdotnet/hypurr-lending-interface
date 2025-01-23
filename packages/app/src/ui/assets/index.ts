@@ -88,6 +88,7 @@ import xCircle from './x-circle.svg'
 import lastLogo from './last-logo.svg'
 import surrf from './surrf.svg'
 import hypurrLogo from './hypurr-logo.svg'
+import hypurrPaw from './hypurr-paw.svg'
 import hyperEvmLogo from './hyper-evm-logo.png'
 import usdxl from './tokens/usdxl.svg'
 import susde from './tokens/susde.png'
@@ -98,6 +99,7 @@ import solvbtc from './tokens/solvBtc.png'
 import sttesth from './tokens/sttesth.svg'
 
 export const assets = {
+  hypurrPaw,
   faucetPurr,
   hyperEvmLogo,
   surrf,
