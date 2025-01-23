@@ -6,7 +6,7 @@ export function BorrowRateBanner() {
   return (
     <div className="flex flex-col items-center md:mt-12">
       <div className="flex items-center gap-2">
-        <Typography variant="h1" gradient>
+        <Typography variant="h1" gradient className="text-center">
           {usdxlEnabled ? 'Borrow USDXL' : 'Quick Deposit & Borrow'}
         </Typography>
       </div>
