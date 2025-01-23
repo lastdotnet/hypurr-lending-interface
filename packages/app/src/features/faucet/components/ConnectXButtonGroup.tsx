@@ -44,7 +44,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
       const response = await fetch(`${twitterFollowUrl}/${connectedAccountInfo?.username}`)
 
       if (!response.ok) {
-        throw new Error('Failed to mint tokens')
+        throw new Error('Request to `verify-follow` failed')
       }
 
       const data = (await response.json()) as { isFollowing: boolean }
@@ -117,12 +117,14 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
           >
             Step 2. Follow @hypurrfi on X - (2X HYPE boost)
           </a>
-          <button
-            onClick={checkIfFollowing}
-            className="mt-2 self-center p-1 font-normal text-primary text-sm hover:text-primary-hover"
-          >
-            I'm already following
-          </button>
+
+          <p className="mt-2 text-center font-normal text-sm text-white/70">
+            Already following with account{' '}
+            <span className="font-bold text-sm text-white">{connectedAccountInfo?.username}</span>?
+            <button onClick={checkIfFollowing} className="ml-1 p-1 text-primary hover:text-primary-hover">
+              Click to verify.
+            </button>
+          </p>
         </div>
       )}
       {error && <p className="text-center text-red-500 text-sm">Error linking X account</p>}

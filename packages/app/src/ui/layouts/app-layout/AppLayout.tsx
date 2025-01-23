@@ -35,7 +35,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         setMobileMenuCollapsed={setMobileMenuCollapsed}
         className="z-20"
       />
-      <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden lg:flex')}>
+      <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden xl:flex')}>
         {children}
         {(!pageSupported || isWrongNetwork) &&
           createPortal(

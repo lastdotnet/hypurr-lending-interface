@@ -1,10 +1,11 @@
 import { cn } from '@/ui/utils/style'
 
-import { DynamicWidget, useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { ConnectedWalletInfo, RewardsInfo } from '../types'
 import { RewardsBadge } from './rewards-badge/RewardsBadge'
-import { SettingsDropdown } from './settings-dropdown/SettingsDropdown'
 import ConnectButton from './ConnectButton'
+import { UserProfileButton } from './UserProfileButton'
+import { AirdropBadge } from './airdrop-badge/AirdropBadge'
 
 export interface NavbarActionsProps {
   mobileMenuCollapsed: boolean
@@ -14,24 +15,21 @@ export interface NavbarActionsProps {
   isSandboxEnabled: boolean
 }
 
-export function NavbarActions({
-  mobileMenuCollapsed,
-  rewardsInfo,
-  openSandboxDialog,
-  isSandboxEnabled,
-}: NavbarActionsProps) {
+export function NavbarActions({ mobileMenuCollapsed, rewardsInfo }: NavbarActionsProps) {
   const { primaryWallet } = useDynamicContext()
+
   return (
     <div
       className={cn(
-        'mb-2 flex flex-col items-center justify-center gap-6',
-        'lg:mb-0 lg:flex-row lg:justify-end lg:gap-2.5',
-        mobileMenuCollapsed ? 'hidden lg:flex' : 'flex',
+        'mb-2 flex flex-col items-start justify-center gap-6',
+        'xl:mb-0 xl:flex-row xl:items-center xl:justify-center xl:gap-2.5',
+        mobileMenuCollapsed ? 'hidden xl:flex' : 'flex',
       )}
     >
       <RewardsBadge {...rewardsInfo} />
-      {primaryWallet ? <DynamicWidget innerButtonComponent="Connect" /> : <ConnectButton />}
-      <SettingsDropdown onSandboxModeClick={openSandboxDialog} isSandboxEnabled={isSandboxEnabled} />
+      <AirdropBadge airdrop={undefined} isLoading={false} isError={false} />
+
+      {primaryWallet ? <UserProfileButton /> : <ConnectButton />}
     </div>
   )
 }

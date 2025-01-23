@@ -1,475 +1,492 @@
 export const uiPoolDataProviderABI = [
   {
-    type: 'constructor',
-    inputs: [
+    "type": "constructor",
+    "inputs": [
       {
-        name: '_networkBaseTokenPriceInUsdProxyAggregator',
-        type: 'address',
-        internalType: 'contract IEACAggregatorProxy',
+        "name": "_networkBaseTokenPriceInUsdProxyAggregator",
+        "type": "address",
+        "internalType": "contract IEACAggregatorProxy"
       },
       {
-        name: '_marketReferenceCurrencyPriceInUsdProxyAggregator',
-        type: 'address',
-        internalType: 'contract IEACAggregatorProxy',
-      },
+        "name": "_marketReferenceCurrencyPriceInUsdProxyAggregator",
+        "type": "address",
+        "internalType": "contract IEACAggregatorProxy"
+      }
     ],
-    stateMutability: 'nonpayable',
+    "stateMutability": "nonpayable"
   },
   {
-    type: 'function',
-    name: 'ETH_CURRENCY_UNIT',
-    inputs: [],
-    outputs: [
+    "type": "function",
+    "name": "ETH_CURRENCY_UNIT",
+    "inputs": [],
+    "outputs": [
       {
-        name: '',
-        type: 'uint256',
-        internalType: 'uint256',
-      },
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'MKR_ADDRESS',
-    inputs: [],
-    outputs: [
+    "type": "function",
+    "name": "MKR_ADDRESS",
+    "inputs": [],
+    "outputs": [
       {
-        name: '',
-        type: 'address',
-        internalType: 'address',
-      },
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'bytes32ToString',
-    inputs: [
+    "type": "function",
+    "name": "bytes32ToString",
+    "inputs": [
       {
-        name: '_bytes32',
-        type: 'bytes32',
-        internalType: 'bytes32',
-      },
+        "name": "_bytes32",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'string',
-        internalType: 'string',
-      },
+        "name": "",
+        "type": "string",
+        "internalType": "string"
+      }
     ],
-    stateMutability: 'pure',
+    "stateMutability": "pure"
   },
   {
-    type: 'function',
-    name: 'getEModes',
-    inputs: [
+    "type": "function",
+    "name": "getReservesData",
+    "inputs": [
       {
-        name: 'provider',
-        type: 'address',
-        internalType: 'contract IPoolAddressesProvider',
-      },
+        "name": "provider",
+        "type": "address",
+        "internalType": "contract IPoolAddressesProvider"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'tuple[]',
-        internalType: 'struct IUiPoolDataProviderV3.Emode[]',
-        components: [
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct IUiPoolDataProviderV3.AggregatedReserveData[]",
+        "components": [
           {
-            name: 'id',
-            type: 'uint8',
-            internalType: 'uint8',
+            "name": "underlyingAsset",
+            "type": "address",
+            "internalType": "address"
           },
           {
-            name: 'eMode',
-            type: 'tuple',
-            internalType: 'struct DataTypes.EModeCategory',
-            components: [
-              {
-                name: 'ltv',
-                type: 'uint16',
-                internalType: 'uint16',
-              },
-              {
-                name: 'liquidationThreshold',
-                type: 'uint16',
-                internalType: 'uint16',
-              },
-              {
-                name: 'liquidationBonus',
-                type: 'uint16',
-                internalType: 'uint16',
-              },
-              {
-                name: 'collateralBitmap',
-                type: 'uint128',
-                internalType: 'uint128',
-              },
-              {
-                name: 'label',
-                type: 'string',
-                internalType: 'string',
-              },
-              {
-                name: 'borrowableBitmap',
-                type: 'uint128',
-                internalType: 'uint128',
-              },
-            ],
+            "name": "name",
+            "type": "string",
+            "internalType": "string"
           },
-        ],
+          {
+            "name": "symbol",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "decimals",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "baseLTVasCollateral",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reserveLiquidationThreshold",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reserveLiquidationBonus",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reserveFactor",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "usageAsCollateralEnabled",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "borrowingEnabled",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "stableBorrowRateEnabled",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isActive",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isFrozen",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "liquidityIndex",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "variableBorrowIndex",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "liquidityRate",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "variableBorrowRate",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "stableBorrowRate",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "lastUpdateTimestamp",
+            "type": "uint40",
+            "internalType": "uint40"
+          },
+          {
+            "name": "aTokenAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "stableDebtTokenAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "variableDebtTokenAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "interestRateStrategyAddress",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "availableLiquidity",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalPrincipalStableDebt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "averageStableRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "stableDebtLastUpdateTimestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "totalScaledVariableDebt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "priceInMarketReferenceCurrency",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "priceOracle",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "variableRateSlope1",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "variableRateSlope2",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "stableRateSlope1",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "stableRateSlope2",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "baseStableBorrowRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "baseVariableBorrowRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "optimalUsageRatio",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "isPaused",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "isSiloedBorrowing",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "accruedToTreasury",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "unbacked",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "isolationModeTotalDebt",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "flashLoanEnabled",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "debtCeiling",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "debtCeilingDecimals",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "eModeCategoryId",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "borrowCap",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "supplyCap",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "eModeLtv",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "eModeLiquidationThreshold",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "eModeLiquidationBonus",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "eModePriceSource",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "eModeLabel",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "borrowableInIsolation",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ]
       },
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct IUiPoolDataProviderV3.BaseCurrencyInfo",
+        "components": [
+          {
+            "name": "marketReferenceCurrencyUnit",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "marketReferenceCurrencyPriceInUsd",
+            "type": "int256",
+            "internalType": "int256"
+          },
+          {
+            "name": "networkBaseTokenPriceInUsd",
+            "type": "int256",
+            "internalType": "int256"
+          },
+          {
+            "name": "networkBaseTokenPriceDecimals",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'getReservesData',
-    inputs: [
+    "type": "function",
+    "name": "getReservesList",
+    "inputs": [
       {
-        name: 'provider',
-        type: 'address',
-        internalType: 'contract IPoolAddressesProvider',
-      },
+        "name": "provider",
+        "type": "address",
+        "internalType": "contract IPoolAddressesProvider"
+      }
     ],
-    outputs: [
+    "outputs": [
       {
-        name: '',
-        type: 'tuple[]',
-        internalType: 'struct IUiPoolDataProviderV3.AggregatedReserveData[]',
-        components: [
-          {
-            name: 'underlyingAsset',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'name',
-            type: 'string',
-            internalType: 'string',
-          },
-          {
-            name: 'symbol',
-            type: 'string',
-            internalType: 'string',
-          },
-          {
-            name: 'decimals',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'baseLTVasCollateral',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'reserveLiquidationThreshold',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'reserveLiquidationBonus',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'reserveFactor',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'usageAsCollateralEnabled',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'borrowingEnabled',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'isActive',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'isFrozen',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'liquidityIndex',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'variableBorrowIndex',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'liquidityRate',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'variableBorrowRate',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'lastUpdateTimestamp',
-            type: 'uint40',
-            internalType: 'uint40',
-          },
-          {
-            name: 'aTokenAddress',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'variableDebtTokenAddress',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'interestRateStrategyAddress',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'availableLiquidity',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'totalScaledVariableDebt',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'priceInMarketReferenceCurrency',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'priceOracle',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'variableRateSlope1',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'variableRateSlope2',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'baseVariableBorrowRate',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'optimalUsageRatio',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'isPaused',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'isSiloedBorrowing',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'accruedToTreasury',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'unbacked',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'isolationModeTotalDebt',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-          {
-            name: 'flashLoanEnabled',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'debtCeiling',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'debtCeilingDecimals',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'borrowCap',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'supplyCap',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'borrowableInIsolation',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'virtualAccActive',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'virtualUnderlyingBalance',
-            type: 'uint128',
-            internalType: 'uint128',
-          },
-        ],
-      },
-      {
-        name: '',
-        type: 'tuple',
-        internalType: 'struct IUiPoolDataProviderV3.BaseCurrencyInfo',
-        components: [
-          {
-            name: 'marketReferenceCurrencyUnit',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'marketReferenceCurrencyPriceInUsd',
-            type: 'int256',
-            internalType: 'int256',
-          },
-          {
-            name: 'networkBaseTokenPriceInUsd',
-            type: 'int256',
-            internalType: 'int256',
-          },
-          {
-            name: 'networkBaseTokenPriceDecimals',
-            type: 'uint8',
-            internalType: 'uint8',
-          },
-        ],
-      },
+        "name": "",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
     ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'getReservesList',
-    inputs: [
+    "type": "function",
+    "name": "getUserReservesData",
+    "inputs": [
       {
-        name: 'provider',
-        type: 'address',
-        internalType: 'contract IPoolAddressesProvider',
+        "name": "provider",
+        "type": "address",
+        "internalType": "contract IPoolAddressesProvider"
       },
-    ],
-    outputs: [
       {
-        name: '',
-        type: 'address[]',
-        internalType: 'address[]',
-      },
+        "name": "user",
+        "type": "address",
+        "internalType": "address"
+      }
     ],
-    stateMutability: 'view',
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct IUiPoolDataProviderV3.UserReserveData[]",
+        "components": [
+          {
+            "name": "underlyingAsset",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "scaledATokenBalance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "usageAsCollateralEnabledOnUser",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "stableBorrowRate",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "scaledVariableDebt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "principalStableDebt",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "stableBorrowLastUpdateTimestamp",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      },
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'getUserReservesData',
-    inputs: [
+    "type": "function",
+    "name": "marketReferenceCurrencyPriceInUsdProxyAggregator",
+    "inputs": [],
+    "outputs": [
       {
-        name: 'provider',
-        type: 'address',
-        internalType: 'contract IPoolAddressesProvider',
-      },
-      {
-        name: 'user',
-        type: 'address',
-        internalType: 'address',
-      },
+        "name": "",
+        "type": "address",
+        "internalType": "contract IEACAggregatorProxy"
+      }
     ],
-    outputs: [
-      {
-        name: '',
-        type: 'tuple[]',
-        internalType: 'struct IUiPoolDataProviderV3.UserReserveData[]',
-        components: [
-          {
-            name: 'underlyingAsset',
-            type: 'address',
-            internalType: 'address',
-          },
-          {
-            name: 'scaledATokenBalance',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-          {
-            name: 'usageAsCollateralEnabledOnUser',
-            type: 'bool',
-            internalType: 'bool',
-          },
-          {
-            name: 'scaledVariableDebt',
-            type: 'uint256',
-            internalType: 'uint256',
-          },
-        ],
-      },
-      {
-        name: '',
-        type: 'uint8',
-        internalType: 'uint8',
-      },
-    ],
-    stateMutability: 'view',
+    "stateMutability": "view"
   },
   {
-    type: 'function',
-    name: 'marketReferenceCurrencyPriceInUsdProxyAggregator',
-    inputs: [],
-    outputs: [
+    "type": "function",
+    "name": "networkBaseTokenPriceInUsdProxyAggregator",
+    "inputs": [],
+    "outputs": [
       {
-        name: '',
-        type: 'address',
-        internalType: 'contract IEACAggregatorProxy',
-      },
+        "name": "",
+        "type": "address",
+        "internalType": "contract IEACAggregatorProxy"
+      }
     ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    name: 'networkBaseTokenPriceInUsdProxyAggregator',
-    inputs: [],
-    outputs: [
-      {
-        name: '',
-        type: 'address',
-        internalType: 'contract IEACAggregatorProxy',
-      },
-    ],
-    stateMutability: 'view',
-  },
+    "stateMutability": "view"
+  }
 ] as const

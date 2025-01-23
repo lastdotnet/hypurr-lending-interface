@@ -279,13 +279,23 @@ export const capAutomatorAbi = [
     ],
     name: 'UpdateSupplyCap',
   },
+  {
+    type: 'error',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'OwnableInvalidOwner',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'OwnableUnauthorizedAccount',
+  },
 ] as const
 
 /**
  *
  */
 export const capAutomatorAddress = {
-  998: '0x14b22fE50ac34Eb6F5D4a653926a26636b5cB990',
+  998: '0x99e71778dfbf301779161E46F78B2EF2af7FA8e3',
 } as const
 
 /**
@@ -523,13 +533,6 @@ export const collectorAbi = [
   {
     type: 'function',
     inputs: [],
-    name: 'ETH_MOCK_ADDRESS',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
     name: 'REVISION',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     stateMutability: 'view',
@@ -547,43 +550,6 @@ export const collectorAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'streamId', internalType: 'uint256', type: 'uint256' },
-      { name: 'who', internalType: 'address', type: 'address' },
-    ],
-    name: 'balanceOf',
-    outputs: [{ name: 'balance', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'streamId', internalType: 'uint256', type: 'uint256' }],
-    name: 'cancelStream',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'recipient', internalType: 'address', type: 'address' },
-      { name: 'deposit', internalType: 'uint256', type: 'uint256' },
-      { name: 'tokenAddress', internalType: 'address', type: 'address' },
-      { name: 'startTime', internalType: 'uint256', type: 'uint256' },
-      { name: 'stopTime', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'createStream',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'streamId', internalType: 'uint256', type: 'uint256' }],
-    name: 'deltaOf',
-    outputs: [{ name: 'delta', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
     inputs: [],
     name: 'getFundsAdmin',
     outputs: [{ name: '', internalType: 'address', type: 'address' }],
@@ -591,32 +557,8 @@ export const collectorAbi = [
   },
   {
     type: 'function',
-    inputs: [],
-    name: 'getNextStreamId',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'streamId', internalType: 'uint256', type: 'uint256' }],
-    name: 'getStream',
-    outputs: [
-      { name: 'sender', internalType: 'address', type: 'address' },
-      { name: 'recipient', internalType: 'address', type: 'address' },
-      { name: 'deposit', internalType: 'uint256', type: 'uint256' },
-      { name: 'tokenAddress', internalType: 'address', type: 'address' },
-      { name: 'startTime', internalType: 'uint256', type: 'uint256' },
-      { name: 'stopTime', internalType: 'uint256', type: 'uint256' },
-      { name: 'remainingBalance', internalType: 'uint256', type: 'uint256' },
-      { name: 'ratePerSecond', internalType: 'uint256', type: 'uint256' },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
     inputs: [
-      { name: 'fundsAdmin', internalType: 'address', type: 'address' },
-      { name: 'nextStreamId', internalType: 'uint256', type: 'uint256' },
+      { name: 'reserveController', internalType: 'address', type: 'address' },
     ],
     name: 'initialize',
     outputs: [],
@@ -641,102 +583,6 @@ export const collectorAbi = [
     stateMutability: 'nonpayable',
   },
   {
-    type: 'function',
-    inputs: [
-      { name: 'streamId', internalType: 'uint256', type: 'uint256' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'withdrawFromStream',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'streamId',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: true,
-      },
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'recipient',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'senderBalance',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'recipientBalance',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'CancelStream',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'streamId',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: true,
-      },
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'recipient',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'deposit',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'tokenAddress',
-        internalType: 'address',
-        type: 'address',
-        indexed: false,
-      },
-      {
-        name: 'startTime',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'stopTime',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'CreateStream',
-  },
-  {
     type: 'event',
     anonymous: false,
     inputs: [
@@ -749,38 +595,13 @@ export const collectorAbi = [
     ],
     name: 'NewFundsAdmin',
   },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'streamId',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: true,
-      },
-      {
-        name: 'recipient',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'amount',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'WithdrawFromStream',
-  },
 ] as const
 
 /**
  *
  */
 export const collectorAddress = {
-  998: '0xF1fde486413AdAC1f4fC5E54EFa06fdA0BdD92b6',
+  998: '0x875133496eBf9A8d2DdC786efDD394f518Ce987d',
 } as const
 
 /**
@@ -1421,6 +1242,13 @@ export const lendingPoolAbi = [
   {
     type: 'function',
     inputs: [],
+    name: 'MAX_STABLE_RATE_BORROW_SIZE_PERCENT',
+    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
     name: 'POOL_REVISION',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     stateMutability: 'view',
@@ -1455,7 +1283,7 @@ export const lendingPoolAbi = [
       { name: 'id', internalType: 'uint8', type: 'uint8' },
       {
         name: 'category',
-        internalType: 'struct DataTypes.EModeCategoryBaseConfiguration',
+        internalType: 'struct DataTypes.EModeCategory',
         type: 'tuple',
         components: [
           { name: 'ltv', internalType: 'uint16', type: 'uint16' },
@@ -1465,31 +1293,12 @@ export const lendingPoolAbi = [
             type: 'uint16',
           },
           { name: 'liquidationBonus', internalType: 'uint16', type: 'uint16' },
+          { name: 'priceSource', internalType: 'address', type: 'address' },
           { name: 'label', internalType: 'string', type: 'string' },
         ],
       },
     ],
     name: 'configureEModeCategory',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'id', internalType: 'uint8', type: 'uint8' },
-      { name: 'borrowableBitmap', internalType: 'uint128', type: 'uint128' },
-    ],
-    name: 'configureEModeCategoryBorrowableBitmap',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'id', internalType: 'uint8', type: 'uint8' },
-      { name: 'collateralBitmap', internalType: 'uint128', type: 'uint128' },
-    ],
-    name: 'configureEModeCategoryCollateralBitmap',
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -1560,20 +1369,6 @@ export const lendingPoolAbi = [
   },
   {
     type: 'function',
-    inputs: [],
-    name: 'getBorrowLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getBridgeLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
     inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
     name: 'getConfiguration',
     outputs: [
@@ -1591,47 +1386,11 @@ export const lendingPoolAbi = [
   {
     type: 'function',
     inputs: [{ name: 'id', internalType: 'uint8', type: 'uint8' }],
-    name: 'getEModeCategoryBorrowableBitmap',
-    outputs: [{ name: '', internalType: 'uint128', type: 'uint128' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'id', internalType: 'uint8', type: 'uint8' }],
-    name: 'getEModeCategoryCollateralBitmap',
-    outputs: [{ name: '', internalType: 'uint128', type: 'uint128' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'id', internalType: 'uint8', type: 'uint8' }],
-    name: 'getEModeCategoryCollateralConfig',
-    outputs: [
-      {
-        name: '',
-        internalType: 'struct DataTypes.CollateralConfig',
-        type: 'tuple',
-        components: [
-          { name: 'ltv', internalType: 'uint16', type: 'uint16' },
-          {
-            name: 'liquidationThreshold',
-            internalType: 'uint16',
-            type: 'uint16',
-          },
-          { name: 'liquidationBonus', internalType: 'uint16', type: 'uint16' },
-        ],
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'id', internalType: 'uint8', type: 'uint8' }],
     name: 'getEModeCategoryData',
     outputs: [
       {
         name: '',
-        internalType: 'struct DataTypes.EModeCategoryLegacy',
+        internalType: 'struct DataTypes.EModeCategory',
         type: 'tuple',
         components: [
           { name: 'ltv', internalType: 'uint16', type: 'uint16' },
@@ -1650,48 +1409,6 @@ export const lendingPoolAbi = [
   },
   {
     type: 'function',
-    inputs: [{ name: 'id', internalType: 'uint8', type: 'uint8' }],
-    name: 'getEModeCategoryLabel',
-    outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getEModeLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getFlashLoanLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
-    name: 'getLiquidationGracePeriod',
-    outputs: [{ name: '', internalType: 'uint40', type: 'uint40' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getLiquidationLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getPoolLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
     inputs: [{ name: 'id', internalType: 'uint16', type: 'uint16' }],
     name: 'getReserveAddressById',
     outputs: [{ name: '', internalType: 'address', type: 'address' }],
@@ -1704,7 +1421,7 @@ export const lendingPoolAbi = [
     outputs: [
       {
         name: '',
-        internalType: 'struct DataTypes.ReserveDataLegacy',
+        internalType: 'struct DataTypes.ReserveData',
         type: 'tuple',
         components: [
           {
@@ -1777,93 +1494,6 @@ export const lendingPoolAbi = [
   {
     type: 'function',
     inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
-    name: 'getReserveDataExtended',
-    outputs: [
-      {
-        name: '',
-        internalType: 'struct DataTypes.ReserveData',
-        type: 'tuple',
-        components: [
-          {
-            name: 'configuration',
-            internalType: 'struct DataTypes.ReserveConfigurationMap',
-            type: 'tuple',
-            components: [
-              { name: 'data', internalType: 'uint256', type: 'uint256' },
-            ],
-          },
-          { name: 'liquidityIndex', internalType: 'uint128', type: 'uint128' },
-          {
-            name: 'currentLiquidityRate',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          {
-            name: 'variableBorrowIndex',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          {
-            name: 'currentVariableBorrowRate',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          {
-            name: '__deprecatedStableBorrowRate',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          {
-            name: 'lastUpdateTimestamp',
-            internalType: 'uint40',
-            type: 'uint40',
-          },
-          { name: 'id', internalType: 'uint16', type: 'uint16' },
-          {
-            name: 'liquidationGracePeriodUntil',
-            internalType: 'uint40',
-            type: 'uint40',
-          },
-          { name: 'aTokenAddress', internalType: 'address', type: 'address' },
-          {
-            name: '__deprecatedStableDebtTokenAddress',
-            internalType: 'address',
-            type: 'address',
-          },
-          {
-            name: 'variableDebtTokenAddress',
-            internalType: 'address',
-            type: 'address',
-          },
-          {
-            name: 'interestRateStrategyAddress',
-            internalType: 'address',
-            type: 'address',
-          },
-          {
-            name: 'accruedToTreasury',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          { name: 'unbacked', internalType: 'uint128', type: 'uint128' },
-          {
-            name: 'isolationModeTotalDebt',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-          {
-            name: 'virtualUnderlyingBalance',
-            internalType: 'uint128',
-            type: 'uint128',
-          },
-        ],
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
     name: 'getReserveNormalizedIncome',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     stateMutability: 'view',
@@ -1878,23 +1508,9 @@ export const lendingPoolAbi = [
   {
     type: 'function',
     inputs: [],
-    name: 'getReservesCount',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
     name: 'getReservesList',
     outputs: [{ name: '', internalType: 'address[]', type: 'address[]' }],
     stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'getSupplyLogic',
-    outputs: [{ name: '', internalType: 'address', type: 'address' }],
-    stateMutability: 'pure',
   },
   {
     type: 'function',
@@ -1943,16 +1559,10 @@ export const lendingPoolAbi = [
   },
   {
     type: 'function',
-    inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
-    name: 'getVirtualUnderlyingBalance',
-    outputs: [{ name: '', internalType: 'uint128', type: 'uint128' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
     inputs: [
       { name: 'asset', internalType: 'address', type: 'address' },
       { name: 'aTokenAddress', internalType: 'address', type: 'address' },
+      { name: 'stableDebtAddress', internalType: 'address', type: 'address' },
       { name: 'variableDebtAddress', internalType: 'address', type: 'address' },
       {
         name: 'interestRateStrategyAddress',
@@ -2006,6 +1616,16 @@ export const lendingPoolAbi = [
       { name: 'referralCode', internalType: 'uint16', type: 'uint16' },
     ],
     name: 'mintUnbacked',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'asset', internalType: 'address', type: 'address' },
+      { name: 'user', internalType: 'address', type: 'address' },
+    ],
+    name: 'rebalanceStableBorrowRate',
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -2087,16 +1707,6 @@ export const lendingPoolAbi = [
     type: 'function',
     inputs: [
       { name: 'asset', internalType: 'address', type: 'address' },
-      { name: 'until', internalType: 'uint40', type: 'uint40' },
-    ],
-    name: 'setLiquidationGracePeriod',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'asset', internalType: 'address', type: 'address' },
       { name: 'rateStrategyAddress', internalType: 'address', type: 'address' },
     ],
     name: 'setReserveInterestRateStrategyAddress',
@@ -2150,15 +1760,11 @@ export const lendingPoolAbi = [
   },
   {
     type: 'function',
-    inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
-    name: 'syncIndexesState',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'asset', internalType: 'address', type: 'address' }],
-    name: 'syncRatesState',
+    inputs: [
+      { name: 'asset', internalType: 'address', type: 'address' },
+      { name: 'interestRateMode', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'swapBorrowRateMode',
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -2452,6 +2058,20 @@ export const lendingPoolAbi = [
         indexed: true,
       },
       { name: 'user', internalType: 'address', type: 'address', indexed: true },
+    ],
+    name: 'RebalanceStableBorrowRate',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'reserve',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'user', internalType: 'address', type: 'address', indexed: true },
       {
         name: 'repayer',
         internalType: 'address',
@@ -2472,49 +2092,6 @@ export const lendingPoolAbi = [
       },
     ],
     name: 'Repay',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'reserve',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'liquidityRate',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'stableBorrowRate',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'variableBorrowRate',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'liquidityIndex',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'variableBorrowIndex',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'ReserveDataUpdated',
   },
   {
     type: 'event',
@@ -2628,6 +2205,26 @@ export const lendingPoolAbi = [
     type: 'event',
     anonymous: false,
     inputs: [
+      {
+        name: 'reserve',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'user', internalType: 'address', type: 'address', indexed: true },
+      {
+        name: 'interestRateMode',
+        internalType: 'enum DataTypes.InterestRateMode',
+        type: 'uint8',
+        indexed: false,
+      },
+    ],
+    name: 'SwapBorrowRateMode',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
       { name: 'user', internalType: 'address', type: 'address', indexed: true },
       {
         name: 'categoryId',
@@ -2665,7 +2262,7 @@ export const lendingPoolAbi = [
  *
  */
 export const lendingPoolAddress = {
-  998: '0x370c9a6a2b18596A5F33117c67e62b892fcf637E',
+  998: '0x7978057A0d15e745473CEAD4456091c2b4c75e8C',
 } as const
 
 /**
@@ -3117,7 +2714,7 @@ export const lendingPoolAddressProviderAbi = [
  *
  */
 export const lendingPoolAddressProviderAddress = {
-  998: '0x7d01f1BA6fAcF734649e9589670DB16F9172Be2C',
+  998: '0xC37cFFCe99422D4589616D7386E21A3eB890Db0F',
 } as const
 
 /**
@@ -5252,6 +4849,81 @@ export const uiIncentiveDataProviderAbi = [
               },
             ],
           },
+          {
+            name: 'sIncentiveData',
+            internalType: 'struct IUiIncentiveDataProviderV3.IncentiveData',
+            type: 'tuple',
+            components: [
+              {
+                name: 'tokenAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'incentiveControllerAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'rewardsTokenInformation',
+                internalType: 'struct IUiIncentiveDataProviderV3.RewardInfo[]',
+                type: 'tuple[]',
+                components: [
+                  {
+                    name: 'rewardTokenSymbol',
+                    internalType: 'string',
+                    type: 'string',
+                  },
+                  {
+                    name: 'rewardTokenAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'rewardOracleAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'emissionPerSecond',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'incentivesLastUpdateTimestamp',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'tokenIncentivesIndex',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'emissionEndTimestamp',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'rewardPriceFeed',
+                    internalType: 'int256',
+                    type: 'int256',
+                  },
+                  {
+                    name: 'rewardTokenDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                  { name: 'precision', internalType: 'uint8', type: 'uint8' },
+                  {
+                    name: 'priceFeedDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
       {
@@ -5328,6 +5000,71 @@ export const uiIncentiveDataProviderAbi = [
           },
           {
             name: 'vTokenIncentivesUserData',
+            internalType: 'struct IUiIncentiveDataProviderV3.UserIncentiveData',
+            type: 'tuple',
+            components: [
+              {
+                name: 'tokenAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'incentiveControllerAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'userRewardsInformation',
+                internalType:
+                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                type: 'tuple[]',
+                components: [
+                  {
+                    name: 'rewardTokenSymbol',
+                    internalType: 'string',
+                    type: 'string',
+                  },
+                  {
+                    name: 'rewardOracleAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'rewardTokenAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'userUnclaimedRewards',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'tokenIncentivesUserIndex',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'rewardPriceFeed',
+                    internalType: 'int256',
+                    type: 'int256',
+                  },
+                  {
+                    name: 'priceFeedDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                  {
+                    name: 'rewardTokenDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: 'sTokenIncentivesUserData',
             internalType: 'struct IUiIncentiveDataProviderV3.UserIncentiveData',
             type: 'tuple',
             components: [
@@ -5564,6 +5301,81 @@ export const uiIncentiveDataProviderAbi = [
               },
             ],
           },
+          {
+            name: 'sIncentiveData',
+            internalType: 'struct IUiIncentiveDataProviderV3.IncentiveData',
+            type: 'tuple',
+            components: [
+              {
+                name: 'tokenAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'incentiveControllerAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'rewardsTokenInformation',
+                internalType: 'struct IUiIncentiveDataProviderV3.RewardInfo[]',
+                type: 'tuple[]',
+                components: [
+                  {
+                    name: 'rewardTokenSymbol',
+                    internalType: 'string',
+                    type: 'string',
+                  },
+                  {
+                    name: 'rewardTokenAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'rewardOracleAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'emissionPerSecond',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'incentivesLastUpdateTimestamp',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'tokenIncentivesIndex',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'emissionEndTimestamp',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'rewardPriceFeed',
+                    internalType: 'int256',
+                    type: 'int256',
+                  },
+                  {
+                    name: 'rewardTokenDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                  { name: 'precision', internalType: 'uint8', type: 'uint8' },
+                  {
+                    name: 'priceFeedDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
@@ -5718,6 +5530,71 @@ export const uiIncentiveDataProviderAbi = [
               },
             ],
           },
+          {
+            name: 'sTokenIncentivesUserData',
+            internalType: 'struct IUiIncentiveDataProviderV3.UserIncentiveData',
+            type: 'tuple',
+            components: [
+              {
+                name: 'tokenAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'incentiveControllerAddress',
+                internalType: 'address',
+                type: 'address',
+              },
+              {
+                name: 'userRewardsInformation',
+                internalType:
+                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                type: 'tuple[]',
+                components: [
+                  {
+                    name: 'rewardTokenSymbol',
+                    internalType: 'string',
+                    type: 'string',
+                  },
+                  {
+                    name: 'rewardOracleAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'rewardTokenAddress',
+                    internalType: 'address',
+                    type: 'address',
+                  },
+                  {
+                    name: 'userUnclaimedRewards',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'tokenIncentivesUserIndex',
+                    internalType: 'uint256',
+                    type: 'uint256',
+                  },
+                  {
+                    name: 'rewardPriceFeed',
+                    internalType: 'int256',
+                    type: 'int256',
+                  },
+                  {
+                    name: 'priceFeedDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                  {
+                    name: 'rewardTokenDecimals',
+                    internalType: 'uint8',
+                    type: 'uint8',
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
@@ -5729,7 +5606,7 @@ export const uiIncentiveDataProviderAbi = [
  *
  */
 export const uiIncentiveDataProviderAddress = {
-  998: '0xBeFB51e2F9E2B2A7073C07e7ad19f21db7D25089',
+  998: '0x87551477ceD10d50ec08682A3d3f7f4d91E892C7',
 } as const
 
 /**
@@ -5794,57 +5671,6 @@ export const uiPoolDataProviderAbi = [
         type: 'address',
       },
     ],
-    name: 'getEModes',
-    outputs: [
-      {
-        name: '',
-        internalType: 'struct IUiPoolDataProviderV3.Emode[]',
-        type: 'tuple[]',
-        components: [
-          { name: 'id', internalType: 'uint8', type: 'uint8' },
-          {
-            name: 'eMode',
-            internalType: 'struct DataTypes.EModeCategory',
-            type: 'tuple',
-            components: [
-              { name: 'ltv', internalType: 'uint16', type: 'uint16' },
-              {
-                name: 'liquidationThreshold',
-                internalType: 'uint16',
-                type: 'uint16',
-              },
-              {
-                name: 'liquidationBonus',
-                internalType: 'uint16',
-                type: 'uint16',
-              },
-              {
-                name: 'collateralBitmap',
-                internalType: 'uint128',
-                type: 'uint128',
-              },
-              { name: 'label', internalType: 'string', type: 'string' },
-              {
-                name: 'borrowableBitmap',
-                internalType: 'uint128',
-                type: 'uint128',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      {
-        name: 'provider',
-        internalType: 'contract IPoolAddressesProvider',
-        type: 'address',
-      },
-    ],
     name: 'getReservesData',
     outputs: [
       {
@@ -5878,6 +5704,11 @@ export const uiPoolDataProviderAbi = [
             type: 'bool',
           },
           { name: 'borrowingEnabled', internalType: 'bool', type: 'bool' },
+          {
+            name: 'stableBorrowRateEnabled',
+            internalType: 'bool',
+            type: 'bool',
+          },
           { name: 'isActive', internalType: 'bool', type: 'bool' },
           { name: 'isFrozen', internalType: 'bool', type: 'bool' },
           { name: 'liquidityIndex', internalType: 'uint128', type: 'uint128' },
@@ -5893,11 +5724,21 @@ export const uiPoolDataProviderAbi = [
             type: 'uint128',
           },
           {
+            name: 'stableBorrowRate',
+            internalType: 'uint128',
+            type: 'uint128',
+          },
+          {
             name: 'lastUpdateTimestamp',
             internalType: 'uint40',
             type: 'uint40',
           },
           { name: 'aTokenAddress', internalType: 'address', type: 'address' },
+          {
+            name: 'stableDebtTokenAddress',
+            internalType: 'address',
+            type: 'address',
+          },
           {
             name: 'variableDebtTokenAddress',
             internalType: 'address',
@@ -5910,6 +5751,21 @@ export const uiPoolDataProviderAbi = [
           },
           {
             name: 'availableLiquidity',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'totalPrincipalStableDebt',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'averageStableRate',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'stableDebtLastUpdateTimestamp',
             internalType: 'uint256',
             type: 'uint256',
           },
@@ -5931,6 +5787,21 @@ export const uiPoolDataProviderAbi = [
           },
           {
             name: 'variableRateSlope2',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'stableRateSlope1',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'stableRateSlope2',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'baseStableBorrowRate',
             internalType: 'uint256',
             type: 'uint256',
           },
@@ -5964,15 +5835,27 @@ export const uiPoolDataProviderAbi = [
             internalType: 'uint256',
             type: 'uint256',
           },
+          { name: 'eModeCategoryId', internalType: 'uint8', type: 'uint8' },
           { name: 'borrowCap', internalType: 'uint256', type: 'uint256' },
           { name: 'supplyCap', internalType: 'uint256', type: 'uint256' },
-          { name: 'borrowableInIsolation', internalType: 'bool', type: 'bool' },
-          { name: 'virtualAccActive', internalType: 'bool', type: 'bool' },
+          { name: 'eModeLtv', internalType: 'uint16', type: 'uint16' },
           {
-            name: 'virtualUnderlyingBalance',
-            internalType: 'uint128',
-            type: 'uint128',
+            name: 'eModeLiquidationThreshold',
+            internalType: 'uint16',
+            type: 'uint16',
           },
+          {
+            name: 'eModeLiquidationBonus',
+            internalType: 'uint16',
+            type: 'uint16',
+          },
+          {
+            name: 'eModePriceSource',
+            internalType: 'address',
+            type: 'address',
+          },
+          { name: 'eModeLabel', internalType: 'string', type: 'string' },
+          { name: 'borrowableInIsolation', internalType: 'bool', type: 'bool' },
         ],
       },
       {
@@ -6047,7 +5930,22 @@ export const uiPoolDataProviderAbi = [
             type: 'bool',
           },
           {
+            name: 'stableBorrowRate',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
             name: 'scaledVariableDebt',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'principalStableDebt',
+            internalType: 'uint256',
+            type: 'uint256',
+          },
+          {
+            name: 'stableBorrowLastUpdateTimestamp',
             internalType: 'uint256',
             type: 'uint256',
           },
@@ -6089,7 +5987,7 @@ export const uiPoolDataProviderAbi = [
  *
  */
 export const uiPoolDataProviderAddress = {
-  998: '0xF56300492ac37E75c45673DCA23Fa4935b1ecaa5',
+  998: '0x855bB3a6099c4cA0d01c4402FE11D4B4CF85a49d',
 } as const
 
 /**
@@ -6752,6 +6650,7 @@ export const wethGatewayAbi = [
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
       { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'interestRateMode', internalType: 'uint256', type: 'uint256' },
       { name: 'referralCode', internalType: 'uint16', type: 'uint16' },
     ],
     name: 'borrowETH',
@@ -6816,6 +6715,7 @@ export const wethGatewayAbi = [
     inputs: [
       { name: '', internalType: 'address', type: 'address' },
       { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'rateMode', internalType: 'uint256', type: 'uint256' },
       { name: 'onBehalfOf', internalType: 'address', type: 'address' },
     ],
     name: 'repayETH',
@@ -6880,7 +6780,7 @@ export const wethGatewayAbi = [
  *
  */
 export const wethGatewayAddress = {
-  998: '0x6aF2F841DDF7f8da94f2829B9AAc82875773a0f8',
+  998: '0x3BC0B783B3936b8391473a8840397DF22996d7aC',
 } as const
 
 /**
@@ -6939,7 +6839,7 @@ export const walletBalanceProviderAbi = [
  *
  */
 export const walletBalanceProviderAddress = {
-  998: '0x2cAeb673189257fff77f04c6a601194bbE1c8F4A',
+  998: '0x032B5abd1657b867D43cad6874238f015E5E65bb',
 } as const
 
 /**

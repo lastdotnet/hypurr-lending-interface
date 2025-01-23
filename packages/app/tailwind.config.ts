@@ -79,7 +79,7 @@ export default {
           primary: 'hsl(var(--nav-primary))',
         },
         panel: {
-          border: 'var(--panel-border)',
+          border: 'hsla(var(--panel-border) / .04)',
           bg: 'hsla(var(--panel-bg) / .44)',
         },
         gradient: {

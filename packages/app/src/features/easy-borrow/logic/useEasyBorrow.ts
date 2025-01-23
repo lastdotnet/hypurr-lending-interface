@@ -53,7 +53,7 @@ export interface UseEasyBorrowResults {
   alreadyBorrowed: ExistingPosition
   liquidationDetails?: LiquidationDetails
   riskAcknowledgement: RiskAcknowledgementInfo
-  borrowDetails: BorrowDetails
+  borrowDetails?: BorrowDetails
   guestMode: boolean
   openSandboxModal: () => void
   healthFactorPanelRef: React.RefObject<HTMLDivElement>
@@ -174,9 +174,13 @@ export function useEasyBorrow(): UseEasyBorrowResults {
     freeze: pageStatus === 'confirmation',
   })
 
-  const borrowDetails = {
-    borrowRate: marketInfo.findOneReserveBySymbol(defaultAssetToBorrow).variableBorrowApy ?? raise('No borrow rate'),
-  }
+  const borrowDetails =
+    import.meta.env.VITE_FEATURE_USDXL === '1'
+      ? {
+          borrowRate:
+            marketInfo.findOneReserveBySymbol(defaultAssetToBorrow).variableBorrowApy ?? raise('No borrow rate'),
+        }
+      : undefined
 
   // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(

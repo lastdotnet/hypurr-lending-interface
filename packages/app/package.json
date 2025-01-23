@@ -28,11 +28,12 @@
     "chromatic": "npx chromatic --build-script-name storybook:build --exit-zero-on-changes"
   },
   "dependencies": {
-    "@aave/math-utils": "^1.30.5",
+    "@aave/math-utils": "^1.20.0",
     "@dynamic-labs/ethereum": "^3.4.4",
     "@dynamic-labs/sdk-react-core": "^3.4.4",
     "@dynamic-labs/types": "^3.4.4",
     "@dynamic-labs/wagmi-connector": "^3.4.4",
+    "@dynamic-labs/wallet-book": "^3.4.4",
     "@feedback-fish/react": "^1.2.2",
     "@hookform/resolvers": "^3.3.2",
     "@lingui/core": "^4.5.0",

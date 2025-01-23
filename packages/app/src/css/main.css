@@ -42,7 +42,7 @@
 
     --radius: 1rem;
 
-    --panel-border: rgba(255, 255, 255, 0.04);
+    --panel-border: 0 0% 100%;
     --panel-bg: 240 7% 8%;
     --input-background: 0 0% 100%;
     --icon-foreground: 106 118 146;
@@ -73,8 +73,8 @@
     --spark: 242 166 43;
 
     --main-blue: 64 102 239;
-
     --sec-green: 109 194 117;
+    --gradient-border-base: oklch(70% 0.155 360);
   }
 }
 
@@ -90,18 +90,22 @@
     @apply slashed-zero;
   }
 
-
-  .TooltipContent[data-side="bottom"] > span >svg {
+  .TooltipContent[data-side="bottom"] > span > svg {
     transform: translateY(100%);
   }
 }
 
-/* Friendly Captcha */
-.frc-captcha, .frc-container, .frc-button {
+/**************** Friendly Captcha ***************** */
+.frc-captcha,
+.frc-container,
+.frc-button {
   width: 100% !important;
 }
 
-.frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
+.frc-text,
+.frc-button,
+.frc-banner > a,
+.frc-banner > b {
   color: white !important;
 }
 
@@ -115,7 +119,10 @@
   display: none;
 }
 
-.frc-text, .frc-button, .frc-banner > a, .frc-banner > b {
+.frc-text,
+.frc-button,
+.frc-banner > a,
+.frc-banner > b {
   color: white !important;
 }
 
@@ -163,21 +170,113 @@
   right: unset !important;
 }
 
-
 .frc-banner > a,
 .frc-banner > b {
   opacity: 0.6;
 }
 
 .connect-button:hover .connect-button-circle {
-  opacity: .3;
+  opacity: 0.3;
   box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 10px 0px inset;
   transform: translate(-50%, -4px);
 }
 
 .connect-button-circle {
   transform: translate(-50%, 0);
-  opacity: .2;
+  opacity: 0.2;
   transition: all 0.3s ease-in-out;
   background-color: hsl(var(--primary-bg));
+}
+
+/**************** Gradient Border ***************** */
+.gradient-border {
+  --gradient-border-color: hsl(240 7% 18%);
+  border-radius: 12px;
+  border: calc(var(--border-width, 2) * 1px) solid #0000;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: outline-color 1s;
+
+  background:
+    linear-gradient(#000 0 0) padding-box,
+    linear-gradient(0deg, #0000 0, var(--gradient-border-color) 18px) border-box,
+    linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0)
+      border-box 0 0 / 400% 100%;
+
+  &,
+  &::before,
+  &::after {
+    animation-composition: add;
+    animation:
+      rainbow 12s infinite linear,
+      rainbow 6s infinite linear var(--state, paused);
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+  }
+
+  &::after {
+    border: calc(var(--border-width, 2) * 1px) solid #0000;
+    inset: -8px;
+    border-radius: 14px;
+    opacity: 0;
+
+    background:
+      linear-gradient(#0000 0 0) padding-box,
+      linear-gradient(#0000 0 0) border-box,
+      linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0)
+        border-box 0 0 / 400% 100%;
+    mask: linear-gradient(#0000 0 0), linear-gradient(#fff 0 0);
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+  }
+
+  &::before {
+    z-index: -2;
+    filter: blur(calc(var(--blur, 10) * 1px))
+      brightness(var(--brightness, 1.25));
+    inset: 60% 0 0 0;
+    border-radius: 50% 50% 6px 6px / 50% 50% 6px 6px;
+    transform-origin: 50% 25%;
+    opacity: 1;
+    scale: 0.6 0.4;
+    transform: translate3d(0, 0, -1px);
+    transition:
+      transform 1s,
+      opacity 0s 1s,
+      outline-color 1s,
+      scale 0.25s;
+
+    background:
+      linear-gradient(#0000 0 0),
+      linear-gradient(#0000 0 0),
+      linear-gradient(in lch longer hue 90deg, var(--gradient-border-base) 0 0)
+        border-box 0 0 / 400% 100%;
+  }
+}
+
+.gradient-border:is(:hover, :focus-visible)::before {
+  scale: 1.1 1.15;
+}
+
+.gradient-border:focus-visible::after {
+  opacity: 0.6;
+}
+
+.gradient-border:is(:hover) {
+  --state: running;
+}
+
+@keyframes rainbow {
+  to {
+    background-position:
+      0 0,
+      0 0,
+      400% 0;
+  }
 }

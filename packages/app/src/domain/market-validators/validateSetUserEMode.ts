@@ -14,14 +14,7 @@ export interface ValidateSetUserEModeParams {
   }
   user: {
     eModeCategoryId: number
-    reserves: {
-      eModes?: Array<{
-        id: number
-        borrowingEnabled: boolean
-        collateralEnabled: boolean
-      }>
-      borrowBalance: NormalizedUnitNumber
-    }[]
+    reserves: { eModeCategoryId?: number; borrowBalance: NormalizedUnitNumber }[]
     healthFactorAfterChangingEMode?: BigNumber
   }
 }
@@ -40,20 +33,9 @@ export function validateSetUserEMode({
       return 'inconsistent-liquidation-threshold'
     }
 
-    if (requestedEModeCategory.borrowingEnabled === false) {
-      return 'borrowed-assets-emode-category-mismatch'
-    }
-
-    const isBorrowedAssetsEModeCategoryMismatch = user.reserves.some((reserve) => {
-      if (reserve.borrowBalance.gt(0)) {
-        // Check if the reserve has the requested eMode category enabled
-        const hasRequestedEMode = reserve.eModes?.some(
-          (eMode) => eMode.id === requestedEModeCategory.id && eMode.borrowingEnabled,
-        )
-        return !hasRequestedEMode
-      }
-      return false
-    })
+    const isBorrowedAssetsEModeCategoryMismatch = user.reserves.some(
+      (reserve) => reserve.borrowBalance.gt(0) && reserve.eModeCategoryId !== requestedEModeCategory.id,
+    )
 
     if (isBorrowedAssetsEModeCategoryMismatch) {
       return 'borrowed-assets-emode-category-mismatch'
@@ -95,11 +77,7 @@ export function getValidateSetUserEModeArgs({
     : 0
 
   const reserves = marketInfo.userPositions.map((position) => ({
-    eModes: position.reserve.eModes.map(({ category, borrowingEnabled, collateralEnabled }) => ({
-      id: category.id,
-      borrowingEnabled,
-      collateralEnabled,
-    })),
+    eModeCategoryId: position.reserve.eModeCategory?.id,
     borrowBalance: position.borrowBalance,
   }))
 
