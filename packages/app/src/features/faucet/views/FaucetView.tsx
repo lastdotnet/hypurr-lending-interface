@@ -10,6 +10,8 @@ import { Address } from 'viem'
 import { marketBalancesQueryKey } from '@/domain/wallet/marketBalances'
 import { useQueryClient } from '@tanstack/react-query'
 
+class FaucetTimeoutError extends Error {}
+
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
 
@@ -60,7 +62,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
 
       if (!response.ok) {
         if (response.status === 429) {
-          throw new Error('Claiming is available once every 24 hours. Please try again later.')
+          throw new FaucetTimeoutError('Claiming is available once every 24 hours. Please try again later.')
         }
         throw new Error('Failed to mint tokens')
       }
@@ -84,8 +86,13 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
         }),
       })
     } catch (error) {
+      if (error instanceof FaucetTimeoutError) {
+        trackEvent('faucet_claim_timeout_error')
+      } else {
+        trackEvent('faucet_claim_error')
+      }
+
       console.error(error)
-      trackEvent('faucet_claim_error')
       setMintError(error instanceof Error ? error.message : 'An unknown error occurred while minting')
     } finally {
       setMintPending(false)
