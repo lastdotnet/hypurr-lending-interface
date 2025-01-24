@@ -15,6 +15,7 @@ import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog
 export interface MyWalletProps {
   token: Token
   tokenBalance: NormalizedUnitNumber
+  isCombinedBalance?: boolean
   lend?: {
     available: NormalizedUnitNumber
     token: Token
@@ -35,12 +36,21 @@ export interface MyWalletProps {
   openDialog: OpenDialogFunction
 }
 
-export function MyWallet({ token, tokenBalance, lend, deposit, borrow, withdraw, openDialog }: MyWalletProps) {
+export function MyWallet({
+  token,
+  tokenBalance,
+  isCombinedBalance,
+  lend,
+  deposit,
+  borrow,
+  withdraw,
+  openDialog,
+}: MyWalletProps) {
   return (
     <Panel.Wrapper>
       <WalletPanelContent>
         <h3 className="font-normal text-base md:text-xl">My Wallet</h3>
-        <TokenBalance token={token} balance={tokenBalance} />
+        <TokenBalance token={token} balance={tokenBalance} isCombinedBalance={isCombinedBalance} />
         {lend && (
           <ActionRow
             token={lend.token}
