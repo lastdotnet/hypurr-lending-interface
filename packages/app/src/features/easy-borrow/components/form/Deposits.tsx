@@ -12,7 +12,6 @@ import { Link } from '@/ui/atoms/link/Link'
 import { Info } from '@/ui/molecules/info/Info'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
-import { TokenSummary } from './TokenSummary'
 
 export interface DepositsProps {
   selectedAssets: TokenWithBalance[]
@@ -29,8 +28,6 @@ export interface DepositsProps {
 }
 
 export function Deposits(props: DepositsProps) {
-  const { alreadyDeposited } = props
-
   return (
     <div className="flex flex-1 flex-col" data-testid={testIds.easyBorrow.form.deposits}>
       <div className="flex h-10 flex-row items-center justify-between">
@@ -42,8 +39,6 @@ export function Deposits(props: DepositsProps) {
           </Info>
         </div>
       </div>
-
-      {alreadyDeposited.tokens.length > 0 && <TokenSummary position={alreadyDeposited} type="deposit" />}
 
       <MultiAssetSelector fieldName="assetsToDeposit" {...props} />
     </div>
