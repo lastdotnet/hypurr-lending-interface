@@ -6,10 +6,7 @@ import { usePageChainId } from '@/domain/hooks/usePageChainId'
 import { useBannerVisibility } from '@/domain/state/bannersVisibility'
 import { Navbar } from '@/features/navbar/Navbar'
 import { cn } from '@/ui/utils/style'
-import {
-  SKY_MIGRATION_TOP_BANNER_ID,
-  SkyMigrationTopBanner,
-} from '../../atoms/sky-migration-top-banner/SkyMigrationTopBanner'
+import { TOP_BANNER_ID, TopBanner } from '../../atoms/top-banner/TopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
@@ -22,14 +19,12 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuCollapsed, setMobileMenuCollapsed] = useState(true)
   const { pageSupported, pageName } = usePageChainId()
   const { primaryWallet, network } = useDynamicContext()
-  const { handleCloseBanner, showBanner } = useBannerVisibility(SKY_MIGRATION_TOP_BANNER_ID)
+  const { handleCloseBanner, showBanner } = useBannerVisibility(TOP_BANNER_ID)
   const isWrongNetwork = primaryWallet?.connector.supportsNetworkSwitching() && network && network !== hyperTestnet.id
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
-      {import.meta.env.VITE_FEATURE_TOP_BANNER === '1' && showBanner && (
-        <SkyMigrationTopBanner onClose={handleCloseBanner} />
-      )}
+      {import.meta.env.VITE_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
       <Navbar
         mobileMenuCollapsed={mobileMenuCollapsed}
         setMobileMenuCollapsed={setMobileMenuCollapsed}
