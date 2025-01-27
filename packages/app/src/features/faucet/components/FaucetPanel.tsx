@@ -7,15 +7,14 @@ import { assets } from '@/ui/assets'
 export function FaucetPanel({ children }: PropsWithChildren) {
   return (
     <PageLayout className="px-3 lg:px-0">
-      <Panel.Wrapper className="flex min-w-full flex-col self-center p-8 md:p-14">
+      <Panel.Wrapper className="flex min-w-full flex-col self-center p-6 md:p-14">
         <div className="mb-16 flex items-center gap-2">
           <Typography variant="h1" gradient className="self-start text-4xl">
-            Testnet Token Faucet
+            Testnet Token Faucet <span className="text-4xl text-white">🚰</span>
           </Typography>
-          <span className="text-4xl">🚰</span>
         </div>
 
-        <div className="mb-8 flex flex-col-reverse items-center justify-between gap-8 rounded-lg bg-white/4 p-2 px-14 pb-10 md:flex-row">
+        <div className="mb-8 flex flex-col-reverse items-center justify-between gap-8 rounded-lg bg-white/4 p-2 px-6 pb-10 md:flex-row md:px-14">
           <div>
             <Typography variant="h2" className="mb-4 text-base md:pt-8">
               How to use the faucet

@@ -97,7 +97,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   if (!user || !isXLinked) {
     return (
       <Button onClick={handleSignAndConnect} className="w-full" rounded="full">
-        Sign and connect/follow on X - (2X HYPE boost)
+        1. Sign and connect X - (2X HYPE boost)
       </Button>
     )
   }
@@ -115,7 +115,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
             onClick={() => setFollowButtonClicked(true)}
             className={cn(buttonVariants({ variant: 'primary', rounded: 'full' }))}
           >
-            Step 2. Follow @hypurrfi on X - (2X HYPE boost)
+            2. Follow @hypurrfi on X - (2X HYPE boost)
           </a>
 
           <p className="mt-2 text-center font-normal text-sm text-white/70">
