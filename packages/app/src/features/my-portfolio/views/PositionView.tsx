@@ -8,7 +8,6 @@ import { BorrowTable } from '../components/borrow-table/BorrowTable'
 import { CreatePositionPanel } from '../components/create-position-panel/CreatePositionPanel'
 import { DepositTable } from '../components/deposit-table/DepositTable'
 import { Position } from '../components/position/Position'
-import { WalletComposition } from '../components/wallet-composition/WalletComposition'
 import { Borrow, Deposit } from '../logic/assets'
 import { PositionSummary } from '../logic/types'
 import { WalletCompositionInfo } from '../logic/wallet-composition'
@@ -28,7 +27,6 @@ export function PositionView({
   deposits,
   borrows,
   eModeCategoryId,
-  walletComposition,
   openDialog,
   liquidationDetails,
 }: PositionViewProps) {
@@ -44,9 +42,6 @@ export function PositionView({
         <Position className="order-3 flex-grow md:order-2" positionSummary={positionSummary} />
         {!positionSummary.hasDeposits && <CreatePositionPanel className="order-2 flex-grow md:order-3" />}
       </div>
-
-      <div id="your-wallet" />
-      <WalletComposition {...walletComposition} />
 
       <DepositTable assets={deposits} openDialog={openDialog} />
       <BorrowTable assets={borrows} eModeCategoryId={eModeCategoryId} openDialog={openDialog} />
