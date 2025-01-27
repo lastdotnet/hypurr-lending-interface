@@ -19,8 +19,12 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
       .map((p) => ({ token: p.reserve.token, balance: walletInfo.findWalletBalanceForToken(p.reserve.token) }))
   )
 }
+const usdxlEnabled = import.meta.env.VITE_FEATURE_USDXL === '1'
 
-const whitelistedBorrowableAssets = ['USDXL', 'USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH']
+const defaultWhitelistedBorrowableAssets = ['USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH']
+const whitelistedBorrowableAssets = usdxlEnabled
+  ? [...defaultWhitelistedBorrowableAssets, 'USDXL']
+  : defaultWhitelistedBorrowableAssets
 
 function isTokenSymbol(token: Token, symbol: string) {
   return token.symbol === TokenSymbol(symbol)
