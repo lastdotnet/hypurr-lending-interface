@@ -117,15 +117,18 @@ export interface AaveDataLayerSelectFnParams {
   timeAdvance?: number // time advance in seconds
 }
 
+const usdxlEnabled = import.meta.env.VITE_FEATURE_USDXL === '1'
+
 export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnParams = {}) {
   return (data: AaveDataLayerQueryReturnType) => {
     const { contractData, chainId, lendingPoolAddressProvider } = data
     const [
-      [reserves, baseCurrencyInfo],
+      [_reserves, baseCurrencyInfo],
       reservesIncentiveData,
       [userReserves, userEmodeCategoryId],
       userReserveIncentivesData,
     ] = contractData
+    const reserves = usdxlEnabled ? _reserves : _reserves.filter((r) => r.symbol !== 'USDXL')
 
     const currentTimestamp = Math.floor(Date.now() / 1000) + (timeAdvance ?? 0)
 
