@@ -22,7 +22,7 @@ export function NavbarActions({ mobileMenuCollapsed, rewardsInfo }: NavbarAction
     <div
       className={cn(
         'mb-2 flex flex-col items-start justify-center gap-6',
-        'xl:mb-0 xl:flex-row xl:items-center xl:justify-center xl:gap-2.5',
+        'xl:mb-0 xl:flex-row xl:items-stretch xl:justify-center xl:gap-2.5',
         mobileMenuCollapsed ? 'hidden xl:flex' : 'flex',
       )}
     >
