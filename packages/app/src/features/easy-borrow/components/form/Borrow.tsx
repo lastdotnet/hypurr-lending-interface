@@ -8,7 +8,6 @@ import { raise } from '@/utils/assert'
 import { Control } from 'react-hook-form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
-import { TokenSummary } from './TokenSummary'
 
 interface BorrowProps {
   selectedAssets: TokenWithBalance[]
@@ -20,15 +19,7 @@ interface BorrowProps {
   resetBorrowStatus?: () => void
 }
 
-export function Borrow({
-  selectedAssets,
-  allAssets,
-  changeAsset,
-  alreadyBorrowed,
-  control,
-  disabled,
-  resetBorrowStatus,
-}: BorrowProps) {
+export function Borrow({ selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus }: BorrowProps) {
   const { token } = selectedAssets[0] ?? raise('No borrow token selected')
 
   return (
@@ -36,8 +27,6 @@ export function Borrow({
       <Typography variant="h4" className="flex h-10 items-center">
         Borrow
       </Typography>
-
-      {alreadyBorrowed.tokens.length > 0 && <TokenSummary position={alreadyBorrowed} type="borrow" />}
 
       <div className="mt-2 flex flex-row items-start gap-2">
         <AssetSelector

@@ -1,12 +1,11 @@
 import { hyperTestnet } from '@/config/chain/constants'
 import { paths } from '@/config/paths'
 import { useBlockExplorerLink } from '@/domain/hooks/useBlockExplorerLink'
-import { buttonVariants } from '@/ui/atoms/button/Button'
+import { buttonVariants, LinkButton } from '@/ui/atoms/button/Button'
 import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { HashLink } from 'react-router-hash-link'
 import { Address } from 'viem'
 
 export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmount: string }) {
@@ -20,12 +19,12 @@ export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmoun
   return (
     <div className="flex flex-col">
       <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)</p>
-      <HashLink
+      <LinkButton
         className={cn(buttonVariants({ variant: 'primary', size: 'md', rounded: 'full' }), 'w-full')}
-        to={`${paths.dashboard}#your-wallet`}
+        to={paths.dashboard}
       >
         View in dashboard
-      </HashLink>
+      </LinkButton>
       <div className="mt-5 flex justify-between gap-4">
         <div className="flex items-center gap-4">
           <TweetButton text="Got gassed up and ready to purr! 😼💰 @hypurrfi" url="https://app.hypurr.fi/faucet" />
