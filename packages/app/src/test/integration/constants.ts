@@ -264,6 +264,7 @@ export function getMockMarketInfo(
       nativeAssetSymbol: TokenSymbol('ETH'),
       minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
     },
+    NormalizedUnitNumber(100),
   )
 }
 
