@@ -1,0 +1,22 @@
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { CheckedAddress } from '@/domain/types/CheckedAddress'
+import { USDXL_ADDRESS } from '@/config/consts'
+import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+
+export function getBorrowableAmount({
+  tokenIdentifier,
+  facilitatorAvailable,
+  defaultAvailable,
+}: {
+  tokenIdentifier: TokenSymbol | CheckedAddress
+  facilitatorAvailable: NormalizedUnitNumber
+  defaultAvailable: NormalizedUnitNumber
+}) {
+  const isUSDXL = isAddress(tokenIdentifier)
+    ? tokenIdentifier === USDXL_ADDRESS
+    : tokenIdentifier === TokenSymbol('USDXL')
+
+  return isUSDXL ? facilitatorAvailable : defaultAvailable
+}
+
+const isAddress = (value: TokenSymbol | CheckedAddress): value is CheckedAddress => (value as string).startsWith('0x')

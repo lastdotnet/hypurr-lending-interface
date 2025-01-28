@@ -1,5 +1,5 @@
 import { calculateAllUserIncentives, formatReservesAndIncentives, formatUserSummary } from '@aave/math-utils'
-import { Address } from 'viem'
+import { Address, formatUnits } from 'viem'
 import { Config } from 'wagmi'
 import { multicall } from 'wagmi/actions'
 
@@ -9,11 +9,13 @@ import {
   uiIncentiveDataProviderAddress,
   uiPoolDataProviderAbi,
   uiPoolDataProviderAddress,
+  usdxlTokenAbi,
 } from '@/config/contracts-generated'
 
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { queryOptions } from '@tanstack/react-query'
 import { getContractAddress } from '../../hooks/useContractAddress'
+import { A_USDXL_ADDRESS, USDXL_ADDRESS } from '@/config/consts'
 
 export interface AaveDataLayerQueryKeyArgs {
   chainId: number
@@ -102,6 +104,12 @@ function aaveDataLayerQueryFn({
           functionName: 'getUserReservesIncentivesData',
           args: [lendingPoolAddressProvider, account ?? uiPoolDataProvider],
         },
+        {
+          address: USDXL_ADDRESS,
+          abi: usdxlTokenAbi,
+          functionName: 'getFacilitatorBucket',
+          args: [A_USDXL_ADDRESS],
+        },
       ],
     })
 
@@ -125,9 +133,11 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       reservesIncentiveData,
       [userReserves, userEmodeCategoryId],
       userReserveIncentivesData,
+      [bucketCapacity, currentBucketLevel],
     ] = contractData
 
     const currentTimestamp = Math.floor(Date.now() / 1000) + (timeAdvance ?? 0)
+    const facilitatorBorrowLimit = formatUnits(bucketCapacity - currentBucketLevel, 18)
 
     const baseCurrency = {
       marketReferenceCurrencyDecimals: baseCurrencyInfo.marketReferenceCurrencyUnit.toString().length - 1,
@@ -278,6 +288,7 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       userEmodeCategoryId,
       userRewards,
       timestamp: currentTimestamp,
+      facilitatorBorrowLimit,
     }
   }
 }
