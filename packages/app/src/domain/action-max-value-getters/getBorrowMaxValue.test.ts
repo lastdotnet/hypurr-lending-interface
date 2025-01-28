@@ -1,7 +1,46 @@
 import { NormalizedUnitNumber } from '../types/NumericValues'
 import { getBorrowMaxValue } from './getBorrowMaxValue'
+import { CheckedAddress } from '../types/CheckedAddress'
+import { USDXL_ADDRESS } from '@/config/consts'
 
 describe(getBorrowMaxValue.name, () => {
+  describe('USDXL handling', () => {
+    const baseParams = {
+      user: {
+        maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
+      },
+      asset: {
+        availableLiquidity: NormalizedUnitNumber(200),
+        totalDebt: NormalizedUnitNumber(0),
+      },
+      facilitatorBorrowLimit: NormalizedUnitNumber(50),
+    }
+
+    it('uses facilitator limit for USDXL by address', () => {
+      expect(
+        getBorrowMaxValue({
+          ...baseParams,
+          asset: {
+            ...baseParams.asset,
+            address: CheckedAddress(USDXL_ADDRESS),
+          },
+        }),
+      ).toEqual(NormalizedUnitNumber(50)) // facilitatorBorrowLimit
+    })
+
+    it('uses available liquidity for non-USDXL token', () => {
+      expect(
+        getBorrowMaxValue({
+          ...baseParams,
+          asset: {
+            ...baseParams.asset,
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
+          },
+        }),
+      ).toEqual(NormalizedUnitNumber(99)) // maxBorrowBasedOnCollateral - safety margin
+    })
+  })
+
   describe('unlimited liquidity', () => {
     it('returns 0 when no collateral based borrow limit', () => {
       expect(
@@ -9,10 +48,12 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(0),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -23,10 +64,12 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(99))
     })
@@ -38,10 +81,12 @@ describe(getBorrowMaxValue.name, () => {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(50),
             borrowCap: NormalizedUnitNumber(100),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(50))
     })
@@ -54,10 +99,12 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(10),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(0),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -68,10 +115,12 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(10),
             totalDebt: NormalizedUnitNumber(5),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
           user: {
             maxBorrowBasedOnCollateral: NormalizedUnitNumber(100),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(10))
     })
@@ -90,7 +139,9 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -107,7 +158,9 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(99))
     })
@@ -125,7 +178,9 @@ describe(getBorrowMaxValue.name, () => {
           asset: {
             availableLiquidity: NormalizedUnitNumber(Number.POSITIVE_INFINITY),
             totalDebt: NormalizedUnitNumber(0),
+            address: CheckedAddress('0x1234567890123456789012345678901234567890'),
           },
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(50))
     })
@@ -139,6 +194,7 @@ describe(getBorrowMaxValue.name, () => {
       asset: {
         availableLiquidity: NormalizedUnitNumber(100),
         totalDebt: NormalizedUnitNumber(0),
+        address: CheckedAddress('0x1234567890123456789012345678901234567890'),
       },
     }
 
@@ -147,6 +203,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'reserve-not-active',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -156,6 +213,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'reserve-borrowing-disabled',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -165,6 +223,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'asset-not-borrowable-in-isolation',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -174,6 +233,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'siloed-mode-cannot-enable',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -183,6 +243,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'siloed-mode-enabled',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })
@@ -192,6 +253,7 @@ describe(getBorrowMaxValue.name, () => {
         getBorrowMaxValue({
           ...userAndAsset,
           validationIssue: 'emode-category-mismatch',
+          facilitatorBorrowLimit: NormalizedUnitNumber(100),
         }),
       ).toEqual(NormalizedUnitNumber(0))
     })

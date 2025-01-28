@@ -130,32 +130,40 @@ describe(getLiquidationDetails.name, () => {
 })
 
 function getMockedMarketInfo(): MarketInfo {
-  function findReserveBySymbol(symbol: string): { token: Token; eModes: { category: { id: number } }[] } {
+  function findReserveBySymbol(symbol: string): { token: Token; eModeCategory?: { id: number } } {
     if (['ETH', 'WETH', 'HYPE', 'WHYPE'].includes(symbol)) {
       return {
         token: ethLike,
-        eModes: [{ category: { id: 2 } }],
+        eModeCategory: {
+          id: 1, // ETH Correlated
+        },
       }
     }
 
     if (symbol === 'wstETH') {
       return {
         token: wstETHLike,
-        eModes: [{ category: { id: 2 } }],
+        eModeCategory: {
+          id: 1, // ETH Correlated
+        },
       }
     }
 
     if (symbol === 'USDXL') {
       return {
         token: daiLike,
-        eModes: [],
+        eModeCategory: {
+          id: 2, // Stablecoin
+        },
       }
     }
 
     if (symbol === 'BTC') {
       return {
         token: btcLike,
-        eModes: [],
+        eModeCategory: {
+          id: 0,
+        },
       }
     }
 
@@ -172,6 +180,7 @@ function getMockedMarketInfo(): MarketInfo {
     findOneTokenBySymbol: findTokenBySymbol,
     findTokenBySymbol,
     chainId: hyperTestnet.id,
+    facilitatorBorrowLimit: NormalizedUnitNumber(100),
   } as unknown as MarketInfo
 }
 
