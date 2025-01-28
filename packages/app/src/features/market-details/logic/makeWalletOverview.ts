@@ -193,6 +193,7 @@ function makeWalletNativeAssetOverview({
   return {
     ...baseOverview,
     tokenBalance,
+    isCombinedBalance: true,
     deposit: {
       ...baseOverview.deposit,
       available: availableToDeposit,

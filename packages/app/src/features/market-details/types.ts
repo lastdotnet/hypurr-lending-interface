@@ -94,6 +94,7 @@ export interface WalletOverview {
   guestMode: boolean
   token: Token
   tokenBalance: NormalizedUnitNumber
+  isCombinedBalance?: boolean
   lend?: {
     available: NormalizedUnitNumber
     token: Token
