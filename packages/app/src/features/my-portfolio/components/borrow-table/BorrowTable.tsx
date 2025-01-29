@@ -73,7 +73,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
             },
             actions: {
               header: '',
-              renderCell: ({ token, debt, reserveStatus }) => {
+              renderCell: ({ token, debt, reserveStatus, available }) => {
                 return (
                   <ActionsCell>
                     <Button
@@ -82,7 +82,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
                       onClick={() => {
                         openDialog(borrowDialogConfig, { token })
                       }}
-                      disabled={reserveStatus === 'frozen'}
+                      disabled={reserveStatus === 'frozen' || available.isZero()}
                     >
                       Borrow
                     </Button>
