@@ -20,7 +20,7 @@ export function LinkDecorator({ children, to, external }: LinkDecoratorProps) {
   }
 
   return (
-    <Slot onClick={onClick} className="cursor-pointer">
+    <Slot onClick={onClick} className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10">
       {children}
     </Slot>
   )
