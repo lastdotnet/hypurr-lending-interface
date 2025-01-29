@@ -35,7 +35,9 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
           columnDefinition={{
             symbol: {
               header: 'Assets',
-              renderCell: ({ token, reserveStatus, isCombinedBalance }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />,
+              renderCell: ({ token, reserveStatus, isCombinedBalance }) => (
+                <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />
+              ),
             },
             inWallet: {
               header: 'In Wallet',
@@ -72,6 +74,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
                   checked={isUsedAsCollateral}
                   onSwitchClick={(e) => {
                     e.preventDefault()
+                    e.stopPropagation()
                     openDialog(collateralDialogConfig, {
                       useAsCollateral: !isUsedAsCollateral,
                       token,
