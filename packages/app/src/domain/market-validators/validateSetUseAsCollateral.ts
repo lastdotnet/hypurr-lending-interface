@@ -75,7 +75,7 @@ export function validateSetUseAsCollateral({
 export const setUseAsCollateralValidationIssueToMessage: Record<SetUseAsCollateralValidationIssue, string> = {
   'collateral-already-enabled': 'Collateral setting for this asset is already enabled',
   'collateral-already-disabled': 'Collateral setting for this asset is already disabled',
-  'zero-deposit-asset': 'Cannot use not deposited asset as collateral',
+  'zero-deposit-asset': 'Cannot use an asset that has not been deposited as collateral',
   'reserve-not-active': 'Cannot change collateral setting for inactive reserve',
   'zero-ltv-asset': 'This asset cannot be used as collateral',
   'isolation-mode-active': 'Cannot use other asset as collateral when in isolation mode',
