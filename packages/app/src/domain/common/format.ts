@@ -59,3 +59,7 @@ export function findSignificantPrecision(
   const unitPriceUsd = Number(_unitPriceUsd)
   return Math.max(Math.floor(Math.log10(unitPriceUsd)) + desiredPrecisionOfUsd, 0)
 }
+
+export function truncateWithEllipsis(value: string, maxLength: number): string {
+  return value.length > maxLength ? `${value.slice(0, maxLength)}...` : value
+}

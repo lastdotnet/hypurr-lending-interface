@@ -11,6 +11,7 @@ import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { parseBigNumber } from '@/utils/bigNumber'
 import BigNumber from 'bignumber.js'
+import { truncateWithEllipsis } from '@/domain/common/format'
 
 export type AssetInputProps = {
   token: Token
@@ -97,8 +98,13 @@ export const AssetInput = forwardRef<HTMLInputElement, AssetInputProps>(
               }}
             />
             {token && (
-              <Typography variant="prompt" className="overflow-auto break-all">
-                {token.formatUSD(NormalizedUnitNumber(parseBigNumber(value, 0)))}
+              <Typography variant="prompt">
+                {truncateWithEllipsis(
+                  token.formatUSD(NormalizedUnitNumber(parseBigNumber(value, 0)), {
+                    compact: true,
+                  }),
+                  28,
+                )}
               </Typography>
             )}
           </div>
