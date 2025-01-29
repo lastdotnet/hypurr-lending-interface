@@ -146,6 +146,7 @@ export class MarketInfo {
     public readonly chainId: number,
     public readonly userRewards: UserReward[],
     public readonly nativeAssetInfo: NativeAssetInfo,
+    public readonly facilitatorBorrowLimit: NormalizedUnitNumber,
   ) {
     const wrappedNativeAssetPosition =
       userPositions.find((p) => p.reserve.token.symbol === nativeAssetInfo.wrappedNativeAssetSymbol) ??
@@ -231,6 +232,7 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
   return (data: AaveDataLayerQueryReturnType) => {
     const rawAaveData = aaveDataLayerSelectFn({ timeAdvance })(data)
     const chainId = data.chainId
+    const facilitatorBorrowLimit = NormalizedUnitNumber(rawAaveData.facilitatorBorrowLimit)
     const { markets } = getChainConfigEntry(chainId)
     assert(markets, 'Markets config is required for market info')
     const tokens = rawAaveData.userSummary.userReservesData.map(
@@ -380,6 +382,7 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
       chainId,
       userRewards,
       markets.nativeAssetInfo,
+      facilitatorBorrowLimit,
     )
   }
 }

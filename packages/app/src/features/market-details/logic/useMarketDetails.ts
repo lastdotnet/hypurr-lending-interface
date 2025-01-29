@@ -81,6 +81,7 @@ export function useMarketDetails(): UseMarketDetailsResult {
     reserve,
     marketInfo,
     capAutomatorInfo,
+    facilitatorBorrowLimit: marketInfo.facilitatorBorrowLimit,
   })
 
   const walletOverview = makeWalletOverview({
@@ -89,6 +90,7 @@ export function useMarketDetails(): UseMarketDetailsResult {
     walletInfo,
     connectedChainId,
     nativeAssetInfo,
+    facilitatorBorrowLimit: marketInfo.facilitatorBorrowLimit,
   })
 
   return {

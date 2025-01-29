@@ -2,13 +2,14 @@ import BigNumber from 'bignumber.js'
 
 import { NormalizedUnitNumber } from '../types/NumericValues'
 import { CheckedAddress } from '../types/CheckedAddress'
+import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 
 interface GetBorrowMaxValueParams {
   asset: {
     availableLiquidity: NormalizedUnitNumber
     totalDebt: NormalizedUnitNumber
     borrowCap?: NormalizedUnitNumber
-    address?: CheckedAddress
+    address: CheckedAddress
   }
   user: {
     maxBorrowBasedOnCollateral: NormalizedUnitNumber
@@ -17,9 +18,15 @@ interface GetBorrowMaxValueParams {
     isolationModeCollateralDebtCeiling?: NormalizedUnitNumber
   }
   validationIssue?: string
+  facilitatorBorrowLimit: NormalizedUnitNumber
 }
 
-export function getBorrowMaxValue({ asset, user, validationIssue }: GetBorrowMaxValueParams): NormalizedUnitNumber {
+export function getBorrowMaxValue({
+  asset,
+  user,
+  validationIssue,
+  facilitatorBorrowLimit,
+}: GetBorrowMaxValueParams): NormalizedUnitNumber {
   if (
     validationIssue === 'reserve-not-active' ||
     validationIssue === 'reserve-borrowing-disabled' ||
@@ -31,12 +38,14 @@ export function getBorrowMaxValue({ asset, user, validationIssue }: GetBorrowMax
     return NormalizedUnitNumber(0)
   }
 
+  const availableLiquidity = getBorrowableAmount({
+    tokenIdentifier: asset.address,
+    facilitatorAvailable: facilitatorBorrowLimit,
+    defaultAvailable: asset.availableLiquidity,
+  })
+
   const ceilings = [
-    // @NOTE: USDXL needs a custom limit since its liquidity is 0
-    // @TODO: Get this custom limit from facilitator limit and/or mint limit
-    asset.address === CheckedAddress('0x17a44c591ac723D76050Fe6bf02B49A0CC8F3994')
-      ? 100000000
-      : asset.availableLiquidity,
+    availableLiquidity,
     user.maxBorrowBasedOnCollateral.multipliedBy(0.99), // take 99% of the max borrow value to ensure that liquidation is not triggered right after the borrow
   ]
 

@@ -19,6 +19,7 @@ export function makeDaiMarketOverview({ reserve, marketInfo, D3MInfo }: MakeDaiM
       borrowCap: undefined,
       supplyCap: undefined,
     },
+    facilitatorBorrowLimit: marketInfo.facilitatorBorrowLimit,
   })
 
   const skyCapacity = NormalizedUnitNumber(D3MInfo.maxDebtCeiling.minus(D3MInfo.D3MCurrentDebtUSD))

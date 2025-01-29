@@ -32,6 +32,7 @@ export function getLiquidationDetails({
 }: GetLiquidationDetailsParams): LiquidationDetails | undefined {
   const { defaultAssetToBorrow } =
     getChainConfigEntry(marketInfo.chainId).markets ?? raise('Markets config is not defined on this chain')
+
   if (borrows.length !== 1 || borrows[0]!.token.symbol !== defaultAssetToBorrow) {
     return undefined
   }
@@ -43,7 +44,7 @@ export function getLiquidationDetails({
   const allCollateralsETHCorrelated = collateralEModeIds.every(
     (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
   )
-  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WETH'))?.unitPriceUsd
+  const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WHYPE'))?.unitPriceUsd
   if (allCollateralsETHCorrelated && WETHPrice) {
     const totalCollateralInWETH = collaterals.reduce((sum, collateral) => {
       const collateralPrice = marketInfo.findOneTokenBySymbol(collateral.token.symbol).unitPriceUsd

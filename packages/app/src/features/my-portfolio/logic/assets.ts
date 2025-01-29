@@ -6,6 +6,7 @@ import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { applyTransformers } from '@/utils/applyTransformers'
+import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 
 export interface Deposit {
   token: Token
@@ -127,12 +128,17 @@ function transformNativeAssetBorrow({
     borrowAPY: position.reserve.variableBorrowApy,
   }
 }
+function transformDefaultBorrow({ position, marketInfo }: BorrowTransformerParams): Borrow {
+  const available = getBorrowableAmount({
+    tokenIdentifier: position.reserve.token.symbol,
+    facilitatorAvailable: marketInfo.facilitatorBorrowLimit,
+    defaultAvailable: position.reserve.availableLiquidity,
+  })
 
-function transformDefaultBorrow({ position }: BorrowTransformerParams): Borrow {
   return {
     token: position.reserve.token,
     reserveStatus: position.reserve.status,
-    available: position.reserve.availableLiquidity,
+    available,
     debt: position.borrowBalance,
     borrowAPY: position.reserve.variableBorrowApy,
   }

@@ -16,6 +16,7 @@ export interface MakeWalletOverviewParams {
   marketInfo: MarketInfo
   connectedChainId: number
   nativeAssetInfo: NativeAssetInfo
+  facilitatorBorrowLimit: NormalizedUnitNumber
 }
 
 export function makeWalletOverview({
@@ -24,13 +25,17 @@ export function makeWalletOverview({
   walletInfo,
   connectedChainId,
   nativeAssetInfo,
+  facilitatorBorrowLimit,
 }: MakeWalletOverviewParams): WalletOverview {
-  const overview = applyTransformers({ reserve, marketInfo, walletInfo, connectedChainId, nativeAssetInfo })([
-    makeGuestModeOverview,
-    makeChainMismatchOverview,
-    makeWalletNativeAssetOverview,
-    makeBaseWalletOverview,
-  ])
+  const overview = applyTransformers({
+    reserve,
+    marketInfo,
+    walletInfo,
+    connectedChainId,
+    nativeAssetInfo,
+    facilitatorBorrowLimit,
+  })([makeGuestModeOverview, makeChainMismatchOverview, makeWalletNativeAssetOverview, makeBaseWalletOverview])
+
   assert(overview, 'The only item was skipped by transformers.')
 
   return overview
@@ -113,6 +118,7 @@ function makeBaseWalletOverview({ reserve, marketInfo, walletInfo }: MakeWalletO
     validationIssue,
     user: borrowValidationArgs.user,
     asset: borrowValidationArgs.asset,
+    facilitatorBorrowLimit: marketInfo.facilitatorBorrowLimit,
   })
 
   const position = marketInfo.findOnePositionBySymbol(token.symbol)

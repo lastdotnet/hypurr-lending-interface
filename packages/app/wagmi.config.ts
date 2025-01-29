@@ -10,6 +10,7 @@ import { uiPoolDataProviderABI } from './abis/evm/uiPoolDataProvider'
 import { uiIncentiveDataProviderABI } from './abis/evm/uiIncentiveDataProvider'
 import { collectorABI } from './abis/evm/collector'
 import { capAutomatorABI } from './abis/evm/capAutomator'
+import { usdxlTokenABI } from './abis/evm/usdxlToken'
 
 import 'dotenv/config'
 
@@ -18,6 +19,13 @@ const HYPEREVM_TESTNET_ID = 998
 const config: ReturnType<typeof defineConfig> = defineConfig({
   out: 'src/config/contracts-generated.ts',
   contracts: [
+    {
+      name: 'UsdxlToken',
+      abi: usdxlTokenABI,
+      address: {
+        [HYPEREVM_TESTNET_ID]: '0xd6B6D5158f23A0475535c626e20375553FaFd75E',
+      },
+    },
     {
       name: 'LendingPoolAddressProvider',
       abi: lendingPoolAddressProviderABI,

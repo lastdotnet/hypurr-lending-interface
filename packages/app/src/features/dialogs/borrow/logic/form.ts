@@ -59,10 +59,12 @@ export function getFormFieldsForBorrowDialog({
 
   const borrowValidationArgs = getValidateBorrowArgs(NormalizedUnitNumber(0), reserveIn1Epoch, marketInfo)
   const validationIssue = validateBorrow(borrowValidationArgs)
+
   const borrowMaxValue = getBorrowMaxValue({
     validationIssue,
     user: borrowValidationArgs.user,
     asset: borrowValidationArgs.asset,
+    facilitatorBorrowLimit: marketInfo.facilitatorBorrowLimit,
   })
 
   return {

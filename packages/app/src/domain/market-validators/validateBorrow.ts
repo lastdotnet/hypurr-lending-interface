@@ -5,7 +5,7 @@ import { MarketInfo, Reserve, UserPositionSummary } from '../market-info/marketI
 import { ReserveStatus } from '../market-info/reserve-status'
 import { CheckedAddress } from '../types/CheckedAddress'
 import { NormalizedUnitNumber } from '../types/NumericValues'
-import { USDXL_ADDRESS } from '@/config/consts'
+import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 
 export interface ValidateBorrowParams {
   value: NormalizedUnitNumber
@@ -84,7 +84,7 @@ export function validateBorrow({
     return 'reserve-borrowing-disabled'
   }
 
-  if (availableLiquidity.lt(value) && address !== USDXL_ADDRESS) {
+  if (availableLiquidity.lt(value)) {
     return 'exceeds-liquidity'
   }
 
@@ -150,6 +150,11 @@ export function getValidateBorrowArgs(
   _userSummary?: UserPositionSummary,
 ): ValidateBorrowParams {
   const userSummary = _userSummary ?? marketInfo.userPositionSummary
+  const availableLiquidity = getBorrowableAmount({
+    tokenIdentifier: reserve.token.symbol,
+    facilitatorAvailable: marketInfo.facilitatorBorrowLimit,
+    defaultAvailable: reserve.availableLiquidity,
+  })
 
   return {
     value,
@@ -157,7 +162,7 @@ export function getValidateBorrowArgs(
       address: reserve.token.address,
       status: reserve.status,
       borrowingEnabled: reserve.borrowEligibilityStatus !== 'no',
-      availableLiquidity: reserve.availableLiquidity,
+      availableLiquidity,
       totalDebt: reserve.totalDebt,
       borrowCap: reserve.borrowCap,
       isSiloed: reserve.isSiloedBorrowing,
