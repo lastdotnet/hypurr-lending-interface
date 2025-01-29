@@ -36,8 +36,9 @@ export function useMyPortfolio(): UseMyPortfolioResults {
     marketInfo,
     walletInfo,
     nativeAssetInfo,
+    chainId,
   })
-  const borrows = getBorrows({ marketInfo, nativeAssetInfo })
+  const borrows = getBorrows({ marketInfo, nativeAssetInfo, chainId })
   const positionSummary = makePositionSummary({ marketInfo })
   const walletComposition = makeWalletComposition({
     marketInfo,
