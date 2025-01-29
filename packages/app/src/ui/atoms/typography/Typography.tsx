@@ -17,7 +17,10 @@ const typographyVariants = cva('text-foreground', {
       prompt: 'text-prompt-foreground text-xs leading-none tracking-tight',
     },
     gradient: {
-      true: 'inline-block bg-gradient-to-r from-gradient-yellow to-gradient-green bg-clip-text text-transparent',
+      true: [
+        'inline-block bg-gradient-to-r from-gradient-yellow to-gradient-green bg-clip-text text-transparent',
+        'pb-[2px]', // Fixes issue with text being clipped
+      ],
       false: null,
     },
   },
