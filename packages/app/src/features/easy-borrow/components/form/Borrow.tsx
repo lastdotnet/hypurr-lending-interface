@@ -8,6 +8,8 @@ import { raise } from '@/utils/assert'
 import { Control } from 'react-hook-form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
+import { Percentage } from '@/domain/types/NumericValues'
+import { formatPercentage } from '@/domain/common/format'
 
 interface BorrowProps {
   selectedAssets: TokenWithBalance[]
@@ -17,9 +19,11 @@ interface BorrowProps {
   control: Control<EasyBorrowFormSchema>
   disabled: boolean
   resetBorrowStatus?: () => void
+  borrowAPY: Percentage
 }
 
-export function Borrow({ selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus }: BorrowProps) {
+export function Borrow(props: BorrowProps) {
+  const { selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus, borrowAPY } = props
   const { token } = selectedAssets[0] ?? raise('No borrow token selected')
 
   return (
@@ -43,6 +47,10 @@ export function Borrow({ selectedAssets, allAssets, changeAsset, control, disabl
           token={token}
           resetBorrowStatus={resetBorrowStatus}
         />
+      </div>
+
+      <div className="mt-4">
+        <Typography className="text-sm text-white/50">Borrow APY: {formatPercentage(borrowAPY)}</Typography>
       </div>
     </div>
   )

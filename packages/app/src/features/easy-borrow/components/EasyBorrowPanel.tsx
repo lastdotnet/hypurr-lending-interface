@@ -15,7 +15,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../logic/form/form'
 import { EasyBorrowFormSchema } from '../logic/form/validation'
 import { ExistingPosition, PageStatus } from '../logic/types'
-import { BorrowDetails } from '../logic/useEasyBorrow'
+import { BorrowFormAPYDetails } from '../logic/useEasyBorrow'
 import { EasyBorrowForm } from './form/EasyBorrowForm'
 
 export interface EasyBorrowPanelProps {
@@ -30,7 +30,7 @@ export interface EasyBorrowPanelProps {
   liquidationDetails?: LiquidationDetails
   riskAcknowledgement: RiskAcknowledgementInfo
   objectives: Objective[]
-  borrowDetails?: BorrowDetails
+  apyDetails: BorrowFormAPYDetails
   guestMode: boolean
   openConnectModal: () => void
   openSandboxModal: () => void

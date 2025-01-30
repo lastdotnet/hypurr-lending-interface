@@ -7,15 +7,14 @@ import { PageLayout } from '@/ui/layouts/PageLayout'
 import { UseFormReturn } from 'react-hook-form'
 import { BorrowRateBanner } from '../components/BorrowRateBanner'
 import { EasyBorrowPanel } from '../components/EasyBorrowPanel'
-// import { EasyBorrowSidePanel } from '../components/note/EasyBorrowSidePanel'
 import { FormFieldsForAssetClass } from '../logic/form/form'
 import { EasyBorrowFormSchema } from '../logic/form/validation'
 import { ExistingPosition, PageStatus } from '../logic/types'
-import { BorrowDetails } from '../logic/useEasyBorrow'
+import { BorrowFormAPYDetails } from '../logic/useEasyBorrow'
 
 export interface EasyBorrowViewProps {
   pageStatus: PageStatus
-  borrowDetails?: BorrowDetails
+  apyDetails: BorrowFormAPYDetails
   form: UseFormReturn<EasyBorrowFormSchema>
   assetsToBorrowFields: FormFieldsForAssetClass
   assetsToDepositFields: FormFieldsForAssetClass
@@ -39,7 +38,6 @@ export function EasyBorrowView(props: EasyBorrowViewProps) {
       <BorrowRateBanner />
       <div className="mt-8 flex justify-center">
         <EasyBorrowPanel {...props} />
-        {/* <EasyBorrowSidePanel borrowRate={props.borrowDetails.borrowRate} /> */}
       </div>
     </PageLayout>
   )
