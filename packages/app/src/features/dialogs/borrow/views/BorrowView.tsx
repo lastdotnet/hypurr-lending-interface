@@ -12,6 +12,7 @@ import { RiskAcknowledgement } from '@/ui/organisms/risk-acknowledgement/RiskAck
 import BigNumber from 'bignumber.js'
 import { UseFormReturn } from 'react-hook-form'
 import { BorrowOverviewPanel } from '../components/BorrowOverviewPanel'
+import { Percentage } from '@/domain/types/NumericValues'
 
 export interface BorrowViewProps {
   selectableAssets: TokenWithBalance[]
@@ -23,6 +24,7 @@ export interface BorrowViewProps {
   pageStatus: PageStatus
   currentHealthFactor?: BigNumber
   updatedHealthFactor?: BigNumber
+  borrowAPY?: Percentage
   riskAcknowledgement: RiskAcknowledgementInfo
 }
 
@@ -36,6 +38,7 @@ export function BorrowView({
   borrowAsset,
   currentHealthFactor,
   updatedHealthFactor,
+  borrowAPY,
   riskAcknowledgement,
 }: BorrowViewProps) {
   return (
@@ -44,7 +47,11 @@ export function BorrowView({
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsFields} selectorAssets={selectableAssets} />
-        <BorrowOverviewPanel currentHealthFactor={currentHealthFactor} updatedHealthFactor={updatedHealthFactor} />
+        <BorrowOverviewPanel
+          currentHealthFactor={currentHealthFactor}
+          updatedHealthFactor={updatedHealthFactor}
+          borrowAPY={borrowAPY}
+        />
       </FormAndOverviewWrapper>
 
       {riskAcknowledgement.warning && (

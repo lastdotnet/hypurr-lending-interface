@@ -19,6 +19,7 @@ import { FormFieldsForDialog, PageState, PageStatus } from '../../common/types'
 import { getBorrowOptions } from './assets'
 import { createBorrowObjectives } from './createBorrowObjectives'
 import { getBorrowDialogFormValidator, getFormFieldsForBorrowDialog } from './form'
+import { Percentage } from '@/domain/types/NumericValues'
 
 export interface UseBorrowDialogOptions {
   initialToken: Token
@@ -32,6 +33,7 @@ export interface UseBorrowDialogResult {
   actionsContext: InjectedActionsContext
   pageStatus: PageStatus
   form: UseFormReturn<AssetInputSchema>
+  borrowAPY?: Percentage
   currentHealthFactor?: BigNumber
   updatedHealthFactor?: BigNumber
   riskAcknowledgement: RiskAcknowledgementInfo
@@ -88,6 +90,7 @@ export function useBorrowDialog({ initialToken }: UseBorrowDialogOptions): UseBo
 
   const currentHealthFactor = marketInfo.userPositionSummary.healthFactor
   const updatedHealthFactor = !tokenToBorrow.value.eq(0) ? updatedUserSummary.healthFactor : undefined
+  const borrowAPY = tokenToBorrow.reserve.variableBorrowApy
 
   const { riskAcknowledgement, disableActionsByRisk } = useLiquidationRiskWarning({
     type: 'liquidation-warning-borrow',
@@ -100,6 +103,7 @@ export function useBorrowDialog({ initialToken }: UseBorrowDialogOptions): UseBo
 
   return {
     borrowOptions,
+    borrowAPY,
     assetsToBorrowFields,
     tokenToBorrow,
     objectives: actions,
