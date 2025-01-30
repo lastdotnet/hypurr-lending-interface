@@ -265,6 +265,11 @@ export function getMockMarketInfo(
       minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
     },
     NormalizedUnitNumber(100),
+    {
+      netSupplyApy: Percentage(0.05),
+      netBorrowApy: Percentage(0.05),
+      totalNetApy: Percentage(0.05),
+    },
   )
 }
 

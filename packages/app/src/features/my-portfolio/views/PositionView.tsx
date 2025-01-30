@@ -11,11 +11,13 @@ import { Position } from '../components/position/Position'
 import { Borrow, Deposit } from '../logic/assets'
 import { PositionSummary } from '../logic/types'
 import { WalletCompositionInfo } from '../logic/wallet-composition'
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 
 export interface PositionViewProps {
   positionSummary: PositionSummary
   deposits: Deposit[]
   borrows: Borrow[]
+  netApyDetails: NetApyDetails
   eModeCategoryId: EModeCategoryId
   walletComposition: WalletCompositionInfo
   openDialog: OpenDialogFunction
@@ -26,6 +28,7 @@ export function PositionView({
   positionSummary,
   deposits,
   borrows,
+  netApyDetails,
   eModeCategoryId,
   openDialog,
   liquidationDetails,
@@ -39,7 +42,11 @@ export function PositionView({
           variant="with-liquidation-price"
           liquidationDetails={liquidationDetails}
         />
-        <Position className="order-3 flex-grow md:order-2" positionSummary={positionSummary} />
+        <Position
+          className="order-3 flex-grow md:order-2"
+          positionSummary={positionSummary}
+          netApyDetails={netApyDetails}
+        />
         {!positionSummary.hasDeposits && <CreatePositionPanel className="order-2 flex-grow md:order-3" />}
       </div>
 

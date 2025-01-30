@@ -9,9 +9,12 @@ import { getRandomColor } from '@/ui/utils/get-random-color'
 import { testIds } from '@/ui/utils/testIds'
 import { getPositionFormattedValue, getTicks } from '../../logic/position'
 import { PositionSummary } from '../../logic/types'
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
+import { formatPercentage } from '@/domain/common/format'
 
 export interface PositionProps {
   positionSummary?: PositionSummary
+  netApyDetails?: NetApyDetails
   numLabels?: number
   ticksPerLabel?: number
   xAxisFallbackMax?: NormalizedUnitNumber
@@ -20,6 +23,7 @@ export interface PositionProps {
 
 export function Position({
   positionSummary,
+  netApyDetails,
   numLabels = 5,
   ticksPerLabel = 2,
   xAxisFallbackMax = NormalizedUnitNumber(90_000),
@@ -35,10 +39,19 @@ export function Position({
   return (
     <Panel className={className}>
       <Panel.Header>
-        <Panel.Title className="text-xl" gradient>
-          Your position
-        </Panel.Title>
-        <Info>Amount of all your assets supplied to the protocol.</Info>
+        <div className="flex w-full justify-between">
+          <div className="flex items-center gap-1">
+            <Panel.Title className="text-xl" gradient>
+              Your position
+            </Panel.Title>
+            <Info>Amount of all your assets supplied to the protocol.</Info>
+          </div>
+
+          <div className="text-center">
+            <Typography className="text-white/50 text-xs">Net APY</Typography>
+            <Typography>{formatPercentage(netApyDetails?.totalNetApy)}</Typography>
+          </div>
+        </div>
       </Panel.Header>
 
       <Panel.Content className="mt-auto flex flex-col gap-6">

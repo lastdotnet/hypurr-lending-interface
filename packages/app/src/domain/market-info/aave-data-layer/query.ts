@@ -16,6 +16,7 @@ import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { queryOptions } from '@tanstack/react-query'
 import { getContractAddress } from '../../hooks/useContractAddress'
 import { A_USDXL_ADDRESS, USDXL_ADDRESS } from '@/config/consts'
+import { calculateNetApy } from './calculateNetApy'
 
 export interface AaveDataLayerQueryKeyArgs {
   chainId: number
@@ -273,6 +274,8 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       userEmodeCategoryId,
     })
 
+    const userNetApyDetails = calculateNetApy(userSummary, formattedReserves)
+
     const userRewards = calculateAllUserIncentives({
       reserveIncentives,
       userIncentives,
@@ -287,6 +290,7 @@ export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnPara
       userSummary,
       userEmodeCategoryId,
       userRewards,
+      userNetApyDetails,
       timestamp: currentTimestamp,
       facilitatorBorrowLimit,
     }

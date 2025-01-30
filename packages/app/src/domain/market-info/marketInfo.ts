@@ -28,6 +28,7 @@ import {
   determineSiloBorrowingState,
   normalizeUserSummary as normalizeUserPositionSummary,
 } from './utils'
+import { NetApyDetails } from './aave-data-layer/calculateNetApy'
 
 export interface Reserve {
   token: Token
@@ -147,6 +148,7 @@ export class MarketInfo {
     public readonly userRewards: UserReward[],
     public readonly nativeAssetInfo: NativeAssetInfo,
     public readonly facilitatorBorrowLimit: NormalizedUnitNumber,
+    public readonly userNetApyDetails: NetApyDetails,
   ) {
     const wrappedNativeAssetPosition =
       userPositions.find((p) => p.reserve.token.symbol === nativeAssetInfo.wrappedNativeAssetSymbol) ??
@@ -383,6 +385,7 @@ export function marketInfoSelectFn({ timeAdvance }: MarketInfoSelectFnParams = {
       userRewards,
       markets.nativeAssetInfo,
       facilitatorBorrowLimit,
+      rawAaveData.userNetApyDetails,
     )
   }
 }
