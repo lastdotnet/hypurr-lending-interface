@@ -23,7 +23,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       name: 'UsdxlToken',
       abi: usdxlTokenABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xd6B6D5158f23A0475535c626e20375553FaFd75E',
+        [HYPEREVM_TESTNET_ID]: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
       },
     },
     {
