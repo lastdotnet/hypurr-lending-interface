@@ -104,7 +104,7 @@ export function SavingsDaiAndUsdsView({
         showConvertDialogButton={showConvertDialogButton}
         migrationInfo={migrationInfo}
       />
-      {import.meta.env.VITE_FEATURE_SAVINGS_WELCOME_DIALOG === '1' && (
+      {process.env.NEXT_PUBLIC_FEATURE_SAVINGS_WELCOME_DIALOG === '1' && (
         <WelcomeDialog
           open={showWelcomeDialog}
           onConfirm={() => saveConfirmedWelcomeDialog(true)}

@@ -218,7 +218,7 @@ export const assets = {
 export function getTokenImage(symbol: TokenSymbol): string {
   const image = assets.token[symbol.toLocaleLowerCase() as keyof typeof assets.token]
   if (!image) {
-    return assets.token.unknown
+    return assets.token.unknown.toString()
   }
 
   return image

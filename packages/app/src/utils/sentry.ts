@@ -1,13 +1,13 @@
 import * as Sentry from '@sentry/react'
 
-if (import.meta.env.VITE_SENTRY_DSN) {
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  console.log('Sentry integration enabled', { env: import.meta.env.VITE_ENV_NAME })
+  console.log('Sentry integration enabled', { env: process.env.NEXT_PUBLIC_ENV_NAME })
 }
 
 Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN,
-  environment: import.meta.env.VITE_ENV_NAME,
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  environment: process.env.NEXT_PUBLIC_ENV_NAME,
   integrations: [],
   tracesSampleRate: 0,
   replaysSessionSampleRate: 0,

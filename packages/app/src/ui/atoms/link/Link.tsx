@@ -1,17 +1,17 @@
 import React from 'react'
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom'
-
+import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { cn } from '@/ui/utils/style'
 
-export interface LinkProps extends RouterLinkProps {
-  external?: boolean
-}
+type LinkProps = NextLinkProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    external?: boolean
+  }
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ to, className, external, ...props }, ref) => {
+const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ href, className, external, ...props }, ref) => {
   if (external) {
     return (
       <a
-        href={to.toString()}
+        href={href.toString()}
         className={cn('cursor-pointer text-secondary hover:text-primary', className)}
         target="_blank"
         rel="noreferrer"
@@ -24,8 +24,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ to, className, ex
     )
   }
 
-  return <RouterLink to={to} className={cn('text-secondary hover:text-primary', className)} ref={ref} {...props} />
+  return <NextLink href={href} className={cn('text-secondary hover:text-primary', className)} ref={ref} {...props} />
 })
+
 Link.displayName = 'Link'
 
 export { Link }

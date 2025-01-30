@@ -11,7 +11,7 @@ const buildTime = new Date().toLocaleString('en-gb')
 
 // disable sentry integration on preview deployments
 if (process.env.VERCEL_ENV === 'preview') {
-  process.env.VITE_SENTRY_DSN = ''
+  process.env.NEXT_PUBLIC_SENTRY_DSN = ''
 }
 
 export default defineConfig({

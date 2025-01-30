@@ -30,7 +30,7 @@ export function makeDaiMarketOverview({ reserve, marketInfo, D3MInfo }: MakeDaiM
   return {
     supply: undefined,
     lend:
-      import.meta.env.VITE_FEATURE_DISABLE_DAI_LEND === '1'
+      process.env.NEXT_PUBLIC_FEATURE_DISABLE_DAI_LEND === '1'
         ? undefined
         : {
             status: 'yes',

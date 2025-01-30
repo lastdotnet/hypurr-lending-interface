@@ -1,6 +1,6 @@
 // https://github.com/vitest-dev/vitest/issues/4043#issuecomment-1905172846
 
-if (import.meta.env.MODE === 'test') {
+if (process.env.MODE === 'test') {
   class ESBuildAndJSDOMCompatibleTextEncoder extends TextEncoder {
     encode(input: string): Uint8Array {
       if (typeof input !== 'string') {

@@ -33,13 +33,13 @@ pnpm run storybook # runs storybook in dev mode
 
 ## Feature flags
 
-Feature flags need to be verified by using `import.meta.env.VITE_FEATURE_X` (and not some helper functions). Only then
+Feature flags need to be verified by using `process.env.NEXT_PUBLIC_FEATURE_X` (and not some helper functions). Only then
 dead code elimination for production builds work and disabled features will be entirely deleted in production build.
 
 Control feature flags via `.env` files:
 
 ```
-VITE_FEATURE_X=1
+NEXT_PUBLIC_FEATURE_X=1
 ```
 
 All feature flags are listed in `.env.example` file.
@@ -111,7 +111,7 @@ This will stop recording requests and use the HAR file instead.
 ### Injecting rpc through url
 
 In development and staging environments, there is an option to inject custom `rpc` with `chainId` via url. It can be used for instrumenting the app to test fork environments etc.
-This functionality is guarded by the feature flag `VITE_FEATURE_RPC_INJECTION_VIA_URL`. Injected network details will be lost after the app is reloaded.
+This functionality is guarded by the feature flag `NEXT_PUBLIC_FEATURE_RPC_INJECTION_VIA_URL`. Injected network details will be lost after the app is reloaded.
 ```
 https://spark-app-staging.vercel.app/?rpc=https://rpc.example.com&chainId=1
 ```

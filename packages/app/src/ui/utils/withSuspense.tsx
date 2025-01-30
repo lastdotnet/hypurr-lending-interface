@@ -6,7 +6,7 @@ export function withSuspense<T extends {}>(
   FallbackComponent: React.ComponentType<{}>,
 ): React.ComponentType<T> {
   // make it easy to spot missing suspense fallbacks in development
-  if (import.meta.env.MODE === 'development') {
+  if (process.env.MODE === 'development') {
     const FallbackComponentOriginal = FallbackComponent
 
     FallbackComponent = () => {
