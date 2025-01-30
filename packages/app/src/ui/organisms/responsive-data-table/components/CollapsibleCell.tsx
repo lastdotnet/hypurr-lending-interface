@@ -19,7 +19,7 @@ export function CollapsibleCell({ children }: CollapsibleCellProps) {
         <CollapsiblePrimitive.CollapsibleTrigger asChild className="cursor-auto">
           <div className="flex flex-row justify-between">
             {TriggerContent}
-            <div className="flex cursor-pointer flex-col justify-center">
+            <div className="flex min-w-[30px] cursor-pointer flex-col justify-center">
               <button role="switch">
                 <Typography variant="prompt">
                   {open ? (

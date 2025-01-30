@@ -26,10 +26,17 @@ export function CompactValueCell({
 }: CompactValueCellProps) {
   if (mobileViewOptions?.isMobileView) {
     return (
-      <div className="flex flex-row items-center justify-between">
-        <Typography variant="prompt" className="w-full">
-          {mobileViewOptions.rowTitle}
-        </Typography>
+      <div
+        className={cn(
+          'flex flex-row items-center',
+          mobileViewOptions.showOnMobile ? 'justify-center' : 'justify-between',
+        )}
+      >
+        {!mobileViewOptions.showOnMobile && (
+          <Typography variant="prompt" className="w-full">
+            {mobileViewOptions.rowTitle}
+          </Typography>
+        )}
         <CompactValue
           token={token}
           value={value}
@@ -37,6 +44,7 @@ export function CompactValueCell({
           hideEmpty={hideEmpty}
           compactValue={compactValue}
           data-testid={dataTestId}
+          mobileViewOptions={mobileViewOptions}
         />
       </div>
     )
@@ -61,6 +69,7 @@ interface CompactValueProps {
   dimmed?: boolean
   hideEmpty?: boolean
   className?: string
+  mobileViewOptions?: MobileViewOptions
   'data-testid'?: string
 }
 
@@ -71,11 +80,19 @@ function CompactValue({
   dimmed,
   hideEmpty,
   className,
+  mobileViewOptions,
   'data-testid': dataTestId,
 }: CompactValueProps) {
   if (hideEmpty && value.isZero()) {
     return (
-      <div className={cn('flex w-full flex-row justify-end', dimmed && 'text-white/40')} data-testid={dataTestId}>
+      <div
+        className={cn(
+          'flex w-full flex-row',
+          dimmed && 'text-white/40',
+          mobileViewOptions?.isMobileView && mobileViewOptions.showOnMobile ? 'justify-center' : 'justify-end',
+        )}
+        data-testid={dataTestId}
+      >
         —
       </div>
     )

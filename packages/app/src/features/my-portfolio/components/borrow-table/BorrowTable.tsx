@@ -58,6 +58,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'debt'),
               headerAlign: 'right',
+              showOnMobile: true,
               renderCell: ({ token, debt }, mobileViewOptions) => (
                 <CompactValueCell token={token} value={debt} mobileViewOptions={mobileViewOptions} hideEmpty />
               ),
@@ -66,6 +67,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
               header: <ApyTooltip variant="borrow">APY</ApyTooltip>,
               headerAlign: 'right',
               sortable: true,
+              showOnMobile: true,
               sortingFn: (a, b) => sortByAPY(a.original.borrowAPY, b.original.borrowAPY),
               renderCell: ({ borrowAPY }, mobileViewOptions) => (
                 <PercentageCell value={borrowAPY} mobileViewOptions={mobileViewOptions} />

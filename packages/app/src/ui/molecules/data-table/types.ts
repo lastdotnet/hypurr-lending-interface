@@ -7,9 +7,11 @@ export interface ColumnDefinition<T> {
   sortable?: boolean
   sortingFn?: SortingFn<T>
   headerAlign?: 'left' | 'center' | 'right'
+  showOnMobile?: boolean
 }
 
 export interface MobileViewOptions {
   rowTitle: ReactNode
   isMobileView: boolean
+  showOnMobile?: boolean
 }

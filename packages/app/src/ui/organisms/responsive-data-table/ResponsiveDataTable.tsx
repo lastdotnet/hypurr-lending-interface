@@ -5,6 +5,7 @@ import { useBreakpoint } from '@/ui/utils/useBreakpoint'
 import { Fragment } from 'react'
 import { DataTable } from '../../molecules/data-table/DataTable'
 import { CollapsibleCell } from './components/CollapsibleCell'
+import { cn } from '@/ui/utils/style'
 
 export interface ResponsiveDataTableProps<T> {
   columnDefinition: { [key: string]: ColumnDefinition<T> }
@@ -15,6 +16,25 @@ export interface ResponsiveDataTableProps<T> {
   gridTemplateColumnsClassName?: string
   data: T[]
   'data-testid'?: string
+}
+
+interface DefinitionGroups<T> {
+  collapsedDefinitions: ColumnDefinition<T>[]
+  visibleDefinitions: ColumnDefinition<T>[]
+}
+
+function groupDefinitionsByVisibility<T>(definitions: ColumnDefinition<T>[]): DefinitionGroups<T> {
+  return definitions.reduce(
+    (acc, def) => {
+      if (!def.showOnMobile) {
+        acc.collapsedDefinitions.push(def)
+      } else {
+        acc.visibleDefinitions.push(def)
+      }
+      return acc
+    },
+    { collapsedDefinitions: [], visibleDefinitions: [] } as DefinitionGroups<T>,
+  )
 }
 
 export function ResponsiveDataTable<T extends { [k: string]: any }>({
@@ -41,17 +61,24 @@ export function ResponsiveDataTable<T extends { [k: string]: any }>({
   }
 
   const [rowHeaderDefinition, ...contentDefinitions] = Object.values(columnDefinition)
+  const { collapsedDefinitions, visibleDefinitions } = groupDefinitionsByVisibility(contentDefinitions)
+
+  const headerDefs = [rowHeaderDefinition, ...visibleDefinitions].map((def) => def?.header ?? '')
 
   return (
     <Table data-testid={dataTestId}>
       {!hideTableHeader && (
         <TableHeader className="static">
           <TableRow className="flex justify-between">
-            {[rowHeaderDefinition?.header, 'More info'].map((header, index) => (
-              <TableHead className="py-2 text-white text-xs" key={index}>
+            {[...headerDefs].map((header, index) => (
+              <TableHead
+                className={cn('flex-1 py-2 text-white text-xs', index !== 0 && 'flex justify-center px-2')}
+                key={index}
+              >
                 {header}
               </TableHead>
             ))}
+            <TableHead className="py-2 text-white text-xs">More</TableHead>
           </TableRow>
         </TableHeader>
       )}
@@ -59,8 +86,16 @@ export function ResponsiveDataTable<T extends { [k: string]: any }>({
         {data.map((value, index) => (
           <TableRow key={index} data-testid={testIds.component.DataTable.row(index)}>
             <CollapsibleCell>
-              {rowHeaderDefinition?.renderCell(value)}
-              {contentDefinitions.map((def, index) => (
+              {[rowHeaderDefinition, ...visibleDefinitions].map((def, index) => (
+                <div className={cn('flex-1', index !== 0 && 'px-2')} key={index}>
+                  {def?.renderCell(value, {
+                    isMobileView: true,
+                    rowTitle: def.header,
+                    showOnMobile: def.showOnMobile,
+                  })}
+                </div>
+              ))}
+              {collapsedDefinitions.map((def, index) => (
                 <Fragment key={index}>{def.renderCell(value, { isMobileView: true, rowTitle: def.header })}</Fragment>
               ))}
             </CollapsibleCell>

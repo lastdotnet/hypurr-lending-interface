@@ -53,6 +53,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'deposit'),
               headerAlign: 'right',
+              showOnMobile: true,
               renderCell: ({ token, deposit }, mobileViewOptions) => (
                 <CompactValueCell token={token} value={deposit} mobileViewOptions={mobileViewOptions} hideEmpty />
               ),
@@ -61,6 +62,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               header: <ApyTooltip variant="supply">APY</ApyTooltip>,
               headerAlign: 'right',
               sortable: true,
+              showOnMobile: true,
               sortingFn: (a, b) => sortByAPY(a.original.supplyAPY, b.original.supplyAPY),
               renderCell: ({ supplyAPY }, mobileViewOptions) => (
                 <PercentageCell value={supplyAPY} mobileViewOptions={mobileViewOptions} />
