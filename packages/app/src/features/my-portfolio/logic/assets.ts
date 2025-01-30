@@ -1,12 +1,15 @@
 import { NativeAssetInfo } from '@/config/chain/types'
+import { paths } from '@/config/paths'
 import { assetCanBeBorrowed } from '@/domain/common/assets'
 import { MarketInfo, UserPosition } from '@/domain/market-info/marketInfo'
 import { ReserveStatus } from '@/domain/market-info/reserve-status'
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
+import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
+import { generatePath } from 'react-router-dom'
 
 export interface Deposit {
   token: Token
@@ -18,6 +21,10 @@ export interface Deposit {
   isCombinedBalance?: boolean
 }
 
+export interface DepositEntryRowData extends Deposit {
+  rowClickOptions: RowClickOptions
+}
+
 export interface Borrow {
   token: Token
   reserveStatus: ReserveStatus
@@ -26,15 +33,20 @@ export interface Borrow {
   borrowAPY: Percentage | undefined
 }
 
+export interface BorrowEntryRowData extends Borrow {
+  rowClickOptions: RowClickOptions
+}
+
 export interface GetDepositsParams {
   marketInfo: MarketInfo
   walletInfo: MarketWalletInfo
   nativeAssetInfo: NativeAssetInfo
+  chainId: number
 }
-export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo }: GetDepositsParams): Deposit[] {
+export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo, chainId }: GetDepositsParams): Deposit[] {
   return marketInfo.userPositions
     .map((position) => {
-      return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo })([
+      return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
         // hideDaiWhenLendingDisabled,
         hideFrozenAssetIfNotDeposited,
         transformNativeAssetDeposit,
@@ -47,6 +59,7 @@ export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo }: GetDepo
 interface DepositTransformerParams extends GetDepositsParams {
   position: UserPosition
   nativeAssetInfo: NativeAssetInfo
+  chainId: number
 }
 
 function transformNativeAssetDeposit({
@@ -54,11 +67,12 @@ function transformNativeAssetDeposit({
   marketInfo,
   walletInfo,
   nativeAssetInfo,
+  chainId,
 }: DepositTransformerParams): Deposit | undefined {
   if (position.reserve.token.symbol !== nativeAssetInfo.wrappedNativeAssetSymbol) {
     return undefined
   }
-  const deposit = transformDefaultDeposit({ position, marketInfo, walletInfo, nativeAssetInfo })
+  const deposit = transformDefaultDeposit({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })
 
   return {
     ...deposit,
@@ -72,7 +86,7 @@ function transformNativeAssetDeposit({
   }
 }
 
-function transformDefaultDeposit({ position, walletInfo }: DepositTransformerParams): Deposit {
+function transformDefaultDeposit({ position, walletInfo, chainId }: DepositTransformerParams): DepositEntryRowData {
   return {
     token: position.reserve.token,
     reserveStatus: position.reserve.status,
@@ -80,6 +94,12 @@ function transformDefaultDeposit({ position, walletInfo }: DepositTransformerPar
     deposit: position.collateralBalance,
     supplyAPY: position.reserve.supplyAPY,
     isUsedAsCollateral: position.reserve.usageAsCollateralEnabledOnUser,
+    rowClickOptions: {
+      destination: generatePath(paths.marketDetails, {
+        asset: position.reserve.token.address,
+        chainId: chainId.toString(),
+      }),
+    },
   }
 }
 
@@ -92,13 +112,14 @@ function hideFrozenAssetIfNotDeposited({ position }: DepositTransformerParams): 
 export interface GetBorrowsParams {
   marketInfo: MarketInfo
   nativeAssetInfo: NativeAssetInfo
+  chainId: number
 }
 
-export function getBorrows({ marketInfo, nativeAssetInfo }: GetBorrowsParams): Borrow[] {
+export function getBorrows({ marketInfo, nativeAssetInfo, chainId }: GetBorrowsParams): Borrow[] {
   return marketInfo.userPositions
     .filter((position) => assetCanBeBorrowed(position.reserve) || position.borrowBalance.gt(0))
     .map((position) => {
-      return applyTransformers({ position, marketInfo, nativeAssetInfo })([
+      return applyTransformers({ position, marketInfo, nativeAssetInfo, chainId })([
         transformNativeAssetBorrow,
         transformDefaultBorrow,
       ])
@@ -109,17 +130,19 @@ export function getBorrows({ marketInfo, nativeAssetInfo }: GetBorrowsParams): B
 interface BorrowTransformerParams extends GetBorrowsParams {
   position: UserPosition
   nativeAssetInfo: NativeAssetInfo
+  chainId: number
 }
 
 function transformNativeAssetBorrow({
   position,
   marketInfo,
   nativeAssetInfo,
+  chainId,
 }: BorrowTransformerParams): Borrow | undefined {
   if (position.reserve.token.symbol !== nativeAssetInfo.wrappedNativeAssetSymbol) {
     return undefined
   }
-  const borrow = transformDefaultBorrow({ position, marketInfo, nativeAssetInfo })
+  const borrow = transformDefaultBorrow({ position, marketInfo, nativeAssetInfo, chainId })
 
   return {
     ...borrow,
@@ -128,7 +151,7 @@ function transformNativeAssetBorrow({
     borrowAPY: position.reserve.variableBorrowApy,
   }
 }
-function transformDefaultBorrow({ position, marketInfo }: BorrowTransformerParams): Borrow {
+function transformDefaultBorrow({ position, marketInfo, chainId }: BorrowTransformerParams): BorrowEntryRowData {
   const available = getBorrowableAmount({
     tokenIdentifier: position.reserve.token.symbol,
     facilitatorAvailable: marketInfo.facilitatorBorrowLimit,
@@ -141,5 +164,11 @@ function transformDefaultBorrow({ position, marketInfo }: BorrowTransformerParam
     available,
     debt: position.borrowBalance,
     borrowAPY: position.reserve.variableBorrowApy,
+    rowClickOptions: {
+      destination: generatePath(paths.marketDetails, {
+        asset: position.reserve.token.address,
+        chainId: chainId.toString(),
+      }),
+    },
   }
 }
