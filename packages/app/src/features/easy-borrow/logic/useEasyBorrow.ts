@@ -16,7 +16,7 @@ import { useMarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { useTokensInfo } from '@/domain/wallet/useTokens/useTokensInfo'
 import { InjectedActionsContext, Objective } from '@/features/actions/logic/types'
 import { sandboxDialogConfig } from '@/features/dialogs/sandbox/SandboxDialog'
-import { assert, raise } from '@/utils/assert'
+import { assert } from '@/utils/assert'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useRef, useState } from 'react'
 import { UseFormReturn, useForm } from 'react-hook-form'
@@ -35,8 +35,9 @@ import { ExistingPosition, PageState, PageStatus } from './types'
 import { useCreateObjectives } from './useCreateObjectives'
 import { useLiquidationDetails } from './useLiquidationDetails'
 
-export interface BorrowDetails {
-  borrowRate: Percentage
+export interface BorrowFormAPYDetails {
+  borrowAPY: Percentage
+  depositAPY: Percentage
 }
 
 export interface UseEasyBorrowResults {
@@ -53,7 +54,7 @@ export interface UseEasyBorrowResults {
   alreadyBorrowed: ExistingPosition
   liquidationDetails?: LiquidationDetails
   riskAcknowledgement: RiskAcknowledgementInfo
-  borrowDetails?: BorrowDetails
+  apyDetails: BorrowFormAPYDetails
   guestMode: boolean
   openSandboxModal: () => void
   healthFactorPanelRef: React.RefObject<HTMLDivElement>
@@ -174,13 +175,8 @@ export function useEasyBorrow(): UseEasyBorrowResults {
     freeze: pageStatus === 'confirmation',
   })
 
-  const borrowDetails =
-    import.meta.env.VITE_FEATURE_USDXL === '1'
-      ? {
-          borrowRate:
-            marketInfo.findOneReserveBySymbol(defaultAssetToBorrow).variableBorrowApy ?? raise('No borrow rate'),
-        }
-      : undefined
+  const borrowAPY = Percentage(formValuesAsUnderlyingReserves.borrows[0]?.reserve.variableBorrowApy ?? 0, true)
+  const depositAPY = Percentage(formValuesAsUnderlyingReserves.deposits[0]?.reserve.supplyAPY ?? 0, true)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(
@@ -236,7 +232,10 @@ export function useEasyBorrow(): UseEasyBorrowResults {
     alreadyDeposited,
     alreadyBorrowed,
     liquidationDetails,
-    borrowDetails,
+    apyDetails: {
+      borrowAPY,
+      depositAPY,
+    },
     guestMode,
     openSandboxModal,
     healthFactorPanelRef,

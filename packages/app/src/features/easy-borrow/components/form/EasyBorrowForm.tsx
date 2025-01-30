@@ -14,6 +14,7 @@ import { Borrow } from './Borrow'
 import { Deposits } from './Deposits'
 import { LoanToValue } from './LoanToValue'
 import { LoanToValueSlider } from './LoanToValueSlider'
+import { BorrowFormAPYDetails } from '../../logic/useEasyBorrow'
 
 interface EasyBorrowFlowProps {
   form: UseFormReturn<EasyBorrowFormSchema>
@@ -22,6 +23,7 @@ interface EasyBorrowFlowProps {
   assetsToDepositFields: FormFieldsForAssetClass
   alreadyDeposited: ExistingPosition
   alreadyBorrowed: ExistingPosition
+  apyDetails: BorrowFormAPYDetails
   onSubmit: () => void
   setDesiredLoanToValue: (desiredLtv: Percentage) => void
   disabled: boolean // whole form is disabled when when user submitted the form and actions are in progress
@@ -39,6 +41,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
     assetsToDepositFields,
     alreadyDeposited,
     alreadyBorrowed,
+    apyDetails,
     updatedPositionSummary,
     setDesiredLoanToValue,
     disabled,
@@ -63,6 +66,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             control={form.control}
             disabled={disabled}
             resetBorrowStatus={props.pageStatus.onProceedToForm}
+            depositAPY={apyDetails.depositAPY}
           />
           <div>
             <img src={assets.link} className="m-2 mt-16 hidden md:block" />
@@ -75,11 +79,12 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             control={form.control}
             disabled={disabled}
             resetBorrowStatus={props.pageStatus.onProceedToForm}
+            borrowAPY={apyDetails.borrowAPY}
           />
         </div>
 
         <LoanToValue
-          className="mt-6"
+          className="mt-10"
           loanToValue={updatedPositionSummary.loanToValue}
           maxLoanToValue={updatedPositionSummary.maxLoanToValue}
         />

@@ -8,6 +8,8 @@ import { raise } from '@/utils/assert'
 import { Control } from 'react-hook-form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
+import { Percentage } from '@/domain/types/NumericValues'
+import { formatPercentage } from '@/domain/common/format'
 
 interface BorrowProps {
   selectedAssets: TokenWithBalance[]
@@ -17,16 +19,24 @@ interface BorrowProps {
   control: Control<EasyBorrowFormSchema>
   disabled: boolean
   resetBorrowStatus?: () => void
+  borrowAPY: Percentage
 }
 
-export function Borrow({ selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus }: BorrowProps) {
+export function Borrow(props: BorrowProps) {
+  const { selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus, borrowAPY } = props
   const { token } = selectedAssets[0] ?? raise('No borrow token selected')
 
   return (
     <div data-testid={testIds.easyBorrow.form.borrow} className="flex flex-1 flex-col">
-      <Typography variant="h4" className="flex h-10 items-center">
-        Borrow
-      </Typography>
+      <div className="flex h-10 flex-row items-center justify-between">
+        <Typography variant="h4" className="flex h-10 items-center">
+          Borrow
+        </Typography>
+
+        <Typography>
+          <span className="mr-1 text-white/50">APY</span> {formatPercentage(borrowAPY)}
+        </Typography>
+      </div>
 
       <div className="mt-2 flex flex-row items-start gap-2">
         <AssetSelector

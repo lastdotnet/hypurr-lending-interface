@@ -22,7 +22,7 @@ function EasyBorrowContainer() {
     tokensToBorrow,
     alreadyDeposited,
     alreadyBorrowed,
-    borrowDetails,
+    apyDetails,
     guestMode,
     openSandboxModal,
     healthFactorPanelRef,
@@ -49,7 +49,7 @@ function EasyBorrowContainer() {
       setDesiredLoanToValue={setDesiredLoanToValue}
       liquidationDetails={liquidationDetails}
       objectives={actions}
-      borrowDetails={borrowDetails}
+      apyDetails={apyDetails}
       guestMode={guestMode}
       openConnectModal={() => setShowAuthFlow(true)}
       openSandboxModal={openSandboxModal}

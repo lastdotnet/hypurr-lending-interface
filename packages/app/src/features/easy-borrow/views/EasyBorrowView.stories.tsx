@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form'
 import { withRouter } from 'storybook-addon-remix-react-router'
 import { EasyBorrowFormSchema } from '../logic/form/validation'
 import { ExistingPosition, PageState } from '../logic/types'
-import { BorrowDetails } from '../logic/useEasyBorrow'
+import { BorrowFormAPYDetails } from '../logic/useEasyBorrow'
 import { EasyBorrowView } from './EasyBorrowView'
 
 const mockMarketInfo = getMockMarketInfo()
@@ -31,7 +31,7 @@ interface EasyBorrowViewStoryProps {
   updatedPositionSummary: UserPositionSummary
   actions: Objective[]
   guestMode: boolean
-  borrowDetails: BorrowDetails
+  apyDetails: BorrowFormAPYDetails
   riskAcknowledgement?: RiskAcknowledgementInfo
   actionsEnabled?: boolean
 }
@@ -48,7 +48,7 @@ function EasyBorrowViewStory(props: EasyBorrowViewStoryProps) {
     updatedPositionSummary,
     actions,
     guestMode,
-    borrowDetails,
+    apyDetails,
     riskAcknowledgement: _riskAcknowledgement,
     actionsEnabled = true,
   } = props
@@ -108,7 +108,7 @@ function EasyBorrowViewStory(props: EasyBorrowViewStoryProps) {
       updatedPositionSummary={updatedPositionSummary}
       setDesiredLoanToValue={setDesiredLoanToValue}
       objectives={actions}
-      borrowDetails={borrowDetails}
+      apyDetails={apyDetails}
       guestMode={guestMode}
       openConnectModal={openConnectModal}
       openSandboxModal={openSandboxModal}
@@ -182,8 +182,9 @@ const meta: Meta<typeof EasyBorrowViewStory> = {
       totalLiquidityUSD: NormalizedUnitNumber(0),
     },
     guestMode: false,
-    borrowDetails: {
-      borrowRate: Percentage(0.0553),
+    apyDetails: {
+      borrowAPY: Percentage(0.0553),
+      depositAPY: Percentage(0.0553),
     },
     actions: [],
   },
@@ -260,8 +261,9 @@ const borrowUsdsArgs: Partial<EasyBorrowViewStoryProps> = {
     totalCollateralUSD: NormalizedUnitNumber(2000),
     totalLiquidityUSD: NormalizedUnitNumber(2000),
   },
-  borrowDetails: {
-    borrowRate: Percentage(0.0553),
+  apyDetails: {
+    borrowAPY: Percentage(0.0553),
+    depositAPY: Percentage(0.0553),
   },
   actions: [
     {

@@ -1,7 +1,7 @@
 import { Control } from 'react-hook-form'
 
 import { TokenWithBalance } from '@/domain/common/types'
-import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { MultiAssetSelector } from '@/ui/organisms/multi-selector/MultiSelector'
@@ -12,6 +12,7 @@ import { Link } from '@/ui/atoms/link/Link'
 import { Info } from '@/ui/molecules/info/Info'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
+import { formatPercentage } from '@/domain/common/format'
 
 export interface DepositsProps {
   selectedAssets: TokenWithBalance[]
@@ -25,6 +26,7 @@ export interface DepositsProps {
   maxSelectedFieldName?: string
   disabled?: boolean
   resetBorrowStatus?: () => void
+  depositAPY: Percentage
 }
 
 export function Deposits(props: DepositsProps) {
@@ -38,6 +40,9 @@ export function Deposits(props: DepositsProps) {
             at this time.
           </Info>
         </div>
+        <Typography>
+          <span className="mr-1 text-white/50">APY</span> {formatPercentage(props.depositAPY)}
+        </Typography>
       </div>
 
       <MultiAssetSelector fieldName="assetsToDeposit" {...props} />
