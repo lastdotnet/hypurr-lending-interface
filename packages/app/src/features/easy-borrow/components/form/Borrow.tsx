@@ -10,6 +10,7 @@ import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
 import { Percentage } from '@/domain/types/NumericValues'
 import { formatPercentage } from '@/domain/common/format'
+import { TokenSummary } from './TokenSummary'
 
 interface BorrowProps {
   selectedAssets: TokenWithBalance[]
@@ -23,7 +24,8 @@ interface BorrowProps {
 }
 
 export function Borrow(props: BorrowProps) {
-  const { selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus, borrowAPY } = props
+  const { selectedAssets, allAssets, changeAsset, control, disabled, resetBorrowStatus, borrowAPY, alreadyBorrowed } =
+    props
   const { token } = selectedAssets[0] ?? raise('No borrow token selected')
 
   return (
@@ -37,6 +39,8 @@ export function Borrow(props: BorrowProps) {
           <span className="mr-1 text-white/50">APY</span> {formatPercentage(borrowAPY)}
         </Typography>
       </div>
+
+      {alreadyBorrowed.tokens.length > 0 && <TokenSummary position={alreadyBorrowed} type="borrow" />}
 
       <div className="mt-2 flex flex-row items-start gap-2">
         <AssetSelector
