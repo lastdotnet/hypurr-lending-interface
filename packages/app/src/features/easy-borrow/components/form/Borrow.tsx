@@ -28,9 +28,15 @@ export function Borrow(props: BorrowProps) {
 
   return (
     <div data-testid={testIds.easyBorrow.form.borrow} className="flex flex-1 flex-col">
-      <Typography variant="h4" className="flex h-10 items-center">
-        Borrow
-      </Typography>
+      <div className="flex h-10 flex-row items-center justify-between">
+        <Typography variant="h4" className="flex h-10 items-center">
+          Borrow
+        </Typography>
+
+        <Typography>
+          <span className="mr-1 text-white/50">APY</span> {formatPercentage(borrowAPY)}
+        </Typography>
+      </div>
 
       <div className="mt-2 flex flex-row items-start gap-2">
         <AssetSelector
@@ -47,10 +53,6 @@ export function Borrow(props: BorrowProps) {
           token={token}
           resetBorrowStatus={resetBorrowStatus}
         />
-      </div>
-
-      <div className="mt-4">
-        <Typography className="text-sm text-white/50">Borrow APY: {formatPercentage(borrowAPY)}</Typography>
       </div>
     </div>
   )

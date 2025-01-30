@@ -40,13 +40,12 @@ export function Deposits(props: DepositsProps) {
             at this time.
           </Info>
         </div>
+        <Typography>
+          <span className="mr-1 text-white/50">APY</span> {formatPercentage(props.depositAPY)}
+        </Typography>
       </div>
 
       <MultiAssetSelector fieldName="assetsToDeposit" {...props} />
-
-      <div className="mt-4">
-        <Typography className="text-sm text-white/50">Deposit APY: {formatPercentage(props.depositAPY)}</Typography>
-      </div>
     </div>
   )
 }
