@@ -30,7 +30,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       [CheckedAddress('0x2222c34a8dd4ea29743bf8ec4ff165e059839782')]: true, // sUSDe
       [CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094')]: true, // USDC
       [USDXL_ADDRESS]: true, // USDXL
-      [CheckedAddress('0x8bf86549d308e50Db889cF843AEBd6b7B0d7BB9a')]: false, // WHYPE
+      [CheckedAddress('0x702aB9B6556020F5c7AC814162Cb641d64291144')]: false, // WHYPE
     },
     tokensWithMalformedApprove: [],
     airdrop: {},
@@ -67,7 +67,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         nativeAssetName: 'Hype',
         nativeAssetSymbol: TokenSymbol('HYPE'),
         wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
-        wrappedNativeAssetAddress: CheckedAddress('0xa42aa6a5a373dC4bD140eC20efeE5C669f9883f9'),
+        wrappedNativeAssetAddress: CheckedAddress('0x702aB9B6556020F5c7AC814162Cb641d64291144'),
         minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
       },
       tokenSymbolToReplacedName: {

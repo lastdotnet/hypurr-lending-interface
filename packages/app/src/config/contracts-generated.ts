@@ -295,7 +295,7 @@ export const capAutomatorAbi = [
  *
  */
 export const capAutomatorAddress = {
-  998: '0x99e71778dfbf301779161E46F78B2EF2af7FA8e3',
+  998: '0xe6ad1ffa197B2ae9a9daCEf2A52acbC8325782C0',
 } as const
 
 /**
@@ -601,7 +601,7 @@ export const collectorAbi = [
  *
  */
 export const collectorAddress = {
-  998: '0x875133496eBf9A8d2DdC786efDD394f518Ce987d',
+  998: '0x9b19287cdC0D2062a8BEAbA004Fc93353fc255b9',
 } as const
 
 /**
@@ -2262,7 +2262,7 @@ export const lendingPoolAbi = [
  *
  */
 export const lendingPoolAddress = {
-  998: '0x7978057A0d15e745473CEAD4456091c2b4c75e8C',
+  998: '0x4073283812dfD8fff8430c1Ec8f88A68f984Aec3',
 } as const
 
 /**
@@ -2714,7 +2714,7 @@ export const lendingPoolAddressProviderAbi = [
  *
  */
 export const lendingPoolAddressProviderAddress = {
-  998: '0xC37cFFCe99422D4589616D7386E21A3eB890Db0F',
+  998: '0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
 } as const
 
 /**
@@ -5606,7 +5606,7 @@ export const uiIncentiveDataProviderAbi = [
  *
  */
 export const uiIncentiveDataProviderAddress = {
-  998: '0x87551477ceD10d50ec08682A3d3f7f4d91E892C7',
+  998: '0xCdC9497Cea167846b17FD72635f73eE119d64B9D',
 } as const
 
 /**
@@ -5987,7 +5987,7 @@ export const uiPoolDataProviderAbi = [
  *
  */
 export const uiPoolDataProviderAddress = {
-  998: '0x855bB3a6099c4cA0d01c4402FE11D4B4CF85a49d',
+  998: '0x203bf29F5dDfD2ef15380DbdA8cf7D1da8B9Cc90',
 } as const
 
 /**
@@ -6668,7 +6668,7 @@ export const usdxlTokenAbi = [
  *
  */
 export const usdxlTokenAddress = {
-  998: '0xd6B6D5158f23A0475535c626e20375553FaFd75E',
+  998: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
 } as const
 
 /**
@@ -7191,7 +7191,7 @@ export const wethGatewayAbi = [
  *
  */
 export const wethGatewayAddress = {
-  998: '0x3BC0B783B3936b8391473a8840397DF22996d7aC',
+  998: '0x41F478CdB072fc4Cad96881413f73Aba5c8a90e0',
 } as const
 
 /**
@@ -7250,7 +7250,7 @@ export const walletBalanceProviderAbi = [
  *
  */
 export const walletBalanceProviderAddress = {
-  998: '0x032B5abd1657b867D43cad6874238f015E5E65bb',
+  998: '0x22473C5a8EC020024aDC74E9dD9B17D8037eAb4B',
 } as const
 
 /**
