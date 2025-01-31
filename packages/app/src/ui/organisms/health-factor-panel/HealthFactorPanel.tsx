@@ -41,7 +41,7 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
                 Keep in mind that these calculations follow the protocol's rules, which might change over time.
                 {/* For more
                 information about Health Factor, you can visit{' '}
-                <Link to={links.docs.healthFactor} external>
+                <Link href={links.docs.healthFactor} external>
                   docs
                 </Link>
                 . */}

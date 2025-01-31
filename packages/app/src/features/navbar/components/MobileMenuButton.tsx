@@ -20,7 +20,7 @@ export function MobileMenuButton({ mobileMenuCollapsed, setMobileMenuCollapsed }
       }}
     >
       <span className="sr-only">Open main menu</span>
-      {mobileMenuCollapsed ? <MenuIcon className="h-7 w-7" /> : <CloseIcon className="h-8 w-8" />}
+      {mobileMenuCollapsed ? <img src={MenuIcon} className="h-7 w-7" /> : <img src={CloseIcon} className="h-8 w-8" />}
     </Button>
   )
 }

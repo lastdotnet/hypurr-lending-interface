@@ -19,22 +19,6 @@ export const rootRouter = createBrowserRouter([
       {
         children: [
           {
-            path: paths.easyBorrow,
-            element: <EasyBorrowPage />,
-          },
-          {
-            path: paths.dashboard,
-            element: <MyPortfolioPage />,
-          },
-          // {
-          //   path: paths.savings,
-          //   element: <Savings />,
-          // },
-          {
-            path: paths.markets,
-            element: <Markets />,
-          },
-          {
             path: paths.marketDetails,
             element: <MarketDetails />,
           },

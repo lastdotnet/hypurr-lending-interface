@@ -23,7 +23,7 @@ export function CreatePositionPanel({ className }: CreatePositionPanelProps) {
             Quickly deposit your assets and borrow with our Easy Borrow Flow
           </Typography>
         </div>
-        <LinkButton className={cn(buttonVariants({ rounded: 'full' }))} to={paths.easyBorrow}>
+        <LinkButton className={cn(buttonVariants({ rounded: 'full' }))} href={paths.easyBorrow}>
           Create position
         </LinkButton>
       </Panel.Content>

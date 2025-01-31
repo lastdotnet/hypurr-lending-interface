@@ -2,7 +2,7 @@ import React from 'react'
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { cn } from '@/ui/utils/style'
 
-type LinkProps = NextLinkProps &
+export type LinkProps = NextLinkProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     external?: boolean
   }
@@ -11,7 +11,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ href, className, 
   if (external) {
     return (
       <a
-        href={href.toString()}
+        href={href || ''}
         className={cn('cursor-pointer text-secondary hover:text-primary', className)}
         target="_blank"
         rel="noreferrer"

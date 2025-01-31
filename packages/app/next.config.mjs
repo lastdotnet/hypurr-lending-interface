@@ -1,44 +1,41 @@
 import withImages from 'next-images'
 
+
 const nextConfig = withImages({
   reactStrictMode: true,
   images: {
     disableStaticImages: true,
   },
+  experimental: {
+    swcPlugins: [
+      [
+        "@lingui/swc-plugin", {}
+      ],
+    ],
+  },
   i18n: {
-    locales: ['en', 'pl'], // Define supported locales
+    locales: ['en', 'pl'],
     defaultLocale: 'en',
   },
 
-  webpack(config) {
+  webpack(config, { isServer }) {
     const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'))
 
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/ // *.svg?url
+        config.module.rules.push({
+      test: /\.po$/,
+      use: {
+        loader: "@lingui/loader", // https://github.com/lingui/js-lingui/issues/1782
       },
-      // Convert all other *.svg imports to React components
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: /url/ }, // exclude if *.svg?url
-        use: ['@svgr/webpack']
-      }
-    )
+    })
 
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    if (fileLoaderRule) {
-      fileLoaderRule.exclude = /\.svg$/i
-    }
 
     if (config.externals) {
       config.externals.push('pino-pretty', 'lokijs', 'encoding')
     } else {
       config.externals = ['pino-pretty', 'lokijs', 'encoding']
     }
+
+    config.resolve.fallback = { fs: false, module: false }
 
 
     return config

@@ -1,3 +1,5 @@
+import '../css/main.css'
+
 import Script from 'next/script'
 import { Metadata, Viewport } from 'next'
 import App from '@/App'

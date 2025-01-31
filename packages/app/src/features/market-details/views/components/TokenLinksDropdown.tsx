@@ -64,7 +64,7 @@ function BlockExplorerAddressLink({ address, children, chainId }: BlockExplorerA
   const contractLink = useBlockExplorerAddressLink({ address, chainId })
 
   return contractLink ? (
-    <Link to={contractLink} external>
+    <Link href={contractLink} external>
       {children}
     </Link>
   ) : (

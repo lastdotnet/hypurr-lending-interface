@@ -1,7 +1,7 @@
 'use client'
 
-//import { EasyBorrowPage } from "@/pages/Borrow"
+import { EasyBorrowPage } from '@/pages/Borrow'
 
-export default function Home() {
-  return <>Hi</>
+export default function Page() {
+  return <EasyBorrowPage />
 }

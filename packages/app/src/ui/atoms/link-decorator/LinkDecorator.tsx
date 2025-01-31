@@ -1,6 +1,7 @@
-import { Slot } from '@radix-ui/react-slot'
+'use client'
+
+import Link from 'next/link'
 import { ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 interface LinkDecoratorProps {
   children: ReactNode
@@ -9,19 +10,22 @@ interface LinkDecoratorProps {
 }
 
 export function LinkDecorator({ children, to, external }: LinkDecoratorProps) {
-  const navigate = useNavigate()
-
-  function onClick() {
-    if (external) {
-      window.open(to, '_blank')
-    } else {
-      navigate(to)
-    }
+  if (external) {
+    return (
+      <a
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10"
+      >
+        {children}
+      </a>
+    )
   }
 
   return (
-    <Slot onClick={onClick} className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10">
+    <Link href={to} className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10">
       {children}
-    </Slot>
+    </Link>
   )
 }

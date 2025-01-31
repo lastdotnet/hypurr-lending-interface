@@ -121,7 +121,7 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
                   className="w-full md:w-auto"
                   size="sm"
                   variant={reserveStatus !== 'active' ? 'secondary' : 'primary'}
-                  to={generatePath(paths.marketDetails, { asset: token.address, chainId: chainId.toString() })}
+                  href={generatePath(paths.marketDetails, { asset: token.address, chainId: chainId.toString() })}
                 >
                   Details
                 </LinkButton>
