@@ -18,10 +18,8 @@ const nextConfig = withImages({
     defaultLocale: 'en',
   },
 
-  webpack(config, { isServer }) {
-    const fileLoaderRule = config.module.rules.find(rule => rule.test?.test?.('.svg'))
-
-        config.module.rules.push({
+  webpack(config) {
+    config.module.rules.push({
       test: /\.po$/,
       use: {
         loader: "@lingui/loader", // https://github.com/lingui/js-lingui/issues/1782

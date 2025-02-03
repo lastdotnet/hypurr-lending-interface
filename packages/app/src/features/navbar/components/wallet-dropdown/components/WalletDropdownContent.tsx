@@ -1,5 +1,5 @@
 import { WalletDropdownContentInfo } from '@/features/navbar/types'
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
 import { Address } from '@/ui/atoms/address/Address'
 import { Button } from '@/ui/atoms/button/Button'
 import { Link } from '@/ui/atoms/link/Link'
@@ -32,11 +32,11 @@ export function WalletDropdownContent({
       {!isEphemeralAccount && blockExplorerAddressLink && (
         <div className="flex items-center gap-2.5 p-4">
           <Link
-            to={blockExplorerAddressLink}
+            href={blockExplorerAddressLink}
             external
             className="flex items-center gap-2.5 font-medium text-basics-dark-grey text-sm"
           >
-            <BoxArrowTopRight className="h-4 w-4" />
+            <img src={BoxArrowTopRight} className="h-4 w-4" />
             View on Explorer
           </Link>
         </div>

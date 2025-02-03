@@ -1,10 +1,10 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { MigrationInfo } from '@/features/savings/logic/makeMigrationInfo'
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
-import DocumentSketchIcon from '@/ui/assets/document-sketch.svg?react'
-import DowngradeIcon from '@/ui/assets/downgrade.svg?react'
-import MoreIcon from '@/ui/assets/more-icon.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
+import DocumentSketchIcon from '@/ui/assets/document-sketch.svg'
+import DowngradeIcon from '@/ui/assets/downgrade.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg'
 import { Button } from '@/ui/atoms/button/Button'
 import {
   DropdownMenu,
@@ -34,7 +34,7 @@ export function MoreDropdown({ token, blockExplorerLink, migrationInfo, disabled
             disabled={balance?.eq(0)}
             data-testid={testIds.savings.stablecoinsInWallet.downgradeUsdsToDai}
           >
-            <DowngradeIcon className="h-4 w-4" />
+            <img src={DowngradeIcon} className="h-4 w-4" />
             Downgrade to {migrationInfo.daiSymbol}
           </DropdownItem>
           <DropdownMenuSeparator />
@@ -43,9 +43,9 @@ export function MoreDropdown({ token, blockExplorerLink, migrationInfo, disabled
       {blockExplorerLink && (
         <LinkDecorator to={blockExplorerLink} external>
           <DropdownItem>
-            <DocumentSketchIcon className="h-4 w-4" />
+            <img src={DocumentSketchIcon} className="h-4 w-4" />
             View contract
-            <BoxArrowTopRight className="ml-auto h-4 w-4" />
+            <img src={BoxArrowTopRight} className="ml-auto h-4 w-4" />
           </DropdownItem>
         </LinkDecorator>
       )}
@@ -64,7 +64,7 @@ function DropdownWrapper({ children, disabled }: { children?: React.ReactNode; d
           disabled={disabled}
           data-testid={testIds.savings.stablecoinsInWallet.moreDropdown}
         >
-          <MoreIcon />
+          <img src={MoreIcon} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">{children}</DropdownMenuContent>

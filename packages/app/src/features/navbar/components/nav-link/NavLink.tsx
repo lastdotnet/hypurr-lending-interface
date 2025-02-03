@@ -28,7 +28,7 @@ export interface PlaceholderNavLinkProps {
 
 export function NavLink({ to, children, onClick, className, ...rest }: NavLinkProps) {
   const pathname = usePathname() ?? ''
-  const selected = pathname.startsWith(to)
+  const selected = to === '/' ? pathname === '/' : pathname.startsWith(to)
 
   return (
     <Link

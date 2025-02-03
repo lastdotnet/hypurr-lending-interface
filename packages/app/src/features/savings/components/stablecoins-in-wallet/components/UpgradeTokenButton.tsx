@@ -1,6 +1,6 @@
 import { Token } from '@/domain/types/Token'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import UpgradeIcon from '@/ui/assets/upgrade.svg?react'
+import UpgradeIcon from '@/ui/assets/upgrade.svg'
 import { Button } from '@/ui/atoms/button/Button'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { cn } from '@/ui/utils/style'
@@ -39,7 +39,7 @@ export function UpgradeTokenButton({
           data-testid={testIds.savings.stablecoinsInWallet.upgradeDaiToUsds}
         >
           <div className="flex items-center gap-2">
-            <UpgradeIcon className="h-[14px] w-[14px]" />
+            <img src={UpgradeIcon} className="h-[14px] w-[14px]" />
             <span className="hidden opacity-0 transition-opacity delay-50 duration-300 sm:block group-hover:opacity-100">
               Upgrade to {upgradedTokenSymbol}
             </span>

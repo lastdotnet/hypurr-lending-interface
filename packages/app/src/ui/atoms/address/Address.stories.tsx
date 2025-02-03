@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
 import { WithClassname } from '@storybook/decorators'
 import { tokens } from '@storybook/tokens'
 import { Address } from './Address'
@@ -32,13 +32,13 @@ export const Compact: Story = {
 export const WithPostfix: Story = {
   args: {
     compact: true,
-    postfix: <BoxArrowTopRight className="h-3.5 w-3.5" />,
+    postfix: <img src={BoxArrowTopRight} className="h-3.5 w-3.5" />,
   },
 }
 export const EllipsisWithPostfix: Story = {
   args: {
     compact: false,
-    postfix: <BoxArrowTopRight className="h-3.5 w-3.5" />,
+    postfix: <img src={BoxArrowTopRight} className="h-3.5 w-3.5" />,
   },
   decorators: [WithClassname('w-64')],
 }

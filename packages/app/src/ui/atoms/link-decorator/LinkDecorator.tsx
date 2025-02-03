@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
+import { Slot } from '@radix-ui/react-slot'
 import { ReactNode } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface LinkDecoratorProps {
   children: ReactNode
@@ -10,22 +11,21 @@ interface LinkDecoratorProps {
 }
 
 export function LinkDecorator({ children, to, external }: LinkDecoratorProps) {
-  if (external) {
-    return (
-      <a
-        href={to}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10"
-      >
-        {children}
-      </a>
-    )
+  const router = useRouter()
+
+  function onClick(e: React.MouseEvent) {
+    e.preventDefault()
+
+    if (external) {
+      window.open(to, '_blank')
+    } else {
+      router.push(to)
+    }
   }
 
   return (
-    <Link href={to} className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10">
+    <Slot onClick={onClick} className="cursor-pointer rounded-sm px-3 transition-colors hover:bg-white/10">
       {children}
-    </Link>
+    </Slot>
   )
 }

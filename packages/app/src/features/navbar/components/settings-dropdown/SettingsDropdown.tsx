@@ -1,6 +1,6 @@
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
-import MagicWand from '@/ui/assets/magic-wand.svg?react'
-import MoreIcon from '@/ui/assets/more-icon.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
+import MagicWand from '@/ui/assets/magic-wand.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg'
 import { Button } from '@/ui/atoms/button/Button'
 import {
   DropdownMenu,
@@ -26,7 +26,7 @@ export function SettingsDropdown({ onSandboxModeClick, isSandboxEnabled }: Setti
       <DropdownWrapper>
         <SettingsDropdownItem onClick={onSandboxModeClick}>
           <SettingsDropdownItem.Title>
-            <MagicWand className="h-5 w-5 lg:h-3 lg:w-3" />
+            <img src={MagicWand} className="h-5 w-5 lg:h-3 lg:w-3" />
             Sandbox Mode
           </SettingsDropdownItem.Title>
           <SettingsDropdownItem.Content>
@@ -36,7 +36,7 @@ export function SettingsDropdown({ onSandboxModeClick, isSandboxEnabled }: Setti
 
         <Link href={links.termsOfUse} external>
           <SettingsDropdownItem>
-            <SettingsDropdownItem.Content icon={<BoxArrowTopRight className="h-4 w-4" />}>
+            <SettingsDropdownItem.Content icon={<img src={BoxArrowTopRight} className="h-4 w-4" />}>
               Terms of Service
             </SettingsDropdownItem.Content>
           </SettingsDropdownItem>
@@ -62,7 +62,7 @@ function DropdownWrapper({ children }: { children: React.ReactNode }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="bg-white/10 px-3">
-          <MoreIcon />
+          <img src={MoreIcon} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">{children}</DropdownMenuContent>

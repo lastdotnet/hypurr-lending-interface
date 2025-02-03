@@ -1,3 +1,4 @@
+import '../css/fonts.css'
 import '../css/main.css'
 
 import Script from 'next/script'
