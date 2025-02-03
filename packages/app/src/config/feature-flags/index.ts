@@ -3,7 +3,7 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { getDefaultAppConfig } from './appConfig.default'
 import { getTestingAppConfig } from './appConfig.testing'
 
-export const getAppConfig = process.env.MODE === 'test' ? getTestingAppConfig : getDefaultAppConfig
+export const getAppConfig = process.env.NODE_ENV === 'test' ? getTestingAppConfig : getDefaultAppConfig
 
 /**
  * @note: Do not use config data to check for feature availability. Use import.meta.env instead to make dead code elimination work.

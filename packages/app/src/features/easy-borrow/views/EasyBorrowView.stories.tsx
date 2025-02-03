@@ -12,7 +12,6 @@ import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import BigNumber from 'bignumber.js'
 import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { EasyBorrowFormSchema } from '../logic/form/validation'
 import { ExistingPosition, PageState } from '../logic/types'
 import { BorrowFormAPYDetails } from '../logic/useEasyBorrow'
@@ -122,7 +121,12 @@ function EasyBorrowViewStory(props: EasyBorrowViewStoryProps) {
 const meta: Meta<typeof EasyBorrowViewStory> = {
   title: 'Features/EasyBorrow/Views/EasyBorrowView',
   component: EasyBorrowViewStory,
-  decorators: [withRouter, WithTooltipProvider(), ZeroAllowanceWagmiDecorator()],
+  decorators: [WithTooltipProvider(), ZeroAllowanceWagmiDecorator()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     pageState: 'form',
     assets: [

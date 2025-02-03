@@ -4,8 +4,14 @@ import { links } from '@/ui/constants/links'
 import { SettingsDropdownItem } from './SettingsDropdownItem'
 
 export function BuildInfoItem() {
-  const buildSha = process.env.STORYBOOK_PREVIEW || __BUILD_SHA__ === undefined ? 'n/a' : __BUILD_SHA__
-  const buildTime = process.env.STORYBOOK_PREVIEW || __BUILD_TIME__ === undefined ? 'n/a' : __BUILD_TIME__
+  const buildSha =
+    process.env.STORYBOOK_PREVIEW || process.env.NEXT_PUBLIC_BUILD_SHA === undefined
+      ? 'n/a'
+      : process.env.NEXT_PUBLIC_BUILD_SHA
+  const buildTime =
+    process.env.STORYBOOK_PREVIEW || process.env.NEXT_PUBLIC_BUILD_TIME === undefined
+      ? 'n/a'
+      : process.env.NEXT_PUBLIC_BUILD_TIME
 
   return (
     <LinkDecorator to={links.github} external>

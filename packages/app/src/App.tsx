@@ -18,7 +18,7 @@ import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
 function App({ children }: React.PropsWithChildren) {
   const config = getConfig()
-  if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.MODE === 'development') {
+  if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.NODE_ENV === 'development') {
     // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
     useAutoConnect({ config })
   }

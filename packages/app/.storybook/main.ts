@@ -1,8 +1,6 @@
 import { join } from 'node:path'
-import type { StorybookConfig } from '@storybook/react-vite'
+import type { StorybookConfig } from '@storybook/nextjs'
 import dotenv from 'dotenv'
-import { mergeConfig } from 'vite'
-import svgr from 'vite-plugin-svgr'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -12,13 +10,33 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
-    'storybook-addon-remix-react-router',
     '@chromatic-com/storybook',
+    '@storybook/addon-webpack5-compiler-swc',
   ],
 
+  swc: (config) => {
+    return {
+      ...config,
+      jsc: {
+        transform: {
+          react: {
+            runtime: 'automatic',
+          },
+        },
+        experimental: {
+          plugins: [['@lingui/swc-plugin', {}]],
+        },
+      },
+    }
+  },
+
   framework: {
-    name: '@storybook/react-vite',
-    options: {},
+    name: '@storybook/nextjs',
+    options: {
+      builder: {
+        useSWC: true,
+      },
+    },
   },
 
   docs: {},
@@ -31,10 +49,22 @@ const config: StorybookConfig = {
     return env.parsed!
   },
 
-  viteFinal: (config) =>
-    mergeConfig(config, {
-      plugins: [svgr()],
-    }),
+  webpackFinal: async (config) => {
+    config?.module?.rules?.push({
+      test: /\.po$/,
+      use: {
+        loader: '@lingui/loader',
+      },
+    })
+
+    config.externals = ['pino-pretty', 'lokijs', 'encoding']
+
+    if (config?.resolve?.fallback) {
+      config.resolve.fallback = { fs: false, module: false }
+    }
+
+    return config
+  },
 }
 export default config
 

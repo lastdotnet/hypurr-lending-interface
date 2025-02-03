@@ -1,8 +1,18 @@
 import withImages from 'next-images'
 
+import { execSync } from  'child_process'
+
+
+const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
+const buildTime = new Date().toLocaleString('en-gb')
 
 const nextConfig = withImages({
   reactStrictMode: true,
+
+  env: {
+    NEXT_PUBLIC_BUILD_SHA: buildSha,
+    NEXT_PUBLIC_BUILD_TIME: buildTime,
+  },
   images: {
     disableStaticImages: true,
   },
@@ -38,6 +48,31 @@ const nextConfig = withImages({
 
     return config
   },
+
+  rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: '/:path*',
+      },
+      {
+        source: '/ba-api/:path*',
+        destination: '/:path*',
+      },
+      {
+        source: '/info-sky-api/:path*',
+        destination: '/:path*',
+      },
+      {
+        source: '/claim-with-gas',
+        destination: 'https://faucet-ashy.vercel.app/claim-with-gas/',
+      },
+      {
+        source: '/verify-follow/:path*',
+        destination: 'https://faucet-ashy.vercel.app/verify-follow/:path*',
+      },
+    ]
+  }
 })
 
 export default nextConfig
