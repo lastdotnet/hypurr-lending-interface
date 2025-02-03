@@ -27,7 +27,7 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="xl:grid-cols-[repeat(4,_1fr)] grid-cols-[repeat(3,_1fr)_3fr]"
+          gridTemplateColumnsClassName="xl:grid-cols-[repeat(4,_1fr)] grid-cols-[repeat(3,_3fr)_8fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',

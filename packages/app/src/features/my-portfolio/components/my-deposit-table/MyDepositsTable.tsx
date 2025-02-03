@@ -29,7 +29,7 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_6fr] xl:grid-cols-[_2fr_1fr_1fr_1fr_2fr]"
+          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_5fr] xl:grid-cols-[_2fr_1fr_1fr_1fr_2fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',

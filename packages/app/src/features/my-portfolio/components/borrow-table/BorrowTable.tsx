@@ -37,7 +37,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_1fr)_2fr]"
+          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_5fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',
