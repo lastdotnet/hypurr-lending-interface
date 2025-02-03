@@ -20,16 +20,16 @@ export interface MyDepositsTableProps {
 
 export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
-        <Panel.Title className="text-xl" gradient>
+        <Panel.Title className="text-xl md:px-3" gradient>
           My deposits
         </Panel.Title>
       </Panel.Header>
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_2fr_4fr]"
+          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_6fr] xl:grid-cols-[_2fr_1fr_1fr_1fr_2fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',
@@ -37,17 +37,8 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
                 <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />
               ),
             },
-            inWallet: {
-              header: 'In Wallet',
-              sortable: true,
-              sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'balance'),
-              headerAlign: 'right',
-              renderCell: ({ token, balance }, mobileViewOptions) => (
-                <CompactValueCell token={token} value={balance} mobileViewOptions={mobileViewOptions} hideEmpty />
-              ),
-            },
             deposit: {
-              header: 'Deposit',
+              header: 'Balance',
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'deposit'),
               headerAlign: 'right',
@@ -92,6 +83,7 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
                     <Button
                       variant="secondary"
                       size="sm"
+                      className="w-full md:w-fit"
                       disabled={deposit.isZero()}
                       onClick={() => {
                         openDialog(withdrawDialogConfig, { token })

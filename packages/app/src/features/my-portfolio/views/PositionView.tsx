@@ -36,7 +36,7 @@ export function PositionView({
   const myBorrows = borrows.filter((reserve) => reserve.debt.gt(0))
 
   return (
-    <PageLayout className="max-w-6xl px-3 lg:px-0">
+    <PageLayout className="max-w-6xl px-3 lg:px-3">
       <div className="flex flex-col flex-wrap gap-4 md:flex-row">
         <HealthFactorPanel
           hf={positionSummary.healthFactor}
@@ -48,8 +48,14 @@ export function PositionView({
         {!positionSummary.hasDeposits && <CreatePositionPanel className="order-2 flex-grow md:order-3" />}
       </div>
 
-      <MyDepositsTable assets={myDeposits} openDialog={openDialog} />
-      <MyBorrowsTable assets={myBorrows} openDialog={openDialog} />
+      <div className="flex flex-col gap-4 xl:flex-row">
+        <div className="flex-1">
+          <MyDepositsTable assets={myDeposits} openDialog={openDialog} />
+        </div>
+        <div className="flex-1">
+          <MyBorrowsTable assets={myBorrows} openDialog={openDialog} />
+        </div>
+      </div>
 
       <DepositTable assets={deposits} openDialog={openDialog} />
       <BorrowTable assets={borrows} eModeCategoryId={eModeCategoryId} openDialog={openDialog} />

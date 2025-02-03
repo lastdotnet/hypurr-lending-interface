@@ -18,32 +18,23 @@ export interface MyBorrowsTableProps {
 
 export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
-        <Panel.Title className="text-xl" gradient>
+        <Panel.Title className="text-xl md:px-3" gradient>
           My borrows
         </Panel.Title>
       </Panel.Header>
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_1fr)_2fr]"
+          gridTemplateColumnsClassName="xl:grid-cols-[repeat(4,_1fr)] grid-cols-[repeat(3,_1fr)_3fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',
               renderCell: ({ token, reserveStatus }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} />,
             },
-            inWallet: {
-              header: 'Available',
-              sortable: true,
-              sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'available'),
-              headerAlign: 'right',
-              renderCell: ({ token, available }, mobileViewOptions) => (
-                <CompactValueCell token={token} value={available} mobileViewOptions={mobileViewOptions} hideEmpty />
-              ),
-            },
             deposit: {
-              header: 'Your borrow',
+              header: 'Debt',
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'debt'),
               headerAlign: 'right',
@@ -70,6 +61,7 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
                     <Button
                       variant="secondary"
                       size="sm"
+                      className="w-full md:w-fit"
                       disabled={debt.isZero()}
                       onClick={() => {
                         openDialog(repayDialogConfig, { token })
