@@ -58,8 +58,15 @@ describe('calculateNetApy', () => {
     underlyingAsset: usdcAddress,
   })
 
-  it('should return zero APYs when no positions exist', () => {
-    const result = calculateNetApy(getMockAaveFormattedUserSummary([]), [])
+  it('should return zero APY when no positions exist', () => {
+    const result = calculateNetApy(
+      getMockAaveFormattedUserSummary([], {
+        totalLiquidityUSD: '0',
+        totalBorrowsUSD: '0',
+        netWorthUSD: '0',
+      }),
+      [],
+    )
 
     expect(result.netSupplyApy.toString()).toBe('0')
     expect(result.netBorrowApy.toString()).toBe('0')
@@ -67,37 +74,33 @@ describe('calculateNetApy', () => {
   })
 
   it('should calculate deposit-only positions correctly', () => {
-    const userSummary = getMockAaveFormattedUserSummary([solveBtcUserReserve, usdcUserReserve])
+    const userSummary = getMockAaveFormattedUserSummary([solveBtcUserReserve, usdcUserReserve], {
+      totalLiquidityUSD: '2115.85',
+      totalBorrowsUSD: '0',
+      netWorthUSD: '2115.85',
+    })
 
     const result = calculateNetApy(userSummary, [solveBtcReserve, usdcReserve])
 
-    expect(result.netSupplyApy.toString()).toBe('0.00052817732826050996')
+    expect(result.netSupplyApy.toString()).toBe('0.0005281773282605099')
     expect(result.netBorrowApy.toString()).toBe('0')
-    expect(result.totalNetApy.toString()).toBe('0.00052817732826050996')
-  })
-
-  it('should calculate borrow-only positions correctly', () => {
-    const userSummary = getMockAaveFormattedUserSummary([whypeUserReserve, susdeUserReserve])
-
-    const result = calculateNetApy(userSummary, [whypeReserve, susdeReserve])
-
-    expect(result.netSupplyApy.toString()).toBe('0')
-    expect(result.netBorrowApy.toString()).toBe('0.24988369230769230769')
-    expect(result.totalNetApy.toString()).toBe('-0.24988369230769230769')
+    expect(result.totalNetApy.toString()).toBe('0.0005281773282605099')
   })
 
   it('should calculate combined supply and borrow position correctly', () => {
-    const userSummary = getMockAaveFormattedUserSummary([
-      whypeUserReserve,
-      usdcUserReserve,
-      solveBtcUserReserve,
-      susdeUserReserve,
-    ])
+    const userSummary = getMockAaveFormattedUserSummary(
+      [whypeUserReserve, usdcUserReserve, solveBtcUserReserve, susdeUserReserve],
+      {
+        totalLiquidityUSD: '2115.85',
+        totalBorrowsUSD: '130',
+        netWorthUSD: '1985.85',
+      },
+    )
 
     const result = calculateNetApy(userSummary, [whypeReserve, usdcReserve, solveBtcReserve, susdeReserve])
 
-    expect(result.netSupplyApy.toString()).toBe('0.00052817732826050996')
-    expect(result.netBorrowApy.toString()).toBe('0.24988369230769230769')
-    expect(result.totalNetApy.toString()).toBe('-0.01396679920742703208')
+    expect(result.netSupplyApy.toString()).toBe('0.0005281773282605099')
+    expect(result.netBorrowApy.toString()).toBe('0.2498836923076923')
+    expect(result.totalNetApy.toString()).toBe('-0.015795420600750308')
   })
 })

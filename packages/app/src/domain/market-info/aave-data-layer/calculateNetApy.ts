@@ -10,103 +10,111 @@ export interface NetApyDetails {
 }
 
 /**
- * Calculates the user's net APY across all deposits and borrows, returning:
- *   - netSupplyApy: Weighted average APY of deposits (over total deposited USD)
- *   - netBorrowApy: Weighted average APY of borrows (over total borrowed USD)
- *   - totalNetApy:  Overall net APY on (deposits - borrows), weighted by total position value.
+ * Calculates a user's net APY across all deposits and borrows, using the same
+ * logic as Aave’s official dashboard:
  *
- * The core formulas:
+ * 1) For each deposited asset:
+ *    - Add (depositUSD × depositAPY) to the "positiveProportion"
+ *    - If there are deposit incentives, add (depositUSD × incentiveAPR) as well
  *
- *   1. Weighted Supply APY (over total deposits)
- *      netSupplyApy = (Σ(supplyUSD_i * supplyRate_i)) / (Σ(supplyUSD_i))
+ * 2) For each borrowed asset:
+ *    - Add (borrowUSD × borrowAPY) to the "negativeProportion"
+ *    - If there are borrow incentives, add (borrowUSD × incentiveAPR) to "positiveProportion"
  *
- *   2. Weighted Borrow APY (over total borrows)
- *      netBorrowApy = (Σ(borrowUSD_j * borrowRate_j)) / (Σ(borrowUSD_j))
+ * 3) Compute the weighted supply and borrow APYs:
  *
- *   3. Overall Net APY, considering total position:
- *      totalNetApy = (Σ(supplyUSD_i * supplyRate_i) - Σ(borrowUSD_j * borrowRate_j))
- *                    / (Σ(supplyUSD_i) + Σ(borrowUSD_j))
+ *    netSupplyApy = positiveProportion / totalLiquidityUSD
+ *    netBorrowApy = negativeProportion / totalBorrowsUSD
  *
- * Example:
- *   Suppose the user has:
- *     - $2,100 of Asset A deposited at 5% APY
- *     - $5 of Asset B deposited at 4% APY
- *     - $1,000 borrowed at 20% APY
+ * 4) Derive totalNetApy relative to the user's net worth:
  *
- *   Weighted Supply APY:
- *     totalSupplyUSD = 2100 + 5 = $2,105
- *     supplyEarned   = (2100 * 0.05) + (5 * 0.04) = 105 + 0.2 = 105.2
- *     netSupplyApy   = 105.2 / 2105 ≈ 0.05 (5.0%)
+ *    totalNetApy =
+ *      (netSupplyApy * (totalLiquidityUSD / netWorthUSD)) -
+ *      (netBorrowApy * (totalBorrowsUSD / netWorthUSD))
  *
- *   Weighted Borrow APY:
- *     totalBorrowUSD = $1,000
- *     borrowCost     = 1000 * 0.20 = 200
- *     netBorrowApy   = 200 / 1000 = 0.20 (20%)
+ * EXAMPLE:
+ *   Assume the user:
+ *     - Deposits $1,000 at 5% (APY = 0.05), so deposit interest/year = 1000 × 0.05 = $50
+ *     - Borrows $500 at 15% (APY = 0.15), so borrow cost/year = 500 × 0.15 = $75
+ *   Then:
+ *     positiveProportion = $50
+ *     negativeProportion = $75
+ *     totalLiquidityUSD = $1,000
+ *     totalBorrowsUSD = $500
+ *     netWorthUSD = $1,000 - $500 = $500
  *
- *   Overall Net APY:
- *     totalValue   = totalSupplyUSD + totalBorrowUSD = 2105 + 1000 = $3,105
- *     netInterest  = supplyEarned - borrowCost       = 105.2 - 200 = -94.8
- *     totalNetApy  = -94.8 / 3105 ≈ -0.03052 (-3.05%)
+ *   netSupplyApy = 50 / 1000 = 0.05  (5.0%)
+ *   netBorrowApy = 75 / 500 = 0.15  (15.0%)
  *
- *   So the user's netSupplyApy is ~5%, netBorrowApy is ~20%, but totalNetApy is -3.05%.
+ *   totalNetApy =
+ *     (0.05 × (1000 / 500)) - (0.15 × (500 / 500))
+ *     = (0.05 × 2) - (0.15 × 1)
+ *     = 0.10 - 0.15
+ *     = -0.05    (-5.0%)
+ *
+ * Thus the user's overall net APY, relative to net worth, is -5%.
  */
 
 export function calculateNetApy(
   userSummary: AaveUserSummary,
   formattedReserves: AaveFormattedReserve[],
 ): NetApyDetails {
-  let totalSupplyUSD = new BigNumber(0)
-  let weightedSupplyApy = new BigNumber(0)
-  let totalBorrowUSD = new BigNumber(0)
-  let weightedBorrowApy = new BigNumber(0)
+  const proportions = userSummary.userReservesData.reduce(
+    (acc, value) => {
+      const reserve = formattedReserves.find((r) => r.underlyingAsset === value.reserve.underlyingAsset)
 
-  // Calculate weighted APY for supplies and borrows
-  for (const userReserve of userSummary.userReservesData) {
-    const reserve = formattedReserves.find((r) => r.underlyingAsset === userReserve.underlyingAsset)
-    if (!reserve) continue
+      if (reserve) {
+        if (value.underlyingBalanceUSD !== '0') {
+          acc.positiveProportion = acc.positiveProportion.plus(
+            new BigNumber(reserve.supplyAPY).multipliedBy(value.underlyingBalanceUSD),
+          )
+          if (reserve.aIncentivesData) {
+            for (const incentive of reserve.aIncentivesData) {
+              acc.positiveProportion = acc.positiveProportion.plus(
+                new BigNumber(incentive.incentiveAPR).multipliedBy(value.underlyingBalanceUSD),
+              )
+            }
+          }
+        }
+        if (value.variableBorrowsUSD !== '0') {
+          acc.negativeProportion = acc.negativeProportion.plus(
+            new BigNumber(reserve.variableBorrowAPY).multipliedBy(value.variableBorrowsUSD),
+          )
+          if (reserve.vIncentivesData) {
+            for (const incentive of reserve.vIncentivesData) {
+              acc.positiveProportion = acc.positiveProportion.plus(
+                new BigNumber(incentive.incentiveAPR).multipliedBy(value.variableBorrowsUSD),
+              )
+            }
+          }
+        }
+      } else {
+        throw new Error('no possible to calculate net apy')
+      }
 
-    // Supply calculations
-    if (new BigNumber(userReserve.scaledATokenBalance).gt(0)) {
-      const supplyUSD = new BigNumber(userReserve.underlyingBalanceUSD)
-      totalSupplyUSD = totalSupplyUSD.plus(supplyUSD)
+      return acc
+    },
+    {
+      positiveProportion: new BigNumber(0),
+      negativeProportion: new BigNumber(0),
+    },
+  )
 
-      const totalSupplyRate = new BigNumber(reserve.supplyAPY).plus(
-        userReserve.reserve.aIncentivesData?.reduce(
-          (sum, incentive) => sum.plus(new BigNumber(incentive.incentiveAPR)),
-          new BigNumber(0),
-        ) ?? new BigNumber(0),
-      )
+  const netSupplyApy =
+    userSummary.totalLiquidityUSD !== '0'
+      ? proportions.positiveProportion.dividedBy(userSummary.totalLiquidityUSD).toNumber()
+      : 0
 
-      weightedSupplyApy = weightedSupplyApy.plus(supplyUSD.multipliedBy(totalSupplyRate))
-    }
+  const netBorrowApy =
+    userSummary.totalBorrowsUSD !== '0'
+      ? proportions.negativeProportion.dividedBy(userSummary.totalBorrowsUSD).toNumber()
+      : 0
 
-    // Borrow calculations
-    if (new BigNumber(userReserve.scaledVariableDebt).gt(0)) {
-      const borrowUSD = new BigNumber(userReserve.variableBorrowsUSD)
-      totalBorrowUSD = totalBorrowUSD.plus(borrowUSD)
-
-      const totalBorrowRate = new BigNumber(reserve.variableBorrowAPY).plus(
-        userReserve.reserve.vIncentivesData?.reduce(
-          (sum, incentive) => sum.plus(new BigNumber(incentive.incentiveAPR)),
-          new BigNumber(0),
-        ) ?? new BigNumber(0),
-      )
-
-      weightedBorrowApy = weightedBorrowApy.plus(borrowUSD.multipliedBy(totalBorrowRate))
-    }
-  }
-
-  // Calculate final weighted averages
-  const netSupplyApy = totalSupplyUSD.gt(0) ? weightedSupplyApy.dividedBy(totalSupplyUSD) : new BigNumber(0)
-
-  const netBorrowApy = totalBorrowUSD.gt(0) ? weightedBorrowApy.dividedBy(totalBorrowUSD) : new BigNumber(0)
-
-  // Calculate total net APY (supply earnings minus borrow costs)
-  const totalValue = totalSupplyUSD.plus(totalBorrowUSD)
-  const totalNetApy = totalValue.gt(0)
-    ? weightedSupplyApy.minus(weightedBorrowApy).dividedBy(totalValue)
-    : new BigNumber(0)
-
+  const totalNetApy =
+    userSummary.netWorthUSD !== '0'
+      ? (netSupplyApy * Number(userSummary.totalLiquidityUSD)) / Number(userSummary.netWorthUSD) -
+        (netBorrowApy * Number(userSummary.totalBorrowsUSD)) / Number(userSummary.netWorthUSD)
+      : 0
   return {
     netSupplyApy: Percentage(netSupplyApy, true),
     netBorrowApy: Percentage(netBorrowApy, true),
