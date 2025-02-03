@@ -18,7 +18,10 @@ export interface MyBorrowsTableProps {
 
 export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
+    <Panel
+      collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md', fullHeight: true }}
+      className="bg-panel-bg xl:h-full md:px-3"
+    >
       <Panel.Header>
         <Panel.Title className="text-xl md:px-3" gradient>
           My borrows

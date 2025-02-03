@@ -11,6 +11,7 @@ export interface CollapsibleRawPanelProps {
   children: [ReactNode, ReactNode]
   defaultOpen?: boolean
   className?: string
+  fullHeight?: boolean
 }
 
 const CollapsiblePanelContext = React.createContext({ open: true })
@@ -24,7 +25,7 @@ export interface CollapsiblePanelType
 
 // @note This component is an integral part of a Panel component and shouldn't be used directly
 export const CollapsiblePanel: CollapsiblePanelType = forwardRef<HTMLDivElement, CollapsibleRawPanelProps>(
-  ({ children, defaultOpen = true, className }, ref) => {
+  ({ children, defaultOpen = true, className, fullHeight = false }, ref) => {
     const [Header, Body] = children
     const [open, setOpen] = useState(defaultOpen)
 
@@ -42,7 +43,7 @@ export const CollapsiblePanel: CollapsiblePanelType = forwardRef<HTMLDivElement,
     }
 
     return (
-      <CollapsiblePrimitive.Root open={open} onOpenChange={setOpen}>
+      <CollapsiblePrimitive.Root open={open} onOpenChange={setOpen} className={cn({ 'h-full': fullHeight && open })}>
         <section
           className={cn('flex flex-col gap-6 rounded-lg border border-panel-border px-6 py-4 shadow-sm', className)}
           ref={ref}
