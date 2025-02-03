@@ -1,6 +1,5 @@
 import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
-import { collateralDialogConfig } from '@/features/dialogs/collateral/CollateralDialog'
 import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
@@ -8,11 +7,11 @@ import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
 import { ActionsCell } from '@/ui/molecules/data-table/components/ActionsCell'
 import { CompactValueCell } from '@/ui/molecules/data-table/components/CompactValueCell'
 import { PercentageCell } from '@/ui/molecules/data-table/components/PercentageCell'
-import { SwitchCell } from '@/ui/molecules/data-table/components/SwitchCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { CheckmarkCell } from '@/ui/molecules/data-table/components/CheckmarkCell'
 
 export interface DepositTableProps {
   assets: Deposit[]
@@ -68,21 +67,10 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               ),
             },
             collateral: {
-              header: 'Collateral',
+              header: 'Can be collateral',
               headerAlign: 'right',
-              renderCell: ({ isUsedAsCollateral, token }, mobileViewOptions) => (
-                <SwitchCell
-                  checked={isUsedAsCollateral}
-                  onSwitchClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    openDialog(collateralDialogConfig, {
-                      useAsCollateral: !isUsedAsCollateral,
-                      token,
-                    })
-                  }}
-                  mobileViewOptions={mobileViewOptions}
-                />
+              renderCell: ({ usageAsCollateralEnabled }) => (
+                <CheckmarkCell usageAsCollateralEnabled={usageAsCollateralEnabled} />
               ),
             },
             actions: {
