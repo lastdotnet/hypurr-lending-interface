@@ -1,7 +1,6 @@
 import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { collateralDialogConfig } from '@/features/dialogs/collateral/CollateralDialog'
-import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
 import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
@@ -13,19 +12,18 @@ import { SwitchCell } from '@/ui/molecules/data-table/components/SwitchCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
 
-export interface DepositTableProps {
+export interface MyDepositsTableProps {
   assets: Deposit[]
   openDialog: OpenDialogFunction
 }
 
-export function DepositTable({ assets, openDialog }: DepositTableProps) {
+export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
   return (
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
       <Panel.Header>
         <Panel.Title className="text-xl" gradient>
-          Available to deposit
+          My deposits
         </Panel.Title>
       </Panel.Header>
 
@@ -88,23 +86,12 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
             },
             actions: {
               header: '',
-              renderCell: ({ token, deposit, reserveStatus }) => {
+              renderCell: ({ token, deposit }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
-                      size="sm"
-                      onClick={() => {
-                        openDialog(depositDialogConfig, { token })
-                      }}
-                      disabled={reserveStatus === 'frozen' || token.symbol === TokenSymbol('USDXL')}
-                    >
-                      Deposit
-                    </Button>
-                    <Button
                       variant="secondary"
                       size="sm"
-                      className="w-full"
                       disabled={deposit.isZero()}
                       onClick={() => {
                         openDialog(withdrawDialogConfig, { token })

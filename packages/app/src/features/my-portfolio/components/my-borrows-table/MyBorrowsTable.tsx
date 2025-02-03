@@ -1,8 +1,5 @@
 import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
-import { EModeCategoryId } from '@/domain/e-mode/types'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
-import { borrowDialogConfig } from '@/features/dialogs/borrow/BorrowDialog'
-import { eModeDialogConfig } from '@/features/dialogs/e-mode/EModeDialog'
 import { repayDialogConfig } from '@/features/dialogs/repay/RepayDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
@@ -13,27 +10,19 @@ import { PercentageCell } from '@/ui/molecules/data-table/components/PercentageC
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Borrow } from '../../logic/assets'
-import { EModeIndicator } from './components/EModeIndicator'
 
-export interface BorrowTableProps {
+export interface MyBorrowsTableProps {
   assets: Borrow[]
   openDialog: OpenDialogFunction
-  eModeCategoryId: EModeCategoryId
 }
 
-export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTableProps) {
+export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
   return (
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
       <Panel.Header>
         <Panel.Title className="text-xl" gradient>
-          Available to borrow
+          My borrows
         </Panel.Title>
-        <EModeIndicator
-          eModeCategoryId={eModeCategoryId}
-          onButtonClick={() => {
-            openDialog(eModeDialogConfig, { userEModeCategoryId: eModeCategoryId })
-          }}
-        />
       </Panel.Header>
 
       <Panel.Content>
@@ -75,22 +64,11 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
             },
             actions: {
               header: '',
-              renderCell: ({ token, debt, reserveStatus, available }) => {
+              renderCell: ({ token, debt }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
-                      size="sm"
-                      onClick={() => {
-                        openDialog(borrowDialogConfig, { token })
-                      }}
-                      disabled={reserveStatus === 'frozen' || available.isZero()}
-                    >
-                      Borrow
-                    </Button>
-                    <Button
                       variant="secondary"
-                      className="w-full"
                       size="sm"
                       disabled={debt.isZero()}
                       onClick={() => {
