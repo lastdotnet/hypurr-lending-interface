@@ -2,7 +2,6 @@ import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { collateralDialogConfig } from '@/features/dialogs/collateral/CollateralDialog'
 import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
-import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
@@ -88,11 +87,10 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
             },
             actions: {
               header: '',
-              renderCell: ({ token, deposit, reserveStatus }) => {
+              renderCell: ({ token, reserveStatus }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
                       size="sm"
                       onClick={() => {
                         openDialog(depositDialogConfig, { token })
@@ -100,17 +98,6 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
                       disabled={reserveStatus === 'frozen' || token.symbol === TokenSymbol('USDXL')}
                     >
                       Deposit
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="w-full"
-                      disabled={deposit.isZero()}
-                      onClick={() => {
-                        openDialog(withdrawDialogConfig, { token })
-                      }}
-                    >
-                      Withdraw
                     </Button>
                   </ActionsCell>
                 )

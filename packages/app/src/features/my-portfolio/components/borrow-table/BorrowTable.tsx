@@ -3,7 +3,6 @@ import { EModeCategoryId } from '@/domain/e-mode/types'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { borrowDialogConfig } from '@/features/dialogs/borrow/BorrowDialog'
 import { eModeDialogConfig } from '@/features/dialogs/e-mode/EModeDialog'
-import { repayDialogConfig } from '@/features/dialogs/repay/RepayDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
@@ -75,11 +74,10 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
             },
             actions: {
               header: '',
-              renderCell: ({ token, debt, reserveStatus, available }) => {
+              renderCell: ({ token, reserveStatus, available }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
                       size="sm"
                       onClick={() => {
                         openDialog(borrowDialogConfig, { token })
@@ -87,17 +85,6 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
                       disabled={reserveStatus === 'frozen' || available.isZero()}
                     >
                       Borrow
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      className="w-full"
-                      size="sm"
-                      disabled={debt.isZero()}
-                      onClick={() => {
-                        openDialog(repayDialogConfig, { token })
-                      }}
-                    >
-                      Repay
                     </Button>
                   </ActionsCell>
                 )
