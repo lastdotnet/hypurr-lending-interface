@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
-#: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:110
+#: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
 msgid "Borrow"
 msgstr ""
 
