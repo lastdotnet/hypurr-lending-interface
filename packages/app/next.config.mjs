@@ -8,6 +8,7 @@ const buildTime = new Date().toLocaleString('en-gb')
 
 const nextConfig = withImages({
   reactStrictMode: true,
+  distDir: './dist',
 
   env: {
     NEXT_PUBLIC_BUILD_SHA: buildSha,
