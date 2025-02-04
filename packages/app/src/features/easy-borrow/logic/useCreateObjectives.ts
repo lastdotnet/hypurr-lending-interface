@@ -19,11 +19,13 @@ function createDepositObjectives(formValues: EasyBorrowFormNormalizedData): Obje
 }
 
 function createBorrowObjectives(formValues: EasyBorrowFormNormalizedData): Objective[] {
-  return formValues.borrows.map((borrow): Objective => {
-    return {
-      type: 'borrow',
-      token: borrow.token,
-      value: borrow.value,
-    }
-  })
+  return formValues.borrows
+    .filter((deposit) => deposit.value.gt(0))
+    .map((borrow): Objective => {
+      return {
+        type: 'borrow',
+        token: borrow.token,
+        value: borrow.value,
+      }
+    })
 }

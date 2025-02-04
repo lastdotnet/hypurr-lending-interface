@@ -46,7 +46,7 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
     <Panel.Wrapper className="flex min-w-full max-w-3xl flex-col self-center p-4 md:p-8">
       <div className="mb-6 flex h-10 flex-row items-center justify-between">
         <Typography variant="h3">
-          <Trans>Borrow</Trans>
+          <Trans>Deposit and borrow</Trans>
         </Typography>
         {pageStatus.state === 'confirmation' && (
           <Button onClick={pageStatus.onProceedToForm} variant="icon" className="-mr-4">

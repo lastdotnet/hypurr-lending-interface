@@ -112,7 +112,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
         ) : (
           !disabled && (
             <Button type="submit" className="mt-8" rounded="full" disabled={!form.formState.isValid}>
-              <Trans>Borrow</Trans>
+              <Trans>Continue</Trans>
             </Button>
           )
         )}
