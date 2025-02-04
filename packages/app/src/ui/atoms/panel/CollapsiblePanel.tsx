@@ -28,7 +28,7 @@ export const CollapsiblePanel: CollapsiblePanelType = forwardRef<HTMLDivElement,
     const [Header, Body] = children
     const [open, setOpen] = useState(defaultOpen)
 
-    if (!process.env.PROD) {
+    if (process.env.NODE_ENV !== 'production') {
       // Runtime checks for children structure in development
       const [Header, Content] = children
       assert(
