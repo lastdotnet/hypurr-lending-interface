@@ -14,20 +14,22 @@ import BigNumber from 'bignumber.js'
 import { useState } from 'react'
 import { UseFormReturn, useForm } from 'react-hook-form'
 import { useChainId } from 'wagmi'
-import { AssetInputSchema, useDebouncedDialogFormValues } from '../../common/logic/form'
+import { AssetInputSchema, normalizeDialogFormValues, useDebouncedDialogFormValues } from '../../common/logic/form'
 import { FormFieldsForDialog, PageState, PageStatus } from '../../common/types'
 import { getBorrowOptions } from './assets'
 import { createBorrowObjectives } from './createBorrowObjectives'
-import { getBorrowDialogFormValidator, getFormFieldsForBorrowDialog } from './form'
+import { getBorrowDialogFormValidator, getFormFieldsForBorrowDialog, setDesiredLoanToValue } from './form'
 import { Percentage } from '@/domain/types/NumericValues'
-
+import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 export interface UseBorrowDialogOptions {
   initialToken: Token
 }
 
 export interface UseBorrowDialogResult {
+  updatedPositionSummary: UserPositionSummary
   borrowOptions: TokenWithBalance[]
   assetsToBorrowFields: FormFieldsForDialog
+  setDesiredLoanToValue: (desiredLtv: Percentage) => void
   tokenToBorrow: TokenWithValue
   objectives: Objective[]
   actionsContext: InjectedActionsContext
@@ -58,6 +60,7 @@ export function useBorrowDialog({ initialToken }: UseBorrowDialogOptions): UseBo
     mode: 'onChange',
   })
 
+  const formValues = normalizeDialogFormValues(form.watch(), marketInfo)
   const borrowOptions = getBorrowOptions({
     token: initialToken,
     marketInfo,
@@ -82,14 +85,14 @@ export function useBorrowDialog({ initialToken }: UseBorrowDialogOptions): UseBo
   const actions = createBorrowObjectives(tokenToBorrow)
 
   const updatedUserSummary = updatePositionSummary({
-    borrows: [tokenToBorrow],
+    borrows: [formValues],
     marketInfo,
     aaveData,
     nativeAssetInfo,
   })
 
   const currentHealthFactor = marketInfo.userPositionSummary.healthFactor
-  const updatedHealthFactor = !tokenToBorrow.value.eq(0) ? updatedUserSummary.healthFactor : undefined
+  const updatedHealthFactor = !formValues.value.eq(0) ? updatedUserSummary.healthFactor : undefined
   const borrowAPY = tokenToBorrow.reserve.variableBorrowApy
 
   const { riskAcknowledgement, disableActionsByRisk } = useLiquidationRiskWarning({
@@ -102,9 +105,18 @@ export function useBorrowDialog({ initialToken }: UseBorrowDialogOptions): UseBo
   const actionsEnabled = tokenToBorrow.value.gt(0) && isFormValid && !isDebouncing && !disableActionsByRisk
 
   return {
+    updatedPositionSummary: updatedUserSummary,
     borrowOptions,
     borrowAPY,
     assetsToBorrowFields,
+    setDesiredLoanToValue(desiredLtv: Percentage) {
+      setDesiredLoanToValue({
+        control: form,
+        formValues,
+        userPositionSummary: updatedUserSummary,
+        desiredLtv,
+      })
+    },
     tokenToBorrow,
     objectives: actions,
     actionsContext: {
