@@ -1,10 +1,11 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { useAccount, useConfig } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { SuspenseQueryWith } from '@/utils/types'
 
 import { useMemo } from 'react'
 import { AaveData, aaveDataLayer, aaveDataLayerSelectFn } from './query'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseAaveDataLayerParams {
   chainId: number
@@ -14,14 +15,14 @@ export type UseAaveDataLayerResultOnSuccess = SuspenseQueryWith<{
 }>
 
 export function useAaveDataLayer({ chainId }: UseAaveDataLayerParams): UseAaveDataLayerResultOnSuccess {
-  const { address } = useAccount()
+  const account = useAccount()
   const wagmiConfig = useConfig()
 
   const result = useSuspenseQuery({
     ...aaveDataLayer({
       wagmiConfig,
       chainId,
-      account: address,
+      account,
     }),
     select: useMemo(() => aaveDataLayerSelectFn(), []),
   })

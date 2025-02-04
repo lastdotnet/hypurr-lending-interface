@@ -3,7 +3,6 @@ import {
   UseSimulateContractParameters,
   UseWriteContractParameters,
   UseWriteContractReturnType,
-  useAccount,
   useConfig,
   useSimulateContract,
 } from 'wagmi'
@@ -17,6 +16,7 @@ import { sanityCheckTx } from './sanityChecks'
 import { useIncreasedGasLimit } from './useIncreasedGasLimit'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export type WriteStatus =
   | { kind: 'disabled' }
@@ -56,7 +56,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   const enabled = args.enabled ?? true
   // used to reset the write state when the args change
 
-  const { address: account } = useAccount()
+  const account = useAccount()
 
   const {
     data: gasLimit,

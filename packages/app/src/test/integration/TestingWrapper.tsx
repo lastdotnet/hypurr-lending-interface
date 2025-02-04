@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { WagmiProvider, useAccount } from 'wagmi'
+import { WagmiProvider } from 'wagmi'
 
 import { I18nTestProvider } from '@/domain/i18n/I18nTestProvider'
 import { useAutoConnect } from '@/domain/wallet/useAutoConnect'
-
+import { useAccount } from '@/domain/hooks/useAccount'
 import { Suspense } from 'react'
 import { createWagmiTestConfig } from './wagmi-config'
 
@@ -33,7 +33,7 @@ export function TestingWrapper({
 }
 
 function WaitForAccountToConnect({ children }: { children: React.ReactNode }) {
-  const { address } = useAccount()
+  const address = useAccount()
   if (!address) {
     return null
   }
