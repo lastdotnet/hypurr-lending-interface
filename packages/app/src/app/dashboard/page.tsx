@@ -1,6 +1,6 @@
 'use client'
 
-import { MyPortfolioPage } from '@/pages/MyPortfolio'
+import { MyPortfolioPage } from '@/containers/MyPortfolio'
 
 export default function Page() {
   return <MyPortfolioPage />

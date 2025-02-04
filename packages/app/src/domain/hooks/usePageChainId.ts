@@ -14,17 +14,19 @@ export interface UsePageChainIdResult {
 
 export function usePageChainId(): UsePageChainIdResult {
   const chainId = useChainId()
-  const pathname = usePathname() // Next.js replacement for useLocation
+  const pathname = usePathname()
   const supportedPages = getSupportedPages(getChainConfigEntry(chainId))
 
-  const currentPage = Object.entries(paths).find(([_, path]) => pathname.startsWith(path))?.[0]
+  type SupportedPage = (typeof supportedPages)[number]
+
+  const currentPage = Object.entries(paths).find(([_, path]) => pathname?.startsWith(path))?.[0]
   const pageName = pageNamesMap[currentPage as Path]
 
   if (!currentPage) {
     return { chainId, pageSupported: true, pageName: '' }
   }
 
-  if (supportedPages.includes(currentPage)) {
+  if (supportedPages.includes(currentPage as SupportedPage)) {
     return { chainId, pageSupported: true, pageName }
   }
 

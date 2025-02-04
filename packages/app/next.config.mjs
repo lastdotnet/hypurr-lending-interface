@@ -30,6 +30,11 @@ const nextConfig = withImages({
 
   webpack(config) {
     config.module.rules.push({
+      test: /^(.*\.test-e2e\..*|.*\.PageObject\..*|.*\.e2e\..*)$/,
+      use: 'ignore-loader', // This will ignore any file matching the pattern
+    });
+
+    config.module.rules.push({
       test: /\.po$/,
       use: {
         loader: "@lingui/loader", // https://github.com/lingui/js-lingui/issues/1782

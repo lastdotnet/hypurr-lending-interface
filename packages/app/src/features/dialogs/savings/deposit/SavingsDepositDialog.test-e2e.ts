@@ -1,5 +1,5 @@
 import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
-import { SavingsPageObject } from '@/pages/Savings.PageObject'
+import { SavingsPageObject } from '@/containers/Savings.PageObject'
 import { GNOSIS_DEFAULT_BLOCK_NUMBER, LITE_PSM_ACTIONS_OPERABLE } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'

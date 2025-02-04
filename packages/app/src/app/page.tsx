@@ -1,6 +1,6 @@
 'use client'
 
-import { EasyBorrowPage } from '@/pages/Borrow'
+import { EasyBorrowPage } from '@/containers/Borrow'
 
 export default function Page() {
   return <EasyBorrowPage />

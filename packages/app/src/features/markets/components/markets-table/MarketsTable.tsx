@@ -6,7 +6,6 @@ import { ActionsCell } from '@/ui/molecules/data-table/components/ActionsCell'
 import { CompactValueCell } from '@/ui/molecules/data-table/components/CompactValueCell'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { testIds } from '@/ui/utils/testIds'
-import { generatePath } from 'react-router-dom'
 import { MarketEntry } from '../../types'
 import { AssetStatusBadge } from '../asset-status-badge/AssetStatusBadge'
 import { ApyWithRewardsCell } from './components/ApyWithRewardsCell'
@@ -121,7 +120,7 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
                   className="w-full md:w-auto"
                   size="sm"
                   variant={reserveStatus !== 'active' ? 'secondary' : 'primary'}
-                  href={generatePath(paths.marketDetails, { asset: token.address, chainId: chainId.toString() })}
+                  href={paths.marketDetails.replace(':chainId', chainId.toString()).replace(':asset', token.address)}
                 >
                   Details
                 </LinkButton>

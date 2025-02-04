@@ -1,6 +1,6 @@
 'use client'
 
-import { Markets } from '@/pages/Markets'
+import { Markets } from '@/containers/Markets'
 
 export default function Page() {
   return <Markets />

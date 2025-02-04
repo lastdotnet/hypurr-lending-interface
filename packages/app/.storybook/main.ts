@@ -1,4 +1,4 @@
-import { join } from 'node:path'
+import path, { join } from 'node:path'
 import type { StorybookConfig } from '@storybook/nextjs'
 import dotenv from 'dotenv'
 
@@ -33,6 +33,7 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/nextjs',
     options: {
+      nextConfigPath: path.resolve(__dirname, '../next.config.mjs'),
       builder: {
         useSWC: true,
       },
