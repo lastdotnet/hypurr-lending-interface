@@ -23,63 +23,63 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       name: 'UsdxlToken',
       abi: usdxlTokenABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xd6B6D5158f23A0475535c626e20375553FaFd75E',
+        [HYPEREVM_TESTNET_ID]: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
       },
     },
     {
-      name: 'LendingPoolAddressProvider',
+      name: 'LendingPoolAddressProvider', // poolAddressesProvider
       abi: lendingPoolAddressProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0xC37cFFCe99422D4589616D7386E21A3eB890Db0F',
+        [HYPEREVM_TESTNET_ID]: '0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
       },
     },
     {
-      name: 'LendingPool',
+      name: 'LendingPool', // pool
       abi: lendingPoolABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x7978057A0d15e745473CEAD4456091c2b4c75e8C',
+        [HYPEREVM_TESTNET_ID]: '0x4073283812dfD8fff8430c1Ec8f88A68f984Aec3',
       },
     },
     {
-      name: 'WETHGateway',
+      name: 'WETHGateway', // wrappedHypeGateway
       abi: wethGatewayABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x3BC0B783B3936b8391473a8840397DF22996d7aC',
+        [HYPEREVM_TESTNET_ID]: '0x41F478CdB072fc4Cad96881413f73Aba5c8a90e0',
       },
     },
     {
-      name: 'WalletBalanceProvider',
+      name: 'WalletBalanceProvider', // walletBalanceProvider
       abi: walletBalanceProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x032B5abd1657b867D43cad6874238f015E5E65bb',
+        [HYPEREVM_TESTNET_ID]: '0x22473C5a8EC020024aDC74E9dD9B17D8037eAb4B',
       },
     },
     {
-      name: 'UiPoolDataProvider',
+      name: 'UiPoolDataProvider', // uiPoolDataProvider
       abi: uiPoolDataProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x855bB3a6099c4cA0d01c4402FE11D4B4CF85a49d',
+        [HYPEREVM_TESTNET_ID]: '0x203bf29F5dDfD2ef15380DbdA8cf7D1da8B9Cc90',
       },
     },
     {
-      name: 'UiIncentiveDataProvider',
+      name: 'UiIncentiveDataProvider', // uiIncentiveDataProvider
       abi: uiIncentiveDataProviderABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x87551477ceD10d50ec08682A3d3f7f4d91E892C7',
+        [HYPEREVM_TESTNET_ID]: '0xCdC9497Cea167846b17FD72635f73eE119d64B9D',
       },
     },
     {
-      name: 'Collector',
+      name: 'Collector', // treasury
       abi: collectorABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x875133496eBf9A8d2DdC786efDD394f518Ce987d',
+        [HYPEREVM_TESTNET_ID]: '0x9b19287cdC0D2062a8BEAbA004Fc93353fc255b9',
       },
     },
     {
       name: 'CapAutomator',
       abi: capAutomatorABI,
       address: {
-        [HYPEREVM_TESTNET_ID]: '0x99e71778dfbf301779161E46F78B2EF2af7FA8e3',
+        [HYPEREVM_TESTNET_ID]: '0xe6ad1ffa197B2ae9a9daCEf2A52acbC8325782C0',
       },
     },
   ],
