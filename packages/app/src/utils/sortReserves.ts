@@ -1,4 +1,4 @@
-export const DEFAULT_SORT: string[] = []
+export const DEFAULT_SORT: string[] = ['WHYPE', 'USDXL', 'USDC', 'sUSDe']
 
 const INFINITY = Number.POSITIVE_INFINITY
 
