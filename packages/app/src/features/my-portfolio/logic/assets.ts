@@ -1,4 +1,5 @@
 import { NativeAssetInfo } from '@/config/chain/types'
+import { reserveBlacklist } from '@/config/consts'
 import { paths } from '@/config/paths'
 import { assetCanBeBorrowed } from '@/domain/common/assets'
 import { MarketInfo, UserPosition } from '@/domain/market-info/marketInfo'
@@ -9,6 +10,7 @@ import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
+import { sortReserves } from '@/utils/sortReserves'
 import { generatePath } from 'react-router-dom'
 
 export interface Deposit {
@@ -44,7 +46,9 @@ export interface GetDepositsParams {
   chainId: number
 }
 export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo, chainId }: GetDepositsParams): Deposit[] {
-  return marketInfo.userPositions
+  const sortedPositions = sortReserves(marketInfo.userPositions, (p) => p.reserve.token.symbol)
+  return sortedPositions
+    .filter((position) => !reserveBlacklist.includes(position.reserve.token.symbol))
     .map((position) => {
       return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
         // hideDaiWhenLendingDisabled,
@@ -116,8 +120,10 @@ export interface GetBorrowsParams {
 }
 
 export function getBorrows({ marketInfo, nativeAssetInfo, chainId }: GetBorrowsParams): Borrow[] {
-  return marketInfo.userPositions
+  const sortedPositions = sortReserves(marketInfo.userPositions, (p) => p.reserve.token.symbol)
+  return sortedPositions
     .filter((position) => assetCanBeBorrowed(position.reserve) || position.borrowBalance.gt(0))
+    .filter((position) => !reserveBlacklist.includes(position.reserve.token.symbol))
     .map((position) => {
       return applyTransformers({ position, marketInfo, nativeAssetInfo, chainId })([
         transformNativeAssetBorrow,

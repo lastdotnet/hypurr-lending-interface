@@ -5,6 +5,7 @@ import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { UpgradeOptions } from './useUpgradeOptions'
 import { Token } from '@/domain/types/Token'
+import { reserveBlacklist } from '@/config/consts'
 
 const blacklistedDepositableAssets = ['USDXL']
 export function getDepositableAssets(positions: UserPosition[], walletInfo: MarketWalletInfo): TokenWithBalance[] {
@@ -16,6 +17,7 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
       // Filter out positions that have deposit, but usage as collateral is turned off by user
       .filter((p) => p.collateralBalance.eq(0) || p.reserve.usageAsCollateralEnabledOnUser)
       .filter((p) => !blacklistedDepositableAssets.includes(p.reserve.token.symbol))
+      .filter((p) => !reserveBlacklist.includes(p.reserve.token.symbol))
       .map((p) => ({ token: p.reserve.token, balance: walletInfo.findWalletBalanceForToken(p.reserve.token) }))
   )
 }
@@ -37,6 +39,7 @@ export function getBorrowableAssets(
 ): TokenWithBalance[] {
   const marketTokens = reserves
     .filter((r) => whitelistedBorrowableAssets.includes(r.token.symbol))
+    .filter((r) => !reserveBlacklist.includes(r.token.symbol))
     .map((r) => ({ token: r.token, balance: walletInfo.findWalletBalanceForToken(r.token) }))
 
   const usdxl = marketTokens.find(({ token }) => isTokenSymbol(token, 'USDXL'))
