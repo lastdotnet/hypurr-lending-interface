@@ -45,7 +45,7 @@ function Chart({
   utilizationRate,
   utilizationRateLabelMargin = 0,
 }: ChartProps & WithTooltipProvidedProps<GraphDataPoint>) {
-  const innerWidth = width - margins.left - margins.right
+  const innerWidth = Math.max(0, width - margins.left - margins.right)
   const innerHeight = height - margins.top - margins.bottom
 
   const xValueScale = scaleLinear({

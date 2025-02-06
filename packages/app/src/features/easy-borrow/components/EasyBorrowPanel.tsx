@@ -9,7 +9,6 @@ import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { HealthFactorPanel } from '@/ui/organisms/health-factor-panel/HealthFactorPanel'
 import { RiskAcknowledgement } from '@/ui/organisms/risk-acknowledgement/RiskAcknowledgement'
-import { Trans } from '@lingui/macro'
 import { X } from 'lucide-react'
 import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../logic/form/form'
@@ -45,9 +44,7 @@ export function EasyBorrowPanel(props: EasyBorrowPanelProps) {
   return (
     <Panel.Wrapper className="flex min-w-full max-w-3xl flex-col self-center p-4 md:p-8">
       <div className="mb-6 flex h-10 flex-row items-center justify-between">
-        <Typography variant="h3">
-          <Trans>Borrow</Trans>
-        </Typography>
+        <Typography variant="h3">Borrow</Typography>
         {pageStatus.state === 'confirmation' && (
           <Button onClick={pageStatus.onProceedToForm} variant="icon" className="-mr-4">
             <X size={28} />

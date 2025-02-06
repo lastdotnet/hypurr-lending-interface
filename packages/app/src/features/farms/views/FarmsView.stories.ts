@@ -4,7 +4,6 @@ import { WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { mainnet } from 'viem/chains'
 import { FarmsView, FarmsViewProps } from './FarmsView'
 
@@ -51,9 +50,13 @@ const meta: Meta<typeof FarmsView> = {
   title: 'Features/Farms/Views/FarmsView',
   component: FarmsView,
   parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
     layout: 'fullscreen',
   },
-  decorators: [WithTooltipProvider(), withRouter],
+  decorators: [WithTooltipProvider()],
+
   args: {
     inactiveFarms,
     activeFarms,

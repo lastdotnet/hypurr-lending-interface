@@ -50,7 +50,7 @@ function getForkChainFromSandboxConfig(sandboxNetwork?: SandboxNetwork): Chain |
 }
 
 function getBaseDevNetChain(): Chain | undefined {
-  if (typeof import.meta.env.VITE_DEV_BASE_DEVNET_RPC_URL !== 'string') {
+  if (typeof process.env.NEXT_PUBLIC_DEV_BASE_DEVNET_RPC_URL !== 'string') {
     return undefined
   }
 
@@ -58,8 +58,8 @@ function getBaseDevNetChain(): Chain | undefined {
     ...base,
     name: 'Base DevNet',
     rpcUrls: {
-      public: { http: [import.meta.env.VITE_DEV_BASE_DEVNET_RPC_URL] },
-      default: { http: [import.meta.env.VITE_DEV_BASE_DEVNET_RPC_URL] },
+      public: { http: [process.env.NEXT_PUBLIC_DEV_BASE_DEVNET_RPC_URL] },
+      default: { http: [process.env.NEXT_PUBLIC_DEV_BASE_DEVNET_RPC_URL] },
     },
   }
 }

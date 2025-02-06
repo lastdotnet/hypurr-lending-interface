@@ -3,7 +3,8 @@ import { Timeframe } from '@/ui/charts/defaults'
 import { assert } from '@/utils/assert'
 import { useTimestamp } from '@/utils/useTimestamp'
 import { useState } from 'react'
-import { useAccount, useChainId } from 'wagmi'
+import { useChainId } from 'wagmi'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { TokenWithBalance } from '../common/types'
 import { SavingsInfo } from '../savings-info/types'
 import { CheckedAddress } from '../types/CheckedAddress'
@@ -36,7 +37,7 @@ export function useSavingsChartsInfoQuery({
   const [selectedTimeframe, setSelectedTimeframe] = useState<Timeframe>('All')
   const chainId = useChainId()
 
-  const { address } = useAccount()
+  const address = useAccount()
   const { timestamp } = useTimestamp({ refreshIntervalInMs: REFRESH_INTERVAL_IN_MS })
 
   const { savings } = getChainConfigEntry(chainId)

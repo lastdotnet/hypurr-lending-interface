@@ -47,6 +47,7 @@ export function useSelectNetworkDialog({ closeDialog }: UseSelectNetworkDialogPa
 
 function formatSupportedPages(supportedPages: Path[]): string[] {
   const pageGroups = supportedPages.map(
+    //@ts-ignore
     (path) => Object.entries(pathGroups).find(([, paths]) => paths.includes(path))?.[0],
   )
   const pageGroupNames = pageGroups.map((group) => group && pageGroupToName[group])

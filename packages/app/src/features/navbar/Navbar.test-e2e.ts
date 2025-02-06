@@ -6,7 +6,7 @@ import { DEFAULT_BLOCK_NUMBER } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'
 
-import { MyPortfolioPageObject } from '@/pages/MyPortfolio.PageObject'
+import { MyPortfolioPageObject } from '@/containers/MyPortfolio.PageObject'
 import { NavbarPageObject } from './Navbar.PageObject'
 
 test.describe('Navbar', () => {

@@ -1,7 +1,9 @@
+'use client'
+
 import { getChainConfigEntry } from '@/config/chain'
 import { hyperTestnet } from '@/config/chain/constants'
 import { Path, getSupportedPages, paths } from '@/config/paths'
-import { matchPath, useLocation } from 'react-router-dom'
+import { usePathname } from 'next/navigation'
 import { useChainId } from 'wagmi'
 
 export interface UsePageChainIdResult {
@@ -12,19 +14,19 @@ export interface UsePageChainIdResult {
 
 export function usePageChainId(): UsePageChainIdResult {
   const chainId = useChainId()
-  const location = useLocation()
+  const pathname = usePathname()
   const supportedPages = getSupportedPages(getChainConfigEntry(chainId))
 
-  const currentPage = Object.entries(paths).find(([_, path]) => matchPath(path, location.pathname))?.[0]
+  type SupportedPage = (typeof supportedPages)[number]
+
+  const currentPage = Object.entries(paths).find(([_, path]) => pathname?.startsWith(path))?.[0]
   const pageName = pageNamesMap[currentPage as Path]
 
   if (!currentPage) {
-    // @note When the current page is not found in the paths that means the page is
-    // not existent *but* supported so we can display 404 page
     return { chainId, pageSupported: true, pageName: '' }
   }
 
-  if (supportedPages.includes(currentPage)) {
+  if (supportedPages.includes(currentPage as SupportedPage)) {
     return { chainId, pageSupported: true, pageName }
   }
 

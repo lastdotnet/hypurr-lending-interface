@@ -2,7 +2,6 @@ import { WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 
@@ -11,7 +10,12 @@ import { PositionView } from './PositionView'
 const meta: Meta<typeof PositionView> = {
   title: 'Features/MyPortfolio/Views/PositionView',
   component: PositionView,
-  decorators: [withRouter, WithTooltipProvider()],
+  decorators: [WithTooltipProvider()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     positionSummary: {
       totalCollateralUSD: NormalizedUnitNumber(167_600),

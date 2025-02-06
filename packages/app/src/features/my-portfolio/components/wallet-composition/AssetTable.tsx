@@ -60,7 +60,7 @@ export function AssetTable({ rows, scroll }: AssetTableProps) {
           renderCell: ({ detailsLink }) => (
             <div>
               <div className="flex w-full flex-row justify-end">
-                <Link className="text-xs sm:mr-4" to={detailsLink}>
+                <Link className="text-xs sm:mr-4" href={detailsLink}>
                   Details
                 </Link>
               </div>

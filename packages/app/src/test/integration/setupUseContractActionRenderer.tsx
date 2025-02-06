@@ -3,8 +3,9 @@ import { UseContractActionParams, useContractAction } from '@/features/actions/l
 import { raise } from '@/utils/assert'
 import { useMemo } from 'react'
 import { TransactionReceipt } from 'viem'
-import { useAccount, useChainId, useConfig } from 'wagmi'
+import { useChainId, useConfig } from 'wagmi'
 import { SetupHookRendererArgs, setupHookRenderer } from './setupHookRenderer'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export function setupUseContractActionRenderer(
   defaultArgs: Omit<SetupHookRendererArgs<typeof useActionWrapper>, 'hook'>,
@@ -21,7 +22,7 @@ export interface UseActionWrapperParams extends Omit<UseContractActionParams, 'c
 
 function useActionWrapper({ context, ...rest }: UseActionWrapperParams) {
   const chainId = useChainId()
-  const { address } = useAccount()
+  const address = useAccount()
   const wagmiConfig = useConfig()
   const txReceipts = useMemo<[Action, TransactionReceipt][]>(() => [], [])
 

@@ -1,11 +1,12 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { useAccount, useConfig } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { SuspenseQueryWith } from '@/utils/types'
 
 import { useMemo } from 'react'
 import { aaveDataLayer } from './aave-data-layer/query'
 import { MarketInfo, marketInfoSelectFn } from './marketInfo'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseMarketInfoParams {
   chainId: number
@@ -16,14 +17,14 @@ export type UseMarketInfoResultOnSuccess = SuspenseQueryWith<{
 }>
 
 export function useMarketInfo({ chainId, timeAdvance }: UseMarketInfoParams): UseMarketInfoResultOnSuccess {
-  const { address } = useAccount()
+  const account = useAccount()
   const wagmiConfig = useConfig()
 
   const res = useSuspenseQuery({
     ...aaveDataLayer({
       wagmiConfig,
       chainId,
-      account: address,
+      account,
     }),
     select: useMemo(() => marketInfoSelectFn({ timeAdvance }), [timeAdvance]),
   })

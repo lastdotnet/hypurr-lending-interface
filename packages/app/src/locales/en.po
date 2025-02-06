@@ -15,8 +15,8 @@ msgstr ""
 
 #: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
 #: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
-msgid "Borrow"
-msgstr ""
+#~ msgid "Borrow"
+#~ msgstr ""
 
 #: src/features/easy-borrow/components/EasyBorrowPanel.tsx:64
 #~ msgid "Borrow {0}"
