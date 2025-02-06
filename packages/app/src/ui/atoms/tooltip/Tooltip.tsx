@@ -1,3 +1,5 @@
+'use cleint'
+
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
@@ -67,5 +69,5 @@ TooltipContentLong.displayName = 'TooltipContentLong'
 export { Tooltip, TooltipContentLong, TooltipContentShort, TooltipProvider, TooltipTrigger }
 
 function isTouchScreen(): boolean {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  return typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
 }

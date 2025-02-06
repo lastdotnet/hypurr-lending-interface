@@ -1,7 +1,6 @@
 import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { Percentage } from '@/domain/types/NumericValues'
 
@@ -11,7 +10,12 @@ import { ApyWithRewardsCell } from './ApyWithRewardsCell'
 const meta: Meta<typeof ApyWithRewardsCell> = {
   title: 'Features/Markets/Components/MarketsTable/Components/ApyWithRewardsCell',
   component: ApyWithRewardsCell,
-  decorators: [WithTooltipProvider(), withRouter, WithClassname('w-56')],
+  decorators: [WithTooltipProvider(), WithClassname('w-56')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     apyDetails: {
       apy: Percentage(0.157),

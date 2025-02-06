@@ -2,7 +2,6 @@ import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 
@@ -12,7 +11,12 @@ import { WalletComposition } from './WalletComposition'
 const meta: Meta<typeof WalletComposition> = {
   title: 'Features/MyPortfolio/Components/WalletComposition',
   component: WalletComposition,
-  decorators: [withRouter, WithClassname('max-w-5xl'), WithTooltipProvider()],
+  decorators: [WithClassname('max-w-5xl'), WithTooltipProvider()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     hasCollaterals: true,
     includeDeposits: true,

@@ -1,6 +1,5 @@
 import { CommonDialogProps, DialogConfig } from '@/features/dialogs/common/types'
-import { StateCreator } from 'zustand'
-import { StoreState, useStore } from '.'
+import { useStore } from '@/domain/state/index'
 
 export interface DialogSlice<P = {}> {
   dialogs: {
@@ -12,19 +11,6 @@ export interface DialogSlice<P = {}> {
     closeDialog: () => void
   }
 }
-
-// eslint-disable-next-line func-style
-export const initDialogSlice: StateCreator<StoreState, [], [], DialogSlice> = (set) => ({
-  dialogs: {
-    openedDialog: undefined,
-    openDialog: (config, props) => {
-      set((state) => ({ dialogs: { ...state.dialogs, openedDialog: { config, props } } }))
-    },
-    closeDialog: () => {
-      set((state) => ({ dialogs: { ...state.dialogs, openedDialog: undefined } }))
-    },
-  },
-})
 
 export type OpenDialogFunction = <P>(dialog: DialogConfig<P & CommonDialogProps>, props: P) => void
 export function useOpenDialog(): OpenDialogFunction {

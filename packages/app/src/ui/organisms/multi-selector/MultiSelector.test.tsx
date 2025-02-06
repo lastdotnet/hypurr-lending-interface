@@ -52,6 +52,7 @@ function ControlledMultiSelectorAssetInputTestWrapper({
     mode: 'onChange',
   })
 
+  //@ts-ignore
   const _ = form.formState.errors // error does not appear without this line
 
   return (

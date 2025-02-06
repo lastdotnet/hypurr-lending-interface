@@ -1,3 +1,5 @@
+'use client'
+
 import { useChainSensitive } from '@/domain/hooks/useChainSensitive'
 import { useStore } from '@/domain/state'
 import { useCloseDialog } from '@/domain/state/dialogs'

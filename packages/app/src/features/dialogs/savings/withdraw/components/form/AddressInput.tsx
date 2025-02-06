@@ -1,4 +1,4 @@
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
 import { Link } from '@/ui/atoms/link/Link'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
@@ -33,7 +33,7 @@ export const AddressInput = forwardRef<HTMLInputElement, AddressInputProps>(
           {blockExplorerUrl && (
             <div className="absolute right-0 mr-3 sm:mr-4">
               <Link
-                to={blockExplorerUrl}
+                href={blockExplorerUrl}
                 external
                 className="flex items-center gap-2.5 font-medium text-basics-dark-grey text-sm"
               >

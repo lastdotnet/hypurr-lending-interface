@@ -102,7 +102,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   useOnDepsChange(() => {
     if (txReceipt) {
       callbacks.onTransactionSettled?.(txReceipt)
-      if (import.meta.env.VITE_PLAYWRIGHT === '1') {
+      if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1') {
         // @note: for e2e tests needs we store sent transactions
         storeRequest(parameters?.request)
       }

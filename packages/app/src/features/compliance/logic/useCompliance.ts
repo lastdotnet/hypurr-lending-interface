@@ -62,7 +62,7 @@ export function useCompliance(): UseComplianceResults {
     }
 
     if (
-      import.meta.env.VITE_FEATURE_TOS_REQUIRED === '1' &&
+      process.env.NEXT_PUBLIC_FEATURE_TOS_REQUIRED === '1' &&
       !!address &&
       !isInSandbox &&
       !agreedToTermsOfService(CheckedAddress(address))

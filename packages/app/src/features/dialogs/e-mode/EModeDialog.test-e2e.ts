@@ -1,6 +1,6 @@
 import { setUserEModeValidationIssueToMessage } from '@/domain/market-validators/validateSetUserEMode'
-import { BorrowPageObject } from '@/pages/Borrow.PageObject'
-import { MyPortfolioPageObject } from '@/pages/MyPortfolio.PageObject'
+import { BorrowPageObject } from '@/containers/Borrow.PageObject'
+import { MyPortfolioPageObject } from '@/containers/MyPortfolio.PageObject'
 import { DEFAULT_BLOCK_NUMBER } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'

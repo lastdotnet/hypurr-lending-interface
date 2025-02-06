@@ -11,7 +11,7 @@ export type UseIPAndAddressCheck =
   | { blocked: true; reason: 'address-not-allowed' | 'vpn-detected' }
   | { blocked: true; reason: 'region-blocked' | 'page-not-available-in-region'; data: { countryCode: string } }
 export function useIPAndAddressCheck(): UseIPAndAddressCheck {
-  if (import.meta.env.VITE_FEATURE_AUTH_IP_AND_ADDRESS_CHECKS !== '1') {
+  if (process.env.NEXT_PUBLIC_FEATURE_AUTH_IP_AND_ADDRESS_CHECKS !== '1') {
     return { blocked: false }
   }
 

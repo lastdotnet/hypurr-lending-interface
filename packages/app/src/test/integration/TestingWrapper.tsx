@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 
-import { I18nTestProvider } from '@/domain/i18n/I18nTestProvider'
 import { useAutoConnect } from '@/domain/wallet/useAutoConnect'
 import { useAccount } from '@/domain/hooks/useAccount'
 import { Suspense } from 'react'
@@ -23,9 +22,7 @@ export function TestingWrapper({
     <Suspense fallback={null}>
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          <I18nTestProvider>
-            {waitForAccount ? <WaitForAccountToConnect>{children}</WaitForAccountToConnect> : children}
-          </I18nTestProvider>
+          {waitForAccount ? <WaitForAccountToConnect>{children}</WaitForAccountToConnect> : children}
         </QueryClientProvider>
       </WagmiProvider>
     </Suspense>

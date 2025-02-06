@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
 
-import { StoreState, useStore } from '.'
+import { StoreState, useStore } from '@/domain/state/index'
 
 export interface BannersVisibility {
   bannerVisibilityStatus: {
