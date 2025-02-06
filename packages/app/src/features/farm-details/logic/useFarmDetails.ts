@@ -14,7 +14,7 @@ import { sandboxDialogConfig } from '@/features/dialogs/sandbox/SandboxDialog'
 import { Timeframe } from '@/ui/charts/defaults'
 import { raise } from '@/utils/assert'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { useAccount, useChainId } from 'wagmi'
+import { useChainId } from 'wagmi'
 import { claimDialogConfig } from '../dialogs/claim/ClaimDialog'
 import { stakeDialogConfig } from '../dialogs/stake/StakeDialog'
 import { unstakeDialogConfig } from '../dialogs/unstake/UnstakeDialog'
@@ -24,7 +24,7 @@ import { getRewardPointsSyncStatus } from './getRewardPointsSyncStatus'
 import { FarmHistoryQueryResult, useFarmHistory } from './historic/useFarmHistory'
 import { useFarmDetailsParams } from './useFarmDetailsParams'
 import { useRewardPointsData } from './useRewardPointsData'
-
+import { useAccount } from '@/domain/hooks/useAccount'
 const GROWING_REWARD_REFRESH_INTERVAL_IN_MS = 50
 
 export interface ChartDetails {
@@ -56,12 +56,12 @@ export interface UseFarmDetailsResult {
 }
 
 export function useFarmDetails(): UseFarmDetailsResult {
-  const { address: account, isConnected: walletConnected } = useAccount()
+  const account = useAccount()
   const params = useFarmDetailsParams()
   const { address: farmAddress, chainId } = params
 
   const connectedChainId = useChainId()
-  const chainMismatch = walletConnected && connectedChainId !== chainId
+  const chainMismatch = !!account && connectedChainId !== chainId
   const { setShowAuthFlow } = useDynamicContext()
   const openDialog = useOpenDialog()
 
@@ -129,7 +129,7 @@ export function useFarmDetails(): UseFarmDetailsResult {
   return {
     chainId,
     chainMismatch,
-    walletConnected,
+    walletConnected: !!account,
     farm,
     tokensToDeposit,
     hasTokensToDeposit,

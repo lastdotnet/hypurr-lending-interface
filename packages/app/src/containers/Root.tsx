@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { Outlet } from 'react-router-dom'
 
 import { Debug } from '@/features/debug'
 import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogDispatcherContainer'
@@ -13,10 +12,9 @@ export function RootRoute() {
     <Suspense fallback={<FallbackLayout />}>
       <AppLayout>
         <ErrorBoundary fallback={ErrorFallback}>
-          <Outlet />
           <DialogDispatcherContainer />
         </ErrorBoundary>
-        {import.meta.env.VITE_DEV_DEBUG === '1' && <Debug />}
+        {process.env.NEXT_PUBLIC_DEV_DEBUG === '1' && <Debug />}
       </AppLayout>
     </Suspense>
   )

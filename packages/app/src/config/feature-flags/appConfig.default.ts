@@ -5,7 +5,7 @@ import { hyperTestnet } from '../chain/constants'
 
 export function getDefaultAppConfig(): AppConfig {
   return {
-    sandbox: featureFlag('VITE_FEATURE_SANDBOX') && {
+    sandbox: featureFlag('NEXT_PUBLIC_FEATURE_SANDBOX') && {
       originChainId: hyperTestnet.id,
       chainName: 'Sandbox Mode',
 

@@ -4,7 +4,6 @@ import { WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { mainnet } from 'viem/chains'
 import { mockChartData } from '../fixtures/mockChartData'
 import { FarmHistoryQueryResult } from '../logic/historic/useFarmHistory'
@@ -13,7 +12,12 @@ import { FarmDetailsView } from './FarmDetailsView'
 const meta: Meta<typeof FarmDetailsView> = {
   title: 'Features/FarmDetails/Views/FarmDetailsView',
   component: FarmDetailsView,
-  decorators: [WithTooltipProvider(), withRouter],
+  decorators: [WithTooltipProvider()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     chainId: mainnet.id,
     chainMismatch: false,

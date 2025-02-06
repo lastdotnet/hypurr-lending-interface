@@ -1,5 +1,5 @@
 import { assets } from '@/ui/assets'
-import MagicWand from '@/ui/assets/magic-wand.svg?react'
+import MagicWand from '@/ui/assets/magic-wand.svg?url'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 // import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
 
@@ -30,7 +30,7 @@ export function SandboxDialogView({
     <div className="flex max-w-xl flex-col gap-5">
       <DialogTitle>
         <div className="flex items-center gap-2">
-          <MagicWand className="h-5 w-5 text-basics-dark-grey" />
+          <img src={MagicWand} className="h-5 w-5 text-basics-dark-grey" />
           Sandbox Mode
         </div>
       </DialogTitle>

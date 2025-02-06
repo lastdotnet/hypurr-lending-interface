@@ -1,13 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/test'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { SettingsDropdown } from './SettingsDropdown'
 
 const meta: Meta = {
   title: 'Features/Navbar/Components/SettingsDropdown',
-  decorators: [withRouter],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   component: SettingsDropdown,
   args: {
     onSandboxModeClick: () => {},

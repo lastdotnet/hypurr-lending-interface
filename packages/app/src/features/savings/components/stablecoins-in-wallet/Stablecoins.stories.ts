@@ -2,7 +2,6 @@ import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import type { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { StablecoinsInWallet } from './StablecoinsInWallet'
 
 const meta: Meta<typeof StablecoinsInWallet> = {
@@ -15,7 +14,11 @@ type Story = StoryObj<typeof StablecoinsInWallet>
 
 export const Desktop: Story = {
   name: 'Stablecoins in wallet',
-  decorators: [withRouter()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     assets: [
       {

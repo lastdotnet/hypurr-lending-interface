@@ -1,3 +1,5 @@
+'use client'
+
 import { i18n } from '@lingui/core'
 
 export const locales = {
@@ -11,12 +13,12 @@ export const defaultLocale = 'en' satisfies Locale
  * Dynamically load and activate locale
  */
 export async function switchLocale(locale: string): Promise<void> {
-  const { messages } = await import(`../../locales/${locale}.po`)
+  const { messages } = await import(`../../locales/${locale}.js`)
 
   i18n.load(locale, messages)
   i18n.activate(locale)
 }
 
 export function getCurrentLocale(): Locale {
-  return i18n.locale as Locale
+  return (i18n.locale || defaultLocale) as Locale
 }

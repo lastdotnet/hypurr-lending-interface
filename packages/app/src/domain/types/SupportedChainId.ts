@@ -13,7 +13,7 @@ export function SupportedChainId(value: NumberLike): SupportedChainId {
   assert(result.isPositive(), 'Chain id value should be a positive number.')
 
   const chainId = result.toNumber()
-  const isSupported = SUPPORTED_CHAIN_IDS.includes(chainId)
+  const isSupported = SUPPORTED_CHAIN_IDS.includes(chainId as (typeof SUPPORTED_CHAIN_IDS)[number])
   assert(isSupported, 'Chain id is not supported.')
 
   return chainId as SupportedChainId

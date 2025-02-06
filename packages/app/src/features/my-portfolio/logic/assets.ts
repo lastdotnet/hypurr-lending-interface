@@ -11,7 +11,6 @@ import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 import { sortReserves } from '@/utils/sortReserves'
-import { generatePath } from 'react-router-dom'
 
 export interface Deposit {
   token: Token
@@ -20,6 +19,7 @@ export interface Deposit {
   deposit: NormalizedUnitNumber
   supplyAPY: Percentage | undefined
   isUsedAsCollateral: boolean
+  usageAsCollateralEnabled: boolean
   isCombinedBalance?: boolean
 }
 
@@ -50,14 +50,16 @@ export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo, chainId }
   return sortedPositions
     .filter((position) => !reserveBlacklist.includes(position.reserve.token.symbol))
     .map((position) => {
-      return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
+      const result = applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
         // hideDaiWhenLendingDisabled,
         hideFrozenAssetIfNotDeposited,
         transformNativeAssetDeposit,
         transformDefaultDeposit,
       ])
+
+      return result !== null ? result : undefined
     })
-    .filter(Boolean)
+    .filter((deposit): deposit is Deposit => deposit !== undefined)
 }
 
 interface DepositTransformerParams extends GetDepositsParams {
@@ -98,11 +100,11 @@ function transformDefaultDeposit({ position, walletInfo, chainId }: DepositTrans
     deposit: position.collateralBalance,
     supplyAPY: position.reserve.supplyAPY,
     isUsedAsCollateral: position.reserve.usageAsCollateralEnabledOnUser,
+    usageAsCollateralEnabled: position.reserve.usageAsCollateralEnabled,
     rowClickOptions: {
-      destination: generatePath(paths.marketDetails, {
-        asset: position.reserve.token.address,
-        chainId: chainId.toString(),
-      }),
+      destination: paths.marketDetails
+        .replace(':chainId', chainId.toString())
+        .replace(':asset', position.reserve.token.address),
     },
   }
 }
@@ -130,7 +132,7 @@ export function getBorrows({ marketInfo, nativeAssetInfo, chainId }: GetBorrowsP
         transformDefaultBorrow,
       ])
     })
-    .filter(Boolean)
+    .filter((borrow): borrow is Borrow => borrow !== null) // Type guard to remove null values
 }
 
 interface BorrowTransformerParams extends GetBorrowsParams {
@@ -171,10 +173,9 @@ function transformDefaultBorrow({ position, marketInfo, chainId }: BorrowTransfo
     debt: position.borrowBalance,
     borrowAPY: position.reserve.variableBorrowApy,
     rowClickOptions: {
-      destination: generatePath(paths.marketDetails, {
-        asset: position.reserve.token.address,
-        chainId: chainId.toString(),
-      }),
+      destination: paths.marketDetails
+        .replace(':chainId', chainId.toString())
+        .replace(':asset', position.reserve.token.address),
     },
   }
 }

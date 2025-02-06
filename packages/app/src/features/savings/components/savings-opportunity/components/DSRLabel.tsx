@@ -31,7 +31,7 @@ function TooltipContent({ savingsMetaItem }: { savingsMetaItem: SavingsMetaItem 
       The {rateAcronym}, or {rateName}, represents the current annual interest rate for {stablecoin} deposited into the
       Sky Savings Module. It is determined on-chain by the Sky Ecosystem Governance. Please note that these protocol
       mechanisms are subject to change. Learn more about it{' '}
-      <Link to={docsLink} external>
+      <Link href={docsLink} external>
         here
       </Link>
       .
@@ -50,7 +50,7 @@ function GnosisDsrDetails() {
       </p>
       <p>
         For more information about DSR, you can visit{' '}
-        <Link to={links.docs.dsr} external>
+        <Link href={links.docs.dsr} external>
           docs
         </Link>
         .

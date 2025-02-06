@@ -5,7 +5,6 @@ import { MarketInfo, Reserve } from '@/domain/market-info/marketInfo'
 import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { Transformer, TransformerResult, applyTransformers } from '@/utils/applyTransformers'
 import { raise } from '@/utils/assert'
-import { generatePath } from 'react-router-dom'
 import { MarketEntry } from '../types'
 import { reserveBlacklist } from '@/config/consts'
 import { sortReserves } from '@/utils/sortReserves'
@@ -73,7 +72,7 @@ export function makeMarketEntry(chainId: number, reserve: Reserve): MarketEntryR
       borrowEligibilityStatus: reserve.borrowEligibilityStatus,
     },
     rowClickOptions: {
-      destination: generatePath(paths.marketDetails, { asset: reserve.token.address, chainId: chainId.toString() }),
+      destination: paths.marketDetails.replace(':chainId', chainId.toString()).replace(':asset', reserve.token.address),
     },
   }
 }
