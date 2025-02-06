@@ -1,6 +1,6 @@
 import { useActionsSettings } from '@/domain/state'
 import { useConnectedAddress } from '@/domain/wallet/useConnectedAddress'
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { TransactionReceipt } from 'viem'
 import { useChainId, useConfig } from 'wagmi'
 import { getFakePermitAction } from '../flavours/permit/logic/getFakePermitAction'
@@ -70,13 +70,15 @@ export function useActionHandlers(
 
   const currentActionHandler = currentAction.type === 'permit' ? permitHandler : handler
 
-  if (currentActionHandler?.state.status === 'success') {
-    if (currentActionIndex === actions.length - 1) {
-      onFinish?.()
-    } else {
-      setCurrentActionIndex(currentActionIndex + 1)
+  useEffect(() => {
+    if (currentActionHandler?.state.status === 'success') {
+      if (currentActionIndex === actions.length - 1) {
+        onFinish?.()
+      } else {
+        setCurrentActionIndex(currentActionIndex + 1)
+      }
     }
-  }
+  }, [currentActionHandler?.state.status, currentActionIndex, actions.length, onFinish])
 
   if (currentActionHandler) {
     handlers[currentActionIndex] = currentActionHandler
