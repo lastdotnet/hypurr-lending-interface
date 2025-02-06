@@ -1,5 +1,5 @@
 import { assets } from '@/ui/assets'
-import MagicWand from '@/ui/assets/magic-wand.svg'
+import MagicWand from '@/ui/assets/magic-wand.svg?url'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 // import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
 

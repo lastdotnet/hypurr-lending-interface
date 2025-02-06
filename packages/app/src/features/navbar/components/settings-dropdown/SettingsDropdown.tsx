@@ -1,6 +1,6 @@
 import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
-import MagicWand from '@/ui/assets/magic-wand.svg'
-import MoreIcon from '@/ui/assets/more-icon.svg'
+import MagicWand from '@/ui/assets/magic-wand.svg?url'
+import MoreIcon from '@/ui/assets/more-icon.svg?url'
 import { Button } from '@/ui/atoms/button/Button'
 import {
   DropdownMenu,
@@ -36,7 +36,7 @@ export function SettingsDropdown({ onSandboxModeClick, isSandboxEnabled }: Setti
 
         <Link href={links.termsOfUse} external>
           <SettingsDropdownItem>
-            <SettingsDropdownItem.Content icon={<img src={BoxArrowTopRight} className="h-4 w-4" />}>
+            <SettingsDropdownItem.Content icon={<BoxArrowTopRight className="h-4 w-4" />}>
               Terms of Service
             </SettingsDropdownItem.Content>
           </SettingsDropdownItem>

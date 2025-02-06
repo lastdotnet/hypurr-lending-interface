@@ -2,8 +2,8 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 
 import { WalletDropdownTriggerInfo } from '@/features/navbar/types'
-import Eye from '@/ui/assets/eye.svg'
-import MagicWandCircle from '@/ui/assets/magic-wand-circle.svg'
+import Eye from '@/ui/assets/eye.svg?url'
+import MagicWandCircle from '@/ui/assets/magic-wand-circle.svg?url'
 import { shortenAddress } from '@/ui/utils/shortenAddress'
 
 import { WalletButton } from './WalletButton'

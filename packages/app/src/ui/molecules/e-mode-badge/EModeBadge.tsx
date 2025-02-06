@@ -15,7 +15,7 @@ export function EModeBadge({ categoryId }: EModeBadgeProps) {
 
   return (
     <div className={cn(variants({ state }))}>
-      {categoryId !== 0 && <img src={Flash} className="h-3.5 w-3.5" />}
+      {categoryId !== 0 && <Flash className="h-3.5 w-3.5" />}
       {text}
     </div>
   )

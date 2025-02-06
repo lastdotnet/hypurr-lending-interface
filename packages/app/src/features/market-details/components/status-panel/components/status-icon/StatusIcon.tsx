@@ -13,7 +13,7 @@ interface StatusIconProps {
 export function StatusIcon({ status, yesWhite, noRed }: StatusIconProps) {
   const variant = getVariantFromStatus(status, { yesWhite, noRed })
   if (variant === 'green' || variant === 'orange') {
-    return <IndicatorIcon icon={<img src={CheckCircle} />} variant={variant} className="self-center" />
+    return <IndicatorIcon icon={<CheckCircle />} variant={variant} className="self-center" />
   }
-  return <IndicatorIcon icon={<img src={XCircle} />} variant={variant} className="self-center" />
+  return <IndicatorIcon icon={<XCircle />} variant={variant} className="self-center" />
 }

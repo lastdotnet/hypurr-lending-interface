@@ -37,7 +37,7 @@ export const AddressInput = forwardRef<HTMLInputElement, AddressInputProps>(
                 external
                 className="flex items-center gap-2.5 font-medium text-basics-dark-grey text-sm"
               >
-                <img src={BoxArrowTopRight} className={cn('h-4 w-4', error && 'text-error')} />
+                <BoxArrowTopRight className={cn('h-4 w-4', error && 'text-error')} />
               </Link>
             </div>
           )}

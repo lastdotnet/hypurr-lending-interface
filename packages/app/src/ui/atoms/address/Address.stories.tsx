@@ -32,13 +32,13 @@ export const Compact: Story = {
 export const WithPostfix: Story = {
   args: {
     compact: true,
-    postfix: <img src={BoxArrowTopRight} className="h-3.5 w-3.5" />,
+    postfix: <BoxArrowTopRight className="h-3.5 w-3.5" />,
   },
 }
 export const EllipsisWithPostfix: Story = {
   args: {
     compact: false,
-    postfix: <img src={BoxArrowTopRight} className="h-3.5 w-3.5" />,
+    postfix: <BoxArrowTopRight className="h-3.5 w-3.5" />,
   },
   decorators: [WithClassname('w-64')],
 }

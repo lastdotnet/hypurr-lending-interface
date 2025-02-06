@@ -1,6 +1,6 @@
 import { Token } from '@/domain/types/Token'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import UpgradeIcon from '@/ui/assets/upgrade.svg'
+import UpgradeIcon from '@/ui/assets/upgrade.svg?url'
 import { Button } from '@/ui/atoms/button/Button'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { cn } from '@/ui/utils/style'

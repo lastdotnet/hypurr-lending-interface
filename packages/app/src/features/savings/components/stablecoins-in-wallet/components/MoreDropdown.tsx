@@ -4,7 +4,7 @@ import { MigrationInfo } from '@/features/savings/logic/makeMigrationInfo'
 import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
 import DocumentSketchIcon from '@/ui/assets/document-sketch.svg'
 import DowngradeIcon from '@/ui/assets/downgrade.svg'
-import MoreIcon from '@/ui/assets/more-icon.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg?url'
 import { Button } from '@/ui/atoms/button/Button'
 import {
   DropdownMenu,
@@ -34,7 +34,7 @@ export function MoreDropdown({ token, blockExplorerLink, migrationInfo, disabled
             disabled={balance?.eq(0)}
             data-testid={testIds.savings.stablecoinsInWallet.downgradeUsdsToDai}
           >
-            <img src={DowngradeIcon} className="h-4 w-4" />
+            <DowngradeIcon className="h-4 w-4" />
             Downgrade to {migrationInfo.daiSymbol}
           </DropdownItem>
           <DropdownMenuSeparator />
@@ -43,9 +43,9 @@ export function MoreDropdown({ token, blockExplorerLink, migrationInfo, disabled
       {blockExplorerLink && (
         <LinkDecorator to={blockExplorerLink} external>
           <DropdownItem>
-            <img src={DocumentSketchIcon} className="h-4 w-4" />
+            <DocumentSketchIcon className="h-4 w-4" />
             View contract
-            <img src={BoxArrowTopRight} className="ml-auto h-4 w-4" />
+            <BoxArrowTopRight className="ml-auto h-4 w-4" />
           </DropdownItem>
         </LinkDecorator>
       )}

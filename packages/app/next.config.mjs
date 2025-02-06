@@ -1,7 +1,6 @@
 import withImages from 'next-images'
 
-import { execSync } from  'child_process'
-
+import { execSync } from 'node:child_process'
 
 const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
 const buildTime = new Date().toLocaleString('en-gb')
@@ -18,11 +17,7 @@ const nextConfig = withImages({
     disableStaticImages: true,
   },
   experimental: {
-    swcPlugins: [
-      [
-        "@lingui/swc-plugin", {}
-      ],
-    ],
+    swcPlugins: [['@lingui/swc-plugin', {}]],
   },
   i18n: {
     locales: ['en', 'pl'],
@@ -30,18 +25,39 @@ const nextConfig = withImages({
   },
 
   webpack(config) {
+    // Grab the existing rule that handles SVG imports
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
+
+    config.module.rules.push(
+      // Reapply the existing rule, but only for svg imports ending in ?url
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/, // *.svg?url
+      },
+      // Convert all other *.svg imports to React components
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [/url/] }, // exclude if *.svg?url
+        use: ['@svgr/webpack'],
+      },
+    )
+
+    // Modify the file loader rule to ignore *.svg, since we have it handled now.
+    fileLoaderRule.exclude = /\.svg$/i
+
     config.module.rules.push({
       test: /^(.*\.test-e2e\..*|.*\.PageObject\..*|.*\.e2e\..*)$/,
       use: 'ignore-loader', // This will ignore any file matching the pattern
-    });
+    })
 
     config.module.rules.push({
       test: /\.po$/,
       use: {
-        loader: "@lingui/loader", // https://github.com/lingui/js-lingui/issues/1782
+        loader: '@lingui/loader', // https://github.com/lingui/js-lingui/issues/1782
       },
     })
-
 
     if (config.externals) {
       config.externals.push('pino-pretty', 'lokijs', 'encoding')
@@ -50,7 +66,6 @@ const nextConfig = withImages({
     }
 
     config.resolve.fallback = { fs: false, module: false }
-
 
     return config
   },
@@ -78,7 +93,7 @@ const nextConfig = withImages({
         destination: 'https://faucet-ashy.vercel.app/verify-follow/:path*',
       },
     ]
-  }
+  },
 })
 
 export default nextConfig

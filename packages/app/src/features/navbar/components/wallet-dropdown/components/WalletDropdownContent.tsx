@@ -1,5 +1,5 @@
 import { WalletDropdownContentInfo } from '@/features/navbar/types'
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?url'
 import { Address } from '@/ui/atoms/address/Address'
 import { Button } from '@/ui/atoms/button/Button'
 import { Link } from '@/ui/atoms/link/Link'

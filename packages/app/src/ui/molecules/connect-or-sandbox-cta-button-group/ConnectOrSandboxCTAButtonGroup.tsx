@@ -1,5 +1,5 @@
 import { useSandboxState } from '@/domain/sandbox/useSandboxState'
-import MagicWand from '@/ui/assets/magic-wand.svg'
+import MagicWand from '@/ui/assets/magic-wand.svg?url'
 import { Button } from '@/ui/atoms/button/Button'
 import { cn } from '@/ui/utils/style'
 

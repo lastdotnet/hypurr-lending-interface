@@ -2,7 +2,7 @@ import { useBlockExplorerAddressLink } from '@/domain/hooks/useBlockExplorerAddr
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { Token } from '@/domain/types/Token'
 import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
-import MoreIcon from '@/ui/assets/more-icon.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg?url'
 import { Address } from '@/ui/atoms/address/Address'
 import { Button } from '@/ui/atoms/button/Button'
 import {
@@ -89,7 +89,7 @@ function TokenLinksDropdownItem({ address, token, label }: TokenLinksDropdownIte
           </div>
         </div>
         <div className="flex items-center gap-2 font-semibold text-white">
-          <Address address={address} postfix={<img src={BoxArrowTopRight} className="h-3.5 w-3.5" />} />
+          <Address address={address} postfix={<BoxArrowTopRight className="h-3.5 w-3.5" />} />
         </div>
       </div>
     </DropdownMenuItem>
