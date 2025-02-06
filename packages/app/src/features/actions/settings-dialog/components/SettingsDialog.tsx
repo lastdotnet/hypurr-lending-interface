@@ -46,11 +46,17 @@ export function SettingsDialog(props: SettingsDialogProps) {
 interface DisabledTooltipProps {
   children: React.ReactNode
 }
-function DisabledTooltip({ children }: DisabledTooltipProps) {
+
+const DisabledTooltip = React.forwardRef<HTMLSpanElement, DisabledTooltipProps>(function DisabledTooltip(
+  { children },
+  ref,
+) {
   return (
     <Tooltip>
-      <TooltipTrigger>{children}</TooltipTrigger>
+      <TooltipTrigger asChild>
+        <span ref={ref}>{children}</span>
+      </TooltipTrigger>
       <TooltipContentShort>Settings are disabled while actions are in progress.</TooltipContentShort>
     </Tooltip>
   )
-}
+})
