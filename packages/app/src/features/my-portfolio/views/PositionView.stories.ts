@@ -2,7 +2,6 @@ import { WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 
@@ -11,7 +10,12 @@ import { PositionView } from './PositionView'
 const meta: Meta<typeof PositionView> = {
   title: 'Features/MyPortfolio/Views/PositionView',
   component: PositionView,
-  decorators: [withRouter, WithTooltipProvider()],
+  decorators: [WithTooltipProvider()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     positionSummary: {
       totalCollateralUSD: NormalizedUnitNumber(167_600),
@@ -46,6 +50,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('13.74'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: true,
+        usageAsCollateralEnabled: true,
       },
       {
         token: tokens.stETH,
@@ -54,6 +59,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('34.21'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: true,
+        usageAsCollateralEnabled: true,
       },
       {
         token: tokens.DAI,
@@ -62,6 +68,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('9.37'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: false,
       },
       {
         token: tokens.GNO,
@@ -69,6 +76,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('1.37'),
         supplyAPY: Percentage(0.0345),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: false,
         reserveStatus: 'frozen',
       },
       {
@@ -77,6 +85,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('5.37'),
         supplyAPY: Percentage(0.012),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: true,
         reserveStatus: 'paused',
       },
     ],

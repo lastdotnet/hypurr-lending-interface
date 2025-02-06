@@ -46,7 +46,7 @@ export function EModeView({
       <p className="text-basics-dark-grey text-sm leading-tight">
         E-Mode allows you to borrow assets belonging to the selected category.
         {/* Please visit our{' '}
-        <Link to={links.docs.eMode} external>
+        <Link href={links.docs.eMode} external>
           FAQ guide
         </Link>{' '}
         to learn more about how it works and the applied restrictions. */}

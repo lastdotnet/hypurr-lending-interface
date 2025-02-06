@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 
@@ -10,7 +9,11 @@ import { SuccessView } from './SuccessView'
 const meta: Meta<typeof SuccessView> = {
   title: 'Features/EasyBorrow/Views/SuccessView',
   component: SuccessView,
-  decorators: [withRouter],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     deposited: [
       {

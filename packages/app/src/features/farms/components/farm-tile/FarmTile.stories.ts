@@ -3,13 +3,17 @@ import { WithClassname } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { FarmTile } from './FarmTile'
 
 const meta: Meta<typeof FarmTile> = {
   title: 'Features/Farms/Components/FarmTile',
   component: FarmTile,
-  decorators: [WithClassname('flex w-80'), withRouter],
+  decorators: [WithClassname('flex w-80')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     apy: Percentage(0.05),
     staked: NormalizedUnitNumber(0),

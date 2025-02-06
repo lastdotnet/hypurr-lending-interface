@@ -1,14 +1,18 @@
 import { WithClassname } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { TopBanner } from './TopBanner'
 
 const meta: Meta<typeof TopBanner> = {
   title: 'Components/Atoms/TopBanner',
   component: TopBanner,
-  decorators: [WithClassname('w-full'), withRouter],
+  decorators: [WithClassname('w-full')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 }
 
 export default meta

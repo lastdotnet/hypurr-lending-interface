@@ -6,8 +6,9 @@ import { skipToken, useQuery } from '@tanstack/react-query'
 import { Abi, Address, ContractFunctionName, erc4626Abi, isAddressEqual } from 'viem'
 import { estimateContractGas } from 'viem/actions'
 import { base, mainnet } from 'viem/chains'
-import { UseSimulateContractParameters, useAccount, useChainId, usePublicClient } from 'wagmi'
+import { UseSimulateContractParameters, useChainId, usePublicClient } from 'wagmi'
 import { useOriginChainId } from './useOriginChainId'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 const GAS_LIMIT_BUFFER = 100_000n
 const TRANSACTIONS_WITH_INCREASED_GAS_LIMIT = [
@@ -57,7 +58,7 @@ export interface UseIncreasedGasLimitResult {
 
 export function useIncreasedGasLimit(params: UseSimulateContractParameters<Abi, string>): UseIncreasedGasLimitResult {
   const chainId = useChainId()
-  const { address: account } = useAccount()
+  const account = useAccount()
   const originChainId = useOriginChainId()
   const client = usePublicClient()
 

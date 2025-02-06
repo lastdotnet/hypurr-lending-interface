@@ -21,7 +21,7 @@ export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmoun
       <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)</p>
       <LinkButton
         className={cn(buttonVariants({ variant: 'primary', size: 'md', rounded: 'full' }), 'w-full')}
-        to={paths.dashboard}
+        href={paths.dashboard}
       >
         View in dashboard
       </LinkButton>

@@ -1,7 +1,6 @@
 import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 
@@ -10,7 +9,12 @@ import { CollateralStatusPanel } from './CollateralStatusPanel'
 const meta: Meta<typeof CollateralStatusPanel> = {
   title: 'Features/MarketDetails/Components/StatusPanel/CollateralStatusPanel',
   component: CollateralStatusPanel,
-  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl'), withRouter],
+  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 }
 
 export default meta

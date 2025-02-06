@@ -5,7 +5,6 @@ import { MarketInfo } from '@/domain/market-info/marketInfo'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { MarketWalletInfo, WalletBalance } from '@/domain/wallet/useMarketWalletInfo'
-import { generatePath } from 'react-router-dom'
 import { AssetsTableRow } from '../components/wallet-composition/AssetTable'
 
 interface MakeAssetListParams {
@@ -41,7 +40,7 @@ interface GetDetailsLinkParams {
   chainId: number
 }
 function getDetailsLink({ token, chainId }: GetDetailsLinkParams): string {
-  return generatePath(paths.marketDetails, { asset: token.address, chainId: chainId.toString() })
+  return paths.marketDetails.replace(':chainId', chainId.toString()).replace(':asset', token.address)
 }
 
 interface CalculateCombinedBalanceParams {

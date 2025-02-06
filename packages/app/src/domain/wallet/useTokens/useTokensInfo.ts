@@ -1,10 +1,10 @@
-import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { SuspenseQueryWith } from '@/utils/types'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { useAccount, useChainId, useConfig } from 'wagmi'
+import { useChainId, useConfig } from 'wagmi'
 import { TokensInfo } from './TokenInfo'
 import { tokensQueryOptions } from './query'
 import { TokenConfig } from './types'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseTokensParams {
   tokens: TokenConfig[]
@@ -17,7 +17,7 @@ export type UseTokensResult = SuspenseQueryWith<{
 
 export function useTokensInfo(params: UseTokensParams): UseTokensResult {
   const wagmiConfig = useConfig()
-  const { address } = useAccount()
+  const account = useAccount()
   const _chainId = useChainId()
   const { tokens, chainId = _chainId } = params
 
@@ -25,7 +25,7 @@ export function useTokensInfo(params: UseTokensParams): UseTokensResult {
     ...tokensQueryOptions({
       tokens,
       wagmiConfig,
-      account: address && CheckedAddress(address),
+      account,
       chainId,
     }),
   })

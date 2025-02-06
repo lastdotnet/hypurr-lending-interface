@@ -20,7 +20,6 @@ import { assert } from '@/utils/assert'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useRef, useState } from 'react'
 import { UseFormReturn, useForm } from 'react-hook-form'
-import { useAccount } from 'wagmi'
 import { getBorrowableAssets, getDepositableAssets, sortByDecreasingBalances } from './assets'
 import {
   FormFieldsForAssetClass,
@@ -34,6 +33,8 @@ import { EasyBorrowFormSchema, getEasyBorrowFormValidator } from './form/validat
 import { ExistingPosition, PageState, PageStatus } from './types'
 import { useCreateObjectives } from './useCreateObjectives'
 import { useLiquidationDetails } from './useLiquidationDetails'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface BorrowFormAPYDetails {
   borrowAPY: Percentage
@@ -62,9 +63,10 @@ export interface UseEasyBorrowResults {
 }
 
 export function useEasyBorrow(): UseEasyBorrowResults {
-  const account = useAccount()
+  const { network } = useDynamicContext()
   const { chainId } = usePageChainId()
-  const guestMode = !account.address
+  const account = useAccount()
+  const guestMode = !account
   const openDialog = useOpenDialog()
   const { aaveData } = useAaveDataLayer({ chainId })
   const { marketInfo } = useMarketInfo({ chainId })
@@ -183,7 +185,7 @@ export function useEasyBorrow(): UseEasyBorrowResults {
     function revalidateFormOnNetworkChange() {
       easyBorrowForm.trigger().catch(console.error)
     },
-    [account.chainId],
+    [network],
   )
   useEffect(() => {
     if (pageStatus === 'confirmation') {

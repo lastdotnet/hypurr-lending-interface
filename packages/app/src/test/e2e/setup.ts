@@ -1,5 +1,4 @@
 import { Page } from '@playwright/test'
-import { generatePath } from 'react-router-dom'
 import { Address, Hash, parseEther, parseUnits } from 'viem'
 
 import { Path, paths } from '@/config/paths'
@@ -12,10 +11,23 @@ import { injectFixedDate, injectFlags, injectNetworkConfiguration, injectWalletC
 import { generateAccount } from './utils'
 
 export type InjectableWallet = { address: Address } | { privateKey: string }
+export function buildUrl<T extends Path>(key?: T, pathParams?: Record<string, string>): string {
+  const pathTemplate = key && paths[key] // Get the path template from paths, correctly inferred.
 
-type PathParams<K extends Path> = Parameters<typeof generatePath<(typeof paths)[K]>>[1]
-export function buildUrl<T extends Path>(key: T, pathParams?: PathParams<T>): string {
-  return `http://localhost:4000${generatePath(paths[key], pathParams)}`
+  let pathWithParams = pathTemplate
+
+  if (pathParams && pathTemplate) {
+    // Iterate over pathParams and replace placeholders in the template.
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    Object.entries(pathParams).forEach(([paramKey, paramValue]) => {
+      const paramPlaceholder = `:${paramKey}`
+      if (pathWithParams?.includes(paramPlaceholder)) {
+        pathWithParams = pathWithParams?.replace(paramPlaceholder, paramValue) as any
+      }
+    })
+  }
+
+  return `http://localhost:4000${pathWithParams}`
 }
 
 export type AssetBalances = Partial<Record<AssetsInTests, number>>
@@ -44,8 +56,8 @@ export type AccountOptions<T extends ConnectionType> = T extends 'not-connected'
         : never
 
 export interface SetupOptions<K extends Path, T extends ConnectionType> {
-  initialPage: K
-  initialPageParams?: PathParams<K>
+  initialPage?: K
+  initialPageParams?: Record<string, string>
   account: AccountOptions<T>
   skipInjectingNetwork?: boolean
 }

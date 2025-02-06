@@ -9,11 +9,11 @@ import { getTimestampInSeconds } from '@/utils/time'
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { useRef } from 'react'
 import { generatePrivateKey, privateKeyToAccount } from 'viem/accounts'
-import { useAccount, useConfig } from 'wagmi'
+import { useConfig } from 'wagmi'
 import { connect, getChains, switchChain } from 'wagmi/actions'
 import { SandboxMode } from '../types'
 import { createSandbox, getChainIdWithPrefix } from './createSandbox'
-
+import { useAccount } from '@/domain/hooks/useAccount'
 export type UseSandboxMutationResult = Omit<UseMutationResult<void, Error, void, unknown>, 'mutate'> & {
   startSandbox: () => void
 }
@@ -31,7 +31,7 @@ export function useSandboxDialog(mode: SandboxMode): UseSandboxDialogResult {
   const configRef = useRef(config)
   configRef.current = config
 
-  const { address } = useAccount()
+  const address = useAccount()
   const sandboxConfig = useStore((state) => state.appConfig.sandbox)
   const { setNetwork } = useStore((state) => state.sandbox)
 

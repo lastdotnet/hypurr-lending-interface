@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority'
 
 import { eModeCategoryIdToName } from '@/domain/e-mode/constants'
 import { EModeCategoryId } from '@/domain/e-mode/types'
-import Flash from '@/ui/assets/flash.svg?react'
+import Flash from '@/ui/assets/flash.svg'
 import { cn } from '@/ui/utils/style'
 
 export interface EModeBadgeProps {

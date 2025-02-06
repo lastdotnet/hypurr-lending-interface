@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
 import { WithClassname } from '@storybook/decorators'
 import { tokens } from '@storybook/tokens'
 import { Address } from './Address'

@@ -5,7 +5,6 @@ import { Button } from '@/ui/atoms/button/Button'
 import { Form } from '@/ui/atoms/form/Form'
 import { ConnectOrSandboxCTAButtonGroup } from '@/ui/molecules/connect-or-sandbox-cta-button-group/ConnectOrSandboxCTAButtonGroup'
 import { nonZeroOrDefault } from '@/utils/bigNumber'
-import { Trans } from '@lingui/macro'
 import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../../logic/form/form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
@@ -112,7 +111,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
         ) : (
           !disabled && (
             <Button type="submit" className="mt-8" rounded="full" disabled={!form.formState.isValid}>
-              <Trans>Continue</Trans>
+              Continue
             </Button>
           )
         )}

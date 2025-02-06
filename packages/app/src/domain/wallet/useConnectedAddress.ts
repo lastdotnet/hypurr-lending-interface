@@ -1,7 +1,7 @@
-import { useAccount, useChainId } from 'wagmi'
+import { useChainId } from 'wagmi'
 
 import { NotConnectedError } from '@/domain/errors/not-connected'
-
+import { useAccount } from '@/domain/hooks/useAccount'
 import { CheckedAddress } from '../types/CheckedAddress'
 
 export interface ConnectedInfo {
@@ -10,13 +10,13 @@ export interface ConnectedInfo {
 }
 
 export function useConnectedAddress(): ConnectedInfo {
-  const { address } = useAccount()
+  const account = useAccount()
   const chainId = useChainId()
 
-  if (!address) throw new NotConnectedError()
+  if (!account) throw new NotConnectedError()
 
   return {
     chainId,
-    account: CheckedAddress(address),
+    account: CheckedAddress(account),
   }
 }

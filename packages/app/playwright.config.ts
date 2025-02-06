@@ -29,7 +29,7 @@ export default defineConfig({
     reuseExistingServer: true,
     timeout: 90_000,
   },
-  fullyParallel: process.env.CI,
+  fullyParallel: process.env.CI === 'true',
 
   projects: [
     {
