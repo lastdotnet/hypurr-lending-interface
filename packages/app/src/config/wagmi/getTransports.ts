@@ -65,7 +65,7 @@ export function getTransports({ forkChain, baseDevNetChain }: GetTransportsParam
     transports[baseDevNetChain.id] = http(baseDevNetChain.rpcUrls.default.http[0])
   }
 
-  if (import.meta.env.VITE_FEATURE_RPC_INJECTION_VIA_URL === '1') {
+  if (process.env.NEXT_PUBLIC_FEATURE_RPC_INJECTION_VIA_URL === '1') {
     const injectedNetwork = getInjectedNetwork()
     if (injectedNetwork) {
       transports[injectedNetwork.chainId] = http(injectedNetwork.rpc)

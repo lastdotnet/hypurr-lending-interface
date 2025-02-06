@@ -1,13 +1,14 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
   "files": {
-    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.json", "README.md"],
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.json", "**/*.mjs", "README.md"],
     "ignore": [
       "**/node_modules",
       "**/.vscode",
       "**/package.json",
       "**/dist/**",
       "**/.vite",
+      "**/.next",
       "packages/app/storybook-static",
       "packages/app/__screenshots__",
       "packages/app/playwright-report",

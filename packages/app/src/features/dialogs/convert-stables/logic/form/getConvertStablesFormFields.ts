@@ -3,6 +3,7 @@ import { TokensInfo } from '@/domain/wallet/useTokens/TokenInfo'
 import { UseFormReturn } from 'react-hook-form'
 import { ConvertStablesFormFields } from '../../types'
 import { ConvertStablesFormSchema } from './schema'
+import { TokenWithBalance } from '@/domain/common/types'
 
 export interface GetConvertStablesFormFieldsParams {
   form: UseFormReturn<ConvertStablesFormSchema>
@@ -15,13 +16,17 @@ export function getConvertStablesFormFields({
   psmStables,
 }: GetConvertStablesFormFieldsParams): ConvertStablesFormFields {
   const { inTokenSymbol, outTokenSymbol } = form.watch()
+
   const selectedAssetIn = tokensInfo.findOneTokenWithBalanceBySymbol(inTokenSymbol)
   const selectedAssetOut = tokensInfo.findOneTokenWithBalanceBySymbol(outTokenSymbol)
 
-  const allStables = psmStables.map((symbol) => tokensInfo.findTokenWithBalanceBySymbol(symbol)).filter(Boolean)
-  const assetInOptions = allStables.filter(({ token }) => token.symbol !== selectedAssetIn.token.symbol)
+  const allStables = psmStables
+    .map((symbol) => tokensInfo.findTokenWithBalanceBySymbol(symbol))
+    .filter((token): token is TokenWithBalance => token !== undefined)
+
+  const assetInOptions = allStables.filter(({ token }) => token.symbol !== selectedAssetIn?.token.symbol)
   const assetOutOptions = allStables.filter(
-    ({ token }) => token.symbol !== selectedAssetOut.token.symbol && token.symbol !== selectedAssetIn.token.symbol,
+    ({ token }) => token.symbol !== selectedAssetOut?.token.symbol && token.symbol !== selectedAssetIn?.token.symbol,
   )
 
   function changeAssetIn(newSymbol: TokenSymbol): void {

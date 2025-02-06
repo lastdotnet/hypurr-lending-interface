@@ -1,6 +1,8 @@
+'use client'
+
 import { Slot } from '@radix-ui/react-slot'
 import { ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 
 interface LinkDecoratorProps {
   children: ReactNode
@@ -9,13 +11,15 @@ interface LinkDecoratorProps {
 }
 
 export function LinkDecorator({ children, to, external }: LinkDecoratorProps) {
-  const navigate = useNavigate()
+  const router = useRouter()
 
-  function onClick() {
+  function onClick(e: React.MouseEvent) {
+    e.preventDefault()
+
     if (external) {
       window.open(to, '_blank')
     } else {
-      navigate(to)
+      router.push(to)
     }
   }
 

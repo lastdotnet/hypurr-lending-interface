@@ -28,7 +28,7 @@ export const Panel = forwardRef<HTMLDivElement, PanelProps>(
     const { collapsible, collapsibleAbove, defaultOpen } = collapsibleOptions
     const matchesQuery = useBreakpoint(collapsibleAbove ?? 'all')
 
-    if (!import.meta.env.PROD) {
+    if (!process.env.PROD) {
       // runtime checks to ensure children structure
       // @note: we might decide not to enforce header existence in the future
       // @note: use name property for equality checks to make hot code reloading work
