@@ -50,6 +50,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('13.74'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: true,
+        usageAsCollateralEnabled: true,
       },
       {
         token: tokens.stETH,
@@ -58,6 +59,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('34.21'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: true,
+        usageAsCollateralEnabled: true,
       },
       {
         token: tokens.DAI,
@@ -66,6 +68,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('9.37'),
         supplyAPY: Percentage(0.0145),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: false,
       },
       {
         token: tokens.GNO,
@@ -73,6 +76,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('1.37'),
         supplyAPY: Percentage(0.0345),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: false,
         reserveStatus: 'frozen',
       },
       {
@@ -81,6 +85,7 @@ const meta: Meta<typeof PositionView> = {
         deposit: NormalizedUnitNumber('5.37'),
         supplyAPY: Percentage(0.012),
         isUsedAsCollateral: false,
+        usageAsCollateralEnabled: true,
         reserveStatus: 'paused',
       },
     ],

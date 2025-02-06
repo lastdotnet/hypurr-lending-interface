@@ -11,7 +11,12 @@ import { CollapsiblePanel } from './CollapsiblePanel'
 export interface PanelProps {
   children: [ReactNode, ReactNode]
   className?: string
-  collapsibleOptions?: { collapsible: boolean; collapsibleAbove?: BreakpointKey; defaultOpen?: boolean }
+  collapsibleOptions?: {
+    collapsible: boolean
+    collapsibleAbove?: BreakpointKey
+    defaultOpen?: boolean
+    fullHeight?: boolean
+  }
 }
 
 const PanelContext = createContext({ collapse: false })
@@ -25,7 +30,7 @@ export interface PanelType extends React.ForwardRefExoticComponent<PanelProps & 
 export const Panel = forwardRef<HTMLDivElement, PanelProps>(
   ({ children, className, collapsibleOptions = { collapsible: false } }, ref) => {
     const [Header, Content] = children
-    const { collapsible, collapsibleAbove, defaultOpen } = collapsibleOptions
+    const { collapsible, collapsibleAbove, defaultOpen, fullHeight } = collapsibleOptions
     const matchesQuery = useBreakpoint(collapsibleAbove ?? 'all')
 
     if (!process.env.PROD) {
@@ -46,7 +51,7 @@ export const Panel = forwardRef<HTMLDivElement, PanelProps>(
     if (collapsible && matchesQuery) {
       return (
         <PanelContext.Provider value={{ collapse: true }}>
-          <CollapsiblePanel defaultOpen={defaultOpen} className={className} ref={ref}>
+          <CollapsiblePanel defaultOpen={defaultOpen} className={className} ref={ref} fullHeight={fullHeight}>
             {Header}
             {Content}
           </CollapsiblePanel>

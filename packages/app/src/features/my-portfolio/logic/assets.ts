@@ -17,6 +17,7 @@ export interface Deposit {
   deposit: NormalizedUnitNumber
   supplyAPY: Percentage | undefined
   isUsedAsCollateral: boolean
+  usageAsCollateralEnabled: boolean
   isCombinedBalance?: boolean
 }
 
@@ -95,6 +96,7 @@ function transformDefaultDeposit({ position, walletInfo, chainId }: DepositTrans
     deposit: position.collateralBalance,
     supplyAPY: position.reserve.supplyAPY,
     isUsedAsCollateral: position.reserve.usageAsCollateralEnabledOnUser,
+    usageAsCollateralEnabled: position.reserve.usageAsCollateralEnabled,
     rowClickOptions: {
       destination: paths.marketDetails
         .replace(':chainId', chainId.toString())

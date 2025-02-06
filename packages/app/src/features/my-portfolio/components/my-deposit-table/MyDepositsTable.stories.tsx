@@ -8,7 +8,7 @@ import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { raise } from '@/utils/assert'
 
 import { Deposit } from '../../logic/assets'
-import { DepositTable } from './DepositTable'
+import { MyDepositsTable } from './MyDepositsTable'
 
 const assets: Deposit[] = [
   {
@@ -58,15 +58,10 @@ const assets: Deposit[] = [
   },
 ]
 
-const meta: Meta<typeof DepositTable> = {
-  title: 'Features/MyPortfolio/Components/DepositTable',
+const meta: Meta<typeof MyDepositsTable> = {
+  title: 'Features/MyPortfolio/Components/MyDepositsTable',
   decorators: [WithTooltipProvider()],
-  parameters: {
-    nextjs: {
-      appDirectory: true,
-    },
-  },
-  component: DepositTable,
+  component: MyDepositsTable,
   args: {
     assets,
     openDialog: () => {},
@@ -74,7 +69,7 @@ const meta: Meta<typeof DepositTable> = {
 }
 
 export default meta
-type Story = StoryObj<typeof DepositTable>
+type Story = StoryObj<typeof MyDepositsTable>
 
 export const Desktop: Story = {}
 

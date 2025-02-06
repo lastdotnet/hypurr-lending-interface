@@ -86,7 +86,10 @@ export function DataTable<T extends RowType>({
           {!hideTableHeader && (
             <TableHeader className="static">
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} className={cn('grid w-full gap-2 px-3', gridTemplateColumnsClassName)}>
+                <TableRow
+                  key={headerGroup.id}
+                  className={cn('grid w-full gap-2 md:px-3', gridTemplateColumnsClassName)}
+                >
                   {headerGroup.headers.map((header) => {
                     return (
                       <TableHead key={header.id} className="text-white">
