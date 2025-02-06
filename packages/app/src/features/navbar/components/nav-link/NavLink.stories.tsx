@@ -1,6 +1,5 @@
 import { WithClassname } from '@storybook/decorators'
 import type { Meta, StoryObj } from '@storybook/react'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { Percentage } from '@/domain/types/NumericValues'
 
@@ -10,7 +9,12 @@ import { NavLink } from './NavLink'
 const meta: Meta<typeof NavLink> = {
   title: 'Features/Navbar/Components/NavLink',
   component: NavLink,
-  decorators: [withRouter, WithClassname('w-fit')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
+  decorators: [WithClassname('w-fit')],
 }
 
 export default meta

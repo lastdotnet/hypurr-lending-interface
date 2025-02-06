@@ -1,7 +1,7 @@
 import { Loader2 } from 'lucide-react'
 
 export function FallbackLayout() {
-  if (import.meta.env.MODE === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     throw new Error('Missing Suspense fallback! Did you forget about skeletons?')
   }
 

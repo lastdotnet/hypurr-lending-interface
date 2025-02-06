@@ -70,7 +70,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
 
       <ExternalNavLink href="http://docs.hypurr.fi/">Docs</ExternalNavLink>
 
-      <FeedbackFish projectId={import.meta.env.VITE_FEEDBACK_FISH_PROJECT_ID}>
+      <FeedbackFish projectId={process.env.NEXT_PUBLIC_FEEDBACK_FISH_PROJECT_ID || ''}>
         <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white xl:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
           Feedback
         </button>

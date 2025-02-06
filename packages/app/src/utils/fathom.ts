@@ -1,7 +1,7 @@
 import { Action } from '@/features/actions/logic/types'
 
 export function trackEvent(eventName: string, value?: number): void {
-  if (import.meta.env.MODE !== 'production') return
+  if (process.env.NODE_ENV !== 'production') return
 
   if (typeof window !== 'undefined' && window.fathom) {
     const options = value !== undefined ? { _value: value } : undefined

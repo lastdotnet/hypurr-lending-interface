@@ -38,10 +38,6 @@
     {
       "source": "/claim-with-gas",
       "destination": "https://faucet-ashy.vercel.app/claim-with-gas/"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
     }
   ]
 }

@@ -19,7 +19,7 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
       .map((p) => ({ token: p.reserve.token, balance: walletInfo.findWalletBalanceForToken(p.reserve.token) }))
   )
 }
-const usdxlEnabled = import.meta.env.VITE_FEATURE_USDXL === '1'
+const usdxlEnabled = process.env.NEXT_PUBLIC_FEATURE_USDXL === '1'
 
 const defaultWhitelistedBorrowableAssets = ['USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH']
 const whitelistedBorrowableAssets = usdxlEnabled

@@ -1,4 +1,4 @@
-import { SavingsPageObject } from '@/pages/Savings.PageObject'
+import { SavingsPageObject } from '@/containers/Savings.PageObject'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'
 import { test } from '@playwright/test'

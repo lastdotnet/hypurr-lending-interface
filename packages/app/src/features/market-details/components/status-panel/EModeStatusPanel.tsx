@@ -73,13 +73,13 @@ export function EModeStatusPanel({
             E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means that when
             E-Mode is enabled, you will have higher borrowing power for assets in this category:{' '}
             {eModeCategoryTokens.join(', ')}. You can enter E-Mode from your{' '}
-            <DocsLink to={paths.dashboard}>Dashboard</DocsLink>. To learn more about E-Mode and its applied
+            <DocsLink href={paths.dashboard}>Dashboard</DocsLink>. To learn more about E-Mode and its applied
             restrictions, visit the{' '}
             {/* <DocsLink to={links.docs.eMode} external>
               FAQ
             </DocsLink>{' '}
             or the{' '} */}
-            <DocsLink to={links.aaveTechnicalPaper} external>
+            <DocsLink href={links.aaveTechnicalPaper} external>
               Aave V3 Technical Paper
             </DocsLink>
             .
