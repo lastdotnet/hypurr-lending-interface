@@ -26,3 +26,6 @@ export const HYPURR_UI_REFERRAL_CODE_BIGINT = BigInt(HYPURR_UI_REFERRAL_CODE)
 
 export const USDXL_ADDRESS = CheckedAddress('0xfc446B60a054703A9DC096dd397a6e3cdd614275')
 export const A_USDXL_ADDRESS = CheckedAddress('0xCFBD3c2c0Be381A02fbca18eA8a2231d7C2dE116')
+
+// Hide reserves on the UI
+export const reserveBlacklist: string[] = []
