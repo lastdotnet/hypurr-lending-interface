@@ -1,6 +1,5 @@
-import { useAccount } from 'wagmi'
-
 import { apiUrl } from '@/config/consts'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 import { blockedCountryCodes } from './consts'
 import { useIsCurrentPageBlocked } from './useIsCurrentPageBlocked'
@@ -17,7 +16,7 @@ export function useIPAndAddressCheck(): UseIPAndAddressCheck {
   }
 
   // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
-  const { address } = useAccount()
+  const address = useAccount()
   // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
   const addressCheck = useRestrictedAddressCheck({
     address,

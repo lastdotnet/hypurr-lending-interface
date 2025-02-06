@@ -1,8 +1,8 @@
 import { sandboxDialogConfig } from '@/features/dialogs/sandbox/SandboxDialog'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { useAccount, useSwitchChain } from 'wagmi'
+import { useSwitchChain } from 'wagmi'
 import { useOpenDialog } from '../state/dialogs'
-
+import { useAccount } from '@/domain/hooks/useAccount'
 export interface UseUnsupportedChainResult {
   isGuestMode: boolean
   openConnectModal: () => void
@@ -12,7 +12,7 @@ export interface UseUnsupportedChainResult {
 
 export function useUnsupportedChain(): UseUnsupportedChainResult {
   const openDialog = useOpenDialog()
-  const isGuestMode = useAccount().isConnected === false
+  const account = useAccount()
   const { setShowAuthFlow } = useDynamicContext()
 
   const { switchChain } = useSwitchChain()
@@ -22,7 +22,7 @@ export function useUnsupportedChain(): UseUnsupportedChainResult {
   }
 
   return {
-    isGuestMode,
+    isGuestMode: !!account,
     openConnectModal: () => setShowAuthFlow(true),
     openSandboxModal,
     switchChain: (chainId: number) => switchChain({ chainId }),

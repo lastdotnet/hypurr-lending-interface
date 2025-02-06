@@ -5,7 +5,7 @@ import { TokensInfo } from '@/domain/wallet/useTokens/TokenInfo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { UseFormReturn, useForm } from 'react-hook-form'
 import { Address } from 'viem'
-import { useAccount } from 'wagmi'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { Mode, ReceiverFormSchema, SendModeExtension } from '../types'
 import { getReceiverFormValidator } from './validation'
 
@@ -37,7 +37,7 @@ interface UseDebouncedReceiverFormValuesResult {
 }
 
 function useReceiverFormValues(tokensInfo: TokensInfo): UseDebouncedReceiverFormValuesResult {
-  const { address: account } = useAccount()
+  const account = useAccount()
 
   const receiverForm = useForm<ReceiverFormSchema>({
     resolver: zodResolver(

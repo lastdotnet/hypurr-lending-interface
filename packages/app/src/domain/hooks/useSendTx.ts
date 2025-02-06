@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
-import { UseEstimateGasParameters, useAccount, useEstimateGas, useSendTransaction } from 'wagmi'
+import { UseEstimateGasParameters, useEstimateGas, useSendTransaction } from 'wagmi'
 
 import { sanityCheckTx } from './sanityChecks'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
 import { WriteStatus } from './useWrite'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseSendTxResult {
   send: () => void
@@ -26,8 +27,8 @@ export function useSendTx(
 ): UseSendTxResult {
   const chainId = useOriginChainId()
   const enabled = args.enabled ?? !!(args.to && (args.data || args.value))
+  const account = useAccount()
 
-  const { address: account } = useAccount()
   const {
     data: gasEstimate,
     error: _simulationError,
