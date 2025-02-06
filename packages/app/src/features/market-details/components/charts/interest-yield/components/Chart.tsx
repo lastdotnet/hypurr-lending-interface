@@ -31,7 +31,7 @@ export interface ChartProps {
 }
 
 function Chart({
-  width, // equal to default margins sum to prevent negative value error
+  width,
   height,
   margins = defaultMargins,
   xAxisNumTicks = 5,
