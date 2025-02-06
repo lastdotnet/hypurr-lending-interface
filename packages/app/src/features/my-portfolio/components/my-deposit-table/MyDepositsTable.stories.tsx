@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/test'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { raise } from '@/utils/assert'
@@ -61,7 +60,7 @@ const assets: Deposit[] = [
 
 const meta: Meta<typeof MyDepositsTable> = {
   title: 'Features/MyPortfolio/Components/MyDepositsTable',
-  decorators: [withRouter, WithTooltipProvider()],
+  decorators: [WithTooltipProvider()],
   component: MyDepositsTable,
   args: {
     assets,
