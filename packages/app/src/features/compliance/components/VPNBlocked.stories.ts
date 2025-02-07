@@ -1,13 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { VPNBlocked } from './VPNBlocked'
 
 const meta: Meta<typeof VPNBlocked> = {
   title: 'Features/Compliance/Components/VPNBlocked',
-  decorators: [withRouter()],
   component: VPNBlocked,
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 }
 
 export default meta

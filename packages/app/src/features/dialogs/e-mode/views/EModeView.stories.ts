@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import BigNumber from 'bignumber.js'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { Percentage } from '@/domain/types/NumericValues'
 
@@ -11,8 +10,13 @@ import { EModeView } from './EModeView'
 
 const meta: Meta<typeof EModeView> = {
   title: 'Features/Dialogs/Views/EMode',
-  decorators: [ZeroAllowanceWagmiDecorator(), WithClassname('max-w-xl'), WithTooltipProvider(), withRouter],
+  decorators: [ZeroAllowanceWagmiDecorator(), WithClassname('max-w-xl'), WithTooltipProvider()],
   component: EModeView,
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     eModeCategories: {
       'No E-Mode': {

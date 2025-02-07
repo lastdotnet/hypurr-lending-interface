@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { testAddresses } from '@/test/integration/constants'
 
@@ -8,8 +7,12 @@ import { AddressBlocked } from './AddressBlocked'
 
 const meta: Meta<typeof AddressBlocked> = {
   title: 'Features/Compliance/Components/AddressBlocked',
-  decorators: [withRouter()],
   component: AddressBlocked,
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     address: testAddresses.alice,
     disconnect: () => {},

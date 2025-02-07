@@ -1,4 +1,5 @@
 import { NativeAssetInfo } from '@/config/chain/types'
+import { reserveBlacklist } from '@/config/consts'
 import { paths } from '@/config/paths'
 import { assetCanBeBorrowed } from '@/domain/common/assets'
 import { MarketInfo, UserPosition } from '@/domain/market-info/marketInfo'
@@ -9,7 +10,7 @@ import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
-import { generatePath } from 'react-router-dom'
+import { sortReserves } from '@/utils/sortReserves'
 
 export interface Deposit {
   token: Token
@@ -18,6 +19,7 @@ export interface Deposit {
   deposit: NormalizedUnitNumber
   supplyAPY: Percentage | undefined
   isUsedAsCollateral: boolean
+  usageAsCollateralEnabled: boolean
   isCombinedBalance?: boolean
 }
 
@@ -44,16 +46,20 @@ export interface GetDepositsParams {
   chainId: number
 }
 export function getDeposits({ marketInfo, walletInfo, nativeAssetInfo, chainId }: GetDepositsParams): Deposit[] {
-  return marketInfo.userPositions
+  const sortedPositions = sortReserves(marketInfo.userPositions, (p) => p.reserve.token.symbol)
+  return sortedPositions
+    .filter((position) => !reserveBlacklist.includes(position.reserve.token.symbol))
     .map((position) => {
-      return applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
+      const result = applyTransformers({ position, marketInfo, walletInfo, nativeAssetInfo, chainId })([
         // hideDaiWhenLendingDisabled,
         hideFrozenAssetIfNotDeposited,
         transformNativeAssetDeposit,
         transformDefaultDeposit,
       ])
+
+      return result !== null ? result : undefined
     })
-    .filter(Boolean)
+    .filter((deposit): deposit is Deposit => deposit !== undefined)
 }
 
 interface DepositTransformerParams extends GetDepositsParams {
@@ -94,11 +100,11 @@ function transformDefaultDeposit({ position, walletInfo, chainId }: DepositTrans
     deposit: position.collateralBalance,
     supplyAPY: position.reserve.supplyAPY,
     isUsedAsCollateral: position.reserve.usageAsCollateralEnabledOnUser,
+    usageAsCollateralEnabled: position.reserve.usageAsCollateralEnabled,
     rowClickOptions: {
-      destination: generatePath(paths.marketDetails, {
-        asset: position.reserve.token.address,
-        chainId: chainId.toString(),
-      }),
+      destination: paths.marketDetails
+        .replace(':chainId', chainId.toString())
+        .replace(':asset', position.reserve.token.address),
     },
   }
 }
@@ -116,15 +122,17 @@ export interface GetBorrowsParams {
 }
 
 export function getBorrows({ marketInfo, nativeAssetInfo, chainId }: GetBorrowsParams): Borrow[] {
-  return marketInfo.userPositions
+  const sortedPositions = sortReserves(marketInfo.userPositions, (p) => p.reserve.token.symbol)
+  return sortedPositions
     .filter((position) => assetCanBeBorrowed(position.reserve) || position.borrowBalance.gt(0))
+    .filter((position) => !reserveBlacklist.includes(position.reserve.token.symbol))
     .map((position) => {
       return applyTransformers({ position, marketInfo, nativeAssetInfo, chainId })([
         transformNativeAssetBorrow,
         transformDefaultBorrow,
       ])
     })
-    .filter(Boolean)
+    .filter((borrow): borrow is Borrow => borrow !== null) // Type guard to remove null values
 }
 
 interface BorrowTransformerParams extends GetBorrowsParams {
@@ -165,10 +173,9 @@ function transformDefaultBorrow({ position, marketInfo, chainId }: BorrowTransfo
     debt: position.borrowBalance,
     borrowAPY: position.reserve.variableBorrowApy,
     rowClickOptions: {
-      destination: generatePath(paths.marketDetails, {
-        asset: position.reserve.token.address,
-        chainId: chainId.toString(),
-      }),
+      destination: paths.marketDetails
+        .replace(':chainId', chainId.toString())
+        .replace(':asset', position.reserve.token.address),
     },
   }
 }

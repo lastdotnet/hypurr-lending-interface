@@ -1,12 +1,15 @@
 import { Percentage } from '@/domain/types/NumericValues'
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 import { WelcomeDialog } from './WelcomeDialog'
 
 const meta: Meta<typeof WelcomeDialog> = {
   title: 'Features/Savings/Components/WelcomeDialog',
-  decorators: [withRouter()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   component: WelcomeDialog,
   args: {
     open: true,

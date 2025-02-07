@@ -1,8 +1,8 @@
 import { useBlockExplorerAddressLink } from '@/domain/hooks/useBlockExplorerAddressLink'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { Token } from '@/domain/types/Token'
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
-import MoreIcon from '@/ui/assets/more-icon.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg?url'
 import { Address } from '@/ui/atoms/address/Address'
 import { Button } from '@/ui/atoms/button/Button'
 import {
@@ -46,7 +46,7 @@ function TokenLinksWrapper({ children }: PropsWithChildren) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="rounded-sm bg-white/10 px-3">
-          <MoreIcon />
+          <img src={MoreIcon} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">{children}</DropdownMenuContent>
@@ -64,7 +64,7 @@ function BlockExplorerAddressLink({ address, children, chainId }: BlockExplorerA
   const contractLink = useBlockExplorerAddressLink({ address, chainId })
 
   return contractLink ? (
-    <Link to={contractLink} external>
+    <Link href={contractLink} external>
       {children}
     </Link>
   ) : (

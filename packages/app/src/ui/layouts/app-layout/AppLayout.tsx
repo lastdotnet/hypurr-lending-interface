@@ -1,3 +1,5 @@
+'use client'
+
 import { cx } from 'class-variance-authority'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -24,7 +26,7 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
-      {import.meta.env.VITE_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
+      {process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
       <Navbar
         mobileMenuCollapsed={mobileMenuCollapsed}
         setMobileMenuCollapsed={setMobileMenuCollapsed}

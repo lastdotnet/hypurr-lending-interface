@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/test'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { raise } from '@/utils/assert'
@@ -14,7 +13,12 @@ import { MarketsTable } from './MarketsTable'
 const meta: Meta<typeof MarketsTable> = {
   title: 'Features/Markets/Components/MarketsTable',
   component: MarketsTable,
-  decorators: [WithTooltipProvider(), WithClassname('max-w-6xl'), withRouter],
+  decorators: [WithTooltipProvider(), WithClassname('max-w-6xl')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     entries: [
       {

@@ -8,6 +8,7 @@ import { BorrowView } from './views/BorrowView'
 
 function BorrowDialogContentContainer({ token, closeDialog }: DialogContentContainerProps) {
   const {
+    updatedPositionSummary,
     objectives,
     borrowOptions,
     assetsToBorrowFields,
@@ -19,6 +20,7 @@ function BorrowDialogContentContainer({ token, closeDialog }: DialogContentConta
     borrowAPY,
     riskAcknowledgement,
     actionsContext,
+    setDesiredLoanToValue,
   } = useBorrowDialog({
     initialToken: token,
   })
@@ -47,6 +49,8 @@ function BorrowDialogContentContainer({ token, closeDialog }: DialogContentConta
       updatedHealthFactor={updatedHealthFactor}
       riskAcknowledgement={riskAcknowledgement}
       borrowAPY={borrowAPY}
+      updatedPositionSummary={updatedPositionSummary}
+      setDesiredLoanToValue={setDesiredLoanToValue}
     />
   )
 }

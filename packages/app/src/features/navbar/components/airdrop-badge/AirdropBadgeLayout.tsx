@@ -26,10 +26,7 @@ export function AirdropBadgeLayout({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div>
-            <button
-              className="gradient-border px-[.6rem] py-[.3rem]"
-              data-testid={testIds.navbar.airdropBadge}
-            >
+            <button className="gradient-border px-[.6rem] py-[.3rem]" data-testid={testIds.navbar.airdropBadge}>
               <span className="flex items-center gap-1.5">
                 <img src={assets.hypurrPaw} className="block h-6 pt-1" />
                 {isLoading ? (

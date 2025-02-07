@@ -12,7 +12,8 @@ import { selectNetworkDialogConfig } from '@/features/dialogs/select-network/Sel
 import { raise } from '@/utils/assert'
 import { skipToken, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { useAccount, useChainId, useChains, useConfig, useEnsAvatar, useEnsName } from 'wagmi'
+import { useAccount as useWagmiAccount, useChainId, useChains, useConfig, useEnsAvatar, useEnsName } from 'wagmi'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { PageLinksInfo } from '../components/PageLinks'
 import { AirdropInfo, ConnectedWalletInfo, RewardsInfo, SavingsInfoQueryResults, SupportedChain } from '../types'
 import { generateWalletAvatar } from './generateWalletAvatar'
@@ -40,7 +41,8 @@ export function useNavbar(): UseNavbarResults {
   const currentChainId = useChainId()
   const chains = useChains()
   const { markets: marketsConfig } = useChainConfigEntry()
-  const { address, connector } = useAccount()
+  const address = useAccount()
+  const { connector } = useWagmiAccount()
   const { data: ensName } = useEnsName({
     address,
   })

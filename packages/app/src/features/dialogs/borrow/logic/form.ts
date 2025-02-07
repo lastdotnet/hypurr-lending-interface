@@ -1,17 +1,19 @@
 import { getBorrowMaxValue } from '@/domain/action-max-value-getters/getBorrowMaxValue'
-import { MarketInfo } from '@/domain/market-info/marketInfo'
+import { MarketInfo, UserPositionSummary } from '@/domain/market-info/marketInfo'
 import {
   borrowValidationIssueToMessage,
   getValidateBorrowArgs,
   validateBorrow,
 } from '@/domain/market-validators/validateBorrow'
-import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { UseFormReturn } from 'react-hook-form'
 import { z } from 'zod'
-import { AssetInputSchema } from '../../common/logic/form'
+import { AssetInputSchema, DialogFormNormalizedData } from '../../common/logic/form'
 import { FormFieldsForDialog } from '../../common/types'
+import { formFormat } from '@/domain/common/format'
+import BigNumber from 'bignumber.js'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function getBorrowDialogFormValidator(marketInfo: MarketInfo) {
@@ -77,4 +79,34 @@ export function getFormFieldsForBorrowDialog({
     changeAsset,
     maxValue: borrowMaxValue,
   }
+}
+
+interface SetDesiredLoanToValueProps {
+  control: UseFormReturn<AssetInputSchema>
+  formValues: DialogFormNormalizedData
+  userPositionSummary: UserPositionSummary
+  desiredLtv: Percentage
+}
+
+export function setDesiredLoanToValue({
+  control,
+  formValues,
+  userPositionSummary,
+  desiredLtv,
+}: SetDesiredLoanToValueProps): void {
+  const toAdd = userPositionSummary.totalCollateralUSD
+    .multipliedBy(desiredLtv)
+    .minus(userPositionSummary.totalBorrowsUSD)
+    .dividedBy(formValues.reserve.priceInUSD)
+
+  const current = formValues.value
+  const result = current.plus(toAdd)
+
+  const newBorrowAmount = BigNumber.max(0, formFormat(result))
+
+  control.setValue('isMaxSelected', false)
+  control.setValue('value', newBorrowAmount.toFixed(), {
+    shouldValidate: true,
+    shouldTouch: true,
+  })
 }

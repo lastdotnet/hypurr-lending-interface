@@ -1,6 +1,8 @@
+'use client'
+
 import { useSandboxState } from '@/domain/sandbox/useSandboxState'
 import { useEffect } from 'react'
-import { generatePath, useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { useConfig } from 'wagmi'
 import { watchChainId } from 'wagmi/actions'
 
@@ -16,20 +18,24 @@ interface UseSandboxPageRedirectParams {
 export function useSandboxPageRedirect({ basePath, fallbackPath, basePathParams }: UseSandboxPageRedirectParams): void {
   const config = useConfig()
   const { sandboxChainId, originChainId } = useSandboxState()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
     const unwatch = watchChainId(config, {
       onChange(chainId, prevChainId) {
         if (chainId === sandboxChainId && prevChainId === originChainId && prevChainId === basePathParams?.chainId) {
-          navigate(generatePath(basePath, { ...basePathParams, chainId: sandboxChainId.toString() }))
+          const queryParams = new URLSearchParams({ ...basePathParams, chainId: sandboxChainId.toString() } as Record<
+            string,
+            string
+          >)
+          router.push(`${basePath}?${queryParams.toString()}`)
           return
         }
 
-        navigate(generatePath(fallbackPath))
+        router.push(fallbackPath)
       },
     })
 
     return unwatch
-  }, [config, sandboxChainId, originChainId, basePath, fallbackPath, navigate, basePathParams])
+  }, [config, sandboxChainId, originChainId, basePath, fallbackPath, router, basePathParams])
 }

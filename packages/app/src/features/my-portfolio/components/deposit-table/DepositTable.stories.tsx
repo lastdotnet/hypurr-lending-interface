@@ -3,7 +3,6 @@ import { Meta, StoryObj } from '@storybook/react'
 import { within } from '@storybook/test'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { raise } from '@/utils/assert'
@@ -18,6 +17,7 @@ const assets: Deposit[] = [
     deposit: NormalizedUnitNumber('13.74'),
     supplyAPY: Percentage(0.0145),
     isUsedAsCollateral: true,
+    usageAsCollateralEnabled: true,
     reserveStatus: 'active',
   },
   {
@@ -26,6 +26,7 @@ const assets: Deposit[] = [
     deposit: NormalizedUnitNumber('34.21'),
     supplyAPY: Percentage(0.0145),
     isUsedAsCollateral: true,
+    usageAsCollateralEnabled: true,
     reserveStatus: 'active',
   },
   {
@@ -34,6 +35,7 @@ const assets: Deposit[] = [
     deposit: NormalizedUnitNumber('9.37'),
     supplyAPY: Percentage(0.0145),
     isUsedAsCollateral: false,
+    usageAsCollateralEnabled: false,
     reserveStatus: 'active',
   },
   {
@@ -42,6 +44,7 @@ const assets: Deposit[] = [
     deposit: NormalizedUnitNumber('1.37'),
     supplyAPY: Percentage(0.0345),
     isUsedAsCollateral: false,
+    usageAsCollateralEnabled: false,
     reserveStatus: 'frozen',
   },
   {
@@ -50,13 +53,19 @@ const assets: Deposit[] = [
     deposit: NormalizedUnitNumber('5.37'),
     supplyAPY: Percentage(0.012),
     isUsedAsCollateral: false,
+    usageAsCollateralEnabled: true,
     reserveStatus: 'paused',
   },
 ]
 
 const meta: Meta<typeof DepositTable> = {
   title: 'Features/MyPortfolio/Components/DepositTable',
-  decorators: [withRouter, WithTooltipProvider()],
+  decorators: [WithTooltipProvider()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   component: DepositTable,
   args: {
     assets,

@@ -2,7 +2,6 @@ import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { Percentage } from '@/domain/types/NumericValues'
 
@@ -11,7 +10,12 @@ import { EModeStatusPanel } from './EModeStatusPanel'
 const meta: Meta<typeof EModeStatusPanel> = {
   title: 'Features/MarketDetails/Components/StatusPanel/EModeStatusPanel',
   component: EModeStatusPanel,
-  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl'), withRouter],
+  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
     maxLtv: Percentage(0.95),
     liquidationThreshold: Percentage(0.9),

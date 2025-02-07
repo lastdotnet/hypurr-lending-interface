@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useAccount } from 'wagmi'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { airdropInfo } from '@/features/navbar/logic/use-airdrop-info/airdropInfo'
@@ -11,7 +11,7 @@ interface UseAirdropInfoParams {
 }
 
 export function useAirdropInfo({ refreshIntervalInMs }: UseAirdropInfoParams): AirdropInfo {
-  const { address } = useAccount()
+  const address = useAccount()
 
   const result = useQuery(airdropInfo(address && CheckedAddress(address)))
 

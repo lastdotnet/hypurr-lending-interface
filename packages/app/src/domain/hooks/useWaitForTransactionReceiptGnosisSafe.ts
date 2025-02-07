@@ -5,11 +5,11 @@ import { getLogs, getTransactionReceipt, watchBlockNumber } from 'viem/actions'
 import {
   UseWaitForTransactionReceiptParameters,
   UseWaitForTransactionReceiptReturnType,
-  useAccount,
   useChainId,
   useClient,
 } from 'wagmi'
 import { waitForTransactionReceiptQueryKey } from 'wagmi/query'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 const executionSuccessEvent = parseAbiItem('event ExecutionSuccess(bytes32 txHash, uint256 payment)')
 
@@ -20,7 +20,7 @@ const executionSuccessEvent = parseAbiItem('event ExecutionSuccess(bytes32 txHas
 export function useWaitForTransactionReceiptGnosisSafe(
   args: UseWaitForTransactionReceiptParameters = {},
 ): UseWaitForTransactionReceiptReturnType {
-  const { address } = useAccount()
+  const address = useAccount()
   const client = useClient()
   const chainId = useChainId()
 

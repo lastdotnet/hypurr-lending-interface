@@ -27,7 +27,11 @@ const privateKeySchema = z.custom<PrivateKey>((privateKey) => {
 })
 
 export function getInjectedTransport(): Transport {
-  return http((window as any)[PLAYWRIGHT_WALLET_FORK_URL_KEY], { timeout: VIEM_TIMEOUT_ON_FORKS })
+  if (typeof window !== 'undefined' && (window as any)[PLAYWRIGHT_WALLET_FORK_URL_KEY]) {
+    return http((window as any)[PLAYWRIGHT_WALLET_FORK_URL_KEY], { timeout: VIEM_TIMEOUT_ON_FORKS })
+  }
+
+  throw new Error('PLAYWRIGHT_WALLET_FORK_URL_KEY is not available in this environment.')
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -57,8 +61,8 @@ export function getMockConnectors(chain: Chain) {
 }
 
 export function getMockConfig(sandboxNetwork?: SandboxNetwork): Config {
-  // if not configured properly assume just fallback to default config
-  if (!(window as any)[PLAYWRIGHT_WALLET_FORK_URL_KEY]) {
+  // Ensure this code only runs in the browser
+  if (typeof window === 'undefined' || !(window as any)[PLAYWRIGHT_WALLET_FORK_URL_KEY]) {
     console.warn('Mock config not found. Loading default config.')
     return getConfig(sandboxNetwork)
   }

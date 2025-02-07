@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 
 import { captureError } from '@/utils/sentry'
 
@@ -11,12 +11,11 @@ interface UnknownErrorProps {
 }
 
 export function UnknownError({ error, fullScreen }: UnknownErrorProps) {
-  const navigate = useNavigate()
+  const router = useRouter()
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     captureError(error)
-  }, [])
+  }, [error])
 
-  return <ErrorView errorMessage={error.message ?? ''} onReload={() => navigate(0)} fullScreen={fullScreen} />
+  return <ErrorView errorMessage={error.message ?? ''} onReload={() => router.refresh()} fullScreen={fullScreen} />
 }

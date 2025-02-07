@@ -1,15 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArrowLeft, Candy, X } from 'lucide-react'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { LinkButton } from './Button'
 
 const meta: Meta<typeof LinkButton> = {
   title: 'Components/Atoms/LinkButton',
   component: LinkButton,
-  decorators: [withRouter],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   args: {
-    to: '/',
+    href: '/',
   },
 }
 

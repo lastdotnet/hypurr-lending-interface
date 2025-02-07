@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback, useEffect, useState } from 'react'
 
 import { useAuthenticateConnectedUser } from '@dynamic-labs/sdk-react-core'

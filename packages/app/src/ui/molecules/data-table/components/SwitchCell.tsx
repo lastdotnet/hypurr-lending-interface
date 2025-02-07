@@ -15,7 +15,7 @@ export function SwitchCell({ checked, onSwitchClick, mobileViewOptions }: Switch
   if (mobileViewOptions?.isMobileView) {
     return (
       <div className="flex flex-row items-center justify-between">
-        <Typography variant="prompt">{mobileViewOptions.rowTitle}</Typography>
+        {!mobileViewOptions?.showOnMobile && <Typography variant="prompt">{mobileViewOptions.rowTitle}</Typography>}
         <Switch checked={checked} onClick={onSwitchClick} />
       </div>
     )

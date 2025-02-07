@@ -3,7 +3,6 @@ import { EModeCategoryId } from '@/domain/e-mode/types'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { borrowDialogConfig } from '@/features/dialogs/borrow/BorrowDialog'
 import { eModeDialogConfig } from '@/features/dialogs/e-mode/EModeDialog'
-import { repayDialogConfig } from '@/features/dialogs/repay/RepayDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
@@ -23,10 +22,10 @@ export interface BorrowTableProps {
 
 export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
-        <Panel.Title className="text-xl" gradient>
-          Borrow
+        <Panel.Title className="text-xl md:px-3" gradient>
+          Available to borrow
         </Panel.Title>
         <EModeIndicator
           eModeCategoryId={eModeCategoryId}
@@ -38,7 +37,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_1fr)_2fr]"
+          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_5fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',
@@ -75,29 +74,18 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
             },
             actions: {
               header: '',
-              renderCell: ({ token, debt, reserveStatus, available }) => {
+              renderCell: ({ token, reserveStatus, available }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
                       size="sm"
+                      className="w-full md:w-fit"
                       onClick={() => {
                         openDialog(borrowDialogConfig, { token })
                       }}
                       disabled={reserveStatus === 'frozen' || available.isZero()}
                     >
                       Borrow
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      className="w-full"
-                      size="sm"
-                      disabled={debt.isZero()}
-                      onClick={() => {
-                        openDialog(repayDialogConfig, { token })
-                      }}
-                    >
-                      Repay
                     </Button>
                   </ActionsCell>
                 )

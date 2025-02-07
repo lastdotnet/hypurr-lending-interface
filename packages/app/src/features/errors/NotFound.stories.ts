@@ -1,12 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NotFound } from './NotFound'
 
 const meta: Meta<typeof NotFound> = {
   title: 'Features/Errors/NotFound',
-  decorators: [withRouter()],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
   component: NotFound,
 }
 

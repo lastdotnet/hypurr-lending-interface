@@ -16,7 +16,7 @@ interface ToSLinkProps {
 }
 function ToSLink({ className }: ToSLinkProps) {
   return (
-    <Link to={links.termsOfUse} className={cn('underline', className)} external>
+    <Link href={links.termsOfUse} className={cn('underline', className)} external>
       Terms of Service
     </Link>
   )
@@ -80,7 +80,7 @@ export function TermsOfService({ onAgree }: TermsOfServiceProps) {
       <div className="font-semibold text-xl">Terms of Service and Disclaimer</div>
       <div>
         By using this site, I represent that I have read and agree to the <ToSLink className="text-blue-600" /> and{' '}
-        <Link to={links.privacyPolicy} className="underline" external>
+        <Link href={links.privacyPolicy} className="underline" external>
           Privacy Policy
         </Link>
         . Undefined terms used below are in reference to definitions in the Terms of Service.

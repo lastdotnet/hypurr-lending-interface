@@ -26,7 +26,7 @@ export function DebtCeilingProgress({ debt, debtCeiling }: DebtCeilingProgressPr
           <Info>
             Debt ceiling limits the amount possible to borrow against this asset by protocol users. Debt ceiling is
             specific to assets in isolation mode and is denoted in USD.{' '}
-            {/* <Link to={links.docs.isolationModeBorrowingPower} external>
+            {/* <Link href={links.docs.isolationModeBorrowingPower} external>
               Learn more
             </Link> */}
           </Info>

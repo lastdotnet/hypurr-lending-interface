@@ -1,15 +1,14 @@
-import { matchPath, useLocation } from 'react-router-dom'
-
+import { usePathname } from 'next/navigation'
 import { paths } from '@/config/paths'
 
 import { useBlockedPages } from './useBlockedPages'
 
 export function useIsCurrentPageBlocked(): boolean {
   const blockedPages = useBlockedPages()
-  const { pathname } = useLocation()
+  const pathname = usePathname()
 
   for (const blockedPage of blockedPages) {
-    if (matchPath(paths[blockedPage], pathname)) {
+    if (pathname === paths[blockedPage]) {
       return true
     }
   }
