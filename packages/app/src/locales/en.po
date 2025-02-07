@@ -26,6 +26,14 @@ msgstr ""
 #~ msgid "Connect your wallet"
 #~ msgstr ""
 
+#: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
+msgid "Continue"
+msgstr ""
+
+#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
+msgid "Deposit and borrow"
+msgstr ""
+
 #: src/features/navbar/components/PageLinks.tsx:52
 #~ msgid "Farms"
 #~ msgstr ""
