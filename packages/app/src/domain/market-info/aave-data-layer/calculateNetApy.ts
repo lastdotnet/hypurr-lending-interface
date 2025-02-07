@@ -2,6 +2,10 @@ import type { AaveFormattedReserve, AaveUserSummary } from './query'
 
 import BigNumber from 'bignumber.js'
 import { Percentage } from '@/domain/types/NumericValues'
+import { weightedAverageAPY } from '@/utils/ghoUtils'
+import { displayGhoForMintableMarket } from '@/utils/ghoUtils'
+import { FormattedGhoUserData } from '@aave/math-utils'
+import { FormattedGhoReserveData } from '@aave/math-utils'
 
 export interface NetApyDetails {
   netSupplyApy: Percentage
@@ -58,6 +62,9 @@ export interface NetApyDetails {
 export function calculateNetApy(
   userSummary: AaveUserSummary,
   formattedReserves: AaveFormattedReserve[],
+  formattedGhoReserveData?: FormattedGhoReserveData,
+  formattedGhoUserData?: FormattedGhoUserData,
+  currentMarket?: string,
 ): NetApyDetails {
   const proportions = userSummary.userReservesData.reduce(
     (acc, value) => {
@@ -77,14 +84,42 @@ export function calculateNetApy(
           }
         }
         if (value.variableBorrowsUSD !== '0') {
-          acc.negativeProportion = acc.negativeProportion.plus(
-            new BigNumber(reserve.variableBorrowAPY).multipliedBy(value.variableBorrowsUSD),
-          )
-          if (reserve.vIncentivesData) {
-            for (const incentive of reserve.vIncentivesData) {
-              acc.positiveProportion = acc.positiveProportion.plus(
-                new BigNumber(incentive.incentiveAPR).multipliedBy(value.variableBorrowsUSD),
-              )
+          // @TODO: We do not currently fetch this data. Will need to be implemented to support this.
+          if (
+            currentMarket &&
+            displayGhoForMintableMarket({
+              symbol: reserve.symbol,
+              currentMarket,
+            }) &&
+            formattedGhoUserData &&
+            formattedGhoReserveData
+          ) {
+            const borrowRateAfterDiscount = weightedAverageAPY(
+              formattedGhoReserveData.ghoVariableBorrowAPY,
+              formattedGhoUserData.userGhoBorrowBalance,
+              formattedGhoUserData.userGhoAvailableToBorrowAtDiscount,
+              formattedGhoReserveData.ghoBorrowAPYWithMaxDiscount,
+            )
+            acc.negativeProportion = acc.negativeProportion.plus(
+              new BigNumber(borrowRateAfterDiscount).multipliedBy(formattedGhoUserData.userGhoBorrowBalance),
+            )
+            if (reserve.vIncentivesData) {
+              for (const incentive of reserve.vIncentivesData) {
+                acc.positiveProportion = acc.positiveProportion.plus(
+                  new BigNumber(incentive.incentiveAPR).multipliedBy(formattedGhoUserData.userGhoBorrowBalance),
+                )
+              }
+            }
+          } else {
+            acc.negativeProportion = acc.negativeProportion.plus(
+              new BigNumber(reserve.variableBorrowAPY).multipliedBy(value.variableBorrowsUSD),
+            )
+            if (reserve.vIncentivesData) {
+              for (const incentive of reserve.vIncentivesData) {
+                acc.positiveProportion = acc.positiveProportion.plus(
+                  new BigNumber(incentive.incentiveAPR).multipliedBy(value.variableBorrowsUSD),
+                )
+              }
             }
           }
         }
