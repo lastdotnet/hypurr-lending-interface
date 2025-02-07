@@ -13,8 +13,10 @@ import BigNumber from 'bignumber.js'
 import { UseFormReturn } from 'react-hook-form'
 import { BorrowOverviewPanel } from '../components/BorrowOverviewPanel'
 import { Percentage } from '@/domain/types/NumericValues'
+import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 
 export interface BorrowViewProps {
+  updatedPositionSummary: UserPositionSummary
   selectableAssets: TokenWithBalance[]
   borrowAsset: TokenWithValue
   assetsFields: FormFieldsForDialog
@@ -26,6 +28,7 @@ export interface BorrowViewProps {
   updatedHealthFactor?: BigNumber
   borrowAPY?: Percentage
   riskAcknowledgement: RiskAcknowledgementInfo
+  setDesiredLoanToValue: (desiredLtv: Percentage) => void
 }
 
 export function BorrowView({
@@ -40,6 +43,8 @@ export function BorrowView({
   updatedHealthFactor,
   borrowAPY,
   riskAcknowledgement,
+  updatedPositionSummary,
+  setDesiredLoanToValue,
 }: BorrowViewProps) {
   return (
     <MultiPanelDialog>
@@ -51,6 +56,8 @@ export function BorrowView({
           currentHealthFactor={currentHealthFactor}
           updatedHealthFactor={updatedHealthFactor}
           borrowAPY={borrowAPY}
+          updatedPositionSummary={updatedPositionSummary}
+          setDesiredLoanToValue={setDesiredLoanToValue}
         />
       </FormAndOverviewWrapper>
 
