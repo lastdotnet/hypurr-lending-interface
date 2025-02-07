@@ -12,11 +12,13 @@ import { makeLiquidationDetails } from './makeLiquidationDetails'
 import { makePositionSummary } from './position'
 import { PositionSummary } from './types'
 import { WalletCompositionInfo, makeWalletComposition } from './wallet-composition'
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 
 export interface UseMyPortfolioResults {
   positionSummary: PositionSummary
   deposits: Deposit[]
   borrows: Borrow[]
+  netApyDetails: NetApyDetails
   walletComposition: WalletCompositionInfo
   guestMode: boolean
   eModeCategoryId: EModeCategoryId
@@ -63,6 +65,7 @@ export function useMyPortfolio(): UseMyPortfolioResults {
     positionSummary,
     deposits,
     borrows,
+    netApyDetails: marketInfo.userNetApyDetails,
     walletComposition,
     eModeCategoryId,
     guestMode: !walletInfo.isConnected,

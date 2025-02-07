@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 
 import { NativeAssetInfo } from '@/config/chain/types'
-import { AaveUserReserve } from '@/domain/market-info/aave-data-layer/query'
+import { AaveUserReserve, AaveUserSummary } from '@/domain/market-info/aave-data-layer/query'
 import {
   MarketInfo,
   Reserve,
@@ -265,6 +265,11 @@ export function getMockMarketInfo(
       minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
     },
     NormalizedUnitNumber(100),
+    {
+      netSupplyApy: Percentage(0.05),
+      netBorrowApy: Percentage(0.05),
+      totalNetApy: Percentage(0.05),
+    },
   )
 }
 
@@ -307,6 +312,162 @@ export const daiLikeReserve = getMockReserve({
   usageAsCollateralEnabledOnUser: false,
   incentives: { deposit: [], borrow: [] },
 })
+
+type FormattedAaveUserReservesData = AaveUserSummary['userReservesData'][0]
+
+export function getMockAaveFormattedUserSummaryReserve(
+  overrides: Partial<FormattedAaveUserReservesData['reserve']> = {},
+): FormattedAaveUserReservesData['reserve'] {
+  return {
+    underlyingAsset: '0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8',
+    name: 'Solv BTC',
+    symbol: 'SolvBTC',
+    decimals: 18,
+    baseLTVasCollateral: '7000',
+    reserveLiquidationThreshold: '7500',
+    reserveLiquidationBonus: '10750',
+    reserveFactor: '0',
+    usageAsCollateralEnabled: true,
+    borrowingEnabled: true,
+    stableBorrowRateEnabled: false,
+    isActive: true,
+    isFrozen: false,
+    liquidityIndex: '1000001142660161156360586911',
+    variableBorrowIndex: '1000009390643113370787351582',
+    liquidityRate: '349840191469968457350779',
+    variableBorrowRate: '4182344984993278010582251',
+    stableBorrowRate: '52091172492496639005291125',
+    lastUpdateTimestamp: 1738335220,
+    aTokenAddress: '0x38D92fA1Bc6D946818427aC27F390fE5789EDC8F',
+    stableDebtTokenAddress: '0x52Dbb47b8aaC70cBf8B05958d6E5d020A28c777c',
+    variableDebtTokenAddress: '0xf5e5aB271Cf859eB7a7c0F2a079E188F28297485',
+    interestRateStrategyAddress: '0x7CD29c49B3862C2445D4A6A5e0C9fD27f3Ac7E28',
+    availableLiquidity: '1142421938227517388',
+    totalPrincipalStableDebt: '0',
+    averageStableRate: '0',
+    stableDebtLastUpdateTimestamp: 0,
+    totalScaledVariableDebt: '0.104282023914815228',
+    priceInMarketReferenceCurrency: '10434526308105',
+    priceOracle: '0x85C4F855Bc0609D2584405819EdAEa3aDAbfE97D',
+    variableRateSlope1: '40000000000000000000000000',
+    variableRateSlope2: '750000000000000000000000000',
+    stableRateSlope1: '20000000000000000000000000',
+    stableRateSlope2: '750000000000000000000000000',
+    baseStableBorrowRate: '50000000000000000000000000',
+    baseVariableBorrowRate: '0',
+    optimalUsageRatio: '800000000000000000000000000',
+    isPaused: false,
+    isSiloedBorrowing: false,
+    accruedToTreasury: '0',
+    unbacked: '0',
+    isolationModeTotalDebt: '0',
+    flashLoanEnabled: false,
+    debtCeiling: '0',
+    debtCeilingDecimals: 2,
+    eModeCategoryId: 0,
+    borrowCap: '0',
+    supplyCap: '0',
+    eModeLtv: 0,
+    eModeLiquidationThreshold: 0,
+    eModeLiquidationBonus: 0,
+    eModePriceSource: '0x0000000000000000000000000000000000000000',
+    eModeLabel: '',
+    borrowableInIsolation: false,
+    id: '998-0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8-0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
+    totalDebt: '0.104283010326440714',
+    totalStableDebt: '0',
+    totalVariableDebt: '0.104283010326440714',
+    totalLiquidity: '1.246704948553958102',
+    borrowUsageRatio: '0.08364690494522993848',
+    supplyUsageRatio: '0.08364690494522993848',
+    formattedReserveLiquidationBonus: '0.075',
+    formattedEModeLiquidationBonus: '-1',
+    formattedEModeLiquidationThreshold: '0',
+    formattedEModeLtv: '0',
+    supplyAPY: '0',
+    variableBorrowAPY: '0',
+    stableBorrowAPY: '0',
+    formattedAvailableLiquidity: '1.142421938227517388',
+    unborrowedLiquidity: '1.142421938227517388',
+    formattedBaseLTVasCollateral: '0.7',
+    supplyAPR: '0',
+    variableBorrowAPR: '0',
+    stableBorrowAPR: '0',
+    formattedReserveLiquidationThreshold: '0.75',
+    debtCeilingUSD: '0',
+    isolationModeTotalDebtUSD: '0',
+    availableDebtCeilingUSD: '0',
+    isIsolated: false,
+    totalLiquidityUSD: '130087.75584130966392446913',
+    availableLiquidityUSD: '119206.31769391335378127333',
+    totalDebtUSD: '10881.4381473963101431958',
+    totalVariableDebtUSD: '10881.4381473963101431958',
+    totalStableDebtUSD: '0',
+    formattedPriceInMarketReferenceCurrency: '104345.26308105',
+    priceInUSD: '104345.26308105',
+    borrowCapUSD: '0',
+    supplyCapUSD: '0',
+    unbackedUSD: '0',
+    aIncentivesData: [],
+    vIncentivesData: [],
+    sIncentivesData: [],
+    ...overrides,
+  }
+}
+
+export function getMockUserReservesData(
+  reserve: FormattedAaveUserReservesData['reserve'],
+  overrides: Partial<FormattedAaveUserReservesData> = {},
+): FormattedAaveUserReservesData {
+  return {
+    underlyingAsset: '0x4B85aCF84b2593D67f6593D18504dBb3A337D3D8',
+    scaledATokenBalance: '0',
+    usageAsCollateralEnabledOnUser: false,
+    stableBorrowRate: '0',
+    scaledVariableDebt: '0',
+    principalStableDebt: '0',
+    stableBorrowLastUpdateTimestamp: 0,
+    underlyingBalance: '0',
+    underlyingBalanceMarketReferenceCurrency: '0',
+    underlyingBalanceUSD: '0',
+    stableBorrows: '0',
+    stableBorrowsMarketReferenceCurrency: '0',
+    stableBorrowsUSD: '0',
+    variableBorrows: '0',
+    variableBorrowsMarketReferenceCurrency: '0',
+    variableBorrowsUSD: '0',
+    totalBorrows: '0',
+    totalBorrowsMarketReferenceCurrency: '0',
+    totalBorrowsUSD: '0',
+    stableBorrowAPR: '0',
+    stableBorrowAPY: '0',
+    reserve,
+    ...overrides,
+  }
+}
+
+export function getMockAaveFormattedUserSummary(
+  userReservesData: AaveUserSummary['userReservesData'],
+  overrides: Partial<AaveUserSummary> = {},
+): AaveUserSummary {
+  return {
+    userReservesData,
+    totalLiquidityMarketReferenceCurrency: '0',
+    totalLiquidityUSD: '0',
+    totalCollateralMarketReferenceCurrency: '0',
+    totalCollateralUSD: '0',
+    totalBorrowsMarketReferenceCurrency: '0',
+    totalBorrowsUSD: '0',
+    netWorthUSD: '0',
+    availableBorrowsMarketReferenceCurrency: '0',
+    availableBorrowsUSD: '0',
+    currentLoanToValue: '0',
+    currentLiquidationThreshold: '0',
+    healthFactor: '-1',
+    isInIsolationMode: false,
+    ...overrides,
+  }
+}
 
 export const usdcLikeReserve = {
   ...daiLikeReserve,

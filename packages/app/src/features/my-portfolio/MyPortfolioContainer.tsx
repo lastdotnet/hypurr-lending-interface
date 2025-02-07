@@ -12,6 +12,7 @@ function MyPortfolioContainer() {
     positionSummary,
     deposits,
     borrows,
+    netApyDetails,
     walletComposition,
     eModeCategoryId,
     guestMode,
@@ -34,6 +35,7 @@ function MyPortfolioContainer() {
       eModeCategoryId={eModeCategoryId}
       openDialog={openDialog}
       liquidationDetails={liquidationDetails}
+      netApyDetails={netApyDetails}
     />
   )
 }
