@@ -1,3 +1,5 @@
+'use client'
+
 import { deepmerge } from 'deepmerge-ts'
 import { DeepPartial } from 'react-hook-form'
 import { create } from 'zustand'

@@ -1,7 +1,8 @@
+'use client'
 import { StateCreator } from 'zustand'
 
 import { StoreState, useStore } from '@/domain/state/index'
-
+import { useState, useEffect } from 'react'
 export interface BannersVisibility {
   bannerVisibilityStatus: {
     [id: string]: boolean
@@ -55,8 +56,14 @@ interface UseBannerResults {
 export function useBannerVisibility(id: string): UseBannerResults {
   const { bannerVisibilityStatus, closeBanner } = useStore((state) => state.bannersVisibility)
 
+  const [showBanner, setShowBanner] = useState(false)
+
+  useEffect(() => {
+    setShowBanner(process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && (bannerVisibilityStatus[id] ?? true))
+  }, [bannerVisibilityStatus, id])
+
   return {
-    showBanner: bannerVisibilityStatus[id] ?? true,
+    showBanner,
     handleCloseBanner: () => {
       closeBanner(id)
     },
