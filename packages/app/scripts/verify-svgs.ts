@@ -35,7 +35,7 @@ if (errors.length > 0) {
   process.exit(1)
 }
 
-function startsWithWhitespace(str) {
+function startsWithWhitespace(str: string) {
   const regex = /^[\s]/
   return regex.test(str)
 }

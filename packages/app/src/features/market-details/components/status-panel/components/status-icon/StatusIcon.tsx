@@ -1,7 +1,7 @@
 import { MarketAssetStatus } from '@/domain/market-info/reserve-status'
 import { getVariantFromStatus } from '@/features/markets/components/asset-status-badge/getVariantFromStatus'
-import CheckCircle from '@/ui/assets/check-circle.svg?react'
-import XCircle from '@/ui/assets/x-circle.svg?react'
+import CheckCircle from '@/ui/assets/check-circle.svg'
+import XCircle from '@/ui/assets/x-circle.svg'
 import { IndicatorIcon } from '@/ui/atoms/indicator-icon/IndicatorIcon'
 
 interface StatusIconProps {

@@ -1,6 +1,5 @@
-import { useAccount } from 'wagmi'
-
 import { apiUrl } from '@/config/consts'
+import { useAccount } from '@/domain/hooks/useAccount'
 
 import { blockedCountryCodes } from './consts'
 import { useIsCurrentPageBlocked } from './useIsCurrentPageBlocked'
@@ -12,12 +11,12 @@ export type UseIPAndAddressCheck =
   | { blocked: true; reason: 'address-not-allowed' | 'vpn-detected' }
   | { blocked: true; reason: 'region-blocked' | 'page-not-available-in-region'; data: { countryCode: string } }
 export function useIPAndAddressCheck(): UseIPAndAddressCheck {
-  if (import.meta.env.VITE_FEATURE_AUTH_IP_AND_ADDRESS_CHECKS !== '1') {
+  if (process.env.NEXT_PUBLIC_FEATURE_AUTH_IP_AND_ADDRESS_CHECKS !== '1') {
     return { blocked: false }
   }
 
   // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
-  const { address } = useAccount()
+  const address = useAccount()
   // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
   const addressCheck = useRestrictedAddressCheck({
     address,

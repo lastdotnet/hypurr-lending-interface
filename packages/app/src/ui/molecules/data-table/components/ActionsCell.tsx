@@ -12,7 +12,7 @@ export function ActionsCell({ children }: ActionsCellWrapperProps) {
         e.stopPropagation()
       }}
     >
-      <div className="flex w-full gap-2 md:w-40">{children}</div>
+      <div className="flex w-full justify-end gap-2">{children}</div>
     </div>
   )
 }

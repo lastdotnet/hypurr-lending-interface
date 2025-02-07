@@ -15,8 +15,8 @@ export interface UseSandboxStateResult {
 }
 
 export function useSandboxState(): UseSandboxStateResult {
-  const isSandboxEnabled = import.meta.env.VITE_FEATURE_SANDBOX === '1'
-  const isDevSandboxEnabled = import.meta.env.VITE_FEATURE_DEV_SANDBOX === '1'
+  const isSandboxEnabled = process.env.NEXT_PUBLIC_FEATURE_SANDBOX === '1'
+  const isDevSandboxEnabled = process.env.NEXT_PUBLIC_FEATURE_DEV_SANDBOX === '1'
 
   if (!isSandboxEnabled) {
     return {

@@ -33,7 +33,7 @@ function FriendlyCaptcha({
     <div
       ref={container}
       className="frc-captcha dark"
-      data-sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITE_KEY}
+      data-sitekey={process.env.NEXT_PUBLIC_FRIENDLY_CAPTCHA_SITE_KEY}
       data-theme="dark"
     />
   )

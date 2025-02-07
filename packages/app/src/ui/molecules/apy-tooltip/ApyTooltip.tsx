@@ -32,7 +32,7 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
         borrowing within each pool.
       </p>
       {/* <p>
-        <Link to={links.docs.supplying} external>
+        <Link href={links.docs.supplying} external>
           Learn more
         </Link>
         .
@@ -50,7 +50,7 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
       </p>
       {/* <p> This doesn't apply to DAI as Sky Ecosystem Governance defines the borrowing rate.</p>
       <p>
-        <Link to={links.docs.borrowing} external>
+        <Link href={links.docs.borrowing} external>
           Learn more
         </Link>
         .

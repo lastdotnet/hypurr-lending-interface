@@ -2,7 +2,6 @@ import { WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 
@@ -13,9 +12,12 @@ const meta: Meta<typeof MarketsView> = {
   title: 'Features/Markets/Views/MarketsView',
   component: MarketsView,
   parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
     layout: 'fullscreen',
   },
-  decorators: [WithTooltipProvider(), withRouter],
+  decorators: [WithTooltipProvider()],
 }
 
 export default meta

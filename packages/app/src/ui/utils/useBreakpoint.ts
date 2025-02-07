@@ -1,3 +1,5 @@
+'use client'
+
 import { useQuery } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
 
@@ -33,6 +35,10 @@ function useMediaQuery(query: string): boolean {
     [query],
   )
   function getSnapshot(): boolean {
+    if (typeof window === 'undefined') {
+      return false
+    }
+
     return window.matchMedia(query).matches
   }
 

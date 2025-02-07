@@ -98,7 +98,7 @@ export function getEasyBorrowFormValidator({
 }: GetEasyBorrowFormValidatorOptions) {
   return z
     .object({
-      assetsToBorrow: z.array(AssetInputSchema),
+      assetsToBorrow: z.array(BaseAssetInputSchema),
       assetsToDeposit: guestMode
         ? z.array(AssetInputSchema)
         : getDepositFieldsValidator(walletInfo, alreadyDeposited, marketInfo),
@@ -110,6 +110,23 @@ export function getEasyBorrowFormValidator({
         marketInfo,
         upgradeOptions,
       })
+
+      const borrowValue = borrows[0]!.value
+      const borrowReserve = borrows[0]!.reserve
+      const depositValue = deposits[0]!.value
+
+      if (borrowValue.isZero() && depositValue.isZero()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'You must either deposit or borrow an asset',
+          path: ['assetsToBorrow'],
+        })
+        return
+      }
+
+      // Skip borrow validation if borrow value is zero
+      if (borrowValue.isZero()) return
+
       const updatedUserSummary = updatePositionSummary({
         borrows,
         deposits,
@@ -117,10 +134,10 @@ export function getEasyBorrowFormValidator({
         aaveData,
         nativeAssetInfo,
       })
-      const value = borrows[0]!.value
-      const reserve = borrows[0]!.reserve
 
-      const validationIssue = validateBorrow(getValidateBorrowArgs(value, reserve, marketInfo, updatedUserSummary))
+      const validationIssue = validateBorrow(
+        getValidateBorrowArgs(borrowValue, borrowReserve, marketInfo, updatedUserSummary),
+      )
       if (validationIssue) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

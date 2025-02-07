@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 
 import { assets } from '@/ui/assets'
 import { cn } from '@/ui/utils/style'
@@ -32,7 +34,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
       )}
     >
       <div className="flex h-20 shrink-0 flex-row items-center justify-between">
-        <Link to="/" className="inline-flex items-center gap-2">
+        <Link href="/" className="inline-flex items-center gap-2">
           <img src={assets.hypurrLogo} alt="Hypurr logo" className="w-20" />
           <img src={assets.hypurrLogoText} alt="Hypurr logo" className="w-[74px]" />
         </Link>

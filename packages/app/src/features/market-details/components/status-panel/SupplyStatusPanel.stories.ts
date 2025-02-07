@@ -4,7 +4,6 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
-import { withRouter } from 'storybook-addon-remix-react-router'
 
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 
@@ -13,7 +12,12 @@ import { SupplyStatusPanel } from './SupplyStatusPanel'
 const meta: Meta<typeof SupplyStatusPanel> = {
   title: 'Features/MarketDetails/Components/StatusPanel/SupplyStatusPanel',
   component: SupplyStatusPanel,
-  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl'), withRouter],
+  decorators: [WithTooltipProvider(), WithClassname('max-w-2xl')],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 }
 
 export default meta

@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 
 // @todo: any better idea to import locales? TypeScript doesn't like this
 // @ts-ignore
-import { messages } from '../../locales/en.po'
+import { messages } from '../../locales/en.js'
 
 i18n.load('en', messages)
 i18n.activate('en')

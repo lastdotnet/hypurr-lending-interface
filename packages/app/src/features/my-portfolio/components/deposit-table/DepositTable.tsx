@@ -1,19 +1,17 @@
 import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
-import { collateralDialogConfig } from '@/features/dialogs/collateral/CollateralDialog'
 import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
-import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
 import { ActionsCell } from '@/ui/molecules/data-table/components/ActionsCell'
 import { CompactValueCell } from '@/ui/molecules/data-table/components/CompactValueCell'
 import { PercentageCell } from '@/ui/molecules/data-table/components/PercentageCell'
-import { SwitchCell } from '@/ui/molecules/data-table/components/SwitchCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { CheckmarkCell } from '@/ui/molecules/data-table/components/CheckmarkCell'
 
 export interface DepositTableProps {
   assets: Deposit[]
@@ -22,16 +20,16 @@ export interface DepositTableProps {
 
 export function DepositTable({ assets, openDialog }: DepositTableProps) {
   return (
-    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg">
+    <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
-        <Panel.Title className="text-xl" gradient>
-          Deposit
+        <Panel.Title className="text-xl md:px-3" gradient>
+          Available to deposit
         </Panel.Title>
       </Panel.Header>
 
       <Panel.Content>
         <ResponsiveDataTable
-          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_2fr_4fr]"
+          gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_2fr_3fr]"
           columnDefinition={{
             symbol: {
               header: 'Assets',
@@ -69,48 +67,26 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               ),
             },
             collateral: {
-              header: 'Collateral',
+              header: 'Can be collateral',
               headerAlign: 'right',
-              renderCell: ({ isUsedAsCollateral, token }, mobileViewOptions) => (
-                <SwitchCell
-                  checked={isUsedAsCollateral}
-                  onSwitchClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    openDialog(collateralDialogConfig, {
-                      useAsCollateral: !isUsedAsCollateral,
-                      token,
-                    })
-                  }}
-                  mobileViewOptions={mobileViewOptions}
-                />
+              renderCell: ({ usageAsCollateralEnabled }) => (
+                <CheckmarkCell usageAsCollateralEnabled={usageAsCollateralEnabled} />
               ),
             },
             actions: {
               header: '',
-              renderCell: ({ token, deposit, reserveStatus }) => {
+              renderCell: ({ token, reserveStatus }) => {
                 return (
                   <ActionsCell>
                     <Button
-                      className="w-full"
                       size="sm"
+                      className="w-full md:w-fit"
                       onClick={() => {
                         openDialog(depositDialogConfig, { token })
                       }}
                       disabled={reserveStatus === 'frozen' || token.symbol === TokenSymbol('USDXL')}
                     >
                       Deposit
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="w-full"
-                      disabled={deposit.isZero()}
-                      onClick={() => {
-                        openDialog(withdrawDialogConfig, { token })
-                      }}
-                    >
-                      Withdraw
                     </Button>
                   </ActionsCell>
                 )

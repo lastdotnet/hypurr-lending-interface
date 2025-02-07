@@ -106,7 +106,7 @@ function PointsFarmDetails({
           </div>
         )}
         Learn more about farming{' '}
-        <Link to={links.docs.farmingRewards} external>
+        <Link href={links.docs.farmingRewards} external>
           here
         </Link>
         .
@@ -131,7 +131,7 @@ function TokenFarmDetails({ farm, assetsGroupType }: { farm: Farm; assetsGroupTy
           <>Deposit any of the tokens listed below and start farming {farm.rewardToken.symbol} tokens.</>
         )}{' '}
         Learn more about farming{' '}
-        <Link to={links.docs.farmingRewards} external>
+        <Link href={links.docs.farmingRewards} external>
           here
         </Link>
         .

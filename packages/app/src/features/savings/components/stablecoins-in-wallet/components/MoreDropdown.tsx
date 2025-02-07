@@ -1,10 +1,10 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { MigrationInfo } from '@/features/savings/logic/makeMigrationInfo'
-import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg?react'
-import DocumentSketchIcon from '@/ui/assets/document-sketch.svg?react'
-import DowngradeIcon from '@/ui/assets/downgrade.svg?react'
-import MoreIcon from '@/ui/assets/more-icon.svg?react'
+import BoxArrowTopRight from '@/ui/assets/box-arrow-top-right.svg'
+import DocumentSketchIcon from '@/ui/assets/document-sketch.svg'
+import DowngradeIcon from '@/ui/assets/downgrade.svg'
+import MoreIcon from '@/ui/assets/more-icon.svg?url'
 import { Button } from '@/ui/atoms/button/Button'
 import {
   DropdownMenu,
@@ -64,7 +64,7 @@ function DropdownWrapper({ children, disabled }: { children?: React.ReactNode; d
           disabled={disabled}
           data-testid={testIds.savings.stablecoinsInWallet.moreDropdown}
         >
-          <MoreIcon />
+          <img src={MoreIcon} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">{children}</DropdownMenuContent>
