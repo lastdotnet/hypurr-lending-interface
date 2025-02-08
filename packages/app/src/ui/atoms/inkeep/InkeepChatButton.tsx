@@ -6,7 +6,7 @@ const baseSettings = {
   apiKey: process.env.NEXT_PUBLIC_INKEEP_API_KEY,
   integrationId: process.env.NEXT_PUBLIC_INKEEP_INTEGRATION_ID,
   organizationId: process.env.NEXT_PUBLIC_INKEEP_ORGANIZATION_ID,
-  primaryBrandColor: '#000000',
+  primaryBrandColor: '#70fbda',
 }
 
 export const InkeepChatButton = () => {
@@ -15,14 +15,20 @@ export const InkeepChatButton = () => {
   useEffect(() => {
     const loadInkeepJS = async () => {
       const inkeepJS = await import('@inkeep/uikit-js')
-      const inkeep = inkeepJS.Inkeep(baseSettings)
+      const inkeep = inkeepJS.Inkeep({})
       chatButtonRef.current = inkeep.embed({
         componentType: 'ChatButton',
+        colorModeSync: {
+          observedElement: document.documentElement,
+          isDarkModeCallback: () => true,
+          colorModeAttribute: 'class',
+        },
         properties: {
           chatButtonType: 'PILL',
           baseSettings,
           aiChatSettings: {
-            quickQuestions: ['How to get started?'],
+            quickQuestions: ['What is HypurrFi?'],
+            botAvatarSrcUrl: '/hypurr-paw.svg',
           },
         },
       })
