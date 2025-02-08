@@ -28,6 +28,16 @@ export const InkeepChatButton = () => {
       })
     }
     loadInkeepJS()
+
+    return () => {
+      if (chatButtonRef.current) {
+        try {
+          chatButtonRef.current.destroy()
+        } catch (error) {
+          console.error('Error destroying Inkeep chat button', error)
+        }
+      }
+    }
   }, [])
 
   return null
