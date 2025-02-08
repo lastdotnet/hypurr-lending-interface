@@ -12,6 +12,7 @@ import { TOP_BANNER_ID, TopBanner } from '../../atoms/top-banner/TopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
+import { InkeepChatButton } from '@/ui/atoms/inkeep/InkeepChatButton'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -44,6 +45,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             document.body,
           )}
       </main>
+      <InkeepChatButton />
     </div>
   )
 }
