@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { CatSpinner } from '@/ui/molecules/cat-spinner/CatSpinner'
 import { faucetUrl } from '@/config/consts'
 import { trackEvent } from '@/utils/fathom'
-import ConnectXButtonGroup from '../components/ConnectXButtonGroup'
+// import ConnectXButtonGroup from '../components/ConnectXButtonGroup'
 import FriendlyCaptcha from '../components/FriendlyCaptcha'
 import { Address } from 'viem'
 import { marketBalancesQueryKey } from '@/domain/wallet/marketBalances'
@@ -18,7 +18,7 @@ const STORAGE_KEY = 'lastFaucetMint' as const
 export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void }) {
   const queryClient = useQueryClient()
   const { primaryWallet, network } = useDynamicContext()
-  const [handle, setHandle] = useState<string | null>(null)
+  const [handle, _setHandle] = useState<string | null>(null)
   const [lastMintTime, setLastMintTime] = useState<number | null>(null)
   const [captchaSolution, setCaptchaSolution] = useState<string | null>(null)
   const [mintPending, setMintPending] = useState(false)
@@ -96,7 +96,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
 
   return (
     <div className="flex flex-col gap-4">
-      <ConnectXButtonGroup setHandle={setHandle} />
+      {/* <ConnectXButtonGroup setHandle={setHandle} /> */}
 
       {(() => {
         switch (true) {
