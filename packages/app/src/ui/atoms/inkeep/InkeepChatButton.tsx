@@ -24,7 +24,7 @@ export const InkeepChatButton = () => {
           colorModeAttribute: 'class',
         },
         properties: {
-          chatButtonType: 'PILL',
+          chatButtonType: 'ICON',
           baseSettings,
           aiChatSettings: {
             quickQuestions: ['What is HypurrFi?'],

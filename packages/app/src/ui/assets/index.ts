@@ -97,6 +97,9 @@ import faucetPurr from './faucet-purr.webp'
 import hypurrLogoText from './hypurr-logo-text.svg?url'
 import solvbtc from './tokens/solvBtc.png'
 import sttesth from './tokens/sttesth.svg?url'
+import telegram from './social-logos/telegram-logo.svg?url'
+import x from './social-logos/x-logo.svg?url'
+import github from './social-logos/github-logo.svg?url'
 
 export const assets = {
   hypurrPaw,
@@ -142,6 +145,11 @@ export const assets = {
   multiply,
   equal,
   lastLogo,
+  socialLogos: {
+    telegram,
+    x,
+    github,
+  },
   markets: {
     chart,
     inputOutput,

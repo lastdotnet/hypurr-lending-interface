@@ -3,7 +3,17 @@ import { cn } from '@/ui/utils/style'
 import { FeedbackFish } from '@feedback-fish/react'
 
 import { SavingsInfoQueryResults } from '../types'
-import { ExternalNavLink, NavLink, PlaceholderNavLink } from './nav-link/NavLink'
+import { focusVariants, NavLink, PlaceholderNavLink, textVariants } from './nav-link/NavLink'
+import {
+  ArrowRightLeftIcon,
+  LayoutGridIcon,
+  BarChartIcon,
+  MessageSquareIcon,
+  WalletCardsIcon,
+  DropletIcon,
+  ArrowDownUpIcon,
+  UserPlusIcon,
+} from 'lucide-react'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -25,54 +35,80 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
   const links = [
     {
       to: paths.easyBorrow,
-      label: 'Borrow',
+      label: 'Quick borrow',
       onClick: handleNavigate,
+      icon: <ArrowRightLeftIcon className="h-5 w-5" />,
     },
     {
       to: paths.dashboard,
       label: 'Dashboard',
       onClick: handleNavigate,
+      icon: <LayoutGridIcon className="h-5 w-5" />,
     },
     {
       to: paths.markets,
       label: 'Markets',
       onClick: handleNavigate,
+      icon: <BarChartIcon className="h-5 w-5" />,
     },
     {
-      label: 'Isolated markets',
+      to: paths.markets,
+      label: 'Swap',
+      onClick: handleNavigate,
+      icon: <ArrowDownUpIcon className="h-5 w-5" />,
+    },
+    {
+      to: paths.markets,
+      label: 'Referrals',
+      onClick: handleNavigate,
+      icon: <UserPlusIcon className="h-5 w-5" />,
+    },
+    {
+      label: 'Isolated',
+      onClick: handleNavigate,
+      icon: <MessageSquareIcon className="h-5 w-5" />,
+    },
+    {
+      label: 'Staking',
+      onClick: handleNavigate,
+      icon: <WalletCardsIcon className="h-5 w-5" />,
     },
     {
       to: paths.faucet,
       label: 'Faucet',
       onClick: handleNavigate,
+      icon: <DropletIcon className="h-5 w-5" />,
     },
   ]
 
   return (
     <div
       className={cn(
-        'flex flex-1 flex-col items-start gap-6 py-6 font-sans',
-        'xl:flex xl:flex-row xl:justify-center xl:py-0 xl:pt-0',
+        'flex w-full flex-1 flex-col items-start gap-6 py-6 xl:pb-0',
         mobileMenuCollapsed && 'hidden xl:flex',
       )}
     >
       {links.map((link) =>
         link.to ? (
-          <NavLink key={link.to} to={link.to} onClick={link.onClick}>
+          <NavLink key={link.label} to={link.to} onClick={link.onClick} icon={link.icon}>
             {link.label}
           </NavLink>
         ) : (
-          <PlaceholderNavLink key={link.label} withIndicator={false}>
+          <PlaceholderNavLink key={link.label} icon={link.icon}>
             {link.label}
           </PlaceholderNavLink>
         ),
       )}
 
-      <ExternalNavLink href="http://docs.hypurr.fi/">Docs</ExternalNavLink>
-
       <FeedbackFish projectId={process.env.NEXT_PUBLIC_FEEDBACK_FISH_PROJECT_ID || ''}>
-        <button className="cursor-pointer rounded-md text-left text-white/50 text-xl hover:text-white xl:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-          Feedback
+        <button
+          className={cn(
+            focusVariants(),
+            textVariants({ selected: false, isPlaceholder: false }),
+            'flex cursor-pointer items-center gap-2 rounded-md',
+          )}
+        >
+          <MessageSquareIcon className="h-5 w-5" /> Give Feedback
         </button>
       </FeedbackFish>
     </div>

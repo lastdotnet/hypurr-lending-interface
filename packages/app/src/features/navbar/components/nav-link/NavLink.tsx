@@ -3,42 +3,38 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/ui/utils/style'
-import { VariantProps, cva } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+
+interface NavLinkComponentProps {
+  children: React.ReactNode
+  selected?: boolean
+  isPlaceholder?: boolean
+  className?: string
+  postfix?: React.ReactNode
+  icon?: React.ReactNode
+}
 
 export interface NavLinkProps extends NavLinkComponentProps {
   to: string
   onClick?: () => void
-  className?: string
-  withIndicator?: boolean
-  children: React.ReactNode
 }
 
-export interface ExternalNavLinkProps {
+export interface NavButtonProps extends NavLinkComponentProps {
+  onClick: () => void
+}
+
+export interface ExternalNavLinkProps extends NavLinkComponentProps {
   href: string
-  className?: string
-  withIndicator?: boolean
-  children: React.ReactNode
 }
 
-export interface PlaceholderNavLinkProps {
-  className?: string
-  withIndicator?: boolean
-  children: React.ReactNode
-}
+export interface PlaceholderNavLinkProps extends NavLinkComponentProps {}
 
 export function NavLink({ to, children, onClick, className, ...rest }: NavLinkProps) {
   const pathname = usePathname() ?? ''
   const selected = to === '/' ? pathname === '/' : pathname.startsWith(to)
 
   return (
-    <Link
-      href={to}
-      onClick={onClick}
-      className={cn(
-        'rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        className,
-      )}
-    >
+    <Link href={to} onClick={onClick} className={cn(focusVariants(), className)}>
       <NavLinkComponent selected={selected} {...rest}>
         {children}
       </NavLinkComponent>
@@ -48,15 +44,7 @@ export function NavLink({ to, children, onClick, className, ...rest }: NavLinkPr
 
 export function ExternalNavLink({ href, children, className, ...rest }: ExternalNavLinkProps) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        'rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        className,
-      )}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className={cn(focusVariants(), className)}>
       <NavLinkComponent selected={false} {...rest}>
         {children}
       </NavLinkComponent>
@@ -64,121 +52,55 @@ export function ExternalNavLink({ href, children, className, ...rest }: External
   )
 }
 
-export function PlaceholderNavLink({ children, className, ...rest }: PlaceholderNavLinkProps) {
+export function NavButton({ onClick, children, className, ...rest }: NavButtonProps) {
   return (
-    <span
-      className={cn(
-        'cursor-default rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        className,
-      )}
-    >
-      <NavLinkComponent
-        {...rest}
-        isPlaceholder
-        withIndicator
-        postfix={
-          <span className="ml-1 block self-start rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
-            Soon
-          </span>
-        }
-      >
+    <button onClick={onClick} className={cn(focusVariants(), className)}>
+      <NavLinkComponent selected={false} {...rest}>
         {children}
       </NavLinkComponent>
-    </span>
+    </button>
   )
 }
 
-interface NavLinkComponentProps {
-  children: React.ReactNode
-  selected?: boolean
-  postfix?: React.ReactNode
-  variant?: 'horizontal' | 'vertical'
-  size?: 'sm' | 'md'
-  shady?: boolean
-  isPlaceholder?: boolean
-  className?: string
-  withIndicator?: boolean
+export function PlaceholderNavLink({ children, className, ...rest }: PlaceholderNavLinkProps) {
+  return (
+    <NavLinkComponent
+      {...rest}
+      isPlaceholder
+      className={cn('cursor-default', className)}
+      postfix={
+        <span className="ml-1 block self-start rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
+          Soon
+        </span>
+      }
+    >
+      {children}
+    </NavLinkComponent>
+  )
 }
 
 export function NavLinkComponent({
   children,
   selected,
   postfix,
-  variant = 'horizontal',
-  size = 'md',
-  shady,
   className,
-  withIndicator = false,
   isPlaceholder,
+  icon,
 }: NavLinkComponentProps) {
   return (
-    <NavLinkBox>
-      <NavLinkBox.Content
-        shady={shady}
-        selected={selected}
-        isPlaceholder={isPlaceholder}
-        postfix={postfix}
-        variant={variant}
-        size={size}
-        className={className}
-      >
-        {children}
-      </NavLinkBox.Content>
-      {withIndicator && <NavLinkBox.Indicator selected={selected} variant={variant} />}
-    </NavLinkBox>
-  )
-}
-
-export function NavLinkBox({ children, className, ...rest }: React.HTMLProps<HTMLDivElement>) {
-  return (
-    <span className={cn('relative isolate flex h-full flex-row justify-between xl:flex-col', className)} {...rest}>
+    <span className={cn('flex flex-row items-center gap-4', textVariants({ selected, isPlaceholder }), className)}>
+      {icon}
       {children}
+      {postfix}
     </span>
   )
 }
 
-const pseudoElementVariants = cva('-z-10 absolute bottom-0 left-0 hidden xl:block', {
-  variants: {
-    variant: {
-      horizontal: 'h-1.5 rounded-t-lg',
-      vertical: 'h-full w-1.5 rounded-r-lg',
-    },
-    selected: {
-      true: 'bg-nav-primary',
-    },
-  },
-})
-
-export function NavLinkIndicator({
-  variant = 'horizontal',
-  selected,
-  className,
-  ...rest
-}: VariantProps<typeof pseudoElementVariants> & React.HTMLProps<HTMLDivElement>) {
-  return <div className={cn(pseudoElementVariants({ variant, selected }), className)} {...rest} />
-}
-
-const contentVariants = cva('flex h-full flex-row items-center gap-1 text-primary', {
-  variants: {
-    variant: {
-      horizontal: 'xl:justify-center',
-      vertical: 'p-4',
-    },
-    size: {
-      sm: 'text-base xl:text-sm',
-      md: 'text-xl xl:text-base',
-    },
-  },
-})
-
-const textVariants = cva('flex h-full flex-row items-center', {
+export const textVariants = cva('font-medium text-xl transition-colors xl:text-sm', {
   variants: {
     selected: {
       true: 'text-white',
       false: 'text-white/50 hover:text-white',
-    },
-    shady: {
-      true: 'first:opacity-50 hover:first:opacity-100',
     },
     isPlaceholder: {
       true: 'text-white/50',
@@ -186,28 +108,9 @@ const textVariants = cva('flex h-full flex-row items-center', {
   },
 })
 
-export function NavLinkContent({
-  className,
-  variant = 'horizontal',
-  shady,
-  selected,
-  isPlaceholder,
-  size = 'md',
-  children,
-  postfix,
-  ...rest
-}: Omit<React.HTMLProps<HTMLDivElement>, 'size'> & {
-  isPlaceholder?: boolean
-  postfix?: React.ReactNode
-} & VariantProps<typeof contentVariants> &
-  VariantProps<typeof textVariants>) {
-  return (
-    <span className={cn(contentVariants({ size, variant }), className)} {...rest}>
-      <span className={textVariants({ shady: shady && !selected, selected, isPlaceholder })}>{children}</span>
-      {postfix}
-    </span>
-  )
-}
-
-NavLinkBox.Indicator = NavLinkIndicator
-NavLinkBox.Content = NavLinkContent
+export const focusVariants = cva(
+  'rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+  {
+    variants: {},
+  },
+)

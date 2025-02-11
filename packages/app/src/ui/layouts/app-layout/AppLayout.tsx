@@ -28,23 +28,31 @@ export function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className={cn('flex min-h-screen flex-col')}>
       {process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
-      <Navbar
-        mobileMenuCollapsed={mobileMenuCollapsed}
-        setMobileMenuCollapsed={setMobileMenuCollapsed}
-        className="z-20"
-      />
-      <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden xl:flex')}>
-        {children}
-        {(!pageSupported || isWrongNetwork) &&
-          createPortal(
-            <PageNotSupportedWarning
-              pageName={pageName}
-              openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
-              className="z-[1000]"
-            />,
-            document.body,
-          )}
-      </main>
+
+      <div className="flex flex-col xl:flex-row">
+        <div className="top-0 bottom-0 flex overflow-y-scroll xl:fixed xl:w-64">
+          <Navbar
+            mobileMenuCollapsed={mobileMenuCollapsed}
+            setMobileMenuCollapsed={setMobileMenuCollapsed}
+            className="z-20"
+          />
+        </div>
+
+        <main
+          className={cx('isolate flex w-full grow flex-col xl:ml-64 xl:px-4', !mobileMenuCollapsed && 'hidden xl:flex')}
+        >
+          {children}
+          {(!pageSupported || isWrongNetwork) &&
+            createPortal(
+              <PageNotSupportedWarning
+                pageName={pageName}
+                openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
+                className="z-[1000]"
+              />,
+              document.body,
+            )}
+        </main>
+      </div>
       <InkeepChatButton />
     </div>
   )
