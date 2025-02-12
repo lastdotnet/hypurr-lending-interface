@@ -1,21 +1,22 @@
 import { assets } from '@/ui/assets'
 import { focusVariants } from './nav-link/NavLink'
 import { cn } from '@/ui/utils/style'
+import { links } from '@/ui/constants/links'
 
 const socialLinks = [
   {
-    href: 'https://x.com/hypurrfi',
+    href: links.social.x,
     icon: <img src={assets.socialLogos.x} alt="X" />,
     label: 'X',
   },
   {
-    href: 'https://t.me/+YvsBvSxlQrVhNDkx',
+    href: links.social.telegram,
     icon: <img src={assets.socialLogos.telegram} alt="Telegram" />,
     label: 'Telegram',
   },
 
   {
-    href: 'https://github.com/lastdotnet',
+    href: links.social.github,
     icon: <img src={assets.socialLogos.github} alt="Github" />,
     label: 'Github',
   },
@@ -23,15 +24,15 @@ const socialLinks = [
 
 const infoLinks = [
   {
-    href: 'https://docs.hypurr.fi/introduction/hypurrfi',
+    href: links.docs.home,
     label: 'Dev docs',
   },
   {
-    href: '/',
+    href: links.audits,
     label: 'Audits',
   },
   {
-    href: '/',
+    href: links.privacy,
     label: 'Privacy',
   },
 ]

@@ -44,12 +44,10 @@ const links = [
     icon: BarChartIcon,
   },
   {
-    to: paths.markets,
     label: 'Swap',
     icon: ArrowDownUpIcon,
   },
   {
-    to: paths.markets,
     label: 'Referrals',
     icon: UserPlusIcon,
   },
