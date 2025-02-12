@@ -27,37 +27,39 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
     <nav
       className={cn(
         'relative z-50 flex w-full flex-col px-6',
-        'xl:min-h-[37.5rem] xl:justify-between',
+        'xl:min-h-[37.5rem]',
         !mobileMenuCollapsed && 'h-full xl:h-auto',
         className,
       )}
     >
-      <div className="flex flex-col gap-6">
-        <div className="flex h-20 shrink-0 flex-row items-center justify-between">
-          <Logo />
+      <div className="flex h-20 shrink-0 flex-row items-center justify-between">
+        <Logo />
 
-          <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
+        <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
 
-          <div className="fixed top-3 right-3 hidden xl:flex">
-            <WalletButton />
-          </div>
+        <div className="fixed top-3 right-3 hidden xl:flex">
+          <WalletButton />
         </div>
-
-        <PageLinks
-          closeMobileMenu={closeMobileMenu}
-          mobileMenuCollapsed={mobileMenuCollapsed}
-          savingsInfo={savingsInfo}
-          pageLinksInfo={pageLinksInfo}
-        />
-
-        {account && (
-          <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
-            <AirdropBadge airdrop={undefined} isLoading={false} isError={false} className="w-40 py-1.5" />
-          </div>
-        )}
       </div>
 
-      <FooterLinks mobileMenuCollapsed={mobileMenuCollapsed} />
+      <div className="mx-auto flex h-full max-w-fit flex-col justify-between gap-6 xl:ml-0">
+        <div className="mx-auto flex max-w-fit flex-col xl:ml-0 xl:gap-6">
+          <PageLinks
+            closeMobileMenu={closeMobileMenu}
+            mobileMenuCollapsed={mobileMenuCollapsed}
+            savingsInfo={savingsInfo}
+            pageLinksInfo={pageLinksInfo}
+          />
+
+          {account && (
+            <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
+              <AirdropBadge isLoading={false} isError={false} className="w-full py-1.5 xl:w-40" />
+            </div>
+          )}
+        </div>
+
+        <FooterLinks mobileMenuCollapsed={mobileMenuCollapsed} />
+      </div>
     </nav>
   )
 }

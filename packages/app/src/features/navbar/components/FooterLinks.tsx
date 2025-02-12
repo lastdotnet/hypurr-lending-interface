@@ -40,25 +40,29 @@ const infoLinks = [
 export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: boolean }) {
   return (
     <div className={cn('pt-6 pb-4 xl:pt-2', mobileMenuCollapsed && 'hidden xl:block')}>
-      <div className="mb-4 flex items-center gap-8">
+      <div className="mb-4 flex items-center justify-center gap-5 xl:justify-start xl:gap-8">
         {socialLinks.map((link) => (
           <a
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
             key={link.label}
-            className={cn(focusVariants(), 'opacity-30 transition-opacity hover:opacity-100')}
+            className={cn(focusVariants(), 'p-3 opacity-30 transition-opacity xl:p-0 hover:opacity-100')}
           >
             {link.icon}
           </a>
         ))}
       </div>
-      <div className="flex gap-5">
-        {infoLinks.map((link) => (
+      <div className="flex justify-center gap-4 xl:justify-start xl:gap-2">
+        {infoLinks.map((link, i) => (
           <a
             href={link.href}
             key={link.label}
-            className={cn(focusVariants(), 'text-sm text-white/30 transition-colors hover:text-white')}
+            className={cn(
+              focusVariants(),
+              'rounded-none text-sm text-white/30 transition-colors hover:text-white',
+              i !== 0 && 'border-white/10 border-l pl-4 xl:pl-2',
+            )}
           >
             {link.label}
           </a>
