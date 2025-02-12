@@ -72,16 +72,6 @@ export const metadata: Metadata = {
   },
 }
 
-const FathomAnalytics = () => (
-  <Script
-    src="https://cdn.usefathom.com/script.js"
-    data-spa="auto"
-    data-site="NIQJEYAB"
-    strategy="beforeInteractive"
-    defer
-  />
-)
-
 export default function ({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -101,5 +91,17 @@ export default function ({ children }: { children: React.ReactNode }) {
         </App>
       </body>
     </html>
+  )
+}
+
+function FathomAnalytics() {
+  return (
+    <Script
+      src="https://cdn.usefathom.com/script.js"
+      data-spa="auto"
+      data-site="NIQJEYAB"
+      strategy="beforeInteractive"
+      defer
+    />
   )
 }
