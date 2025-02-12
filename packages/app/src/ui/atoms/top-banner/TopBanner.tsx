@@ -9,7 +9,7 @@ export const TOP_BANNER_ID = 'top-banner-2'
 
 export function TopBanner({ onClose }: TopBannerProps) {
   return (
-    <div className="top-0 right-0 left-0 z-50 flex w-full flex-col items-center justify-center gap-2 bg-primary-bg p-2 text-center text-body text-sm xl:fixed sm:flex-row">
+    <div className="relative top-0 right-0 left-0 z-50 flex w-full flex-col items-center justify-center gap-2 bg-primary-bg p-2 text-center text-body text-sm xl:fixed sm:flex-row">
       <p className="px-10">
         Due to recent EVM updates, the testnet app has been redeployed and balances zeroed. Please visit our faucet to
         get more HYPE.
