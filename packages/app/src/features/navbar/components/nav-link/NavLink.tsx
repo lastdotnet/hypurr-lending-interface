@@ -70,7 +70,7 @@ export function PlaceholderNavLink({ children, className, ...rest }: Placeholder
       isPlaceholder
       className={cn('cursor-default', className)}
       postfix={
-        <span className="ml-1 block self-start rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
+        <span className="ml-1 block rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
           Soon
         </span>
       }
@@ -97,7 +97,7 @@ export function NavLinkComponent({
   )
 }
 
-export const textVariants = cva('font-medium text-xl transition-colors xl:text-sm', {
+export const textVariants = cva('font-medium text-lg transition-colors xl:text-sm', {
   variants: {
     selected: {
       true: 'text-white',

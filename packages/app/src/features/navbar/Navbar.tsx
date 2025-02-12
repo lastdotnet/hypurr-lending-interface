@@ -8,6 +8,7 @@ import { AirdropBadge } from './components/airdrop-badge/AirdropBadge'
 import { useAccount } from '@/domain/hooks/useAccount'
 import { Logo } from './components/Logo'
 import { FooterLinks } from './components/FooterLinks'
+import { WalletButton } from './components/wallet-button/WalletButton'
 export interface NavbarProps {
   mobileMenuCollapsed: boolean
   setMobileMenuCollapsed: (collapsed: boolean) => void
@@ -25,7 +26,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
   return (
     <nav
       className={cn(
-        'relative flex flex-col px-6',
+        'relative z-50 flex w-full flex-col px-6',
         'xl:min-h-[37.5rem] xl:justify-between',
         !mobileMenuCollapsed && 'h-full xl:h-auto',
         className,
@@ -36,6 +37,10 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
           <Logo />
 
           <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
+
+          <div className="fixed top-3 right-3 hidden xl:flex">
+            <WalletButton />
+          </div>
         </div>
 
         <PageLinks
@@ -45,10 +50,14 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
           pageLinksInfo={pageLinksInfo}
         />
 
-        {account && <AirdropBadge airdrop={undefined} isLoading={false} isError={false} className="w-40 py-1.5" />}
+        {account && (
+          <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
+            <AirdropBadge airdrop={undefined} isLoading={false} isError={false} className="w-40 py-1.5" />
+          </div>
+        )}
       </div>
 
-      <FooterLinks />
+      <FooterLinks mobileMenuCollapsed={mobileMenuCollapsed} />
     </nav>
   )
 }

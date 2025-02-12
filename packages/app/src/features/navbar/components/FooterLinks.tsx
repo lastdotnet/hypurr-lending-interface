@@ -37,9 +37,9 @@ const infoLinks = [
   },
 ]
 
-export function FooterLinks() {
+export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: boolean }) {
   return (
-    <div className="pb-4">
+    <div className={cn('pt-6 pb-4 xl:pt-2', mobileMenuCollapsed && 'hidden xl:block')}>
       <div className="mb-4 flex items-center gap-8">
         {socialLinks.map((link) => (
           <a

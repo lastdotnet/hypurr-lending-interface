@@ -30,7 +30,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       {process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
 
       <div className="flex flex-col xl:flex-row">
-        <div className="top-0 bottom-0 flex overflow-y-scroll xl:fixed xl:w-64">
+        <div className="top-0 bottom-0 z-50 flex overflow-y-scroll xl:fixed xl:w-64">
           <Navbar
             mobileMenuCollapsed={mobileMenuCollapsed}
             setMobileMenuCollapsed={setMobileMenuCollapsed}

@@ -3,8 +3,8 @@ import { cn } from '@/ui/utils/style'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { ConnectedWalletInfo, RewardsInfo } from '../types'
 import { RewardsBadge } from './rewards-badge/RewardsBadge'
-import ConnectButton from './ConnectButton'
-import { UserProfileButton } from './UserProfileButton'
+import { ConnectButton } from './wallet-button/ConnectButton'
+import { UserProfileButton } from './wallet-button/UserProfileButton'
 import { AirdropBadge } from './airdrop-badge/AirdropBadge'
 
 export interface NavbarActionsProps {

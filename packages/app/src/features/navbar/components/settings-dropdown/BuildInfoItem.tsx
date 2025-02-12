@@ -14,7 +14,7 @@ export function BuildInfoItem() {
       : process.env.NEXT_PUBLIC_BUILD_TIME
 
   return (
-    <LinkDecorator to={links.github} external>
+    <LinkDecorator to={links.social.github} external>
       <SettingsDropdownItem variant="footnote">
         <div className="flex flex-row items-center gap-1 text-[9px]">
           Built from {buildSha} at {buildTime}
