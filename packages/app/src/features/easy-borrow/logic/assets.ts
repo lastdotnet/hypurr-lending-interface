@@ -28,7 +28,7 @@ const whitelistedBorrowableAssets = usdxlEnabled
   ? [...defaultWhitelistedBorrowableAssets, 'USDXL']
   : defaultWhitelistedBorrowableAssets
 
-function isTokenSymbol(token: Token, symbol: string) {
+function isTokenSymbol(token: Token, symbol: string): boolean {
   return token.symbol === TokenSymbol(symbol)
 }
 

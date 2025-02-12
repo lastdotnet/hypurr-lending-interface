@@ -57,7 +57,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
       setLastMintTime(now)
       setMintTx(data.txHash)
 
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({
         queryKey: marketBalancesQueryKey({
           account: primaryWallet.address as Address,
           chainId: Number(network),
