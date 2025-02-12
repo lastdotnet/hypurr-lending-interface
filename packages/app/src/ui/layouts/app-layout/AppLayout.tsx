@@ -30,7 +30,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       {showBanner && <TopBanner onClose={handleCloseBanner} />}
 
       <div className="flex flex-col xl:flex-row">
-        <div className="top-0 bottom-0 z-50 flex overflow-y-scroll xl:fixed xl:w-64">
+        <div className="no-scrollbar top-0 bottom-0 z-50 flex overflow-y-scroll xl:fixed xl:w-64">
           <Navbar
             mobileMenuCollapsed={mobileMenuCollapsed}
             setMobileMenuCollapsed={setMobileMenuCollapsed}
