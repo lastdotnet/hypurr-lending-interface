@@ -27,60 +27,48 @@ export interface PageLinksProps {
   pageLinksInfo: PageLinksInfo
 }
 
+const links = [
+  {
+    to: paths.easyBorrow,
+    label: 'Quick borrow',
+    icon: ArrowRightLeftIcon,
+  },
+  {
+    to: paths.dashboard,
+    label: 'Dashboard',
+    icon: LayoutGridIcon,
+  },
+  {
+    to: paths.markets,
+    label: 'Markets',
+    icon: BarChartIcon,
+  },
+  {
+    to: paths.markets,
+    label: 'Swap',
+    icon: ArrowDownUpIcon,
+  },
+  {
+    to: paths.markets,
+    label: 'Referrals',
+    icon: UserPlusIcon,
+  },
+  {
+    label: 'Isolated',
+    icon: MessageSquareIcon,
+  },
+  {
+    label: 'Staking',
+    icon: WalletCardsIcon,
+  },
+  {
+    to: paths.faucet,
+    label: 'Faucet',
+    icon: DropletIcon,
+  },
+]
+
 export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksProps) {
-  function handleNavigate() {
-    closeMobileMenu()
-  }
-
-  const links = [
-    {
-      to: paths.easyBorrow,
-      label: 'Quick borrow',
-      onClick: handleNavigate,
-      icon: <ArrowRightLeftIcon className="h-5 w-5" />,
-    },
-    {
-      to: paths.dashboard,
-      label: 'Dashboard',
-      onClick: handleNavigate,
-      icon: <LayoutGridIcon className="h-5 w-5" />,
-    },
-    {
-      to: paths.markets,
-      label: 'Markets',
-      onClick: handleNavigate,
-      icon: <BarChartIcon className="h-5 w-5" />,
-    },
-    {
-      to: paths.markets,
-      label: 'Swap',
-      onClick: handleNavigate,
-      icon: <ArrowDownUpIcon className="h-5 w-5" />,
-    },
-    {
-      to: paths.markets,
-      label: 'Referrals',
-      onClick: handleNavigate,
-      icon: <UserPlusIcon className="h-5 w-5" />,
-    },
-    {
-      label: 'Isolated',
-      onClick: handleNavigate,
-      icon: <MessageSquareIcon className="h-5 w-5" />,
-    },
-    {
-      label: 'Staking',
-      onClick: handleNavigate,
-      icon: <WalletCardsIcon className="h-5 w-5" />,
-    },
-    {
-      to: paths.faucet,
-      label: 'Faucet',
-      onClick: handleNavigate,
-      icon: <DropletIcon className="h-5 w-5" />,
-    },
-  ]
-
   return (
     <div
       className={cn(
@@ -90,11 +78,11 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
     >
       {links.map((link) =>
         link.to ? (
-          <NavLink key={link.label} to={link.to} onClick={link.onClick} icon={link.icon}>
+          <NavLink key={link.label} to={link.to} onClick={closeMobileMenu} Icon={link.icon}>
             {link.label}
           </NavLink>
         ) : (
-          <PlaceholderNavLink key={link.label} icon={link.icon}>
+          <PlaceholderNavLink key={link.label} Icon={link.icon}>
             {link.label}
           </PlaceholderNavLink>
         ),

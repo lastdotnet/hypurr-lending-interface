@@ -4,18 +4,18 @@ import { cn } from '@/ui/utils/style'
 
 const socialLinks = [
   {
-    href: 'https://t.me/hypurr_fi',
+    href: 'https://x.com/hypurrfi',
     icon: <img src={assets.socialLogos.x} alt="X" />,
     label: 'X',
   },
   {
-    href: 'https://t.me/hypurr_fi',
+    href: 'https://t.me/+YvsBvSxlQrVhNDkx',
     icon: <img src={assets.socialLogos.telegram} alt="Telegram" />,
     label: 'Telegram',
   },
 
   {
-    href: 'https://t.me/hypurr_fi',
+    href: 'https://github.com/lastdotnet',
     icon: <img src={assets.socialLogos.github} alt="Github" />,
     label: 'Github',
   },
@@ -23,15 +23,15 @@ const socialLinks = [
 
 const infoLinks = [
   {
-    href: 'https://t.me/hypurr_fi',
+    href: 'https://docs.hypurr.fi/introduction/hypurrfi',
     label: 'Dev docs',
   },
   {
-    href: 'https://t.me/hypurr_fi',
+    href: '/',
     label: 'Audits',
   },
   {
-    href: 'https://t.me/hypurr_fi',
+    href: '/',
     label: 'Privacy',
   },
 ]

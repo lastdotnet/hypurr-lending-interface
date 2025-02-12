@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/ui/utils/style'
 import { cva } from 'class-variance-authority'
+import { LucideIcon } from 'lucide-react'
 
 interface NavLinkComponentProps {
   children: React.ReactNode
@@ -11,7 +12,7 @@ interface NavLinkComponentProps {
   isPlaceholder?: boolean
   className?: string
   postfix?: React.ReactNode
-  icon?: React.ReactNode
+  Icon?: LucideIcon
 }
 
 export interface NavLinkProps extends NavLinkComponentProps {
@@ -85,11 +86,11 @@ export function NavLinkComponent({
   postfix,
   className,
   isPlaceholder,
-  icon,
+  Icon,
 }: NavLinkComponentProps) {
   return (
     <span className={cn('flex flex-row items-center gap-4', textVariants({ selected, isPlaceholder }), className)}>
-      {icon}
+      {Icon && <Icon className="h-5 w-5" />}
       {children}
       {postfix}
     </span>
