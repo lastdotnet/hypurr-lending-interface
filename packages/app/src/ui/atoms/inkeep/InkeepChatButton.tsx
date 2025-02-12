@@ -9,11 +9,11 @@ const baseSettings = {
   primaryBrandColor: '#70fbda',
 }
 
-export const InkeepChatButton = () => {
+export function InkeepChatButton() {
   const chatButtonRef = useRef<any>(null)
 
   useEffect(() => {
-    const loadInkeepJS = async () => {
+    async function loadInkeepJS() {
       const inkeepJS = await import('@inkeep/uikit-js')
       const inkeep = inkeepJS.Inkeep({})
       chatButtonRef.current = inkeep.embed({
@@ -33,7 +33,7 @@ export const InkeepChatButton = () => {
         },
       })
     }
-    loadInkeepJS()
+    void loadInkeepJS()
 
     return () => {
       if (chatButtonRef.current) {
