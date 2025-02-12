@@ -12,10 +12,11 @@ import { WalletButton } from './components/wallet-button/WalletButton'
 export interface NavbarProps {
   mobileMenuCollapsed: boolean
   setMobileMenuCollapsed: (collapsed: boolean) => void
+  showBanner: boolean
   className?: string
 }
 
-export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className }: NavbarProps) {
+export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner, className }: NavbarProps) {
   const account = useAccount()
   const { savingsInfo, pageLinksInfo } = useNavbar()
 
@@ -29,6 +30,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
         'relative z-50 flex w-full flex-col px-6',
         'xl:min-h-[37.5rem]',
         !mobileMenuCollapsed && 'h-full xl:h-auto',
+        showBanner && 'xl:pt-10',
         className,
       )}
     >
@@ -39,7 +41,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
 
         <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
 
-        <div className={cn('fixed top-3 right-3', mobileMenuCollapsed && 'hidden xl:block')}>
+        <div className={cn('fixed top-3 right-3', mobileMenuCollapsed && 'hidden xl:block', showBanner && 'top-13')}>
           <WalletButton />
         </div>
       </div>

@@ -27,14 +27,14 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
-      {process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
+      {showBanner && <TopBanner onClose={handleCloseBanner} />}
 
       <div className="flex flex-col xl:flex-row">
         <div className="top-0 bottom-0 z-50 flex overflow-y-scroll xl:fixed xl:w-64">
           <Navbar
             mobileMenuCollapsed={mobileMenuCollapsed}
             setMobileMenuCollapsed={setMobileMenuCollapsed}
-            className="z-20"
+            showBanner={showBanner}
           />
         </div>
 
