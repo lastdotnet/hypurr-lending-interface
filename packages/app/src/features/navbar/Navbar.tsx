@@ -46,7 +46,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner
         </div>
       </div>
 
-      <div className="mx-auto flex h-full max-w-fit flex-col justify-between gap-6 xl:ml-0">
+      <div className="mx-auto flex h-full max-w-fit flex-col justify-between gap-6 xl:ml-0 xl:pt-6">
         <div className="mx-auto flex max-w-fit flex-col xl:ml-0 xl:gap-6">
           <PageLinks
             closeMobileMenu={closeMobileMenu}
