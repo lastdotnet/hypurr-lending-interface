@@ -11,7 +11,7 @@ export function getBorrowableAmount({
   tokenIdentifier: TokenSymbol | CheckedAddress
   facilitatorAvailable: NormalizedUnitNumber
   defaultAvailable: NormalizedUnitNumber
-}) {
+}): NormalizedUnitNumber {
   const isUSDXL = isAddress(tokenIdentifier)
     ? tokenIdentifier === USDXL_ADDRESS
     : tokenIdentifier === TokenSymbol('USDXL')
@@ -19,4 +19,6 @@ export function getBorrowableAmount({
   return isUSDXL ? facilitatorAvailable : defaultAvailable
 }
 
-const isAddress = (value: TokenSymbol | CheckedAddress): value is CheckedAddress => (value as string).startsWith('0x')
+function isAddress(value: TokenSymbol | CheckedAddress): value is CheckedAddress {
+  return (value as string).startsWith('0x')
+}

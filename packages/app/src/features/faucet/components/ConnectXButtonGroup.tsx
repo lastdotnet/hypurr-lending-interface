@@ -12,7 +12,7 @@ import { twitterFollowUrl } from '@/config/consts'
 import { cn } from '@/ui/utils/style'
 import { trackEvent } from '@/utils/fathom'
 
-const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => void }) => {
+function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => void }) {
   const [following, setFollowing] = useState(false)
   const [followButtonClicked, setFollowButtonClicked] = useState(false)
   const [checkingIfFollowing, setCheckingIfFollowing] = useState(false)
@@ -26,11 +26,11 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   const connectedAccountInfo = getLinkedAccountInformation(provider)
   const verificationPending = isAuthenticating || isProcessing
 
-  const handleSignAndConnect = async () => {
+  async function handleSignAndConnect() {
     if (!user) {
       await authenticateUser()
     }
-    linkSocialAccount(provider)
+    await linkSocialAccount(provider)
     trackEvent('initiate_sign_and_connect_x')
   }
 
@@ -67,7 +67,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   // after opening link to profile
   const handleRefocus = useCallback(() => {
     if (!following && isXLinked && followButtonClicked && !verificationPending) {
-      checkIfFollowing()
+      void checkIfFollowing()
       setFollowButtonClicked(false)
     }
   }, [checkIfFollowing, following, isXLinked, followButtonClicked, verificationPending])
@@ -82,7 +82,7 @@ const ConnectXButtonGroup = ({ setHandle }: { setHandle: (handle: string) => voi
   // Automatically check if following when the user connects their X account
   useEffect(() => {
     if (!following && isXLinked && !verificationPending) {
-      checkIfFollowing()
+      void checkIfFollowing()
     }
   }, [checkIfFollowing, following, isXLinked, verificationPending])
 
