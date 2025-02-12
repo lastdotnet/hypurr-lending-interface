@@ -192,7 +192,7 @@
 .gradient-border {
   --gradient-border-color: hsl(240 7% 18%);
   border-radius: 19px;
-  border: calc(var(--border-width, 2) * 1px) solid #0000;
+  border: calc(var(--border-width, 1.5) * 1px) solid #0000;
   outline: none;
   position: relative;
   cursor: pointer;
