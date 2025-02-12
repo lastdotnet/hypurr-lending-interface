@@ -105,7 +105,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
           className={cn(
             focusVariants(),
             textVariants({ selected: false, isPlaceholder: false }),
-            'flex cursor-pointer items-center gap-2 rounded-md',
+            'flex cursor-pointer items-center gap-4',
           )}
         >
           <MessageSquareIcon className="h-5 w-5" /> Give Feedback

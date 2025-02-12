@@ -46,7 +46,7 @@ export function FooterLinks() {
             target="_blank"
             rel="noopener noreferrer"
             key={link.label}
-            className={cn(focusVariants(), 'opacity-30 transition-opacity hover:opacity-70')}
+            className={cn(focusVariants(), 'opacity-30 transition-opacity hover:opacity-100')}
           >
             {link.icon}
           </a>
@@ -57,7 +57,7 @@ export function FooterLinks() {
           <a
             href={link.href}
             key={link.label}
-            className={cn(focusVariants(), 'text-sm text-white/30 transition-colors hover:text-white/70')}
+            className={cn(focusVariants(), 'text-sm text-white/30 transition-colors hover:text-white')}
           >
             {link.label}
           </a>

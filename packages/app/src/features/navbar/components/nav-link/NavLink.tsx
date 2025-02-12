@@ -69,7 +69,7 @@ export function PlaceholderNavLink({ children, className, ...rest }: Placeholder
       isPlaceholder
       className={cn('cursor-default', className)}
       postfix={
-        <span className="ml-1 block self-start rounded border border-white/15 bg-white/5 px-2 py-1 text-white/50 text-xs">
+        <span className="ml-1 block self-start rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
           Soon
         </span>
       }
