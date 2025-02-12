@@ -33,11 +33,13 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
       )}
     >
       <div className="flex h-20 shrink-0 flex-row items-center justify-between">
-        <Logo />
+        <div className={cn(!mobileMenuCollapsed && 'hidden xl:block')}>
+          <Logo />
+        </div>
 
         <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
 
-        <div className="fixed top-3 right-3 hidden xl:flex">
+        <div className={cn('fixed top-3 right-3', mobileMenuCollapsed && 'hidden xl:block')}>
           <WalletButton />
         </div>
       </div>

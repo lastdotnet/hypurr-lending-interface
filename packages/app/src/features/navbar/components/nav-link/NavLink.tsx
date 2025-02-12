@@ -89,7 +89,13 @@ export function NavLinkComponent({
   Icon,
 }: NavLinkComponentProps) {
   return (
-    <span className={cn('flex flex-row items-center gap-4', textVariants({ selected, isPlaceholder }), className)}>
+    <span
+      className={cn(
+        'flex flex-row items-center gap-4 p-3 xl:p-0',
+        textVariants({ selected, isPlaceholder }),
+        className,
+      )}
+    >
       {Icon && <Icon className="h-5 w-5" />}
       {children}
       {postfix}

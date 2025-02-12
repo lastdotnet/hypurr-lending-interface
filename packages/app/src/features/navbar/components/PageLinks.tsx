@@ -70,7 +70,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
   return (
     <div
       className={cn(
-        'flex w-full flex-1 flex-col items-start gap-6 py-6 xl:pb-0',
+        'flex w-full flex-1 flex-col items-start gap-2 pb-3 xl:gap-6 xl:pb-0',
         mobileMenuCollapsed && 'hidden xl:flex',
       )}
     >
@@ -91,7 +91,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
           className={cn(
             focusVariants(),
             textVariants({ selected: false, isPlaceholder: false }),
-            'flex cursor-pointer items-center gap-4',
+            'flex cursor-pointer items-center gap-4 p-3 xl:p-0',
           )}
         >
           <MessageSquareIcon className="h-5 w-5" /> Give Feedback
