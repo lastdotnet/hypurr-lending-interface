@@ -27,7 +27,7 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner
   return (
     <nav
       className={cn(
-        'relative z-50 flex w-full flex-col px-6',
+        'relative z-50 flex w-full flex-col px-5 xl:pr-0',
         'xl:min-h-[37.5rem]',
         !mobileMenuCollapsed && 'h-full xl:h-auto',
         showBanner && 'xl:pt-10',

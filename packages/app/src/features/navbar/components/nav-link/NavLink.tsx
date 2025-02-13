@@ -70,7 +70,7 @@ export function PlaceholderNavLink({ children, className, ...rest }: Placeholder
       isPlaceholder
       className={cn('cursor-default', className)}
       postfix={
-        <span className="ml-1 block rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
+        <span className="mr-0 ml-auto block rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
           Soon
         </span>
       }
@@ -91,7 +91,7 @@ export function NavLinkComponent({
   return (
     <span
       className={cn(
-        'flex flex-row items-center gap-4 p-3 xl:p-0',
+        'flex w-full flex-row items-center gap-4 p-3 xl:p-0',
         textVariants({ selected, isPlaceholder }),
         className,
       )}
