@@ -27,5 +27,5 @@ export const links = {
     github: 'https://github.com/lastdotnet',
   },
   audits: '/',
-  privacy: '/',
+  security: '/',
 } as const

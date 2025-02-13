@@ -27,14 +27,14 @@ const infoLinks = [
     href: links.docs.home,
     label: 'Dev docs',
   },
-  {
-    href: links.audits,
-    label: 'Audits',
-  },
-  {
-    href: links.privacy,
-    label: 'Privacy',
-  },
+  // {
+  //   href: links.security,
+  //   label: 'Security',
+  // },
+  // {
+  //   href: links.privacy,
+  //   label: 'Privacy',
+  // },
 ]
 
 export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: boolean }) {
