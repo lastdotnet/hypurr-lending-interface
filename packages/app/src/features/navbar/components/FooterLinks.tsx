@@ -58,6 +58,8 @@ export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: bool
           <a
             href={link.href}
             key={link.label}
+            target="_blank"
+            rel="noopener"
             className={cn(
               focusVariants(),
               'rounded-none text-sm text-white/30 transition-colors hover:text-white',
