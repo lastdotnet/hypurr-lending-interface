@@ -3,7 +3,7 @@ import { DynamicUserProfile, useDynamicContext } from '@dynamic-labs/sdk-react-c
 import { WalletIcon } from '@dynamic-labs/wallet-book'
 import { Address } from 'viem'
 
-export function UserProfileButton() {
+export function UserProfileButton({ className }: { className?: string }) {
   const { primaryWallet, setShowDynamicUserProfile, networkConfigurations } = useDynamicContext()
   const networkIcon = networkConfigurations?.evm?.[0]?.iconUrls[0]
 
@@ -11,10 +11,7 @@ export function UserProfileButton() {
 
   return (
     <>
-      <button
-        onClick={() => setShowDynamicUserProfile(true)}
-        className="flex items-center gap-2 rounded-sm px-[.65rem] py-[.56rem] text-sm transition hover:bg-white/10"
-      >
+      <button onClick={() => setShowDynamicUserProfile(true)} className={className}>
         {networkIcon && <img src={networkIcon} alt="" className="h-4 w-4" />}
 
         <WalletIcon walletKey={primaryWallet.connector.key} width={16} />

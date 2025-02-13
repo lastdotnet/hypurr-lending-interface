@@ -12,6 +12,7 @@ import { TOP_BANNER_ID, TopBanner } from '../../atoms/top-banner/TopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
+import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -26,24 +27,36 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
-      {process.env.NEXT_PUBLIC_FEATURE_TOP_BANNER === '1' && showBanner && <TopBanner onClose={handleCloseBanner} />}
-      <Navbar
-        mobileMenuCollapsed={mobileMenuCollapsed}
-        setMobileMenuCollapsed={setMobileMenuCollapsed}
-        className="z-20"
-      />
-      <main className={cx('isolate flex w-full grow flex-col', !mobileMenuCollapsed && 'hidden xl:flex')}>
-        {children}
-        {(!pageSupported || isWrongNetwork) &&
-          createPortal(
-            <PageNotSupportedWarning
-              pageName={pageName}
-              openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
-              className="z-[1000]"
-            />,
-            document.body,
+      {showBanner && <TopBanner onClose={handleCloseBanner} />}
+
+      <div className="flex flex-col xl:flex-row">
+        <div className="no-scrollbar top-0 bottom-0 z-50 flex overflow-y-scroll border-white/5 xl:fixed xl:w-52 xl:border-r">
+          <Navbar
+            mobileMenuCollapsed={mobileMenuCollapsed}
+            setMobileMenuCollapsed={setMobileMenuCollapsed}
+            showBanner={showBanner}
+          />
+        </div>
+
+        <main
+          className={cx(
+            'isolate flex w-full grow flex-col 3xl:ml-0 xl:ml-52 xl:px-4',
+            !mobileMenuCollapsed && 'hidden xl:flex',
           )}
-      </main>
+        >
+          {children}
+          {(!pageSupported || isWrongNetwork) &&
+            createPortal(
+              <PageNotSupportedWarning
+                pageName={pageName}
+                openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
+                className="z-[1000]"
+              />,
+              document.body,
+            )}
+        </main>
+      </div>
+      <InkeepFloatingButton />
     </div>
   )
 }

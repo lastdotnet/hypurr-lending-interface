@@ -95,6 +95,18 @@
   }
 }
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 /**************** Friendly Captcha ***************** */
 .frc-captcha,
 .frc-container,
@@ -191,8 +203,8 @@
 /**************** Gradient Border ***************** */
 .gradient-border {
   --gradient-border-color: hsl(240 7% 18%);
-  border-radius: 12px;
-  border: calc(var(--border-width, 2) * 1px) solid #0000;
+  border-radius: 19px;
+  border: calc(var(--border-width, 1.5) * 1px) solid #0000;
   outline: none;
   position: relative;
   cursor: pointer;
@@ -241,7 +253,7 @@
     filter: blur(calc(var(--blur, 10) * 1px))
       brightness(var(--brightness, 1.25));
     inset: 60% 0 0 0;
-    border-radius: 50% 50% 6px 6px / 50% 50% 6px 6px;
+    border-radius: 50% 50% 8px 8px / 50% 50% 8px 8px;
     transform-origin: 50% 25%;
     opacity: 1;
     scale: 0.6 0.4;

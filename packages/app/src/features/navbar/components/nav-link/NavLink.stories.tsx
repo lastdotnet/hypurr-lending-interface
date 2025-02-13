@@ -35,7 +35,6 @@ export const NavLinkSm: Story = {
     selected: false,
     to: '/',
     children: 'Borrow',
-    size: 'sm',
   },
 }
 
@@ -54,7 +53,6 @@ export const NavItemComponentHorizontalSelected: Story = {
     selected: true,
     to: '/',
     children: 'Borrow',
-    variant: 'vertical',
   },
 }
 
