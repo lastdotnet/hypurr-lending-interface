@@ -31,6 +31,8 @@ import {
 } from './sandbox'
 import { PersistedSavingsSlice, SavingsSlice, initSavingsSlice, persistSavingsSlice } from './savings'
 
+import { InkeepSlice, initInkeepSlice } from './inkeep'
+
 export type StoreState = {
   appConfig: AppConfig
 } & DialogSlice &
@@ -38,7 +40,8 @@ export type StoreState = {
   ActionsSettingsSlice &
   ComplianceSlice &
   SavingsSlice &
-  BannersVisibilitySlice
+  BannersVisibilitySlice &
+  InkeepSlice
 
 export type PersistedState = Serializable<
   PersistedSandboxSlice & PersistedActionsSettingsSlice & PersistedComplianceSlice & PersistedSavingsSlice
@@ -53,6 +56,7 @@ export const storeImplementation = persist<StoreState, [], [], PersistedState>(
       ...initSandboxSlice(...a),
       ...initSavingsSlice(...a),
       ...initBannersVisibilitySlice(...a),
+      ...initInkeepSlice(...a),
       appConfig: getAppConfig(),
     }
   },

@@ -15,6 +15,8 @@ export const buttonVariants = cva(
         text: 'border-none text-secondary disabled:bg-transparent',
         icon: 'border-none',
         green: 'bg-sec-green text-basics-white hover:bg-green-700',
+        floating:
+          'flex items-center justify-center gap-2 rounded-sm border border-white/4 bg-[#0F0F12] px-5 py-3 font-normal text-white text-xs shadow-md transition-colors hover:bg-[#1A1A1D] hover:text-white',
       },
       rounded: {
         full: 'rounded-full',
