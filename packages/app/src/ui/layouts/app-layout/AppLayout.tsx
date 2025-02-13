@@ -30,7 +30,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       {showBanner && <TopBanner onClose={handleCloseBanner} />}
 
       <div className="flex flex-col xl:flex-row">
-        <div className="no-scrollbar top-0 bottom-0 z-50 flex overflow-y-scroll border-white/5 xl:fixed xl:w-56 xl:border-r">
+        <div className="no-scrollbar top-0 bottom-0 z-50 flex overflow-y-scroll border-white/5 xl:fixed xl:w-52 xl:border-r">
           <Navbar
             mobileMenuCollapsed={mobileMenuCollapsed}
             setMobileMenuCollapsed={setMobileMenuCollapsed}
@@ -39,7 +39,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         </div>
 
         <main
-          className={cx('isolate flex w-full grow flex-col xl:ml-56 xl:px-4', !mobileMenuCollapsed && 'hidden xl:flex')}
+          className={cx('isolate flex w-full grow flex-col xl:ml-52 xl:px-4', !mobileMenuCollapsed && 'hidden xl:flex')}
         >
           {children}
           {(!pageSupported || isWrongNetwork) &&
