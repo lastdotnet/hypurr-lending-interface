@@ -1,23 +1,24 @@
 'use client'
 
-import Link from 'next/link'
-
-import { assets } from '@/ui/assets'
 import { cn } from '@/ui/utils/style'
 import { MobileMenuButton } from './components/MobileMenuButton'
-import { NavbarActions } from './components/NavbarActions'
 import { PageLinks } from './components/PageLinks'
 import { useNavbar } from './logic/useNavbar'
-
+import { AirdropBadge } from './components/airdrop-badge/AirdropBadge'
+import { useAccount } from '@/domain/hooks/useAccount'
+import { Logo } from './components/Logo'
+import { FooterLinks } from './components/FooterLinks'
+import { WalletButton } from './components/wallet-button/WalletButton'
 export interface NavbarProps {
   mobileMenuCollapsed: boolean
   setMobileMenuCollapsed: (collapsed: boolean) => void
+  showBanner: boolean
   className?: string
 }
 
-export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className }: NavbarProps) {
-  const { openSandboxDialog, savingsInfo, connectedWalletInfo, rewardsInfo, isSandboxEnabled, pageLinksInfo } =
-    useNavbar()
+export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner, className }: NavbarProps) {
+  const account = useAccount()
+  const { savingsInfo, pageLinksInfo } = useNavbar()
 
   function closeMobileMenu() {
     setMobileMenuCollapsed(true)
@@ -26,36 +27,43 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, className 
   return (
     <nav
       className={cn(
-        'relative flex flex-col px-6',
-        'xl:grid xl:grid-cols-[auto_1fr_auto] xl:items-center xl:gap-6',
-
+        'relative z-50 flex w-full flex-col px-6',
+        'xl:min-h-[37.5rem]',
         !mobileMenuCollapsed && 'h-full xl:h-auto',
+        showBanner && 'xl:pt-10',
         className,
       )}
     >
       <div className="flex h-20 shrink-0 flex-row items-center justify-between">
-        <Link href="/" className="inline-flex items-center gap-2">
-          <img src={assets.hypurrLogo} alt="Hypurr logo" className="w-20" />
-          <img src={assets.hypurrLogoText} alt="Hypurr logo" className="w-[74px]" />
-        </Link>
+        <div className={cn(!mobileMenuCollapsed && 'hidden xl:block')}>
+          <Logo />
+        </div>
 
         <MobileMenuButton mobileMenuCollapsed={mobileMenuCollapsed} setMobileMenuCollapsed={setMobileMenuCollapsed} />
+
+        <div className={cn('fixed top-3 right-3', mobileMenuCollapsed && 'hidden xl:block', showBanner && 'top-13')}>
+          <WalletButton />
+        </div>
       </div>
 
-      <PageLinks
-        closeMobileMenu={closeMobileMenu}
-        mobileMenuCollapsed={mobileMenuCollapsed}
-        savingsInfo={savingsInfo}
-        pageLinksInfo={pageLinksInfo}
-      />
+      <div className="mx-auto flex h-full max-w-fit flex-col justify-between gap-6 xl:ml-0 xl:pt-6">
+        <div className="mx-auto flex max-w-fit flex-col xl:ml-0 xl:gap-6">
+          <PageLinks
+            closeMobileMenu={closeMobileMenu}
+            mobileMenuCollapsed={mobileMenuCollapsed}
+            savingsInfo={savingsInfo}
+            pageLinksInfo={pageLinksInfo}
+          />
 
-      <NavbarActions
-        mobileMenuCollapsed={mobileMenuCollapsed}
-        openSandboxDialog={openSandboxDialog}
-        connectedWalletInfo={connectedWalletInfo}
-        rewardsInfo={rewardsInfo}
-        isSandboxEnabled={isSandboxEnabled}
-      />
+          {account && (
+            <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
+              <AirdropBadge isLoading={false} isError={false} className="w-full py-1.5 xl:w-40" />
+            </div>
+          )}
+        </div>
+
+        <FooterLinks mobileMenuCollapsed={mobileMenuCollapsed} />
+      </div>
     </nav>
   )
 }

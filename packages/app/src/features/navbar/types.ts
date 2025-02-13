@@ -43,7 +43,7 @@ export type Airdrop = {
   refreshIntervalInMs: number
 }
 export interface AirdropInfo {
-  airdrop: Airdrop | undefined
+  airdrop?: Airdrop
   isLoading: boolean
   isError: boolean
 }

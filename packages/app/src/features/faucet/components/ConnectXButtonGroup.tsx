@@ -11,6 +11,7 @@ import { Button } from '@/ui/atoms/button/Button'
 import { twitterFollowUrl } from '@/config/consts'
 import { cn } from '@/ui/utils/style'
 import { trackEvent } from '@/utils/fathom'
+import { links } from '@/ui/constants/links'
 
 function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => void }) {
   const [following, setFollowing] = useState(false)
@@ -111,7 +112,7 @@ function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => voi
       ) : (
         <div className="flex flex-col">
           <a
-            href="https://x.com/hypurrfi"
+            href={links.social.x}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setFollowButtonClicked(true)}

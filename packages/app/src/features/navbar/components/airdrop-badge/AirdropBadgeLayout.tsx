@@ -7,12 +7,14 @@ import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { AirdropDetails } from './AirdropDetails'
 import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
 import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
+import { cn } from '@/ui/utils/style'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber
   precision?: number
   isLoading?: boolean
   isGrowing?: boolean
+  className?: string
   setEnableCounter?: (value: boolean) => void
 }
 export function AirdropBadgeLayout({
@@ -20,20 +22,24 @@ export function AirdropBadgeLayout({
   precision = 0,
   isLoading,
   isGrowing,
+  className,
 }: AirdropBadgeLayoutProps) {
   return (
     <NavbarActionWrapper label="">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div>
-            <button className="gradient-border px-[.6rem] py-[.3rem]" data-testid={testIds.navbar.airdropBadge}>
-              <span className="flex items-center gap-1.5">
-                <img src={assets.hypurrPaw} className="block h-6 pt-1" />
+            <button
+              className={cn('gradient-border px-[.6rem] py-[.3rem]', className)}
+              data-testid={testIds.navbar.airdropBadge}
+            >
+              <span className="flex items-center justify-center gap-1.5">
+                <img src={assets.hypurrPaw} className="block h-7 pt-1" />
                 {isLoading ? (
                   <Skeleton className="h-5 w-7" />
                 ) : (
-                  <span className="text-sm text-white/70" data-chromatic="ignore">
-                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })}
+                  <span className="font-bold text-white text-xs" data-chromatic="ignore">
+                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })} points
                   </span>
                 )}
               </span>
