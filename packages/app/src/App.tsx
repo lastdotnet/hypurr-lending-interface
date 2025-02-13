@@ -14,7 +14,7 @@ import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
 import { hyperTestnetDynamic } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
-import { InkeepFloatingButton } from './ui/atoms/inkeep/InkeepFloatingButton'
+
 function App({ children }: React.PropsWithChildren) {
   const config = getConfig()
   if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.NODE_ENV === 'development') {
@@ -40,7 +40,6 @@ function App({ children }: React.PropsWithChildren) {
             <ConfettiProvider>
               <Toaster position="top-right" containerClassName="toast-notifications" />
               <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
-              <InkeepFloatingButton />
             </ConfettiProvider>
           </DynamicWagmiConnector>
         </QueryClientProvider>
