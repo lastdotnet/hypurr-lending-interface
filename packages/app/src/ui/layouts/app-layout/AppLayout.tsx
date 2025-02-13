@@ -39,7 +39,10 @@ export function AppLayout({ children }: AppLayoutProps) {
         </div>
 
         <main
-          className={cx('isolate flex w-full grow flex-col xl:ml-52 xl:px-4', !mobileMenuCollapsed && 'hidden xl:flex')}
+          className={cx(
+            'isolate flex w-full grow flex-col 3xl:ml-0 xl:ml-52 xl:px-4',
+            !mobileMenuCollapsed && 'hidden xl:flex',
+          )}
         >
           {children}
           {(!pageSupported || isWrongNetwork) &&

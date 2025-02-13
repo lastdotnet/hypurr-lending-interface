@@ -14,6 +14,8 @@ export default {
       screens: {
         // needs to be this way to not to break tailwind intellisense
         ...require(join(__dirname, 'src/config/tailwind')).screensOverrides,
+        '2xl': '90rem', // 1440px
+        '3xl': '100rem', // 1600px
       },
       opacity: {
         '4': '0.04',

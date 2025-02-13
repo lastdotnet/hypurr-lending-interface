@@ -8,3 +8,4 @@ build-storybook.log
 packages/app/src/locales/*.po
 !packages/app/src/locales/en.po
 tsconfig.tsbuildinfo
+.DS_Store
