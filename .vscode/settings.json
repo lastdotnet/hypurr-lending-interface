@@ -19,12 +19,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "cSpell.words": [
-    "Borrowable",
-    "Depositable",
-    "Hypurr",
-    "PURRL"
-  ],
+  "cSpell.words": ["Borrowable", "Depositable", "Hypurr", "inkeep", "PURRL"],
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
