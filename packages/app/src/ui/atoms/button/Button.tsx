@@ -46,42 +46,40 @@ export interface ButtonProps
   asChild?: boolean
   prefixIcon?: React.ReactNode
   postfixIcon?: React.ReactNode
+  ref?: Ref<HTMLButtonElement>
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      spaceAround,
-      asChild = false,
-      type = 'button',
-      prefixIcon,
-      postfixIcon,
-      rounded,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : 'button'
+export function Button({
+  className,
+  variant,
+  size,
+  spaceAround,
+  asChild = false,
+  type = 'button',
+  prefixIcon,
+  postfixIcon,
+  rounded,
+  ref,
+  ...props
+}: ButtonProps) {
+  const Comp = asChild ? Slot : 'button'
 
-    return (
-      <Comp
-        {...props}
-        className={cn(buttonVariants({ variant, size, spaceAround, rounded }), className)}
-        ref={ref}
-        type={type}
-      >
-        <>
-          {prefixIcon}
-          {props.children}
-          {postfixIcon}
-        </>
-      </Comp>
-    )
-  },
-)
+  return (
+    <Comp
+      {...props}
+      className={cn(buttonVariants({ variant, size, spaceAround, rounded }), className)}
+      ref={ref}
+      type={type}
+    >
+      <>
+        {prefixIcon}
+        {props.children}
+        {postfixIcon}
+      </>
+    </Comp>
+  )
+}
+
 Button.displayName = 'Button'
 
 export type LinkButtonProps = VariantProps<typeof buttonVariants> &
@@ -89,7 +87,7 @@ export type LinkButtonProps = VariantProps<typeof buttonVariants> &
     disabled?: boolean
     prefixIcon?: React.ReactNode
     postfixIcon?: React.ReactNode
-    ref: Ref<HTMLAnchorElement>
+    ref?: Ref<HTMLAnchorElement>
   }
 
 export function LinkButton({
