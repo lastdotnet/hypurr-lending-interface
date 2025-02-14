@@ -60,6 +60,11 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         oracleType: 'fixed-usd',
         address: USDXL_ADDRESS,
       },
+      {
+        symbol: TokenSymbol('KHYPE'),
+        oracleType: 'zero-price',
+        address: CheckedAddress('0x2ca0f62dceae63ef25a59f4abfec83264df204c1'),
+      },
     ],
     markets: {
       defaultAssetToBorrow: TokenSymbol('USDXL'),
@@ -83,6 +88,10 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
           providedBy: [],
         },
         [TokenSymbol('stTESTH')]: {
+          type: 'market-price',
+          providedBy: ['redstone'],
+        },
+        [TokenSymbol('KHYPE')]: {
           type: 'market-price',
           providedBy: ['redstone'],
         },
