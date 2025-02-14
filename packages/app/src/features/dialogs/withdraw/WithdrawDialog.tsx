@@ -17,7 +17,7 @@ function WithdrawDialog({ token, open, setOpen }: WithdrawDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <WithdrawDialogContentContainer token={token} closeDialog={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
