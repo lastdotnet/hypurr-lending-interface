@@ -1,6 +1,6 @@
 import { useDisconnect } from 'wagmi'
 
-import { useTermsOfService } from '@/domain/state/compliance'
+import { useTermsOfService } from '@/domain/hooks/useTermsOfService'
 import { useCloseDialog } from '@/domain/state/dialogs'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { useAccount } from '@/domain/hooks/useAccount'

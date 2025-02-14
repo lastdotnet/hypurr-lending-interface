@@ -8,7 +8,7 @@ import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import { useForm } from 'react-hook-form'
 import { describe, expect, test } from 'vitest'
 import { z } from 'zod'
-import { ControlledMultiSelectorAssetInput } from './MultiSelector'
+import { ControlledMultiSelectorAssetInput } from './ControlledMultiSelectorAssetInput'
 
 const VALIDATION_ERROR = 'Value must be a valid number'
 

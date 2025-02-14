@@ -8,7 +8,7 @@ import { cn } from '@/ui/utils/style'
 
 import { raise } from '@/utils/assert'
 import { AssetSelector } from '../../molecules/asset-selector/AssetSelector'
-import { ControlledMultiSelectorAssetInput } from '../multi-selector/MultiSelector'
+import { ControlledMultiSelectorAssetInput } from '../multi-selector/ControlledMultiSelectorAssetInput'
 
 export interface AssetSelectorWithInputProps<TFieldValues extends FieldValues> {
   control: Control<TFieldValues>
