@@ -18,7 +18,7 @@ function BorrowDialog({ token, open, setOpen }: BorrowDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <BorrowDialogContentContainer token={token} closeDialog={() => setOpen(false)} />
       </DialogContent>
     </Dialog>

@@ -126,9 +126,11 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof Typography>,
   React.ComponentPropsWithoutRef<typeof Typography>
 >(({ children, className, ...props }, ref) => (
-  <Typography variant="h3" ref={ref} className={cn('text-xl', className)} {...props}>
-    {children}
-  </Typography>
+  <DialogPrimitive.Title asChild>
+    <Typography variant="h3" ref={ref} className={cn('text-xl', className)} {...props}>
+      {children}
+    </Typography>
+  </DialogPrimitive.Title>
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
