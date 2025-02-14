@@ -8,7 +8,6 @@ import { MultiPanelDialog } from '@/features/dialogs/common/components/MultiPane
 import { DialogForm } from '@/features/dialogs/common/components/form/DialogForm'
 import { AssetInputSchema } from '@/features/dialogs/common/logic/form'
 import { FormFieldsForDialog, PageStatus } from '@/features/dialogs/common/types'
-import { assets } from '@/ui/assets'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 import { Link } from '@/ui/atoms/link/Link'
 import { links } from '@/ui/constants/links'
@@ -42,28 +41,9 @@ export function UpgradeView({
   selectableAssets,
   txOverview,
   dai,
-  sdai,
 }: UpgradeViewProps) {
   return (
     <div>
-      {fromToken.symbol === dai && (
-        <img
-          src={assets.banners.daiToUsdsUpgrade}
-          width={576}
-          height={173}
-          alt="dai-to-usds-upgrade"
-          className="w-full sm:max-w-xl"
-        />
-      )}
-      {fromToken.symbol === sdai && (
-        <img
-          src={assets.banners.sdaiToSusdsUpgrade}
-          width={576}
-          height={173}
-          alt="sdai-to-susds-upgrade"
-          className="w-full sm:max-w-xl"
-        />
-      )}
       <MultiPanelDialog className="p-6">
         <DialogTitle className="flex items-center gap-2">
           Upgrade {fromToken.symbol} to {toToken.symbol}{' '}
