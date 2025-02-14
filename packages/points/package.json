@@ -1,0 +1,48 @@
+{
+  "name": "points",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "module": "./src/index.ts",
+      "require": "./lib/index.js",
+      "types": "./src/index.ts"
+    }
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "format": "prettier --cache --log-level warn --check .",
+    "format:fix": "prettier --cache --log-level warn --write .",
+    "format:fix:nocache": "prettier --log-level warn --write .",
+    "lint": "concurrently \"pnpm format\" \"pnpm lint:ts\" \"pnpm type-check\"",
+    "lint:fix": "concurrently \"pnpm format:fix\" \"pnpm lint:ts:fix\" \"pnpm type-check\"",
+    "lint:fix:nocache": "concurrently \"pnpm format:fix:nocache\" \"pnpm lint:ts:fix:nocache\" \"pnpm type-check\"",
+    "lint:ts": "eslint --cache --quiet .",
+    "lint:ts:fix": "eslint --cache --quiet --fix .",
+    "lint:ts:fix:nocache": "eslint --quiet --fix .",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "pnpm type-check --watch"
+  },
+  "dependencies": {
+    "assets": "workspace:*",
+    "chains": "workspace:*",
+    "common": "workspace:*",
+    "viem": "^2.9.8",
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^1.5.2",
+    "concurrently": "^8.2.2",
+    "eslint-config-astaria": "workspace:*",
+    "prettier-config-astaria": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.4.5",
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^1.5.2"
+  }
+}

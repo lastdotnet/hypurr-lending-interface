@@ -1,0 +1,333 @@
+{
+  "tokens": [
+    {
+      "address": "0xA61BeB4A3d02decb01039e378237032B351125B4",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "agEUR",
+      "symbol": "agEUR"
+    },
+    {
+      "address": "0x32E0f9d26D1e33625742A52620cC76C1130efde6",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "BASED",
+      "symbol": "BASED",
+      "logoURI": "https://pbs.twimg.com/profile_images/1800564590624858112/v4Bo8M9Y_400x400.jpg"
+    },
+    {
+      "address": "0x94025780a1aB58868D9B2dBBB775f44b32e8E6e5",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "BetSwirl v2",
+      "symbol": "BETS"
+    },
+    {
+      "address": "0xBf4Db8b7A679F89Ef38125d5F84dd1446AF2ea3B",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Le Bleu Elefant",
+      "symbol": "BLEU"
+    },
+    {
+      "address": "0x3C281A39944a2319aA653D81Cfd93Ca10983D234",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "BUILD",
+      "symbol": "BUILD"
+    },
+    {
+      "address": "0xCb327b99fF831bF8223cCEd12B1338FF3aA322Ff",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Based ETH",
+      "symbol": "bsdETH"
+    },
+    {
+      "address": "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "DEGEN",
+      "symbol": "DEGEN"
+    },
+    {
+      "address": "0xDE5ed76E7c05eC5e4572CfC88d1ACEA165109E44",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "DEUS",
+      "symbol": "DEUS"
+    },
+    {
+      "address": "0xAfb89a09D82FBDE58f18Ac6437B3fC81724e4dF6",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/dog.png",
+      "name": "The Doge NFT",
+      "symbol": "DOG"
+    },
+    {
+      "address": "0x6921B130D297cc43754afba22e5EAc0FBf8Db75b",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/doginme.webp",
+      "name": "doginme",
+      "symbol": "DOGINME"
+    },
+    {
+      "address": "0x4621b7A9c75199271F773Ebd9A499dbd165c3191",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "DOLA",
+      "symbol": "DOLA"
+    },
+    {
+      "address": "0x4E0dA40b9063dC48364C1C0fFB4AE9d091fc2270",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Edgeware",
+      "symbol": "EDG"
+    },
+    {
+      "address": "0x91F45aa2BdE7393e0AF1CC674FFE75d746b93567",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/frame.webp",
+      "name": "FrameToken",
+      "symbol": "FRAME"
+    },
+    {
+      "address": "0x0bD4887f7D41B35CD75DFF9FfeE2856106f86670",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/37475/standard/friend.jpeg",
+      "name": "FriendTech",
+      "symbol": "FRIEND"
+    },
+    {
+      "address": "0x42069BAbe14fB1802C5CB0F50BB9D2Ad6FEf55e2",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Frok.ai",
+      "symbol": "FROK"
+    },
+    {
+      "address": "0x09188484e1Ab980DAeF53a9755241D759C5B7d60",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Rigo Token",
+      "symbol": "GRG"
+    },
+    {
+      "address": "0x0578d8A44db98B23BF096A382e016e29a5Ce0ffe",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "higher",
+      "symbol": "HIGHER"
+    },
+    {
+      "address": "0xCc7FF230365bD730eE4B352cC2492CEdAC49383e",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "High Yield USD",
+      "symbol": "hyUSD"
+    },
+    {
+      "address": "0xEDfa23602D0EC14714057867A78d01e94176BEA0",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Kelp DAO",
+      "symbol": "wrsETH"
+    },
+    {
+      "address": "0x28fe69Ff6864C1C218878BDCA01482D36B9D57b1",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Kyber Network Crystal v2",
+      "symbol": "KNC"
+    },
+    {
+      "address": "0x4A3A6Dd60A34bB2Aba60D73B4C88315E9CeB6A3D",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Magic Internet Money",
+      "symbol": "MIM"
+    },
+    {
+      "address": "0xE3086852A4B125803C815a158249ae468A3254Ca",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "mfercoin",
+      "symbol": "$MFER"
+    },
+    {
+      "address": "0x2Da56AcB9Ea78330f947bD57C54119Debda7AF71",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Mog",
+      "symbol": "MOG"
+    },
+    {
+      "address": "0xB1a03EdA10342529bBF8EB700a06C60441fEf25d",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://www.dextools.io/resources/tokens/logos/base/0xb1a03eda10342529bbf8eb700a06c60441fef25d.jpg",
+      "name": "Mister Miggles",
+      "symbol": "MIGGLES"
+    },
+    {
+      "address": "0x47b464edb8dc9bc67b5cd4c9310bb87b773845bd",
+      "chainId": 8453,
+      "decimals": 9,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/normie.png",
+      "name": "Normie",
+      "symbol": "NORMIE"
+    },
+    {
+      "address": "0xFeF2D7B013b88FEc2BFe4D2FEE0AEb719af73481",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "/onchain",
+      "symbol": "ONCHAIN"
+    },
+    {
+      "address": "0x40468be13c4388D2AB68a09F56973fa95DB5bca0",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Pizza",
+      "symbol": "PIZZA"
+    },
+    {
+      "address": "0x4c5d8A75F3762c1561D96f177694f67378705E98",
+      "chainId": 8453,
+      "decimals": 6,
+      "name": "Pyth Network",
+      "symbol": "PYTH"
+    },
+    {
+      "address": "0xB6fe221Fe9EeF5aBa221c348bA20A1Bf5e73624c",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Rocket Pool ETH",
+      "symbol": "RETH"
+    },
+    {
+      "address": "0xFd4330b0312fdEEC6d4225075b82E00493FF2e3f",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "SmarDex Token",
+      "symbol": "SDEX"
+    },
+    {
+      "address": "0x3f14920c99BEB920Afa163031c4e47a3e03B3e4A",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "/send",
+      "symbol": "send"
+    },
+    {
+      "address": "0x703D57164CA270b0B330A87FD159CfEF1490c0a5",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Rai.Finance",
+      "symbol": "SOFI"
+    },
+    {
+      "address": "0x04D1963C76EB1BEc59d0eEb249Ed86F736B82993",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/soft.svg",
+      "name": "SoftDAO",
+      "symbol": "SOFT"
+    },
+    {
+      "address": "0xadf7c35560035944e805d98ff17d58cde2449389",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/spec.webp",
+      "name": "Spectral",
+      "symbol": "SPEC"
+    },
+    {
+      "address": "0x50dA645f148798F68EF2d7dB7C1CB22A6819bb2C",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "SPX6900",
+      "symbol": "SPX"
+    },
+    {
+      "address": "0x5B5dee44552546ECEA05EDeA01DCD7Be7aa6144A",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "The Next 100x Memecoin on Base",
+      "symbol": "TN100x"
+    },
+    {
+      "address": "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/toshi.png",
+      "name": "Toshi",
+      "symbol": "TOSHI"
+    },
+    {
+      "address": "0x0d97F261b1e88845184f678e2d1e7a98D9FD38dE",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/tybg.png",
+      "name": "Base God",
+      "symbol": "TYBG"
+    },
+    {
+      "address": "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376",
+      "chainId": 8453,
+      "decimals": 6,
+      "name": "USD+",
+      "symbol": "USD+"
+    },
+    {
+      "address": "0xda3de145054ED30Ee937865D31B500505C4bDfe7",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Curve.fi Factory Plain Pool: Overnight/Curve",
+      "symbol": "USD+crvUSD-f"
+    },
+    {
+      "address": "0x10c1B6f768e13c624A4A23337f1a5bA5c9BE0E4B",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/warpie.webp",
+      "name": "Warpie",
+      "symbol": "WARPIE"
+    },
+    {
+      "address": "0x76734b57dfe834f102fb61e1ebf844adf8dd931e",
+      "chainId": 8453,
+      "decimals": 8,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/weirdo.webp",
+      "name": "Weirdo",
+      "symbol": "WEIRDO"
+    },
+    {
+      "address": "0x4E74D4Db6c0726ccded4656d0BCE448876BB4C7A",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Wrapped BMX Liquidity Token",
+      "symbol": "wBLT"
+    },
+    {
+      "address": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+      "chainId": 8453,
+      "decimals": 18,
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH"
+    },
+    {
+      "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/40143/standard/cbbtc.webp",
+      "name": "Coinbase Wrapped BTC",
+      "symbol": "cbBTC"
+    }
+  ]
+}

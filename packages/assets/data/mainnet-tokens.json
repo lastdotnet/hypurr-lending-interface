@@ -1,0 +1,82 @@
+{
+  "tokens": [
+    {
+      "address": "0xcf0c122c6b73ff809c693db761e7baebe62b6a2e",
+      "chainId": 1,
+      "decimals": 9,
+      "name": "FLOKI",
+      "symbol": "FLOKI"
+    },
+    {
+      "address": "0xba3335588d9403515223f109edc4eb7269a9ab5d",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Gearbox",
+      "symbol": "GEAR"
+    },
+    {
+      "address": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Mantle",
+      "symbol": "MNT"
+    },
+    {
+      "address": "0xaaeE1A9723aaDB7afA2810263653A34bA2C21C7a",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Mog",
+      "symbol": "MOG"
+    },
+    {
+      "address": "0xfAbA6f8e4a5E8Ab82F62fe7C39859FA577269BE3",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Ondo",
+      "symbol": "ONDO"
+    },
+    {
+      "address": "0xc55126051B22eBb829D00368f4B12Bde432de5Da",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Redacted",
+      "symbol": "BTRFLY"
+    },
+    {
+      "address": "0xfd03723a9a3abe0562451496a9a394d2c4bad4ab",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "DYAD Stable",
+      "symbol": "DYAD"
+    },
+    {
+      "address": "0xf3768D6e78E65FC64b8F12ffc824452130BD5394",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Kerosene",
+      "symbol": "KEROSENE"
+    },
+    {
+      "address": "0x73fbd93bfda83b111ddc092aa3a4ca77fd30d380",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "SOPH AI Token",
+      "symbol": "SOPH"
+    },
+    {
+      "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Coinbase Wrapped BTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/40143/standard/cbbtc.webp",
+      "symbol": "cbBTC"
+    },
+    {
+      "address": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Eigen",
+      "symbol": "EIGEN"
+    }
+  ]
+}

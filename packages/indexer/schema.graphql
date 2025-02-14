@@ -1,0 +1,384 @@
+type StarportLoan @entity @index(fields: ["chainId", "id"]) {
+  id: ID!
+  chainId: Int! @index
+  start: BigInt!
+  custodian: String!
+  borrower: String! @index
+  issuer: String!
+  originator: String!
+  collateral: [SpentItem!]!
+  debt: [SpentItem!]!
+  terms: Terms!
+
+  recall: Recall @derivedFrom(field: "starportLoan")
+}
+
+type SpentItem {
+  itemType: Int!
+  token: String!
+  identifier: BigInt!
+  amount: BigInt!
+}
+
+type Terms {
+  status: String!
+  statusData: String!
+  pricing: String!
+  pricingData: String!
+  settlement: String!
+  settlementData: String!
+}
+
+type BorrowIntent @entity {
+  # either a SignedCaveat.ID or a StarportLoan.ID
+  id: ID!
+  shortId: String! @unique @index
+
+  chainId: Int! @index
+
+  deadline: BigInt!
+
+  startTime: BigInt!
+  endTime: BigInt!
+
+  startRate: BigInt!
+  endRate: BigInt!
+
+  minAmount: BigInt!
+  maxAmount: BigInt!
+
+  collateral: [SpentItem!]!
+  borrow: [SpentItem!]!
+
+  usdValueCollateral: Float
+  usdValueBorrow: Float
+
+  isRecall: Boolean
+  assortmentId: String! @index
+
+  signedCaveat: SignedCaveat @unique
+  recall: Recall @unique
+
+  activeApproval: Boolean!
+}
+
+type SignedCaveat @entity {
+  id: ID!
+  chainId: Int! @index
+  salt: String!
+  signature: String!
+  hash: String!
+  owner: String!
+  deadline: BigInt!
+  singleUse: Boolean!
+  nonce: String!
+  status: CaveatStatus!
+  caveats: [Caveat!]!
+  createdAt: DateTime!
+
+  borrowIntent: BorrowIntent @derivedFrom(field: "signedCaveat")
+  lendIntent: LendIntent @derivedFrom(field: "signedCaveat")
+}
+
+enum CaveatStatus {
+  Active
+  Filled
+  Invalidated
+  Expired
+}
+
+type Caveat {
+  enforcer: String!
+  data: String!
+}
+
+type Recall @entity {
+  # StarportLoan.id
+  id: ID!
+  chainId: Int! @index
+
+  recaller: String!
+  start: BigInt!
+  end: BigInt!
+
+  borrowIntent: BorrowIntent @derivedFrom(field: "recall")
+  starportLoan: StarportLoan! @unique
+}
+
+enum Provider {
+  ASTARIA
+  BLUR
+  X2Y2
+}
+
+enum LoanType {
+  ASTARIA
+  BLUR
+  X2Y2
+}
+
+type Loan
+  @entity
+  @index(fields: ["chainId", "lender"])
+  @index(fields: ["chainId", "borrower"]) {
+  id: ID!
+  chainId: Int! @index
+  borrower: String! @index
+  lender: String! @index
+  provider: Provider!
+  type: LoanType!
+
+  start: BigInt!
+
+  collateral: [SpentItem!]!
+
+  address: String!
+  decimals: BigInt!
+  amount: BigInt!
+  rate: BigInt!
+  duration: BigInt
+}
+
+type ArchivedLoan @entity {
+  id: ID!
+  chainId: Int! @index
+  borrower: String! @index
+  lender: String! @index
+  provider: Provider!
+  type: LoanType!
+  start: BigInt!
+  collateral: [SpentItem!]!
+  address: String!
+  decimals: BigInt!
+  amount: BigInt!
+  rate: BigInt!
+  duration: BigInt
+}
+
+type LendIntent @entity {
+  # SignedCaveat.ID
+  id: ID!
+  shortId: String! @unique @index
+
+  chainId: Int! @index
+
+  deadline: BigInt!
+
+  minAPY: BigInt!
+
+  minAmount: BigInt! # same as maxAmount, will be added in a subsequent contract change
+  maxAmount: BigInt!
+
+  collateral: [SpentItem!]!
+  borrow: [SpentItem!]!
+
+  usdValueCollateral: Float
+  usdValueBorrow: Float
+
+  assortmentId: String! @index
+
+  signedCaveat: SignedCaveat @unique
+
+  activeApproval: Boolean!
+}
+
+type RatioLendIntent @entity {
+  # SignedCaveat.ID
+  id: ID!
+  shortId: String! @unique @index
+
+  chainId: Int! @index
+
+  deadline: BigInt!
+
+  apy: BigInt!
+
+  minCollateralAmount: BigInt!
+  collateralToDebtRatio: BigInt!
+
+  collateral: [SpentItem!]!
+  borrow: [SpentItem!]!
+
+  assortmentId: String! @index
+
+  signedCaveat: SignedCaveat @unique
+
+  activeApproval: Boolean!
+
+  usdValueCollateral: Float
+  usdValueBorrow: Float
+}
+
+enum PointEvents {
+  Loan
+  CheckedIntentFeed
+  IntentSubmission
+  IntentFill
+  Special
+}
+
+type LoanEventData {
+  borrower: String!
+  lender: String!
+  start: BigInt!
+  amount: BigInt!
+  decimals: Int!
+  isClosed: Boolean!
+  baseDenominator: Float!
+  points: BigInt
+}
+
+type IntentFillData {
+  points: BigInt!
+  hash: String!
+  createdAt: DateTime!
+}
+
+type SpecialData {
+  points: BigInt!
+  createdAt: DateTime!
+}
+
+union PointEventsData =
+  | LoanEventData
+  | CheckedIntentFeedData
+  | IntentSubmissionData
+  | IntentFillData
+  | SpecialData
+
+type Point @entity {
+  id: ID!
+  chainId: Int! @index
+  isDynamic: Boolean!
+  address: String!
+  event: PointEvents!
+  data: PointEventsData!
+}
+
+type Leaderboard @entity {
+  id: ID!
+  points: BigInt!
+  rank: Int!
+}
+
+type Erc20Stats @entity {
+  id: ID! # {chainId}_{address}
+  chainId: Int! @index
+  address: String! @index
+  totalCollateral: BigInt!
+  totalDebt: BigInt!
+  avgApy: BigInt!
+  decimals: Int!
+  cronUpdatedAt: BigInt!
+}
+
+type ArchivedBorrowIntent @entity {
+  # either a SignedCaveat.ID or a StarportLoan.ID
+  id: ID!
+  shortId: String! @index
+
+  chainId: Int! @index
+
+  deadline: BigInt!
+
+  startTime: BigInt!
+  endTime: BigInt!
+
+  startRate: BigInt!
+  endRate: BigInt!
+
+  minAmount: BigInt!
+  maxAmount: BigInt!
+
+  collateral: [SpentItem!]!
+  borrow: [SpentItem!]!
+
+  usdValueCollateral: Float
+  usdValueBorrow: Float
+
+  isRecall: Boolean
+  assortmentId: String! @index
+
+  signedCaveat: SignedCaveat @unique
+
+  activeApproval: Boolean!
+}
+
+type ArchivedLendIntent @entity {
+  # SignedCaveat.ID
+  id: ID!
+  shortId: String! @unique @index
+
+  chainId: Int! @index
+
+  deadline: BigInt!
+
+  minAPY: BigInt!
+
+  minAmount: BigInt! # same as maxAmount, will be added in a subsequent contract change
+  maxAmount: BigInt!
+
+  collateral: [SpentItem!]!
+  borrow: [SpentItem!]!
+
+  usdValueCollateral: Float
+  usdValueBorrow: Float
+
+  assortmentId: String! @index
+
+  signedCaveat: SignedCaveat @unique
+
+  activeApproval: Boolean!
+}
+
+type MarketDetails @entity {
+  id: ID!
+  chainId: Int! @index
+  cumulativeBorrow: Float!
+  totalMarketSize: Float!
+  cumulativeCollateral: Float!
+  totalIntentVolume: Float!
+}
+
+type PointToken @entity {
+  id: ID!
+  chainId: Int! @index
+  baseDenominator: Float!
+  decimals: Int!
+  address: String!
+  timestamp: Int!
+}
+
+enum EventType {
+  CheckedIntentFeed
+  IntentSubmission
+  IntentFill
+}
+
+type CheckedIntentFeedData {
+  createdAt: DateTime!
+}
+
+type IntentSubmissionData {
+  intentId: String!
+  createdAt: DateTime!
+}
+
+union OffChainPointDataType =
+  | CheckedIntentFeedData
+  | IntentSubmissionData
+  | IntentFillData
+
+type OffChainPoint @entity {
+  id: ID!
+  chainId: Int! @index
+  address: String!
+  type: EventType!
+  data: OffChainPointDataType!
+  createdAt: DateTime!
+}
+
+type Admin @entity {
+  id: ID! # wallet address
+  createdAt: DateTime!
+}

@@ -1,0 +1,97 @@
+{
+  "name": "indexer",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "exports": {
+    "./model": {
+      "import": "./src/model/index.ts",
+      "module": "./src/model/index.ts",
+      "require": "./src/model/index.ts",
+      "types": "./src/model/index.ts"
+    },
+    "./utils": {
+      "import": "./src/utils/index.ts",
+      "module": "./src/utils/index.ts",
+      "require": "./src/utils/index.ts",
+      "types": "./src/utils/index.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "model": ["./src/model/index.ts"],
+      "utils": ["./src/utils/index.ts"]
+    }
+  },
+  "files": [
+    "abi",
+    "assets",
+    "db",
+    "lib",
+    "src",
+    "commands.json",
+    "schema.graphql"
+  ],
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "build:verify": "tsx scripts/verify-built-correctly.ts",
+    "codegen": "squid-typeorm-codegen && eslint --quiet --fix src/model/generated/**/* && prettier --log-level warn --write src/model/generated/**/*",
+    "down": "docker-compose down",
+    "format": "prettier --cache --log-level warn --check .",
+    "format:fix": "prettier --cache --log-level warn --write .",
+    "format:fix:nocache": "prettier --log-level warn --write .",
+    "lint": "concurrently \"pnpm format\" \"pnpm lint:ts\" \"pnpm type-check\"",
+    "lint:fix": "concurrently \"pnpm format:fix\" \"pnpm lint:ts:fix\" \"pnpm type-check\"",
+    "lint:fix:nocache": "concurrently \"pnpm format:fix:nocache\" \"pnpm lint:ts:fix:nocache\" \"pnpm type-check\"",
+    "lint:ts": "eslint --cache --quiet .",
+    "lint:ts:fix": "eslint --cache --quiet --fix .",
+    "lint:ts:fix:nocache": "eslint --quiet --fix .",
+    "migration:apply": "squid-typeorm-migration apply",
+    "migration:generate": "pnpm build && pnpm migration:apply && pnpm codegen && pnpm build && squid-typeorm-migration generate || echo 'No Changes'",
+    "process": "node",
+    "serve": "squid-graphql-server --dumb-cache in-memory --dumb-cache-ttl 1000 --dumb-cache-size 100 --dumb-cache-max-age 1000",
+    "squid:after": "tsx scripts/add-package-workspaces.ts && prettier --log-level warn --write package.json",
+    "squid:prepare": "tsx scripts/remove-package-workspaces.ts && prettier --log-level warn --write package.json",
+    "start": "squid-commands process",
+    "type-check": "tsc -p ./tsconfig.lint.json --noEmit",
+    "type-check:watch": "pnpm type-check --watch",
+    "typegen": "squid-commands typegen && eslint --quiet --fix src/abi/**/* && prettier --log-level warn --write src/abi/**/*",
+    "up": "docker-compose up -d"
+  },
+  "dependencies": {
+    "@subsquid/archive-registry": "^3.3.0",
+    "@subsquid/big-decimal": "^1.0.0",
+    "@subsquid/evm-processor": "^1.18.0",
+    "@subsquid/graphql-server": "^4.5.1",
+    "@subsquid/typeorm-migration": "^1.3.0",
+    "@subsquid/typeorm-store": "^1.4.0",
+    "chains": "workspace:*",
+    "common": "workspace:*",
+    "contracts-internal": "workspace:*",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.4",
+    "ethers": "^6.11.0",
+    "pg": "^8.11.5",
+    "points": "workspace:*",
+    "sdk": "workspace:*",
+    "typeorm": "^0.3.20",
+    "viem": "^2.9.15",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@subsquid/cli": "^2.10.4",
+    "@subsquid/commands": "^2.3.1",
+    "@subsquid/evm-typegen": "^3.3.0",
+    "@subsquid/typeorm-codegen": "^2.0.0",
+    "@types/node": "^20.12.7",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-astaria": "workspace:*",
+    "prettier": "^3.3.3",
+    "prettier-config-astaria": "workspace:*",
+    "rimraf": "^5.0.5",
+    "tsconfig": "workspace:*",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
+  }
+}

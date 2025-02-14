@@ -1,4 +1,42 @@
 {
+  "crons": [
+    {
+      "path": "/api/cron/warmAssetMetadata",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/cron/matchingservice?chainId=8453&chainId=34443",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/cron/clearInvalidIntents?chainId=8453&chainId=34443&chainId=11155111",
+      "schedule": "*/3 * * * *"
+    },
+    {
+      "path": "/api/cron/leaderboard?snapshot=1708473600",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/intentNotifications",
+      "schedule": "0 */12 * * *"
+    },
+    {
+      "path": "/api/cron/marketData?forSepolia=false",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/populatePointTokenPrices?chainId=8453&chainId=34443&chainId=11155111",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/ethBalanceMatchingServiceWallet?chainId=8453&chainId=34443&chainId=11155111",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/intentsUsdBatchPricing?forSepolia=false",
+      "schedule": "*/10 * * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

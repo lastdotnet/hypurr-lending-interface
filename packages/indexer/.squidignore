@@ -1,0 +1,9 @@
+.github
+.husky
+.turbo
+.vercel
+apps
+config-packages
+node_modules
+packages/notifications
+packages/ofac

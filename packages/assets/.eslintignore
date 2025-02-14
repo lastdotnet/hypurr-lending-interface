@@ -1,0 +1,11 @@
+.github
+.husky
+.next
+.swc
+coverage
+dist
+lib
+node_modules
+out
+/public
+/data

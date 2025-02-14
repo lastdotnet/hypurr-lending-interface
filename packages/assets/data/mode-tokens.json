@@ -1,0 +1,86 @@
+{
+  "tokens": [
+    {
+      "address": "0x2416092f143378750bb29b79eD961ab195CcEea5",
+      "chainId": 34443,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/ezeth.webp",
+      "name": "Renzo Restaked ETH",
+      "symbol": "ezETH"
+    },
+    {
+      "address": "0x59889b7021243dB5B1e065385F918316cD90D46c",
+      "chainId": 34443,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/m-btc.webp",
+      "name": "Merlin BTC",
+      "symbol": "M-BTC"
+    },
+    {
+      "address": "0xcDa802a5BFFaa02b842651266969A5Bba0c66D3e",
+      "chainId": 34443,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/mochad.webp",
+      "name": "MoChadCoin",
+      "symbol": "MOCHAD"
+    },
+    {
+      "address": "0xDfc7C877a950e49D2610114102175A06C2e3167a",
+      "chainId": 34443,
+      "decimals": 18,
+      "name": "Mode",
+      "symbol": "MODE"
+    },
+    {
+      "address": "0x598f9Cb99BaFC8346b4c153A61b3A27C8f13B10F",
+      "chainId": 34443,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/modi.webp",
+      "name": "Modie",
+      "symbol": "MODI"
+    },
+    {
+      "address": "0xFDa619b6d20975be80A10332cD39b9a4b0FAa8BB",
+      "chainId": 34443,
+      "decimals": 18,
+      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/smd.webp",
+      "name": "Swap Mode",
+      "symbol": "SMD"
+    },
+    {
+      "address": "0x80137510979822322193FC997d400D5A6C747bf7",
+      "chainId": 34443,
+      "decimals": 18,
+      "name": "StakeStone Ether",
+      "symbol": "STONE"
+    },
+    {
+      "address": "0xd988097fb8612cc24eeC14542bC03424c656005f",
+      "chainId": 34443,
+      "decimals": 6,
+      "name": "USDC",
+      "symbol": "USDC"
+    },
+    {
+      "address": "0xf0F161fDA2712DB8b566946122a5af183995e2eD",
+      "chainId": 34443,
+      "decimals": 6,
+      "name": "Tether USD",
+      "symbol": "USDT"
+    },
+    {
+      "address": "0xcDd475325D6F564d27247D1DddBb0DAc6fA0a5CF",
+      "chainId": 34443,
+      "decimals": 8,
+      "name": "Wrapped BTC",
+      "symbol": "WBTC"
+    },
+    {
+      "address": "0x4200000000000000000000000000000000000006",
+      "chainId": 34443,
+      "decimals": 18,
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  ]
+}

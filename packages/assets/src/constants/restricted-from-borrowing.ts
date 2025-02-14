@@ -1,0 +1,1 @@
+export const SYMBOLS_RESTRICTED_FROM_BORROWING = ['wBLT'];

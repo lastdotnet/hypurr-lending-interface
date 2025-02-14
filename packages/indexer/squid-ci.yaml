@@ -1,0 +1,34 @@
+manifestVersion: subsquid.io/v0.1
+name: v1-indexer-ci-RANDOM_STR
+version: 1
+build:
+  node_version: 20
+  cmd:
+    - pnpm
+    - indexer:build
+  install:
+    cmd:
+      - pnpm
+      - install
+deploy:
+  addons:
+    postgres:
+      config:
+        statement_timeout: 100000
+        log_min_duration_statement: 100000
+  env:
+    NODE_ENV: development
+    RPC_URL_SEPOLIA: ${{ secrets.RPC_URL_SEPOLIA }}
+  migrate:
+    cmd:
+      - pnpm
+      - indexer:migration:apply
+  api:
+    cmd:
+      - pnpm
+      - indexer:serve
+  processor:
+    - name: sepolia-processor
+      cmd:
+        - pnpm
+        - indexer:process:sepolia

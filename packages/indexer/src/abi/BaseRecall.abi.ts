@@ -1,0 +1,550 @@
+export const ABI_JSON = [
+  {
+    type: 'function',
+    name: 'SP',
+    inputs: [],
+    outputs: [
+      {
+        name: '',
+        type: 'address',
+        internalType: 'contract Starport',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'cancelOwnershipHandover',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    name: 'completeOwnershipHandover',
+    inputs: [
+      {
+        name: 'pendingOwner',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+    outputs: [],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    name: 'getRecallRate',
+    inputs: [
+      {
+        name: 'loan',
+        type: 'tuple',
+        internalType: 'struct Starport.Loan',
+        components: [
+          {
+            name: 'start',
+            type: 'uint256',
+            internalType: 'uint256',
+          },
+          {
+            name: 'custodian',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'borrower',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'issuer',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'originator',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'collateral',
+            type: 'tuple[]',
+            internalType: 'struct SpentItem[]',
+            components: [
+              {
+                name: 'itemType',
+                type: 'uint8',
+                internalType: 'enum ItemType',
+              },
+              {
+                name: 'token',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'identifier',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+              {
+                name: 'amount',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+            ],
+          },
+          {
+            name: 'debt',
+            type: 'tuple[]',
+            internalType: 'struct SpentItem[]',
+            components: [
+              {
+                name: 'itemType',
+                type: 'uint8',
+                internalType: 'enum ItemType',
+              },
+              {
+                name: 'token',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'identifier',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+              {
+                name: 'amount',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+            ],
+          },
+          {
+            name: 'terms',
+            type: 'tuple',
+            internalType: 'struct Starport.Terms',
+            components: [
+              {
+                name: 'status',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'statusData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+              {
+                name: 'pricing',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'pricingData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+              {
+                name: 'settlement',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'settlementData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    outputs: [
+      {
+        name: '',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'owner',
+    inputs: [],
+    outputs: [
+      {
+        name: 'result',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'ownershipHandoverExpiresAt',
+    inputs: [
+      {
+        name: 'pendingOwner',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+    outputs: [
+      {
+        name: 'result',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'pause',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'paused',
+    inputs: [],
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+        internalType: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'recall',
+    inputs: [
+      {
+        name: 'loan',
+        type: 'tuple',
+        internalType: 'struct Starport.Loan',
+        components: [
+          {
+            name: 'start',
+            type: 'uint256',
+            internalType: 'uint256',
+          },
+          {
+            name: 'custodian',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'borrower',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'issuer',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'originator',
+            type: 'address',
+            internalType: 'address',
+          },
+          {
+            name: 'collateral',
+            type: 'tuple[]',
+            internalType: 'struct SpentItem[]',
+            components: [
+              {
+                name: 'itemType',
+                type: 'uint8',
+                internalType: 'enum ItemType',
+              },
+              {
+                name: 'token',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'identifier',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+              {
+                name: 'amount',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+            ],
+          },
+          {
+            name: 'debt',
+            type: 'tuple[]',
+            internalType: 'struct SpentItem[]',
+            components: [
+              {
+                name: 'itemType',
+                type: 'uint8',
+                internalType: 'enum ItemType',
+              },
+              {
+                name: 'token',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'identifier',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+              {
+                name: 'amount',
+                type: 'uint256',
+                internalType: 'uint256',
+              },
+            ],
+          },
+          {
+            name: 'terms',
+            type: 'tuple',
+            internalType: 'struct Starport.Terms',
+            components: [
+              {
+                name: 'status',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'statusData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+              {
+                name: 'pricing',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'pricingData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+              {
+                name: 'settlement',
+                type: 'address',
+                internalType: 'address',
+              },
+              {
+                name: 'settlementData',
+                type: 'bytes',
+                internalType: 'bytes',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'recalls',
+    inputs: [
+      {
+        name: '',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    outputs: [
+      {
+        name: 'recaller',
+        type: 'address',
+        internalType: 'address payable',
+      },
+      {
+        name: 'start',
+        type: 'uint64',
+        internalType: 'uint64',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'renounceOwnership',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    name: 'requestOwnershipHandover',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    name: 'transferOwnership',
+    inputs: [
+      {
+        name: 'newOwner',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+    outputs: [],
+    stateMutability: 'payable',
+  },
+  {
+    type: 'function',
+    name: 'unpause',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'event',
+    name: 'OwnershipHandoverCanceled',
+    inputs: [
+      {
+        name: 'pendingOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: 'event',
+    name: 'OwnershipHandoverRequested',
+    inputs: [
+      {
+        name: 'pendingOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: 'event',
+    name: 'OwnershipTransferred',
+    inputs: [
+      {
+        name: 'oldOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
+      {
+        name: 'newOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: 'event',
+    name: 'Paused',
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: 'event',
+    name: 'Recalled',
+    inputs: [
+      {
+        name: 'loanId',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
+      {
+        name: 'recaller',
+        type: 'address',
+        indexed: false,
+        internalType: 'address',
+      },
+      {
+        name: 'end',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: 'event',
+    name: 'Unpaused',
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: 'error',
+    name: 'AlreadyInitialized',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'InvalidRecaller',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'IsLocked',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'IsPaused',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'LoanDoesNotExist',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'NewOwnerIsZeroAddress',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'NoHandoverRequest',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'NotPaused',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'RecallAlreadyExists',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'RecallBeforeHoneymoonExpiry',
+    inputs: [],
+  },
+  {
+    type: 'error',
+    name: 'Unauthorized',
+    inputs: [],
+  },
+] as const;

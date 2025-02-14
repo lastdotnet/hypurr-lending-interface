@@ -1,0 +1,39 @@
+{
+  "tokens": [
+    {
+      "address": "0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "GHO",
+      "symbol": "GHO"
+    },
+    {
+      "address": "0xdeFA4e8a7bcBA345F687a2f1456F5Edd9CE97202",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Kyber Network Crystal v2",
+      "symbol": "KNC"
+    },
+    {
+      "address": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Rocket Pool ETH",
+      "symbol": "RETH"
+    },
+    {
+      "address": "0xD33526068D116cE69F19A9ee46F0bd304F21A51f",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Rocket Pool Protocol",
+      "symbol": "RPL"
+    },
+    {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "chainId": 1,
+      "decimals": 18,
+      "name": "Wrapped liquid staked Ether 2.0",
+      "symbol": "wstETH"
+    }
+  ]
+}

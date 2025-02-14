@@ -1,0 +1,50 @@
+manifestVersion: subsquid.io/v0.1
+name: v1-indexer-preview
+version: 1
+build:
+  node_version: 20
+  cmd:
+    - pnpm
+    - indexer:build
+  install:
+    cmd:
+      - pnpm
+      - install
+deploy:
+  env:
+    RPC_URL_BASE: ${{ secrets.RPC_URL_BASE }}
+    RPC_URL_MAINNET: ${{ secrets.RPC_URL_MAINNET }}
+    RPC_URL_MODE: ${{ secrets.RPC_URL_MODE }}
+    RPC_URL_BLAST: ${{ secrets.RPC_URL_BLAST }}
+    RPC_URL_SEPOLIA: ${{ secrets.RPC_URL_SEPOLIA }}
+    DB_PASS: ${{ secrets.DB_PASS }}
+    DB_HOST: ${{ secrets.DB_HOST }}
+    DB_NAME: v1-stack-preview
+    DB_USER: dev
+    DB_SSL: true
+    NODE_ENV: preview
+  migrate:
+    cmd:
+      - pnpm
+      - indexer:migration:apply
+  api:
+    cmd:
+      - pnpm
+      - indexer:serve
+  processor:
+    - name: base-processor
+      cmd:
+        - pnpm
+        - indexer:process:base
+    - name: mainnet-processor
+      cmd:
+        - pnpm
+        - indexer:process:mainnet
+    - name: mode-processor
+      cmd:
+        - pnpm
+        - indexer:process:mode
+    - name: sepolia-processor
+      cmd:
+        - pnpm
+        - indexer:process:sepolia

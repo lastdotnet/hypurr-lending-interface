@@ -62,7 +62,7 @@
       },
       "nursery": {
         "useSortedClasses": {
-          "level": "error",
+          "level": "warn",
           "options": {
             "functions": ["cn", "cva", "clsx"]
           }

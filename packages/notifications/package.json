@@ -1,0 +1,39 @@
+{
+  "name": "notifications",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "module": "./src/index.ts",
+      "require": "./lib/index.js",
+      "types": "./src/index.ts"
+    }
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "format": "prettier --cache --log-level warn --check .",
+    "format:fix": "prettier --cache --log-level warn --write .",
+    "format:fix:nocache": "prettier --log-level warn --write .",
+    "lint": "concurrently \"pnpm format\" \"pnpm lint:ts\" \"pnpm type-check\"",
+    "lint:fix": "concurrently \"pnpm format:fix\" \"pnpm lint:ts:fix\" \"pnpm type-check\"",
+    "lint:fix:nocache": "concurrently \"pnpm format:fix:nocache\" \"pnpm lint:ts:fix:nocache\" \"pnpm type-check\"",
+    "lint:ts": "eslint --cache --quiet .",
+    "lint:ts:fix": "eslint --cache --quiet --fix .",
+    "lint:ts:fix:nocache": "eslint --quiet --fix .",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "pnpm type-check --watch"
+  },
+  "dependencies": {
+    "@slack/webhook": "^7.0.2",
+    "@upstash/qstash": "^2.4.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-astaria": "workspace:*",
+    "prettier-config-astaria": "workspace:*",
+    "tsconfig": "workspace:*"
+  }
+}
