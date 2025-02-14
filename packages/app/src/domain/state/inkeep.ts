@@ -1,9 +1,8 @@
 'use client'
 
 import { StateCreator } from 'zustand'
-import { StoreState, useStore } from '@/domain/state'
+import { StoreState } from '@/domain/state'
 import { InkeepEmbedConfig } from '@inkeep/uikit-js/dist/types'
-import { useEffect } from 'react'
 
 export interface InkeepSlice {
   inkeep: {
@@ -70,24 +69,3 @@ export const initInkeepSlice: StateCreator<StoreState, [], [], InkeepSlice> = (s
     },
   },
 })
-
-export function useInkeep(): { handleOpen: () => void } {
-  const { setWidget, handleOpen, config } = useStore((state) => state.inkeep)
-
-  useEffect(() => {
-    async function loadInkeepJS(): Promise<void> {
-      try {
-        const inkeepJS = await import('@inkeep/uikit-js')
-        const inkeep = inkeepJS.Inkeep({})
-        const widget = inkeep.embed(config)
-        setWidget(widget)
-      } catch (error) {
-        console.error('Failed to load Inkeep:', error)
-      }
-    }
-
-    void loadInkeepJS()
-  }, [config, setWidget])
-
-  return { handleOpen }
-}
