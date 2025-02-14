@@ -4,7 +4,7 @@ import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { ConnectOrSandboxCTAPanel } from './ConnectOrSandboxCTAPanel'
 
 const icons = assets.walletIcons
-const WALLET_ICONS_PATHS = [icons.metamask, icons.walletConnect, icons.coinbase, icons.enjin, icons.torus]
+const WALLET_ICONS_PATHS = [icons.metamask, icons.walletConnect, icons.coinbase]
 
 const meta: Meta<typeof ConnectOrSandboxCTAPanel> = {
   title: 'Components/Organisms/ConnectOrSandboxCTAPanel',

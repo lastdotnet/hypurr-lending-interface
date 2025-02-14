@@ -12,24 +12,10 @@ const meta: Meta<typeof SelectNetworkDialogView> = {
   args: {
     chains: [
       {
-        logo: assets.chain.ethereum,
-        name: 'Ethereum Mainnet',
+        logo: assets.chain.hyper,
+        name: 'HyperEVM',
         supportedPages: ['Savings', 'Borrow', 'Farms'],
         selected: false,
-        onSelect: () => {},
-      },
-      {
-        logo: assets.chain.gnosis,
-        name: 'Gnosis Chain',
-        supportedPages: ['Savings', 'Borrow'],
-        selected: false,
-        onSelect: () => {},
-      },
-      {
-        logo: assets.chain.baseDevNet,
-        name: 'Base',
-        supportedPages: ['Savings', 'Farms'],
-        selected: true,
         onSelect: () => {},
       },
     ],

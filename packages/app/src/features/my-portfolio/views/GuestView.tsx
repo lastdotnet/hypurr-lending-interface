@@ -22,4 +22,4 @@ export function GuestView({ openConnectModal, openSandboxModal }: GuestViewProps
 }
 
 const icons = assets.walletIcons
-const WALLET_ICONS_PATHS = [icons.metamask, icons.walletConnect, icons.coinbase, icons.enjin, icons.torus]
+const WALLET_ICONS_PATHS = [icons.metamask, icons.walletConnect, icons.coinbase]

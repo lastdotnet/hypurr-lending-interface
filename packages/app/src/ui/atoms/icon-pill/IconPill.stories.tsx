@@ -15,6 +15,6 @@ type Story = StoryObj<typeof IconPill>
 export const Default: Story = {
   name: 'Default',
   args: {
-    icon: assets.sparkIcon,
+    icon: assets.hypurrPaw,
   },
 }

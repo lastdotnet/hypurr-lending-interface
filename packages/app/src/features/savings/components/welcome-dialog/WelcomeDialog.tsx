@@ -1,6 +1,5 @@
 import { formatPercentage } from '@/domain/common/format'
 import { Percentage } from '@/domain/types/NumericValues'
-import { assets } from '@/ui/assets'
 import { Button } from '@/ui/atoms/button/Button'
 import { Dialog, DialogContent } from '@/ui/atoms/dialog/Dialog'
 import { KeyPoints } from '@/ui/atoms/key-points/KeyPoints'
@@ -17,13 +16,6 @@ export function WelcomeDialog({ open, onConfirm, apyImprovement }: WelcomeDialog
   return (
     <Dialog open={open}>
       <DialogContent className="flex flex-col p-0" showCloseButton={false}>
-        <img
-          src={assets.banners.newSavingsWelcome}
-          width={600}
-          height={300}
-          alt="new-savings-welcome-banner"
-          className="w-fit md:max-h-[300px]"
-        />
         <div className="flex flex-col gap-6 px-10 py-8">
           <div className="flex flex-col gap-2">
             <h2 className="font-semibold text-xl">Welcome USDS, the new upgraded DAI!</h2>

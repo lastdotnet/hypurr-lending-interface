@@ -20,7 +20,7 @@ export const SparklesOnImage: Story = {
   name: 'Sparkles on image',
   render: () => (
     <Sparkles sizeRange={[8, 12]}>
-      <img src={assets.token.eth} className="h-5 w-5" />
+      <img src={assets.token.usdxl} className="h-5 w-5" />
     </Sparkles>
   ),
 }
