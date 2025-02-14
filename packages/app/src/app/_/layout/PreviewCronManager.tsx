@@ -1,7 +1,7 @@
 'use client'
 
 import { TooltipArrow } from '@/astaria/radix-ui/react-tooltip'
-import { IconCheck, IconReload, IconX } from '@/astaria/tabler/icons-react'
+import { IconCheck, IconReload, IconX } from '@tabler/icons-react'
 import { useMutation } from '@tanstack/react-query'
 
 import clsx from 'clsx'

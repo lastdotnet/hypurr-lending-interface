@@ -1,7 +1,7 @@
 'use client'
 
 import * as Sentry from '@/astaria/sentry/nextjs'
-import { IconCheck } from '@/astaria/tabler/icons-react'
+import { IconCheck } from '@tabler/icons-react'
 
 import { useAccountEffect } from 'wagmi'
 

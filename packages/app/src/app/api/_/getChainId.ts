@@ -14,7 +14,7 @@ export const getChainId = (req: NextRequest) => {
     throw new BadRequestError('Missing query param: chainId')
   }
 
-  const chainId = parseInt(chainIdQueryParam)
+  const chainId = Number.parseInt(chainIdQueryParam)
 
   if (!isSupportedChain(chainId)) {
     throw new BadRequestError(`Unsupported chain: ${chainId}`)
@@ -35,7 +35,7 @@ export const getChainIds = (req: NextRequest) => {
     .array()
     .parse(chainIdsQueryParam)
     .map((item) => {
-      const chainId = parseInt(item)
+      const chainId = Number.parseInt(item)
       if (!isSupportedChain(chainId)) {
         throw new BadRequestError(`Unsupported chain: ${chainId}`)
       }

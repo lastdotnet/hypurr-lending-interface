@@ -1,4 +1,4 @@
-import { initWeb3InboxClient } from '@/astaria/web3inbox/react'
+import { initWeb3InboxClient } from '@web3inbox/react'
 import { createWeb3Modal } from '@/astaria/web3modal/wagmi/react'
 
 import { wagmiConfig } from '@/astaria/config/wagmi'
