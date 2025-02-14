@@ -17,7 +17,7 @@ function RepayDialog({ token, open, setOpen }: RepayDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <RepayDialogContentContainer token={token} closeDialog={() => setOpen(false)} />
       </DialogContent>
     </Dialog>

@@ -30,7 +30,6 @@ export function ActionsGrid({ actionHandlers, variant }: ActionsGridProps) {
     <div className="grid grid-cols-[auto_auto_1fr_auto] gap-x-4 md:grid-cols-[auto_auto_auto_1fr_auto]">
       {actionHandlers.map((handler, index) => {
         const props = {
-          key: index,
           index: index + 1,
           actionHandlerState: handler.state,
           onAction: handler.onAction,
@@ -39,41 +38,41 @@ export function ActionsGrid({ actionHandlers, variant }: ActionsGridProps) {
 
         switch (handler.action.type) {
           case 'approve':
-            return <ApproveActionRow action={handler.action} {...props} />
+            return <ApproveActionRow action={handler.action} key={index} {...props} />
           case 'approveDelegation':
-            return <ApproveDelegationActionRow action={handler.action} {...props} />
+            return <ApproveDelegationActionRow action={handler.action} key={index} {...props} />
           case 'borrow':
-            return <BorrowActionRow action={handler.action} {...props} />
+            return <BorrowActionRow action={handler.action} key={index} {...props} />
           case 'deposit':
-            return <DepositActionRow action={handler.action} {...props} />
+            return <DepositActionRow action={handler.action} key={index} {...props} />
           case 'permit':
-            return <PermitActionRow action={handler.action} {...props} />
+            return <PermitActionRow action={handler.action} key={index} {...props} />
           case 'repay':
-            return <RepayActionRow action={handler.action} {...props} />
+            return <RepayActionRow action={handler.action} key={index} {...props} />
           case 'setUseAsCollateral':
-            return <SetUseAsCollateralActionRow action={handler.action} {...props} />
+            return <SetUseAsCollateralActionRow action={handler.action} key={index} {...props} />
           case 'setUserEMode':
-            return <SetUserEModeActionRow action={handler.action} {...props} />
+            return <SetUserEModeActionRow action={handler.action} key={index} {...props} />
           case 'withdraw':
-            return <WithdrawActionRow action={handler.action} {...props} />
+            return <WithdrawActionRow action={handler.action} key={index} {...props} />
           case 'claimMarketRewards':
-            return <ClaimMarketRewardsActionRow action={handler.action} {...props} />
+            return <ClaimMarketRewardsActionRow action={handler.action} key={index} {...props} />
           case 'withdrawFromSavings':
-            return <WithdrawFromSavingsActionRow action={handler.action} {...props} />
+            return <WithdrawFromSavingsActionRow action={handler.action} key={index} {...props} />
           case 'depositToSavings':
-            return <DepositToSavingsActionRow action={handler.action} {...props} />
+            return <DepositToSavingsActionRow action={handler.action} key={index} {...props} />
           case 'upgrade':
-            return <UpgradeActionRow action={handler.action} {...props} />
+            return <UpgradeActionRow action={handler.action} key={index} {...props} />
           case 'downgrade':
-            return <DowngradeActionRow action={handler.action} {...props} />
+            return <DowngradeActionRow action={handler.action} key={index} {...props} />
           case 'stake':
-            return <StakeActionRow action={handler.action} {...props} />
+            return <StakeActionRow action={handler.action} key={index} {...props} />
           case 'unstake':
-            return <UnstakeActionRow action={handler.action} {...props} />
+            return <UnstakeActionRow action={handler.action} key={index} {...props} />
           case 'psmConvert':
-            return <PsmConvertActionRow action={handler.action} {...props} />
+            return <PsmConvertActionRow action={handler.action} key={index} {...props} />
           case 'claimFarmRewards':
-            return <ClaimFarmRewardsActionRow action={handler.action} {...props} />
+            return <ClaimFarmRewardsActionRow action={handler.action} key={index} {...props} />
           default:
             assertNever(handler.action)
         }
