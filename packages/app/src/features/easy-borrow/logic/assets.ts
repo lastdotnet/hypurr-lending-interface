@@ -23,7 +23,7 @@ export function getDepositableAssets(positions: UserPosition[], walletInfo: Mark
 }
 const usdxlEnabled = process.env.NEXT_PUBLIC_FEATURE_USDXL === '1'
 
-const defaultWhitelistedBorrowableAssets = ['USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH']
+const defaultWhitelistedBorrowableAssets = ['USDC', 'sUSDe', 'WHYPE', 'SolvBTC', 'stTESTH', 'KHYPE']
 const whitelistedBorrowableAssets = usdxlEnabled
   ? [...defaultWhitelistedBorrowableAssets, 'USDXL']
   : defaultWhitelistedBorrowableAssets
