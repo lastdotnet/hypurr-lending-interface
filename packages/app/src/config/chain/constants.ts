@@ -10,7 +10,7 @@ export const hyperTestnet = {
   name: 'HyperEVM',
   nativeCurrency: { name: 'Hype', symbol: 'HYPE', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://api.hyperliquid-testnet.xyz/evm'] },
+    default: { http: ['https://rpc.hyperliquid-testnet.xyz/evm'] },
   },
   blockExplorers: {
     default: { name: 'Purrsec', url: 'https://testnet.purrsec.com' },
