@@ -1,6 +1,6 @@
 'use client'
 
-import { useInkeep } from '@/domain/state/inkeep'
+import { useInkeep } from '@/domain/hooks/useInkeep'
 import { Button, buttonVariants } from '@/ui/atoms/button/Button'
 import { cn } from '@/ui/utils/style'
 import { MessagesSquareIcon } from 'lucide-react'

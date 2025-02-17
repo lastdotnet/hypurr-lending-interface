@@ -74,6 +74,7 @@ import weth from './tokens/weth.svg?url'
 import wsteth from './tokens/wsteth.svg?url'
 import wxdai from './tokens/wxdai.svg?url'
 import xdai from './tokens/xdai.svg?url'
+import khype from './tokens/khype.svg?url'
 import up from './up.svg?url'
 import upgrade from './upgrade.svg?url'
 import coinbase from './wallet-icons/coinbase.svg?url'
@@ -202,6 +203,7 @@ export const assets = {
     whype: hype,
     solvbtc,
     sttesth,
+    khype,
     unknown,
   },
   walletIcons: {

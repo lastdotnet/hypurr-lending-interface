@@ -10,14 +10,13 @@ import { createMockConnector } from '@/domain/wallet/createMockConnector'
 import { viemAddressSchema } from '@/domain/common/validation'
 import { getConfig } from './config.default'
 import { hyperTestnet } from '../chain/constants'
+import { VIEM_TIMEOUT_ON_FORKS } from '../consts'
 
 export const PLAYWRIGHT_CHAIN_ID = '__PLAYWRIGHT_CHAIN_ID' as const
 export const PLAYWRIGHT_WALLET_ADDRESS_KEY = '__PLAYWRIGHT_WALLET_ADDRESS' as const
 export const PLAYWRIGHT_WALLET_PRIVATE_KEY_KEY = '__PLAYWRIGHT_WALLET_PRIVATE_KEY' as const
 export const PLAYWRIGHT_WALLET_FORK_URL_KEY = '__PLAYWRIGHT_WALLET_FORK_URL_KEY' as const
 export const PLAYWRIGHT_USDS_CONTRACTS_NOT_AVAILABLE_KEY = '__PLAYWRIGHT_USDS_CONTRACTS_NOT_AVAILABLE' as const
-
-export const VIEM_TIMEOUT_ON_FORKS = 60_000 // forks tend to be slow. This improves reliability/performance. Default is 10_000
 
 type PrivateKey = `0x${string}`
 const privateKeySchema = z.custom<PrivateKey>((privateKey) => {

@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand'
-import { StoreState, useStore } from '.'
+import { StoreState } from '.'
 
 export interface Savings {
   confirmedWelcomeDialog: boolean
@@ -22,14 +22,6 @@ export const initSavingsSlice: StateCreator<StoreState, [], [], SavingsSlice> = 
 export interface UseSavingsStoreResult {
   confirmedWelcomeDialog: boolean
   saveConfirmedWelcomeDialog: (confirmedWelcomeDialog: boolean) => void
-}
-export function useSavingsStore(): UseSavingsStoreResult {
-  const { confirmedWelcomeDialog, setConfirmedWelcomeDialog } = useStore((state) => state.savings)
-
-  return {
-    confirmedWelcomeDialog,
-    saveConfirmedWelcomeDialog: setConfirmedWelcomeDialog,
-  }
 }
 
 export interface PersistedSavingsSlice {

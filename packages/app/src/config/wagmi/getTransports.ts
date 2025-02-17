@@ -1,5 +1,5 @@
 import { http, Chain, Transport, custom } from 'viem'
-import { VIEM_TIMEOUT_ON_FORKS } from './config.e2e'
+import { VIEM_TIMEOUT_ON_FORKS } from '@/config/consts'
 import { getInjectedNetwork } from './getInjectedNetwork'
 import { hyperTestnet } from '../chain/constants'
 

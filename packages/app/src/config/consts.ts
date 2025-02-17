@@ -29,3 +29,5 @@ export const A_USDXL_ADDRESS = CheckedAddress('0xCFBD3c2c0Be381A02fbca18eA8a2231
 
 // Hide reserves on the UI
 export const reserveBlacklist: string[] = []
+
+export const VIEM_TIMEOUT_ON_FORKS = 60_000 // forks tend to be slow. This improves reliability/performance. Default is 10_000

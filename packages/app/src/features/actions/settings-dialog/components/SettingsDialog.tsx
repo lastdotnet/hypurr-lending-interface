@@ -36,7 +36,7 @@ export function SettingsDialog(props: SettingsDialogProps) {
           />
         </Wrapper>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <SettingsDialogContent {...props} />
       </DialogContent>
     </Dialog>

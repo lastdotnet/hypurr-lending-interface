@@ -12,7 +12,7 @@ function DepositDialog({ token, open, setOpen }: DialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent aria-describedby={undefined}>
         <DepositDialogContentContainer token={token} closeDialog={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
