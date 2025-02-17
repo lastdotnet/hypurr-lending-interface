@@ -1,7 +1,7 @@
 'use client'
 
-import { MarketDetails } from '@/containers/MarketDetails'
+import { Standby } from '@/ui/atoms/standby/Standby'
 
 export default function Page() {
-  return <MarketDetails />
+  return <Standby />
 }
