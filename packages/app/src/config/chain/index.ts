@@ -85,7 +85,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         },
         [TokenSymbol('SolvBTC')]: {
           type: 'market-price',
-          providedBy: [],
+          providedBy: ['redstone'],
         },
         [TokenSymbol('stTESTH')]: {
           type: 'market-price',
