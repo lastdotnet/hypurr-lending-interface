@@ -1,7 +1,7 @@
 'use client'
 
-import { Standby } from '@/ui/atoms/standby/Standby'
+import { EasyBorrowPage } from '@/containers/Borrow'
 
 export default function Page() {
-  return <Standby />
+  return <EasyBorrowPage />
 }
