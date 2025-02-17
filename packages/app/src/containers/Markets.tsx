@@ -1,3 +1,5 @@
+import { MarketsContainer } from '@/features/markets/MarketsContainer'
+
 export function Markets() {
-  return <div>Markets</div>
+  return <MarketsContainer />
 }

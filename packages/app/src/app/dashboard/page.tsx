@@ -1,7 +1,7 @@
 'use client'
 
-import { Standby } from '@/ui/atoms/standby/Standby'
+import { MyPortfolioPage } from '@/containers/MyPortfolio'
 
 export default function Page() {
-  return <Standby />
+  return <MyPortfolioPage />
 }
