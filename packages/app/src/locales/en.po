@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2024-08-29 15:10+0200\n"
+"POT-Creation-Date: 2025-02-17 13:03-0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,47 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
-#: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
-#~ msgid "Borrow"
-#~ msgstr ""
+#: src/features/easy-borrow/components/BorrowRateBanner.tsx:13
+msgid "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
+msgstr "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
 
-#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:64
-#~ msgid "Borrow {0}"
-#~ msgstr ""
-
-#: src/features/easy-borrow/deposit/DepositBorrow.tsx:132
-#~ msgid "Connect your wallet"
-#~ msgstr ""
-
-#: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:115
-#~ msgid "Continue"
-#~ msgstr ""
-
-#: src/features/easy-borrow/components/EasyBorrowPanel.tsx:49
-#~ msgid "Deposit and borrow"
-#~ msgstr ""
-
-#: src/features/navbar/components/PageLinks.tsx:52
-#~ msgid "Farms"
-#~ msgstr ""
-
-#: src/ui/molecule/navbar/index.tsx:67
-#~ msgid "Faucet"
-#~ msgstr ""
-
-#: src/ui/organism/language-settings/LanguageSettings.tsx:28
-#~ msgid "Language"
-#~ msgstr ""
-
-#: src/features/navbar/components/PageLinks.tsx:48
-#~ msgid "Markets"
-#~ msgstr ""
-
-#: src/features/navbar/components/PageLinks.tsx:32
-#~ msgid "My Portfolio"
-#~ msgstr ""
-
-#: src/features/navbar/components/PageLinks.tsx:44
-#~ msgid "Savings"
-#~ msgstr ""
+#: src/features/easy-borrow/components/BorrowRateBanner.tsx:9
+msgid "Quick Deposit & Borrow"
+msgstr "Quick Deposit & Borrow"

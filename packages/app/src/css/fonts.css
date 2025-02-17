@@ -1,8 +1,17 @@
 @font-face {
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-style: normal;
   font-weight: 100 900;
   font-display: block;
-  font-named-instance: 'Regular';
-  src: url('../fonts/Manrope-Variable.ttf') format('truetype');
+  font-named-instance: "Regular";
+  src: url("../fonts/Manrope-Variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  font-named-instance: "Regular";
+  src: url("../fonts/NotoSansSC-Variable.ttf") format("truetype");
 }

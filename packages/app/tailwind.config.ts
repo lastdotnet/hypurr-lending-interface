@@ -22,7 +22,7 @@ export default {
         inactive: '0.3',
       },
       fontFamily: {
-        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', 'Noto Sans SC', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         basics: {

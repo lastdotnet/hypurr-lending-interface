@@ -19,11 +19,6 @@ const nextConfig = withImages({
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
   },
-  i18n: {
-    locales: ['en', 'pl'],
-    defaultLocale: 'en',
-  },
-
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))

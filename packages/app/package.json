@@ -23,6 +23,7 @@
     "storybook:build": "pnpm run lingui:extract && storybook build",
     "size": "pnpm run build && size-limit",
     "lingui:extract": "lingui extract",
+    "lingui:compile": "lingui compile",
     "chromatic": "npx chromatic --build-script-name storybook:build --exit-zero-on-changes"
   },
   "dependencies": {
@@ -77,6 +78,7 @@
     "jsbi": "^3.2.5",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.284.0",
+    "negotiator": "^1.0.0",
     "next": "15.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -122,6 +124,7 @@
     "@types/d3-array": "^3.2.1",
     "@types/jsdom": "^21.1.1",
     "@types/lokijs": "^1.5.8",
+    "@types/negotiator": "^0.6.3",
     "@types/node": "^20.4.10",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
