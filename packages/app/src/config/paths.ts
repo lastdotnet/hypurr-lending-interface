@@ -4,6 +4,7 @@ export const paths = {
   easyBorrow: '/',
   dashboard: '/dashboard',
   markets: '/markets',
+  swap: '/swap',
   savings: '/savings',
   farms: '/farms',
   marketDetails: '/markets/:chainId/:asset',
