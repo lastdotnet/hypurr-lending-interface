@@ -59,11 +59,15 @@ const links = [
     label: 'Staking',
     icon: WalletCardsIcon,
   },
-  {
-    to: paths.faucet,
-    label: 'Faucet',
-    icon: DropletIcon,
-  },
+  ...(process.env.NEXT_PUBLIC_SHOW_TESTNET === '1'
+    ? [
+        {
+          to: paths.faucet,
+          label: 'Faucet',
+          icon: DropletIcon,
+        },
+      ]
+    : []),
 ]
 
 export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksProps) {
