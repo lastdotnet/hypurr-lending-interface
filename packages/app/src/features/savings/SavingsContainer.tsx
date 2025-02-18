@@ -11,14 +11,13 @@ import { UnsupportedChainView } from './views/UnsupportedChainView'
 
 function SavingsContainer() {
   const { openDialog, savingsDetails } = useSavings()
-  const { isGuestMode, openConnectModal, openSandboxModal } = useUnsupportedChain()
+  const { isGuestMode, openConnectModal } = useUnsupportedChain()
 
   if (savingsDetails.state === 'unsupported') {
     return (
       <UnsupportedChainView
         openChainModal={openConnectModal}
         openConnectModal={openConnectModal}
-        openSandboxModal={openSandboxModal}
         isGuestMode={isGuestMode}
       />
     )
@@ -31,7 +30,6 @@ function SavingsContainer() {
       <GuestView
         {...savingsDetails}
         openConnectModal={openConnectModal}
-        openSandboxModal={openSandboxModal}
         savingsChartsInfo={savingsChartsInfo}
         savingsTokenDetails={sUSDSDetails ?? sDaiDetails ?? raise('Savings details should be defined')}
       />
