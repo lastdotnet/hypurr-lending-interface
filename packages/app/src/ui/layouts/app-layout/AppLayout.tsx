@@ -13,6 +13,7 @@ import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
 import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
+import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -21,9 +22,9 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuCollapsed, setMobileMenuCollapsed] = useState(true)
   const { pageSupported, pageName } = usePageChainId()
-  const { primaryWallet, network } = useDynamicContext()
+  const { primaryWallet } = useDynamicContext()
+  const isWrongNetwork = useWrongNetwork()
   const { handleCloseBanner, showBanner } = useBannerVisibility(TOP_BANNER_ID)
-  const isWrongNetwork = primaryWallet?.connector.supportsNetworkSwitching() && network && network !== hyperTestnet.id
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>

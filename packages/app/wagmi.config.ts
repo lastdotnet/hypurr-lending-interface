@@ -15,6 +15,7 @@ import { usdxlTokenABI } from './abis/evm/usdxlToken'
 import 'dotenv/config'
 
 const HYPEREVM_TESTNET_ID = 998
+const HYPEREVM_ID = 999
 
 const config: ReturnType<typeof defineConfig> = defineConfig({
   out: 'src/config/contracts-generated.ts',
@@ -24,6 +25,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: usdxlTokenABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -31,6 +33,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: lendingPoolAddressProviderABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -38,6 +41,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: lendingPoolABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x4073283812dfD8fff8430c1Ec8f88A68f984Aec3',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -45,6 +49,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: wethGatewayABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x41F478CdB072fc4Cad96881413f73Aba5c8a90e0',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -52,6 +57,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: walletBalanceProviderABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x22473C5a8EC020024aDC74E9dD9B17D8037eAb4B',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -59,6 +65,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: uiPoolDataProviderABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x2393Af1E61649ABe6BC37983a4190245e6D5A363',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -66,6 +73,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: uiIncentiveDataProviderABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0xCdC9497Cea167846b17FD72635f73eE119d64B9D',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -73,6 +81,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: collectorABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0x9b19287cdC0D2062a8BEAbA004Fc93353fc255b9',
+        [HYPEREVM_ID]: '0x',
       },
     },
     {
@@ -80,6 +89,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       abi: capAutomatorABI,
       address: {
         [HYPEREVM_TESTNET_ID]: '0xe6ad1ffa197B2ae9a9daCEf2A52acbC8325782C0',
+        [HYPEREVM_ID]: '0x',
       },
     },
   ],

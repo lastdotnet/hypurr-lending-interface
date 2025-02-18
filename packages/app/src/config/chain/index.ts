@@ -5,7 +5,7 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { assets } from '@/ui/assets'
 import { AppConfig } from '../feature-flags'
-import { hyperTestnet } from './constants'
+import { hyperEVM, hyperTestnet } from './constants'
 import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
 
@@ -102,6 +102,54 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
           type: 'fixed',
         },
         [TokenSymbol('USDXL')]: {
+          type: 'fixed',
+        },
+      },
+    },
+    savings: undefined,
+    farms: undefined,
+  },
+  [hyperEVM.id]: {
+    originChainId: hyperEVM.id,
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
+    usdsSymbol: undefined,
+    susdsSymbol: undefined,
+    psmStables: [TokenSymbol('USDC')],
+    meta: {
+      name: 'Hyperliquid EVM',
+      logo: assets.hyperEvmLogo,
+    },
+    permitSupport: {
+      [CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094')]: true, // USDC
+    },
+    tokensWithMalformedApprove: [],
+    airdrop: {},
+    extraTokens: [
+      {
+        symbol: TokenSymbol('USDC'),
+        oracleType: 'fixed-usd',
+        address: CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094'),
+      },
+    ],
+    markets: {
+      defaultAssetToBorrow: TokenSymbol('USDC'),
+      nativeAssetInfo: {
+        nativeAssetName: 'Hype',
+        nativeAssetSymbol: TokenSymbol('HYPE'),
+        wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
+        wrappedNativeAssetAddress: CheckedAddress('0x702aB9B6556020F5c7AC814162Cb641d64291144'),
+        minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
+      },
+      tokenSymbolToReplacedName: {
+        ...commonTokenSymbolToReplacedName,
+      },
+      oracles: {
+        [TokenSymbol('WHYPE')]: {
+          type: 'market-price',
+          providedBy: ['redstone'],
+        },
+        [TokenSymbol('USDC')]: {
           type: 'fixed',
         },
       },
