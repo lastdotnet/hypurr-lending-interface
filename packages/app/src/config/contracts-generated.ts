@@ -5987,7 +5987,7 @@ export const uiPoolDataProviderAbi = [
  *
  */
 export const uiPoolDataProviderAddress = {
-  998: '0x203bf29F5dDfD2ef15380DbdA8cf7D1da8B9Cc90',
+  998: '0x2393Af1E61649ABe6BC37983a4190245e6D5A363',
 } as const
 
 /**
