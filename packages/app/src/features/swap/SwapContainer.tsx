@@ -5,16 +5,16 @@ import { withSuspense } from '@/ui/utils/withSuspense'
 import { SwapSkeleton } from './components/skeleton/SwapSkeleton'
 import { SuccessView } from './views/SuccessView'
 import { SwapView } from './views/SwapView'
-const pageStatus = {
-  state: 'form',
-}
+import { useSwap } from './logic/useSwap'
 
 function SwapContainer() {
-  if (pageStatus.state === 'success') {
+  const { form, pageStatus } = useSwap()
+
+  if (pageStatus === 'success') {
     return <SuccessView />
   }
 
-  return <SwapView />
+  return <SwapView form={form} />
 }
 
 // @note: forces form to reset when network changes
