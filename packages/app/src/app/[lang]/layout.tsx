@@ -1,4 +1,3 @@
-import '../../css/fonts.css'
 import '../../css/main.css'
 
 import Script from 'next/script'
@@ -10,6 +9,8 @@ import { Debug } from '@/features/debug'
 import { allMessages } from '@/appRouterI18n'
 import { LinguiClientProvider } from '@/LinguiClientProvider'
 import { initLingui } from '@/initLingui'
+import { Manrope } from 'next/font/google'
+import { cn } from '@/ui/utils/style'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -75,6 +76,11 @@ export const metadata: Metadata = {
   },
 }
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
+
 export default async function ({ children, params }: { children: React.ReactNode; params: { lang: string } }) {
   const lang = (await params).lang
   initLingui(lang)
@@ -87,7 +93,7 @@ export default async function ({ children, params }: { children: React.ReactNode
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <FathomAnalytics />
       </head>
-      <body>
+      <body className={cn(manrope.variable, 'font-sans')}>
         <App>
           <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang] ?? {}}>
             <AppLayout>

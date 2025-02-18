@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev -p 4000",
-    "build": "tsc && NODE_ENV=production next build",
+    "build": "tsc && pnpm run lingui:extract && NODE_ENV=production next build",
     "preview": "next start",
     "start": "pnpm run build && pnpm run preview",
     "lint": "eslint src",

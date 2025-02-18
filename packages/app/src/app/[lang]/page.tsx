@@ -1,7 +1,7 @@
 import { EasyBorrowPage } from '@/containers/Borrow'
-import { initLingui } from '@/initLingui'
+import { initLingui, PageLangParam } from '@/initLingui'
 
-export default async function Page(props: { params: { lang: string } }) {
+export default async function Page(props: PageLangParam) {
   const lang = (await props.params).lang
   initLingui(lang)
   return <EasyBorrowPage />
