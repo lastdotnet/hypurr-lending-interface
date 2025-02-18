@@ -1,7 +1,6 @@
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { convertStablesDialogConfig } from '@/features/dialogs/convert-stables/ConvertStablesDialog'
 import { savingsDepositDialogConfig } from '@/features/dialogs/savings/deposit/SavingsDepositDialog'
-import { assets as uiAssets } from '@/ui/assets'
 import { Button } from '@/ui/atoms/button/Button'
 import { DataTable, DataTableProps } from '@/ui/molecules/data-table/DataTable'
 import { cn } from '@/ui/utils/style'
@@ -85,7 +84,6 @@ export function StablecoinsInWallet({
         <div className="w-full gap-6 border-basics-border border-t p-4 md:px-8 md:py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src={uiAssets.token.sky} className="h-8 w-8 rounded-full border-2 border-[#DBCAF4]" />
               <div className="flex flex-col">
                 <div className="font-semibold text-primary text-sm">Convert stablecoins without fees and slippage!</div>
                 <div className="text-prompt-foreground text-xs">

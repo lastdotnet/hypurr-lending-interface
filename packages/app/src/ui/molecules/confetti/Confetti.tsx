@@ -14,7 +14,7 @@ export function ConfettiProvider({ children }: PropsWithChildren) {
   const { runAnimation } = useConfetti({
     images: [
       {
-        src: assets.surrf,
+        src: assets.hypurrPaw,
         size: 48,
       },
     ],
