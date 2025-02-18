@@ -25,6 +25,11 @@ const nextConfig = withImages({
   },
 
   webpack(config) {
+    // Disable webpack caching in production
+    if (process.env.NODE_ENV === 'production') {
+      config.cache = false
+    }
+
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 
