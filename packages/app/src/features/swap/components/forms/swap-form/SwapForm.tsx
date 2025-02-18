@@ -13,6 +13,8 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 
 interface SwapFormProps {
   form: UseFormReturn<SwapFormSchema>
+  guestMode: boolean
+  openConnectModal: () => void
 }
 
 const mockToken = new Token({
@@ -37,7 +39,8 @@ const assets = [
 ]
 
 export function SwapForm(props: SwapFormProps) {
-  const { form } = props
+  const { form, guestMode, openConnectModal } = props
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(() => {})}>
@@ -47,7 +50,13 @@ export function SwapForm(props: SwapFormProps) {
         </div>
         <Buy control={form.control} assets={assets} selectedAssets={assets} />
 
-        <Button className="mt-4 w-full rounded-lg">Wrap</Button>
+        {guestMode ? (
+          <Button className="mt-4 w-full rounded-lg" onClick={openConnectModal}>
+            Connect wallet
+          </Button>
+        ) : (
+          <Button className="mt-4 w-full rounded-lg">Wrap</Button>
+        )}
       </form>
 
       <div className="flex justify-end">

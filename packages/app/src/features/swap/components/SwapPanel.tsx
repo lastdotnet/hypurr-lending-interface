@@ -10,6 +10,8 @@ import { SwapFormSchema } from '@/features/swap/logic/useSwap'
 
 interface SwapPanelProps {
   form: UseFormReturn<SwapFormSchema>
+  guestMode: boolean
+  openConnectModal: () => void
 }
 
 export enum Tab {
@@ -18,12 +20,12 @@ export enum Tab {
 }
 
 export function SwapPanel(props: SwapPanelProps) {
-  const { form } = props
+  const { form, guestMode, openConnectModal } = props
   const [activeTab, setActiveTab] = useState<Tab>(Tab.Swap)
 
   return (
     <div className="w-full max-w-xl">
-      <Typography variant="h1" className="mb-7 pb-4 text-4xl xl:text-4xl" gradient>
+      <Typography variant="h1" className="mb-7 pb-4 lg:text-4xl" gradient>
         Swap
       </Typography>
       <Panel.Wrapper className="flex flex-col gap-4 bg-black p-4 md:p-6">
@@ -35,7 +37,7 @@ export function SwapPanel(props: SwapPanelProps) {
         {(() => {
           switch (activeTab) {
             case Tab.Swap:
-              return <SwapForm form={form} />
+              return <SwapForm form={form} guestMode={guestMode} openConnectModal={openConnectModal} />
             case Tab.Send:
               return <SendForm />
           }

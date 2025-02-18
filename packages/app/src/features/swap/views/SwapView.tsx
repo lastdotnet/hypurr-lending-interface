@@ -5,6 +5,8 @@ import { SwapFormSchema } from '@/features/swap/logic/useSwap'
 
 interface SwapViewProps {
   form: UseFormReturn<SwapFormSchema>
+  guestMode: boolean
+  openConnectModal: () => void
 }
 
 export function SwapView(props: SwapViewProps) {
