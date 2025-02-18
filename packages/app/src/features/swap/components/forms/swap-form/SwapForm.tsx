@@ -6,40 +6,16 @@ import { SwapFormSchema } from '@/features/swap/logic/useSwap'
 import { ToggleButton } from './ToggleButton'
 import { Button } from '@/ui/atoms/button/Button'
 import { Typography } from '@/ui/atoms/typography/Typography'
-import { Token } from '@/domain/types/Token'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { CheckedAddress } from '@/domain/types/CheckedAddress'
-import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
-
+import { TokenWithBalance } from '@/domain/common/types'
 interface SwapFormProps {
   form: UseFormReturn<SwapFormSchema>
   guestMode: boolean
+  assets: TokenWithBalance[]
   openConnectModal: () => void
 }
 
-const mockToken = new Token({
-  symbol: TokenSymbol('USDC'),
-  name: 'USDC',
-  decimals: 6,
-  address: CheckedAddress('0x0000000000000000000000000000000000000000'),
-  unitPriceUsd: '1',
-})
-
-const mockToken2 = new Token({
-  symbol: TokenSymbol('HYPE'),
-  name: 'HYPE',
-  decimals: 18,
-  address: CheckedAddress('0x0000000000000000000000000000000000000000'),
-  unitPriceUsd: '1',
-})
-
-const assets = [
-  { token: mockToken, balance: NormalizedUnitNumber(100) },
-  { token: mockToken2, balance: NormalizedUnitNumber(100) },
-]
-
 export function SwapForm(props: SwapFormProps) {
-  const { form, guestMode, openConnectModal } = props
+  const { form, guestMode, assets, openConnectModal } = props
 
   return (
     <Form {...form}>

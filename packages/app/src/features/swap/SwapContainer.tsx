@@ -8,13 +8,17 @@ import { SwapView } from './views/SwapView'
 import { useSwap } from './logic/useSwap'
 
 function SwapContainer() {
-  const { form, pageStatus, guestMode, openConnectModal } = useSwap()
+  const { form, pageStatus, guestMode, mockAssetsWithBalance, mockAssetsWithValue, openConnectModal } = useSwap()
 
   if (pageStatus === 'success') {
-    return <SuccessView />
+    return (
+      <SuccessView sold={mockAssetsWithValue} bought={mockAssetsWithValue} runConfetti={true} resetForm={() => {}} />
+    )
   }
 
-  return <SwapView form={form} guestMode={guestMode} openConnectModal={openConnectModal} />
+  return (
+    <SwapView form={form} assets={mockAssetsWithBalance} guestMode={guestMode} openConnectModal={openConnectModal} />
+  )
 }
 
 // @note: forces form to reset when network changes

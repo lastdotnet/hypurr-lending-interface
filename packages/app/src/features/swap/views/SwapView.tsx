@@ -2,9 +2,10 @@ import { PageLayout } from '@/ui/layouts/PageLayout'
 import { SwapPanel } from '../components/SwapPanel'
 import { UseFormReturn } from 'react-hook-form'
 import { SwapFormSchema } from '@/features/swap/logic/useSwap'
-
+import { TokenWithBalance } from '@/domain/common/types'
 interface SwapViewProps {
   form: UseFormReturn<SwapFormSchema>
+  assets: TokenWithBalance[]
   guestMode: boolean
   openConnectModal: () => void
 }

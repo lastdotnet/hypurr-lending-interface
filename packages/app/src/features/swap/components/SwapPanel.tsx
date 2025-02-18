@@ -7,11 +7,12 @@ import { SendForm } from './forms/send-form/SendForm'
 import { SwapForm } from './forms/swap-form/SwapForm'
 import { UseFormReturn } from 'react-hook-form'
 import { SwapFormSchema } from '@/features/swap/logic/useSwap'
-
+import { TokenWithBalance } from '@/domain/common/types'
 interface SwapPanelProps {
   form: UseFormReturn<SwapFormSchema>
   guestMode: boolean
   openConnectModal: () => void
+  assets: TokenWithBalance[]
 }
 
 export enum Tab {
@@ -20,7 +21,7 @@ export enum Tab {
 }
 
 export function SwapPanel(props: SwapPanelProps) {
-  const { form, guestMode, openConnectModal } = props
+  const { form, guestMode, openConnectModal, assets } = props
   const [activeTab, setActiveTab] = useState<Tab>(Tab.Swap)
 
   return (
@@ -37,7 +38,7 @@ export function SwapPanel(props: SwapPanelProps) {
         {(() => {
           switch (activeTab) {
             case Tab.Swap:
-              return <SwapForm form={form} guestMode={guestMode} openConnectModal={openConnectModal} />
+              return <SwapForm form={form} guestMode={guestMode} openConnectModal={openConnectModal} assets={assets} />
             case Tab.Send:
               return <SendForm />
           }
