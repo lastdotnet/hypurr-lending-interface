@@ -1,4 +1,5 @@
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
+import { zeroAddress } from 'viem'
 
 export enum InterestRate {
   Stable = 1,
@@ -26,8 +27,12 @@ export const HYPURR_UI_REFERRAL_CODE_BIGINT = BigInt(HYPURR_UI_REFERRAL_CODE)
 
 export const isTestnet = process.env.NEXT_PUBLIC_IS_TESTNET === '1'
 
-export const USDXL_ADDRESS = CheckedAddress('0xfc446B60a054703A9DC096dd397a6e3cdd614275')
-export const A_USDXL_ADDRESS = CheckedAddress('0xCFBD3c2c0Be381A02fbca18eA8a2231d7C2dE116')
+export const USDXL_ADDRESS = isTestnet
+  ? CheckedAddress('0xfc446B60a054703A9DC096dd397a6e3cdd614275')
+  : CheckedAddress(zeroAddress)
+export const A_USDXL_ADDRESS = isTestnet
+  ? CheckedAddress('0xCFBD3c2c0Be381A02fbca18eA8a2231d7C2dE116')
+  : CheckedAddress(zeroAddress)
 
 // Hide reserves on the UI
 export const reserveBlacklist: string[] = []

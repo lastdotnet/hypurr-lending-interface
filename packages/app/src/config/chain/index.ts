@@ -120,20 +120,12 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       name: 'Hyperliquid EVM',
       logo: assets.hyperEvmLogo,
     },
-    permitSupport: {
-      [CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094')]: true, // USDC
-    },
+    permitSupport: {},
     tokensWithMalformedApprove: [],
     airdrop: {},
-    extraTokens: [
-      {
-        symbol: TokenSymbol('USDC'),
-        oracleType: 'fixed-usd',
-        address: CheckedAddress('0x6fdbaf3102efc67cee53eefa4197be36c8e1a094'),
-      },
-    ],
+    extraTokens: [],
     markets: {
-      defaultAssetToBorrow: TokenSymbol('USDC'),
+      defaultAssetToBorrow: TokenSymbol('WHYPE'),
       nativeAssetInfo: {
         nativeAssetName: 'Hype',
         nativeAssetSymbol: TokenSymbol('HYPE'),
