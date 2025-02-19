@@ -29,7 +29,7 @@ export const hyperTestnetDynamic = {
   networkId: hyperTestnet.id,
   chainName: hyperTestnet.name,
   name: hyperTestnet.name,
-  vanityName: hyperTestnet.name,
+  vanityName: 'HyperEVM Testnet',
   iconUrls: ['/hyper-evm-logo.png'],
   nativeCurrency: {
     ...hyperTestnet.nativeCurrency,

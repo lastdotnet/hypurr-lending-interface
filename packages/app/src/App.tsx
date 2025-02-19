@@ -15,6 +15,12 @@ import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
 import { SUPPORTED_CHAINS_DYNAMIC } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
+const cssOverrides = `
+.active-wallet-information-container .alert--warning {
+  display: none;
+}
+`
+
 function App({ children }: React.PropsWithChildren) {
   const config = getConfig()
   if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.NODE_ENV === 'development') {
@@ -25,6 +31,7 @@ function App({ children }: React.PropsWithChildren) {
   return (
     <DynamicContextProvider
       settings={{
+        cssOverrides,
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || '',
         walletConnectors: [EthereumWalletConnectors],
         initialAuthenticationMode: 'connect-only',
