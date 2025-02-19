@@ -27,7 +27,7 @@ export const hyperTestnetDynamic = {
   blockExplorerUrls: [hyperTestnet.blockExplorers.default.url],
   chainId: hyperTestnet.id,
   networkId: hyperTestnet.id,
-  chainName: 'HyperEVM Testnet',
+  chainName: hyperTestnet.name,
   name: hyperTestnet.name,
   vanityName: hyperTestnet.name,
   iconUrls: ['/hyper-evm-logo.png'],
