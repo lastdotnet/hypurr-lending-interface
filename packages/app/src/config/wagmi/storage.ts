@@ -1,5 +1,6 @@
 import { createStorage, noopStorage } from 'wagmi'
-import { hyperEVM, SUPPORTED_CHAINS } from '../chain/constants'
+import { hyperEVM, hyperTestnet, SUPPORTED_CHAINS } from '../chain/constants'
+import { isTestnet } from '../consts'
 
 export function createWagmiStorage(): ReturnType<typeof createStorage> {
   const defaultStorage = createStorage({
@@ -22,6 +23,7 @@ function wrapGetItem(defaultStorage: ReturnType<typeof createStorage>): any {
     if ((key as any) === 'store' && typeof originalValue === 'object') {
       const persistedChainId = originalValue?.state?.chainId
       const connections: Map<string, { chainId: number }> = originalValue?.state?.connections || new Map()
+      const fallbackChainId = isTestnet ? hyperTestnet.id : hyperEVM.id
 
       const filteredConnections = new Map(
         [...connections.entries()].filter(([_, { chainId }]) => {
@@ -30,7 +32,7 @@ function wrapGetItem(defaultStorage: ReturnType<typeof createStorage>): any {
       )
       const newChainId = SUPPORTED_CHAINS.some((chain) => chain.id === persistedChainId)
         ? persistedChainId
-        : hyperEVM.id
+        : fallbackChainId
 
       return {
         ...originalValue,
