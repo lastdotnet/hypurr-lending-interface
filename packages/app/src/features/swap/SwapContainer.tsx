@@ -3,22 +3,34 @@ import { useChainId } from 'wagmi'
 import { withSuspense } from '@/ui/utils/withSuspense'
 
 import { SwapSkeleton } from './components/skeleton/SwapSkeleton'
-import { SuccessView } from './views/SuccessView'
+import { SwapSuccessView } from './views/SwapSuccessView'
+import { SendSuccessView } from './views/SendSuccessView'
 import { SwapView } from './views/SwapView'
 import { useSwap } from './logic/useSwap'
+import { useSend } from './logic/useSend'
 
 function SwapContainer() {
-  const { form, pageStatus, guestMode, mockAssetsWithBalance, mockAssetsWithValue, openConnectModal } = useSwap()
+  const swap = useSwap()
+  const send = useSend()
 
-  if (pageStatus === 'success') {
+  if (swap.pageStatus === 'success') {
     return (
-      <SuccessView sold={mockAssetsWithValue} bought={mockAssetsWithValue} runConfetti={true} resetForm={() => {}} />
+      <SwapSuccessView
+        sold={swap.mockAssetsWithValue}
+        bought={swap.mockAssetsWithValue}
+        runConfetti={true}
+        resetForm={() => {}}
+      />
     )
   }
 
-  return (
-    <SwapView form={form} assets={mockAssetsWithBalance} guestMode={guestMode} openConnectModal={openConnectModal} />
-  )
+  if (send.pageStatus === 'success') {
+    return (
+      <SendSuccessView sent={send.mockAssetsWithValue} toAddress={'0x123'} runConfetti={true} resetForm={() => {}} />
+    )
+  }
+
+  return <SwapView swap={swap} send={send} />
 }
 
 // @note: forces form to reset when network changes

@@ -7,6 +7,7 @@ import { ToggleButton } from './ToggleButton'
 import { Button } from '@/ui/atoms/button/Button'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { TokenWithBalance } from '@/domain/common/types'
+
 interface SwapFormProps {
   form: UseFormReturn<SwapFormSchema>
   guestMode: boolean

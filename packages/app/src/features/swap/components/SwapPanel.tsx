@@ -5,14 +5,12 @@ import { TabSelector } from './forms/TabSelector'
 import { SettingsPopOver } from './SettingsPopOver'
 import { SendForm } from './forms/send-form/SendForm'
 import { SwapForm } from './forms/swap-form/SwapForm'
-import { UseFormReturn } from 'react-hook-form'
-import { SwapFormSchema } from '@/features/swap/logic/useSwap'
-import { TokenWithBalance } from '@/domain/common/types'
+import { UseSwapResults } from '@/features/swap/logic/useSwap'
+import { UseSendResults } from '@/features/swap/logic/useSend'
+
 interface SwapPanelProps {
-  form: UseFormReturn<SwapFormSchema>
-  guestMode: boolean
-  openConnectModal: () => void
-  assets: TokenWithBalance[]
+  swap: UseSwapResults
+  send: UseSendResults
 }
 
 export enum Tab {
@@ -21,7 +19,7 @@ export enum Tab {
 }
 
 export function SwapPanel(props: SwapPanelProps) {
-  const { form, guestMode, openConnectModal, assets } = props
+  const { swap, send } = props
   const [activeTab, setActiveTab] = useState<Tab>(Tab.Swap)
 
   return (
@@ -38,9 +36,23 @@ export function SwapPanel(props: SwapPanelProps) {
         {(() => {
           switch (activeTab) {
             case Tab.Swap:
-              return <SwapForm form={form} guestMode={guestMode} openConnectModal={openConnectModal} assets={assets} />
+              return (
+                <SwapForm
+                  form={swap.form}
+                  guestMode={swap.guestMode}
+                  openConnectModal={swap.openConnectModal}
+                  assets={swap.mockAssetsWithBalance}
+                />
+              )
             case Tab.Send:
-              return <SendForm />
+              return (
+                <SendForm
+                  form={send.form}
+                  guestMode={send.guestMode}
+                  openConnectModal={send.openConnectModal}
+                  assets={send.mockAssetsWithBalance}
+                />
+              )
           }
         })()}
       </Panel.Wrapper>

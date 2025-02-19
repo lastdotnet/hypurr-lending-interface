@@ -1,20 +1,20 @@
 import { PageLayout } from '@/ui/layouts/PageLayout'
 import { SwapPanel } from '../components/SwapPanel'
-import { UseFormReturn } from 'react-hook-form'
-import { SwapFormSchema } from '@/features/swap/logic/useSwap'
-import { TokenWithBalance } from '@/domain/common/types'
+import { UseSwapResults } from '@/features/swap/logic/useSwap'
+import { UseSendResults } from '@/features/swap/logic/useSend'
+
 interface SwapViewProps {
-  form: UseFormReturn<SwapFormSchema>
-  assets: TokenWithBalance[]
-  guestMode: boolean
-  openConnectModal: () => void
+  swap: UseSwapResults
+  send: UseSendResults
 }
 
 export function SwapView(props: SwapViewProps) {
+  const { send, swap } = props
+
   return (
     <PageLayout>
       <div className="mt-8 flex justify-center">
-        <SwapPanel {...props} />
+        <SwapPanel send={send} swap={swap} />
       </div>
     </PageLayout>
   )

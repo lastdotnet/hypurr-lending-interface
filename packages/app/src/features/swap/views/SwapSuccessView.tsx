@@ -11,14 +11,14 @@ import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useEffect } from 'react'
 
-export interface SuccessViewProps {
+export interface SwapSuccessViewProps {
   sold: TokenWithValue[]
   bought: TokenWithValue[]
   runConfetti: boolean
   resetForm: () => void
 }
 
-export function SuccessView({ sold, bought, runConfetti, resetForm }: SuccessViewProps) {
+export function SwapSuccessView({ sold, bought, runConfetti, resetForm }: SwapSuccessViewProps) {
   const { runAnimation } = useConfettiContext()
 
   useEffect(() => {
