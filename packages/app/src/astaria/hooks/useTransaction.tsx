@@ -66,6 +66,7 @@ export const useTransaction = ({
     mutation: { onMutate },
   })
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isSuccessWrite && hash) {
       const transactionToast = toast({
@@ -75,7 +76,7 @@ export const useTransaction = ({
             <BlockExplorerLink type="transaction" value={hash} />
           </>
         ),
-        duration: Infinity,
+        duration: Number.POSITIVE_INFINITY,
         onOpenChange: (open) => {
           if (!open) {
             setTransactionToast(undefined)
@@ -103,6 +104,7 @@ export const useTransaction = ({
     },
   })
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isConfirmed) {
       onConfirmed?.()
@@ -113,6 +115,7 @@ export const useTransaction = ({
 
   const error = errorSimulate || errorWrite || errorConfirm
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (showError && (isErrorSimulate || isErrorConfirm || isErrorWrite) && error) {
       const errorWithCause = error as ErrorWithCause
@@ -145,6 +148,7 @@ export const useTransaction = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showError, error, isErrorSimulate, isErrorConfirm, isErrorWrite])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isConfirmed) {
       const toastContent: Toast = {

@@ -1,30 +1,62 @@
-import withImages from 'next-images'
-
 import { execSync } from 'node:child_process'
 
 const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
 const buildTime = new Date().toLocaleString('en-gb')
 
-const nextConfig = withImages({
+const nextConfig = {
   reactStrictMode: true,
   distDir: './dist',
-
+  poweredByHeader: false,
+  sentry: {
+    autoInstrumentMiddleware: false,
+  },
+  transpilePackages: ['sdk'],
   env: {
     NEXT_PUBLIC_BUILD_SHA: buildSha,
     NEXT_PUBLIC_BUILD_TIME: buildTime,
   },
-  images: {
-    disableStaticImages: true,
-  },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
+  },
+  images: {
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        hostname: 'assets.coingecko.com',
+        pathname: '/coins/images/**',
+        port: '',
+        protocol: 'https',
+      },
+      {
+        hostname: 'd1il7bw1n2yreo.cloudfront.net',
+        pathname: '/erc20/**',
+        port: '',
+        protocol: 'https',
+      },
+      {
+        hostname: 'www.dextools.io',
+        pathname: '/resources/tokens/logos/**',
+        port: '',
+        protocol: 'https',
+      },
+      {
+        hostname: 'pbs.twimg.com',
+        pathname: '/profile_images/**',
+        port: '',
+        protocol: 'https',
+      },
+    ],
   },
   i18n: {
     locales: ['en', 'pl'],
     defaultLocale: 'en',
   },
 
-  webpack(config) {
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.externals.push('node:os')
+    }
+
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 
@@ -38,14 +70,16 @@ const nextConfig = withImages({
       // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
+        issuer: fileLoaderRule?.issuer,
         resourceQuery: { not: [/url/] }, // exclude if *.svg?url
         use: ['@svgr/webpack'],
       },
     )
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i
+    }
 
     config.module.rules.push({
       test: /^(.*\.test-e2e\..*|.*\.PageObject\..*|.*\.e2e\..*)$/,
@@ -65,7 +99,18 @@ const nextConfig = withImages({
       config.externals = ['pino-pretty', 'lokijs', 'encoding']
     }
 
-    config.resolve.fallback = { fs: false, module: false }
+    config.resolve.fallback = { fs: false, module: false, os: false }
+
+    const warning = [
+      ...(config.ignoreWarnings || []),
+      { module: /typeorm/ },
+      { module: /@subsquid/ },
+      {
+        message: /the request of a dependency is an expression/,
+        module: /app-root-path/,
+      },
+    ]
+    config.ignoreWarnings = warning
 
     return config
   },
@@ -94,6 +139,6 @@ const nextConfig = withImages({
       },
     ]
   },
-})
+}
 
 export default nextConfig

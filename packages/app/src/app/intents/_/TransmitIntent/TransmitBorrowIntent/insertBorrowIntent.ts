@@ -18,9 +18,9 @@ import {
   NotificationChannel,
   NotificationType,
 } from '@/astaria/constants/notifications'
-import { executeHelper } from '@onchain-helpers/executeHelper'
-import { V1BorrowerEnforcerValidator } from '@onchain-helpers/fragments/V1BorrowerEnforcerValidator'
-import { getValidatorConfig } from '@onchain-helpers/getValidatorConfig'
+import { executeHelper } from '@/astaria/onchain-helpers/executeHelper'
+import { V1BorrowerEnforcerValidator } from '@/astaria/onchain-helpers/fragments/V1BorrowerEnforcerValidator'
+import { getValidatorConfig } from '@/astaria/onchain-helpers/getValidatorConfig'
 import { calculateAssortmentId } from '@/astaria/utils/calculateAssortmentId'
 import { getCollectionNameAndTokenId } from '@/astaria/utils/getCollectionNameAndTokenId'
 import { calculateIntentUsdValues } from '@/astaria/utils/getIntentUsdValue'

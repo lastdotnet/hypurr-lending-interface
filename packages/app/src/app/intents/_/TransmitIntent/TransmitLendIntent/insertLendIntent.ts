@@ -18,9 +18,9 @@ import {
   NotificationChannel,
   NotificationType,
 } from '@/astaria/constants/notifications'
-import { executeHelper } from '@onchain-helpers/executeHelper'
-import { V1LenderEnforcerValidator } from '@onchain-helpers/fragments/V1LenderEnforcerValidator'
-import { getValidatorConfig } from '@onchain-helpers/getValidatorConfig'
+import { executeHelper } from '@/astaria/onchain-helpers/executeHelper'
+import { V1LenderEnforcerValidator } from '@/astaria/onchain-helpers/fragments/V1LenderEnforcerValidator'
+import { getValidatorConfig } from '@/astaria/onchain-helpers/getValidatorConfig'
 import { calculateIntentUsdValues } from '@/astaria/utils/getIntentUsdValue'
 import { sendNotification } from '@/astaria/utils/sendNotification'
 

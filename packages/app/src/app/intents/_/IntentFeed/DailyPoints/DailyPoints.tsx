@@ -16,6 +16,8 @@ import { TimeLeft } from '@/astaria/components/TimeLeft'
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { TIME_HAS_PASSED_TIME, timeHasPassed } from '@/astaria/utils/timeHasPassed'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const ButtonText = ({
   canClaimDailyPoints,
@@ -58,10 +60,12 @@ const ButtonText = ({
 }
 
 export const DailyPoints = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
   const chainId = useChainId()
   const { isPending: isPendingNextClaimTime, nextClaimTime } = useNextClaimTime()
   const { claimDailyPoints, isPending: isClaiming } = useClaimDailyPoints()
+
+  const address = wallet?.address as Address | null
 
   const canClaimDailyPoints = timeHasPassed({ nextTime: nextClaimTime })
 

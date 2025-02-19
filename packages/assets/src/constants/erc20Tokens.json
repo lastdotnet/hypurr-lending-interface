@@ -2153,14 +2153,6 @@
       "symbol": "SOPH"
     },
     {
-      "address": "0xadf7c35560035944e805d98ff17d58cde2449389",
-      "chainId": 8453,
-      "decimals": 18,
-      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/spec.webp",
-      "name": "Spectral",
-      "symbol": "SPEC"
-    },
-    {
       "address": "0x090185f2135308bad17527004364ebcc2d37e5f6",
       "chainId": 1,
       "decimals": 18,

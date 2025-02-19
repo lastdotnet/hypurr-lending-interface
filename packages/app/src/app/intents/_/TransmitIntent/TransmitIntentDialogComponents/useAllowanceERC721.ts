@@ -1,5 +1,5 @@
-import { erc721Abi, getAbiItem, zeroAddress } from 'viem'
-import { useAccount, useReadContract } from 'wagmi'
+import { Address, erc721Abi, getAbiItem, zeroAddress } from 'viem'
+import { useReadContract } from 'wagmi'
 
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { useSimulateAndWriteTransaction } from '@/astaria/hooks/useSimulateAndWriteTransaction'
@@ -8,6 +8,7 @@ import { getAssetsName } from '@/astaria/utils/getAssetsName'
 import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
 import { type ERC721 } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const useAllowanceERC721 = ({
   asset,
@@ -18,7 +19,10 @@ export const useAllowanceERC721 = ({
   enabled: boolean
   showError: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
   const spender = getContractAddress({
     chainId,

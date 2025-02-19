@@ -1,13 +1,16 @@
 'use client'
 
-import { useAccount } from 'wagmi'
-
 import { useLoans } from '@/app/loans/_/useLoans/useLoans'
 import { TextLink } from '@/astaria/components/TextLink'
 import { ROUTES } from '@/astaria/constants/routes'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const LoansCount = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { loans } = useLoans({ address })
 
   if (!loans || (loans && loans.length === 0)) {

@@ -1,16 +1,16 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { type Address } from 'viem'
-import { useAccount } from 'wagmi'
 
 import { type ChainId } from 'chains'
 
-import { SimpleHash } from '@codegen/api/simplehash'
+import { SimpleHash } from '@/astaria/codegen/api/simplehash'
 import { ENV } from '@/astaria/constants/environment'
 import { SIMPLE_HASH_NETWORK_MAP } from '@/astaria/constants/simpleHash'
 import { useChainId } from '@/astaria/hooks/useChainId'
 
 import { type ERC721 } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 const NFTS_PER_PAGE = 8
 
@@ -62,7 +62,7 @@ const getNFTsByOwner = async ({
     nextCursor: response.next_cursor,
     nfts: response.nfts
       ?.filter((nft) => nft.contract_address && nft.token_id && nft.contract?.type !== 'ERC1155')
-      .map((nft) => transformNFTDataStructure(nft)),
+      .map((nft: any) => transformNFTDataStructure(nft)),
   }
 }
 
@@ -71,7 +71,10 @@ export const useUserNFTAssets = ({
 }: {
   limit?: number
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
 
   const { data, ...rest } = useInfiniteQuery({

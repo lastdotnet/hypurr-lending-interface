@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { useRecallTransactionData } from '@/app/loans/_/LoanCard/LoanActionButton/RecallDialog/useRecallTransactionData'
 import { useSimulateAndWriteTransaction } from '@/astaria/hooks/useSimulateAndWriteTransaction'
 import { type Loan } from '@/astaria/types-internal/loan-schemas'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const useWriteRecall = ({
   enabled,
@@ -19,7 +19,10 @@ export const useWriteRecall = ({
   onConfirmed?: () => void
   showError: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const [isRecalling, setIsRecalling] = useState(false)
 
   const { data: recallTransactionData } = useRecallTransactionData({
@@ -38,7 +41,7 @@ export const useWriteRecall = ({
     },
     showError,
     simulateData: recallTransactionData,
-    title: `Recalling loan`,
+    title: 'Recalling loan',
   })
 
   return { recall, ...rest }

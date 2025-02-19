@@ -109,6 +109,25 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     savings: undefined,
     farms: undefined,
   },
+  8453: {
+    originChainId: hyperTestnet.id,
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
+    usdsSymbol: undefined,
+    susdsSymbol: undefined,
+    psmStables: [],
+    meta: {
+      name: 'Base',
+      logo: assets.hyperEvmLogo,
+    },
+    permitSupport: {},
+    tokensWithMalformedApprove: [],
+    airdrop: {},
+    extraTokens: [],
+    markets: undefined,
+    savings: undefined,
+    farms: undefined,
+  },
 }
 
 export function getChainConfigEntry(chainId: number): ChainConfigEntry {

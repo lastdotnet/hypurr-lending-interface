@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { clsx } from 'clsx'
 
-import LogoBlack from '@assets/logo/logo-black.svg?url'
+import LogoBlack from '@/astaria/assets/logo/logo-black.svg?url'
 import { Image as ImageComponent } from '@/astaria/components/AssetImageBox/components/Image'
 import { IndicatorBox } from '@/astaria/components/AssetImageBox/components/IndicatorBox'
 import { InfoBox } from '@/astaria/components/AssetImageBox/components/InfoBox'

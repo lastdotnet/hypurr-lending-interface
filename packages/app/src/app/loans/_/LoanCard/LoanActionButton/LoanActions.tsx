@@ -1,6 +1,6 @@
 'use client'
 
-import { useAccount, useBalance } from 'wagmi'
+import { useBalance } from 'wagmi'
 
 import { ClaimDialog } from '@/app/loans/_/LoanCard/LoanActionButton/ClaimDialog'
 import { RecallDialog } from '@/app/loans/_/LoanCard/LoanActionButton/RecallDialog'
@@ -13,6 +13,8 @@ import { SkeletonText } from '@/astaria/components/SkeletonText'
 import { TimeLeft } from '@/astaria/components/TimeLeft'
 import { type Loan, SourceType } from '@/astaria/types-internal/loan-schemas'
 import { checkIfLoanIsExpired } from '@/astaria/utils/loans/checkIfLoanIsExpired'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const LoanActions = ({
   loan,
@@ -25,7 +27,10 @@ export const LoanActions = ({
   refetchLoans?: () => void
   skeleton: boolean | undefined
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { data: balance, isPending: isPendingBalance } = useBalance({
     address,
     chainId: loan?.chainId,

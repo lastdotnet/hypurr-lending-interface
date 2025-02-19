@@ -1,16 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { useAccount } from 'wagmi'
-
 import { getCanClaimDailyPointsQueryKey } from '@/app/intents/_/IntentFeed/DailyPoints/getCanClaimDailyPointsQueryKey'
 import { claimDailyPoints } from '@/app/intents/_/IntentFeed/DailyPoints/useClaimDailyPoints/claimDailyPoints'
 import { useToast } from '@/astaria/components/Toast/useToast'
 import { MIDNIGHT_HOURS } from '@/astaria/constants/constants'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const NEXT_CLAIM_TIME_TOMORROW = new Date(new Date().setUTCHours(MIDNIGHT_HOURS, 0, 0, 0)).getTime()
 
 export const useClaimDailyPoints = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const queryClient = useQueryClient()
   const { toast } = useToast()
 

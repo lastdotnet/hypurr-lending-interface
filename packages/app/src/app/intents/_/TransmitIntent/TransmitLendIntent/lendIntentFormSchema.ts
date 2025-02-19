@@ -2,9 +2,9 @@ import { z } from 'zod'
 
 import { borrowIntentFormObject } from '@/app/intents/_/TransmitIntent/TransmitBorrowIntent/borrowIntentFormSchema'
 import { LEND_INTENTS_LTV_MAX } from '@/astaria/constants/constants'
-import { enoughBalance } from '@validation/enoughBalance'
-import { LTV_VALIDATION } from '@validation/ltv'
-import { minimumAssetValue } from '@validation/minimumAssetValue'
+import { enoughBalance } from '@/astaria/validation/enoughBalance'
+import { LTV_VALIDATION } from '@/astaria/validation/ltv'
+import { minimumAssetValue } from '@/astaria/validation/minimumAssetValue'
 
 export const lendIntentFormSchema = borrowIntentFormObject
   .extend({

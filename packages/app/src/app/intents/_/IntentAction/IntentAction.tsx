@@ -1,4 +1,4 @@
-import { useAccount, useBalance } from 'wagmi'
+import { useBalance } from 'wagmi'
 
 import { CurrentBorrow } from '@/app/intents/_/CurrentBorrow'
 import { CancelIntent } from '@/app/intents/_/IntentAction/CancelIntent'
@@ -17,6 +17,8 @@ import { getSecondsLeft } from '@/astaria/utils/getSecondsLeft'
 import { isBeingRecalled, isLendIntent } from '@/astaria/utils/intentStates'
 
 import { isERC20Asset } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const ActionAssetDisplay = ({
   intent,
@@ -39,7 +41,9 @@ export const IntentAction = ({
   intentLocation: IntentLocation
   skeleton?: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
 
   const { data: balance } = useBalance({
     address,

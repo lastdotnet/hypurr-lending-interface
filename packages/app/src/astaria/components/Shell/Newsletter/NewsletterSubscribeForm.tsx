@@ -2,7 +2,6 @@ import { IconCheck, IconX } from '@tabler/icons-react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useAccount } from 'wagmi'
 import { z } from 'zod'
 
 import { EVENT } from 'notifications'
@@ -15,6 +14,8 @@ import { useToast } from '@/astaria/components/Toast/useToast'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 import { EMAIL_VALIDATION } from '@/astaria/validation/commonValidation'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const formSchema = z.object({
   email: EMAIL_VALIDATION,
@@ -23,7 +24,10 @@ const formSchema = z.object({
 type FormSchemaType = z.infer<typeof formSchema>
 
 export const NewsletterSubscribeForm = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { toast } = useToast()
 
   const form = useForm<FormSchemaType>({

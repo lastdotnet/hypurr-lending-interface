@@ -4,8 +4,6 @@ import { IconAlertTriangleFilled } from '@tabler/icons-react'
 import { useNotifications } from '@web3inbox/react'
 import { useEffect, useState } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { useLocalStorage } from 'usehooks-ts'
 
 import { type NotificationProps } from '@/app/wallet-notifications/dashboard/_/NotificationCard'
@@ -14,6 +12,8 @@ import { Card, CardSection } from '@/astaria/components/Card'
 import { SkeletonText } from '@/astaria/components/SkeletonText'
 import { FETCH_LIMIT } from '@/astaria/constants/constants'
 import { RECALL_ID, WELCOME_ID } from '@/astaria/constants/walletNotificationId'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const NotificationDashboard = () => {
   const [refreshId, setRefreshId] = useLocalStorage('refreshId', '')
@@ -21,7 +21,10 @@ export const NotificationDashboard = () => {
   const [criticalNotifications, setCriticalNotifications] = useState<NotificationProps[]>([])
   const [promotionalNotifications, setPromotionalNotifications] = useState<NotificationProps[]>([])
 
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const {
     data: notifications,
     fetchNextPage,
@@ -35,6 +38,7 @@ export const NotificationDashboard = () => {
     }
   }, [isLoadingNextPage])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (notifications) {
       setCriticalNotifications(

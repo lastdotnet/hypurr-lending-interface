@@ -4,10 +4,10 @@ import { base, foundry, mainnet, mode, sepolia } from 'viem/chains'
 
 import { type ChainId } from 'chains'
 
-import BaseImage from '@assets/images/chains/base.svg?url'
-import EthereumImage from '@assets/images/chains/ethereum.svg?url'
-import ModeImage from '@assets/images/chains/mode.svg?url'
-import SepoliaImage from '@assets/images/chains/sepolia.svg?url'
+import BaseImage from '@/astaria/assets/images/chains/base.svg?url'
+import EthereumImage from '@/astaria/assets/images/chains/ethereum.svg?url'
+import ModeImage from '@/astaria/assets/images/chains/mode.svg?url'
+import SepoliaImage from '@/astaria/assets/images/chains/sepolia.svg?url'
 import { SkeletonImage } from '@/astaria/components/SkeletonImage'
 import { getChain } from '@/astaria/utils/getChain'
 

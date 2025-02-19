@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Satellite from '@assets/images/satellite.webp'
+import Satellite from '@/astaria/assets/images/satellite.webp'
 import { EmptyStateCardWrapper, EmptyStateContent } from '@/astaria/components/EmptyState'
 import { Heading } from '@/astaria/components/Heading'
 

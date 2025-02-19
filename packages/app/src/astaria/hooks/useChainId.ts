@@ -1,15 +1,8 @@
-// eslint-disable-next-line no-restricted-imports
-import { useChainId as useChainIdWagmi } from 'wagmi'
-
-import { DEFAULT_CHAIN } from '@/astaria/constants/chains'
-import { isSupportedChain } from '@/astaria/utils/isSupportedChain'
+import { usePageChainId } from '@/domain/hooks/usePageChainId'
+import { ChainId } from 'chains'
 
 export const useChainId = () => {
-  const chainId = useChainIdWagmi()
+  const { chainId } = usePageChainId()
 
-  if (!isSupportedChain(chainId)) {
-    return DEFAULT_CHAIN.id
-  }
-
-  return chainId
+  return chainId as ChainId
 }

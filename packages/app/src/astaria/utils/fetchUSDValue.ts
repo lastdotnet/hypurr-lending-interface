@@ -14,7 +14,7 @@ const CACHE_DURATION_SECONDS = 10
 const DEFAULT_BATCH_SIZE = 150
 const DELAY_BATCH_REQUESTS = 200
 
-const API_KEY = process.env.DEFILLAMA_API_KEY
+const API_KEY = process.env.NEXT_PUBLIC_DEFILLAMA_API_KEY
 
 const chainIdToName = {
   [base.id]: 'base',

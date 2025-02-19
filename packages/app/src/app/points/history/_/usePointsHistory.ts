@@ -1,17 +1,20 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { type Address } from 'viem'
-import { useAccount } from 'wagmi'
 
 import { useIsClient } from 'usehooks-ts'
 
 import { getPointsHistory } from '@/app/points/history/_/getPointsHistory'
 import { type GETPointsHistoryResponse } from '@/astaria/types-internal/points-schemas'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 const PER_PAGE = 10
 
 export const usePointsHistory = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { data, ...rest } = useInfiniteQuery({
     // Make query only load on client side, this is a workaround for https://github.com/TanStack/query/issues/6145
     enabled: useIsClient() && Boolean(address),

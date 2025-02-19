@@ -2,8 +2,6 @@ import { useQueryClient } from '@tanstack/react-query'
 import { type Dispatch, type SetStateAction, useEffect } from 'react'
 import { useFormContext, useWatch } from 'react-hook-form'
 
-import { useAccount } from 'wagmi'
-
 import { type BorrowIntentFormSchema } from '@/app/intents/_/TransmitIntent/TransmitBorrowIntent/borrowIntentFormSchema'
 import { insertBorrowIntent } from '@/app/intents/_/TransmitIntent/TransmitBorrowIntent/insertBorrowIntent'
 import { resetBorrowIntentForm } from '@/app/intents/_/TransmitIntent/TransmitBorrowIntent/resetBorrowIntentForm'
@@ -28,6 +26,8 @@ import { convertAssetAndAmountToAsset } from '@/astaria/utils/convertAssetAndAmo
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 
 import { isERC20Asset } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const IntentDetails = () => {
   const { control } = useFormContext<BorrowIntentFormSchema>()
@@ -112,7 +112,10 @@ export const TransmitBorrowIntentConfirmSteps = ({
 }: {
   setDialogOpen: Dispatch<SetStateAction<boolean>>
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
   const queryClient = useQueryClient()
   const { control, reset: resetForm } = useFormContext<BorrowIntentFormSchema>()

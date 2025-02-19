@@ -1,8 +1,8 @@
 import { IconBrandX } from '@tabler/icons-react'
 import Image from 'next/image'
 
-import maintenanceImage from '@assets/images/maintenance.webp'
-import AstariaLogo from '@assets/logo/wordmark-black.svg?url'
+import maintenanceImage from '@/astaria/assets/images/maintenance.webp'
+import AstariaLogo from '@/astaria/assets/logo/wordmark-black.svg?url'
 import { Card } from '@/astaria/components/Card'
 import { Heading } from '@/astaria/components/Heading'
 import { TextLink } from '@/astaria/components/TextLink'

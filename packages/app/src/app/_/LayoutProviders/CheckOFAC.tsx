@@ -2,17 +2,19 @@
 
 import { type ReactNode } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { EVENT } from 'notifications'
 
 import { RestrictedPage } from '@/astaria/components/RestrictedPage'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 
 import { OFAC_BLACKLIST } from 'ofac'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const CheckOFAC = ({ children }: { children: ReactNode }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
 
   if (address && OFAC_BLACKLIST.includes(address)) {
     trackInternalEvent({

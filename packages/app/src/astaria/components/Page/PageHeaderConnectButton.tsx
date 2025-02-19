@@ -1,7 +1,5 @@
 'use client'
 
-import { useAccount } from 'wagmi'
-
 import { type ButtonProps } from '@/astaria/components/Button'
 import { ConnectButton } from '@/astaria/components/ConnectButton'
 import { Connected } from '@/astaria/components/Connected'
@@ -9,9 +7,13 @@ import { ConnectedChainLogo } from '@/astaria/components/ConnectedChainLogo'
 import { UserInfo } from '@/astaria/components/UserInfo'
 import { DEFAULT_CHAIN } from '@/astaria/constants/chains'
 import { ENV } from '@/astaria/constants/environment'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const PageHeaderConnectButton = ({ ...rest }: Omit<ButtonProps, 'children'>) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
 
   return (
     <Connected

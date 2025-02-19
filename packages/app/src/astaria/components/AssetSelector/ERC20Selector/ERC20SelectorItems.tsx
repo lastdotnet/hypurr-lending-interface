@@ -1,7 +1,6 @@
 import { type Dispatch, type SetStateAction } from 'react'
 
 import { type Address, isAddress, zeroAddress } from 'viem'
-import { useAccount } from 'wagmi'
 
 import { ERC20SelectorItem } from '@/astaria/components/AssetSelector/ERC20Selector/ERC20SelectorItem'
 import { ExternalERC20SelectorItem } from '@/astaria/components/AssetSelector/ERC20Selector/ExternalERC20SelectorItem'
@@ -11,6 +10,7 @@ import { useERC20Tokens } from '@/astaria/components/AssetSelector/ERC20Selector
 import { getERC20sWithBalance } from '@/astaria/utils/erc20sWithBalance'
 
 import { type ERC20Asset, type IntentAsset } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const ERC20SelectorItems = ({
   asset,
@@ -25,7 +25,10 @@ export const ERC20SelectorItems = ({
   setDialogOpen: Dispatch<SetStateAction<boolean>>
   type: 'borrow' | 'collateral' | 'deposit'
 }) => {
-  const { address: userAddress } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const userAddress = wallet?.address as Address | undefined
+
   const { erc20s } = useERC20Tokens({ type })
 
   const queryIsSelectingExternalERC20 = isSelectingExternalERC20({

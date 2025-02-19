@@ -1,21 +1,20 @@
-'use client';
+'use client'
 
-import { type ReactNode } from 'react';
-
-import { useAccount } from 'wagmi';
+import { useAccount } from '@/domain/hooks/useAccount'
+import { type ReactNode } from 'react'
 
 export const Connected = ({
   connectedComponent,
   notConnectedComponent,
 }: {
-  connectedComponent: ReactNode;
-  notConnectedComponent?: ReactNode;
+  connectedComponent: ReactNode
+  notConnectedComponent?: ReactNode
 }) => {
-  const { isConnected } = useAccount();
+  const isConnected = useAccount()
 
   if (isConnected) {
-    return connectedComponent;
+    return connectedComponent
   }
 
-  return notConnectedComponent || undefined;
-};
+  return notConnectedComponent || undefined
+}

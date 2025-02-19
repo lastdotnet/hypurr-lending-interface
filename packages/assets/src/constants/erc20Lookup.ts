@@ -1895,14 +1895,6 @@ export const ERC20_LOOKUP: { [key: Address]: ERC20Asset } = {
     name: 'AdEx',
     symbol: 'ADX',
   },
-  '0xadf7c35560035944e805d98ff17d58cde2449389': {
-    address: '0xadf7c35560035944e805d98ff17d58cde2449389',
-    chainId: 8453,
-    decimals: 18,
-    logoURI: 'https://d1il7bw1n2yreo.cloudfront.net/erc20/spec.webp',
-    name: 'Spectral',
-    symbol: 'SPEC',
-  },
   '0xae12c5930881c53715b369cec7606b70d8eb229f': {
     address: '0xae12c5930881c53715b369cec7606b70d8eb229f',
     chainId: 1,

@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { wagmiConfig } from '@/astaria/config/wagmi'
 import { getToken } from '@wagmi/core'
 import { type Address, type Chain, formatUnits } from 'viem'
-import { useAccount } from 'wagmi'
 
 import { EVENT } from 'notifications'
 import { useIsClient } from 'usehooks-ts'
@@ -26,6 +25,7 @@ import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 
 import { type ERC20Asset, getERC20TokenByAddress, isERC20Asset } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const useWriteRecallBorrowIntent = ({
   borrowIntentWithRecall,
@@ -42,7 +42,10 @@ export const useWriteRecallBorrowIntent = ({
   onConfirmed?: () => void
   showError: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
   const chain = getChain({ chainId }) as Chain
   const [isFillingIntent, setisFillingIntent] = useState(false)

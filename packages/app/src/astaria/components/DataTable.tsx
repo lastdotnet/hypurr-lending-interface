@@ -9,7 +9,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import React, { type ReactNode, useState } from 'react'
+import { type ReactNode, useState } from 'react'
 
 import { clsx } from 'clsx'
 

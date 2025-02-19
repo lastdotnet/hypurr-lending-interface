@@ -2,8 +2,6 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { type Address } from 'viem'
-import { useAccount } from 'wagmi'
-
 import { ETHER_DECIMALS } from 'common'
 
 import { Alert, AlertDescription, AlertTitle } from '@/astaria/components/Alert'
@@ -14,6 +12,7 @@ import { useChainId } from '@/astaria/hooks/useChainId'
 import { getChain } from '@/astaria/utils/getChain'
 
 import { type ERC20Asset, getERC20TokenByAddress } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const ExternalERC20SelectorItem = ({
   address,
@@ -25,7 +24,10 @@ export const ExternalERC20SelectorItem = ({
   setDialogOpen: Dispatch<SetStateAction<boolean>>
 }) => {
   const chainId = useChainId()
-  const { address: userAddress } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const userAddress = wallet?.address as Address | undefined
+
   const { inView, ref } = useInView()
 
   const { balance, isPending } = useReadBalance({

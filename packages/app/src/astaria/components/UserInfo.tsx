@@ -1,6 +1,6 @@
 import { type Address, isAddressEqual } from 'viem'
 import { normalize } from 'viem/ens'
-import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
+import { useEnsAvatar, useEnsName } from 'wagmi'
 
 import { clsx } from 'clsx'
 
@@ -8,6 +8,7 @@ import Avatar from 'boring-avatars'
 
 import { SkeletonText } from '@/astaria/components/SkeletonText'
 import { shorten } from '@/astaria/utils/shorten'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const UserInfo = ({
   address,
@@ -22,7 +23,9 @@ export const UserInfo = ({
   short?: boolean
   skeleton?: boolean
 }) => {
-  const { address: connectedAddress } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const connectedAddress = wallet?.address as Address | undefined
 
   const isConnectedAddress = address && connectedAddress && isAddressEqual(address, connectedAddress)
 

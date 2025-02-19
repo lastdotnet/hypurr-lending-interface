@@ -1,5 +1,5 @@
-import { erc20Abi, getAbiItem, parseAbi, zeroAddress } from 'viem'
-import { useAccount, useReadContract } from 'wagmi'
+import { Address, erc20Abi, getAbiItem, parseAbi, zeroAddress } from 'viem'
+import { useReadContract } from 'wagmi'
 
 import { UINT256MAX } from 'common'
 
@@ -11,6 +11,7 @@ import { getAssetsName } from '@/astaria/utils/getAssetsName'
 import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
 import { type ERC20 } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 const USDT_APPROVE_ABI = parseAbi(['function approve(address _spender, uint _value) public'] as const)
 
@@ -45,7 +46,10 @@ export const useAllowanceERC20 = ({
   showError: boolean
   spenderContractName: Contracts
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
   const spender = getContractAddress({
     chainId,

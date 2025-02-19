@@ -1,12 +1,12 @@
 import { type Dispatch, type SetStateAction } from 'react'
 
 import { type Address, isAddressEqual } from 'viem'
-import { useAccount } from 'wagmi'
 
 import { ERC20SelectorItemDisplay } from '@/astaria/components/AssetSelector/ERC20Selector/ERC20SelectorItemDisplay'
 import { useReadBalance } from '@/astaria/components/AssetSelector/ERC20Selector/useReadBalance'
 
 import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export const ERC20SelectorItem = ({
   asset,
@@ -21,7 +21,10 @@ export const ERC20SelectorItem = ({
 }) => {
   const { address, chainId, decimals, logoURI, name, symbol, usdValue } = erc20
 
-  const { address: userAddress } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const userAddress = wallet?.address as Address | undefined
+
   const { balance, isFetching } = useReadBalance({
     enabled: !!userAddress,
     tokenAddress: address,

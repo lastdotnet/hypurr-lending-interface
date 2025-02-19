@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { type Address } from 'viem'
-import { useAccount } from 'wagmi'
 
 import hash from 'object-hash'
 import { useIsClient } from 'usehooks-ts'
@@ -11,6 +10,7 @@ import { useChainId } from '@/astaria/hooks/useChainId'
 import { type BorrowIntentRequest } from '@/astaria/types-internal/intent-schemas'
 
 import { type Asset, type ERC20 } from 'assets'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 const DOUBLE_BIGINT = 2n
 const double = (amount: bigint) => amount * DOUBLE_BIGINT
@@ -26,7 +26,10 @@ export const useBorrowIntentRequest = ({
   collateral: Asset
   enabled: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const chainId = useChainId()
 
   const borrowIntentRequest: BorrowIntentRequest = {

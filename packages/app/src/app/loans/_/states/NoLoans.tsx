@@ -1,16 +1,18 @@
 import Image from 'next/image'
 
-import { useAccount } from 'wagmi'
-
 import AssetsImage from '@/astaria/assets/images/assets.webp'
 import { AddressShort } from '@/astaria/components/AddressShort'
 import { EmptyStateContent, EmptyStateWrapper } from '@/astaria/components/EmptyState'
 import { Heading } from '@/astaria/components/Heading'
 import { TextLink } from '@/astaria/components/TextLink'
 import { ROUTES } from '@/astaria/constants/routes'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const NoLoans = () => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
 
   return (
     <EmptyStateWrapper>

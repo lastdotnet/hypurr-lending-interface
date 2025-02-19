@@ -3,8 +3,8 @@
 import { IconDownload } from '@tabler/icons-react'
 import Image from 'next/image'
 
-import AstariaLogo from '@assets/logo/logo-black.svg?url'
-import AstariaWordmark from '@assets/logo/wordmark-black.svg?url'
+import AstariaLogo from '@/astaria/assets/logo/logo-black.svg?url'
+import AstariaWordmark from '@/astaria/assets/logo/wordmark-black.svg?url'
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@/astaria/components/ContentMenu'
 import { NavButton } from '@/astaria/components/Shell/NavButton'
 import { useToast } from '@/astaria/components/Toast/useToast'

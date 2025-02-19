@@ -240,14 +240,6 @@
       "symbol": "SOFT"
     },
     {
-      "address": "0xadf7c35560035944e805d98ff17d58cde2449389",
-      "chainId": 8453,
-      "decimals": 18,
-      "logoURI": "https://d1il7bw1n2yreo.cloudfront.net/erc20/spec.webp",
-      "name": "Spectral",
-      "symbol": "SPEC"
-    },
-    {
       "address": "0x50dA645f148798F68EF2d7dB7C1CB22A6819bb2C",
       "chainId": 8453,
       "decimals": 18,

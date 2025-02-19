@@ -1,5 +1,6 @@
 'use client'
 
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Error } from '@/app/points/leaderboard/_/states/Error'
 import { HasPointsLeaderboard } from '@/app/points/leaderboard/_/states/HasPointsLeaderboard'
 import { Pending } from '@/app/points/leaderboard/_/states/Pending'

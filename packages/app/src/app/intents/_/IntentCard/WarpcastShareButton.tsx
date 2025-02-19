@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { forwardRef } from 'react'
 
-import WarpcastLogo from '@assets/images/warpcast.svg?url'
+import WarpcastLogo from '@/astaria/assets/images/warpcast.svg?url'
 import { Button, type ButtonProps } from '@/astaria/components/Button'
 import { BASE_URL } from '@/astaria/config/config'
 import { ROUTES } from '@/astaria/constants/routes'

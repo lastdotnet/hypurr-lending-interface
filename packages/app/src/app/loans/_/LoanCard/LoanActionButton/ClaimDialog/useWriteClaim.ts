@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { useClaimTransactionData } from '@/app/loans/_/LoanCard/LoanActionButton/ClaimDialog/useClaimTransactionData'
 import { useSimulateAndWriteTransaction } from '@/astaria/hooks/useSimulateAndWriteTransaction'
 import { type Loan } from '@/astaria/types-internal/loan-schemas'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const useWriteClaim = ({
   enabled,
@@ -19,7 +19,10 @@ export const useWriteClaim = ({
   onConfirmed?: () => void
   showError: boolean
 }) => {
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const [isClaiming, setIsClaiming] = useState(false)
 
   const { data: claimTransactionData } = useClaimTransactionData({
@@ -38,7 +41,7 @@ export const useWriteClaim = ({
     },
     showError,
     simulateData: claimTransactionData,
-    title: `Claiming loan`,
+    title: 'Claiming loan',
   })
 
   return { claim, ...rest }

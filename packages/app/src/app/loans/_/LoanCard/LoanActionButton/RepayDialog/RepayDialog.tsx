@@ -1,8 +1,6 @@
 import { type Dispatch, type SetStateAction, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { useAccount } from 'wagmi'
-
 import { ApproveCollateralButton } from '@/app/intents/_/TransmitIntent/TransmitIntentDialogComponents/ApproveCollateralButton'
 import { NeedsAllowanceResetWarning } from '@/app/loans/_/LoanCard/LoanActionButton/NeedsAllowanceResetWarning'
 import { RepayButton } from '@/app/loans/_/LoanCard/LoanActionButton/RepayDialog/RepayButton'
@@ -30,6 +28,8 @@ import { useChainId } from '@/astaria/hooks/useChainId'
 import { type Loan } from '@/astaria/types-internal/loan-schemas'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { withChainCheckDialog } from '@/astaria/utils/withChainCheckDialog'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 const RepayDialogContent = ({
   loan,
@@ -108,7 +108,10 @@ export const RepayDialogInner = withChainCheckDialog(
     refetchLoans?: () => void
     setDialogOpen: Dispatch<SetStateAction<boolean>>
   }) => {
-    const { address } = useAccount()
+    const { primaryWallet: wallet } = useDynamicContext()
+
+    const address = wallet?.address as Address | undefined
+
     const chainId = useChainId()
     const [isFinishedRepay, setIsFinishedRepay] = useState(false)
 

@@ -13,6 +13,7 @@ import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { hyperTestnet } from '@/config/chain/constants'
 import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
+import { base } from 'viem/chains'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -23,7 +24,10 @@ export function AppLayout({ children }: AppLayoutProps) {
   const { pageSupported, pageName } = usePageChainId()
   const { primaryWallet, network } = useDynamicContext()
   const { handleCloseBanner, showBanner } = useBannerVisibility(TOP_BANNER_ID)
-  const isWrongNetwork = primaryWallet?.connector.supportsNetworkSwitching() && network && network !== hyperTestnet.id
+  const isWrongNetwork =
+    primaryWallet?.connector.supportsNetworkSwitching() &&
+    network &&
+    !(network === hyperTestnet.id || network === base.id)
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>

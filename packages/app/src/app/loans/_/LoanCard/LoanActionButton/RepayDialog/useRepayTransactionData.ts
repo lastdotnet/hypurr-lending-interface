@@ -4,7 +4,7 @@ import { type Address } from 'viem'
 
 import { useIsClient } from 'usehooks-ts'
 
-import { getCustodianOrder } from '@/app/isolated-loans/_/getCustodianOrder'
+import { getCustodianOrder } from '@/app/api/loans/_/getCustodianOrder'
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { type Loan } from '@/astaria/types-internal/loan-schemas'
 

@@ -4,6 +4,7 @@ import { getChainConfigEntry } from '@/config/chain'
 import { hyperTestnet } from '@/config/chain/constants'
 import { Path, getSupportedPages, paths } from '@/config/paths'
 import { usePathname } from 'next/navigation'
+import { base } from 'viem/chains'
 import { useChainId } from 'wagmi'
 
 export interface UsePageChainIdResult {
@@ -24,6 +25,10 @@ export function usePageChainId(): UsePageChainIdResult {
 
   if (!currentPage) {
     return { chainId, pageSupported: true, pageName: '' }
+  }
+
+  if (base.id === chainId) {
+    return { chainId, pageSupported: true, pageName: pageName || '' }
   }
 
   if (supportedPages.includes(currentPage as SupportedPage)) {

@@ -37,7 +37,22 @@ export const hyperTestnetDynamic = {
   rpcUrls: [hyperTestnet.rpcUrls.default.http[0]],
 }
 
-export const SUPPORTED_CHAINS = [hyperTestnet] as const
+export const baseDynamic = {
+  blockExplorerUrls: [base.blockExplorers.default.url],
+  chainId: base.id,
+  networkId: base.id,
+  chainName: 'Base Mainnet',
+  name: base.name,
+  vanityName: base.name,
+  iconUrls: ['/hyper-evm-logo.png'],
+  nativeCurrency: {
+    ...base.nativeCurrency,
+    iconUrl: '/hyper-evm-logo.png',
+  },
+  rpcUrls: [base.rpcUrls.default.http[0]],
+}
+
+export const SUPPORTED_CHAINS = [hyperTestnet, base] as const
 export const SUPPORTED_CHAIN_IDS = SUPPORTED_CHAINS.map((chain) => chain.id)
 
 export const farmStablecoinsEntryGroup: Record<1 | 8453, AssetsGroup> = {

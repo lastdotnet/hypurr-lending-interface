@@ -103,7 +103,9 @@ export const intentFeedColumns: ColumnDef<BorrowIntent | LendIntent>[] = [
       className: 'text-right',
     },
     sortingFn: (rowA, rowB) => {
+      // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
       let apyRowA
+      // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
       let apyRowB
       if (isLendIntent(rowA.original)) {
         apyRowA = toNormalizedValue(rowA.original.minAPY, rowA.original.borrow.decimals) || 0

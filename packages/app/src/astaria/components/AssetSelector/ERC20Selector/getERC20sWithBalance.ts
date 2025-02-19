@@ -1,14 +1,14 @@
-import { type Address } from 'viem';
+import { type Address } from 'viem'
 
-import { type ChainId } from 'chains';
+import { type ChainId } from 'chains'
 
-import { executeHelper } from '@onchain-helpers/executeHelper';
+import { executeHelper } from '@/astaria/onchain-helpers/executeHelper'
 import {
   TokenBalancesHelperABI,
   TokenBalancesHelperBytecode,
-} from '@onchain-helpers/fragments/TokenBalancesHelper';
+} from '@/astaria/onchain-helpers/fragments/TokenBalancesHelper'
 
-import { type ERC20, ERC20Schema } from 'assets';
+import { type ERC20, ERC20Schema } from 'assets'
 
 export const getERC20sWithBalance = async ({
   chainId,
@@ -16,10 +16,10 @@ export const getERC20sWithBalance = async ({
   tokenAddresses,
   userAddress,
 }: {
-  chainId: ChainId;
-  includeNativeBalance?: boolean;
-  tokenAddresses: Address[];
-  userAddress: Address;
+  chainId: ChainId
+  includeNativeBalance?: boolean
+  tokenAddresses: Address[]
+  userAddress: Address
 }) => {
   const tokens = await executeHelper({
     abi: TokenBalancesHelperABI,
@@ -27,7 +27,7 @@ export const getERC20sWithBalance = async ({
     bytecode: TokenBalancesHelperBytecode,
     chainId,
     functionName: 'readBalances',
-  });
+  })
 
   return tokens.slice(includeNativeBalance ? 0 : 1).map((token) => {
     const tokenData: ERC20 = {
@@ -37,7 +37,7 @@ export const getERC20sWithBalance = async ({
       decimals: token.decimals,
       name: token.name,
       symbol: token.symbol,
-    };
-    return ERC20Schema.parse(tokenData);
-  });
-};
+    }
+    return ERC20Schema.parse(tokenData)
+  })
+}

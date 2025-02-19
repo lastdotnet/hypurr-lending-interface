@@ -1,5 +1,7 @@
 'use client'
 
+import '@/app/_/LayoutProviders/walletConnectInit'
+
 import { EthereumWalletConnectors } from '@dynamic-labs/ethereum'
 import { DynamicContextProvider } from '@dynamic-labs/sdk-react-core'
 import { DynamicWagmiConnector } from '@dynamic-labs/wagmi-connector'
@@ -12,7 +14,7 @@ import { getConfig } from '@/config/wagmi/index'
 import { queryClient } from './config/query-client'
 import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
-import { hyperTestnetDynamic } from './config/chain/constants'
+import { baseDynamic, hyperTestnetDynamic } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
 function App({ children }: React.PropsWithChildren) {
@@ -30,7 +32,7 @@ function App({ children }: React.PropsWithChildren) {
         initialAuthenticationMode: 'connect-only',
         mobileExperience: 'redirect',
         overrides: {
-          evmNetworks: [hyperTestnetDynamic],
+          evmNetworks: [hyperTestnetDynamic, baseDynamic],
         },
       }}
     >

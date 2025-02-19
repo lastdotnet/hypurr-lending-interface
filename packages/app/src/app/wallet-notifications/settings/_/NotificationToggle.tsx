@@ -3,8 +3,6 @@
 import { useNotificationTypes, useWeb3InboxAccount } from '@web3inbox/react'
 import { useEffect, useState } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { RegisterAccount } from '@/app/wallet-notifications/settings/_/RegisterAccount'
 import { SubscribeButton } from '@/app/wallet-notifications/settings/_/SubscribeButton'
 import { Button } from '@/astaria/components/Button'
@@ -15,6 +13,8 @@ import { Switch } from '@/astaria/components/Switch'
 import { TextLink } from '@/astaria/components/TextLink'
 import { WALLET_CONNECT_URL } from '@/astaria/constants/urls'
 import { RECALL_ID } from '@/astaria/constants/walletNotificationId'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const NotificationToggle = () => {
   const [isSkeleton, setSkeleton] = useState(true)
@@ -22,7 +22,10 @@ export const NotificationToggle = () => {
   const [registrationOpen, setRegistrationOpen] = useState(false)
   const [isRecall, enableRecall] = useState(false)
 
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { isLoading: accountLoading, isRegistered } = useWeb3InboxAccount(`eip155:1:${address}`)
   const { data: existingTypes, isLoading: notificationLoading } = useNotificationTypes()
 

@@ -5,8 +5,6 @@ import { useNotifications, useSubscription, useWeb3InboxAccount } from '@web3inb
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import { useAccount } from 'wagmi'
-
 import { useLocalStorage } from 'usehooks-ts'
 
 import { type ButtonProps } from '@/astaria/components/Button'
@@ -15,6 +13,8 @@ import { Connected } from '@/astaria/components/Connected'
 import { NotificationCount } from '@/astaria/components/Shell/NotificationCount'
 import { FETCH_LIMIT } from '@/astaria/constants/constants'
 import { ROUTES } from '@/astaria/constants/routes'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
 
 export const WalletNotificationButton = ({ ...rest }: Omit<ButtonProps, 'children'>) => {
   const [refreshId] = useLocalStorage('refreshId', '')
@@ -23,7 +23,10 @@ export const WalletNotificationButton = ({ ...rest }: Omit<ButtonProps, 'childre
   const [startedLoading, setStartedLoading] = useState(false)
   const [notificationCount, setNotificationCount] = useState(0)
 
-  const { address } = useAccount()
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
   const { isRegistered } = useWeb3InboxAccount(`eip155:1:${address}`)
   const { getSubscription } = useSubscription()
   const {
@@ -33,6 +36,7 @@ export const WalletNotificationButton = ({ ...rest }: Omit<ButtonProps, 'childre
     isLoadingNextPage,
   } = useNotifications(FETCH_LIMIT, true, `eip155:1:${address}`) // define account explicitly, otherwise it has unexpected bahavior
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     try {
       notifications
@@ -41,12 +45,13 @@ export const WalletNotificationButton = ({ ...rest }: Omit<ButtonProps, 'childre
         ?.read()
 
       setNotificationCount(notifications?.filter((notif) => !notif.isRead).length || 0)
-    } catch (error) {
+    } catch (_) {
       return
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshId]) // listen for read loans on the dashboard page, isn't updated automatically
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setNotificationCount(notifications?.filter((notif) => !notif.isRead).length || 0)
     if (hasMore) {
@@ -55,10 +60,11 @@ export const WalletNotificationButton = ({ ...rest }: Omit<ButtonProps, 'childre
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notifications])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const fetchData = async () => {
       const data = await getSubscription()
-      setIsSubscribed(data ? true : false)
+      setIsSubscribed(!!data)
     }
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
