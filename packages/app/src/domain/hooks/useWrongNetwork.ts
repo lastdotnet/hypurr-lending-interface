@@ -1,5 +1,5 @@
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { hyperTestnet, hyperEVM } from '@/config/chain/constants'
+import { SUPPORTED_CHAIN_IDS } from '@/config/chain/constants'
 
 export function useWrongNetwork(): boolean {
   const { primaryWallet, network } = useDynamicContext()
@@ -7,7 +7,7 @@ export function useWrongNetwork(): boolean {
   const isWrongNetwork =
     primaryWallet?.connector.supportsNetworkSwitching() &&
     network &&
-    !([hyperTestnet.id, hyperEVM.id] as Number[]).includes(Number(network))
+    !(SUPPORTED_CHAIN_IDS as Number[]).includes(Number(network))
 
   return Boolean(isWrongNetwork)
 }

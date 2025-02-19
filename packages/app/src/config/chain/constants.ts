@@ -4,10 +4,11 @@ import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { base, mainnet } from 'viem/chains'
 
 import { type Chain } from 'viem'
+import { isTestnet } from '../consts'
 
 export const hyperTestnet = {
   id: 998,
-  name: 'HyperEVM Testnet',
+  name: 'Hyperliquid EVM Testnet',
   nativeCurrency: { name: 'Hype', symbol: 'HYPE', decimals: 18 },
   rpcUrls: {
     default: { http: ['https://rpc.hyperliquid-testnet.xyz/evm'] },
@@ -69,7 +70,8 @@ export const hyperEVMDynamic = {
   rpcUrls: [hyperEVM.rpcUrls.default.http[0]],
 }
 
-export const SUPPORTED_CHAINS = process.env.NEXT_PUBLIC_SHOW_TESTNET === '1' ? [hyperTestnet, hyperEVM] : [hyperEVM]
+export const SUPPORTED_CHAINS = isTestnet ? [hyperTestnet] : [hyperEVM]
+export const SUPPORTED_CHAINS_DYNAMIC = isTestnet ? [hyperTestnetDynamic] : [hyperEVMDynamic]
 export const SUPPORTED_CHAIN_IDS = SUPPORTED_CHAINS.map((chain) => chain.id)
 
 export const farmStablecoinsEntryGroup: Record<1 | 8453, AssetsGroup> = {

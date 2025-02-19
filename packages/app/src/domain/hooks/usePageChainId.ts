@@ -1,7 +1,7 @@
 'use client'
 
 import { getChainConfigEntry } from '@/config/chain'
-import { hyperEVM } from '@/config/chain/constants'
+import { SUPPORTED_CHAIN_IDS } from '@/config/chain/constants'
 import { Path, getSupportedPages, paths } from '@/config/paths'
 import { usePathname } from 'next/navigation'
 import { useChainId } from 'wagmi'
@@ -30,7 +30,7 @@ export function usePageChainId(): UsePageChainIdResult {
     return { chainId, pageSupported: true, pageName }
   }
 
-  return { chainId: hyperEVM.id, pageSupported: false, pageName }
+  return { chainId: SUPPORTED_CHAIN_IDS[0], pageSupported: false, pageName }
 }
 
 const pageNamesMap: Record<Path, string> = {

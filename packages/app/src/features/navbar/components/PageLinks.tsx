@@ -14,6 +14,7 @@ import {
   ArrowDownUpIcon,
   UserPlusIcon,
 } from 'lucide-react'
+import { isTestnet } from '@/config/consts'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -59,7 +60,7 @@ const links = [
     label: 'Staking',
     icon: WalletCardsIcon,
   },
-  ...(process.env.NEXT_PUBLIC_SHOW_TESTNET === '1'
+  ...(isTestnet
     ? [
         {
           to: paths.faucet,

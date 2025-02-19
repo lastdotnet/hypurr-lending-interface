@@ -24,6 +24,8 @@ export const SANDBOX_NETWORKS_CHAIN_ID_PREFIX = 3030
 export const HYPURR_UI_REFERRAL_CODE = 0 // 0x0
 export const HYPURR_UI_REFERRAL_CODE_BIGINT = BigInt(HYPURR_UI_REFERRAL_CODE)
 
+export const isTestnet = process.env.NEXT_PUBLIC_IS_TESTNET === '1'
+
 export const USDXL_ADDRESS = CheckedAddress('0xfc446B60a054703A9DC096dd397a6e3cdd614275')
 export const A_USDXL_ADDRESS = CheckedAddress('0xCFBD3c2c0Be381A02fbca18eA8a2231d7C2dE116')
 

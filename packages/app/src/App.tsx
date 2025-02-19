@@ -12,7 +12,7 @@ import { getConfig } from '@/config/wagmi/index'
 import { queryClient } from './config/query-client'
 import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
-import { hyperEVMDynamic, hyperTestnetDynamic } from './config/chain/constants'
+import { SUPPORTED_CHAINS_DYNAMIC } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
 function App({ children }: React.PropsWithChildren) {
@@ -30,8 +30,7 @@ function App({ children }: React.PropsWithChildren) {
         initialAuthenticationMode: 'connect-only',
         mobileExperience: 'redirect',
         overrides: {
-          evmNetworks:
-            process.env.NEXT_PUBLIC_SHOW_TESTNET === '1' ? [hyperTestnetDynamic, hyperEVMDynamic] : [hyperEVMDynamic],
+          evmNetworks: SUPPORTED_CHAINS_DYNAMIC,
         },
       }}
     >
