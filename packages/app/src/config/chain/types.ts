@@ -50,7 +50,7 @@ export interface TokenWithOracleType {
   symbol: TokenSymbol
 }
 
-export type OracleFeedProvider = 'redstone'
+export type OracleFeedProvider = 'redstone' | 'pyth'
 
 export type ReserveOracleType =
   | { type: 'market-price'; providedBy: OracleFeedProvider[] }

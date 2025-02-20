@@ -139,10 +139,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       oracles: {
         [TokenSymbol('WHYPE')]: {
           type: 'market-price',
-          providedBy: ['redstone'],
-        },
-        [TokenSymbol('USDC')]: {
-          type: 'fixed',
+          providedBy: ['pyth'],
         },
       },
     },
