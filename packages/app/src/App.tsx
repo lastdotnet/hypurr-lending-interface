@@ -23,10 +23,7 @@ const cssOverrides = `
 
 function App({ children }: React.PropsWithChildren) {
   const config = getConfig()
-  if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.NODE_ENV === 'development') {
-    // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
-    useAutoConnect({ config })
-  }
+  useAutoConnect({ config })
 
   return (
     <DynamicContextProvider
