@@ -1,7 +1,7 @@
 import { http, Chain, Transport, custom } from 'viem'
 import { VIEM_TIMEOUT_ON_FORKS } from '@/config/consts'
 import { getInjectedNetwork } from './getInjectedNetwork'
-import { hyperTestnet } from '../chain/constants'
+import { hyperEVM, hyperTestnet } from '../chain/constants'
 
 export interface GetTransportsParamsOptions {
   forkChain?: Chain
@@ -22,10 +22,10 @@ interface JsonRpcResponse {
 
 let requestId = 0
 const customRpc = {
-  async request(method: string, params: any[]) {
+  async request(url: string, method: string, params: any[]) {
     requestId += 1
 
-    const response = await fetch(hyperTestnet.rpcUrls.default.http[0], {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,13 @@ export function getTransports({ forkChain, baseDevNetChain }: GetTransportsParam
   const transports: Record<number, Transport> = {
     [hyperTestnet.id]: custom({
       async request({ method, params }) {
-        const response = await customRpc.request(method, params)
+        const response = await customRpc.request(hyperTestnet.rpcUrls.default.http[0], method, params)
+        return response
+      },
+    }),
+    [hyperEVM.id]: custom({
+      async request({ method, params }) {
+        const response = await customRpc.request(hyperEVM.rpcUrls.default.http[0], method, params)
         return response
       },
     }),
