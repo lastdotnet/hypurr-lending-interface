@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x47743A77ef5E6675f4C022E643943Ae7D8D58A43)
  */
 export const capAutomatorAbi = [
   {
@@ -292,14 +292,15 @@ export const capAutomatorAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x47743A77ef5E6675f4C022E643943Ae7D8D58A43)
  */
 export const capAutomatorAddress = {
   998: '0xe6ad1ffa197B2ae9a9daCEf2A52acbC8325782C0',
+  999: '0x47743A77ef5E6675f4C022E643943Ae7D8D58A43',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x47743A77ef5E6675f4C022E643943Ae7D8D58A43)
  */
 export const capAutomatorConfig = {
   address: capAutomatorAddress,
@@ -527,7 +528,7 @@ export const chainlogConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xdC6E5b7aA6fCbDECC1Fda2b1E337ED8569730288)
  */
 export const collectorAbi = [
   {
@@ -598,14 +599,15 @@ export const collectorAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xdC6E5b7aA6fCbDECC1Fda2b1E337ED8569730288)
  */
 export const collectorAddress = {
   998: '0x9b19287cdC0D2062a8BEAbA004Fc93353fc255b9',
+  999: '0xdC6E5b7aA6fCbDECC1Fda2b1E337ED8569730288',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xdC6E5b7aA6fCbDECC1Fda2b1E337ED8569730288)
  */
 export const collectorConfig = {
   address: collectorAddress,
@@ -1184,7 +1186,7 @@ export const iamAutoLineConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b)
  */
 export const lendingPoolAbi = [
   {
@@ -2259,14 +2261,15 @@ export const lendingPoolAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b)
  */
 export const lendingPoolAddress = {
   998: '0x4073283812dfD8fff8430c1Ec8f88A68f984Aec3',
+  999: '0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b)
  */
 export const lendingPoolConfig = {
   address: lendingPoolAddress,
@@ -2278,7 +2281,7 @@ export const lendingPoolConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594)
  */
 export const lendingPoolAddressProviderAbi = [
   {
@@ -2711,14 +2714,15 @@ export const lendingPoolAddressProviderAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594)
  */
 export const lendingPoolAddressProviderAddress = {
   998: '0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
+  999: '0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594)
  */
 export const lendingPoolAddressProviderConfig = {
   address: lendingPoolAddressProviderAddress,
@@ -4677,7 +4681,7 @@ export const savingsXDaiAdapterConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x8ebA6fc4Ff6Ba4F12512DD56d0E4aaC6081f5274)
  */
 export const uiIncentiveDataProviderAbi = [
   {
@@ -5603,14 +5607,15 @@ export const uiIncentiveDataProviderAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x8ebA6fc4Ff6Ba4F12512DD56d0E4aaC6081f5274)
  */
 export const uiIncentiveDataProviderAddress = {
   998: '0xCdC9497Cea167846b17FD72635f73eE119d64B9D',
+  999: '0x8ebA6fc4Ff6Ba4F12512DD56d0E4aaC6081f5274',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x8ebA6fc4Ff6Ba4F12512DD56d0E4aaC6081f5274)
  */
 export const uiIncentiveDataProviderConfig = {
   address: uiIncentiveDataProviderAddress,
@@ -5622,7 +5627,7 @@ export const uiIncentiveDataProviderConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x7b883191011AEAe40581d3Fa1B112413808C9c00)
  */
 export const uiPoolDataProviderAbi = [
   {
@@ -5984,14 +5989,15 @@ export const uiPoolDataProviderAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x7b883191011AEAe40581d3Fa1B112413808C9c00)
  */
 export const uiPoolDataProviderAddress = {
   998: '0x2393Af1E61649ABe6BC37983a4190245e6D5A363',
+  999: '0x7b883191011AEAe40581d3Fa1B112413808C9c00',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x7b883191011AEAe40581d3Fa1B112413808C9c00)
  */
 export const uiPoolDataProviderConfig = {
   address: uiPoolDataProviderAddress,
@@ -6273,7 +6279,7 @@ export const usdsPsmWrapperConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x0000000000000000000000000000000000000000)
  */
 export const usdxlTokenAbi = [
   {
@@ -6665,14 +6671,15 @@ export const usdxlTokenAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x0000000000000000000000000000000000000000)
  */
 export const usdxlTokenAddress = {
   998: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
+  999: '0x0000000000000000000000000000000000000000',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x0000000000000000000000000000000000000000)
  */
 export const usdxlTokenConfig = {
   address: usdxlTokenAddress,
@@ -7042,7 +7049,7 @@ export const vatConfig = { address: vatAddress, abi: vatAbi } as const
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xd1EF87FeFA83154F83541b68BD09185e15463972)
  */
 export const wethGatewayAbi = [
   {
@@ -7188,14 +7195,15 @@ export const wethGatewayAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xd1EF87FeFA83154F83541b68BD09185e15463972)
  */
 export const wethGatewayAddress = {
   998: '0x41F478CdB072fc4Cad96881413f73Aba5c8a90e0',
+  999: '0xd1EF87FeFA83154F83541b68BD09185e15463972',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xd1EF87FeFA83154F83541b68BD09185e15463972)
  */
 export const wethGatewayConfig = {
   address: wethGatewayAddress,
@@ -7207,7 +7215,7 @@ export const wethGatewayConfig = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xE913De89D8c868aEF96D3b10dAAE1900273D7Bb2)
  */
 export const walletBalanceProviderAbi = [
   { type: 'receive', stateMutability: 'payable' },
@@ -7247,14 +7255,15 @@ export const walletBalanceProviderAbi = [
 ] as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xE913De89D8c868aEF96D3b10dAAE1900273D7Bb2)
  */
 export const walletBalanceProviderAddress = {
   998: '0x22473C5a8EC020024aDC74E9dD9B17D8037eAb4B',
+  999: '0xE913De89D8c868aEF96D3b10dAAE1900273D7Bb2',
 } as const
 
 /**
- *
+ * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0xE913De89D8c868aEF96D3b10dAAE1900273D7Bb2)
  */
 export const walletBalanceProviderConfig = {
   address: walletBalanceProviderAddress,

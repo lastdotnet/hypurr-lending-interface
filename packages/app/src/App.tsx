@@ -10,27 +10,28 @@ import { WagmiProvider } from 'wagmi'
 import { getConfig } from '@/config/wagmi/index'
 
 import { queryClient } from './config/query-client'
-import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
-import { hyperTestnetDynamic } from './config/chain/constants'
+import { SUPPORTED_CHAINS_DYNAMIC } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
 
-function App({ children }: React.PropsWithChildren) {
-  const config = getConfig()
-  if (process.env.NEXT_PUBLIC_PLAYWRIGHT === '1' || process.env.NODE_ENV === 'development') {
-    // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
-    useAutoConnect({ config })
-  }
+const cssOverrides = `
+.active-wallet-information-container .alert--warning {
+  display: none;
+}
+`
+const config = getConfig()
 
+function App({ children }: React.PropsWithChildren) {
   return (
     <DynamicContextProvider
       settings={{
+        cssOverrides,
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || '',
         walletConnectors: [EthereumWalletConnectors],
         initialAuthenticationMode: 'connect-only',
         mobileExperience: 'redirect',
         overrides: {
-          evmNetworks: [hyperTestnetDynamic],
+          evmNetworks: SUPPORTED_CHAINS_DYNAMIC,
         },
       }}
     >

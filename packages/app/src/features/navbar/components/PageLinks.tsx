@@ -14,6 +14,7 @@ import {
   ArrowDownUpIcon,
   UserPlusIcon,
 } from 'lucide-react'
+import { isTestnet } from '@/config/consts'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -59,11 +60,15 @@ const links = [
     label: 'Staking',
     icon: WalletCardsIcon,
   },
-  {
-    to: paths.faucet,
-    label: 'Faucet',
-    icon: DropletIcon,
-  },
+  ...(isTestnet
+    ? [
+        {
+          to: paths.faucet,
+          label: 'Faucet',
+          icon: DropletIcon,
+        },
+      ]
+    : []),
 ]
 
 export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksProps) {

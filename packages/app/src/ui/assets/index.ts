@@ -34,6 +34,7 @@ import moreIconVertical from './more-icon-vertical.svg?url'
 import moreIcon from './more-icon.svg?url'
 import multiply from './multiply.svg?url'
 import redstone from './oracle-providers/redstone.svg?url'
+import pyth from './oracle-providers/pyth.svg?url'
 import pause from './pause.svg?url'
 import rocket from './rocket.svg?url'
 import sliderThumb from './slider-thumb.svg?url'
@@ -154,6 +155,7 @@ export const assets = {
   },
   oracleProviders: {
     redstone,
+    pyth,
   },
 }
 
