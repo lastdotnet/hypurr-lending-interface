@@ -17,6 +17,7 @@ const nextConfig = {
   },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
+    webpackBuildWorker: true,
   },
   images: {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -52,9 +53,10 @@ const nextConfig = {
     defaultLocale: 'en',
   },
 
-  webpack(config, { isServer }) {
-    if (!isServer) {
-      config.externals.push('node:os')
+  webpack(config) {
+    // Disable webpack caching in production
+    if (process.env.NODE_ENV === 'production') {
+      config.cache = false
     }
 
     // Grab the existing rule that handles SVG imports

@@ -5,7 +5,7 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { assets } from '@/ui/assets'
 import { AppConfig } from '../feature-flags'
-import { hyperTestnet } from './constants'
+import { hyperEVM, hyperTestnet } from './constants'
 import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
 
@@ -85,7 +85,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         },
         [TokenSymbol('SolvBTC')]: {
           type: 'market-price',
-          providedBy: [],
+          providedBy: ['redstone'],
         },
         [TokenSymbol('stTESTH')]: {
           type: 'market-price',
@@ -109,22 +109,40 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     savings: undefined,
     farms: undefined,
   },
-  8453: {
-    originChainId: hyperTestnet.id,
+  [hyperEVM.id]: {
+    originChainId: hyperEVM.id,
     daiSymbol: undefined,
     sdaiSymbol: undefined,
     usdsSymbol: undefined,
     susdsSymbol: undefined,
-    psmStables: [],
+    psmStables: [TokenSymbol('USDC')],
     meta: {
-      name: 'Base',
+      name: 'Hyperliquid EVM',
       logo: assets.hyperEvmLogo,
     },
     permitSupport: {},
     tokensWithMalformedApprove: [],
     airdrop: {},
     extraTokens: [],
-    markets: undefined,
+    markets: {
+      defaultAssetToBorrow: TokenSymbol('WHYPE'),
+      nativeAssetInfo: {
+        nativeAssetName: 'Hype',
+        nativeAssetSymbol: TokenSymbol('HYPE'),
+        wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
+        wrappedNativeAssetAddress: CheckedAddress('0x5555555555555555555555555555555555555555'),
+        minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
+      },
+      tokenSymbolToReplacedName: {
+        ...commonTokenSymbolToReplacedName,
+      },
+      oracles: {
+        [TokenSymbol('WHYPE')]: {
+          type: 'market-price',
+          providedBy: ['pyth'],
+        },
+      },
+    },
     savings: undefined,
     farms: undefined,
   },

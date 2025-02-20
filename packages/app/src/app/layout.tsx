@@ -1,4 +1,3 @@
-import '../css/fonts.css'
 import '../css/main.css'
 
 import Script from 'next/script'
@@ -7,6 +6,8 @@ import App from '@/App'
 import { AppLayout } from '@/ui/layouts/app-layout/AppLayout'
 import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogDispatcherContainer'
 import { Debug } from '@/features/debug'
+import { Manrope } from 'next/font/google'
+import { cn } from '@/ui/utils/style'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -72,6 +73,11 @@ export const metadata: Metadata = {
   },
 }
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
+
 export default function ({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -81,7 +87,7 @@ export default function ({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <FathomAnalytics />
       </head>
-      <body>
+      <body className={cn(manrope.variable, 'font-sans')}>
         <App>
           <AppLayout>
             <DialogDispatcherContainer />

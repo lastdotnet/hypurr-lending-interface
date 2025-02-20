@@ -4,7 +4,7 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     container: {
       center: true,
@@ -22,7 +22,7 @@ export default {
         inactive: '0.3',
       },
       fontFamily: {
-        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-manrope)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         basics: {

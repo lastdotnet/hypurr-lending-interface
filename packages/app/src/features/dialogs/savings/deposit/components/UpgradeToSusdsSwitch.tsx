@@ -1,6 +1,5 @@
 import { formatPercentage } from '@/domain/common/format'
 import { Percentage } from '@/domain/types/NumericValues'
-import { assets } from '@/ui/assets'
 import { Switch } from '@/ui/atoms/switch/Switch'
 import { testIds } from '@/ui/utils/testIds'
 import { RefObject } from 'react'
@@ -23,7 +22,6 @@ export function UpgradeToSusdsSwitch({
     <div className="flex">
       <div className="flex w-full items-center justify-between rounded-xl rounded-r-none border border-basics-green/50 bg-basics-green/5 p-4">
         <div className="flex items-center gap-2">
-          <img src={assets.token.susds} className="h-5" />
           <div className="text-sm">
             Deposit into Savings USDS and get{' '}
             {apyImprovement ? (

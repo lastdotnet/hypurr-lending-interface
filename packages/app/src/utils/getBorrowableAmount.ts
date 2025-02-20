@@ -2,6 +2,7 @@ import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { USDXL_ADDRESS } from '@/config/consts'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+import { zeroAddress } from 'viem'
 
 export function getBorrowableAmount({
   tokenIdentifier,
@@ -13,7 +14,7 @@ export function getBorrowableAmount({
   defaultAvailable: NormalizedUnitNumber
 }): NormalizedUnitNumber {
   const isUSDXL = isAddress(tokenIdentifier)
-    ? tokenIdentifier === USDXL_ADDRESS
+    ? tokenIdentifier === USDXL_ADDRESS && tokenIdentifier !== CheckedAddress(zeroAddress)
     : tokenIdentifier === TokenSymbol('USDXL')
 
   return isUSDXL ? facilitatorAvailable : defaultAvailable
