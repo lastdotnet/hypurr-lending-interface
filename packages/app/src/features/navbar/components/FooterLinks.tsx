@@ -2,8 +2,7 @@ import { assets } from '@/ui/assets'
 import { focusVariants } from './nav-link/NavLink'
 import { cn } from '@/ui/utils/style'
 import { links } from '@/ui/constants/links'
-import { Button } from '@/ui/atoms/button/Button'
-import { MailIcon } from 'lucide-react'
+import { NavBarDialogue } from '@/features/newsletter/NavBarDialogue'
 
 const socialLinks = [
   {
@@ -58,9 +57,7 @@ export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: bool
         ))}
       </div>
 
-      <Button variant="ghost" className="flex gap-2 px-3 py-5 text-base xl:h-auto xl:py-2 xl:text-xs">
-        <MailIcon className="h-4 w-4" /> Signup for updates
-      </Button>
+      <NavBarDialogue />
 
       <div className="flex justify-center gap-4 xl:justify-start xl:gap-2">
         {infoLinks.map((link, i) => (
