@@ -2,6 +2,8 @@ import { assets } from '@/ui/assets'
 import { focusVariants } from './nav-link/NavLink'
 import { cn } from '@/ui/utils/style'
 import { links } from '@/ui/constants/links'
+import { Button } from '@/ui/atoms/button/Button'
+import { MailIcon } from 'lucide-react'
 
 const socialLinks = [
   {
@@ -39,8 +41,13 @@ const infoLinks = [
 
 export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: boolean }) {
   return (
-    <div className={cn('pb-4 xl:pt-2', mobileMenuCollapsed && 'hidden xl:block')}>
-      <div className="mb-4 flex items-center justify-center gap-5 xl:justify-start xl:gap-8">
+    <div
+      className={cn(
+        'flex flex-col items-center gap-4 pb-4 xl:items-start xl:pt-2',
+        mobileMenuCollapsed && 'hidden xl:flex',
+      )}
+    >
+      <div className="flex items-center justify-center gap-5 xl:justify-start xl:gap-8">
         {socialLinks.map((link) => (
           <a
             href={link.href}
@@ -53,6 +60,11 @@ export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: bool
           </a>
         ))}
       </div>
+
+      <Button variant="ghost" className="flex gap-2 px-3 py-5 text-base xl:h-auto xl:py-2 xl:text-xs">
+        <MailIcon className="h-4 w-4" /> Signup for updates
+      </Button>
+
       <div className="flex justify-center gap-4 xl:justify-start xl:gap-2">
         {infoLinks.map((link, i) => (
           <a
