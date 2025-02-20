@@ -30,6 +30,7 @@ export function mapWriteResultToActionState(result: UseWriteResult): ActionHandl
 
 export function parseWriteErrorMessage(error: Error | undefined): string {
   if (error instanceof BaseError) {
+    console.error(error)
     return decodeRevertReason(error)
   }
   return 'Unknown error'
