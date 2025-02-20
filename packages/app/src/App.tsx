@@ -10,7 +10,6 @@ import { WagmiProvider } from 'wagmi'
 import { getConfig } from '@/config/wagmi/index'
 
 import { queryClient } from './config/query-client'
-import { useAutoConnect } from './domain/wallet/useAutoConnect'
 import { TooltipProvider } from './ui/atoms/tooltip/Tooltip'
 import { SUPPORTED_CHAINS_DYNAMIC } from './config/chain/constants'
 import { ConfettiProvider } from './ui/molecules/confetti/Confetti'
@@ -20,11 +19,9 @@ const cssOverrides = `
   display: none;
 }
 `
+const config = getConfig()
 
 function App({ children }: React.PropsWithChildren) {
-  const config = getConfig()
-  useAutoConnect({ config })
-
   return (
     <DynamicContextProvider
       settings={{
