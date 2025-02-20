@@ -9,18 +9,15 @@ const socialLinks = [
   {
     href: links.social.x,
     icon: <img src={assets.socialLogos.x} alt="X" />,
-    label: 'X',
   },
   {
     href: links.social.telegram,
     icon: <img src={assets.socialLogos.telegram} alt="Telegram" />,
-    label: 'Telegram',
   },
 
   {
     href: links.social.github,
     icon: <img src={assets.socialLogos.github} alt="Github" />,
-    label: 'Github',
   },
 ]
 
@@ -53,7 +50,7 @@ export function FooterLinks({ mobileMenuCollapsed }: { mobileMenuCollapsed: bool
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            key={link.label}
+            key={link.href}
             className={cn(focusVariants(), 'p-3 opacity-30 transition-opacity xl:p-0 hover:opacity-100')}
           >
             {link.icon}
