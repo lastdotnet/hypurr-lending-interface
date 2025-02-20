@@ -130,7 +130,7 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         nativeAssetName: 'Hype',
         nativeAssetSymbol: TokenSymbol('HYPE'),
         wrappedNativeAssetSymbol: TokenSymbol('WHYPE'),
-        wrappedNativeAssetAddress: CheckedAddress('0x702aB9B6556020F5c7AC814162Cb641d64291144'),
+        wrappedNativeAssetAddress: CheckedAddress('0x5555555555555555555555555555555555555555'),
         minRemainingNativeAssetBalance: NormalizedUnitNumber(0.001),
       },
       tokenSymbolToReplacedName: {
