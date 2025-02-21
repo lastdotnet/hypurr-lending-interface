@@ -51,6 +51,9 @@ const dataSource = new DataSource({
   synchronize: false,
   type: 'postgres',
   url: ENV_SERVER.DB_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 })
 
 export const initializeDataSource = async () => {
