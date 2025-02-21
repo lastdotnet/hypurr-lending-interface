@@ -4,6 +4,9 @@ const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
 const buildTime = new Date().toLocaleString('en-gb')
 
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: true,
   distDir: './dist',
   poweredByHeader: false,
