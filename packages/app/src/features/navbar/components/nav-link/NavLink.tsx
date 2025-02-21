@@ -17,6 +17,7 @@ interface NavLinkComponentProps {
 
 export interface NavLinkProps extends NavLinkComponentProps {
   to: string
+  locale: string
   onClick?: () => void
 }
 
@@ -30,9 +31,12 @@ export interface ExternalNavLinkProps extends NavLinkComponentProps {
 
 export interface PlaceholderNavLinkProps extends NavLinkComponentProps {}
 
-export function NavLink({ to, children, onClick, className, ...rest }: NavLinkProps) {
+export function NavLink({ to, children, onClick, className, locale, ...rest }: NavLinkProps) {
   const pathname = usePathname() ?? ''
-  const selected = to === '/' ? pathname === '/' : pathname.startsWith(to)
+  // If we have a locale, remove it from the pathname
+  const pathWithoutLocale = locale ? pathname.replace(new RegExp(`^/${locale}($|/)`), '/') : pathname
+
+  const selected = to === '/' ? pathWithoutLocale === '/' : pathWithoutLocale.startsWith(to)
 
   return (
     <Link href={to} onClick={onClick} className={cn(focusVariants(), className)}>
