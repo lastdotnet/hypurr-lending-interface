@@ -1,5 +1,7 @@
 import { type Hash } from 'viem'
 
+import type { Metadata } from 'next'
+
 import { Intent } from '@/app/isolated/i/[shortId]/_/Intent'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Error } from '@/app/isolated/i/[shortId]/_/states/Error'
@@ -11,7 +13,8 @@ const PAGE_TITLE = 'Intent'
 
 const getPageTitle = (shortId: string) => `${PAGE_TITLE} ${shorten({ maxLength: 10, value: shortId })}`
 
-/* TODO: generate metadata
+type MetadataProps = Promise<{ shortId: string }>
+
 export async function generateMetadata({ params }: { params: MetadataProps }): Promise<Metadata> {
   const shortId = decodeURIComponent((await params).shortId)
 
@@ -19,10 +22,9 @@ export async function generateMetadata({ params }: { params: MetadataProps }): P
     title: getPageTitle(shortId),
   }
 }
-  */
 
-const IntentPage = ({ params }: { params: { shortId: string } }) => {
-  const shortId = decodeURIComponent(params.shortId)
+const IntentPage = async ({ params }: { params: Promise<{ shortId: string }> }) => {
+  const shortId = decodeURIComponent((await params).shortId)
 
   return (
     <Page className="space-y-4" size="narrow">
