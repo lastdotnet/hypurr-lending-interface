@@ -1,0 +1,60 @@
+import { useState } from 'react'
+
+import { useRepayTransactionData } from '@/app/isolated/loans/_/LoanCard/LoanActionButton/RepayDialog/useRepayTransactionData'
+import { useSimulateAndWriteTransaction } from '@/astaria/hooks/useSimulateAndWriteTransaction'
+import { type Loan } from '@/astaria/types-internal/loan-schemas'
+import { formatCurrency } from '@/astaria/utils/currency/formatCurrency'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { Address } from 'viem'
+
+export const useWriteRepay = ({
+  enabled,
+  isFinishedApprove,
+  isFinishedRepay,
+  loan,
+  onConfirmed,
+  showError,
+}: {
+  enabled?: boolean
+  isFinishedApprove: boolean
+  isFinishedRepay: boolean
+  loan: Loan
+  onConfirmed?: () => void
+  showError: boolean
+}) => {
+  const { primaryWallet: wallet } = useDynamicContext()
+
+  const address = wallet?.address as Address | undefined
+
+  const [isRepaying, setIsRepaying] = useState(false)
+
+  const { data: repayTransactionData } = useRepayTransactionData({
+    address,
+    loan,
+  })
+
+  const repayAmount = repayTransactionData?.bufferedAmount ?? loan.debt.amount
+
+  const loanAmount = formatCurrency({
+    amount: repayAmount,
+    decimals: loan.debt.decimals,
+    usdValue: loan.debt.usdValue,
+  }).trigger
+
+  const { writeContract: repay, ...rest } = useSimulateAndWriteTransaction({
+    enabled:
+      enabled && Boolean(!!repayTransactionData?.functionData && !isRepaying && !isFinishedRepay && isFinishedApprove),
+    onConfirmed: () => {
+      onConfirmed?.()
+      setIsRepaying(false)
+    },
+    onMutate: () => {
+      setIsRepaying(true)
+    },
+    showError,
+    simulateData: repayTransactionData?.functionData,
+    title: `Repay ${loanAmount} ${loan.debt.symbol}`,
+  })
+
+  return { repay, ...rest }
+}

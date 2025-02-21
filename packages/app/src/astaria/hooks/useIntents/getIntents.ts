@@ -11,8 +11,8 @@ import { type FindOptionsOrder, type FindOptionsWhere, IsNull, MoreThan, Not } f
 
 import { initializeDataSource } from '@/app/api/_/dataSource'
 import { getAssetsMetadata } from '@/app/api/_/getAssetsMetadata'
-import { getCurrentAPYForBorrowIntent } from '@/app/intents/_/getCurrentAPY'
-import { isVerifiedIntent } from '@/app/intents/_/isVerifiedIntent'
+import { getCurrentAPYForBorrowIntent } from '@/app/isolated/intents/_/getCurrentAPY'
+import { isVerifiedIntent } from '@/app/isolated/intents/_/isVerifiedIntent'
 import {
   BORROW_AMOUNT_NO_LTV_EXPERT_MODE_THRESHOLD,
   BORROW_COLLATERAL_AMOUNT_NO_EXPERT_MODE_LOWER_THRESHOLD,

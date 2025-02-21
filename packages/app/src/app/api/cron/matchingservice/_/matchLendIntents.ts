@@ -8,7 +8,7 @@ import type {
   LenderIntentWithCapacity,
   SignedCaveatWithOwnerAndId,
 } from '@/app/api/cron/matchingservice/_/types'
-import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/intents/_/getCurrentAPY'
+import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/isolated/intents/_/getCurrentAPY'
 
 import { type StarportLoan } from 'sdk'
 import { V1BorrowerDetailsStructABI } from 'sdk/abi/V1BorrowerDetailsStructABI'

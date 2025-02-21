@@ -4,7 +4,7 @@ import { sepolia } from 'viem/chains'
 
 import { useLocalStorage } from 'usehooks-ts'
 
-import { INTENTS_QUERY_KEY, PER_PAGE } from '@/app/intents/_/constants'
+import { INTENTS_QUERY_KEY, PER_PAGE } from '@/app/isolated/intents/_/constants'
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { getIntents } from '@/astaria/hooks/useIntents/getIntents'
 import { type GETIntentsResponse } from '@/astaria/types-internal/intent-schemas'

@@ -7,6 +7,7 @@ export const combineTotalPoints = (
   const combinedMap = new Map<string, bigint>()
 
   const addPointsToMap = (pointsArray: WalletWithPoints[], combinedMap: Map<string, bigint>) => {
+    // biome-ignore lint/complexity/noForEach: <explanation>
     pointsArray.forEach(({ totalPoints, walletAddress }) => {
       if (walletAddress !== undefined && combinedMap !== undefined) {
         const currentTotalPoints = combinedMap.get(walletAddress)

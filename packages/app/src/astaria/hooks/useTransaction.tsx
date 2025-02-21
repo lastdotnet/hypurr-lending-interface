@@ -7,6 +7,7 @@ import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi'
 import { BlockExplorerLink } from '@/astaria/components/BlockExplorerLink'
 import { type Toast, type ToastReturnType, useToast } from '@/astaria/components/Toast/useToast'
 import { processContractInteractionError } from '@/astaria/utils/errors'
+import { wagmiConfig } from '../config/wagmi'
 
 const TRANSACTION_REJECTED_CODE = 4001
 
@@ -77,7 +78,7 @@ export const useTransaction = ({
           </>
         ),
         duration: Number.POSITIVE_INFINITY,
-        onOpenChange: (open) => {
+        onOpenChange: (open: any) => {
           if (!open) {
             setTransactionToast(undefined)
           }
@@ -102,6 +103,7 @@ export const useTransaction = ({
     query: {
       enabled: isSuccessWrite,
     },
+    config: wagmiConfig,
   })
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>

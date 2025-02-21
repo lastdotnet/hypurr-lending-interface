@@ -41,7 +41,7 @@ const getSnapshot = (req: NextRequest) => {
     throw new BadRequestError('Missing query param: snapshot')
   }
 
-  return BigInt(parseInt(snapshotQueryParam))
+  return BigInt(Number.parseInt(snapshotQueryParam))
 }
 
 const getEventCounts = async (repository: Repository<Point>, cutoffDate: string): Promise<EventCountType[]> => {
@@ -133,6 +133,7 @@ export const GET = async (req: NextRequest) =>
 
       if (nonLoanPoint.data.isTypeOf === 'IntentFillData') {
         return { address, points: nonLoanPoint.data.points }
+        // biome-ignore lint/style/noUselessElse: <explanation>
       } else {
         throw new InternalServerError(`Not implemented type of offchain point ${nonLoanPoint.data.isTypeOf}`)
       }

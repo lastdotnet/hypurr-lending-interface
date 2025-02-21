@@ -3,7 +3,7 @@ import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
-import { USDValue } from '@/app/intents/_/TransmitIntent/TransmitIntentFormComponents/USDValue'
+import { USDValue } from '@/app/isolated/intents/_/TransmitIntent/TransmitIntentFormComponents/USDValue'
 import { CommandItem } from '@/astaria/components/Command'
 import { CurrencyAmount } from '@/astaria/components/CurrencyAmount'
 import { ERC20Image } from '@/astaria/components/ERC20Image'

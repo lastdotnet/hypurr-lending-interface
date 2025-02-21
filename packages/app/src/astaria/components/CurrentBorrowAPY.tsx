@@ -5,7 +5,10 @@ import { useState } from 'react'
 import { ONE_SECOND } from 'common'
 import { useInterval } from 'usehooks-ts'
 
-import { getCurrentAPYForBorrowIntent, getCurrentAPYForBorrowIntentWithRecall } from '@/app/intents/_/getCurrentAPY'
+import {
+  getCurrentAPYForBorrowIntent,
+  getCurrentAPYForBorrowIntentWithRecall,
+} from '@/app/isolated/intents/_/getCurrentAPY'
 import { Percent } from '@/astaria/components/Percent'
 import { SkeletonText } from '@/astaria/components/SkeletonText'
 import { type BorrowIntent, type BorrowIntentWithRecall } from '@/astaria/types-internal/intent-schemas'

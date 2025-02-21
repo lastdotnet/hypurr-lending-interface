@@ -2,8 +2,8 @@ import { type Address, type PublicClient, type WalletClient, decodeAbiParameters
 
 import { calculateMatchAmount } from '@/app/api/cron/matchingservice/_/calculateMatchAmount'
 import type { BorrowerIntent, LenderIntent } from '@/app/api/cron/matchingservice/_/types'
-import { getCleanBorrowIntentFromContracts } from '@/app/intents/_/TransmitIntent/TransmitBorrowIntent/cleanBorrowIntentFromContracts'
-import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/intents/_/getCurrentAPY'
+import { getCleanBorrowIntentFromContracts } from '@/app/isolated/intents/_/TransmitIntent/TransmitBorrowIntent/cleanBorrowIntentFromContracts'
+import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/isolated/intents/_/getCurrentAPY'
 
 import { type SignedCaveat as SignedCaveatType, SpentItemSchema, StarportLoanSchema } from 'sdk'
 import { BasePricingDetailsStructABI } from 'sdk/abi/BasePricingDetailsStructABI'

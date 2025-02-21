@@ -1,6 +1,6 @@
 'use client'
 
-import { useLoans } from '@/app/loans/_/useLoans/useLoans'
+import { useLoans } from '@/app/isolated/loans/_/useLoans/useLoans'
 import { TextLink } from '@/astaria/components/TextLink'
 import { ROUTES } from '@/astaria/constants/routes'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'

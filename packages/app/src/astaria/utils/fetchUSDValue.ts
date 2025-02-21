@@ -131,10 +131,16 @@ export const fetchUSDValue = async ({
   const response = await fetch(url, {
     next: { revalidate: CACHE_DURATION_SECONDS },
   })
+  try {
+    const data = await response.json()
+    const defiLlamaResponse = DefiLlamaResponseSchema.parse(data)
+    return defiLlamaResponse.coins[chainAndAddress]?.price ?? null
+  } catch (_) {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log(`Defillama status: ${response.statusText}`)
 
-  const data = await response.json()
-  const defiLlamaResponse = DefiLlamaResponseSchema.parse(data)
-  return defiLlamaResponse.coins[chainAndAddress]?.price ?? null
+    return Promise.resolve(0)
+  }
 }
 
 export const fetchAssetsUSDValue = async ({

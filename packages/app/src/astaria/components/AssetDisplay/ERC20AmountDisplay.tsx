@@ -2,8 +2,8 @@
 
 import { IconAlertTriangleFilled } from '@tabler/icons-react'
 
-import { USDValueDisplay } from '@/app/intents/_/TransmitIntent/TransmitIntentFormComponents/USDValueDisplay'
-import { isVerifiedERC20 } from '@/app/intents/_/isVerifiedERC20'
+import { USDValueDisplay } from '@/app/isolated/intents/_/TransmitIntent/TransmitIntentFormComponents/USDValueDisplay'
+import { isVerifiedERC20 } from '@/app/isolated/intents/_/isVerifiedERC20'
 import { BlockExplorerLink } from '@/astaria/components/BlockExplorerLink'
 import { Button } from '@/astaria/components/Button'
 import { CurrencyAmount } from '@/astaria/components/CurrencyAmount'

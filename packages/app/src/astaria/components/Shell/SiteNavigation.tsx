@@ -1,5 +1,3 @@
-import { PageHeaderConnectButton } from '@/astaria/components/Page/PageHeaderConnectButton'
-import { Logo } from '@/astaria/components/Shell/Logo'
 import { MobileNavigation } from '@/astaria/components/Shell/MobileNavigation'
 import { NavButton } from '@/astaria/components/Shell/NavButton'
 import { PointsButton } from '@/astaria/components/Shell/PointsButton'
@@ -11,7 +9,6 @@ export const SiteNavigation = () => (
     <div className="flex w-full max-w-screen-xl justify-between p-1">
       <div className="flex items-center">
         <MobileNavigation />
-        <Logo />
         {PRIMARY_NAV_ITEMS?.map(({ href, label }) => (
           <NavButton key={href} className="-ml-px hidden lg:inline-flex" href={href}>
             {label}
@@ -20,7 +17,6 @@ export const SiteNavigation = () => (
       </div>
       <div className="flex items-center">
         <PointsButton className="hidden lg:inline-flex" emphasis="low" size="md-narrow" />
-        <PageHeaderConnectButton />
         <WalletNotificationButton className="hidden lg:inline-flex" emphasis="low" size="md-narrow" />
       </div>
     </div>

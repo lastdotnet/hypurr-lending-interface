@@ -7,7 +7,7 @@ import {
   BORROW_INTENT_QUERY_KEY,
   INTENTS_QUERY_KEY,
   type IntentLocation,
-} from '@/app/intents/_/constants'
+} from '@/app/isolated/intents/_/constants'
 import {
   type BorrowIntent,
   type BorrowIntentWithRecall,

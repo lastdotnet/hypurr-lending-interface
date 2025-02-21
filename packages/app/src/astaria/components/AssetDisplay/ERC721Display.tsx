@@ -1,6 +1,6 @@
 import { IconAlertTriangleFilled } from '@tabler/icons-react'
 
-import { isVerifiedCollection } from '@/app/intents/_/isVerifiedCollection'
+import { isVerifiedCollection } from '@/app/isolated/intents/_/isVerifiedCollection'
 import { Image } from '@/astaria/components/AssetImageBox/components/Image'
 import { getAssetName } from '@/astaria/components/AssetName'
 import { BlockExplorerLink } from '@/astaria/components/BlockExplorerLink'

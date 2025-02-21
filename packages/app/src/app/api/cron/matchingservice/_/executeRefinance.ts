@@ -1,7 +1,7 @@
 import { type Address, type PublicClient, type WalletClient, decodeAbiParameters, encodeAbiParameters } from 'viem'
 
 import { type BorrowerIntent } from '@/app/api/cron/matchingservice/_/types'
-import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/intents/_/getCurrentAPY'
+import { getCurrentAPYForIndexerOrBorrowerIntent } from '@/app/isolated/intents/_/getCurrentAPY'
 import { emptyBytes } from '@/astaria/constants/empty'
 
 import { type SignedCaveat as SignedCaveatType, type StarportLoan } from 'sdk'

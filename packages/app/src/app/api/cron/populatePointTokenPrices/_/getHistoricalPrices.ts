@@ -1,3 +1,5 @@
+'use server'
+
 import { mainnet } from 'viem/chains'
 
 import { type ChainId } from 'chains'
@@ -9,8 +11,6 @@ import { fetchUSDValue } from '@/astaria/utils/fetchUSDValue'
 
 import { type ERC20WithChainIdAndStartPointsTimestamp, getERC20TokenBySymbol } from 'assets'
 import { PointToken } from 'indexer/model'
-
-;`use server`
 
 const MAINNET_WETH = getERC20TokenBySymbol({
   chainId: mainnet.id,
@@ -94,6 +94,8 @@ export const getHistoricalPrices = async (
   let counter = 0
   while (currentDateTimestamp >= startTimestamp) {
     counter++
+    // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
+    // biome-ignore lint/style/useSingleVarDeclarator: <explanation>
     let usdValueWETH, usdValueAsset
     try {
       usdValueWETH = (await getUsdValueWETH(currentDateTimestamp)) || 0

@@ -1,6 +1,6 @@
 import { type QueryClient } from '@tanstack/react-query'
 
-import { type IntentLocation, LEND_INTENTS_QUERY_KEY } from '@/app/intents/_/constants'
+import { type IntentLocation, LEND_INTENTS_QUERY_KEY } from '@/app/isolated/intents/_/constants'
 import { type GETIntentsResponse, type LendIntent } from '@/astaria/types-internal/intent-schemas'
 
 export const removeLendIntentFromQuery = ({

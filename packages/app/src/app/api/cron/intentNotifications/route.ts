@@ -15,8 +15,8 @@ import { handleErrors } from '@/app/api/server-error'
 import {
   getCurrentAPYForBorrowIntentWithRecall,
   getCurrentAPYForIndexerOrBorrowerIntent,
-} from '@/app/intents/_/getCurrentAPY'
-import { getEstimatedLTV } from '@/app/intents/_/getEstimatedLTV'
+} from '@/app/isolated/intents/_/getCurrentAPY'
+import { getEstimatedLTV } from '@/app/isolated/intents/_/getEstimatedLTV'
 import {
   DECIMALS_SUBTRACTION_FOR_PERCENTAGES,
   HIGHER_APY_THRESHOLD,

@@ -94,7 +94,7 @@ function getLink({
   chainId: ChainId
   intent: BorrowIntent | LendIntent
 }) {
-  return `[Link ↗](https://astaria.xyz/i/${intent?.shortId}?utm_source=tg) | ${chainHashtagMap[chainId]}`
+  return `[Link ↗](https://hypurr.fi//isolated/i/${intent?.shortId}?utm_source=tg) | ${chainHashtagMap[chainId]}`
 }
 
 async function sendTelegramNotification({ payload, type }: SendTelegramNotificationArgs) {
@@ -138,6 +138,7 @@ ${link}`
   }
 
   // eslint-disable-next-line no-console
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
   console.log('Markdown notification string: ', notificationMarkdownString)
 
   const response = await telegram.api.sendMessage({
@@ -152,6 +153,7 @@ ${link}`
   })
 
   // eslint-disable-next-line no-console
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
   console.log('Telegram response: ', response)
 
   return response

@@ -9,7 +9,7 @@ export const paths = {
   marketDetails: '/markets/:chainId/:asset',
   faucet: '/faucet',
   farmDetails: '/farms/:chainId/:address',
-  isolatedMarkets: '/intents',
+  isolatedMarkets: '/isolated/intents',
 } as const
 
 export type Path = keyof typeof paths

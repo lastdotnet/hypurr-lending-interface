@@ -3,7 +3,7 @@ import { AddressSchema, HexSchema, Uint256Schema, getNowInSecondsBigInt } from '
 import { type DataSource } from 'typeorm'
 
 import { getSpentItemCacheKey } from '@/app/api/_/getSpentItemCacheKey'
-import { getIsClaimable, getRecallHoneymoonEnd } from '@/app/loans/_/useLoans/checkLoanStatus'
+import { getIsClaimable, getRecallHoneymoonEnd } from '@/app/isolated/loans/_/useLoans/checkLoanStatus'
 import { getBorrowCollateralAndLTV } from '@/astaria/hooks/useIntents/getBorrowCollateralAndLTV'
 import {
   BorrowIntentSchema,

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useIsClient } from 'usehooks-ts'
 
-import { BORROW_INTENT_QUERY_KEY } from '@/app/intents/_/constants'
+import { BORROW_INTENT_QUERY_KEY } from '@/app/isolated/intents/_/constants'
 import { getIntent } from '@/astaria/hooks/useIntent/getIntent'
 import { type GETIntentParameters } from '@/astaria/types-internal/intent-schemas'
 
