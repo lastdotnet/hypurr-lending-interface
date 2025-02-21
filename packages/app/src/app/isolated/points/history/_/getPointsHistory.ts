@@ -46,6 +46,7 @@ const getErc20AssetFromLoanPoint = async ({
   })
   const result = assets.get(loanPoint.address.toLowerCase())
   if (!isERC20Asset(result)) {
+    // @ts-ignore
     throw new Error('POINTS_HISTORY_ASSET_INVALID', {
       cause: 'Asset type for erc20 points history is invalid',
     })
@@ -110,6 +111,7 @@ const mapPointEventToEventType = (pointEvent: PointEvents): EventType | undefine
 const transformPoint = async ({ point }: { point: Point }) => {
   const eventType = mapPointEventToEventType(point.event)
   if (!eventType) {
+    // @ts-ignore
     throw new Error('POINTS_HISTORY_TYPE_MISMATCH', {
       cause: 'Mismatch between Point event type and Response event type',
     })

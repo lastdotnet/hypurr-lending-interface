@@ -1,6 +1,7 @@
 import { assets } from '@/ui/assets'
 import MagicWand from '@/ui/assets/magic-wand.svg?url'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
+import Image from 'next/image'
 // import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
 
 import { Alert } from '../../common/components/alert/Alert'

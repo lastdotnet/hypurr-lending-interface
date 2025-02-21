@@ -343,7 +343,7 @@ export class AssetCache {
       }
     }
 
-    return erc20Metadata
+    return erc20Metadata as unknown as ERC20Asset[]
   }
 
   private deserializeMetadata = (metadata: string) => this.deserialize<AssetMetadata>(metadata, ['amount', 'tokenId'])

@@ -1,6 +1,6 @@
 'use client'
 
-import { MarketDetails } from '@/astaria/containers/MarketDetails'
+import { MarketDetails } from '@/containers/MarketDetails'
 
 export default function Page() {
   return <MarketDetails />

@@ -61,9 +61,11 @@ export const updateERC20Stats = async ({
     }
   })
   // Update in erc20 stats table
+  // biome-ignore lint/complexity/noForEach: <explanation>
   tokensToUpdateFromLiveLoans.forEach(async (updateToken) => {
     const erc20Stat = erc20Stats.find((erc20Stat) => erc20Stat.address === updateToken.address)
     if (!erc20Stat) {
+      // @ts-ignore
       throw new Error('ERC20_STATS_MISSING', {
         cause: `Token in live loan missing from erc20 stats table: ${updateToken.address} on chain: ${chainId}`,
       })

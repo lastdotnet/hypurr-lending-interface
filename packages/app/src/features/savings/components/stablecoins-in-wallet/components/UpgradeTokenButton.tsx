@@ -40,7 +40,7 @@ export function UpgradeTokenButton({
           data-testid={testIds.savings.stablecoinsInWallet.upgradeDaiToUsds}
         >
           <div className="flex items-center gap-2">
-            <Image src={UpgradeIcon} className="h-[14px] w-[14px]" />
+            <Image src={UpgradeIcon} className="h-[14px] w-[14px]" alt={''} />
             <span className="hidden opacity-0 transition-opacity delay-50 duration-300 sm:block group-hover:opacity-100">
               Upgrade to {upgradedTokenSymbol}
             </span>

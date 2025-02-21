@@ -24,6 +24,7 @@ export const transformLendIntent = async ({
 
   const signedCaveat = lendIntent.signedCaveat
   if (!signedCaveat) {
+    // @ts-ignore
     throw new Error('LEND_INTENT_INVALID', { cause: 'Missing signed caveat' })
   }
 

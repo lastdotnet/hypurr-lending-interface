@@ -32,6 +32,7 @@ export const transformLoan = ({
 
   const collateralFromAPI = loan.collateral.at(0)
   if (!collateralFromAPI) {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Missing collateral from api',
     })
@@ -43,6 +44,7 @@ export const transformLoan = ({
     token: AddressSchema.parse(loan.address),
   }
   if (!debtFromAPI) {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Missing debt from api',
     })
@@ -54,6 +56,7 @@ export const transformLoan = ({
     }),
   )
   if (!collateralAsset) {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Missing collateral asset',
     })
@@ -65,12 +68,14 @@ export const transformLoan = ({
     }),
   )
   if (!debtAsset) {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Missing debt asset',
     })
   }
 
   if (!isERC20Asset(debtAsset)) {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Debt asset must be ERC20',
     })

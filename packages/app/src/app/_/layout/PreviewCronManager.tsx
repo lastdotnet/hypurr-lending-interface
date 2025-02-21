@@ -1,6 +1,6 @@
 'use client'
 
-import { TooltipArrow } from '@/astaria/radix-ui/react-tooltip'
+import { TooltipArrow } from '@radix-ui/react-tooltip'
 import { IconCheck, IconReload, IconX } from '@tabler/icons-react'
 import { useMutation } from '@tanstack/react-query'
 
@@ -23,6 +23,7 @@ const PreviewCronManagerInner = () => {
       try {
         for (const cron of vercelJSON.crons) {
           // eslint-disable-next-line no-console
+          // biome-ignore lint/suspicious/noConsoleLog: <explanation>
           console.log('Running cron: ', cron.path)
 
           await fetch(cron.path)
@@ -36,6 +37,7 @@ const PreviewCronManagerInner = () => {
         })
 
         // eslint-disable-next-line no-console
+        // biome-ignore lint/suspicious/noConsoleLog: <explanation>
         console.log(error)
       }
 

@@ -17,6 +17,7 @@ export const getRecallHoneymoonEnd = (starportLoan: StarportLoan | null) => {
     return baseRecallDetails.honeymoon + starportLoan.start
     // biome-ignore lint/style/noUselessElse: <explanation>
   } else {
+    // @ts-ignore
     throw new Error('LOAN_INVALID', {
       cause: 'Missing Starport Loan for Loan',
     })

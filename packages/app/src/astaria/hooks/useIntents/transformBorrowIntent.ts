@@ -36,6 +36,7 @@ export const transformBorrowIntent = async ({
     const recall = borrowIntent.recall
 
     if (!recall) {
+      // @ts-ignore
       throw new Error('INTENT_INVALID', { cause: 'Missing recall' })
     }
     const starportLoan = StarportLoanSchema.parse(recall.starportLoan)
@@ -51,6 +52,7 @@ export const transformBorrowIntent = async ({
     const collateralFromAPI = loan.collateral.at(0)
 
     if (!collateralFromAPI) {
+      // @ts-ignore
       throw new Error('LOAN_INVALID', { cause: 'Missing collateral from API' })
     }
 
@@ -62,22 +64,26 @@ export const transformBorrowIntent = async ({
     }
 
     if (!debtFromAPI) {
+      // @ts-ignore
       throw new Error('LOAN_INVALID', { cause: 'Missing debt from API' })
     }
 
     const collateralAsset = assets.get(getSpentItemCacheKey({ item: SpentItemSchema.parse(collateralFromAPI) }))
 
     if (!collateralAsset) {
+      // @ts-ignore
       throw new Error('LOAN_INVALID', { cause: 'Missing collateral asset' })
     }
 
     const debtAsset = assets.get(getSpentItemCacheKey({ item: SpentItemSchema.parse(debtFromAPI) }))
 
     if (!debtAsset) {
+      // @ts-ignore
       throw new Error('LOAN_INVALID', { cause: 'Missing debt asset' })
     }
 
     if (!isERC20Asset(debtAsset)) {
+      // @ts-ignore
       throw new Error('LOAN_INVALID', { cause: 'Debt asset must be ERC20' })
     }
 
@@ -131,6 +137,7 @@ export const transformBorrowIntent = async ({
 
   const signedCaveat = borrowIntent.signedCaveat
   if (!signedCaveat) {
+    // @ts-ignore
     throw new Error('LEND_INTENT_INVALID', { cause: 'Missing signed caveat' })
   }
 

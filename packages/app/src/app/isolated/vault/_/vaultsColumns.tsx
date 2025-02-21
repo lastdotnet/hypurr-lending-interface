@@ -1,7 +1,7 @@
 import { type ColumnDef } from '@tanstack/react-table'
 
-import { MarketERC20Display } from '@/app/markets/_/AssetDetails/MarketERC20Display'
-import { TokenAmountAndUSDDisplay } from '@/app/markets/_/AssetDetails/TokenAmountAndUSDDisplay'
+import { MarketERC20Display } from '@/app/isolated/markets/_/AssetDetails/MarketERC20Display'
+import { TokenAmountAndUSDDisplay } from '@/app/isolated/markets/_/AssetDetails/TokenAmountAndUSDDisplay'
 import { Button } from '@/astaria/components/Button'
 import { SortButton } from '@/astaria/components/SortButton'
 import { type Vault } from '@/astaria/types-internal/vault-schemas'

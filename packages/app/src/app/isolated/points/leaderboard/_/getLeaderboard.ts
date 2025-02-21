@@ -20,6 +20,7 @@ export const getLeaderboard = async ({ limit, offset }: PaginationParameters) =>
   })
 
   if (!originalLeaderboard) {
+    // @ts-ignore
     throw new Error('LEADERBOARD_INVALID', {
       cause: 'Missing leaderboard data',
     })

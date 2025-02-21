@@ -1,4 +1,5 @@
 import { assets } from '@/ui/assets'
+import Image from 'next/image'
 
 export function SuccessViewCheckmark() {
   return (

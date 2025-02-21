@@ -24,7 +24,7 @@ const POINTS_300 = numberToBigInt({
   decimals: ETHER_DECIMALS,
 })
 
-const POINTS_0 = numberToBigInt({ amount: 0, decimals: ETHER_DECIMALS } || undefined)
+const POINTS_0 = numberToBigInt({ amount: 0, decimals: ETHER_DECIMALS })
 
 describe('getWalletsWithPoints', () => {
   it('gets total on-chain points for each unique address', () => {

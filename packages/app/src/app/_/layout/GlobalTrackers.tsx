@@ -1,6 +1,6 @@
 'use client'
 
-import * as Sentry from '@/astaria/sentry/nextjs'
+import * as Sentry from '@sentry/nextjs'
 import { IconCheck } from '@tabler/icons-react'
 
 import { useAccountEffect } from 'wagmi'
@@ -34,7 +34,7 @@ export const GlobalTrackers = () => {
     },
     onDisconnect() {
       toast({
-        description: `You have disconnected your wallet connection.`,
+        description: 'You have disconnected your wallet connection.',
         icon: <IconCheck />,
         title: 'Disconnected',
       })

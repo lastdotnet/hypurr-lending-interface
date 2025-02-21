@@ -2,8 +2,9 @@
 
 import { type ReactNode } from 'react'
 
-import { useBlockExplorer } from '@/astaria/components/BlockExplorerLink/useBlockExplorer'
 import { TextLink, type TextLinkProps } from '@/astaria/components/TextLink'
+import { useOriginChainId } from '@/domain/hooks/useOriginChainId'
+import { useChainId, useChains } from 'wagmi'
 
 export const BlockExplorerLink = ({
   children,
@@ -16,11 +17,13 @@ export const BlockExplorerLink = ({
   type: 'transaction' | 'address'
   value?: string
 }) => {
-  const blockExplorer = useBlockExplorer()
+  const originChainId = useOriginChainId()
+  const chains = useChains()
+  const _chainId = useChainId()
 
-  if (value === undefined || blockExplorer === 'no-block-explorer') {
-    return null
-  }
+  const chainId = _chainId ?? originChainId
+  const chain = chains.find((chain) => chain.id === chainId)
+  const blockExplorer = chain?.blockExplorers?.default
 
   const path = type === 'transaction' ? 'tx' : 'address'
   const href = `${blockExplorer?.url}/${path}/${value}`

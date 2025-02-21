@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import { DepositFunds } from '@/app/isolated/vault/_/DepositFunds/DepositFunds'
-import VaultIcon from '@/astaria/assets/images/vault.svg'
+import VaultIcon from '@/astaria/assets/images/vault.svg?url'
 import { Card, CardSection } from '@/astaria/components/Card'
 import { Heading } from '@/astaria/components/Heading'
 

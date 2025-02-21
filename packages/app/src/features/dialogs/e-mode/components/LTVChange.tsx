@@ -3,7 +3,7 @@ import { Percentage } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
-
+import Image from 'next/image'
 interface LTVChangeProps {
   currentMaxLTV: Percentage
   updatedMaxLTV?: Percentage
@@ -26,7 +26,7 @@ export function LTVChange({ currentMaxLTV, updatedMaxLTV }: LTVChangeProps) {
         <div data-testid={testIds.dialog.eMode.transactionOverview.maxLtv.before}>
           {formatPercentage(currentMaxLTV)}
         </div>
-        <Image src={assets.arrowRight} />
+        <Image src={assets.arrowRight} alt={''} />
         <div data-testid={testIds.dialog.eMode.transactionOverview.maxLtv.after}>{formatPercentage(updatedMaxLTV)}</div>
       </div>
     </TransactionOverviewDetailsItem>

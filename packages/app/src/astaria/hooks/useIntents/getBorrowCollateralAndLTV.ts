@@ -24,12 +24,14 @@ export const getBorrowCollateralAndLTV = async ({
   const borrowFromAPI = intent.borrow.at(0)
 
   if (!borrowFromAPI) {
+    // @ts-ignore
     throw new Error('INTENT_INVALID', {
       cause: 'Missing borrow from api',
     })
   }
   const collateralFromAPI = intent.collateral.at(0)
   if (!collateralFromAPI) {
+    // @ts-ignore
     throw new Error('INTENT_INVALID', {
       cause: 'Missing collateral from api',
     })
@@ -41,6 +43,7 @@ export const getBorrowCollateralAndLTV = async ({
     }),
   )
   if (!collateralAsset) {
+    // @ts-ignore
     throw new Error('INTENT_INVALID', {
       cause: 'Missing collateral asset',
     })
@@ -52,12 +55,14 @@ export const getBorrowCollateralAndLTV = async ({
     }),
   )
   if (!borrowAsset) {
+    // @ts-ignore
     throw new Error('INTENT_INVALID', {
       cause: 'Missing borrow asset',
     })
   }
 
   if (!isERC20Asset(borrowAsset)) {
+    // @ts-ignore
     throw new Error('INTENT_INVALID', {
       cause: 'Borrow asset must be ERC20',
     })

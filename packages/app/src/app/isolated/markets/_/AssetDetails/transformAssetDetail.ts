@@ -26,6 +26,7 @@ export const transformAssetDetail = async ({
 
   const erc20 = assets.get(getSpentItemCacheKey({ item: SpentItemSchema.parse(spentItem) }))
   if (!isERC20Asset(erc20)) {
+    // @ts-ignore
     throw new Error('ERC20_STATS_ASSET_INVALID', {
       cause: 'Asset type for erc20 stats is invalid',
     })

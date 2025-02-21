@@ -10,6 +10,7 @@ import { TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { links } from '@/ui/constants/links'
 import { cn } from '@/ui/utils/style'
 import { useIsIntersecting } from '@/ui/utils/useIntersecting'
+import Image from 'next/image'
 
 interface ToSLinkProps {
   className?: string

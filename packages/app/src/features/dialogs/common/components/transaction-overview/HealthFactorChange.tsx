@@ -5,6 +5,7 @@ import { testIds } from '@/ui/utils/testIds'
 
 import { RiskIndicator } from './RiskIndicator'
 import { TransactionOverviewDetailsItem } from './TransactionOverviewDetailsItem'
+import Image from 'next/image'
 
 interface HealthFactorChangeProps {
   currentHealthFactor?: BigNumber
@@ -27,7 +28,7 @@ export function HealthFactorChange({ currentHealthFactor, updatedHealthFactor }:
           <RiskIndicator healthFactor={currentHealthFactor} data-testid={testIds.dialog.healthFactor.before} />
           {updatedHealthFactor && (
             <>
-              <Image src={assets.arrowRight} />
+              <Image src={assets.arrowRight} alt={''} />
               <RiskIndicator healthFactor={updatedHealthFactor} data-testid={testIds.dialog.healthFactor.after} />
             </>
           )}

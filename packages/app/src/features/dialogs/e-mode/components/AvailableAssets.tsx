@@ -3,6 +3,7 @@ import { Token } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
+import Image from 'next/image'
 
 export interface AvailableAssets {
   categoryName: EModeCategoryName
@@ -25,7 +26,7 @@ export function AvailableAssets({ categoryName, tokens }: AvailableAssets) {
           data-testid={testIds.dialog.eMode.transactionOverview.availableAssets.category}
         >
           {categoryName}
-          <Image src={assets.arrowRight} />
+          <Image src={assets.arrowRight} alt={''} />
         </div>
         <div data-testid={testIds.dialog.eMode.transactionOverview.availableAssets.assets}>
           {tokens.map((token) => token.symbol).join(', ')}
