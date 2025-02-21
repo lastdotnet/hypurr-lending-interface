@@ -14,9 +14,10 @@ const getPageTitle = (shortId: string) => `${PAGE_TITLE} ${shorten({ maxLength: 
 export const generateMetadata = async ({
   params,
 }: {
-  params: { shortId: string }
+  params: Promise<{ shortId: string }>
 }) => {
-  const shortId = decodeURIComponent(params.shortId)
+  const shortId = decodeURIComponent((await params).shortId)
+
   return {
     title: getPageTitle(shortId),
   }
