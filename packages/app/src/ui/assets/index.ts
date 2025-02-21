@@ -62,6 +62,7 @@ import faucetPurr from './faucet-purr.webp'
 import hypurrLogoText from './hypurr-logo-text.svg?url'
 import solvbtc from './tokens/solvBtc.png'
 import sttesth from './tokens/sttesth.svg?url'
+import wsthype from './tokens/wsthype.svg?url'
 import telegram from './social-logos/telegram-logo.svg?url'
 import x from './social-logos/x-logo.svg?url'
 import github from './social-logos/github-logo.svg?url'
@@ -151,6 +152,7 @@ export const assets = {
     solvbtc,
     sttesth,
     khype,
+    wsthype,
     unknown,
   },
   oracleProviders: {
