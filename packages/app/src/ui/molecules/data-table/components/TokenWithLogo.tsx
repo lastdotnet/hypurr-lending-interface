@@ -7,6 +7,7 @@ import { Info } from '@/ui/molecules/info/Info'
 
 import { FrozenPill } from '../../frozen-pill/FrozenPill'
 import { PausedPill } from '../../paused-pill/PausedPill'
+import { Trans } from '@lingui/react/macro'
 
 interface TokenWithLogoProps {
   token: Token
@@ -28,7 +29,11 @@ export function TokenWithLogo({ token, reserveStatus, isCombinedBalance }: Token
       <div className={cn(isPaused && 'text-basics-red')}>{token.symbol}</div>
       {isFrozen && <FrozenPill />}
       {isPaused && <PausedPill />}
-      {isCombinedBalance && <Info>WHYPE and HYPE balances are combined.</Info>}
+      {isCombinedBalance && (
+        <Info>
+          <Trans>WHYPE and HYPE balances are combined.</Trans>
+        </Info>
+      )}
     </div>
   )
 }

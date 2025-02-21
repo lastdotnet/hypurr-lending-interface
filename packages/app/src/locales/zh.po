@@ -1,0 +1,252 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-02-21 14:52-0700\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: zh\n"
+
+#: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:40
+msgid "A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering the chance of liquidating your assets."
+msgstr ""
+
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:42
+msgid "Active"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:49
+msgid "Amount of all your assets supplied to the protocol."
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:56
+#: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:52
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:62
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:68
+msgid "APY"
+msgstr ""
+
+#: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:33
+msgid "As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This means that the APY for supplying assets is responsive to market conditions and can vary based on the demand for borrowing within each pool."
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:38
+#: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:36
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:35
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:43
+msgid "Assets"
+msgstr ""
+
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:47
+msgid "Available"
+msgstr ""
+
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:28
+msgid "Available to borrow"
+msgstr ""
+
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:26
+msgid "Available to deposit"
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:44
+msgid "Balance"
+msgstr ""
+
+#: src/features/market-details/components/my-wallet/components/TokenBalance.tsx:18
+msgid "Balance:"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:163
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:92
+msgid "Borrow"
+msgstr ""
+
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:74
+msgid "Can be collateral"
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:68
+msgid "Collateral"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:99
+msgid "Collateral deposited"
+msgstr ""
+
+#: src/features/my-portfolio/views/GuestView.tsx:19
+msgid "Connect wallet"
+msgstr ""
+
+#: src/features/my-portfolio/views/GuestView.tsx:16
+msgid "Connect your wallet to use Hypurr"
+msgstr ""
+
+#. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
+#: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:74
+msgid "Current {0} Price"
+msgstr ""
+
+#. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
+#: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:76
+msgid "Current price of {0}."
+msgstr ""
+
+#: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:40
+msgid "Debt"
+msgstr ""
+
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:50
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:93
+msgid "Deposit"
+msgstr ""
+
+#: src/features/easy-borrow/components/BorrowRateBanner.tsx:13
+msgid "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
+msgstr ""
+
+#: src/features/my-portfolio/components/borrow-table/components/EModeIndicator.tsx:17
+msgid "E-Mode"
+msgstr ""
+
+#: src/features/dialogs/e-mode/views/EModeView.tsx:49
+msgid "E-Mode allows you to borrow assets belonging to the selected category."
+msgstr ""
+
+#: src/features/my-portfolio/components/borrow-table/components/EModeIndicator.tsx:20
+msgid "Efficiency mode (E-Mode) increases your LTV for a selected category of assets up to 97%."
+msgstr ""
+
+#. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
+#: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:65
+msgid "Estimated price of {0} at which the position may be liquidated."
+msgstr ""
+
+#: src/domain/e-mode/constants.ts:11
+msgid "ETH Correlated"
+msgstr ""
+
+#: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:30
+msgid "Health Factor"
+msgstr ""
+
+#: src/ui/atoms/panel/CollapsiblePanel.tsx:73
+msgid "Hide"
+msgstr ""
+
+#: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:25
+msgid "If the health factor drops below 1, the liquidation of your collateral might be triggered."
+msgstr ""
+
+#: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:41
+msgid "In Wallet"
+msgstr ""
+
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:42
+msgid "Inactive"
+msgstr ""
+
+#: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:46
+msgid "Keep in mind that these calculations follow the protocol's rules, which might change over time."
+msgstr ""
+
+#: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:63
+msgid "Liquidation Price"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:218
+msgid "max"
+msgstr ""
+
+#: src/ui/organisms/responsive-data-table/ResponsiveDataTable.tsx:83
+msgid "More"
+msgstr ""
+
+#: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:27
+msgid "My borrows"
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:29
+msgid "My deposits"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:55
+msgid "Net APY"
+msgstr ""
+
+#: src/domain/e-mode/constants.ts:10
+msgid "No E-Mode"
+msgstr ""
+
+#: src/ui/molecules/e-mode-badge/EModeBadge.tsx:16
+msgid "off"
+msgstr ""
+
+#: src/features/easy-borrow/components/BorrowRateBanner.tsx:9
+msgid "Quick Deposit & Borrow"
+msgstr ""
+
+#: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:77
+msgid "Repay"
+msgstr ""
+
+#: src/features/dialogs/e-mode/views/EModeView.tsx:45
+msgid "Set E-Mode Category"
+msgstr ""
+
+#: src/ui/atoms/panel/CollapsiblePanel.tsx:78
+msgid "Show"
+msgstr ""
+
+#: src/domain/e-mode/constants.ts:12
+msgid "Stablecoins"
+msgstr ""
+
+#: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:27
+msgid "The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each reserve pool."
+msgstr ""
+
+#: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:34
+msgid "The health factor is a number that shows how safe your assets are in the protocol. It's calculated by comparing the value of what you've deposited to what you've borrowed."
+msgstr ""
+
+#: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:50
+msgid "The interest rate for borrowing on Hypurr is a live metric that adjusts with each block confirmation, reflecting the most recent data based on the token pool's utilization rate."
+msgstr ""
+
+#: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:56
+msgid "This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans."
+msgstr ""
+
+#: src/ui/molecules/data-table/components/TokenWithLogo.tsx:34
+#: src/features/market-details/components/my-wallet/components/TokenBalance.tsx:30
+msgid "WHYPE and HYPE balances are combined."
+msgstr ""
+
+#: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:99
+msgid "Withdraw"
+msgstr ""
+
+#. placeholder {0}: USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.max)
+#: src/features/my-portfolio/components/position/Position.tsx:223
+msgid "You can borrow up to {0}."
+msgstr ""
+
+#. placeholder {0}: USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.current)
+#: src/features/my-portfolio/components/position/Position.tsx:198
+msgid "You have borrowed {0}."
+msgstr ""
+
+#. placeholder {0}: USD_MOCK_TOKEN.formatUSD(c.token.toUSD(c.value))
+#. placeholder {1}: c.token.symbol
+#: src/features/my-portfolio/components/position/Position.tsx:143
+msgid "You have deposited {0} worth of {1}."
+msgstr ""
+
+#: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:56
+msgid "Your borrow"
+msgstr ""
+
+#: src/features/my-portfolio/components/position/Position.tsx:46
+msgid "Your position"
+msgstr ""

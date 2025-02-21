@@ -1,22 +1,25 @@
 import { cva } from 'class-variance-authority'
 
-import { eModeCategoryIdToName } from '@/domain/e-mode/constants'
+import { eModeCategoryIdToTranslation } from '@/domain/e-mode/constants'
 import { EModeCategoryId } from '@/domain/e-mode/types'
 import Flash from '@/ui/assets/flash.svg'
 import { cn } from '@/ui/utils/style'
-
+import { useLingui } from '@lingui/react'
+import { msg } from '@lingui/core/macro'
 export interface EModeBadgeProps {
   categoryId: EModeCategoryId
 }
 
 export function EModeBadge({ categoryId }: EModeBadgeProps) {
-  const text = categoryId === 0 ? 'off' : eModeCategoryIdToName[categoryId]
+  const { _ } = useLingui()
+
+  const text = categoryId === 0 ? msg`off` : eModeCategoryIdToTranslation[categoryId]
   const state = categoryId === 0 ? 'off' : 'on'
 
   return (
     <div className={cn(variants({ state }))}>
       {categoryId !== 0 && <Flash className="h-3.5 w-3.5" />}
-      {text}
+      {_(text)}
     </div>
   )
 }

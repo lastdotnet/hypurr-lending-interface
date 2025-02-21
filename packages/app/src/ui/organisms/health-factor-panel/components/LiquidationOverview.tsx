@@ -7,6 +7,7 @@ import { Info } from '@/ui/molecules/info/Info'
 import { cn } from '@/ui/utils/style'
 
 import { HealthFactorPanelProps } from '../HealthFactorPanel'
+import { Trans } from '@lingui/react/macro'
 
 interface LiquidationOverview {
   liquidationDetails: LiquidationDetails | undefined
@@ -21,7 +22,7 @@ export function LiquidationOverview({ liquidationDetails, variant }: Liquidation
   return (
     <div className="mt-6 flex flex-col">
       <Typography variant="prompt" className="text-base">
-        If the health factor drops below 1, the liquidation of your collateral might be triggered.
+        <Trans>If the health factor drops below 1, the liquidation of your collateral might be triggered.</Trans>
       </Typography>
       {liquidationDetails && (
         <LiquidationPrices liquidationDetails={liquidationDetails} variant={variant} className="mt-8" />
@@ -59,17 +60,21 @@ function LiquidationPrices({ liquidationDetails, variant, className }: Liquidati
     <div className={cn('flex flex-col', className)}>
       <DetailsRow variant={variant}>
         <div className="flex flex-row items-center gap-1">
-          Liquidation Price
+          <Trans>Liquidation Price</Trans>
           <Info>
-            Estimated price of {liquidationDetails.tokenWithPrice.symbol} at which the position may be liquidated.
+            <Trans>
+              Estimated price of {liquidationDetails.tokenWithPrice.symbol} at which the position may be liquidated.
+            </Trans>
           </Info>
         </div>
         <div>{USD_MOCK_TOKEN.formatUSD(liquidationDetails.liquidationPrice)}</div>
       </DetailsRow>
       <DetailsRow variant={variant}>
         <div className="flex flex-row items-center gap-1">
-          Current {liquidationDetails.tokenWithPrice.symbol} Price
-          <Info>Current price of {liquidationDetails.tokenWithPrice.symbol}.</Info>
+          <Trans>Current {liquidationDetails.tokenWithPrice.symbol} Price</Trans>
+          <Info>
+            <Trans>Current price of {liquidationDetails.tokenWithPrice.symbol}.</Trans>
+          </Info>
         </div>
         <div>{USD_MOCK_TOKEN.formatUSD(liquidationDetails.tokenWithPrice.priceInUSD)}</div>
       </DetailsRow>

@@ -12,7 +12,7 @@ import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/Respon
 import { Deposit } from '../../logic/assets'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { CheckmarkCell } from '@/ui/molecules/data-table/components/CheckmarkCell'
-
+import { Trans } from '@lingui/react/macro'
 export interface DepositTableProps {
   assets: Deposit[]
   openDialog: OpenDialogFunction
@@ -23,7 +23,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
         <Panel.Title className="text-xl md:px-3" gradient>
-          Available to deposit
+          <Trans>Available to deposit</Trans>
         </Panel.Title>
       </Panel.Header>
 
@@ -32,13 +32,13 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
           gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_2fr_3fr]"
           columnDefinition={{
             symbol: {
-              header: 'Assets',
+              header: <Trans>Assets</Trans>,
               renderCell: ({ token, reserveStatus, isCombinedBalance }) => (
                 <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />
               ),
             },
             inWallet: {
-              header: 'In Wallet',
+              header: <Trans>In Wallet</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'balance'),
               headerAlign: 'right',
@@ -47,7 +47,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               ),
             },
             deposit: {
-              header: 'Deposit',
+              header: <Trans>Deposit</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'deposit'),
               headerAlign: 'right',
@@ -57,7 +57,11 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               ),
             },
             apy: {
-              header: <ApyTooltip variant="supply">APY</ApyTooltip>,
+              header: (
+                <ApyTooltip variant="supply">
+                  <Trans>APY</Trans>
+                </ApyTooltip>
+              ),
               headerAlign: 'right',
               sortable: true,
               showOnMobile: true,
@@ -67,7 +71,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
               ),
             },
             collateral: {
-              header: 'Can be collateral',
+              header: <Trans>Can be collateral</Trans>,
               headerAlign: 'right',
               renderCell: ({ usageAsCollateralEnabled }) => (
                 <CheckmarkCell usageAsCollateralEnabled={usageAsCollateralEnabled} />
@@ -86,7 +90,7 @@ export function DepositTable({ assets, openDialog }: DepositTableProps) {
                       }}
                       disabled={reserveStatus === 'frozen' || token.symbol === TokenSymbol('USDXL')}
                     >
-                      Deposit
+                      <Trans>Deposit</Trans>
                     </Button>
                   </ActionsCell>
                 )

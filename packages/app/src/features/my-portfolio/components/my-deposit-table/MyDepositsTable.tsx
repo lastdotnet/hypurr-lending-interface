@@ -12,7 +12,7 @@ import { SwitchCell } from '@/ui/molecules/data-table/components/SwitchCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
-
+import { Trans } from '@lingui/react/macro'
 export interface MyDepositsTableProps {
   assets: Deposit[]
   openDialog: OpenDialogFunction
@@ -26,7 +26,7 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
     >
       <Panel.Header>
         <Panel.Title className="text-xl md:px-3 " gradient>
-          My deposits
+          <Trans>My deposits</Trans>
         </Panel.Title>
       </Panel.Header>
 
@@ -35,13 +35,13 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
           gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_5fr] xl:grid-cols-[_2fr_1fr_1fr_1fr_2fr]"
           columnDefinition={{
             symbol: {
-              header: 'Assets',
+              header: <Trans>Assets</Trans>,
               renderCell: ({ token, reserveStatus, isCombinedBalance }) => (
                 <TokenWithLogo token={token} reserveStatus={reserveStatus} isCombinedBalance={isCombinedBalance} />
               ),
             },
             deposit: {
-              header: 'Balance',
+              header: <Trans>Balance</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'deposit'),
               headerAlign: 'right',
@@ -51,7 +51,11 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
               ),
             },
             apy: {
-              header: <ApyTooltip variant="supply">APY</ApyTooltip>,
+              header: (
+                <ApyTooltip variant="supply">
+                  <Trans>APY</Trans>
+                </ApyTooltip>
+              ),
               headerAlign: 'right',
               sortable: true,
               showOnMobile: true,
@@ -61,7 +65,7 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
               ),
             },
             collateral: {
-              header: 'Collateral',
+              header: <Trans>Collateral</Trans>,
               headerAlign: 'right',
               renderCell: ({ isUsedAsCollateral, token }, mobileViewOptions) => (
                 <SwitchCell
@@ -92,7 +96,7 @@ export function MyDepositsTable({ assets, openDialog }: MyDepositsTableProps) {
                         openDialog(withdrawDialogConfig, { token })
                       }}
                     >
-                      Withdraw
+                      <Trans>Withdraw</Trans>
                     </Button>
                   </ActionsCell>
                 )

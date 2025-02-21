@@ -5,6 +5,7 @@ import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { cn } from '@/ui/utils/style'
 
 import { EModeCategory } from '../types'
+import { useLingui } from '@lingui/react/macro'
 
 interface EModeCategoryTileProps {
   eModeCategory: EModeCategory
@@ -36,7 +37,9 @@ export function EModeCategoryTile({ eModeCategory }: EModeCategoryTileProps) {
 }
 
 function ActivityBadge({ variant }: { variant: 'active' | 'inactive' }) {
-  return <div className={activityBadgeVariants({ variant })}>{variant === 'active' ? 'Active' : 'Inactive'}</div>
+  const { t } = useLingui()
+
+  return <div className={activityBadgeVariants({ variant })}>{variant === 'active' ? t`Active` : t`Inactive`}</div>
 }
 
 const activityBadgeVariants = cva('rounded-lg px-2.5 py-1.5 font-semibold text-xs leading-none tracking-wide', {

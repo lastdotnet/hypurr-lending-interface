@@ -10,7 +10,7 @@ import { PercentageCell } from '@/ui/molecules/data-table/components/PercentageC
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Borrow } from '../../logic/assets'
-
+import { Trans } from '@lingui/react/macro'
 export interface MyBorrowsTableProps {
   assets: Borrow[]
   openDialog: OpenDialogFunction
@@ -24,7 +24,7 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
     >
       <Panel.Header>
         <Panel.Title className="text-xl md:px-3" gradient>
-          My borrows
+          <Trans>My borrows</Trans>
         </Panel.Title>
       </Panel.Header>
 
@@ -33,11 +33,11 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
           gridTemplateColumnsClassName="xl:grid-cols-[repeat(4,_1fr)] grid-cols-[repeat(3,_3fr)_8fr]"
           columnDefinition={{
             symbol: {
-              header: 'Assets',
+              header: <Trans>Assets</Trans>,
               renderCell: ({ token, reserveStatus }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} />,
             },
             deposit: {
-              header: 'Debt',
+              header: <Trans>Debt</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'debt'),
               headerAlign: 'right',
@@ -47,7 +47,11 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
               ),
             },
             apy: {
-              header: <ApyTooltip variant="borrow">APY</ApyTooltip>,
+              header: (
+                <ApyTooltip variant="borrow">
+                  <Trans>APY</Trans>{' '}
+                </ApyTooltip>
+              ),
               headerAlign: 'right',
               sortable: true,
               showOnMobile: true,
@@ -70,7 +74,7 @@ export function MyBorrowsTable({ assets, openDialog }: MyBorrowsTableProps) {
                         openDialog(repayDialogConfig, { token })
                       }}
                     >
-                      Repay
+                      <Trans>Repay</Trans>
                     </Button>
                   </ActionsCell>
                 )

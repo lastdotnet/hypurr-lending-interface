@@ -13,7 +13,7 @@ import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLog
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Borrow } from '../../logic/assets'
 import { EModeIndicator } from './components/EModeIndicator'
-
+import { Trans } from '@lingui/react/macro'
 export interface BorrowTableProps {
   assets: Borrow[]
   openDialog: OpenDialogFunction
@@ -25,7 +25,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
     <Panel collapsibleOptions={{ collapsible: true, collapsibleAbove: 'md' }} className="bg-panel-bg md:px-3">
       <Panel.Header>
         <Panel.Title className="text-xl md:px-3" gradient>
-          Available to borrow
+          <Trans>Available to borrow</Trans>
         </Panel.Title>
         <EModeIndicator
           eModeCategoryId={eModeCategoryId}
@@ -40,11 +40,11 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
           gridTemplateColumnsClassName="grid-cols-[repeat(4,_3fr)_5fr]"
           columnDefinition={{
             symbol: {
-              header: 'Assets',
+              header: <Trans>Assets</Trans>,
               renderCell: ({ token, reserveStatus }) => <TokenWithLogo token={token} reserveStatus={reserveStatus} />,
             },
             inWallet: {
-              header: 'Available',
+              header: <Trans>Available</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'available'),
               headerAlign: 'right',
@@ -53,7 +53,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
               ),
             },
             deposit: {
-              header: 'Your borrow',
+              header: <Trans>Your borrow</Trans>,
               sortable: true,
               sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'debt'),
               headerAlign: 'right',
@@ -63,7 +63,11 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
               ),
             },
             apy: {
-              header: <ApyTooltip variant="borrow">APY</ApyTooltip>,
+              header: (
+                <ApyTooltip variant="borrow">
+                  <Trans>APY</Trans>
+                </ApyTooltip>
+              ),
               headerAlign: 'right',
               sortable: true,
               showOnMobile: true,
@@ -85,7 +89,7 @@ export function BorrowTable({ assets, openDialog, eModeCategoryId }: BorrowTable
                       }}
                       disabled={reserveStatus === 'frozen' || available.isZero()}
                     >
-                      Borrow
+                      <Trans>Borrow</Trans>
                     </Button>
                   </ActionsCell>
                 )

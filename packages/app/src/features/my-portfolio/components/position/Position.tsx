@@ -11,6 +11,7 @@ import { getPositionFormattedValue, getTicks } from '../../logic/position'
 import { PositionSummary } from '../../logic/types'
 import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 import { formatPercentage } from '@/domain/common/format'
+import { Trans } from '@lingui/react/macro'
 
 export interface PositionProps {
   positionSummary?: PositionSummary
@@ -42,13 +43,17 @@ export function Position({
         <div className="flex w-full justify-between">
           <div className="flex items-center gap-1">
             <Panel.Title className="text-xl" gradient>
-              Your position
+              <Trans>Your position</Trans>
             </Panel.Title>
-            <Info>Amount of all your assets supplied to the protocol.</Info>
+            <Info>
+              <Trans>Amount of all your assets supplied to the protocol.</Trans>
+            </Info>
           </div>
 
           <div className="text-center">
-            <Typography className="text-white/50 text-xs">Net APY</Typography>
+            <Typography className="text-white/50 text-xs">
+              <Trans>Net APY</Trans>
+            </Typography>
             <Typography>{formatPercentage(netApyDetails?.totalNetApy)}</Typography>
           </div>
         </div>
@@ -90,7 +95,9 @@ function Deposited({ positionSummary, ticks }: DepositedProps) {
   return (
     <div className="flex flex-col gap-1">
       <div className="flex flex-row justify-between">
-        <Typography className="font-semibold">Collateral deposited</Typography>
+        <Typography className="font-semibold">
+          <Trans>Collateral deposited</Trans>
+        </Typography>
         <Typography className="font-semibold" data-testid={testIds.dashboard.deposited}>
           {getPositionFormattedValue(positionSummary?.totalCollateralUSD)}
         </Typography>
@@ -133,7 +140,9 @@ function CollateralBar({ positionSummary }: CollateralBarProps) {
             />
           </TooltipTrigger>
           <TooltipContentShort>
-            You have deposited {USD_MOCK_TOKEN.formatUSD(c.token.toUSD(c.value))} worth of {c.token.symbol}.
+            <Trans>
+              You have deposited {USD_MOCK_TOKEN.formatUSD(c.token.toUSD(c.value))} worth of {c.token.symbol}.
+            </Trans>
           </TooltipContentShort>
         </Tooltip>
       ))}
@@ -150,7 +159,9 @@ function Borrow({ positionSummary, ticks }: BorrowProps) {
   return (
     <div className="flex flex-col gap-1">
       <div className="flex flex-row justify-between">
-        <Typography className="font-semibold">Borrow</Typography>
+        <Typography className="font-semibold">
+          <Trans>Borrow</Trans>
+        </Typography>
         <Typography className="font-semibold" data-testid={testIds.dashboard.borrowed}>
           {getPositionFormattedValue(positionSummary?.borrow.current)}
         </Typography>
@@ -184,7 +195,7 @@ function BorrowBar({ positionSummary }: BorrowBarProps) {
             />
           </TooltipTrigger>
           <TooltipContentShort>
-            You have borrowed {USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.current)}.
+            <Trans>You have borrowed {USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.current)}.</Trans>
           </TooltipContentShort>
         </Tooltip>
       )}
@@ -203,11 +214,13 @@ function BorrowBar({ positionSummary }: BorrowBarProps) {
             className="-translate-x-[1px] absolute z-[2] h-7 border-primary border-l-2 pl-2"
             style={{ left: `${borrow.percents.max}%` }}
           >
-            <div className="flex min-h-full flex-col justify-center">max</div>
+            <div className="flex min-h-full flex-col justify-center">
+              <Trans>max</Trans>
+            </div>
           </div>
         </TooltipTrigger>
         <TooltipContentShort>
-          You can borrow up to {USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.max)}.
+          <Trans>You can borrow up to {USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.max)}.</Trans>
         </TooltipContentShort>
       </Tooltip>
     </div>
