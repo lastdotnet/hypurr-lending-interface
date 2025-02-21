@@ -7,5 +7,6 @@ packages/app/.swc
 build-storybook.log
 packages/app/src/locales/*.po
 !packages/app/src/locales/en.po
+!packages/app/src/locales/zh.po
 tsconfig.tsbuildinfo
 .DS_Store
