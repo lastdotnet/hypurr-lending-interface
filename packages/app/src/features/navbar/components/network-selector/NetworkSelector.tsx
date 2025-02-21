@@ -4,6 +4,8 @@ import { Button } from '@/ui/atoms/button/Button'
 import { SupportedChain } from '../../types'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 
+import Image from 'next/image'
+
 export interface NetworkSelectorProps {
   currentChain: SupportedChain
   openSelectNetworkDialog: () => void
@@ -21,7 +23,7 @@ export function NetworkSelector({ currentChain, openSelectNetworkDialog }: Netwo
         onClick={() => openSelectNetworkDialog()}
       >
         <div className="flex flex-row items-center gap-3">
-          <img src={chainImage} className="h-7 w-7 lg:h-5 lg:w-5" />
+          <Image src={chainImage} className="h-7 w-7 lg:h-5 lg:w-5" alt={''} />
           <div className="lg:hidden">{currentChain.name}</div>
         </div>
       </Button>

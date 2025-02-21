@@ -11,6 +11,7 @@ import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
 import { useEffect } from 'react'
+import Image from 'next/image'
 
 export interface SuccessViewProps {
   deposited: TokenWithValue[]
@@ -32,7 +33,7 @@ export function SuccessView({ deposited, borrowed, runConfetti, resetForm }: Suc
   return (
     <PageLayout className={cn('pt-8', desktop && 'pt-28')}>
       <div className="flex flex-col items-center justify-center">
-        <img src={assets.success} alt="success-img" />
+        <Image src={assets.success} alt="success-img" />
         <Typography variant={desktop ? 'h1' : 'h3'} className="mt-8 text-center">
           Congrats, all done!
         </Typography>

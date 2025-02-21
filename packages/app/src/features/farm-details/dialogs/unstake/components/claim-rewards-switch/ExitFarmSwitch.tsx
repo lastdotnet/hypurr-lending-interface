@@ -3,6 +3,7 @@ import { getTokenImage } from '@/ui/assets'
 import { Switch } from '@/ui/atoms/switch/Switch'
 import { testIds } from '@/ui/utils/testIds'
 import { cva } from 'class-variance-authority'
+import Image from 'next/image'
 
 export interface UpgradeToSusdsSwitchProps {
   checked: boolean
@@ -18,7 +19,7 @@ export function ExitFarmSwitch({ checked, onSwitch, reward }: UpgradeToSusdsSwit
   return (
     <div className={variants({ checked })}>
       <div className="flex items-center gap-3">
-        <img src={rewardIcon} className="h-6" />
+        <Image src={rewardIcon} className="h-6" alt={''} />
         <div className="flex flex-col">
           <div className="font-medium text-sm">
             Withdraw and claim<span className="hidden sm:inline"> rewards in one transaction</span>

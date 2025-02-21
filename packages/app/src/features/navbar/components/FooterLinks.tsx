@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { assets } from '@/ui/assets'
 import { focusVariants } from './nav-link/NavLink'
 import { cn } from '@/ui/utils/style'
@@ -6,18 +7,18 @@ import { links } from '@/ui/constants/links'
 const socialLinks = [
   {
     href: links.social.x,
-    icon: <img src={assets.socialLogos.x} alt="X" />,
+    icon: <Image src={assets.socialLogos.x} alt="X" />,
     label: 'X',
   },
   {
     href: links.social.telegram,
-    icon: <img src={assets.socialLogos.telegram} alt="Telegram" />,
+    icon: <Image src={assets.socialLogos.telegram} alt="Telegram" />,
     label: 'Telegram',
   },
 
   {
     href: links.social.github,
-    icon: <img src={assets.socialLogos.github} alt="Github" />,
+    icon: <Image src={assets.socialLogos.github} alt="Github" />,
     label: 'Github',
   },
 ]

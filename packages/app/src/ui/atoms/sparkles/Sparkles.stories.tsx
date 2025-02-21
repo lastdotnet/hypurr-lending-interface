@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-
+import Image from 'next/image'
 import { assets } from '@/ui/assets'
 import { Sparkles } from './Sparkles'
 
@@ -20,7 +20,7 @@ export const SparklesOnImage: Story = {
   name: 'Sparkles on image',
   render: () => (
     <Sparkles sizeRange={[8, 12]}>
-      <img src={assets.token.usdxl} className="h-5 w-5" />
+      <Image src={assets.token.usdxl} className="h-5 w-5" alt={''} />
     </Sparkles>
   ),
 }

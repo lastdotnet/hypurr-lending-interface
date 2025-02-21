@@ -9,6 +9,7 @@ import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
 import { type ERC721 } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 
 export const useAllowanceERC721 = ({
   asset,
@@ -46,6 +47,7 @@ export const useAllowanceERC721 = ({
     query: {
       enabled: enabled && Boolean(address),
     },
+    config: wagmiConfig,
   })
   const isFinished = !!isApprovedForAll
 

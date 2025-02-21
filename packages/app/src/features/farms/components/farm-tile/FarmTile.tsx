@@ -8,6 +8,7 @@ import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export interface FarmTileProps {
   entryAssetsGroup: AssetsGroup
@@ -59,7 +60,7 @@ export function FarmTile({
               'z-0 h-20 w-full opacity-50 group-hover:opacity-90',
             )}
           />
-          <img src={rewardIcon} alt="farm-reward-icon" className="relative z-10 mt-12 mb-5 ml-6 h-16 w-16" />
+          <Image src={rewardIcon} alt="farm-reward-icon" className="relative z-10 mt-12 mb-5 ml-6 h-16 w-16" />
         </div>
         <div className="px-6 pb-7">
           <div className="grid w-full grid-flow-col grid-cols-[auto,auto] grid-rows-[auto,auto]">
@@ -83,7 +84,7 @@ export function FarmTile({
             <>
               <div className="mb-2 text-basics-dark-grey text-sm">Tokens deposited:</div>
               <div className="flex items-center gap-1.5 font-medium">
-                <img src={getTokenImage(stakingToken.symbol)} alt="farm-reward-icon" className="h-6 w-6" />
+                <Image src={getTokenImage(stakingToken.symbol)} alt="farm-reward-icon" className="h-6 w-6" />
                 <span data-testid={testIds.farms.tile.staked}>{stakingToken.format(staked, { style: 'auto' })}</span>{' '}
                 {stakingToken.symbol}
               </div>

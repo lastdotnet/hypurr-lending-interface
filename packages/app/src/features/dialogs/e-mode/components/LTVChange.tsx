@@ -26,7 +26,7 @@ export function LTVChange({ currentMaxLTV, updatedMaxLTV }: LTVChangeProps) {
         <div data-testid={testIds.dialog.eMode.transactionOverview.maxLtv.before}>
           {formatPercentage(currentMaxLTV)}
         </div>
-        <img src={assets.arrowRight} />
+        <Image src={assets.arrowRight} />
         <div data-testid={testIds.dialog.eMode.transactionOverview.maxLtv.after}>{formatPercentage(updatedMaxLTV)}</div>
       </div>
     </TransactionOverviewDetailsItem>

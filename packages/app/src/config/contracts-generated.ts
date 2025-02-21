@@ -2,6 +2,8 @@
 // CapAutomator
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+import { zeroAddress } from 'viem'
+
 /**
  * [__View Contract on Zora Goerli Testnet Explorer__](https://testnet.explorer.zora.energy/address/0x47743A77ef5E6675f4C022E643943Ae7D8D58A43)
  */
@@ -72,9 +74,7 @@ export const capAutomatorAbi = [
     type: 'function',
     inputs: [],
     name: 'poolConfigurator',
-    outputs: [
-      { name: '', internalType: 'contract IPoolConfigurator', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract IPoolConfigurator', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -297,6 +297,7 @@ export const capAutomatorAbi = [
 export const capAutomatorAddress = {
   998: '0xe6ad1ffa197B2ae9a9daCEf2A52acbC8325782C0',
   999: '0x47743A77ef5E6675f4C022E643943Ae7D8D58A43',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -319,25 +320,19 @@ export const chainlogAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: false },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: false }],
     name: 'Deny',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: false },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: false }],
     name: 'Rely',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'bytes32', type: 'bytes32', indexed: false },
-    ],
+    inputs: [{ name: 'key', internalType: 'bytes32', type: 'bytes32', indexed: false }],
     name: 'RemoveAddress',
   },
   {
@@ -357,9 +352,7 @@ export const chainlogAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'ipfs', internalType: 'string', type: 'string', indexed: false },
-    ],
+    inputs: [{ name: 'ipfs', internalType: 'string', type: 'string', indexed: false }],
     name: 'UpdateIPFS',
   },
   {
@@ -558,9 +551,7 @@ export const collectorAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'reserveController', internalType: 'address', type: 'address' },
-    ],
+    inputs: [{ name: 'reserveController', internalType: 'address', type: 'address' }],
     name: 'initialize',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -655,25 +646,19 @@ export const dssLitePsmAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
+    inputs: [{ name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false }],
     name: 'Chug',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Deny',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Diss',
   },
   {
@@ -707,25 +692,19 @@ export const dssLitePsmAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
+    inputs: [{ name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false }],
     name: 'Fill',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Kiss',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Rely',
   },
   {
@@ -751,9 +730,7 @@ export const dssLitePsmAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
+    inputs: [{ name: 'wad', internalType: 'uint256', type: 'uint256', indexed: false }],
     name: 'Trim',
   },
   {
@@ -822,9 +799,7 @@ export const dssLitePsmAbi = [
     type: 'function',
     inputs: [],
     name: 'daiJoin',
-    outputs: [
-      { name: '', internalType: 'contract DaiJoinLike', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract DaiJoinLike', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -1040,9 +1015,7 @@ export const iamAutoLineAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Deny',
   },
   {
@@ -1068,17 +1041,13 @@ export const iamAutoLineAbi = [
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'usr', internalType: 'address', type: 'address', indexed: true },
-    ],
+    inputs: [{ name: 'usr', internalType: 'address', type: 'address', indexed: true }],
     name: 'Rely',
   },
   {
     type: 'event',
     anonymous: false,
-    inputs: [
-      { name: 'ilk', internalType: 'bytes32', type: 'bytes32', indexed: true },
-    ],
+    inputs: [{ name: 'ilk', internalType: 'bytes32', type: 'bytes32', indexed: true }],
     name: 'Remove',
   },
   {
@@ -1378,9 +1347,7 @@ export const lendingPoolAbi = [
         name: '',
         internalType: 'struct DataTypes.ReserveConfigurationMap',
         type: 'tuple',
-        components: [
-          { name: 'data', internalType: 'uint256', type: 'uint256' },
-        ],
+        components: [{ name: 'data', internalType: 'uint256', type: 'uint256' }],
       },
     ],
     stateMutability: 'view',
@@ -1430,9 +1397,7 @@ export const lendingPoolAbi = [
             name: 'configuration',
             internalType: 'struct DataTypes.ReserveConfigurationMap',
             type: 'tuple',
-            components: [
-              { name: 'data', internalType: 'uint256', type: 'uint256' },
-            ],
+            components: [{ name: 'data', internalType: 'uint256', type: 'uint256' }],
           },
           { name: 'liquidityIndex', internalType: 'uint128', type: 'uint128' },
           {
@@ -1545,9 +1510,7 @@ export const lendingPoolAbi = [
         name: '',
         internalType: 'struct DataTypes.UserConfigurationMap',
         type: 'tuple',
-        components: [
-          { name: 'data', internalType: 'uint256', type: 'uint256' },
-        ],
+        components: [{ name: 'data', internalType: 'uint256', type: 'uint256' }],
       },
     ],
     stateMutability: 'view',
@@ -1696,9 +1659,7 @@ export const lendingPoolAbi = [
         name: 'configuration',
         internalType: 'struct DataTypes.ReserveConfigurationMap',
         type: 'tuple',
-        components: [
-          { name: 'data', internalType: 'uint256', type: 'uint256' },
-        ],
+        components: [{ name: 'data', internalType: 'uint256', type: 'uint256' }],
       },
     ],
     name: 'setConfiguration',
@@ -2266,6 +2227,7 @@ export const lendingPoolAbi = [
 export const lendingPoolAddress = {
   998: '0x4073283812dfD8fff8430c1Ec8f88A68f984Aec3',
   999: '0xceCcE0EB9DD2Ef7996e01e25DD70e461F918A14b',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -2378,9 +2340,7 @@ export const lendingPoolAddressProviderAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'newAclManager', internalType: 'address', type: 'address' },
-    ],
+    inputs: [{ name: 'newAclManager', internalType: 'address', type: 'address' }],
     name: 'setACLManager',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -2431,9 +2391,7 @@ export const lendingPoolAddressProviderAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'newDataProvider', internalType: 'address', type: 'address' },
-    ],
+    inputs: [{ name: 'newDataProvider', internalType: 'address', type: 'address' }],
     name: 'setPoolDataProvider',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -2447,9 +2405,7 @@ export const lendingPoolAddressProviderAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'newPriceOracle', internalType: 'address', type: 'address' },
-    ],
+    inputs: [{ name: 'newPriceOracle', internalType: 'address', type: 'address' }],
     name: 'setPriceOracle',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -2719,6 +2675,7 @@ export const lendingPoolAddressProviderAbi = [
 export const lendingPoolAddressProviderAddress = {
   998: '0x8c52538C6c94a80fC907279A32d3aA9D51C9f2d3',
   999: '0xA73ff12D177D8F1Ec938c3ba0e87D33524dD5594',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -2917,9 +2874,7 @@ export const psmActionsAbi = [
     type: 'function',
     inputs: [],
     name: 'psm',
-    outputs: [
-      { name: '', internalType: 'contract PSMVariant1Like', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract PSMVariant1Like', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -3689,9 +3644,7 @@ export const savingsDaiAbi = [
     type: 'function',
     inputs: [],
     name: 'daiJoin',
-    outputs: [
-      { name: '', internalType: 'contract DaiJoinLike', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract DaiJoinLike', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -4619,9 +4572,7 @@ export const savingsXDaiAdapterAbi = [
     type: 'function',
     inputs: [],
     name: 'sDAI',
-    outputs: [
-      { name: '', internalType: 'contract SavingsXDai', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract SavingsXDai', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -4698,8 +4649,7 @@ export const uiIncentiveDataProviderAbi = [
     outputs: [
       {
         name: '',
-        internalType:
-          'struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]',
+        internalType: 'struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]',
         type: 'tuple[]',
         components: [
           { name: 'underlyingAsset', internalType: 'address', type: 'address' },
@@ -4932,8 +4882,7 @@ export const uiIncentiveDataProviderAbi = [
       },
       {
         name: '',
-        internalType:
-          'struct IUiIncentiveDataProviderV3.UserReserveIncentiveData[]',
+        internalType: 'struct IUiIncentiveDataProviderV3.UserReserveIncentiveData[]',
         type: 'tuple[]',
         components: [
           { name: 'underlyingAsset', internalType: 'address', type: 'address' },
@@ -4954,8 +4903,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5019,8 +4967,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5084,8 +5031,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5150,8 +5096,7 @@ export const uiIncentiveDataProviderAbi = [
     outputs: [
       {
         name: '',
-        internalType:
-          'struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]',
+        internalType: 'struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]',
         type: 'tuple[]',
         components: [
           { name: 'underlyingAsset', internalType: 'address', type: 'address' },
@@ -5399,8 +5344,7 @@ export const uiIncentiveDataProviderAbi = [
     outputs: [
       {
         name: '',
-        internalType:
-          'struct IUiIncentiveDataProviderV3.UserReserveIncentiveData[]',
+        internalType: 'struct IUiIncentiveDataProviderV3.UserReserveIncentiveData[]',
         type: 'tuple[]',
         components: [
           { name: 'underlyingAsset', internalType: 'address', type: 'address' },
@@ -5421,8 +5365,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5486,8 +5429,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5551,8 +5493,7 @@ export const uiIncentiveDataProviderAbi = [
               },
               {
                 name: 'userRewardsInformation',
-                internalType:
-                  'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
+                internalType: 'struct IUiIncentiveDataProviderV3.UserRewardInfo[]',
                 type: 'tuple[]',
                 components: [
                   {
@@ -5612,6 +5553,7 @@ export const uiIncentiveDataProviderAbi = [
 export const uiIncentiveDataProviderAddress = {
   998: '0xCdC9497Cea167846b17FD72635f73eE119d64B9D',
   999: '0x8ebA6fc4Ff6Ba4F12512DD56d0E4aaC6081f5274',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -5994,6 +5936,7 @@ export const uiPoolDataProviderAbi = [
 export const uiPoolDataProviderAddress = {
   998: '0x2393Af1E61649ABe6BC37983a4190245e6D5A363',
   999: '0x7b883191011AEAe40581d3Fa1B112413808C9c00',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -6038,9 +5981,7 @@ export const usdsPsmActionsAbi = [
     type: 'function',
     inputs: [],
     name: 'psm',
-    outputs: [
-      { name: '', internalType: 'contract PSMVariant1Like', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract PSMVariant1Like', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -6238,9 +6179,7 @@ export const usdsPsmWrapperAbi = [
     type: 'function',
     inputs: [],
     name: 'usdsJoin',
-    outputs: [
-      { name: '', internalType: 'contract UsdsJoinLike', type: 'address' },
-    ],
+    outputs: [{ name: '', internalType: 'contract UsdsJoinLike', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -6415,9 +6354,7 @@ export const usdxlTokenAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'facilitatorAddress', internalType: 'address', type: 'address' },
-    ],
+    inputs: [{ name: 'facilitatorAddress', internalType: 'address', type: 'address' }],
     name: 'removeFacilitator',
     outputs: [],
     stateMutability: 'nonpayable',
@@ -6676,6 +6613,7 @@ export const usdxlTokenAbi = [
 export const usdxlTokenAddress = {
   998: '0xfc446B60a054703A9DC096dd397a6e3cdd614275',
   999: '0x0000000000000000000000000000000000000000',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -7200,6 +7138,7 @@ export const wethGatewayAbi = [
 export const wethGatewayAddress = {
   998: '0x41F478CdB072fc4Cad96881413f73Aba5c8a90e0',
   999: '0xd1EF87FeFA83154F83541b68BD09185e15463972',
+  8453: zeroAddress,
 } as const
 
 /**
@@ -7260,6 +7199,7 @@ export const walletBalanceProviderAbi = [
 export const walletBalanceProviderAddress = {
   998: '0x22473C5a8EC020024aDC74E9dD9B17D8037eAb4B',
   999: '0xE913De89D8c868aEF96D3b10dAAE1900273D7Bb2',
+  8453: zeroAddress,
 } as const
 
 /**

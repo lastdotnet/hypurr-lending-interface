@@ -1,6 +1,7 @@
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { getTokenImage } from '@/ui/assets'
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 
 export interface TokenBadgeProps {
   symbol: TokenSymbol
@@ -17,7 +18,7 @@ export function TokenBadge({ symbol }: TokenBadgeProps) {
         getTokenBgColor(symbol),
       )}
     >
-      <img src={tokenImage} alt={symbol} className="h-6 w-6" />
+      <Image src={tokenImage} alt={symbol} className="h-6 w-6" />
       <span className="hidden sm:block">{symbol}</span>
     </div>
   )

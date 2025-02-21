@@ -10,6 +10,7 @@ import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 
 interface AssetSelectorProps {
   assets: { token: Token; balance?: NormalizedUnitNumber }[]
@@ -84,7 +85,7 @@ export function AssetSelector({
               {a.balance && (
                 <div className="flex flex-row items-center">
                   <Typography variant="prompt">{a.token.format(a.balance, { style: 'compact' })}</Typography>
-                  <img className="ml-2" src={uiAssets.wallet} alt="wallet" />
+                  <Image className="ml-2" src={uiAssets.wallet} alt="wallet" />
                 </div>
               )}
             </div>

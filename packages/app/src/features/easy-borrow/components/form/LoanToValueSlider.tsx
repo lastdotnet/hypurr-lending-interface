@@ -8,6 +8,7 @@ import { Percentage } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 
 export interface LoanToValueSliderProps {
   className: string
@@ -115,9 +116,10 @@ export function LoanToValueSlider({
       </SliderPrimitive.Track>
 
       <SliderPrimitive.Thumb className="blockshadow transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none">
-        <img
+        <Image
           className={cn('transform transition-transform', !disabled && 'hover:scale-125')}
           src={assets.sliderThumb}
+          alt={''}
         />
       </SliderPrimitive.Thumb>
     </SliderPrimitive.Root>

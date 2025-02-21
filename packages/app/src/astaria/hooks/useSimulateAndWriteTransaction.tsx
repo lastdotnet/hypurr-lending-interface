@@ -2,6 +2,7 @@ import { useSimulateContract } from 'wagmi'
 
 import { useTransaction } from '@/astaria/hooks/useTransaction'
 import { type FunctionData } from '@/astaria/types-internal/function-data'
+import { wagmiConfig } from '../config/wagmi'
 
 export const useSimulateAndWriteTransaction = ({
   enabled = true,
@@ -32,6 +33,7 @@ export const useSimulateAndWriteTransaction = ({
     query: {
       enabled,
     },
+    config: wagmiConfig,
   })
 
   const {

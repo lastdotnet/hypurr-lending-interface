@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import Image from 'next/image'
 import { assets } from '@/ui/assets'
 import { Tooltip, TooltipContentShort, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
@@ -34,9 +35,9 @@ function ActionRow({ children, className, index }: ActionRowProps) {
 
 function Icon({ path, actionStatus }: { path: string; actionStatus?: ActionHandlerState['status'] }) {
   if (actionStatus === 'success') {
-    return <img src={assets.actions.done} alt="action-success-icon" className="h-4 w-4 shrink-0" />
+    return <Image src={assets.actions.done} alt="action-success-icon" className="h-4 w-4 shrink-0" />
   }
-  return <img src={path} alt="action-icon" className="h-4 w-4 shrink-0" />
+  return <Image src={path} alt="action-icon" className="h-4 w-4 shrink-0" />
 }
 
 function Title({
@@ -119,7 +120,7 @@ function ErrorWarningExtended({ actionHandlerState }: { actionHandlerState: Acti
       <TooltipTrigger asChild>
         <div className="col-span-full col-start-3 inline-flex min-w-0 md:col-span-1 md:ml-10">
           <div className="mr-auto flex w-full items-center">
-            <img src={assets.warning} alt="warning" className="h-5 w-5" />
+            <Image src={assets.warning} alt="warning" className="h-5 w-5" />
             <strong className="ml-0.5 font-semibold text-product-red text-xs">Error:</strong>
             <p className="ml-1 truncate text-white/70 text-xs" ref={errorTextRef}>
               {actionHandlerState.message}
@@ -141,7 +142,7 @@ function ErrorWarningCompact({ actionHandlerState }: { actionHandlerState: Actio
     <Tooltip>
       <TooltipTrigger asChild>
         <div className="col-span-full col-start-3 inline-flex items-center md:col-span-1 md:mr-2 md:ml-auto">
-          <img src={assets.warning} alt="warning" className="h-5 w-5" />
+          <Image src={assets.warning} alt="warning" className="h-5 w-5" />
           <strong className="ml-0.5 font-semibold text-product-red text-xs">Error</strong>
         </div>
       </TooltipTrigger>

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { wagmiConfig } from '@/astaria/config/wagmi'
-import { getToken } from '@wagmi/core'
+import { getToken } from 'wagmi/actions'
 import { type Address, type Chain, formatUnits } from 'viem'
 
 import { EVENT } from 'notifications'

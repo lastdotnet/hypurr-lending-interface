@@ -3,6 +3,7 @@ import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPan
 import { getTokenImage } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { TxOverview } from '../../types'
+import Image from 'next/image'
 
 export interface TransactionOverviewProps {
   txOverview: TxOverview
@@ -19,7 +20,7 @@ export function TransactionOverview({ txOverview }: TransactionOverviewProps) {
         <DialogPanelTitle>Transaction overview</DialogPanelTitle>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src={getTokenImage(token.symbol)} className="h-6 w-6" />
+            <Image src={getTokenImage(token.symbol)} className="h-6 w-6" alt={''} />
             <div className="flex flex-col">
               <div
                 className="text-primary"

@@ -27,7 +27,7 @@ export function HealthFactorChange({ currentHealthFactor, updatedHealthFactor }:
           <RiskIndicator healthFactor={currentHealthFactor} data-testid={testIds.dialog.healthFactor.before} />
           {updatedHealthFactor && (
             <>
-              <img src={assets.arrowRight} />
+              <Image src={assets.arrowRight} />
               <RiskIndicator healthFactor={updatedHealthFactor} data-testid={testIds.dialog.healthFactor.after} />
             </>
           )}

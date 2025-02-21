@@ -8,6 +8,7 @@ import { AirdropDetails } from './AirdropDetails'
 import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
 import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber
@@ -34,7 +35,7 @@ export function AirdropBadgeLayout({
               data-testid={testIds.navbar.airdropBadge}
             >
               <span className="flex items-center justify-center gap-1.5">
-                <img src={assets.hypurrPaw} className="block h-7 pt-1" />
+                <Image src={assets.hypurrPaw} className="block h-7 pt-1" alt={''} />
                 {isLoading ? (
                   <Skeleton className="h-5 w-7" />
                 ) : (

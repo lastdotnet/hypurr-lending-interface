@@ -1,6 +1,6 @@
 import { getChainConfigEntry } from '@/config/chain'
 import { Typography } from '@/ui/atoms/typography/Typography'
-
+import Image from 'next/image'
 export interface PageHeaderProps {
   chainId: number
 }
@@ -11,7 +11,7 @@ export function PageHeader({ chainId }: PageHeaderProps) {
     <div className="flex flex-row items-center gap-4">
       <Typography variant="h2">Farms</Typography>
       <div className="flex translate-y-0.5 flex-row items-center gap-1">
-        <img src={chainLogo} className="h-5 w-5" />
+        <Image src={chainLogo} className="h-5 w-5" alt={''} />
         <Typography className="font-semibold text-primary text-xs">{chainName}</Typography>
       </div>
     </div>

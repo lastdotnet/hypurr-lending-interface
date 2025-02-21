@@ -46,7 +46,7 @@ export function SandboxDialogView({
           'Fast – no need to sign transactions',
         ].map((item, index) => (
           <li key={index} className="flex items-center gap-2.5 text-basics-dark-grey text-sm">
-            <img src={assets.success} alt="success-icon" className="h-5" />
+            <Image src={assets.success} alt="success-icon" className="h-5" />
             {item}
           </li>
         ))}

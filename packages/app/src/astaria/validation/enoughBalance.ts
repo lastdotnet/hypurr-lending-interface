@@ -1,5 +1,5 @@
 import { wagmiConfig } from '@/astaria/config/wagmi'
-import { getAccount, getBalance } from '@wagmi/core'
+import { getAccount, getBalance } from 'wagmi/actions'
 import { zeroAddress } from 'viem'
 import { z } from 'zod'
 
@@ -14,6 +14,7 @@ export const enoughBalance = async (
   if (isERC20Asset(asset)) {
     if (amount) {
       const account = getAccount(wagmiConfig)
+      // biome-ignore lint/complexity/useOptionalChain: <explanation>
       if (account && account.address) {
         const balance = await getBalance(wagmiConfig, {
           address: account.address || zeroAddress,
@@ -31,6 +32,7 @@ export const enoughBalance = async (
               path: [fieldName],
             })
             return z.NEVER
+            // biome-ignore lint/style/noUselessElse: <explanation>
           } else if (amount > balance.value) {
             ctx.addIssue({
               code: z.ZodIssueCode.custom,

@@ -1,7 +1,7 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
-
+import Image from 'next/image'
 interface UpDownMarkerProps {
   token: Token
   value: NormalizedUnitNumber
@@ -13,7 +13,7 @@ export function UpDownMarker({ token, value, direction }: UpDownMarkerProps) {
 
   return (
     <div className="flex flex-row gap-2">
-      <img src={up ? assets.up : assets.down} alt={`${direction}-sign`} />
+      <Image src={up ? assets.up : assets.down} alt={`${direction}-sign`} />
       <div className="text-white/50">
         <span className="font-mono">{up ? '+' : '-'}</span>
         {`${token.format(value, { style: 'auto' })} ${token.symbol}`}

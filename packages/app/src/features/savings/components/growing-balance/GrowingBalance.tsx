@@ -5,6 +5,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { getFractionalPart, getWholePart } from '@/utils/bigNumber'
 import { useTimestamp } from '@/utils/useTimestamp'
 import { SavingsOverview } from '../../logic/makeSavingsOverview'
+import Image from 'next/image'
 
 export interface GrowingBalanceProps {
   savingsTokenWithBalance: TokenWithBalance
@@ -27,7 +28,7 @@ export function GrowingBalance({
   return (
     <div className="flex flex-col items-center gap-1 sm:gap-2">
       <div className="flex flex-row items-center gap-1.5 md:gap-3">
-        <img src={getTokenImage(assetsToken.symbol)} className="h-5 md:h-8" />
+        <Image src={getTokenImage(assetsToken.symbol)} className="h-5 md:h-8" alt={''} />
         <div
           className="flex flex-row items-end justify-center slashed-zero tabular-nums"
           data-testid={testIds.savings[savingsType].balanceInAsset}

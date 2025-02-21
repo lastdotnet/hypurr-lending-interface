@@ -14,6 +14,7 @@ import { useBreakpoint } from '@/ui/utils/useBreakpoint'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { BuildInfoItem } from './BuildInfoItem'
 import { SettingsDropdownItem } from './SettingsDropdownItem'
+import Image from 'next/image'
 
 export interface SettingsDropdownProps {
   onSandboxModeClick: () => void
@@ -26,7 +27,7 @@ export function SettingsDropdown({ onSandboxModeClick, isSandboxEnabled }: Setti
       <DropdownWrapper>
         <SettingsDropdownItem onClick={onSandboxModeClick}>
           <SettingsDropdownItem.Title>
-            <img src={MagicWand} className="h-5 w-5 lg:h-3 lg:w-3" />
+            <Image src={MagicWand} className="h-5 w-5 lg:h-3 lg:w-3" alt={''} />
             Sandbox Mode
           </SettingsDropdownItem.Title>
           <SettingsDropdownItem.Content>
@@ -62,7 +63,7 @@ function DropdownWrapper({ children }: { children: React.ReactNode }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="bg-white/10 px-3">
-          <img src={MoreIcon} />
+          <Image src={MoreIcon} alt={''} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">{children}</DropdownMenuContent>

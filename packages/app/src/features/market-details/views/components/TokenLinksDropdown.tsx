@@ -15,6 +15,7 @@ import {
 import { Link } from '@/ui/atoms/link/Link'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { PropsWithChildren, ReactNode } from 'react'
+import Image from 'next/image'
 
 export interface TokenLinksDropdownProps {
   token: Token
@@ -46,7 +47,7 @@ function TokenLinksWrapper({ children }: PropsWithChildren) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="rounded-sm bg-white/10 px-3">
-          <img src={MoreIcon} />
+          <Image src={MoreIcon} alt={''} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">{children}</DropdownMenuContent>

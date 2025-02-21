@@ -2,6 +2,7 @@ import { cva } from 'class-variance-authority'
 
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 
 interface IconStackProps {
   paths: string[]
@@ -31,11 +32,12 @@ export function IconStack({
   return (
     <div className={cn(stackVariants({ size }), className)}>
       {slicedIcons.map((src, index, srcs) => (
-        <img
+        <Image
           key={index}
           src={src}
           className={iconVariants({ size, iconBorder })}
           style={stackingOrder === 'first-on-top' ? { zIndex: srcs.length - index } : undefined}
+          alt={''}
         />
       ))}
       {omittedLength > 0 && (

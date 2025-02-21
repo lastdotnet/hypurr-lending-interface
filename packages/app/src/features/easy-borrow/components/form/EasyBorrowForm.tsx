@@ -14,6 +14,7 @@ import { Deposits } from './Deposits'
 import { LoanToValue } from './LoanToValue'
 import { LoanToValueSlider } from './LoanToValueSlider'
 import { BorrowFormAPYDetails } from '../../logic/useEasyBorrow'
+import Image from 'next/image'
 
 interface EasyBorrowFlowProps {
   form: UseFormReturn<EasyBorrowFormSchema>
@@ -68,7 +69,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
             depositAPY={apyDetails.depositAPY}
           />
           <div>
-            <img src={assets.link} className="m-2 mt-16 hidden md:block" />
+            <Image src={assets.link} className="m-2 mt-16 hidden md:block" alt={''} />
           </div>
           <Borrow
             selectedAssets={assetsToBorrowFields.selectedAssets}

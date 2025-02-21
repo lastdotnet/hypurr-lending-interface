@@ -10,6 +10,7 @@ import { CurrencyAmount } from '@/astaria/components/CurrencyAmount'
 import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 
 const BalanceAndMaxSectionConnected = ({
   amountFieldName,
@@ -33,6 +34,7 @@ const BalanceAndMaxSectionConnected = ({
       enabled: isERC20Asset(asset),
     },
     token: asset.address,
+    config: wagmiConfig,
   })
 
   return (

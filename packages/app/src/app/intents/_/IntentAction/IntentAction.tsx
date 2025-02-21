@@ -19,6 +19,7 @@ import { isBeingRecalled, isLendIntent } from '@/astaria/utils/intentStates'
 import { isERC20Asset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 
 const ActionAssetDisplay = ({
   intent,
@@ -52,6 +53,7 @@ export const IntentAction = ({
       enabled: !!intent && isERC20Asset(intent.collateral),
     },
     token: !!intent && isLendIntent(intent) ? intent?.collateral.address : intent?.borrow.address,
+    config: wagmiConfig,
   })
 
   if (skeleton) {

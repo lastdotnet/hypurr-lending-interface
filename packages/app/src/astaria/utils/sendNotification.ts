@@ -66,6 +66,7 @@ export async function sendNotification({ channels, payload, type }: SendNotifica
   }
 
   // eslint-disable-next-line no-console
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
   console.log('Sending notification:', {
     channels,
     payload,

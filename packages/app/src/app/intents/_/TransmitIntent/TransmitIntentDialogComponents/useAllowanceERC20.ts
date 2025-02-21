@@ -12,6 +12,7 @@ import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
 import { type ERC20 } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 
 const USDT_APPROVE_ABI = parseAbi(['function approve(address _spender, uint _value) public'] as const)
 
@@ -68,6 +69,7 @@ export const useAllowanceERC20 = ({
     query: {
       enabled,
     },
+    config: wagmiConfig,
   })
 
   const isFinished = getIsFinished({ allowance, amount: erc20.amount })

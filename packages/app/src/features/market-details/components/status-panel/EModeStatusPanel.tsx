@@ -19,6 +19,8 @@ import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { StatusIcon } from './components/status-icon/StatusIcon'
 import { TokenBadge } from './components/token-badge/TokenBadge'
 
+import Image from 'next/image'
+
 export interface EModeStatusPanelProps {
   maxLtv: Percentage
   liquidationThreshold: Percentage
@@ -97,7 +99,7 @@ interface WithArrowProps {
 function WithArrow({ children, reverseArrow }: WithArrowProps) {
   return (
     <div className="flex min-w-[72px] flex-row justify-between gap-1 sm:min-w-fit">
-      <img src={assets.greenArrowUp} className={cn('h-4 w-4', reverseArrow && 'rotate-180')} />
+      <Image src={assets.greenArrowUp} className={cn('h-4 w-4', reverseArrow && 'rotate-180')} alt={''} />
       {children}
     </div>
   )

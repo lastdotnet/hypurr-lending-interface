@@ -4,6 +4,7 @@ import { Button, ButtonProps } from '../../atoms/button/Button'
 import { getEventNameByAction, trackEvent } from '@/utils/fathom'
 import { ReactNode } from 'react'
 import { Action } from '@/features/actions/logic/types'
+import Image from 'next/image'
 
 export interface ActionButtonProps extends ButtonProps {
   isLoading?: boolean
@@ -24,7 +25,7 @@ export function ActionButton({ isLoading, isDone, action, children, ...props }: 
   return (
     <Button {...props} disabled={disabled} onClick={handleClick}>
       {children}
-      {isLoading && <img src={assets.threeDots} alt="loader" width={20} height={5} data-chromatic="ignore" />}
+      {isLoading && <Image src={assets.threeDots} alt="loader" width={20} height={5} data-chromatic="ignore" />}
       {isDone && <span>✓</span>}
     </Button>
   )

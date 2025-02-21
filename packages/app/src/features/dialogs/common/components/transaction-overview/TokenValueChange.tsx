@@ -22,7 +22,7 @@ export function TokenValueChange({ token, label, currentValue, updatedValue }: T
   return (
     <TransactionOverviewDetailsItem label={label}>
       <div className="flex flex-row items-center gap-2">
-        <TokenValue token={token} value={currentValue} /> <img src={assets.arrowRight} />
+        <TokenValue token={token} value={currentValue} /> <Image src={assets.arrowRight} />
         <TokenValue token={token} value={updatedValue} />
       </div>
     </TransactionOverviewDetailsItem>

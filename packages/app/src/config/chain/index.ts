@@ -8,6 +8,7 @@ import { AppConfig } from '../feature-flags'
 import { hyperEVM, hyperTestnet } from './constants'
 import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
 import { USDXL_ADDRESS } from '../consts'
+import { base } from 'viem/chains'
 
 const commonTokenSymbolToReplacedName = {
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },
@@ -143,6 +144,25 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
         },
       },
     },
+    savings: undefined,
+    farms: undefined,
+  },
+  [base.id]: {
+    originChainId: base.id,
+    daiSymbol: undefined,
+    sdaiSymbol: undefined,
+    usdsSymbol: undefined,
+    susdsSymbol: undefined,
+    psmStables: [TokenSymbol('USDC')],
+    meta: {
+      name: 'Base',
+      logo: assets.hyperEvmLogo,
+    },
+    permitSupport: {},
+    tokensWithMalformedApprove: [],
+    airdrop: {},
+    extraTokens: [],
+    markets: undefined,
     savings: undefined,
     farms: undefined,
   },

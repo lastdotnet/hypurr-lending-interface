@@ -3,6 +3,7 @@ import { assets } from '@/ui/assets'
 // import { DocsLink } from '@/ui/atoms/docs-link/DocsLink'
 import { Typography } from '@/ui/atoms/typography/Typography'
 // import { links } from '@/ui/constants/links'
+import Image from 'next/image'
 
 interface SparkAirdropInfoProps {
   variant: 'deposit' | 'borrow'
@@ -13,7 +14,7 @@ export function SparkAirdropInfoPanel({ variant, eligibleToken }: SparkAirdropIn
   const participants = variant === 'deposit' ? 'depositors' : 'borrowers'
   return (
     <div className="col-span-3 mt-3 flex flex-row items-center gap-3.5 rounded-lg bg-white/[4%] p-[15px] sm:mt-10">
-      <img src={assets.hypurrLogo} alt="Hypurr logo" className="w-[78px]" />
+      <Image src={assets.hypurrLogo} alt="Hypurr logo" className="w-[78px]" />
       <div className="flex flex-col gap-1">
         <Typography variant="h4">Eligible for Hypurr points</Typography>
         <p className="max-w-[62ch] text-prompt-foreground text-xs">

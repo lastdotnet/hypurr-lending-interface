@@ -12,6 +12,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { parseBigNumber } from '@/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { truncateWithEllipsis } from '@/domain/common/format'
+import Image from 'next/image'
 
 export type AssetInputProps = {
   token: Token
@@ -128,7 +129,7 @@ export const AssetInput = forwardRef<HTMLInputElement, AssetInputProps>(
                       {walletIconLabel}
                     </Typography>
                   )}
-                  <img className="mr-1" src={uiAssets.wallet} alt="wallet" />
+                  <Image className="mr-1" src={uiAssets.wallet} alt="wallet" />
                   <Typography variant="prompt">
                     {variant === 'crypto'
                       ? token!.format(balance, { style: 'compact' })

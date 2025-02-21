@@ -93,7 +93,7 @@ export function TermsOfService({ onAgree }: TermsOfServiceProps) {
         <div className="grid grid-cols-[auto_1fr] gap-4">
           {points.map((point, index) => (
             <React.Fragment key={index}>
-              <img src={assets.success} alt="success-img" className="h-4 w-4 translate-y-1" />
+              <Image src={assets.success} alt="success-img" className="h-4 w-4 translate-y-1" />
               {point}
             </React.Fragment>
           ))}

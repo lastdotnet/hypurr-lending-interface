@@ -11,6 +11,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { assert } from '@/utils/assert'
 import { TransactionOverviewPlaceholder } from '../../../common/components/transaction-overview/components/TransactionOverviewPlaceholder'
 import { MigrateDialogTxOverview } from '../types'
+import Image from 'next/image'
 
 export interface TransactionOverviewProps {
   txOverview: MigrateDialogTxOverview
@@ -38,7 +39,7 @@ export function TransactionOverview({ txOverview, selectedToken, showAPY }: Tran
               <div data-testid={testIds.dialog.savings.transactionOverview.apyChange.before}>
                 {formatPercentage(apyChange.current)}
               </div>
-              <img src={assets.arrowRight} />
+              <Image src={assets.arrowRight} alt={''} />
               <div data-testid={testIds.dialog.savings.transactionOverview.apyChange.after}>
                 {formatPercentage(apyChange.updated)}
               </div>

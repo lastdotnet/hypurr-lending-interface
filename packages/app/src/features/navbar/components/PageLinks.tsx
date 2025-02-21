@@ -55,6 +55,7 @@ const links = [
   {
     label: 'Isolated',
     icon: MessageSquareIcon,
+    to: paths.isolatedMarkets,
   },
   {
     label: 'Staking',

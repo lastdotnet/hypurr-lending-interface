@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 
 import { assets } from '@/ui/assets'
+import Image from 'next/image'
 
 import { ColorFilter } from './ColorFilter'
 
@@ -11,8 +12,8 @@ const meta: Meta<typeof ColorFilter> = {
 
 const children = (
   <div className="inline-flex max-w-[100px] gap-2">
-    <img src={assets.token.usdt} />
-    <img src={assets.token.usdc} />
+    <Image src={assets.token.usdt} alt={''} />
+    <Image src={assets.token.usdc} alt={''} />
   </div>
 )
 

@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface ChildrenProps {
   children: React.ReactNode
 }
@@ -11,7 +13,7 @@ function Header({ children }: ChildrenProps) {
 }
 
 function Icon({ src }: { src: string }) {
-  return <img src={src} className="mr-2 h-5 w-5" />
+  return <Image src={src} className="mr-2 h-5 w-5" alt={''} />
 }
 
 function Title({ children }: ChildrenProps) {

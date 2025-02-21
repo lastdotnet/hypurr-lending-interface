@@ -3,7 +3,7 @@ import { ArrowLeft, Minus } from 'lucide-react'
 import { getChainConfigEntry } from '@/config/chain'
 import { paths } from '@/config/paths'
 import { LinkButton } from '@/ui/atoms/button/Button'
-
+import Image from 'next/image'
 interface BackNavProps {
   chainId: number
 }
@@ -20,7 +20,7 @@ export function BackNav({ chainId }: BackNavProps) {
       </LinkButton>
       <Minus className="rotate-90 text-slate-700/10" />
       <div className="flex items-center gap-3">
-        <img src={chainImage} className="h-5 w-5" />
+        <Image src={chainImage} className="h-5 w-5" alt={''} />
         <span className="font-semibold text-sky-950 text-xs leading-none tracking-wide">{chainName}</span>
       </div>
     </div>

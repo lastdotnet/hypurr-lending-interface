@@ -4,6 +4,7 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { USD_MOCK_TOKEN } from '@/domain/types/Token'
 import { Tooltip, TooltipContentShort, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { Typography } from '@/ui/atoms/typography/Typography'
+import Image from 'next/image'
 
 export interface TileProps {
   icon: string
@@ -17,7 +18,7 @@ export function Tile({ icon, title, USDValue, description, 'data-testid': dataTe
   return (
     <div className="flex items-center gap-2 md:gap-3" data-testid={dataTestId}>
       <div className="flex rounded-sm border bg-white/10 p-1.5 lg:p-4 md:p-3">
-        <img src={icon} alt={title} className="w-6 lg:w-8 md:w-7" />
+        <Image src={icon} alt={title} className="w-6 lg:w-8 md:w-7" />
       </div>
       <div className="flex flex-col">
         <div className="flex items-center gap-1">

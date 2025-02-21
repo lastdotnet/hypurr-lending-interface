@@ -7,6 +7,8 @@ import { InfoTile } from '@/ui/molecules/info-tile/InfoTile'
 import { testIds } from '@/ui/utils/testIds'
 import { ProvidersList } from './ProvidersList'
 
+import Image from 'next/image'
+
 const oracleTestIds = testIds.marketDetails.oraclePanel
 
 export function YieldingFixedOraclePanel({
@@ -44,7 +46,7 @@ export function YieldingFixedOraclePanel({
               <span data-testid={oracleTestIds.asset}>{token.symbol}</span> to {baseAssetSymbol} Ratio
             </div>
           </div>
-          <img src={assets.multiply} alt="multiply sign" className="w-3.5 place-self-center" />
+          <Image src={assets.multiply} alt="multiply sign" className="w-3.5 place-self-center" />
           <div className="relative flex flex-col items-center gap-2">
             <div
               className="w-full rounded-2xl border border-basics-grey/30 bg-white/10 p-2 text-center text-xl"
@@ -56,7 +58,7 @@ export function YieldingFixedOraclePanel({
               <span data-testid={oracleTestIds.yieldingFixed.baseAssetSymbol}>{baseAssetSymbol}</span> Oracle Price
             </div>
           </div>
-          <img src={assets.equal} alt="equal sign" className="w-3.5 place-self-center" />
+          <Image src={assets.equal} alt="equal sign" className="w-3.5 place-self-center" />
           <div className="relative flex flex-col items-center gap-2">
             <div
               className="w-full rounded-2xl border border-basics-grey/30 bg-white/10 p-3 text-center text-xl"

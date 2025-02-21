@@ -6,6 +6,7 @@ import { Panel } from '@/ui/atoms/panel/Panel'
 import { links } from '@/ui/constants/links'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 
 export interface UpgradeSavingsBannerProps {
   onUpgradeSavingsClick: () => void
@@ -58,7 +59,7 @@ export function UpgradeSavingsBanner({ onUpgradeSavingsClick, apyImprovement }: 
 function Benefit({ children }: { children: React.ReactNode }) {
   return (
     <div className="col-span-full grid grid-cols-subgrid">
-      <img src={assets.success} alt="success-img" className="h-4 w-4 translate-y-1" />
+      <Image src={assets.success} alt="success-img" className="h-4 w-4 translate-y-1" />
       <div>{children}</div>
     </div>
   )

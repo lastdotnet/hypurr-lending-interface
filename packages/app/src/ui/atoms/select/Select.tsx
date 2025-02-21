@@ -4,6 +4,8 @@ import * as React from 'react'
 import { assets } from '@/ui/assets'
 import { cn } from '@/ui/utils/style'
 
+import Image from 'next/image'
+
 const Select = SelectPrimitive.Root
 
 const SelectGroup = SelectPrimitive.Group
@@ -24,7 +26,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <img src={assets.chevronDown} />
+      <Image src={assets.chevronDown} alt={''} />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))

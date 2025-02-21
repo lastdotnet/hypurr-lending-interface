@@ -4,6 +4,7 @@ import { getTokenImage } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { getFractionalPart, getWholePart } from '@/utils/bigNumber'
 import { useTimestamp } from '@/utils/useTimestamp'
+import Image from 'next/image'
 
 const STEP_IN_MS = 50
 
@@ -25,7 +26,7 @@ export function GrowingReward({ rewardToken, calculateReward, refreshIntervalInM
   return (
     <div className="flex flex-col items-center gap-1">
       <div className="flex items-center gap-2">
-        <img src={getTokenImage(rewardToken.symbol)} className="h-8 w-8" />
+        <Image src={getTokenImage(rewardToken.symbol)} className="h-8 w-8" alt={''} />
         <div
           className="flex flex-row items-end justify-center slashed-zero tabular-nums"
           data-testid={testIds.farmDetails.activeFarmInfoPanel.rewards}

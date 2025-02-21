@@ -15,6 +15,7 @@ import {
 } from '@/ui/atoms/dropdown/DropdownMenu'
 import { LinkDecorator } from '@/ui/atoms/link-decorator/LinkDecorator'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 
 export interface MoreDropdownProps {
   token: Token
@@ -64,7 +65,7 @@ function DropdownWrapper({ children, disabled }: { children?: React.ReactNode; d
           disabled={disabled}
           data-testid={testIds.savings.stablecoinsInWallet.moreDropdown}
         >
-          <img src={MoreIcon} />
+          <Image src={MoreIcon} alt={''} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">{children}</DropdownMenuContent>

@@ -4,6 +4,7 @@ import { PageLayout } from '@/ui/layouts/PageLayout'
 import { PropsWithChildren } from 'react'
 import { assets } from '@/ui/assets'
 import { isTestnet } from '@/config/consts'
+import Image from 'next/image'
 
 export function FaucetPanel({ children }: PropsWithChildren) {
   return (
@@ -31,7 +32,7 @@ export function FaucetPanel({ children }: PropsWithChildren) {
               </div>
 
               <div className="max-w-80">
-                <img src={assets.faucetPurr} alt="cat faucet" className="w-full" />
+                <Image src={assets.faucetPurr} alt="cat faucet" className="w-full" />
               </div>
             </>
           ) : (

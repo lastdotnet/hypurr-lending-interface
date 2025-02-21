@@ -15,6 +15,7 @@ import { type Loan, SourceType } from '@/astaria/types-internal/loan-schemas'
 import { checkIfLoanIsExpired } from '@/astaria/utils/loans/checkIfLoanIsExpired'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 
 export const LoanActions = ({
   loan,
@@ -35,6 +36,7 @@ export const LoanActions = ({
     address,
     chainId: loan?.chainId,
     token: loan?.debt.address,
+    config: wagmiConfig,
   })
 
   if (skeleton || isPendingBalance) {

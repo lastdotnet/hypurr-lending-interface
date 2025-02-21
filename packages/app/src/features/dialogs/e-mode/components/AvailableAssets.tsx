@@ -25,7 +25,7 @@ export function AvailableAssets({ categoryName, tokens }: AvailableAssets) {
           data-testid={testIds.dialog.eMode.transactionOverview.availableAssets.category}
         >
           {categoryName}
-          <img src={assets.arrowRight} />
+          <Image src={assets.arrowRight} />
         </div>
         <div data-testid={testIds.dialog.eMode.transactionOverview.availableAssets.assets}>
           {tokens.map((token) => token.symbol).join(', ')}

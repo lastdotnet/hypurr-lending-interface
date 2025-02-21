@@ -2,7 +2,7 @@ import { getTokenImage } from '@/ui/assets'
 import { Button } from '@/ui/atoms/button/Button'
 import { testIds } from '@/ui/utils/testIds'
 import { Reward } from './types'
-
+import Image from 'next/image'
 export interface RewardsDetailsProps {
   rewards: Reward[]
   onClaim: () => void
@@ -24,7 +24,7 @@ export function RewardsDetails({ rewards, onClaim }: RewardsDetailsProps) {
               data-testid={testIds.navbar.rewards.details.row(index)}
             >
               <div className="flex items-center gap-2">
-                <img src={getTokenImage(token.symbol)} className="h-7 lg:h-6" />
+                <Image src={getTokenImage(token.symbol)} className="h-7 lg:h-6" alt={''} />
                 <div className="font-semibold text-base tabular-nums">
                   <span data-testid={testIds.navbar.rewards.details.amount}>
                     {token.format(amount, { style: 'auto' })}

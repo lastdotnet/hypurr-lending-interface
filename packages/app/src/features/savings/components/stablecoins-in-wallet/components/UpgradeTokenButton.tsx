@@ -5,6 +5,7 @@ import { Button } from '@/ui/atoms/button/Button'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 
 export interface UpgradeTokenButtonProps {
   token: Token
@@ -39,7 +40,7 @@ export function UpgradeTokenButton({
           data-testid={testIds.savings.stablecoinsInWallet.upgradeDaiToUsds}
         >
           <div className="flex items-center gap-2">
-            <img src={UpgradeIcon} className="h-[14px] w-[14px]" />
+            <Image src={UpgradeIcon} className="h-[14px] w-[14px]" />
             <span className="hidden opacity-0 transition-opacity delay-50 duration-300 sm:block group-hover:opacity-100">
               Upgrade to {upgradedTokenSymbol}
             </span>

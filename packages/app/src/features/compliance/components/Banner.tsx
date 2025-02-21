@@ -1,10 +1,11 @@
 import { MultiPanelDialog } from '@/features/dialogs/common/components/MultiPanelDialog'
 import { assets } from '@/ui/assets'
+import Image from 'next/image'
 
 function Banner({ children }: { children: React.ReactNode }) {
   return (
     <MultiPanelDialog>
-      <img src={assets.warning} alt="Blocked" className="h-[50px] w-[50px]" />
+      <Image src={assets.warning} alt="Blocked" className="h-[50px] w-[50px]" />
       {children}
     </MultiPanelDialog>
   )

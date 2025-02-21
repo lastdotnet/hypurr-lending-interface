@@ -3,6 +3,7 @@ import { SPK_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
 import { formatAirdropAmount } from './utils/formatAirdropAmount'
+import Image from 'next/image'
 
 interface AirdropDetailsProps {
   amount: NormalizedUnitNumber
@@ -26,7 +27,7 @@ export function AirdropDetails({ amount, precision, isLoading, isGrowing, placeh
       <div className="flex flex-col gap-1 border-basics-grey/50 border-b p-4">
         Hypurr points
         <div className="flex items-center gap-2">
-          <img src={assets.hypurrLogo} className="h-7 xl:h-6" />
+          <Image src={assets.hypurrLogo} className="h-7 xl:h-6" alt={''} />
           {isLoading ? (
             <Skeleton className="h-5 w-7" />
           ) : (

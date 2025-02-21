@@ -1,4 +1,5 @@
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 
 interface IconPillProps {
   icon: string
@@ -12,7 +13,7 @@ export function IconPill({ icon, className, 'data-testid': dataTestId }: IconPil
       className={cn('inline-flex shrink-0 rounded-lg border border-white/20 p-1', className)}
       data-testid={dataTestId}
     >
-      <img src={icon} className="h-4 w-4 lg:h-4 md:h-3 lg:w-4 md:w-3" />
+      <Image src={icon} className="h-4 w-4 lg:h-4 md:h-3 lg:w-4 md:w-3" alt={''} />
     </div>
   )
 }

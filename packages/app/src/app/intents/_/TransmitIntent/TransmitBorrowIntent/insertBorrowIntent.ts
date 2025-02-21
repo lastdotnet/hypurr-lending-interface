@@ -1,7 +1,7 @@
 'use server'
 
 import { wagmiConfig } from '@/astaria/config/wagmi'
-import { getToken } from '@wagmi/core'
+import { getToken } from 'wagmi/actions'
 import { type Address, decodeAbiParameters, formatUnits, hashTypedData } from 'viem'
 
 import { ChainIdSchema } from 'chains'

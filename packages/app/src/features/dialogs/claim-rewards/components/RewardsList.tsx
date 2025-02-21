@@ -2,6 +2,7 @@ import { Reward } from '@/features/navbar/components/rewards-badge/types'
 import { getTokenImage } from '@/ui/assets'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 
 export interface RewardsListProps {
   rewards: Reward[]
@@ -18,7 +19,7 @@ export function RewardsList({ rewards, className }: RewardsListProps) {
           data-testid={testIds.dialog.claimRewards.transactionOverview.row(index)}
         >
           <div className="flex items-center gap-1.5">
-            <img src={getTokenImage(token.symbol)} className="h-7 lg:h-6" />
+            <Image src={getTokenImage(token.symbol)} className="h-7 lg:h-6" alt={''} />
             <div data-testid={testIds.dialog.claimRewards.transactionOverview.token}> {token.symbol} </div>
           </div>
           <div className="flex flex-col items-end">

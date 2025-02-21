@@ -6,6 +6,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { RewardsDetails } from './RewardsDetails'
 import { Reward } from './types'
+import Image from 'next/image'
 
 export interface RewardsProps {
   rewards: Reward[]
@@ -30,7 +31,7 @@ export function RewardsBadge({ rewards, onClaim }: RewardsProps) {
             data-testid={testIds.navbar.rewards.badge}
           >
             <div className="flex h-11 shrink items-center gap-1.5 rounded-lg bg-white p-2 lg:h-[38px]">
-              <img src={assets.giftbox} alt="claim-rewards" />
+              <Image src={assets.giftbox} alt="claim-rewards" />
               <div className="font-semibold" data-testid={testIds.navbar.rewards.claimableRewards}>
                 {USD_MOCK_TOKEN.formatUSD(totalClaimableReward, { compact: true })}
               </div>

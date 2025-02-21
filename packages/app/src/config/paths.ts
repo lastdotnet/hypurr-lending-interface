@@ -9,6 +9,7 @@ export const paths = {
   marketDetails: '/markets/:chainId/:asset',
   faucet: '/faucet',
   farmDetails: '/farms/:chainId/:address',
+  isolatedMarkets: '/intents',
 } as const
 
 export type Path = keyof typeof paths
@@ -18,13 +19,15 @@ export const pathGroups = {
   savings: ['savings'],
   farms: ['farms', 'farmDetails'],
   faucet: ['faucet'],
-} satisfies Record<'borrow' | 'savings' | 'farms' | 'faucet', Path[]>
+  isolatedMarkets: ['isolatedMarkets'],
+} satisfies Record<'borrow' | 'savings' | 'farms' | 'faucet' | 'isolatedMarkets', Path[]>
 
 export function getSupportedPages(chainConfigEntry: ChainConfigEntry): Path[] {
   return [
     ...(chainConfigEntry.markets ? pathGroups.borrow : []),
     ...(chainConfigEntry.savings ? pathGroups.savings : []),
     ...(chainConfigEntry.farms ? pathGroups.farms : []),
+    ...pathGroups.isolatedMarkets,
     ...pathGroups.faucet,
   ]
 }
