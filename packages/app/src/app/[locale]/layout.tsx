@@ -7,12 +7,11 @@ import { AppLayout } from '@/ui/layouts/app-layout/AppLayout'
 import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogDispatcherContainer'
 import { Debug } from '@/features/debug'
 import { allMessages } from '@/appRouterI18n'
-import { LinguiClientProvider } from '@/LinguiClientProvider'
 import { initLingui, PageLangParam } from '@/initLingui'
 import { Manrope } from 'next/font/google'
 import { cn } from '@/ui/utils/style'
 import { PropsWithChildren } from 'react'
-
+import { I18nAppProvider } from '@/domain/i18n/I18nAppProvider'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -96,13 +95,13 @@ export default async function ({ children, params }: PropsWithChildren & PageLan
       </head>
       <body className={cn(manrope.variable, 'font-sans')}>
         <App>
-          <LinguiClientProvider initialLocale={lang} initialMessages={allMessages[lang] ?? {}}>
+          <I18nAppProvider initialLocale={lang} initialMessages={allMessages[lang] ?? {}}>
             <AppLayout>
               <DialogDispatcherContainer />
               {children}
               {process.env.NEXT_PUBLIC_DEV_DEBUG === '1' && <Debug />}
             </AppLayout>
-          </LinguiClientProvider>
+          </I18nAppProvider>
         </App>
       </body>
     </html>
