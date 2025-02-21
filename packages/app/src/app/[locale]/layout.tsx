@@ -8,9 +8,10 @@ import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogD
 import { Debug } from '@/features/debug'
 import { allMessages } from '@/appRouterI18n'
 import { LinguiClientProvider } from '@/LinguiClientProvider'
-import { initLingui } from '@/initLingui'
+import { initLingui, PageLangParam } from '@/initLingui'
 import { Manrope } from 'next/font/google'
 import { cn } from '@/ui/utils/style'
+import { PropsWithChildren } from 'react'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -81,8 +82,8 @@ const manrope = Manrope({
   variable: '--font-manrope',
 })
 
-export default async function ({ children, params }: { children: React.ReactNode; params: { lang: string } }) {
-  const lang = (await params).lang
+export default async function ({ children, params }: PropsWithChildren & PageLangParam) {
+  const lang = (await params).locale
   initLingui(lang)
 
   return (

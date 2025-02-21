@@ -80,6 +80,7 @@
     "lucide-react": "^0.284.0",
     "negotiator": "^1.0.0",
     "next": "15.1.6",
+    "next-i18n-router": "^5.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
