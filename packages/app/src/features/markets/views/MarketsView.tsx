@@ -8,7 +8,7 @@ import { MarketsTable } from '../components/markets-table/MarketsTable'
 import { SummaryTiles } from '../components/summary-tiles/SummaryTiles'
 import { MarketStats } from '../logic/aggregate-stats'
 import { MarketEntry } from '../types'
-
+import { Trans } from '@lingui/react/macro'
 export interface MarketsViewProps {
   marketStats: MarketStats
   activeAndPausedMarketEntries: MarketEntry[]
@@ -26,7 +26,7 @@ export function MarketsView({
     <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
       <div className="flex flex-row items-center gap-4">
         <Typography variant="h2" gradient>
-          Markets
+          <Trans>Markets</Trans>
         </Typography>
       </div>
       <SummaryTiles marketStats={marketStats} />

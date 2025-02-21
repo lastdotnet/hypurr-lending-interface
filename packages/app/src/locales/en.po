@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:40
 msgid "A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering the chance of liquidating your assets."
@@ -34,6 +40,7 @@ msgstr "As the utilization rate fluctuates, the interest rates offered to suppli
 #: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:36
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:35
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:43
+#: src/features/markets/components/markets-table/MarketsTable.tsx:31
 msgid "Assets"
 msgstr "Assets"
 
@@ -62,9 +69,79 @@ msgstr "Balance:"
 msgid "Borrow"
 msgstr "Borrow"
 
+#: src/features/markets/components/markets-table/MarketsTable.tsx:92
+msgid "Borrow APY"
+msgstr "Borrow APY"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:94
+msgid "Borrow limit reached"
+msgstr "Borrow limit reached"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:92
+#: src/features/market-details/components/status-panel/components/Header.tsx:48
+msgid "Can be borrowed"
+msgstr "Can be borrowed"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:95
+msgid "Can be borrowed only in siloed mode"
+msgstr "Can be borrowed only in siloed mode"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:50
+msgid "Can be borrowed only in Siloed Mode"
+msgstr "Can be borrowed only in Siloed Mode"
+
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:74
 msgid "Can be collateral"
 msgstr "Can be collateral"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:59
+msgid "Can be lent"
+msgstr "Can be lent"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:80
+#: src/features/market-details/components/status-panel/components/Header.tsx:28
+msgid "Can be supplied"
+msgstr "Can be supplied"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:86
+#: src/features/market-details/components/status-panel/components/Header.tsx:37
+msgid "Can be used as collateral"
+msgstr "Can be used as collateral"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:39
+msgid "Can be used as collateral in Isolation Mode"
+msgstr "Can be used as collateral in Isolation Mode"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:88
+msgid "Can be used as collateral only in isolation mode"
+msgstr "Can be used as collateral only in isolation mode"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:68
+msgid "Can be used in E-Mode"
+msgstr "Can be used in E-Mode"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:93
+#: src/features/market-details/components/status-panel/components/Header.tsx:52
+msgid "Cannot be borrowed"
+msgstr "Cannot be borrowed"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:61
+msgid "Cannot be lent"
+msgstr "Cannot be lent"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:81
+#: src/features/market-details/components/status-panel/components/Header.tsx:30
+msgid "Cannot be supplied"
+msgstr "Cannot be supplied"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:87
+#: src/features/market-details/components/status-panel/components/Header.tsx:41
+msgid "Cannot be used as collateral"
+msgstr "Cannot be used as collateral"
+
+#: src/features/market-details/components/status-panel/components/Header.tsx:70
+msgid "Cannot be used in E-Mode"
+msgstr "Cannot be used in E-Mode"
 
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:68
 msgid "Collateral"
@@ -104,6 +181,14 @@ msgstr "Deposit"
 #: src/features/easy-borrow/components/BorrowRateBanner.tsx:13
 msgid "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
 msgstr "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
+
+#: src/features/markets/components/markets-table/MarketsTable.tsx:56
+msgid "Deposit APY"
+msgstr "Deposit APY"
+
+#: src/features/markets/components/markets-table/MarketsTable.tsx:134
+msgid "Details"
+msgstr "Details"
 
 #: src/features/my-portfolio/components/borrow-table/components/EModeIndicator.tsx:17
 msgid "E-Mode"
@@ -154,6 +239,10 @@ msgstr "Keep in mind that these calculations follow the protocol's rules, which 
 msgid "Liquidation Price"
 msgstr "Liquidation Price"
 
+#: src/features/markets/views/MarketsView.tsx:29
+msgid "Markets"
+msgstr "Markets"
+
 #: src/features/my-portfolio/components/position/Position.tsx:218
 msgid "max"
 msgstr "max"
@@ -202,6 +291,14 @@ msgstr "Show"
 msgid "Stablecoins"
 msgstr "Stablecoins"
 
+#: src/features/markets/components/markets-table/MarketsTable.tsx:110
+msgid "Status"
+msgstr "Status"
+
+#: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:82
+msgid "Supply limit reached"
+msgstr "Supply limit reached"
+
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:27
 msgid "The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each reserve pool."
 msgstr "The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each reserve pool."
@@ -217,6 +314,30 @@ msgstr "The interest rate for borrowing on Hypurr is a live metric that adjusts 
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:56
 msgid "This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans."
 msgstr "This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans."
+
+#: src/features/markets/components/summary-tile/SummaryTile.tsx:27
+msgid "Total available"
+msgstr "Total available"
+
+#: src/features/markets/components/markets-table/MarketsTable.tsx:73
+msgid "Total borrowed"
+msgstr "Total borrowed"
+
+#: src/features/markets/components/summary-tile/SummaryTile.tsx:31
+msgid "Total borrows"
+msgstr "Total borrows"
+
+#: src/features/markets/components/summary-tile/SummaryTile.tsx:19
+msgid "Total market size"
+msgstr "Total market size"
+
+#: src/features/markets/components/markets-table/MarketsTable.tsx:37
+msgid "Total supplied"
+msgstr "Total supplied"
+
+#: src/features/markets/components/summary-tile/SummaryTile.tsx:23
+msgid "Total value locked"
+msgstr "Total value locked"
 
 #: src/ui/molecules/data-table/components/TokenWithLogo.tsx:34
 #: src/features/market-details/components/my-wallet/components/TokenBalance.tsx:30

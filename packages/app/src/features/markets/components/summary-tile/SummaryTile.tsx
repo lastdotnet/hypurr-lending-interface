@@ -1,6 +1,7 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
 import { Tile, TileProps } from './components/Tile'
+import { msg } from '@lingui/core/macro'
 
 interface SummaryTileProps {
   variant: 'total-market-size' | 'total-value-locked' | 'total-available' | 'total-borrows'
@@ -15,18 +16,18 @@ export function SummaryTile({ variant, USDValue, 'data-testid': dataTestId }: Su
 const tileProps: Record<SummaryTileProps['variant'], Omit<TileProps, 'USDValue' | 'index'>> = {
   'total-market-size': {
     icon: assets.markets.chart,
-    title: 'Total market size',
+    title: msg`Total market size`,
   },
   'total-value-locked': {
     icon: assets.markets.lock,
-    title: 'Total value locked',
+    title: msg`Total value locked`,
   },
   'total-available': {
     icon: assets.markets.inputOutput,
-    title: 'Total available',
+    title: msg`Total available`,
   },
   'total-borrows': {
     icon: assets.markets.output,
-    title: 'Total borrows',
+    title: msg`Total borrows`,
   },
 }
