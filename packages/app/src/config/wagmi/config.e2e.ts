@@ -9,7 +9,7 @@ import { createMockConnector } from '@/domain/wallet/createMockConnector'
 
 import { viemAddressSchema } from '@/domain/common/validation'
 import { getConfig } from './config.default'
-import { hyperTestnet } from '../chain/constants'
+import { hyperEVM, hyperTestnet } from '../chain/constants'
 import { VIEM_TIMEOUT_ON_FORKS } from '../consts'
 
 export const PLAYWRIGHT_CHAIN_ID = '__PLAYWRIGHT_CHAIN_ID' as const
@@ -80,6 +80,7 @@ export function getMockConfig(sandboxNetwork?: SandboxNetwork): Config {
 
 const chainIdToChain: Record<number, Chain> = {
   [hyperTestnet.id]: hyperTestnet,
+  [hyperEVM.id]: hyperEVM,
   [gnosis.id]: gnosis,
   [mainnet.id]: mainnet,
   [base.id]: {

@@ -1,5 +1,4 @@
 import withImages from 'next-images'
-
 import { execSync } from 'node:child_process'
 
 const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
@@ -18,8 +17,14 @@ const nextConfig = withImages({
   },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
+    webpackBuildWorker: true,
   },
   webpack(config) {
+    // Disable webpack caching in production
+    if (process.env.NODE_ENV === 'production') {
+      config.cache = false
+    }
+
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 

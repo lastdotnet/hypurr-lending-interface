@@ -1,5 +1,4 @@
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { assets } from '@/ui/assets'
 import { Info } from '@/ui/molecules/info/Info'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
@@ -18,7 +17,6 @@ export function SkyBadge({ tokens }: SkyBadgeProps) {
       )}
       data-testid={testIds.dialog.transactionOverview.skyBadge}
     >
-      <img src={assets.token.sky} className="h-5 w-5 rounded-full border-2 border-[#DBCAF4]" />
       <div className="flex-1 font-light">
         <span className="hidden font-medium md:inline">Powered by Sky </span>
         <span className="hidden md:inline">(prev. MakerDAO). </span>
