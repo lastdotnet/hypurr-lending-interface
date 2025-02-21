@@ -18,6 +18,7 @@ import { InfoTilesGrid } from './components/InfoTilesGrid'
 import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { Subheader } from './components/Subheader'
 import { StatusIcon } from './components/status-icon/StatusIcon'
+import { Trans } from '@lingui/react/macro'
 
 interface BorrowStatusPanelProps {
   status: BorrowEligibilityStatus
@@ -55,7 +56,9 @@ export function BorrowStatusPanel({
         <Subheader status={status} />
         <InfoTilesGrid>
           <InfoTile>
-            <InfoTile.Label>Total borrowed</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Total borrowed</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               {token.format(totalBorrowed, { style: 'compact' })} {token.symbol}
             </InfoTile.Value>
@@ -63,13 +66,17 @@ export function BorrowStatusPanel({
           </InfoTile>
           <InfoTile>
             <InfoTile.Label>
-              <ApyTooltip variant="borrow">Borrow APY</ApyTooltip>
+              <ApyTooltip variant="borrow">
+                <Trans>Borrow APY</Trans>
+              </ApyTooltip>
             </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(apy)}</InfoTile.Value>
           </InfoTile>
 
           <InfoTile>
-            <InfoTile.Label>Reserve factor</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Reserve factor</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(reserveFactor)}</InfoTile.Value>
           </InfoTile>
 

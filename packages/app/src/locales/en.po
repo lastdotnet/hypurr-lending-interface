@@ -1,17 +1,11 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-02-21 14:52-0700\n"
+"POT-Creation-Date: 2025-02-21 15:52-0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
 
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:40
 msgid "A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering the chance of liquidating your assets."
@@ -36,6 +30,12 @@ msgstr "APY"
 msgid "As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This means that the APY for supplying assets is responsive to market conditions and can vary based on the demand for borrowing within each pool."
 msgstr "As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This means that the APY for supplying assets is responsive to market conditions and can vary based on the demand for borrowing within each pool."
 
+#: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:33
+#: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:36
+#: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:34
+msgid "Asset"
+msgstr "Asset"
+
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:38
 #: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:36
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:35
@@ -45,16 +45,27 @@ msgid "Assets"
 msgstr "Assets"
 
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:47
+#: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:64
 msgid "Available"
 msgstr "Available"
 
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:28
+#: src/features/market-details/components/my-wallet/components/BorrowRow.tsx:38
 msgid "Available to borrow"
 msgstr "Available to borrow"
 
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:26
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:72
 msgid "Available to deposit"
 msgstr "Available to deposit"
+
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:63
+msgid "Available to lend"
+msgstr "Available to lend"
+
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:81
+msgid "Available to withdraw"
+msgstr "Available to withdraw"
 
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:44
 msgid "Balance"
@@ -66,16 +77,29 @@ msgstr "Balance:"
 
 #: src/features/my-portfolio/components/position/Position.tsx:163
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:92
+#: src/features/market-details/components/my-wallet/components/BorrowRow.tsx:39
 msgid "Borrow"
 msgstr "Borrow"
 
 #: src/features/markets/components/markets-table/MarketsTable.tsx:92
+#: src/features/market-details/components/status-panel/BorrowStatusPanel.tsx:70
+#: src/features/market-details/components/charts/interest-yield/InterestYieldChart.tsx:62
+#: src/features/market-details/components/charts/interest-yield/components/Chart.tsx:198
 msgid "Borrow APY"
 msgstr "Borrow APY"
 
 #: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:94
 msgid "Borrow limit reached"
 msgstr "Borrow limit reached"
+
+#: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:58
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:54
+msgid "Borrowed"
+msgstr "Borrowed"
+
+#: src/features/market-details/components/my-wallet/components/BorrowRow.tsx:21
+msgid "Borrowing is not enabled for this asset."
+msgstr "Borrowing is not enabled for this asset."
 
 #: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:92
 #: src/features/market-details/components/status-panel/components/Header.tsx:48
@@ -143,6 +167,10 @@ msgstr "Cannot be used as collateral"
 msgid "Cannot be used in E-Mode"
 msgstr "Cannot be used in E-Mode"
 
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:93
+msgid "Capacity"
+msgstr "Capacity"
+
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:68
 msgid "Collateral"
 msgstr "Collateral"
@@ -158,6 +186,12 @@ msgstr "Connect wallet"
 #: src/features/my-portfolio/views/GuestView.tsx:16
 msgid "Connect your wallet to use Hypurr"
 msgstr "Connect your wallet to use Hypurr"
+
+#: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:39
+#: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:42
+#: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:40
+msgid "Contract"
+msgstr "Contract"
 
 #. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
 #: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:74
@@ -175,6 +209,7 @@ msgstr "Debt"
 
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:50
 #: src/features/my-portfolio/components/deposit-table/DepositTable.tsx:93
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:73
 msgid "Deposit"
 msgstr "Deposit"
 
@@ -183,8 +218,13 @@ msgid "Deposit and borrow native Hyperliquid assets for leveraged yield that pur
 msgstr "Deposit and borrow native Hyperliquid assets for leveraged yield that purrrrrrs."
 
 #: src/features/markets/components/markets-table/MarketsTable.tsx:56
+#: src/features/market-details/components/status-panel/SupplyStatusPanel.tsx:64
 msgid "Deposit APY"
 msgstr "Deposit APY"
+
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:72
+msgid "Deposit DAI as collateral"
+msgstr "Deposit DAI as collateral"
 
 #: src/features/markets/components/markets-table/MarketsTable.tsx:134
 msgid "Details"
@@ -211,6 +251,10 @@ msgstr "Estimated price of {0} at which the position may be liquidated."
 msgid "ETH Correlated"
 msgstr "ETH Correlated"
 
+#: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:18
+msgid "Fixed Price"
+msgstr "Fixed Price"
+
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:30
 msgid "Health Factor"
 msgstr "Health Factor"
@@ -231,13 +275,47 @@ msgstr "In Wallet"
 msgid "Inactive"
 msgstr "Inactive"
 
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:80
+msgid "Instantly available"
+msgstr "Instantly available"
+
+#: src/features/market-details/components/status-panel/SupplyStatusPanel.tsx:104
+msgid "Instantly available supply cap:"
+msgstr "Instantly available supply cap:"
+
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:46
 msgid "Keep in mind that these calculations follow the protocol's rules, which might change over time."
 msgstr "Keep in mind that these calculations follow the protocol's rules, which might change over time."
 
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:64
+msgid "Lend"
+msgstr "Lend"
+
+#: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:41
+msgid "Liquidation penalty"
+msgstr "Liquidation penalty"
+
 #: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:63
 msgid "Liquidation Price"
 msgstr "Liquidation Price"
+
+#: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:35
+msgid "Liquidation threshold"
+msgstr "Liquidation threshold"
+
+#: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:38
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:46
+msgid "Market Overview"
+msgstr "Market Overview"
+
+#: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:19
+msgid "Market Price"
+msgstr "Market Price"
+
+#: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:46
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:60
+msgid "Market size"
+msgstr "Market size"
 
 #: src/features/markets/views/MarketsView.tsx:29
 msgid "Markets"
@@ -246,6 +324,16 @@ msgstr "Markets"
 #: src/features/my-portfolio/components/position/Position.tsx:218
 msgid "max"
 msgstr "max"
+
+#. placeholder {0}: formatPercentage(maxLoanToValue)
+#: src/features/easy-borrow/components/form/LoanToValue.tsx:29
+msgid "max {0}"
+msgstr "max {0}"
+
+#: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:29
+#: src/features/easy-borrow/components/form/LoanToValue.tsx:26
+msgid "Max LTV"
+msgstr "Max LTV"
 
 #: src/ui/organisms/responsive-data-table/ResponsiveDataTable.tsx:83
 msgid "More"
@@ -259,6 +347,10 @@ msgstr "My borrows"
 msgid "My deposits"
 msgstr "My deposits"
 
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:55
+msgid "My Wallet"
+msgstr "My Wallet"
+
 #: src/features/my-portfolio/components/position/Position.tsx:55
 msgid "Net APY"
 msgstr "Net APY"
@@ -271,13 +363,50 @@ msgstr "No E-Mode"
 msgid "off"
 msgstr "off"
 
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:91
+msgid "Oracle Contract"
+msgstr "Oracle Contract"
+
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:60
+msgid "Oracle Price"
+msgstr "Oracle Price"
+
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:28
+#: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:13
+#: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:15
+#: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:14
+msgid "Oracle type"
+msgstr "Oracle type"
+
+#: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:25
+#: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:28
+#: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:26
+msgid "Price"
+msgstr "Price"
+
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:104
+msgid "Price Contract"
+msgstr "Price Contract"
+
+#: src/features/market-details/components/oracle-panel/components/ProvidersList.tsx:15
+msgid "Provided by"
+msgstr "Provided by"
+
 #: src/features/easy-borrow/components/BorrowRateBanner.tsx:9
 msgid "Quick Deposit & Borrow"
 msgstr "Quick Deposit & Borrow"
 
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:78
+msgid "Ratio Contract"
+msgstr "Ratio Contract"
+
 #: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:77
 msgid "Repay"
 msgstr "Repay"
+
+#: src/features/market-details/components/status-panel/BorrowStatusPanel.tsx:78
+msgid "Reserve factor"
+msgstr "Reserve factor"
 
 #: src/features/dialogs/e-mode/views/EModeView.tsx:45
 msgid "Set E-Mode Category"
@@ -294,6 +423,10 @@ msgstr "Stablecoins"
 #: src/features/markets/components/markets-table/MarketsTable.tsx:110
 msgid "Status"
 msgstr "Status"
+
+#: src/features/market-details/components/status-panel/SupplyStatusPanel.tsx:104
+msgid "Supply cap"
+msgstr "Supply cap"
 
 #: src/features/markets/components/asset-status-badge/AssetStatusBadge.tsx:82
 msgid "Supply limit reached"
@@ -315,11 +448,21 @@ msgstr "The interest rate for borrowing on Hypurr is a live metric that adjusts 
 msgid "This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans."
 msgstr "This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans."
 
+#: src/features/market-details/components/my-wallet/components/BorrowRow.tsx:29
+msgid "To borrow you need to deposit any other asset first."
+msgstr "To borrow you need to deposit any other asset first."
+
+#: src/features/market-details/views/components/TokenLinksDropdown.tsx:36
+msgid "Token Contracts"
+msgstr "Token Contracts"
+
 #: src/features/markets/components/summary-tile/SummaryTile.tsx:27
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:66
 msgid "Total available"
 msgstr "Total available"
 
 #: src/features/markets/components/markets-table/MarketsTable.tsx:73
+#: src/features/market-details/components/status-panel/BorrowStatusPanel.tsx:60
 msgid "Total borrowed"
 msgstr "Total borrowed"
 
@@ -332,6 +475,7 @@ msgid "Total market size"
 msgstr "Total market size"
 
 #: src/features/markets/components/markets-table/MarketsTable.tsx:37
+#: src/features/market-details/components/status-panel/SupplyStatusPanel.tsx:54
 msgid "Total supplied"
 msgstr "Total supplied"
 
@@ -339,14 +483,34 @@ msgstr "Total supplied"
 msgid "Total value locked"
 msgstr "Total value locked"
 
+#: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:17
+msgid "Underlying Asset Price"
+msgstr "Underlying Asset Price"
+
+#: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:52
+#: src/features/market-details/components/market-overview/DaiMarketOverview.tsx:73
+#: src/features/market-details/components/charts/market-overview/components/Legend.tsx:17
+msgid "Utilization rate"
+msgstr "Utilization rate"
+
+#: src/features/market-details/components/charts/interest-yield/InterestYieldChart.tsx:68
+#: src/features/market-details/components/charts/interest-yield/components/Chart.tsx:195
+msgid "Utilization Rate"
+msgstr "Utilization Rate"
+
 #: src/ui/molecules/data-table/components/TokenWithLogo.tsx:34
 #: src/features/market-details/components/my-wallet/components/TokenBalance.tsx:30
 msgid "WHYPE and HYPE balances are combined."
 msgstr "WHYPE and HYPE balances are combined."
 
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:99
+#: src/features/market-details/components/my-wallet/MyWallet.tsx:82
 msgid "Withdraw"
 msgstr "Withdraw"
+
+#: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:32
+msgid "Yielding Fixed Price"
+msgstr "Yielding Fixed Price"
 
 #. placeholder {0}: USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.max)
 #: src/features/my-portfolio/components/position/Position.tsx:223

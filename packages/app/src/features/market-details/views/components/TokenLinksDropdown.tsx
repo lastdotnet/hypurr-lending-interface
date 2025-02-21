@@ -14,6 +14,7 @@ import {
 } from '@/ui/atoms/dropdown/DropdownMenu'
 import { Link } from '@/ui/atoms/link/Link'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
+import { Trans } from '@lingui/react/macro'
 import { PropsWithChildren, ReactNode } from 'react'
 
 export interface TokenLinksDropdownProps {
@@ -31,7 +32,9 @@ export function TokenLinksDropdown({ token, aToken, variableDebtTokenAddress, ch
   ]
   return (
     <TokenLinksWrapper>
-      <DropdownMenuLabel className="p-4 pb-0 font-normal">Token Contracts</DropdownMenuLabel>
+      <DropdownMenuLabel className="p-4 pb-0 font-normal">
+        <Trans>Token Contracts</Trans>
+      </DropdownMenuLabel>
       {tokenContractsLinks.map((contractLink) => (
         <BlockExplorerAddressLink key={contractLink.address} address={contractLink.address} chainId={chainId}>
           <TokenLinksDropdownItem {...contractLink} />

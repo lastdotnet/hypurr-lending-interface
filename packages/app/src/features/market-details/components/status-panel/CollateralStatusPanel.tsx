@@ -9,7 +9,7 @@ import { InfoTilesGrid } from './components/InfoTilesGrid'
 import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { Subheader } from './components/Subheader'
 import { StatusIcon } from './components/status-icon/StatusIcon'
-
+import { Trans } from '@lingui/react/macro'
 export function CollateralStatusPanel(props: CollateralStatusInfo) {
   const { status, maxLtv, liquidationThreshold, liquidationPenalty } = props
 
@@ -25,15 +25,21 @@ export function CollateralStatusPanel(props: CollateralStatusInfo) {
         <Subheader status={status} />
         <InfoTilesGrid>
           <InfoTile>
-            <InfoTile.Label>Max LTV</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Max LTV</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(maxLtv)}</InfoTile.Value>
           </InfoTile>
           <InfoTile>
-            <InfoTile.Label>Liquidation threshold</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Liquidation threshold</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(liquidationThreshold)}</InfoTile.Value>
           </InfoTile>
           <InfoTile>
-            <InfoTile.Label>Liquidation penalty</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Liquidation penalty</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(liquidationPenalty)}</InfoTile.Value>
           </InfoTile>
         </InfoTilesGrid>

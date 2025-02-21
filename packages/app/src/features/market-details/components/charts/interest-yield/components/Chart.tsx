@@ -17,6 +17,7 @@ import { colors } from '@/ui/charts/colors'
 import { Margins, defaultMargins } from '@/ui/charts/defaults'
 import { formatPercentageTick } from '@/ui/charts/utils'
 import { GraphDataPoint } from '../types'
+import { Trans } from '@lingui/react/macro'
 
 export interface ChartProps {
   width: number
@@ -190,8 +191,12 @@ function TooltipContent({ data }: { data: GraphDataPoint }) {
   return (
     <div className="flex gap-3 rounded-xl border border-slate-700/10 bg-white p-3 shadow">
       <div className="flex flex-col gap-3 text-slate-500 text-xs leading-none">
-        <p>Utilization Rate:</p>
-        <p>Borrow APY:</p>
+        <p>
+          <Trans>Utilization Rate</Trans>
+        </p>
+        <p>
+          <Trans>Borrow APY</Trans>
+        </p>
       </div>
       <div className="flex flex-col gap-3 text-sky-950 text-xs leading-none">
         <p>{formatPercentage(Percentage(data.x))}</p>

@@ -2,6 +2,7 @@ import { OracleFeedProvider } from '@/config/chain/types'
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { raise } from '@/utils/assert'
+import { Trans } from '@lingui/react/macro'
 
 interface ProvidersListProps {
   providers: OracleFeedProvider[]
@@ -10,7 +11,9 @@ interface ProvidersListProps {
 export function ProvidersList({ providers }: ProvidersListProps) {
   return (
     <div className="grid grid-cols-[auto_1fr] gap-2 border-white/15 border-t pt-6 sm:gap-6">
-      <div className="my-auto text-sm text-white/40 leading-none sm:text-xs sm:leading-none">Provided by</div>
+      <div className="my-auto text-sm text-white/40 leading-none sm:text-xs sm:leading-none">
+        <Trans>Provided by</Trans>
+      </div>
 
       <div
         className="mt-auto flex flex-row-reverse flex-wrap gap-2 place-self-end sm:flex-row sm:gap-4 sm:place-self-auto"

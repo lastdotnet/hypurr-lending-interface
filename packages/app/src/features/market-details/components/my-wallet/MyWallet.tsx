@@ -11,6 +11,7 @@ import { TokenBalance } from './components/TokenBalance'
 import { WalletPanelContent } from './components/WalletPanelContent'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 export interface MyWalletProps {
   token: Token
@@ -46,18 +47,21 @@ export function MyWallet({
   withdraw,
   openDialog,
 }: MyWalletProps) {
+  const { t } = useLingui()
   return (
     <Panel.Wrapper>
       <WalletPanelContent>
-        <h3 className="font-normal text-base md:text-xl">My Wallet</h3>
+        <h3 className="font-normal text-base md:text-xl">
+          <Trans>My Wallet</Trans>
+        </h3>
         <TokenBalance token={token} balance={tokenBalance} isCombinedBalance={isCombinedBalance} />
         {lend && (
           <ActionRow
             token={lend.token}
             value={lend.available}
             onAction={() => openDialog(depositDialogConfig, { token: lend.token })}
-            label="Available to lend"
-            buttonText="Lend"
+            label={t`Available to lend`}
+            buttonText={t`Lend`}
           />
         )}
         {token.symbol !== TokenSymbol('USDXL') && (
@@ -65,8 +69,8 @@ export function MyWallet({
             token={deposit.token}
             value={deposit.available}
             onAction={() => openDialog(depositDialogConfig, { token: deposit.token })}
-            label={token.symbol === 'DAI' ? 'Deposit DAI as collateral' : 'Available to deposit'}
-            buttonText="Deposit"
+            label={token.symbol === 'DAI' ? t`Deposit DAI as collateral` : t`Available to deposit`}
+            buttonText={t`Deposit`}
           />
         )}
         {withdraw && (
@@ -74,8 +78,8 @@ export function MyWallet({
             token={withdraw.token}
             value={withdraw.available}
             onAction={() => openDialog(withdrawDialogConfig, { token: withdraw.token })}
-            label="Available to withdraw"
-            buttonText="Withdraw"
+            label={t`Available to withdraw`}
+            buttonText={t`Withdraw`}
           />
         )}
         <BorrowRow
