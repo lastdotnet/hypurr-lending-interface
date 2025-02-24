@@ -8,6 +8,7 @@ import { AirdropDetails } from './AirdropDetails'
 import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
 import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
 import { cn } from '@/ui/utils/style'
+import { Trans } from '@lingui/react/macro'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber
@@ -39,7 +40,7 @@ export function AirdropBadgeLayout({
                   <Skeleton className="h-5 w-7" />
                 ) : (
                   <span className="font-bold text-white text-xs" data-chromatic="ignore">
-                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })} points
+                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })} <Trans>points</Trans>
                   </span>
                 )}
               </span>

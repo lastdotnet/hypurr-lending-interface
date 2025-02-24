@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-
+import { Trans } from '@lingui/react/macro'
 import { paths } from '@/config/paths'
 import { LinkButton } from '@/ui/atoms/button/Button'
 
@@ -7,7 +7,7 @@ export function BackNav() {
   return (
     <div className="flex items-center gap-1 px-3 sm:px-0">
       <LinkButton href={paths.markets} variant="text" size="sm" spaceAround="none" prefixIcon={<ArrowLeft size={16} />}>
-        Back to Markets
+        <Trans>Back to Markets</Trans>
       </LinkButton>
     </div>
   )

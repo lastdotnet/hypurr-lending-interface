@@ -16,6 +16,8 @@ import {
 } from 'lucide-react'
 import { isTestnet } from '@/config/consts'
 import { useLingui } from '@lingui/react'
+import { msg } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -32,40 +34,40 @@ export interface PageLinksProps {
 const links = [
   {
     to: paths.easyBorrow,
-    label: 'Quick borrow',
+    label: msg`Quick borrow`,
     icon: ArrowRightLeftIcon,
   },
   {
     to: paths.dashboard,
-    label: 'Dashboard',
+    label: msg`Dashboard`,
     icon: LayoutGridIcon,
   },
   {
     to: paths.markets,
-    label: 'Markets',
+    label: msg`Markets`,
     icon: BarChartIcon,
   },
   {
-    label: 'Swap',
+    label: msg`Swap`,
     icon: ArrowDownUpIcon,
   },
   {
-    label: 'Referrals',
+    label: msg`Referrals`,
     icon: UserPlusIcon,
   },
   {
-    label: 'Isolated',
+    label: msg`Isolated`,
     icon: MessageSquareIcon,
   },
   {
-    label: 'Staking',
+    label: msg`Staking`,
     icon: WalletCardsIcon,
   },
   ...(isTestnet
     ? [
         {
           to: paths.faucet,
-          label: 'Faucet',
+          label: msg`Faucet`,
           icon: DropletIcon,
         },
       ]
@@ -73,7 +75,7 @@ const links = [
 ]
 
 export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksProps) {
-  const { i18n } = useLingui()
+  const { i18n, _ } = useLingui()
   return (
     <div
       className={cn(
@@ -81,17 +83,22 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
         mobileMenuCollapsed && 'hidden xl:flex',
       )}
     >
-      {links.map((link) =>
-        link.to ? (
-          <NavLink key={link.label} to={link.to} onClick={closeMobileMenu} Icon={link.icon} locale={i18n.locale}>
-            {link.label}
+      {links.map((link) => {
+        const label = _(link.label)
+
+        if (!link.to) {
+          return (
+            <PlaceholderNavLink key={label} Icon={link.icon}>
+              {label}
+            </PlaceholderNavLink>
+          )
+        }
+        return (
+          <NavLink key={label} to={link.to} onClick={closeMobileMenu} Icon={link.icon} locale={i18n.locale}>
+            {label}
           </NavLink>
-        ) : (
-          <PlaceholderNavLink key={link.label} Icon={link.icon}>
-            {link.label}
-          </PlaceholderNavLink>
-        ),
-      )}
+        )
+      })}
 
       <FeedbackFish projectId={process.env.NEXT_PUBLIC_FEEDBACK_FISH_PROJECT_ID || ''}>
         <button
@@ -101,7 +108,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
             'flex cursor-pointer items-center gap-4 p-3 xl:p-0',
           )}
         >
-          <MessageSquareIcon className="h-5 w-5" /> Give Feedback
+          <MessageSquareIcon className="h-5 w-5" /> <Trans>Give Feedback</Trans>
         </button>
       </FeedbackFish>
     </div>

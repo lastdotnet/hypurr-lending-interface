@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/ui/utils/style'
 import { cva } from 'class-variance-authority'
 import { LucideIcon } from 'lucide-react'
+import { Trans } from '@lingui/react/macro'
 
 interface NavLinkComponentProps {
   children: React.ReactNode
@@ -75,7 +76,7 @@ export function PlaceholderNavLink({ children, className, ...rest }: Placeholder
       className={cn('cursor-default', className)}
       postfix={
         <span className="mr-0 ml-auto block rounded-[6px] border border-white/15 bg-white/5 px-2 py-1 font-normal text-[11px] text-white/50 leading-tight">
-          Soon
+          <Trans>Soon</Trans>
         </span>
       }
     >
