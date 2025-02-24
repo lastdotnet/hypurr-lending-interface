@@ -30,7 +30,7 @@ export function SwapPanel(props: SwapPanelProps) {
       <Panel.Wrapper className="flex flex-col gap-4 bg-black p-4 md:p-6">
         <div className="flex flex-row items-center justify-between">
           <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
-          <SettingsPopOver />
+          {activeTab === Tab.Swap && <SettingsPopOver />}
         </div>
 
         {(() => {
