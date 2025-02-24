@@ -7,6 +7,8 @@ import { ToggleButton } from './ToggleButton'
 import { Button } from '@/ui/atoms/button/Button'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { TokenWithBalance } from '@/domain/common/types'
+import { PriceImpactWarning } from '@/features/swap/components/PriceImpactWarning'
+import { Percentage } from '@/domain/types/NumericValues'
 
 interface SwapFormProps {
   form: UseFormReturn<SwapFormSchema>
@@ -36,7 +38,9 @@ export function SwapForm(props: SwapFormProps) {
         )}
       </form>
 
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <PriceImpactWarning percentage={Percentage(0.01)} />
+
         <Typography variant="span" className="text-white/50 text-xs">
           Fees: $0.1
         </Typography>
