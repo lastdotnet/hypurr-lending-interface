@@ -7,6 +7,7 @@ import { ActionsGrid } from '../components/actions-grid/ActionsGrid'
 import { ActionHandler } from '../logic/types'
 import { SettingsDialog } from '../settings-dialog/components/SettingsDialog'
 import { UseSettingsDialogResult } from '../settings-dialog/logic/useSettingsDialog'
+import { Trans } from '@lingui/react/macro'
 
 const actionsPanelVariants = cva('', {
   variants: {
@@ -42,7 +43,7 @@ export function ActionsView({ actionHandlers, variant, settingsDisabled, setting
           element="h3"
           className={actionsTitleVariants({ variant })}
         >
-          Actions
+          <Trans>Actions</Trans>
         </Panel.Title>
         <SettingsDialog {...settingsDialogProps} disabled={settingsDisabled} />
       </Panel.Header>

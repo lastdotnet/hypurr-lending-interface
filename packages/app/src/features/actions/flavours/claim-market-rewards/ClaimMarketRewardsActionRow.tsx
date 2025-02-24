@@ -1,6 +1,6 @@
 import { assets } from '@/ui/assets'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
-
+import { Trans } from '@lingui/react/macro'
 import { ActionRow } from '../../components/action-row/ActionRow'
 import { ActionRowBaseProps } from '../../components/action-row/types'
 import { ClaimMarketRewardsAction } from './types'
@@ -23,7 +23,7 @@ export function ClaimMarketRewardsActionRow({
       <ActionRow.Icon path={assets.actions.withdraw} actionStatus={status} />
 
       <ActionRow.Title icon={<TokenIcon token={action.token} className="h-6" />} actionStatus={status}>
-        Claim rewards
+        <Trans>Claim rewards</Trans>
       </ActionRow.Title>
 
       <ActionRow.Description successMessage="Rewards claimed!" actionStatus={status} variant={variant} />
@@ -31,7 +31,7 @@ export function ClaimMarketRewardsActionRow({
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Claim
+        <Trans>Claim</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

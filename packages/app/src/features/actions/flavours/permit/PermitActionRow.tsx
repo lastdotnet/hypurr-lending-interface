@@ -4,7 +4,7 @@ import { ActionRow } from '../../components/action-row/ActionRow'
 import { ActionRowBaseProps } from '../../components/action-row/types'
 import { getFormattedValue } from '../../components/action-row/utils'
 import { PermitAction } from './types'
-
+import { Trans } from '@lingui/react/macro'
 export interface PermitActionRowProps extends ActionRowBaseProps {
   action: PermitAction
 }
@@ -19,7 +19,7 @@ export function PermitActionRow({ index, action, variant, actionHandlerState, on
       <ActionRow.Icon path={assets.actions.approve} actionStatus={status} />
 
       <ActionRow.Title icon={<TokenIcon token={action.token} className="h-6" />} actionStatus={status}>
-        Permit {formattedValue}
+        <Trans>Permit</Trans> {formattedValue}
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={successMessage} actionStatus={status} variant={variant} />
@@ -27,7 +27,7 @@ export function PermitActionRow({ index, action, variant, actionHandlerState, on
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Permit
+        <Trans>Permit</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

@@ -6,6 +6,7 @@ import { UpDownMarker } from '../../components/action-row/UpDownMarker'
 import { ActionRowBaseProps } from '../../components/action-row/types'
 import { getFormattedValue } from '../../components/action-row/utils'
 import { RepayAction } from './types'
+import { Trans } from '@lingui/react/macro'
 
 export interface RepayActionRowProps extends ActionRowBaseProps {
   action: RepayAction
@@ -21,7 +22,7 @@ export function RepayActionRow({ index, action, actionHandlerState, onAction, va
       <ActionRow.Icon path={assets.actions.repay} actionStatus={status} />
 
       <ActionRow.Title icon={<TokenIcon token={token} className="h-6" />} actionStatus={status}>
-        Repay with {formattedValue}
+        <Trans>Repay with</Trans> {formattedValue}
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={`Repaid ${formattedValue}!`} actionStatus={status} variant={variant}>
@@ -31,7 +32,7 @@ export function RepayActionRow({ index, action, actionHandlerState, onAction, va
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={actionHandlerState.status} action={action}>
-        Repay
+        <Trans>Repay</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

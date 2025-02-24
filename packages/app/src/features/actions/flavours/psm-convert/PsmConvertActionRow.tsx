@@ -4,6 +4,7 @@ import { ActionRowBaseProps } from '@/features/actions/components/action-row/typ
 import { assets, getTokenImage } from '@/ui/assets'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { PsmConvertAction } from './types'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 export interface PsmConvertActionRowProps extends ActionRowBaseProps {
   action: PsmConvertAction
@@ -16,17 +17,20 @@ export function PsmConvertActionRow({
   onAction,
   variant,
 }: PsmConvertActionRowProps) {
+  const { t } = useLingui()
   const { inToken, outToken } = action
   const tokenIconPaths = [getTokenImage(inToken.symbol), getTokenImage(outToken.symbol)]
   const status = actionHandlerState.status
-  const successMessage = `Converted ${inToken.format(action.amount, { style: 'auto' })} ${inToken.symbol}!`
+  const successMessage = t`Converted ${inToken.format(action.amount, { style: 'auto' })} ${inToken.symbol}!`
 
   return (
     <ActionRow index={index}>
       <ActionRow.Icon path={assets.actions.exchange} actionStatus={status} />
 
       <ActionRow.Title icon={<IconStack paths={tokenIconPaths} stackingOrder="last-on-top" />} actionStatus={status}>
-        Convert {inToken.symbol} to {outToken.symbol}
+        <Trans>
+          Convert {inToken.symbol} to {outToken.symbol}
+        </Trans>
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={successMessage} actionStatus={status} variant={variant}>
@@ -36,7 +40,7 @@ export function PsmConvertActionRow({
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Convert
+        <Trans>Convert</Trans>
       </ActionRow.Action>
     </ActionRow>
   )
