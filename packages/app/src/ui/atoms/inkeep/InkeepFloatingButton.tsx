@@ -3,6 +3,7 @@
 import { useInkeep } from '@/domain/hooks/useInkeep'
 import { Button, buttonVariants } from '@/ui/atoms/button/Button'
 import { cn } from '@/ui/utils/style'
+import { Trans } from '@lingui/react/macro'
 import { MessagesSquareIcon } from 'lucide-react'
 
 export function InkeepFloatingButton() {
@@ -13,7 +14,7 @@ export function InkeepFloatingButton() {
       onClick={handleOpen}
     >
       <MessagesSquareIcon className="h-4 w-4" />
-      Ask AI
+      <Trans>Ask AI</Trans>
     </Button>
   )
 }

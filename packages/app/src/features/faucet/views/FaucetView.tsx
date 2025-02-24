@@ -11,6 +11,7 @@ import { marketBalancesQueryKey } from '@/domain/wallet/marketBalances'
 import { useQueryClient } from '@tanstack/react-query'
 import { captureError } from '@/utils/sentry'
 import { FaucetError, FaucetTimeoutError } from '@/domain/errors/faucet'
+import { Trans } from '@lingui/react/macro'
 
 const MINT_COOLDOWN = 24 * 60 * 60 * 1000 // 24 hours
 const STORAGE_KEY = 'lastFaucetMint' as const
@@ -111,7 +112,7 @@ export function FaucetView({ setMintTx }: { setMintTx: (txHash: Address) => void
           default:
             return (
               <Button className="w-full" rounded="full" onClick={mint}>
-                Claim Faucet
+                <Trans>Claim Faucet</Trans>
               </Button>
             )
         }

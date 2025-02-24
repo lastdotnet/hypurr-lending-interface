@@ -5,13 +5,15 @@ import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { cn } from '@/ui/utils/style'
 
 import { EModeCategory } from '../types'
-import { useLingui } from '@lingui/react/macro'
+import { useLingui as useLinguiMacro } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react'
 
 interface EModeCategoryTileProps {
   eModeCategory: EModeCategory
 }
 
 export function EModeCategoryTile({ eModeCategory }: EModeCategoryTileProps) {
+  const { _ } = useLingui()
   if (eModeCategory.tokens.length === 0) {
     return null
   }
@@ -29,7 +31,7 @@ export function EModeCategoryTile({ eModeCategory }: EModeCategoryTileProps) {
         eModeCategory.isSelected && 'border-primary-bg',
       )}
     >
-      <h4 className={headerVariants({ variant })}>{eModeCategory.name}</h4>
+      <h4 className={headerVariants({ variant })}>{_(eModeCategory.translatedName)}</h4>
       <IconStack paths={iconPaths} maxIcons={4} />
       <ActivityBadge variant={variant} />
     </button>
@@ -37,7 +39,7 @@ export function EModeCategoryTile({ eModeCategory }: EModeCategoryTileProps) {
 }
 
 function ActivityBadge({ variant }: { variant: 'active' | 'inactive' }) {
-  const { t } = useLingui()
+  const { t } = useLinguiMacro()
 
   return <div className={activityBadgeVariants({ variant })}>{variant === 'active' ? t`Active` : t`Inactive`}</div>
 }

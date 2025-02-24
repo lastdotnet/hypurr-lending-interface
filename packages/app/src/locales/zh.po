@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-02-24 09:31-0700\n"
+"POT-Creation-Date: 2025-02-24 11:09-0700\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,6 +19,26 @@ msgstr ""
 msgid "{unstakeSuccessMessage} and claimed rewards"
 msgstr ""
 
+#: src/features/faucet/components/FaucetPanel.tsx:28
+msgid "1. Connect your wallet to the testnet"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:108
+msgid "1. Sign and connect X - (2X HYPE boost)"
+msgstr ""
+
+#: src/features/faucet/components/FaucetPanel.tsx:31
+msgid "2. Click \"Mint\" to receive your test tokens"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:126
+msgid "2. Follow @hypurrfi on X - (2X HYPE boost)"
+msgstr ""
+
+#: src/features/faucet/components/FaucetPanel.tsx:34
+msgid "3. Use your tokens to explore the app"
+msgstr ""
+
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:40
 msgid "A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering the chance of liquidating your assets."
 msgstr ""
@@ -27,12 +47,16 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:42
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:44
 msgid "Active"
 msgstr ""
 
 #: src/features/easy-borrow/components/form/LoanToValueSlider.tsx:168
 msgid "Aggressive"
+msgstr ""
+
+#: src/features/dialogs/e-mode/components/AvailableAssets.tsx:18
+msgid "All assets"
 msgstr ""
 
 #: src/features/easy-borrow/components/form/TokenSummary.tsx:18
@@ -41,6 +65,14 @@ msgstr ""
 
 #: src/features/easy-borrow/components/form/TokenSummary.tsx:18
 msgid "Already deposited"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:130
+msgid "Already following with account"
+msgstr ""
+
+#: src/features/dialogs/common/components/form/DialogForm.tsx:26
+msgid "Amount"
 msgstr ""
 
 #: src/features/my-portfolio/components/position/Position.tsx:49
@@ -63,6 +95,9 @@ msgstr ""
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:68
 #: src/features/easy-borrow/components/form/Deposits.tsx:52
 #: src/features/easy-borrow/components/form/Borrow.tsx:41
+#: src/features/dialogs/savings/migrate/common/components/TransactionOverview.tsx:37
+#: src/features/dialogs/savings/common/components/transaction-overview/TransactionOverview.tsx:36
+#: src/features/dialogs/savings/common/components/transaction-overview/components/TransactionOverviewPlaceholder.tsx:19
 msgid "APY"
 msgstr ""
 
@@ -73,6 +108,10 @@ msgstr ""
 
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:33
 msgid "As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This means that the APY for supplying assets is responsive to market conditions and can vary based on the demand for borrowing within each pool."
+msgstr ""
+
+#: src/ui/atoms/inkeep/InkeepFloatingButton.tsx:17
+msgid "Ask AI"
 msgstr ""
 
 #: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:33
@@ -92,6 +131,11 @@ msgstr ""
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:47
 #: src/features/market-details/components/market-overview/DefaultMarketOverview.tsx:64
 msgid "Available"
+msgstr ""
+
+#: src/features/dialogs/e-mode/components/AvailableAssets.tsx:16
+#: src/features/dialogs/e-mode/components/AvailableAssets.tsx:25
+msgid "Available assets"
 msgstr ""
 
 #: src/features/my-portfolio/components/borrow-table/BorrowTable.tsx:28
@@ -133,10 +177,16 @@ msgstr ""
 msgid "Borrow"
 msgstr ""
 
+#. placeholder {0}: borrowAsset.token.symbol
+#: src/features/dialogs/borrow/views/BorrowView.tsx:53
+msgid "Borrow {0}"
+msgstr ""
+
 #: src/features/markets/components/markets-table/MarketsTable.tsx:92
 #: src/features/market-details/components/status-panel/BorrowStatusPanel.tsx:70
 #: src/features/market-details/components/charts/interest-yield/InterestYieldChart.tsx:62
 #: src/features/market-details/components/charts/interest-yield/components/Chart.tsx:198
+#: src/features/dialogs/borrow/components/BorrowOverviewPanel.tsx:51
 msgid "Borrow APY"
 msgstr ""
 
@@ -223,22 +273,46 @@ msgstr ""
 msgid "Capacity"
 msgstr ""
 
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:77
+#: src/features/dialogs/e-mode/components/CategoriesGrid.tsx:12
+msgid "Category"
+msgstr ""
+
 #: src/features/actions/flavours/claim-market-rewards/ClaimMarketRewardsActionRow.tsx:34
 #: src/features/actions/flavours/claim-farm-rewards/ClaimFarmRewardsActionRow.tsx:39
 msgid "Claim"
 msgstr ""
 
+#: src/features/faucet/views/FaucetView.tsx:115
+msgid "Claim Faucet"
+msgstr ""
+
+#: src/features/farm-details/dialogs/claim/views/ClaimView.tsx:21
+#: src/features/dialogs/claim-rewards/views/ClaimRewardsView.tsx:21
 #: src/features/actions/flavours/claim-market-rewards/ClaimMarketRewardsActionRow.tsx:26
 #: src/features/actions/flavours/claim-farm-rewards/ClaimFarmRewardsActionRow.tsx:29
 msgid "Claim rewards"
 msgstr ""
 
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:133
+msgid "Click to verify."
+msgstr ""
+
 #: src/features/my-portfolio/components/my-deposit-table/MyDepositsTable.tsx:68
+#: src/features/dialogs/collateral/views/CollateralView.tsx:40
 msgid "Collateral"
 msgstr ""
 
 #: src/features/my-portfolio/components/position/Position.tsx:99
 msgid "Collateral deposited"
+msgstr ""
+
+#: src/features/dialogs/deposit/components/DepositOverviewPanel.tsx:23
+msgid "Collateralization"
+msgstr ""
+
+#: src/features/navbar/components/airdrop-badge/AirdropDetails.tsx:21
+msgid "Coming soon!"
 msgstr ""
 
 #: src/features/navbar/components/wallet-button/ConnectButton.tsx:8
@@ -247,6 +321,7 @@ msgstr ""
 
 #: src/features/my-portfolio/views/GuestView.tsx:19
 #: src/features/market-details/components/my-wallet/MyWalletDisconnected.tsx:22
+#: src/features/faucet/views/GuestView.tsx:10
 #: src/features/easy-borrow/components/form/EasyBorrowForm.tsx:108
 msgid "Connect wallet"
 msgstr ""
@@ -287,6 +362,10 @@ msgstr ""
 msgid "Convert {0} to {1}"
 msgstr ""
 
+#: src/features/dialogs/convert-stables/views/ConvertStablesView.tsx:34
+msgid "Convert Tokens"
+msgstr ""
+
 #: src/features/actions/flavours/withdraw-from-savings/WithdrawFromSavingsActionRow.tsx:24
 msgid "Converted"
 msgstr ""
@@ -298,6 +377,10 @@ msgstr ""
 #: src/features/actions/flavours/psm-convert/PsmConvertActionRow.tsx:24
 #: src/features/actions/flavours/deposit-to-savings/DepositToSavingsActionRow.tsx:23
 msgid "Converted {0} {1}!"
+msgstr ""
+
+#: src/features/faucet/views/SuccessView.tsx:80
+msgid "Copy link"
 msgstr ""
 
 #. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
@@ -315,6 +398,7 @@ msgid "Dashboard"
 msgstr ""
 
 #: src/features/my-portfolio/components/my-borrows-table/MyBorrowsTable.tsx:40
+#: src/features/dialogs/repay/components/RepayOverviewPanel.tsx:26
 msgid "Debt"
 msgstr ""
 
@@ -326,6 +410,11 @@ msgstr ""
 #: src/features/actions/flavours/deposit/DepositActionRow.tsx:24
 #: src/features/actions/flavours/deposit/DepositActionRow.tsx:34
 msgid "Deposit"
+msgstr ""
+
+#. placeholder {0}: initialToken.symbol
+#: src/features/dialogs/deposit/views/DepositView.tsx:42
+msgid "Deposit {0}"
 msgstr ""
 
 #. placeholder {0}: action.stakingToken.symbol
@@ -347,8 +436,16 @@ msgstr ""
 msgid "Deposit APY"
 msgstr ""
 
+#: src/features/dialogs/collateral/components/CollateralOverviewPanel.tsx:22
+msgid "Deposit balance"
+msgstr ""
+
 #: src/features/market-details/components/my-wallet/MyWallet.tsx:72
 msgid "Deposit DAI as collateral"
+msgstr ""
+
+#: src/features/dialogs/savings/deposit/views/SavingsDepositView.tsx:44
+msgid "Deposit to Savings"
 msgstr ""
 
 #. placeholder {0}: action.stakingToken.format(action.stakeAmount, { style: 'auto' })
@@ -374,8 +471,13 @@ msgstr ""
 msgid "disabled"
 msgstr ""
 
+#: src/features/dialogs/deposit/logic/collateralization.ts:10
 #: src/features/actions/flavours/set-use-as-collateral/SetUseAsCollateralActionRow.tsx:24
 msgid "Disabled"
+msgstr ""
+
+#: src/features/dialogs/deposit/logic/collateralization.ts:18
+msgid "Disabled (Isolated)"
 msgstr ""
 
 #: src/features/actions/flavours/downgrade/DowngradeActionRow.tsx:35
@@ -403,6 +505,10 @@ msgstr ""
 msgid "E-Mode allows you to borrow assets belonging to the selected category."
 msgstr ""
 
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:84
+msgid "E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means that when E-Mode is enabled, you will have higher borrowing power for assets in this category"
+msgstr ""
+
 #: src/features/my-portfolio/components/borrow-table/components/EModeIndicator.tsx:20
 msgid "Efficiency mode (E-Mode) increases your LTV for a selected category of assets up to 97%."
 msgstr ""
@@ -416,13 +522,31 @@ msgstr ""
 msgid "enabled"
 msgstr ""
 
+#: src/features/dialogs/deposit/logic/collateralization.ts:12
 #: src/features/actions/flavours/set-use-as-collateral/SetUseAsCollateralActionRow.tsx:24
 msgid "Enabled"
+msgstr ""
+
+#: src/features/dialogs/deposit/logic/collateralization.ts:16
+msgid "Enabled (Isolated)"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:145
+msgid "Error checking if following on X"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:140
+msgid "Error linking X account"
 msgstr ""
 
 #. placeholder {0}: liquidationDetails.tokenWithPrice.symbol
 #: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:65
 msgid "Estimated price of {0} at which the position may be liquidated."
+msgstr ""
+
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:19
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverview.tsx:44
+msgid "Estimated Rewards"
 msgstr ""
 
 #: src/domain/e-mode/constants.ts:11
@@ -442,6 +566,10 @@ msgstr ""
 msgid "Faucet"
 msgstr ""
 
+#: src/features/faucet/components/FaucetPanel.tsx:59
+msgid "Faucet is not available on mainnet. To mint testnet tokens, please visit <0>our testnet app</0>."
+msgstr ""
+
 #: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:18
 msgid "Fixed Price"
 msgstr ""
@@ -450,12 +578,25 @@ msgstr ""
 msgid "Give Feedback"
 msgstr ""
 
+#: src/features/dialogs/common/components/transaction-overview/HealthFactorChange.tsx:18
+#: src/features/dialogs/common/components/transaction-overview/HealthFactorChange.tsx:26
+msgid "Health factor"
+msgstr ""
+
 #: src/ui/organisms/health-factor-panel/HealthFactorPanel.tsx:30
 msgid "Health Factor"
 msgstr ""
 
+#: src/domain/common/risk.ts:40
+msgid "Healthy"
+msgstr ""
+
 #: src/ui/atoms/panel/CollapsiblePanel.tsx:73
 msgid "Hide"
+msgstr ""
+
+#: src/features/faucet/components/FaucetPanel.tsx:24
+msgid "How to use the faucet"
 msgstr ""
 
 #: src/ui/organisms/health-factor-panel/components/LiquidationOverview.tsx:25
@@ -466,7 +607,7 @@ msgstr ""
 msgid "In Wallet"
 msgstr ""
 
-#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:42
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.tsx:44
 msgid "Inactive"
 msgstr ""
 
@@ -490,11 +631,17 @@ msgstr ""
 msgid "Lend"
 msgstr ""
 
+#: src/features/faucet/views/SuccessView.tsx:73
+msgid "Link copied to clipboard!"
+msgstr ""
+
 #: src/ui/atoms/health-factor-gauge/HealthFactorGauge.tsx:56
 #: src/features/easy-borrow/components/form/LoanToValueSlider.tsx:115
+#: src/domain/common/risk.ts:37
 msgid "Liquidation"
 msgstr ""
 
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:69
 #: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:41
 msgid "Liquidation penalty"
 msgstr ""
@@ -503,6 +650,7 @@ msgstr ""
 msgid "Liquidation Price"
 msgstr ""
 
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:61
 #: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:35
 msgid "Liquidation threshold"
 msgstr ""
@@ -543,12 +691,19 @@ msgstr ""
 msgid "max {0}"
 msgstr ""
 
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:53
 #: src/features/market-details/components/status-panel/CollateralStatusPanel.tsx:29
 #: src/features/easy-borrow/components/form/LoanToValue.tsx:28
 msgid "Max LTV"
 msgstr ""
 
+#: src/features/dialogs/e-mode/components/LTVChange.tsx:16
+#: src/features/dialogs/e-mode/components/LTVChange.tsx:25
+msgid "Maximum LTV"
+msgstr ""
+
 #: src/features/easy-borrow/components/form/LoanToValueSlider.tsx:160
+#: src/domain/common/risk.ts:39
 msgid "Moderate"
 msgstr ""
 
@@ -574,12 +729,20 @@ msgstr ""
 msgid "Net APY"
 msgstr ""
 
+#: src/domain/common/risk.ts:41
+msgid "No debt"
+msgstr ""
+
 #: src/domain/e-mode/constants.ts:10
 msgid "No E-Mode"
 msgstr ""
 
 #: src/ui/molecules/e-mode-badge/EModeBadge.tsx:16
 msgid "off"
+msgstr ""
+
+#: src/features/dialogs/e-mode/views/SuccessView.tsx:20
+msgid "Option activated"
 msgstr ""
 
 #: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:91
@@ -595,6 +758,18 @@ msgstr ""
 #: src/features/market-details/components/oracle-panel/components/MarketOraclePanel.tsx:15
 #: src/features/market-details/components/oracle-panel/components/FixedOraclePanel.tsx:14
 msgid "Oracle type"
+msgstr ""
+
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:23
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverview.tsx:55
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:28
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverview.tsx:66
+#: src/features/dialogs/savings/migrate/common/components/TransactionOverview.tsx:62
+#: src/features/dialogs/savings/common/components/transaction-overview/TransactionOverview.tsx:53
+#: src/features/dialogs/savings/common/components/transaction-overview/components/TransactionOverviewPlaceholder.tsx:28
+#: src/features/dialogs/convert-stables/components/transaction-overview/TransactionOverview.tsx:44
+#: src/features/dialogs/common/components/transaction-overview/TransactionOverviewPlaceholder.tsx:22
+msgid "Outcome"
 msgstr ""
 
 #: src/features/actions/flavours/permit/PermitActionRow.tsx:22
@@ -628,6 +803,10 @@ msgstr ""
 msgid "Provided by"
 msgstr ""
 
+#: src/features/faucet/views/SuccessView.tsx:23
+msgid "Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)"
+msgstr ""
+
 #: src/features/navbar/components/PageLinks.tsx:37
 msgid "Quick borrow"
 msgstr ""
@@ -649,6 +828,11 @@ msgstr ""
 msgid "Repay"
 msgstr ""
 
+#. placeholder {0}: debtAsset.symbol
+#: src/features/dialogs/repay/views/RepayView.tsx:41
+msgid "Repay {0}"
+msgstr ""
+
 #: src/features/actions/flavours/repay/RepayActionRow.tsx:25
 msgid "Repay with"
 msgstr ""
@@ -659,6 +843,22 @@ msgstr ""
 
 #: src/features/actions/flavours/claim-farm-rewards/ClaimFarmRewardsActionRow.tsx:32
 msgid "Rewards claimed!"
+msgstr ""
+
+#: src/domain/common/risk.ts:38
+msgid "Risky"
+msgstr ""
+
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:18
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverview.tsx:37
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:23
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverview.tsx:48
+#: src/features/dialogs/savings/migrate/common/components/TransactionOverview.tsx:49
+#: src/features/dialogs/savings/common/components/transaction-overview/TransactionOverview.tsx:40
+#: src/features/dialogs/savings/common/components/transaction-overview/components/TransactionOverviewPlaceholder.tsx:23
+#: src/features/dialogs/convert-stables/components/transaction-overview/TransactionOverview.tsx:31
+#: src/features/dialogs/common/components/transaction-overview/TransactionOverviewPlaceholder.tsx:17
+msgid "Route"
 msgstr ""
 
 #: src/features/actions/flavours/withdraw-from-savings/WithdrawFromSavingsActionRow.tsx:44
@@ -675,6 +875,10 @@ msgstr ""
 
 #: src/features/actions/settings-dialog/components/SettingsDialog.tsx:61
 msgid "Settings are disabled while actions are in progress."
+msgstr ""
+
+#: src/features/faucet/views/SuccessView.tsx:95
+msgid "Share on X"
 msgstr ""
 
 #: src/ui/atoms/panel/CollapsiblePanel.tsx:78
@@ -701,6 +905,15 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#: src/features/dialogs/withdraw/components/WithdrawOverviewPanel.tsx:31
+msgid "Supply"
+msgstr ""
+
+#: src/features/dialogs/withdraw/components/WithdrawOverviewPanel.tsx:24
+#: src/features/dialogs/deposit/components/DepositOverviewPanel.tsx:20
+msgid "Supply APY"
+msgstr ""
+
 #: src/features/market-details/components/status-panel/SupplyStatusPanel.tsx:104
 msgid "Supply cap"
 msgstr ""
@@ -713,8 +926,20 @@ msgstr ""
 msgid "Swap"
 msgstr ""
 
+#: src/ui/layouts/app-layout/components/PageNotSupportedWarning.tsx:41
+msgid "Switch network"
+msgstr ""
+
+#: src/ui/layouts/app-layout/components/PageNotSupportedWarning.tsx:32
+msgid "Switch to other supported networks to unlock this page."
+msgstr ""
+
 #: src/features/navbar/components/wallet-button/UserProfileButton.tsx:22
 msgid "Testnet"
+msgstr ""
+
+#: src/features/faucet/components/FaucetPanel.tsx:15
+msgid "Testnet Token Faucet"
 msgstr ""
 
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:27
@@ -727,6 +952,14 @@ msgstr ""
 
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:50
 msgid "The interest rate for borrowing on Hypurr is a live metric that adjusts with each block confirmation, reflecting the most recent data based on the token pool's utilization rate."
+msgstr ""
+
+#: src/features/faucet/components/FaucetPanel.tsx:38
+msgid "There is a 24-hour cooldown period between mints."
+msgstr ""
+
+#: src/ui/layouts/app-layout/components/PageNotSupportedWarning.tsx:29
+msgid "This page is not supported on the network you are connected to."
 msgstr ""
 
 #: src/ui/molecules/apy-tooltip/ApyTooltip.tsx:56
@@ -772,8 +1005,36 @@ msgstr ""
 msgid "Total value locked"
 msgstr ""
 
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:17
+#: src/features/farm-details/dialogs/unstake/components/transaction-overview/TransactionOverview.tsx:36
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverviewPlaceholder.tsx:17
+#: src/features/farm-details/dialogs/stake/components/transaction-overview/TransactionOverview.tsx:42
+#: src/features/farm-details/dialogs/claim/components/transaction-overview/TransactionOverview.tsx:20
+#: src/features/dialogs/withdraw/components/WithdrawOverviewPanel.tsx:23
+#: src/features/dialogs/savings/migrate/common/components/TransactionOverview.tsx:35
+#: src/features/dialogs/savings/common/components/transaction-overview/TransactionOverview.tsx:34
+#: src/features/dialogs/savings/common/components/transaction-overview/components/TransactionOverviewPlaceholder.tsx:17
+#: src/features/dialogs/repay/components/RepayOverviewPanel.tsx:21
+#: src/features/dialogs/e-mode/components/EModeOverviewPanel.tsx:21
+#: src/features/dialogs/deposit/components/DepositOverviewPanel.tsx:19
+#: src/features/dialogs/convert-stables/components/transaction-overview/TransactionOverview.tsx:30
+#: src/features/dialogs/common/components/transaction-overview/TransactionOverviewPlaceholder.tsx:16
+#: src/features/dialogs/collateral/components/CollateralOverviewPanel.tsx:21
+#: src/features/dialogs/claim-rewards/components/ClaimRewardsOverviewPanel.tsx:14
+#: src/features/dialogs/borrow/components/BorrowOverviewPanel.tsx:35
+msgid "Transaction overview"
+msgstr ""
+
+#: src/features/dialogs/deposit/logic/collateralization.ts:14
+msgid "Unavailable"
+msgstr ""
+
 #: src/features/market-details/components/oracle-panel/components/UnderlyingAssetOraclePanel.tsx:17
 msgid "Underlying Asset Price"
+msgstr ""
+
+#: src/domain/common/risk.ts:36
+msgid "Unknown"
 msgstr ""
 
 #: src/features/actions/flavours/upgrade/UpgradeActionRow.tsx:35
@@ -811,6 +1072,15 @@ msgstr ""
 msgid "Variable Debt {0}"
 msgstr ""
 
+#: src/features/faucet/views/SuccessView.tsx:29
+#: src/features/dialogs/e-mode/views/SuccessView.tsx:24
+msgid "View in dashboard"
+msgstr ""
+
+#: src/features/faucet/views/SuccessView.tsx:43
+msgid "View Transaction"
+msgstr ""
+
 #: src/ui/molecules/data-table/components/TokenWithLogo.tsx:34
 #: src/features/market-details/components/my-wallet/components/TokenBalance.tsx:30
 msgid "WHYPE and HYPE balances are combined."
@@ -824,6 +1094,11 @@ msgstr ""
 msgid "Withdraw"
 msgstr ""
 
+#. placeholder {0}: withdrawAsset.token.symbol
+#: src/features/dialogs/withdraw/views/WithdrawView.tsx:45
+msgid "Withdraw {0}"
+msgstr ""
+
 #. placeholder {1}: action.stakingToken.symbol
 #. placeholder {2}: action.rewardToken.symbol
 #: src/features/actions/flavours/unstake/UnstakeActionRow.tsx:23
@@ -835,13 +1110,25 @@ msgstr ""
 msgid "Withdrew {formattedAmount} {0}"
 msgstr ""
 
+#: src/features/dialogs/common/components/transaction-overview/TransactionOutcome.tsx:18
+msgid "worth"
+msgstr ""
+
 #: src/features/market-details/components/oracle-panel/components/YieldingFixedOraclePanel.tsx:32
 msgid "Yielding Fixed Price"
+msgstr ""
+
+#: src/features/faucet/components/ConnectXButtonGroup.tsx:100
+msgid "You are claiming 2X testnet HYPE!"
 msgstr ""
 
 #. placeholder {0}: USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.max)
 #: src/features/my-portfolio/components/position/Position.tsx:223
 msgid "You can borrow up to {0}."
+msgstr ""
+
+#: src/features/market-details/components/status-panel/EModeStatusPanel.tsx:89
+msgid "You can enter E-Mode from your <0>Dashboard</0>. To learn more about E-Mode and its applied restrictions, visit the <1>Aave V3 Technical Paper</1>."
 msgstr ""
 
 #. placeholder {0}: USD_MOCK_TOKEN.formatUSD(positionSummary.borrow.current)

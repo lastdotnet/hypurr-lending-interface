@@ -1,6 +1,6 @@
 import { paths } from '@/config/paths'
 import { formatPercentage } from '@/domain/common/format'
-import { eModeCategoryIdToName } from '@/domain/e-mode/constants'
+import { eModeCategoryIdToTranslation } from '@/domain/e-mode/constants'
 import { EModeCategoryId } from '@/domain/e-mode/types'
 import { Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
@@ -18,6 +18,8 @@ import { InfoTilesGrid } from './components/InfoTilesGrid'
 import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { StatusIcon } from './components/status-icon/StatusIcon'
 import { TokenBadge } from './components/token-badge/TokenBadge'
+import { Trans } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react'
 
 export interface EModeStatusPanelProps {
   maxLtv: Percentage
@@ -36,7 +38,8 @@ export function EModeStatusPanel({
   eModeCategoryTokens,
   token,
 }: EModeStatusPanelProps) {
-  const categoryName = eModeCategoryIdToName[categoryId]
+  const { _ } = useLingui()
+  const categoryName = _(eModeCategoryIdToTranslation[categoryId])
 
   return (
     <Panel.Wrapper>
@@ -46,43 +49,51 @@ export function EModeStatusPanel({
         {token && <TokenBadge symbol={token.symbol} />}
         <InfoTilesGrid>
           <InfoTile>
-            <InfoTile.Label>Max LTV</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Max LTV</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               <WithArrow>{formatPercentage(maxLtv)}</WithArrow>
             </InfoTile.Value>
           </InfoTile>
           <InfoTile>
-            <InfoTile.Label>Liquidation threshold</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Liquidation threshold</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               <WithArrow>{formatPercentage(liquidationThreshold)}</WithArrow>
             </InfoTile.Value>
           </InfoTile>
           <InfoTile>
-            <InfoTile.Label>Liquidation penalty</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Liquidation penalty</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               <WithArrow reverseArrow>{formatPercentage(liquidationPenalty)}</WithArrow>
             </InfoTile.Value>
           </InfoTile>
           <InfoTile>
-            <InfoTile.Label>Category</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Category</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               <EModeBadge categoryId={categoryId} />
             </InfoTile.Value>
           </InfoTile>
           <p className="col-span-1 text-white/50 text-xs sm:col-span-3">
-            E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means that when
-            E-Mode is enabled, you will have higher borrowing power for assets in this category:{' '}
-            {eModeCategoryTokens.join(', ')}. You can enter E-Mode from your{' '}
-            <DocsLink href={paths.dashboard}>Dashboard</DocsLink>. To learn more about E-Mode and its applied
-            restrictions, visit the{' '}
-            {/* <DocsLink to={links.docs.eMode} external>
-              FAQ
-            </DocsLink>{' '}
-            or the{' '} */}
-            <DocsLink href={links.aaveTechnicalPaper} external>
-              Aave V3 Technical Paper
-            </DocsLink>
-            .
+            <Trans>
+              E-Mode for {categoryName} assets increases your LTV within the {categoryName} category. This means that
+              when E-Mode is enabled, you will have higher borrowing power for assets in this category
+            </Trans>
+            : {eModeCategoryTokens.join(', ')}.
+            <Trans>
+              You can enter E-Mode from your <DocsLink href={paths.dashboard}>Dashboard</DocsLink>. To learn more about
+              E-Mode and its applied restrictions, visit the{' '}
+              <DocsLink href={links.aaveTechnicalPaper} external>
+                Aave V3 Technical Paper
+              </DocsLink>
+              .
+            </Trans>
           </p>
         </InfoTilesGrid>
       </StatusPanelGrid>
