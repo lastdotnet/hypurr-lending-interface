@@ -10,8 +10,8 @@ import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
-import { useEffect } from 'react'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 export interface SuccessViewProps {
   deposited: TokenWithValue[]

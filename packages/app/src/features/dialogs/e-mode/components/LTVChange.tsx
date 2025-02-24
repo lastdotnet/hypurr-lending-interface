@@ -2,8 +2,8 @@ import { formatPercentage } from '@/domain/common/format'
 import { Percentage } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
-import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
 import Image from 'next/image'
+import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
 interface LTVChangeProps {
   currentMaxLTV: Percentage
   updatedMaxLTV?: Percentage

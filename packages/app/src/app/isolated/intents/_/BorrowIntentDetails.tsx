@@ -22,7 +22,7 @@ export const BorrowIntentDetails = ({
         label="Asking to borrow"
         value={
           <ERC20Display
-            className="text-2xl font-medium"
+            className="font-medium text-2xl"
             erc20={borrowIntent?.borrow}
             highPrecision={highPrecision}
             skeleton={skeleton}

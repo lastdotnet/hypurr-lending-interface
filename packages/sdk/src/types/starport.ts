@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-import { AddressSchema, HexSchema, Uint256Schema } from 'common';
+import { AddressSchema, HexSchema, Uint256Schema } from 'common'
 
-import { SpentItemSchema } from './seaport';
+import { SpentItemSchema } from './seaport'
 
 export const TermsSchema = z.object({
   pricing: AddressSchema,
@@ -11,8 +11,8 @@ export const TermsSchema = z.object({
   settlementData: HexSchema,
   status: AddressSchema,
   statusData: HexSchema,
-});
-export type Terms = z.infer<typeof TermsSchema>;
+})
+export type Terms = z.infer<typeof TermsSchema>
 
 export const StarportLoanSchema = z.object({
   borrower: AddressSchema,
@@ -23,11 +23,11 @@ export const StarportLoanSchema = z.object({
   originator: AddressSchema,
   start: Uint256Schema,
   terms: TermsSchema,
-});
-export type StarportLoan = z.infer<typeof StarportLoanSchema>;
+})
+export type StarportLoan = z.infer<typeof StarportLoanSchema>
 
 export enum Action {
-  Nothing,
-  Repayment,
-  Settlement,
+  Nothing = 0,
+  Repayment = 1,
+  Settlement = 2,
 }

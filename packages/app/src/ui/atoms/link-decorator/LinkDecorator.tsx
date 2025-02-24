@@ -1,8 +1,8 @@
 'use client'
 
 import { Slot } from '@radix-ui/react-slot'
-import { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
+import { ReactNode } from 'react'
 
 interface LinkDecoratorProps {
   children: ReactNode

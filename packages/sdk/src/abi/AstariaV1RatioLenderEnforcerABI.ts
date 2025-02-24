@@ -244,4 +244,4 @@ export const AstariaV1RatioLenderEnforcerABI = [
     stateMutability: 'view',
     type: 'function',
   },
-] as const;
+] as const

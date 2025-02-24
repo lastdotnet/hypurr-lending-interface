@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, JS_MAX_SAFE_SIGNIFICANT_DIGITS } from '../constants';
+import { DEFAULT_LOCALE, JS_MAX_SAFE_SIGNIFICANT_DIGITS } from '../constants'
 
 /**
  * This helper makes sure that we always show decimal places instead of scientific notation.
@@ -13,16 +13,16 @@ export const formatNumber = ({
   useDashForZero = false,
   useGrouping = true,
 }: {
-  amount: bigint | number;
-  maxDecimals?: number;
-  notation?: 'standard' | 'scientific' | 'engineering' | 'compact' | undefined;
-  signDisplay?: 'auto' | 'never' | 'always' | 'exceptZero' | undefined;
-  standardDecimals?: boolean;
-  useDashForZero?: boolean;
-  useGrouping?: boolean;
+  amount: bigint | number
+  maxDecimals?: number
+  notation?: 'standard' | 'scientific' | 'engineering' | 'compact' | undefined
+  signDisplay?: 'auto' | 'never' | 'always' | 'exceptZero' | undefined
+  standardDecimals?: boolean
+  useDashForZero?: boolean
+  useGrouping?: boolean
 }) => {
   if (amount === 0 && useDashForZero) {
-    return '—';
+    return '—'
   }
 
   return Intl.NumberFormat(DEFAULT_LOCALE, {
@@ -35,5 +35,5 @@ export const formatNumber = ({
     notation,
     signDisplay,
     useGrouping,
-  }).format(amount);
-};
+  }).format(amount)
+}

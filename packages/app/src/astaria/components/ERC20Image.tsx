@@ -1,11 +1,11 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-import { cva } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { cva } from 'class-variance-authority'
+import { clsx } from 'clsx'
 
-import { type ERC20Asset, getERC20TokenByAddress } from 'assets';
+import { type ERC20Asset, getERC20TokenByAddress } from 'assets'
 
-const NO_IMAGE_CHARACTERS_OF_SYMBOL_TO_SHOW = 2;
+const NO_IMAGE_CHARACTERS_OF_SYMBOL_TO_SHOW = 2
 
 export const sizeVariants = cva('shrink-0', {
   variants: {
@@ -16,14 +16,14 @@ export const sizeVariants = cva('shrink-0', {
       xl: 'h-48 w-48 max-w-48',
     },
   },
-});
+})
 
 const SIZES = {
   lg: 112,
   md: 32,
   sm: 20,
   xl: 192,
-};
+}
 
 export const ERC20Image = ({
   className,
@@ -33,36 +33,28 @@ export const ERC20Image = ({
   skeleton,
   ...rest
 }: {
-  className?: string;
-  erc20: ERC20Asset | ERC20Asset | undefined;
-  priority?: boolean;
-  size?: 'lg' | 'md' | 'sm' | 'xl';
-  skeleton?: boolean;
+  className?: string
+  erc20: ERC20Asset | ERC20Asset | undefined
+  priority?: boolean
+  size?: 'lg' | 'md' | 'sm' | 'xl'
+  skeleton?: boolean
 }) => {
   if (skeleton) {
-    return (
-      <div
-        className={clsx(
-          'animate-pulse bg-muted',
-          sizeVariants({ className, size })
-        )}
-        {...rest}
-      />
-    );
+    return <div className={clsx('animate-pulse bg-muted', sizeVariants({ className, size }))} {...rest} />
   }
   if (!erc20) {
-    return null;
+    return null
   }
 
   const erc20Token = getERC20TokenByAddress({
     address: erc20.address,
-  });
+  })
 
   if (!erc20Token) {
-    return null;
+    return null
   }
 
-  const { logoURI, symbol } = erc20Token;
+  const { logoURI, symbol } = erc20Token
 
   if (!logoURI) {
     return (
@@ -70,17 +62,13 @@ export const ERC20Image = ({
         aria-hidden
         className={clsx(
           'flex select-none items-center justify-center rounded-full bg-muted font-bold text-foreground',
-          sizeVariants({ className, size })
+          sizeVariants({ className, size }),
         )}
         {...rest}
       >
-        {logoURI === null && symbol
-          ? symbol
-              .toUpperCase()
-              .substring(0, NO_IMAGE_CHARACTERS_OF_SYMBOL_TO_SHOW)
-          : '?'}
+        {logoURI === null && symbol ? symbol.toUpperCase().substring(0, NO_IMAGE_CHARACTERS_OF_SYMBOL_TO_SHOW) : '?'}
       </div>
-    );
+    )
   }
 
   return (
@@ -93,5 +81,5 @@ export const ERC20Image = ({
       width={SIZES[size]}
       {...rest}
     />
-  );
-};
+  )
+}

@@ -1,6 +1,6 @@
-import { base, foundry, mainnet, mode, sepolia } from 'viem/chains';
+import { base, foundry, mainnet, mode, sepolia } from 'viem/chains'
 
-import { numberToBigInt } from 'common';
+import { numberToBigInt } from 'common'
 
 const MIN_BALANCE_BY_CHAIN = {
   [base.id]: numberToBigInt({ amount: 0.05 }),
@@ -8,9 +8,8 @@ const MIN_BALANCE_BY_CHAIN = {
   [mainnet.id]: numberToBigInt({ amount: 0.2 }),
   [mode.id]: numberToBigInt({ amount: 0.05 }),
   [sepolia.id]: 0n,
-} as const;
+} as const
 
-type KEEPER_CHAIN_ID = keyof typeof MIN_BALANCE_BY_CHAIN;
+type KEEPER_CHAIN_ID = keyof typeof MIN_BALANCE_BY_CHAIN
 
-export const getThresholdByChainId = (chainId: KEEPER_CHAIN_ID) =>
-  MIN_BALANCE_BY_CHAIN[chainId];
+export const getThresholdByChainId = (chainId: KEEPER_CHAIN_ID) => MIN_BALANCE_BY_CHAIN[chainId]

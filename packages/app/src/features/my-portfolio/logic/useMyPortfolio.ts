@@ -1,6 +1,7 @@
 import { getNativeAssetInfo } from '@/config/chain/utils/getNativeAssetInfo'
 import { EModeCategoryId } from '@/domain/e-mode/types'
 import { usePageChainId } from '@/domain/hooks/usePageChainId'
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 import { LiquidationDetails } from '@/domain/market-info/getLiquidationDetails'
 import { useMarketInfo } from '@/domain/market-info/useMarketInfo'
 import { useOpenDialog } from '@/domain/state/dialogs'
@@ -12,7 +13,6 @@ import { makeLiquidationDetails } from './makeLiquidationDetails'
 import { makePositionSummary } from './position'
 import { PositionSummary } from './types'
 import { WalletCompositionInfo, makeWalletComposition } from './wallet-composition'
-import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 
 export interface UseMyPortfolioResults {
   positionSummary: PositionSummary

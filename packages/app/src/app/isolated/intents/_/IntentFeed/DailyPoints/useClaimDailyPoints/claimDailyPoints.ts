@@ -2,8 +2,8 @@
 
 import { type Address } from 'viem'
 
-import { type ChainId } from 'chains'
 import { randomUUID } from 'node:crypto'
+import { type ChainId } from 'chains'
 
 import { initializeDataSource } from '@/app/api/_/dataSource'
 import { InternalServerError } from '@/app/api/server-error'

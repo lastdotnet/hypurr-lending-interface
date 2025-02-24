@@ -1,4 +1,3 @@
-import { milliseconds, millisecondsToSeconds } from 'date-fns';
+import { milliseconds, millisecondsToSeconds } from 'date-fns'
 
-export const daysToSeconds = (days: number) =>
-  millisecondsToSeconds(milliseconds({ days }));
+export const daysToSeconds = (days: number) => millisecondsToSeconds(milliseconds({ days }))

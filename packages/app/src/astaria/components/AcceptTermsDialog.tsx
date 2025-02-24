@@ -102,7 +102,7 @@ export const AcceptTermsDialog = ({ onAcceptTerms, open, setOpen }: AcceptTermsM
             </DialogContent>
             <DialogActions>
               <Button
-                className="border-b-0 border-l-0 border-r-0"
+                className="border-r-0 border-b-0 border-l-0"
                 form="acceptTermsForm"
                 fullWidth
                 rounded="dialog"

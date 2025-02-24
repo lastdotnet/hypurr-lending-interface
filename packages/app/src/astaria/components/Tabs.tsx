@@ -1,15 +1,11 @@
-'use client';
+'use client'
 
-import * as TabsPrimitive from '@radix-ui/react-tabs';
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  forwardRef,
-} from 'react';
+import * as TabsPrimitive from '@radix-ui/react-tabs'
+import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
-export const Tabs = TabsPrimitive.Root;
+export const Tabs = TabsPrimitive.Root
 
 export const TabsList = forwardRef<
   ElementRef<typeof TabsPrimitive.List>,
@@ -19,12 +15,12 @@ export const TabsList = forwardRef<
     ref={ref}
     className={clsx(
       'grid w-full grid-cols-2 items-center justify-center gap-1 rounded-md border-2 bg-muted p-1 text-muted-foreground',
-      className
+      className,
     )}
     {...rest}
   />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+))
+TabsList.displayName = TabsPrimitive.List.displayName
 export const TabsTrigger = forwardRef<
   ElementRef<typeof TabsPrimitive.Trigger>,
   ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
@@ -32,22 +28,18 @@ export const TabsTrigger = forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={clsx(
-      'inline-flex h-11 items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
-      className
+      'inline-flex h-11 items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 font-medium text-sm ring-offset-background transition-all disabled:pointer-events-none data-[state=active]:border data-[state=active]:bg-background data-[state=active]:text-foreground disabled:opacity-50 data-[state=active]:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      className,
     )}
     {...rest}
   />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+))
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 export const TabsContent = forwardRef<
   ElementRef<typeof TabsPrimitive.Content>,
   ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...rest }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={clsx('focus-visible:outline-none', className)}
-    {...rest}
-  />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+  <TabsPrimitive.Content ref={ref} className={clsx('focus-visible:outline-none', className)} {...rest} />
+))
+TabsContent.displayName = TabsPrimitive.Content.displayName

@@ -1,1 +1,1 @@
-export * from './TransmitIntent';
+export * from './TransmitIntent'

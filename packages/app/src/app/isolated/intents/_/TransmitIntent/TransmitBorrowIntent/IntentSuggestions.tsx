@@ -17,8 +17,8 @@ import { getERC20sWithBalance } from '@/astaria/utils/erc20sWithBalance'
 import { getBorrowAmountBasedOnLTV, getCollateralAmountBasedOnLTV } from '@/astaria/utils/getBorrowAmountBasedOnLTV'
 import { getUSDValue } from '@/astaria/utils/getUSDValue'
 
-import { type ERC20, type ERC20Asset } from 'assets'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { type ERC20, type ERC20Asset } from 'assets'
 
 const SUGGESTED_BORROW_SYMBOL = 'USDC'
 const SUGGESTED_COLLATERAL_SYMBOL = 'WETH'

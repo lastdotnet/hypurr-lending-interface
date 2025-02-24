@@ -7,8 +7,8 @@ import {
   PrimaryColumn as PrimaryColumn_,
 } from 'typeorm'
 
-import * as marshal from './marshal'
 import { SpentItem } from './_spentItem'
+import * as marshal from './marshal'
 import { Recall } from './recall.model'
 import { SignedCaveat } from './signedCaveat.model'
 

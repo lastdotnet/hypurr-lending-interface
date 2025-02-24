@@ -1,5 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
-import { NATIVE_ASSET_MOCK_ADDRESS, HYPURR_UI_REFERRAL_CODE } from '@/config/consts'
+import { HYPURR_UI_REFERRAL_CODE, NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayConfig } from '@/config/contracts-generated'
 import { getContractAddress } from '@/domain/hooks/useContractAddress'
 import { ensureConfigTypes } from '@/domain/hooks/useWrite'

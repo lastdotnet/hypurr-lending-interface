@@ -9,8 +9,8 @@ import { getLendIntentSignaturePayload } from '@/app/isolated/intents/_/Transmit
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { type LendIntentRequest } from '@/astaria/types-internal/intent-schemas'
 
-import { type Asset, type ERC20 } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type Asset, type ERC20 } from 'assets'
 
 const DOUBLE_BIGINT = 2n
 const half = (amount: bigint) => amount / DOUBLE_BIGINT

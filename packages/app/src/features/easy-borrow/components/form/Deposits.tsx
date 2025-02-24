@@ -8,11 +8,11 @@ import { MultiAssetSelector } from '@/ui/organisms/multi-selector/MultiSelector'
 import { testIds } from '@/ui/utils/testIds'
 
 import { paths } from '@/config/paths'
+import { formatPercentage } from '@/domain/common/format'
 import { Link } from '@/ui/atoms/link/Link'
 import { Info } from '@/ui/molecules/info/Info'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
-import { formatPercentage } from '@/domain/common/format'
 import { TokenSummary } from './TokenSummary'
 
 export interface DepositsProps {

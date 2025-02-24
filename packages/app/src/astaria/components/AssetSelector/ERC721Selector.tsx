@@ -74,7 +74,7 @@ export const ERC721Selector = ({
                     >
                       <ERC721ImageBox asset={nft} className="h-[151px] w-[151px]" inCard indicator={false} />
                       {isERC721Asset(asset) && asset.tokenId === nft.tokenId ? (
-                        <div className="absolute right-2 top-1.5 flex items-center justify-center border bg-white p-4">
+                        <div className="absolute top-1.5 right-2 flex items-center justify-center border bg-white p-4">
                           <IconCheck className={clsx('h-4 w-4 shrink-0')} />
                         </div>
                       ) : null}

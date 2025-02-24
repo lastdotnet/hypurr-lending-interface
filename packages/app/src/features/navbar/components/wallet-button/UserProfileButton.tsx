@@ -3,8 +3,8 @@ import { Typography } from '@/ui/atoms/typography/Typography'
 import { shortenAddress } from '@/ui/utils/shortenAddress'
 import { DynamicUserProfile, useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { WalletIcon } from '@dynamic-labs/wallet-book'
-import { Address } from 'viem'
 import Image from 'next/image'
+import { Address } from 'viem'
 
 export function UserProfileButton({ className }: { className?: string }) {
   const { primaryWallet, setShowDynamicUserProfile, networkConfigurations, network } = useDynamicContext()

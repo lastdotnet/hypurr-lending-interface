@@ -56,7 +56,7 @@ export const pointsHistoryColumns: ColumnDef<PointsEvent>[] = [
     cell: ({ row }) => {
       const points = row.getValue<PointsEvent['points']>('points')
       return (
-        <div className="text-right font-mono font-bold">
+        <div className="text-right font-bold font-mono">
           {formatNumber({
             amount: toNormalizedValue(points, POINTS_DECIMALS),
             maxDecimals: 2,

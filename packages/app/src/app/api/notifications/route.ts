@@ -21,7 +21,7 @@ export const POST = async (request: NextRequest) => {
     })
 
     return NextResponse.json({ data: result }, { status: StatusCodes.OK })
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({
       status: StatusCodes.INTERNAL_SERVER_ERROR,
     })

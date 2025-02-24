@@ -1,13 +1,6 @@
-import { type Duration, milliseconds, millisecondsToSeconds } from 'date-fns';
+import { type Duration, milliseconds, millisecondsToSeconds } from 'date-fns'
 
-export const getSeconds = ({
-  days,
-  hours,
-  minutes,
-  months,
-  weeks,
-  years,
-}: Duration) =>
+export const getSeconds = ({ days, hours, minutes, months, weeks, years }: Duration) =>
   millisecondsToSeconds(
     milliseconds({
       days,
@@ -16,17 +9,10 @@ export const getSeconds = ({
       months,
       weeks,
       years,
-    })
-  );
+    }),
+  )
 
-export const getSecondsBigInt = ({
-  days,
-  hours,
-  minutes,
-  months,
-  weeks,
-  years,
-}: Duration) =>
+export const getSecondsBigInt = ({ days, hours, minutes, months, weeks, years }: Duration) =>
   BigInt(
     getSeconds({
       days,
@@ -35,5 +21,5 @@ export const getSecondsBigInt = ({
       months,
       weeks,
       years,
-    })
-  );
+    }),
+  )

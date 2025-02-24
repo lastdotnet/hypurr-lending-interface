@@ -1,6 +1,6 @@
 import { useStore } from '../state'
-import { CheckedAddress } from '../types/CheckedAddress'
 import { UseTermsOfServiceResults } from '../state/compliance'
+import { CheckedAddress } from '../types/CheckedAddress'
 
 export function useTermsOfService(): UseTermsOfServiceResults {
   const { agreedToToSAdresses, addAgreedToToSAddress } = useStore((state) => state.compliance)

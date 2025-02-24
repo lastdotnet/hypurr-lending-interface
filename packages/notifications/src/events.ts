@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 // Conventions:
 // - Use imperative tense for event names
@@ -11,16 +11,14 @@ export const EVENT = {
   BORROW_INTENT_FILLED: 'BORROW_INTENT_FILLED',
   CTA_NEWSLETTER_SUBSCRIBE: 'CTA_NEWSLETTER_SUBSCRIBE',
   RECALL_BORROW_INTENT_FILLED: 'RECALL_BORROW_INTENT_FILLED',
-} as const;
+} as const
 
 export const payload = z.object({
   description: z.string(),
   text: z.string().optional(),
   title: z.string(),
-  values: z
-    .record(z.union([z.string(), z.number(), z.boolean(), z.null()]))
-    .optional(),
-});
+  values: z.record(z.union([z.string(), z.number(), z.boolean(), z.null()])).optional(),
+})
 
 export const eventSchema = z.object({
   name: z.enum([
@@ -31,4 +29,4 @@ export const eventSchema = z.object({
     EVENT.RECALL_BORROW_INTENT_FILLED,
   ]),
   payload,
-});
+})

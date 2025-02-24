@@ -4,17 +4,17 @@ import { cx } from 'class-variance-authority'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { hyperEVM, hyperTestnet } from '@/config/chain/constants'
+import { isTestnet } from '@/config/consts'
 import { usePageChainId } from '@/domain/hooks/usePageChainId'
+import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
 import { useBannerVisibility } from '@/domain/state/bannersVisibility'
 import { Navbar } from '@/features/navbar/Navbar'
+import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
 import { cn } from '@/ui/utils/style'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { TOP_BANNER_ID, TopBanner } from '../../atoms/top-banner/TopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { hyperEVM, hyperTestnet } from '@/config/chain/constants'
-import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
-import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
-import { isTestnet } from '@/config/consts'
 
 interface AppLayoutProps {
   children: React.ReactNode

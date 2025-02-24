@@ -2,7 +2,7 @@
 import { StateCreator } from 'zustand'
 
 import { StoreState, useStore } from '@/domain/state/index'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 export interface BannersVisibility {
   bannerVisibilityStatus: {
     [id: string]: boolean

@@ -70,7 +70,7 @@ export const getDistinctAssortmentIds = async ({
   )
 
   if (!lendIntentResults.success) {
-    throw new InternalServerError(`Error parsing lend intent assortmentIds from database`)
+    throw new InternalServerError('Error parsing lend intent assortmentIds from database')
   }
 
   console.info(`lendIntentResults: ${lendIntentResults.data.length}; borrowIntentResults: ${intentResults.data.length}`)
@@ -119,7 +119,7 @@ export const getIntentsByAssortmentId = async ({
   const lendIntentResults = z.array(LenderIntentSchema).safeParse(lendIntentQuery)
 
   if (!lendIntentResults.success) {
-    throw new InternalServerError(`Error parsing lend intents from database`)
+    throw new InternalServerError('Error parsing lend intents from database')
   }
 
   const { data: lendIntentsData } = lendIntentResults

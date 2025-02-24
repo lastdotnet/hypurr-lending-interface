@@ -9,6 +9,7 @@ import { CheckedAddress } from '../types/CheckedAddress'
 import { BaseUnitNumber, NormalizedUnitNumber, Percentage } from '../types/NumericValues'
 import { Token } from '../types/Token'
 import { TokenSymbol } from '../types/TokenSymbol'
+import { NetApyDetails } from './aave-data-layer/calculateNetApy'
 import { AaveDataLayerQueryReturnType, aaveDataLayerSelectFn } from './aave-data-layer/query'
 import { determineEModeState, extractEmodeInfoFromReserves } from './emode'
 import { IncentivesData, getIncentivesData } from './incentives'
@@ -28,7 +29,6 @@ import {
   determineSiloBorrowingState,
   normalizeUserSummary as normalizeUserPositionSummary,
 } from './utils'
-import { NetApyDetails } from './aave-data-layer/calculateNetApy'
 
 export interface Reserve {
   token: Token

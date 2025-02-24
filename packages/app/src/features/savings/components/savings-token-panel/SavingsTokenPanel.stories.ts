@@ -1,3 +1,4 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
@@ -5,7 +6,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { tokens } from '@storybook/tokens'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { SavingsTokenPanel } from './SavingsTokenPanel'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const meta: Meta<typeof SavingsTokenPanel> = {
   title: 'Features/Savings/Components/SavingsTokenPanel',

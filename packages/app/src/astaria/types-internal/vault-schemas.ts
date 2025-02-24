@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-import { Uint256Schema } from 'common';
+import { Uint256Schema } from 'common'
 
-import { ERC20AssetSchema } from 'assets';
+import { ERC20AssetSchema } from 'assets'
 
 export const VaultSchema = z.object({
   balance: Uint256Schema,
@@ -10,5 +10,5 @@ export const VaultSchema = z.object({
   usage: Uint256Schema,
   usdValueBalance: z.number().optional(),
   usdValueUsage: z.number().optional(),
-});
-export type Vault = z.infer<typeof VaultSchema>;
+})
+export type Vault = z.infer<typeof VaultSchema>

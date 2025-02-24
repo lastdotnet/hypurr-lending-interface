@@ -1,13 +1,13 @@
 import '../css/main.css'
 
-import Script from 'next/script'
-import { Metadata, Viewport } from 'next'
 import App from '@/App'
-import { AppLayout } from '@/ui/layouts/app-layout/AppLayout'
-import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogDispatcherContainer'
 import { Debug } from '@/features/debug'
-import { Manrope } from 'next/font/google'
+import { DialogDispatcherContainer } from '@/features/dialogs/dispatcher/DialogDispatcherContainer'
+import { AppLayout } from '@/ui/layouts/app-layout/AppLayout'
 import { cn } from '@/ui/utils/style'
+import { Metadata, Viewport } from 'next'
+import { Manrope } from 'next/font/google'
+import Script from 'next/script'
 
 export const viewport: Viewport = {
   width: 'device-width',

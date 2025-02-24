@@ -1,4 +1,6 @@
+import { formatPercentage } from '@/domain/common/format'
 import { TokenWithBalance } from '@/domain/common/types'
+import { Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { AssetSelector } from '@/ui/molecules/asset-selector/AssetSelector'
@@ -8,8 +10,6 @@ import { raise } from '@/utils/assert'
 import { Control } from 'react-hook-form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
-import { Percentage } from '@/domain/types/NumericValues'
-import { formatPercentage } from '@/domain/common/format'
 import { TokenSummary } from './TokenSummary'
 
 interface BorrowProps {

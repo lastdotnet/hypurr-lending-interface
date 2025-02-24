@@ -42,7 +42,7 @@ const DepositInput = () => {
             <BigIntInput {...field} decimals={depositAsset.decimals} emphasis="low" placeholder="0" textSize="3xl" />
           </FormControl>
           <FormMessage>
-            <USDValue amount={depositAmount} asset={depositAsset} className="text-xs font-medium" />
+            <USDValue amount={depositAmount} asset={depositAsset} className="font-medium text-xs" />
           </FormMessage>
         </FormItem>
       )}

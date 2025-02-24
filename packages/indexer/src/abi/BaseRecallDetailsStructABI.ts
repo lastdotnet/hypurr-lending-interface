@@ -19,4 +19,4 @@ export const BaseRecallDetailsStructABI = {
       internalType: 'uint256',
     },
   ],
-} as const;
+} as const

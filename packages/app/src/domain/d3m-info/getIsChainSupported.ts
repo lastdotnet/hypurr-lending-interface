@@ -1,7 +1,7 @@
+import { hyperEVM, hyperTestnet } from '@/config/chain/constants'
 import { base } from 'viem/chains'
 import { getOriginChainId } from '../hooks/useOriginChainId'
 import { useStore } from '../state'
-import { hyperEVM, hyperTestnet } from '@/config/chain/constants'
 
 const MAKER_INFO_SUPPORTED_CHAIN_IDS = [hyperTestnet, hyperEVM, base].map((chain) => chain.id)
 

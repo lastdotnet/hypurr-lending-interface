@@ -28,7 +28,7 @@ export const RestrictedPage = ({ address }: { address: Address }) => (
           </BlockExplorerLink>
         </div>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Use of this site is restricted pursuant to our <TextLink href={ROUTES.TERMS}>Terms of Use</TextLink>.
         </p>
       </>

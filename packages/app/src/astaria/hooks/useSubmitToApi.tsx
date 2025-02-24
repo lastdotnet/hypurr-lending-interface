@@ -11,7 +11,7 @@ export const useSubmitToApi = <TData = unknown, TError = DefaultError, TVariable
   onError,
   onSuccess,
   successMessage = {
-    description: `Your transaction was sent!`,
+    description: 'Your transaction was sent!',
     title: 'Transaction sent',
   },
 }: UseMutationOptions<TData, TError, TVariables, TContext> & {

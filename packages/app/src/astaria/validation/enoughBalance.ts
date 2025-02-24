@@ -1,6 +1,6 @@
 import { wagmiConfig } from '@/astaria/config/wagmi'
-import { getAccount, getBalance } from 'wagmi/actions'
 import { zeroAddress } from 'viem'
+import { getAccount, getBalance } from 'wagmi/actions'
 import { z } from 'zod'
 
 import { getFormattedBalance } from '@/astaria/validation/getFormattedBalance'

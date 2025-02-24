@@ -20,8 +20,8 @@ import {
 } from './actions-settings'
 import { BannersVisibilitySlice, initBannersVisibilitySlice, persistBannersVisibilitySlice } from './bannersVisibility'
 import { ComplianceSlice, PersistedComplianceSlice, initComplianceSlice, persistComplianceSlice } from './compliance'
-import { DialogSlice } from './dialogs'
 import { initDialogSlice } from './dialogSlice'
+import { DialogSlice } from './dialogs'
 import {
   PersistedSandboxSlice,
   SandboxSlice,

@@ -1,5 +1,5 @@
-import { CommonDialogProps, DialogConfig } from '@/features/dialogs/common/types'
 import { useStore } from '@/domain/state/index'
+import { CommonDialogProps, DialogConfig } from '@/features/dialogs/common/types'
 
 export interface DialogSlice<P = {}> {
   dialogs: {

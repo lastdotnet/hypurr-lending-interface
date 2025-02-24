@@ -1,9 +1,9 @@
 import { Column as Column_, Entity as Entity_, Index as Index_, PrimaryColumn as PrimaryColumn_ } from 'typeorm'
 
-import * as marshal from './marshal'
 import { LoanType } from './_loanType'
 import { Provider } from './_provider'
 import { SpentItem } from './_spentItem'
+import * as marshal from './marshal'
 
 @Entity_()
 export class ArchivedLoan {

@@ -9,8 +9,8 @@ import { useBatchedBalances } from '@/astaria/components/AssetSelector/ERC20Sele
 import { useERC20Tokens } from '@/astaria/components/AssetSelector/ERC20Selector/useERC20Tokens'
 import { getERC20sWithBalance } from '@/astaria/utils/erc20sWithBalance'
 
-import { type ERC20Asset, type IntentAsset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20Asset, type IntentAsset } from 'assets'
 
 export const ERC20SelectorItems = ({
   asset,

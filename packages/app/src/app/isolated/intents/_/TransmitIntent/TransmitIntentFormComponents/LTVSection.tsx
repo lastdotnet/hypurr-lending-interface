@@ -109,9 +109,9 @@ const LTVPopover = ({
     <div className="flex items-center gap-1">
       {ltv > HIGH_LTV ? <IconAlertTriangleFilled className="h-5 w-5 shrink-0" /> : null}
       {skeleton ? (
-        <SkeletonNumber className="text-xl font-medium" />
+        <SkeletonNumber className="font-medium text-xl" />
       ) : (
-        <div className="max-w-40 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-medium">
+        <div className="max-w-40 overflow-hidden text-ellipsis whitespace-nowrap font-medium text-xl">
           {formattedLTV}
         </div>
       )}
@@ -192,7 +192,7 @@ export const LTVSection = ({ type }: { type: 'borrow' | 'lend' }) => {
         )}
       />
       {ltv !== null && ltv > HIGH_LTV ? (
-        <div className="mt-4 rounded-sm bg-stone-300 p-3 text-sm font-medium">
+        <div className="mt-4 rounded-sm bg-stone-300 p-3 font-medium text-sm">
           {type === 'borrow'
             ? `An LTV over ${HIGH_LTV}% is unlikely to be filled by a
           prospective lender. This intent will only be visible to those using expert mode.`

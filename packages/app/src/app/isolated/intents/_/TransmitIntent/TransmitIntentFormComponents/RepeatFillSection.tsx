@@ -37,7 +37,7 @@ export const RepeatFillSection = () => {
         />
       </div>
       {repeatFill ? (
-        <div className="mt-2 flex items-center gap-1 bg-muted p-2 text-sm font-medium">
+        <div className="mt-2 flex items-center gap-1 bg-muted p-2 font-medium text-sm">
           <IconExclamationCircle className="h-4 w-4" />
           Set the spending cap to the max
         </div>

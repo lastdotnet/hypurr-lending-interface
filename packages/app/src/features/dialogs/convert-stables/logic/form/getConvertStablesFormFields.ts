@@ -1,9 +1,9 @@
+import { TokenWithBalance } from '@/domain/common/types'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { TokensInfo } from '@/domain/wallet/useTokens/TokenInfo'
 import { UseFormReturn } from 'react-hook-form'
 import { ConvertStablesFormFields } from '../../types'
 import { ConvertStablesFormSchema } from './schema'
-import { TokenWithBalance } from '@/domain/common/types'
 
 export interface GetConvertStablesFormFieldsParams {
   form: UseFormReturn<ConvertStablesFormSchema>

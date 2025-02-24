@@ -7,6 +7,7 @@ import {
   useSimulateContract,
 } from 'wagmi'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { __TX_LIST_KEY } from '@/test/e2e/constants'
 import { JSONStringifyRich } from '@/utils/object'
 import { useOnDepsChange } from '@/utils/useOnDepsChange'
@@ -16,7 +17,6 @@ import { sanityCheckTx } from './sanityChecks'
 import { useIncreasedGasLimit } from './useIncreasedGasLimit'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export type WriteStatus =
   | { kind: 'disabled' }

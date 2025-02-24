@@ -12,8 +12,8 @@ import {
   StringColumn as StringColumn_,
 } from '@subsquid/typeorm-store'
 
-import * as marshal from './marshal'
 import { SpentItem } from './_spentItem'
+import * as marshal from './marshal'
 import { SignedCaveat } from './signedCaveat.model'
 
 @Entity_()

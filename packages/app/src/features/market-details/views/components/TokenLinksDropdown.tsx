@@ -14,8 +14,8 @@ import {
 } from '@/ui/atoms/dropdown/DropdownMenu'
 import { Link } from '@/ui/atoms/link/Link'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
-import { PropsWithChildren, ReactNode } from 'react'
 import Image from 'next/image'
+import { PropsWithChildren, ReactNode } from 'react'
 
 export interface TokenLinksDropdownProps {
   token: Token

@@ -1,14 +1,14 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { SPK_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
-import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
-import { testIds } from '@/ui/utils/testIds'
-import { NavbarActionWrapper } from '../NavbarActionWrapper'
-import { AirdropDetails } from './AirdropDetails'
 import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
 import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
+import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
 import { cn } from '@/ui/utils/style'
+import { testIds } from '@/ui/utils/testIds'
 import Image from 'next/image'
+import { NavbarActionWrapper } from '../NavbarActionWrapper'
+import { AirdropDetails } from './AirdropDetails'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber

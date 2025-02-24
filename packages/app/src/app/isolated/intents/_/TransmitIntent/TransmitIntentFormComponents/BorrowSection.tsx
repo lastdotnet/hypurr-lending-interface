@@ -62,7 +62,7 @@ const BorrowInput = ({ copy }: { copy: Copy }) => {
             <BigIntInput {...field} decimals={borrowAsset.decimals} emphasis="low" placeholder="0" textSize="3xl" />
           </FormControl>
           <FormMessage>
-            <USDValue amount={borrowAmount} asset={borrowAsset} className="text-xs font-medium" />
+            <USDValue amount={borrowAmount} asset={borrowAsset} className="font-medium text-xs" />
           </FormMessage>
         </FormItem>
       )}

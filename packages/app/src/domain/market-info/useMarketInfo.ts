@@ -3,10 +3,10 @@ import { useConfig } from 'wagmi'
 
 import { SuspenseQueryWith } from '@/utils/types'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useMemo } from 'react'
 import { aaveDataLayer } from './aave-data-layer/query'
 import { MarketInfo, marketInfoSelectFn } from './marketInfo'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseMarketInfoParams {
   chainId: number

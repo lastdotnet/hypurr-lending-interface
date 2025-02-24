@@ -12,10 +12,10 @@ import {
   usdxlTokenAbi,
 } from '@/config/contracts-generated'
 
+import { A_USDXL_ADDRESS, USDXL_ADDRESS, isTestnet } from '@/config/consts'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { queryOptions } from '@tanstack/react-query'
 import { getContractAddress } from '../../hooks/useContractAddress'
-import { A_USDXL_ADDRESS, isTestnet, USDXL_ADDRESS } from '@/config/consts'
 import { calculateNetApy } from './calculateNetApy'
 
 export interface AaveDataLayerQueryKeyArgs {

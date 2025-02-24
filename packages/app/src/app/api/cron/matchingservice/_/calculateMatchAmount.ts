@@ -20,6 +20,7 @@ export const calculateMatchAmount = ({
   // TODO: Joe look at this. It was previously unused
   // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/ban-ts-comment
   // @ts-ignore
+  // biome-ignore lint/correctness/noUnusedVariables:
   const lendIntentMinAmount = lendIntent.minAmount > lendIntent.maxAmount ? lendIntent.maxAmount : lendIntent.minAmount
 
   return lendIntent.maxAmount < borrowIntent.maxAmount ? lendIntent.maxAmount : borrowIntent.maxAmount

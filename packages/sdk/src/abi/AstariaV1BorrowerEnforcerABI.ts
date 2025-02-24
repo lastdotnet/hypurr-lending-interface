@@ -257,4 +257,4 @@ export const AstariaV1BorrowerEnforcerABI = [
     name: 'UnsupportedDecimalValue',
     type: 'error',
   },
-] as const;
+] as const

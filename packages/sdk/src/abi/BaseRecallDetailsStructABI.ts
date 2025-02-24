@@ -19,4 +19,4 @@ export const BaseRecallDetailsStructABI = {
   internalType: 'struct BaseRecall.Details',
   name: '',
   type: 'tuple',
-} as const;
+} as const

@@ -1,11 +1,5 @@
 {
   "extends": "tsconfig/tsconfig.json",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "vite.config.mts",
-    ".eslintrc.js"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "vite.config.mts", ".eslintrc.js"],
   "exclude": ["node_modules", "data"]
 }

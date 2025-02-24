@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
-import catSpinnerAnim from './cat-spinner.json'
 import { cn } from '@/ui/utils/style'
+import catSpinnerAnim from './cat-spinner.json'
 
 function CatSpinner({ className }: { className?: string }) {
   return (

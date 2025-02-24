@@ -1,3 +1,4 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { UseMyEarningsInfoResult } from '@/domain/savings-charts/useMyEarningsInfo/useMyEarningsInfo'
 import { UseSavingsRateInfoResult } from '@/domain/savings-charts/useSavingsRateInfo/useSavingsRateInfo'
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
@@ -9,7 +10,6 @@ import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { mockDsrChartData, mockSsrChartData } from '../components/savings-charts/fixtures/mockSavingsRateChartData'
 import { SavingsTokenDetails } from '../logic/useSavings'
 import { GuestView } from './GuestView'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const myEarningsInfo = {
   queryResult: {

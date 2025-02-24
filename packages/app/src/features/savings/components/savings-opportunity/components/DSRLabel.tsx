@@ -1,9 +1,9 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { SupportedChainId } from '@/config/chain/types'
 import { SavingsMetaItem } from '@/features/savings/logic/makeSavingsMeta'
 import { Link } from '@/ui/atoms/link/Link'
 import { links } from '@/ui/constants/links'
 import { SavingsInfoTile } from '../../savings-info-tile/SavingsInfoTile'
-import { hyperTestnet } from '@/config/chain/constants'
 
 export interface DSRLabelProps {
   originChainId: SupportedChainId

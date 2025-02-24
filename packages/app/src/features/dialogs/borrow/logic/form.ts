@@ -1,4 +1,5 @@
 import { getBorrowMaxValue } from '@/domain/action-max-value-getters/getBorrowMaxValue'
+import { formFormat } from '@/domain/common/format'
 import { MarketInfo, UserPositionSummary } from '@/domain/market-info/marketInfo'
 import {
   borrowValidationIssueToMessage,
@@ -8,12 +9,11 @@ import {
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
+import BigNumber from 'bignumber.js'
 import { UseFormReturn } from 'react-hook-form'
 import { z } from 'zod'
 import { AssetInputSchema, DialogFormNormalizedData } from '../../common/logic/form'
 import { FormFieldsForDialog } from '../../common/types'
-import { formFormat } from '@/domain/common/format'
-import BigNumber from 'bignumber.js'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function getBorrowDialogFormValidator(marketInfo: MarketInfo) {

@@ -10,4 +10,4 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/no-unused-modules': [2, { unusedExports: true }],
   },
-};
+}

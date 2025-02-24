@@ -14,7 +14,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         'space-y-2 rounded shadow-sm',
         {
           'bg-stone-300': higherEmphasis,
-          'border-2 bg-panel-bg backdrop-blur-sm p-2': !receiptStyle,
+          'border-2 bg-panel-bg p-2 backdrop-blur-sm': !receiptStyle,
         },
         className,
       )}
@@ -48,7 +48,7 @@ CardHeader.displayName = 'CardHeader'
 
 export interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {}
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(({ children, className, ...rest }, ref) => (
-  <h3 ref={ref} className={clsx('text-2xl font-semibold leading-none tracking-tight', className)} {...rest}>
+  <h3 ref={ref} className={clsx('font-semibold text-2xl leading-none tracking-tight', className)} {...rest}>
     {children}
   </h3>
 ))
@@ -56,7 +56,7 @@ CardTitle.displayName = 'CardTitle'
 
 export interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {}
 export const CardDescription = forwardRef<HTMLParagraphElement, CardDescriptionProps>(({ className, ...rest }, ref) => (
-  <p ref={ref} className={clsx('text-sm text-muted-foreground', className)} {...rest} />
+  <p ref={ref} className={clsx('text-muted-foreground text-sm', className)} {...rest} />
 ))
 CardDescription.displayName = 'CardDescription'
 

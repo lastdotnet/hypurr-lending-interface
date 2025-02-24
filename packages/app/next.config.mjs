@@ -21,7 +21,6 @@ const nextConfig = {
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
     webpackBuildWorker: true,
-    serverComponentsExternalPackages: ['@cubist-labs/cubesigner-sdk'],
     // Minification of model imports seems to have caused issues on multiple occasions.
     // This property combined w/ the "use server" directive in files that
     // import models appears to resolve the issue.

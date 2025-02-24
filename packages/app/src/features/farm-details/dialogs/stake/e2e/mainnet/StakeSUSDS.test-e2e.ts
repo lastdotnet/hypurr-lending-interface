@@ -1,6 +1,6 @@
+import { SavingsPageObject } from '@/containers/Savings.PageObject'
 import { SavingsDialogPageObject } from '@/features/dialogs/savings/common/e2e/SavingsDialog.PageObject'
 import { FarmDetailsPageObject } from '@/features/farm-details/FarmDetails.PageObject'
-import { SavingsPageObject } from '@/containers/Savings.PageObject'
 import { USDS_ACTIVATED_BLOCK_NUMBER } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { overrideInfoSkyRouteWithHAR } from '@/test/e2e/info-sky'

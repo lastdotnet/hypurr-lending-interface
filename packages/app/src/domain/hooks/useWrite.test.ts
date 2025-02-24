@@ -6,8 +6,8 @@ import { handlers } from '@/test/integration/mockTransport'
 import { setupHookRenderer } from '@/test/integration/setupHookRenderer'
 import { getTestTrigger } from '@/test/integration/trigger'
 
-import { useWrite } from './useWrite'
 import { hyperTestnet } from '@/config/chain/constants'
+import { useWrite } from './useWrite'
 
 describe(useWrite.name, () => {
   it('simulates the transaction', async () => {

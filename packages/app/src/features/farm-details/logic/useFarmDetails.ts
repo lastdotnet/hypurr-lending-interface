@@ -5,6 +5,7 @@ import { TokenWithBalance } from '@/domain/common/types'
 import { NotFoundError } from '@/domain/errors/not-found'
 import { Farm } from '@/domain/farms/types'
 import { useFarmsInfo } from '@/domain/farms/useFarmsInfo'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useSandboxPageRedirect } from '@/domain/sandbox/useSandboxPageRedirect'
 import { useOpenDialog } from '@/domain/state/dialogs'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
@@ -24,7 +25,6 @@ import { getRewardPointsSyncStatus } from './getRewardPointsSyncStatus'
 import { FarmHistoryQueryResult, useFarmHistory } from './historic/useFarmHistory'
 import { useFarmDetailsParams } from './useFarmDetailsParams'
 import { useRewardPointsData } from './useRewardPointsData'
-import { useAccount } from '@/domain/hooks/useAccount'
 const GROWING_REWARD_REFRESH_INTERVAL_IN_MS = 50
 
 export interface ChartDetails {

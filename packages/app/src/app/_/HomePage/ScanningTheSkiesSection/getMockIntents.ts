@@ -1,14 +1,9 @@
-import { zeroAddress } from 'viem';
-import { mainnet } from 'viem/chains';
+import { zeroAddress } from 'viem'
+import { mainnet } from 'viem/chains'
 
-import { numberToBigInt } from 'common';
+import { numberToBigInt } from 'common'
 
-import {
-  type Asset,
-  type ERC20,
-  type ERC721,
-  getERC20TokenBySymbol,
-} from 'assets';
+import { type Asset, type ERC20, type ERC721, getERC20TokenBySymbol } from 'assets'
 
 const tokensAndValues = [
   {
@@ -81,7 +76,7 @@ const tokensAndValues = [
     }),
     usdValue: 2310.65,
   },
-];
+]
 
 // update values from https://nftpricefloor.com
 const nftsAndValues: ERC721[] = [
@@ -121,46 +116,44 @@ const nftsAndValues: ERC721[] = [
     tokenId: 4212n,
     usdValue: 5686.01,
   },
-];
+]
 
-const randomNumber = ({ max, min }: { max: number; min: number }) =>
-  Math.random() * (max - min) + min;
+const randomNumber = ({ max, min }: { max: number; min: number }) => Math.random() * (max - min) + min
 
-const getRandomERC20Token = () =>
-  tokensAndValues[Math.floor(Math.random() * tokensAndValues.length)];
+const getRandomERC20Token = () => tokensAndValues[Math.floor(Math.random() * tokensAndValues.length)]
 
 const getCollateralAmount = ({
   collateralTotalValue,
   collateralValue,
 }: {
-  collateralTotalValue: number;
-  collateralValue: number;
-}) => collateralTotalValue / collateralValue;
+  collateralTotalValue: number
+  collateralValue: number
+}) => collateralTotalValue / collateralValue
 const getAskingAmount = ({
   askingAmount,
   collateralTotalValue,
 }: {
-  askingAmount: number;
-  collateralTotalValue: number;
-}) => collateralTotalValue / askingAmount;
+  askingAmount: number
+  collateralTotalValue: number
+}) => collateralTotalValue / askingAmount
 
 const generateMockERC20Intent = () => {
-  const collateral = getRandomERC20Token();
-  const collateralTotalValue = randomNumber({ max: 1000000, min: 100 });
+  const collateral = getRandomERC20Token()
+  const collateralTotalValue = randomNumber({ max: 1000000, min: 100 })
   const collateralAmount = getCollateralAmount({
     collateralTotalValue,
     collateralValue: collateral.usdValue,
-  });
-  const asking = getRandomERC20Token();
+  })
+  const asking = getRandomERC20Token()
   const askingAmount = getAskingAmount({
     askingAmount: asking.usdValue,
     collateralTotalValue,
-  });
+  })
 
   const mockERC20Intent: {
-    asking: ERC20;
-    collateral: Asset;
-    id: string;
+    asking: ERC20
+    collateral: Asset
+    id: string
   } = {
     asking: {
       ...asking,
@@ -177,26 +170,25 @@ const generateMockERC20Intent = () => {
       }),
     },
     id: `${asking.symbol}-${askingAmount}-${collateral.symbol}-${collateralAmount}`,
-  };
+  }
 
-  return mockERC20Intent;
-};
-const mockERC20Intents = (amount: number) =>
-  [...Array(amount).keys()].map(() => generateMockERC20Intent());
+  return mockERC20Intent
+}
+const mockERC20Intents = (amount: number) => [...Array(amount).keys()].map(() => generateMockERC20Intent())
 
 const mockERC721Intent = (erc721: ERC721) => {
-  const collateral = erc721;
-  const collateralTotalValue = randomNumber({ max: 1000000, min: 100 });
-  const asking = getRandomERC20Token();
+  const collateral = erc721
+  const collateralTotalValue = randomNumber({ max: 1000000, min: 100 })
+  const asking = getRandomERC20Token()
   const askingAmount = getAskingAmount({
     askingAmount: asking.usdValue,
     collateralTotalValue,
-  });
+  })
 
   const mockERC721Intent: {
-    asking: ERC20;
-    collateral: ERC721;
-    id: string;
+    asking: ERC20
+    collateral: ERC721
+    id: string
   } = {
     asking: {
       ...asking,
@@ -207,33 +199,29 @@ const mockERC721Intent = (erc721: ERC721) => {
     },
     collateral,
     id: `${asking.symbol}-${askingAmount}-${collateral.collection.name}-${collateral.tokenId.toString()}`,
-  };
-  return mockERC721Intent;
-};
-const mockERC721Intents = () =>
-  nftsAndValues.map((erc721) => mockERC721Intent({ ...erc721 }));
+  }
+  return mockERC721Intent
+}
+const mockERC721Intents = () => nftsAndValues.map((erc721) => mockERC721Intent({ ...erc721 }))
 
 const shuffleIntentsArray = (
   array: {
-    asking: ERC20;
-    collateral: Asset;
-    id: string;
-  }[]
+    asking: ERC20
+    collateral: Asset
+    id: string
+  }[],
 ) => {
   for (let index = array.length - 1; index > 0; index--) {
-    const other = Math.floor(Math.random() * (index + 1));
-    [array[index], array[other]] = [array[other], array[index]];
+    const other = Math.floor(Math.random() * (index + 1))
+    ;[array[index], array[other]] = [array[other], array[index]]
   }
-  return array;
-};
+  return array
+}
 
 export const getMockIntents = ({ amount }: { amount: number }) => {
-  const numberOfERC721Intents = nftsAndValues.length + 1;
-  const numberOfERC20Intents = amount - numberOfERC721Intents;
+  const numberOfERC721Intents = nftsAndValues.length + 1
+  const numberOfERC20Intents = amount - numberOfERC721Intents
 
-  const mockIntents = [
-    ...mockERC721Intents(),
-    ...mockERC20Intents(numberOfERC20Intents),
-  ];
-  return shuffleIntentsArray(mockIntents);
-};
+  const mockIntents = [...mockERC721Intents(), ...mockERC20Intents(numberOfERC20Intents)]
+  return shuffleIntentsArray(mockIntents)
+}

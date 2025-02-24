@@ -30,7 +30,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           communication preferences, see &quot;Your Choices Regarding Your Information&quot; below.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           2. Information Automatically Collected
         </Heading>
 
@@ -70,7 +70,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           with your other information.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           3. Sharing Personal Information With Third Parties
         </Heading>
 
@@ -79,7 +79,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           choices regarding your information, see the &quot;Your Choices Regarding Your Information&quot; section below:
         </p>
 
-        <ul className="list-disc space-y-4 p-4 text-sm md:px-10 lg:px-20">
+        <ul className="list-disc space-y-4 p-4 text-sm lg:px-20 md:px-10">
           <li>
             Other companies owned by or under common ownership as {APP_DATA.NAME}, which also includes our subsidiaries
             (i.e., any organization we own or control) or our ultimate holding company (i.e., any organization that owns
@@ -129,11 +129,11 @@ const PrivacyPolicyCaliforniaPage = () => (
           </li>
         </ul>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           4. Your Choices Regarding Your Information
         </Heading>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.1 Marketing Communications
         </Heading>
 
@@ -158,7 +158,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           opt-out or our marketing practices, please email us at {APP_TERMS.PRIVACY_EMAIL}.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.2 Online Advertising
         </Heading>
 
@@ -270,7 +270,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           use these cookies to build a profile of your interests and deliver relevant advertising on other sites.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.3 Analytics and Advertising Services
         </Heading>
 
@@ -307,7 +307,7 @@ const PrivacyPolicyCaliforniaPage = () => (
           those websites.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           5. California Residents (California Consumer Privacy Act of 2018)
         </Heading>
 
@@ -352,7 +352,7 @@ const PrivacyPolicyCaliforniaPage = () => (
 
         <p>More info: https://www.caprivacy.org</p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           6. Updates to this Policy
         </Heading>
 

@@ -20,17 +20,17 @@ export const FillIntentContent = ({
   <Card receiptStyle>
     <CardSection>
       <div className="relative">
-        <ChainLogo chainId={intent.chainId} className="absolute right-0 top-0" height="32" width="32" />
+        <ChainLogo chainId={intent.chainId} className="absolute top-0 right-0" height="32" width="32" />
       </div>
       <CardLabelValue
         label={getIntentCopy({ borrow: 'Lending', intent, lend: 'Borrowing' })}
         orientation="vertical"
         value={
           isBeingRecalled(intent) ? (
-            <CurrentBorrow borrowIntentWithRecall={intent} className="text-2xl font-medium" linkAssetToBlockExplorer />
+            <CurrentBorrow borrowIntentWithRecall={intent} className="font-medium text-2xl" linkAssetToBlockExplorer />
           ) : (
             <ERC20Display
-              className="text-2xl font-medium"
+              className="font-medium text-2xl"
               erc20={intent.borrow}
               highPrecision
               linkAssetToBlockExplorer

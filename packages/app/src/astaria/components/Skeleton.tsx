@@ -1,7 +1,7 @@
-import { type HTMLAttributes } from 'react';
+import { type HTMLAttributes } from 'react'
 
-import { type VariantProps, cva } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { type VariantProps, cva } from 'class-variance-authority'
+import { clsx } from 'clsx'
 
 const skeletonVariants = cva('animate-pulse bg-muted', {
   defaultVariants: {
@@ -15,19 +15,17 @@ const skeletonVariants = cva('animate-pulse bg-muted', {
       sm: 'rounded-sm',
     },
   },
-});
+})
 
-export interface SkeletonProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof skeletonVariants> {}
+export interface SkeletonProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof skeletonVariants> {}
 export const Skeleton = ({ className, rounded, ...rest }: SkeletonProps) => (
   <div
     className={clsx(
       skeletonVariants({
         className,
         rounded,
-      })
+      }),
     )}
     {...rest}
   />
-);
+)

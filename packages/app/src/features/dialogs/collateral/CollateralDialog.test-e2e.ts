@@ -1,10 +1,10 @@
 import { test } from '@playwright/test'
 import { mainnet } from 'viem/chains'
 
-import { setUseAsCollateralValidationIssueToMessage } from '@/domain/market-validators/validateSetUseAsCollateral'
-import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
 import { BorrowPageObject } from '@/containers/Borrow.PageObject'
 import { MyPortfolioPageObject } from '@/containers/MyPortfolio.PageObject'
+import { setUseAsCollateralValidationIssueToMessage } from '@/domain/market-validators/validateSetUseAsCollateral'
+import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
 import { DEFAULT_BLOCK_NUMBER, GNO_ACTIVE_BLOCK_NUMBER } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'

@@ -1,5 +1,6 @@
 import { poolAbi } from '@/config/abis/poolAbi'
-import { NATIVE_ASSET_MOCK_ADDRESS, HYPURR_UI_REFERRAL_CODE } from '@/config/consts'
+import { hyperTestnet } from '@/config/chain/constants'
+import { HYPURR_UI_REFERRAL_CODE, NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
@@ -13,7 +14,6 @@ import { generatePrivateKey } from 'viem/accounts'
 import { describe, test } from 'vitest'
 import { createPermitStore } from '../../../logic/permits'
 import { createDepositActionConfig } from './depositAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const depositValue = NormalizedUnitNumber(1)
 const depositToken = getMockToken({ symbol: TokenSymbol('TEST') })

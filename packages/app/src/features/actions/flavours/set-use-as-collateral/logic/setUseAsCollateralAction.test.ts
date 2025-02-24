@@ -1,4 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
+import { hyperTestnet } from '@/config/chain/constants'
 import { lendingPoolAddress } from '@/config/contracts-generated'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { getMockToken, testAddresses } from '@/test/integration/constants'
@@ -7,7 +8,6 @@ import { setupUseContractActionRenderer } from '@/test/integration/setupUseContr
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createSetUseAsCollateralActionConfig } from './setUseAsCollateralAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const collateral = getMockToken({ symbol: TokenSymbol('TEST') })
 const account = testAddresses.alice

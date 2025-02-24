@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { wagmiConfig } from '@/astaria/config/wagmi'
-import { getToken } from 'wagmi/actions'
 import { type Address, type Chain, formatUnits } from 'viem'
+import { getToken } from 'wagmi/actions'
 
 import { EVENT } from 'notifications'
 import { useIsClient } from 'usehooks-ts'
@@ -24,8 +24,8 @@ import { sendNotification } from '@/astaria/utils/sendNotification'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 
-import { type ERC20Asset, getERC20TokenByAddress, isERC20Asset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20Asset, getERC20TokenByAddress, isERC20Asset } from 'assets'
 
 export const useWriteRecallBorrowIntent = ({
   borrowIntentWithRecall,

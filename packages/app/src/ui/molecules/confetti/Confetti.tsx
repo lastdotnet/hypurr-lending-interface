@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, PropsWithChildren, useCallback } from 'react'
-import { useConfetti } from 'use-confetti-svg'
 import { assets } from '@/ui/assets'
+import { PropsWithChildren, createContext, useCallback, useContext, useState } from 'react'
+import { useConfetti } from 'use-confetti-svg'
 interface ConfettiContextProps {
   runAnimation: () => Promise<void>
   animating: boolean

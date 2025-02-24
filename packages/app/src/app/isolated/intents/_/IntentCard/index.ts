@@ -1,1 +1,1 @@
-export * from './IntentCard';
+export * from './IntentCard'

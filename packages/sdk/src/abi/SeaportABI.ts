@@ -2933,4 +2933,4 @@ export const SeaportABI = [
     name: 'UnusedItemParameters',
     type: 'error',
   },
-] as const;
+] as const

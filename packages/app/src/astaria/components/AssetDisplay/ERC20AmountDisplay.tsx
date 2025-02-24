@@ -87,7 +87,7 @@ export const ERC20AmountDisplay = ({
     <div>
       {amountDisplay}
       <USDValueDisplay
-        className="text-left text-xs font-normal text-zinc-400"
+        className="text-left font-normal text-xs text-zinc-400"
         skeleton={skeleton}
         suppressHydrationWarning={suppressHydrationWarning}
         usdValue={

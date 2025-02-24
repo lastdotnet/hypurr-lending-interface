@@ -4,4 +4,4 @@ module.exports = {
     project: true,
   },
   root: true,
-};
+}

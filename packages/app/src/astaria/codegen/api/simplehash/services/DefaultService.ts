@@ -5,8 +5,8 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import type { BaseHttpRequest } from '../core/BaseHttpRequest';
-import type { CancelablePromise } from '../core/CancelablePromise';
+import type { BaseHttpRequest } from '../core/BaseHttpRequest'
+import type { CancelablePromise } from '../core/CancelablePromise'
 
 export class DefaultService {
   constructor(public readonly httpRequest: BaseHttpRequest) {}
@@ -28,164 +28,164 @@ export class DefaultService {
     /**
      * Name of the chain(s), comma-separated for multiple values (e.g., polygon,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include a field "queried_wallet_balances" that includes the quantity owned and acquired dates of each passed wallet address on each NFT response body (useful for NFTs with many owners, such as ERC1155s) (pass queried_wallet_balances=1)
      */
-    queriedWalletBalances?: '1' | '0';
+    queriedWalletBalances?: '1' | '0'
     /**
      * NFT contract addresses to filter on. Limit of 20 addresses.
      */
-    contractAddresses?: string;
+    contractAddresses?: string
     /**
      * List of Collection IDs to filter on, comma-separated. Limit of 40 collection IDs.
      */
-    collectionIds?: string;
+    collectionIds?: string
     /**
      * Include the total distinct count of tokens in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: string;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: string
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: string;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: string
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: string;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: string
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: string;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
-      last_sale?: any;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: string
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
+      last_sale?: any
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
+        source?: string
+        total_creator_fee_basis_points?: number
         recipients?: Array<{
-          address?: string;
-          percentage?: number;
-          basis_points?: number;
-        }>;
-      }>;
+          address?: string
+          percentage?: number
+          basis_points?: number
+        }>
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
         properties?: {
-          Creator?: string;
-        };
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          Creator?: string
+        }
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -201,11 +201,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFTs by Contract
@@ -274,162 +274,162 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include the total distinct count of tokens in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: string;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: string
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: any;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: any
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: any;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: any
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: string;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: string
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        spam_score?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        spam_score?: number
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
-      last_sale?: any;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
+      last_sale?: any
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
+        source?: string
+        total_creator_fee_basis_points?: number
         recipients?: Array<{
-          address?: string;
-          percentage?: number;
-          basis_points?: number;
-        }>;
-      }>;
+          address?: string
+          percentage?: number
+          basis_points?: number
+        }>
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -444,11 +444,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Wallet(s)
@@ -471,83 +471,83 @@ export class DefaultService {
     /**
      * Name of the chain(s) (e.g., optimism), comma-separated for multiple values (e.g, optimism,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * When ```include_nft_details=1``` is passed, for NFTs with structured attributes in their ```extra_metadata```, include the percentage of tokens in the collection that have each trait_type + value (pass ```include_attribute_percentages=1```)
      */
-    includeAttributePercentages?: '1' | '0';
+    includeAttributePercentages?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -566,11 +566,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by NFT
@@ -648,82 +648,82 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Lower bound block_number (inclusive). The from_timestamp param takes precedence if both from_timestamp and from_block are specified.
      */
-    fromBlock?: number;
+    fromBlock?: number
     /**
      * Upper bound block_number (inclusive). The to_timestamp param takes precedence if both to_timestamp and to_block are specified.
      */
-    toBlock?: number;
+    toBlock?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Exclude transfers where `from_address_id` == `to_address_id`
      */
-    excludeSelfTransfers?: '1' | '0';
+    excludeSelfTransfers?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
-      sale_details?: any;
-    }>;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
+      sale_details?: any
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -747,11 +747,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFT by Token ID
@@ -818,166 +818,166 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Contract address of the NFT. For Solana, this is the mint address. For Bitcoin, this is the inscription ID.
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the NFT. For Solana & Bitcoin, this can be omitted or set to 0
      */
-    tokenId?: string;
+    tokenId?: string
   }): CancelablePromise<{
-    nft_id?: string;
-    chain?: string;
-    contract_address?: string;
-    token_id?: string;
-    name?: string;
-    description?: any;
+    nft_id?: string
+    chain?: string
+    contract_address?: string
+    token_id?: string
+    name?: string
+    description?: any
     previews?: {
-      image_small_url?: string;
-      image_medium_url?: string;
-      image_large_url?: string;
-      image_opengraph_url?: string;
-      blurhash?: string;
-      predominant_color?: string;
-    };
-    image_url?: string;
+      image_small_url?: string
+      image_medium_url?: string
+      image_large_url?: string
+      image_opengraph_url?: string
+      blurhash?: string
+      predominant_color?: string
+    }
+    image_url?: string
     image_properties?: {
-      width?: number;
-      height?: number;
-      size?: number;
-      mime_type?: string;
-    };
-    video_url?: any;
-    video_properties?: any;
-    audio_url?: any;
-    audio_properties?: any;
-    model_url?: any;
-    model_properties?: any;
-    background_color?: any;
-    external_url?: any;
-    created_date?: string;
-    status?: string;
-    token_count?: number;
-    owner_count?: number;
+      width?: number
+      height?: number
+      size?: number
+      mime_type?: string
+    }
+    video_url?: any
+    video_properties?: any
+    audio_url?: any
+    audio_properties?: any
+    model_url?: any
+    model_properties?: any
+    background_color?: any
+    external_url?: any
+    created_date?: string
+    status?: string
+    token_count?: number
+    owner_count?: number
     owners?: Array<{
-      owner_address?: string;
-      quantity?: number;
-      first_acquired_date?: string;
-      last_acquired_date?: string;
-    }>;
+      owner_address?: string
+      quantity?: number
+      first_acquired_date?: string
+      last_acquired_date?: string
+    }>
     contract?: {
-      type?: string;
-      name?: string;
-      symbol?: string;
-      deployed_by?: string;
-      deployed_via_contract?: any;
-    };
+      type?: string
+      name?: string
+      symbol?: string
+      deployed_by?: string
+      deployed_via_contract?: any
+    }
     collection?: {
-      collection_id?: string;
-      name?: string;
-      description?: string;
-      image_url?: string;
-      banner_image_url?: string;
-      category?: string;
-      is_nsfw?: boolean;
-      external_url?: string;
-      twitter_username?: string;
-      discord_url?: string;
-      instagram_username?: string;
-      medium_username?: any;
-      telegram_url?: any;
+      collection_id?: string
+      name?: string
+      description?: string
+      image_url?: string
+      banner_image_url?: string
+      category?: string
+      is_nsfw?: boolean
+      external_url?: string
+      twitter_username?: string
+      discord_url?: string
+      instagram_username?: string
+      medium_username?: any
+      telegram_url?: any
       marketplace_pages?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        marketplace_collection_id?: string;
-        nft_url?: string;
-        collection_url?: string;
-        verified?: boolean;
-      }>;
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
+        marketplace_id?: string
+        marketplace_name?: string
+        marketplace_collection_id?: string
+        nft_url?: string
+        collection_url?: string
+        verified?: boolean
+      }>
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
       floor_prices?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        value?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        value?: number
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-      }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+      }>
       top_bids?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        value?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        value?: number
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-      }>;
-      distinct_owner_count?: number;
-      distinct_nft_count?: number;
-      total_quantity?: number;
-      top_contracts?: Array<string>;
-    };
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+      }>
+      distinct_owner_count?: number
+      distinct_nft_count?: number
+      total_quantity?: number
+      top_contracts?: Array<string>
+    }
     last_sale?: {
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      transaction?: string;
-      marketplace_id?: string;
-      marketplace_name?: string;
-      is_bundle_sale?: boolean;
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      transaction?: string
+      marketplace_id?: string
+      marketplace_name?: string
+      is_bundle_sale?: boolean
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-      unit_price?: number;
-      total_price?: number;
-    };
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+      unit_price?: number
+      total_price?: number
+    }
     first_created?: {
-      minted_to?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      transaction?: string;
-      transaction_initiator?: string;
-    };
+      minted_to?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      transaction?: string
+      transaction_initiator?: string
+    }
     rarity?: {
-      rank?: number;
-      score?: number;
-      unique_attributes?: number;
-    };
+      rank?: number
+      score?: number
+      unique_attributes?: number
+    }
     royalty?: Array<{
-      source?: string;
-      total_creator_fee_basis_points?: number;
+      source?: string
+      total_creator_fee_basis_points?: number
       recipients?: Array<{
-        address?: string;
-        percentage?: number;
-        basis_points?: number;
-      }>;
-    }>;
+        address?: string
+        percentage?: number
+        basis_points?: number
+      }>
+    }>
     extra_metadata?: {
       attributes?: Array<{
-        trait_type?: string;
-        value?: string;
-        display_type?: any;
-      }>;
-      image_original_url?: string;
-      animation_original_url?: any;
-      metadata_original_url?: string;
-    };
+        trait_type?: string
+        value?: string
+        display_type?: any
+      }>
+      image_original_url?: string
+      animation_original_url?: any
+      metadata_original_url?: string
+    }
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -988,11 +988,11 @@ export class DefaultService {
         token_id: tokenId,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Chain
@@ -1069,91 +1069,91 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Lower bound block_number (inclusive). The from_timestamp param takes precedence if both from_timestamp and from_block are specified.
      */
-    fromBlock?: number;
+    fromBlock?: number
     /**
      * Upper bound block_number (inclusive). The to_timestamp param takes precedence if both to_timestamp and to_block are specified.
      */
-    toBlock?: number;
+    toBlock?: number
     /**
      * Filter to specific contracts (e.g., 0x60e4d786628fea6478f785a6d7e704777c86a7c6), comma-separated for multiple values (e.g., 0x60e4d786628fea6478f785a6d7e704777c86a7c6,0x8a90cab2b38dba80c64b7734e58ee1db38b8992e). Maximum of 100 addresses. When this parameter is specified, a time window of <= 7 days must also be provided, using from_timestamp and to_timestamp.
      */
-    contractAddresses?: string;
+    contractAddresses?: string
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Exclude transfers where `from_address_id` == `to_address_id`
      */
-    excludeSelfTransfers?: '1' | '0';
+    excludeSelfTransfers?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1176,11 +1176,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Ownership Summary by Wallet(s)
@@ -1196,29 +1196,29 @@ export class DefaultService {
     /**
      * Chain(s) to query - may be comma delimited (e.g., ethereum,arbitrum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * NFT contract address(es) to filter on, comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    contractAddresses?: string;
+    contractAddresses?: string
     /**
      * Comma-separated list of contract_id values to hide from the results. For example: `excluded_contract_ids=ethereum.0xc0cb81c1f89ab0873653f67eea42652f13cd8416,polygon.0x3147f9c776f59231226504c77332ad952a6d2402`
      */
-    excludedContractIds?: string;
+    excludedContractIds?: string
   }): CancelablePromise<{
     wallets?: Array<{
-      wallet_address?: string;
+      wallet_address?: string
       contracts?: Array<{
-        contract_address?: string;
-        token_ids?: Array<string>;
-        chain?: string;
-        nfts_owned?: number;
-      }>;
-    }>;
+        contract_address?: string
+        token_ids?: Array<string>
+        chain?: string
+        nfts_owned?: number
+      }>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1230,11 +1230,11 @@ export class DefaultService {
         excluded_contract_ids: excludedContractIds,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Owners by NFT
@@ -1304,37 +1304,37 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
     /**
      * Include the total distinct count of Owners in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Change the default page limit.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     owners?: Array<{
-      owner_address?: string;
-      quantity?: number;
-      first_acquired_date?: string;
-      last_acquired_date?: string;
-    }>;
+      owner_address?: string
+      quantity?: number
+      first_acquired_date?: string
+      last_acquired_date?: string
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1350,11 +1350,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFTs by Collection ID / Mint
@@ -1373,188 +1373,188 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints). On Solana this field also accepts a verified metaplex_mint identifier (also known as a Metaplex certified collection, or "On-chain Collection")
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the total distinct count of tokens in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * For NFTs with structured attributes in their ```extra_metadata```, include the percentage of tokens in the collection that have each trait_type + value (pass ```include_attribute_percentages=1```)
      */
-    includeAttributePercentages?: '1' | '0';
+    includeAttributePercentages?: '1' | '0'
     /**
      * For NFTs with last_sale information, include the equivalent ETH unit price, in wei, of the transaction
      */
-    includeUnitPriceEthWei?: '1' | '0';
+    includeUnitPriceEthWei?: '1' | '0'
     /**
      * Optional name of the chain(s), comma-separated for multiple values (e.g., polygon,ethereum). This is useful for filtering by chain for collections that span multiple chains.
      */
-    chains?: string;
+    chains?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: string;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: string
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: any;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: any
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: any;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: any
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: string;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: string
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        spam_score?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        spam_score?: number
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
       last_sale?: {
-        from_address?: string;
-        to_address?: string;
-        quantity?: number;
-        timestamp?: string;
-        transaction?: string;
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        from_address?: string
+        to_address?: string
+        quantity?: number
+        timestamp?: string
+        transaction?: string
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
+        source?: string
+        total_creator_fee_basis_points?: number
         recipients?: Array<{
-          address?: string;
-          percentage?: number;
-          basis_points?: number;
-        }>;
-      }>;
+          address?: string
+          percentage?: number
+          basis_points?: number
+        }>
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1571,11 +1571,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Owners by Contract
@@ -1644,35 +1644,35 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include the total distinct count of Owners in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Change the default page limit.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     owners?: Array<{
-      nft_id?: string;
-      owner_address?: string;
-      token_id?: string;
-      quantity?: number;
-      first_acquired_date?: string;
-      last_acquired_date?: string;
-    }>;
+      nft_id?: string
+      owner_address?: string
+      token_id?: string
+      quantity?: number
+      first_acquired_date?: string
+      last_acquired_date?: string
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1687,11 +1687,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Collection
@@ -1716,76 +1716,76 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Lower bound block_number (inclusive). The from_timestamp param takes precedence if both from_timestamp and from_block are specified.
      */
-    fromBlock?: number;
+    fromBlock?: number
     /**
      * Upper bound block_number (inclusive). The to_timestamp param takes precedence if both to_timestamp and to_block are specified.
      */
-    toBlock?: number;
+    toBlock?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * For sales, include the equivalent ETH price, in wei, of the transaction
      */
-    includeUnitPriceEthWei?: '1' | '0';
+    includeUnitPriceEthWei?: '1' | '0'
     /**
      * Exclude transfers where `from_address_id` == `to_address_id`
      */
-    excludeSelfTransfers?: '1' | '0';
+    excludeSelfTransfers?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
-      sale_details?: any;
-    }>;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
+      sale_details?: any
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1808,11 +1808,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Contract
@@ -1889,91 +1889,91 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Lower bound block_number (inclusive). The from_timestamp param takes precedence if both from_timestamp and from_block are specified.
      */
-    fromBlock?: number;
+    fromBlock?: number
     /**
      * Upper bound block_number (inclusive). The to_timestamp param takes precedence if both to_timestamp and to_block are specified.
      */
-    toBlock?: number;
+    toBlock?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Exclude transfers where `from_address_id` == `to_address_id`
      */
-    excludeSelfTransfers?: '1' | '0';
+    excludeSelfTransfers?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -1996,11 +1996,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFTs by Token List
@@ -2014,170 +2014,165 @@ export class DefaultService {
     /**
      * The comma delimited list of NFT IDs to include ```chain.contract.token_id``` for EVM chains, ```chain.token_id``` for Solana. Limit of 50 addresses.
      */
-    nftIds?: string;
+    nftIds?: string
     /**
      * Optionally sort the results by last sale price (in USD) or date
      */
-    orderBy?:
-      | ''
-      | 'last_sale_date__desc'
-      | 'last_sale_date__asc'
-      | 'last_sale_price__desc'
-      | 'last_sale_price__asc';
+    orderBy?: '' | 'last_sale_date__desc' | 'last_sale_date__asc' | 'last_sale_price__desc' | 'last_sale_price__asc'
   }): CancelablePromise<{
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: any;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: any
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: any;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: any
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: any;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: any
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: string;
-        instagram_username?: string;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: string
+        instagram_username?: string
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        spam_score?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        spam_score?: number
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
       last_sale?: {
-        from_address?: string;
-        to_address?: string;
-        quantity?: number;
-        timestamp?: string;
-        transaction?: string;
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        from_address?: string
+        to_address?: string
+        quantity?: number
+        timestamp?: string
+        transaction?: string
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: any;
-          address?: string;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
+          payment_token_id?: string
+          name?: string
+          symbol?: any
+          address?: string
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
+        source?: string
+        total_creator_fee_basis_points?: number
         recipients?: Array<{
-          address?: string;
-          percentage?: number;
-          basis_points?: number;
-        }>;
-      }>;
+          address?: string
+          percentage?: number
+          basis_points?: number
+        }>
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -2187,11 +2182,11 @@ export class DefaultService {
         order_by: orderBy,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Refresh Contract Metadata
@@ -2205,7 +2200,7 @@ export class DefaultService {
     /**
      * The contract address to be refreshed
      */
-    contractAddress: string;
+    contractAddress: string
     /**
      * The chain of the contract to be refreshed
      */
@@ -2261,7 +2256,7 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'POST',
@@ -2271,9 +2266,9 @@ export class DefaultService {
         contract_address: contractAddress,
       },
       errors: {
-        400: `400`,
+        400: '400',
       },
-    });
+    })
   }
   /**
    * Refresh NFT Metadata
@@ -2288,11 +2283,11 @@ export class DefaultService {
     /**
      * The contract address of the NFT to be refreshed
      */
-    contractAddress: string;
+    contractAddress: string
     /**
      * The token id of the NFT to be refreshed. For Solana and Bitcoin NFTs, this can be omitted or set to 0.
      */
-    tokenId: string;
+    tokenId: string
     /**
      * The chain of the contract / NFT to be refreshed
      */
@@ -2348,7 +2343,7 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'POST',
@@ -2359,9 +2354,9 @@ export class DefaultService {
         token_id: tokenId,
       },
       errors: {
-        400: `400`,
+        400: '400',
       },
-    });
+    })
   }
   /**
    * Refresh Collection Metadata
@@ -2374,7 +2369,7 @@ export class DefaultService {
     /**
      * The collection id to be refreshed
      */
-    collectionId: string;
+    collectionId: string
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'POST',
@@ -2383,9 +2378,9 @@ export class DefaultService {
         collection_id: collectionId,
       },
       errors: {
-        400: `400`,
+        400: '400',
       },
-    });
+    })
   }
   /**
    * Refresh Wallet Metadata
@@ -2399,11 +2394,11 @@ export class DefaultService {
     /**
      * The wallet address to be refreshed
      */
-    walletAddress: string;
+    walletAddress: string
     /**
      * Name of the chain(s) (e.g., optimism), comma-separated for multiple values (e.g, optimism,ethereum)
      */
-    chains?: string;
+    chains?: string
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'POST',
@@ -2415,9 +2410,9 @@ export class DefaultService {
         chains: chains,
       },
       errors: {
-        400: `400`,
+        400: '400',
       },
-    });
+    })
   }
   /**
    * Active Listings by Contract
@@ -2490,66 +2485,66 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea, blur, x2y2, looksrare, tensor, cryptopunks, magiceden
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     listings?: Array<{
-      id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: any;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: any
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-      is_private?: boolean;
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+      is_private?: boolean
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -2568,11 +2563,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collections by Chain
@@ -2640,47 +2635,47 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * (Optional). Comma-delimited string of contract addresses to filter on (up to 20).
      */
-    contractAddresses?: string;
+    contractAddresses?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      name?: string;
-      description?: string;
-      image_url?: string;
-      banner_image_url?: string;
-      external_url?: any;
-      twitter_username?: any;
-      discord_url?: any;
+      collection_id?: string
+      name?: string
+      description?: string
+      image_url?: string
+      banner_image_url?: string
+      external_url?: any
+      twitter_username?: any
+      discord_url?: any
       marketplace_pages?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        marketplace_collection_id?: string;
-        collection_url?: string;
-        verified?: boolean;
-      }>;
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
-      floor_prices?: any[];
-      distinct_owner_count?: number;
-      distinct_nft_count?: number;
-      total_quantity?: number;
-      top_contracts?: Array<string>;
-    }>;
+        marketplace_id?: string
+        marketplace_name?: string
+        marketplace_collection_id?: string
+        collection_url?: string
+        verified?: boolean
+      }>
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
+      floor_prices?: any[]
+      distinct_owner_count?: number
+      distinct_nft_count?: number
+      total_quantity?: number
+      top_contracts?: Array<string>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -2694,11 +2689,11 @@ export class DefaultService {
         contract_addresses: contractAddresses,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Active Listings by Collection
@@ -2719,69 +2714,65 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea, blur, x2y2, looksrare, tensor, cryptopunks, magiceden
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are: listing_timestamp_desc (default), listing_timestamp_asc, price_asc, or price_desc
      */
-    orderBy?:
-      | 'listing_timestamp_desc'
-      | 'listing_timestamp_asc'
-      | 'price_asc'
-      | 'price_desc';
+    orderBy?: 'listing_timestamp_desc' | 'listing_timestamp_asc' | 'price_asc' | 'price_desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     listings?: Array<{
-      id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -2800,11 +2791,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collections by Contract
@@ -2873,62 +2864,62 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      name?: string;
-      description?: string;
-      image_url?: string;
-      banner_image_url?: string;
-      external_url?: string;
-      twitter_username?: any;
-      discord_url?: any;
+      collection_id?: string
+      name?: string
+      description?: string
+      image_url?: string
+      banner_image_url?: string
+      external_url?: string
+      twitter_username?: any
+      discord_url?: any
       marketplace_pages?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        marketplace_collection_id?: string;
-        collection_url?: string;
-        verified?: boolean;
-      }>;
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
+        marketplace_id?: string
+        marketplace_name?: string
+        marketplace_collection_id?: string
+        collection_url?: string
+        verified?: boolean
+      }>
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
       floor_prices?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        value?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        value?: number
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-      }>;
-      distinct_owner_count?: number;
-      distinct_nft_count?: number;
-      total_quantity?: number;
-      top_contracts?: Array<string>;
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+      }>
+      distinct_owner_count?: number
+      distinct_nft_count?: number
+      total_quantity?: number
+      top_contracts?: Array<string>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -2943,11 +2934,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collections by Marketplace
@@ -2965,55 +2956,55 @@ export class DefaultService {
     /**
      * Name of the NFT marketplace
      */
-    marketplace?: 'opensea' | 'magiceden' | 'tensor' | 'trove';
+    marketplace?: 'opensea' | 'magiceden' | 'tensor' | 'trove'
     /**
      * Name of the chain(s) (e.g., optimism), comma-separated for multiple values (e.g., optimism,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Marketplace-specific collection slug(s) (e.g., doodle), comma-separated for multiple values (e.g., doodle,yaypegs,mutant-ape-yacht-club). Limit of 20 slugs
      */
-    slugs?: string;
+    slugs?: string
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      name?: string;
-      description?: string;
-      image_url?: string;
-      banner_image_url?: string;
-      external_url?: any;
-      twitter_username?: string;
-      discord_url?: string;
+      collection_id?: string
+      name?: string
+      description?: string
+      image_url?: string
+      banner_image_url?: string
+      external_url?: any
+      twitter_username?: string
+      discord_url?: string
       marketplace_pages?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        marketplace_collection_id?: string;
-        collection_url?: string;
-        verified?: boolean;
-      }>;
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
-      floor_prices?: any[];
-      distinct_owner_count?: number;
-      distinct_nft_count?: number;
-      total_quantity?: number;
-      top_contracts?: Array<string>;
-    }>;
+        marketplace_id?: string
+        marketplace_name?: string
+        marketplace_collection_id?: string
+        collection_url?: string
+        verified?: boolean
+      }>
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
+      floor_prices?: any[]
+      distinct_owner_count?: number
+      distinct_nft_count?: number
+      total_quantity?: number
+      top_contracts?: Array<string>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3029,11 +3020,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collections by ID(s)
@@ -3047,47 +3038,47 @@ export class DefaultService {
     /**
      * The unique identifier of the collection(s), comma separated for multiple values (e.g., fa5a665f6d37ba338f4df83054f431db,510139ec0d8cf5513d59a8d3afa1c061). Limit of 20 collections. Also accepts metaplex_mint addresses for Solana.
      */
-    collectionIds?: string;
+    collectionIds?: string
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
   }): CancelablePromise<{
     collections?: Array<{
-      collection_id?: string;
-      name?: string;
-      description?: string;
-      image_url?: string;
-      banner_image_url?: string;
-      external_url?: string;
-      twitter_username?: string;
-      discord_url?: string;
+      collection_id?: string
+      name?: string
+      description?: string
+      image_url?: string
+      banner_image_url?: string
+      external_url?: string
+      twitter_username?: string
+      discord_url?: string
       marketplace_pages?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        marketplace_collection_id?: string;
-        collection_url?: string;
-        verified?: boolean;
-      }>;
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
-      spam_score?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        marketplace_collection_id?: string
+        collection_url?: string
+        verified?: boolean
+      }>
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
+      spam_score?: number
       floor_prices?: Array<{
-        marketplace_id?: string;
-        marketplace_name?: string;
-        value?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        value?: number
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-      }>;
-      distinct_owner_count?: number;
-      distinct_nft_count?: number;
-      total_quantity?: number;
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+      }>
+      distinct_owner_count?: number
+      distinct_nft_count?: number
+      total_quantity?: number
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3097,11 +3088,11 @@ export class DefaultService {
         include_top_contract_details: includeTopContractDetails,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collection Volumes & Market Caps
@@ -3117,69 +3108,63 @@ export class DefaultService {
     /**
      * The unique identifier of the collection(s), comma separated for mulitple values (e.g., fa5a665f6d37ba338f4df83054f431db,510139ec0d8cf5513d59a8d3afa1c061). Limit of 5 collections.
      */
-    collectionIds?: string;
-    marketplaceId?:
-      | 'blur'
-      | 'opensea'
-      | 'x2y2'
-      | 'looksrare'
-      | 'magiceden'
-      | 'tensor';
+    collectionIds?: string
+    marketplaceId?: 'blur' | 'opensea' | 'x2y2' | 'looksrare' | 'magiceden' | 'tensor'
     /**
      * Include the full collection response
      */
-    includeCollectionDetails?: '1' | '0';
+    includeCollectionDetails?: '1' | '0'
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
   }): CancelablePromise<{
     collections?: Array<{
-      collection_id?: string;
-      name?: string;
-      '1_day_volume'?: number;
-      '1_day_volume_usd_cents'?: number;
-      '1_day_prior_volume'?: number;
-      '1_day_prior_volume_usd_cents'?: number;
-      '1_day_volume_change_percent'?: number;
-      '1_day_transaction_count'?: number;
-      '1_day_seller_count'?: number;
-      '1_day_buyer_count'?: number;
-      '1_day_trader_count'?: number;
-      '7_day_volume'?: number;
-      '7_day_volume_usd_cents'?: number;
-      '7_day_prior_volume'?: number;
-      '7_day_prior_volume_usd_cents'?: number;
-      '7_day_volume_change_percent'?: number;
-      '7_day_transaction_count'?: number;
-      '7_day_seller_count'?: number;
-      '7_day_buyer_count'?: number;
-      '7_day_trader_count'?: number;
-      '30_day_volume'?: number;
-      '30_day_volume_usd_cents'?: number;
-      '30_day_prior_volume'?: number;
-      '30_day_prior_volume_usd_cents'?: number;
-      '30_day_volume_change_percent'?: number;
-      '30_day_transaction_count'?: number;
-      '30_day_seller_count'?: number;
-      '30_day_buyer_count'?: number;
-      '30_day_trader_count'?: number;
-      '90_day_volume'?: number;
-      '90_day_volume_usd_cents'?: number;
-      '90_day_transaction_count'?: number;
-      '90_day_seller_count'?: number;
-      '90_day_buyer_count'?: number;
-      '90_day_trader_count'?: number;
-      all_time_volume?: number;
-      market_cap?: number;
+      collection_id?: string
+      name?: string
+      '1_day_volume'?: number
+      '1_day_volume_usd_cents'?: number
+      '1_day_prior_volume'?: number
+      '1_day_prior_volume_usd_cents'?: number
+      '1_day_volume_change_percent'?: number
+      '1_day_transaction_count'?: number
+      '1_day_seller_count'?: number
+      '1_day_buyer_count'?: number
+      '1_day_trader_count'?: number
+      '7_day_volume'?: number
+      '7_day_volume_usd_cents'?: number
+      '7_day_prior_volume'?: number
+      '7_day_prior_volume_usd_cents'?: number
+      '7_day_volume_change_percent'?: number
+      '7_day_transaction_count'?: number
+      '7_day_seller_count'?: number
+      '7_day_buyer_count'?: number
+      '7_day_trader_count'?: number
+      '30_day_volume'?: number
+      '30_day_volume_usd_cents'?: number
+      '30_day_prior_volume'?: number
+      '30_day_prior_volume_usd_cents'?: number
+      '30_day_volume_change_percent'?: number
+      '30_day_transaction_count'?: number
+      '30_day_seller_count'?: number
+      '30_day_buyer_count'?: number
+      '30_day_trader_count'?: number
+      '90_day_volume'?: number
+      '90_day_volume_usd_cents'?: number
+      '90_day_transaction_count'?: number
+      '90_day_seller_count'?: number
+      '90_day_buyer_count'?: number
+      '90_day_trader_count'?: number
+      all_time_volume?: number
+      market_cap?: number
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3191,11 +3176,11 @@ export class DefaultService {
         include_top_contract_details: includeTopContractDetails,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Send Spam Report
@@ -3209,24 +3194,24 @@ export class DefaultService {
       /**
        * SimpleHash collection id of the NFT reported
        */
-      collection_id?: string;
+      collection_id?: string
       /**
        * contract_address of the NFT reported, or the contract itself
        */
-      contract_address?: string;
+      contract_address?: string
       /**
        * chain_id (e.g., ethereum) of the NFT or contract reported
        */
-      chain_id?: string;
+      chain_id?: string
       /**
        * token_id of the NFT reported
        */
-      token_id?: string;
+      token_id?: string
       /**
        * one of `user_hid`, `user_unhid`, `user_burned`, `mark_as_spam`, `mark_as_not_spam`
        */
-      event_type?: string;
-    };
+      event_type?: string
+    }
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'POST',
@@ -3234,9 +3219,9 @@ export class DefaultService {
       body: requestBody,
       mediaType: 'application/json',
       errors: {
-        400: `400`,
+        400: '400',
       },
-    });
+    })
   }
   /**
    * Traits by Collection
@@ -3252,30 +3237,30 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Comma-separated list of traits (e.g. body,face). Limit of 20 trait types
      */
-    traitTypes?: string;
+    traitTypes?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     items?: Array<{
-      trait_type?: string;
+      trait_type?: string
       values?: Array<{
-        value?: string;
-        count?: number;
-      }>;
-    }>;
+        value?: string
+        count?: number
+      }>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3289,11 +3274,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Owners by Collection
@@ -3309,31 +3294,31 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the total distinct count of Owners in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Change the default page limit.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     owners?: Array<{
-      nft_id?: string;
-      owner_address?: string;
-      token_id?: string;
-      quantity?: number;
-      first_acquired_date?: string;
-      last_acquired_date?: string;
-    }>;
+      nft_id?: string
+      owner_address?: string
+      token_id?: string
+      quantity?: number
+      first_acquired_date?: string
+      last_acquired_date?: string
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3347,11 +3332,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Tx Hash
@@ -3422,51 +3407,51 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
-    transactionHash?: string;
+      | 'zora-sepolia'
+    transactionHash?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '0' | '1';
+    includeNftDetails?: '0' | '1'
     /**
      * Exclude transfers where `from_address_id` == `to_address_id`
      */
-    excludeSelfTransfers?: '1' | '0';
+    excludeSelfTransfers?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: any;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
-      sale_details?: any;
-    }>;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: any
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
+      sale_details?: any
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3483,10 +3468,10 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
+        400: '400',
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Active Listings by NFT
@@ -3560,77 +3545,73 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea, blur, x2y2, looksrare, tensor, cryptopunks, magiceden
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are: listing_timestamp_desc (default), listing_timestamp_asc, price_asc, or price_desc
      */
-    orderBy?:
-      | 'listing_timestamp_desc'
-      | 'listing_timestamp_asc'
-      | 'price_asc'
-      | 'price_desc';
+    orderBy?: 'listing_timestamp_desc' | 'listing_timestamp_asc' | 'price_asc' | 'price_desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     listings?: Array<{
-      id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3651,11 +3632,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Trait Floor Price by Collection
@@ -3670,29 +3651,29 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Trait (e.g. background)
      */
-    traitType?: string;
+    traitType?: string
     /**
      * Value (e.g. green)
      */
-    value?: string;
+    value?: string
   }): CancelablePromise<{
     floor_price?: {
-      marketplace_id?: string;
-      marketplace_name?: string;
-      value?: number;
+      marketplace_id?: string
+      marketplace_name?: string
+      value?: number
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-      listing_url?: string;
-    };
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+      listing_url?: string
+    }
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3705,11 +3686,11 @@ export class DefaultService {
         value: value,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Chain
@@ -3778,53 +3759,53 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3839,11 +3820,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Contract
@@ -3913,57 +3894,57 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -3979,11 +3960,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Collection
@@ -4000,53 +3981,53 @@ export class DefaultService {
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: string;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: string
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4061,11 +4042,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by NFT
@@ -4136,61 +4117,61 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4207,11 +4188,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Wallet Valuation
@@ -4224,12 +4205,12 @@ export class DefaultService {
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 10 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
   }): CancelablePromise<{
     wallets?: Array<{
-      address?: string;
-      usd_value?: number;
-    }>;
+      address?: string
+      usd_value?: number
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4238,11 +4219,11 @@ export class DefaultService {
         wallet_addresses: walletAddresses,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFTs by POAP Event ID
@@ -4258,157 +4239,157 @@ export class DefaultService {
     /**
      * The event_id for the POAP event. This can be retrieved from the "extra_metadata" on any POAP NFT response.
      */
-    eventId?: number;
+    eventId?: number
     /**
      * Include the total distinct count of tokens in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: string;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: string
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: string;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: string
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: any;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: any
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: any;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: any;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: any
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: any
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
-      last_sale?: any;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
+      last_sale?: any
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
-        recipients?: any[];
-      }>;
+        source?: string
+        total_creator_fee_basis_points?: number
+        recipients?: any[]
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
-        home_url?: string;
-        year?: number;
-        tags?: Array<string>;
-        event_id?: number;
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
+        home_url?: string
+        year?: number
+        tags?: Array<string>
+        event_id?: number
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4422,11 +4403,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Wallets
@@ -4439,25 +4420,25 @@ export class DefaultService {
     /**
      * Name of the chain (e.g., ethereum). While this endpoint is in preview, only ethereum sales are counted against wallet totals.
      */
-    chain?: 'ethereum';
+    chain?: 'ethereum'
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     top_wallets?: Array<{
-      address_id?: string;
-      chain?: string;
-      volume?: number;
-      transaction_count?: number;
+      address_id?: string
+      chain?: string
+      volume?: number
+      transaction_count?: number
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-      rank?: number;
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+      rank?: number
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4466,11 +4447,11 @@ export class DefaultService {
         chain: chain,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Event IDs
@@ -4483,34 +4464,34 @@ export class DefaultService {
     /**
      * Comma delimited string of listing event IDs (up to 20).
      */
-    listingEventIds?: string;
+    listingEventIds?: string
   }): CancelablePromise<{
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4519,11 +4500,11 @@ export class DefaultService {
         listing_event_ids: listingEventIds,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Listing ID
@@ -4540,53 +4521,53 @@ export class DefaultService {
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * The parent NFT listing ID of the listing events to be retrieved
      */
-    listingId?: string;
+    listingId?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     events?: Array<{
-      id?: string;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4601,11 +4582,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Sales by Collection
@@ -4621,56 +4602,56 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     top_sales?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: string;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-        unit_price_usd_cents?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: string
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+        unit_price_usd_cents?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4684,11 +4665,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Collectors by Collection
@@ -4705,33 +4686,33 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include a link to the collector profile image in the response
      */
-    includeOwnerImage?: '1' | '0';
+    includeOwnerImage?: '1' | '0'
     /**
      * Include the total distinct count of Owners in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     top_collectors?: Array<{
-      owner_address?: string;
-      owner_ens_name?: any;
-      distinct_nfts_owned?: number;
-      total_copies_owned?: number;
-    }>;
+      owner_address?: string
+      owner_ens_name?: any
+      distinct_nfts_owned?: number
+      total_copies_owned?: number
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4746,11 +4727,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Contracts By Owner(s)
@@ -4768,69 +4749,69 @@ export class DefaultService {
     /**
      * Chain(s) to query - may be comma delimited (e.g., ethereum,arbitrum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 50 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the total distinct count of contracts in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     contracts?: Array<{
-      chain?: string;
-      contract_address?: string;
-      name?: string;
-      type?: string;
-      symbol?: string;
-      distinct_nft_count?: number;
-      deployed_by?: string;
-      deployed_via_contract?: any;
-      deployment_date?: string;
-      owned_by?: string;
+      chain?: string
+      contract_address?: string
+      name?: string
+      type?: string
+      symbol?: string
+      distinct_nft_count?: number
+      deployed_by?: string
+      deployed_via_contract?: any
+      deployment_date?: string
+      owned_by?: string
       top_collections?: Array<{
-        collection_id?: string;
-        name?: string;
-        description?: any;
-        image_url?: any;
-        banner_image_url?: any;
-        category?: any;
-        is_nsfw?: boolean;
-        external_url?: any;
-        twitter_username?: any;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: any
+        image_url?: any
+        banner_image_url?: any
+        category?: any
+        is_nsfw?: boolean
+        external_url?: any
+        twitter_username?: any
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        floor_prices?: any[];
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        chains?: Array<string>;
-        top_contracts?: Array<string>;
-      }>;
-    }>;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        floor_prices?: any[]
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        chains?: Array<string>
+        top_contracts?: Array<string>
+      }>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4843,11 +4824,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFT by Inscription Number
@@ -4861,113 +4842,113 @@ export class DefaultService {
     /**
      * Name of the chain. Currently only Bitcoin mainnet is supported.
      */
-    chain?: 'bitcoin';
+    chain?: 'bitcoin'
     /**
      * Inscription number for the ordinal, as a positive or negative integer
      */
-    inscriptionNumber: number;
+    inscriptionNumber: number
   }): CancelablePromise<{
-    nft_id?: string;
-    chain?: string;
-    contract_address?: string;
-    token_id?: any;
-    name?: any;
-    description?: any;
+    nft_id?: string
+    chain?: string
+    contract_address?: string
+    token_id?: any
+    name?: any
+    description?: any
     previews?: {
-      image_small_url?: string;
-      image_medium_url?: string;
-      image_large_url?: string;
-      image_opengraph_url?: string;
-      blurhash?: string;
-      predominant_color?: string;
-    };
-    image_url?: string;
+      image_small_url?: string
+      image_medium_url?: string
+      image_large_url?: string
+      image_opengraph_url?: string
+      blurhash?: string
+      predominant_color?: string
+    }
+    image_url?: string
     image_properties?: {
-      width?: number;
-      height?: number;
-      size?: number;
-      mime_type?: string;
-    };
-    video_url?: any;
-    video_properties?: any;
-    audio_url?: any;
-    audio_properties?: any;
-    model_url?: any;
-    model_properties?: any;
-    background_color?: any;
-    external_url?: any;
-    created_date?: string;
-    status?: string;
-    token_count?: number;
-    owner_count?: number;
+      width?: number
+      height?: number
+      size?: number
+      mime_type?: string
+    }
+    video_url?: any
+    video_properties?: any
+    audio_url?: any
+    audio_properties?: any
+    model_url?: any
+    model_properties?: any
+    background_color?: any
+    external_url?: any
+    created_date?: string
+    status?: string
+    token_count?: number
+    owner_count?: number
     owners?: Array<{
-      owner_address?: string;
-      quantity?: number;
-      first_acquired_date?: string;
-      last_acquired_date?: string;
-    }>;
+      owner_address?: string
+      quantity?: number
+      first_acquired_date?: string
+      last_acquired_date?: string
+    }>
     contract?: {
-      type?: string;
-      name?: string;
-      symbol?: any;
-      deployed_by?: any;
-      deployed_via_contract?: any;
-    };
+      type?: string
+      name?: string
+      symbol?: any
+      deployed_by?: any
+      deployed_via_contract?: any
+    }
     collection?: {
-      collection_id?: any;
-      name?: any;
-      description?: any;
-      image_url?: any;
-      banner_image_url?: any;
-      category?: any;
-      is_nsfw?: any;
-      external_url?: any;
-      twitter_username?: any;
-      discord_url?: any;
-      instagram_username?: any;
-      medium_username?: any;
-      telegram_url?: any;
-      marketplace_pages?: any[];
-      metaplex_mint?: any;
-      metaplex_first_verified_creator?: any;
-      spam_score?: any;
-      floor_prices?: any[];
-      distinct_owner_count?: any;
-      distinct_nft_count?: any;
-      total_quantity?: any;
-      chains?: any[];
-      top_contracts?: any[];
-    };
-    last_sale?: any;
+      collection_id?: any
+      name?: any
+      description?: any
+      image_url?: any
+      banner_image_url?: any
+      category?: any
+      is_nsfw?: any
+      external_url?: any
+      twitter_username?: any
+      discord_url?: any
+      instagram_username?: any
+      medium_username?: any
+      telegram_url?: any
+      marketplace_pages?: any[]
+      metaplex_mint?: any
+      metaplex_first_verified_creator?: any
+      spam_score?: any
+      floor_prices?: any[]
+      distinct_owner_count?: any
+      distinct_nft_count?: any
+      total_quantity?: any
+      chains?: any[]
+      top_contracts?: any[]
+    }
+    last_sale?: any
     first_created?: {
-      minted_to?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      transaction?: string;
-      transaction_initiator?: any;
-    };
+      minted_to?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      transaction?: string
+      transaction_initiator?: any
+    }
     rarity?: {
-      rank?: any;
-      score?: any;
-      unique_attributes?: any;
-    };
-    royalty?: any[];
+      rank?: any
+      score?: any
+      unique_attributes?: any
+    }
+    royalty?: any[]
     extra_metadata?: {
-      attributes?: any[];
+      attributes?: any[]
       ordinal_details?: {
-        inscription_id?: string;
-        inscription_number?: number;
-        content_length?: number;
-        content_type?: string;
-        sat_number?: any;
-        sat_name?: any;
-        sat_rarity?: any;
-      };
-      image_original_url?: string;
-      animation_original_url?: any;
-      metadata_original_url?: any;
-    };
+        inscription_id?: string
+        inscription_number?: number
+        content_length?: number
+        content_type?: string
+        sat_number?: any
+        sat_name?: any
+        sat_rarity?: any
+      }
+      image_original_url?: string
+      animation_original_url?: any
+      metadata_original_url?: any
+    }
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -4977,11 +4958,11 @@ export class DefaultService {
         inscription_number: inscriptionNumber,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Collectors by Contract
@@ -5051,37 +5032,37 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Include a link to the collector profile image in the response
      */
-    includeOwnerImage?: '1' | '0';
+    includeOwnerImage?: '1' | '0'
     /**
      * Include the total distinct count of Owners in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     top_collectors?: Array<{
-      owner_address?: string;
-      owner_ens_name?: any;
-      distinct_nfts_owned?: number;
-      total_copies_owned?: number;
-    }>;
+      owner_address?: string
+      owner_ens_name?: any
+      distinct_nfts_owned?: number
+      total_copies_owned?: number
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5097,11 +5078,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Sales by Contract
@@ -5170,60 +5151,60 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     top_sales?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-        unit_price_usd_cents?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+        unit_price_usd_cents?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5238,11 +5219,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Listing Events by Wallet(s)
@@ -5260,58 +5241,58 @@ export class DefaultService {
     /**
      * Seller wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     events?: Array<{
-      id?: string;
-      is_private?: any;
-      event_type?: string;
-      event_reason?: any;
-      event_timestamp?: string;
-      listing_id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      is_private?: any
+      event_type?: string
+      event_reason?: any
+      event_timestamp?: string
+      listing_id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5325,11 +5306,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Available Chains
@@ -5338,18 +5319,18 @@ export class DefaultService {
    */
   public chains(): CancelablePromise<
     Array<{
-      chain?: string;
-      eip155_network_id?: number;
-      is_testnet?: boolean;
+      chain?: string
+      eip155_network_id?: number
+      is_testnet?: boolean
     }>
   > {
     return this.httpRequest.request({
       method: 'GET',
       url: '/chains',
       errors: {
-        401: `401`,
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Sales Volume by Chain(s)
@@ -5365,41 +5346,41 @@ export class DefaultService {
     /**
      * Chain(s) to query - may be comma delimited (e.g., ethereum,arbitrum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Start date (inclusive)
      */
-    startDate?: string;
+    startDate?: string
     /**
      * End date (inclusive)
      */
-    endDate?: string;
+    endDate?: string
     /**
      * Filter transactions to those with a wash trade likelihood "score" of less than or equal to this value (valid range: 0-100, inclusive.  100 is very high liklihood of being a wash trade; 0 is very low liklihood).  Recommended starting value is 30
      */
-    washTradeScoreLte?: number;
+    washTradeScoreLte?: number
   }): CancelablePromise<{
     stats?: Array<{
-      chain?: string;
-      start_date?: string;
-      end_date?: string;
-      period?: string;
-      volume?: number;
-      volume_usd_cents?: number;
-      transaction_count?: number;
-      seller_count?: number;
-      buyer_count?: number;
-      trader_count?: number;
+      chain?: string
+      start_date?: string
+      end_date?: string
+      period?: string
+      volume?: number
+      volume_usd_cents?: number
+      transaction_count?: number
+      seller_count?: number
+      buyer_count?: number
+      trader_count?: number
       marketplaces?: Array<{
-        marketplace_id?: string;
-        volume?: number;
-        volume_usd_cents?: number;
-        transaction_count?: number;
-        seller_count?: number;
-        buyer_count?: number;
-        trader_count?: number;
-      }>;
-    }>;
+        marketplace_id?: string
+        volume?: number
+        volume_usd_cents?: number
+        transaction_count?: number
+        seller_count?: number
+        buyer_count?: number
+        trader_count?: number
+      }>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5411,11 +5392,11 @@ export class DefaultService {
         wash_trade_score__lte: washTradeScoreLte,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * NFTs by Contract Owner(s)
@@ -5432,162 +5413,162 @@ export class DefaultService {
     /**
      * Name of the chain(s), comma-separated for multiple values (e.g., polygon,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the total distinct count of tokens in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     nfts?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      name?: string;
-      description?: string;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      name?: string
+      description?: string
       previews?: {
-        image_small_url?: string;
-        image_medium_url?: string;
-        image_large_url?: string;
-        image_opengraph_url?: string;
-        blurhash?: string;
-        predominant_color?: string;
-      };
-      image_url?: string;
+        image_small_url?: string
+        image_medium_url?: string
+        image_large_url?: string
+        image_opengraph_url?: string
+        blurhash?: string
+        predominant_color?: string
+      }
+      image_url?: string
       image_properties?: {
-        width?: number;
-        height?: number;
-        size?: number;
-        mime_type?: string;
-      };
-      video_url?: any;
-      video_properties?: any;
-      audio_url?: any;
-      audio_properties?: any;
-      model_url?: any;
-      model_properties?: any;
-      background_color?: any;
-      external_url?: any;
-      created_date?: string;
-      status?: string;
-      token_count?: number;
-      owner_count?: number;
+        width?: number
+        height?: number
+        size?: number
+        mime_type?: string
+      }
+      video_url?: any
+      video_properties?: any
+      audio_url?: any
+      audio_properties?: any
+      model_url?: any
+      model_properties?: any
+      background_color?: any
+      external_url?: any
+      created_date?: string
+      status?: string
+      token_count?: number
+      owner_count?: number
       owners?: Array<{
-        owner_address?: string;
-        quantity?: number;
-        first_acquired_date?: string;
-        last_acquired_date?: string;
-      }>;
+        owner_address?: string
+        quantity?: number
+        first_acquired_date?: string
+        last_acquired_date?: string
+      }>
       contract?: {
-        type?: string;
-        name?: string;
-        symbol?: string;
-        deployed_by?: string;
-        deployed_via_contract?: any;
-      };
+        type?: string
+        name?: string
+        symbol?: string
+        deployed_by?: string
+        deployed_via_contract?: any
+      }
       collection?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: string;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: string
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          nft_url?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        spam_score?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          nft_url?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        spam_score?: number
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        top_contracts?: Array<string>;
-      };
-      last_sale?: any;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        top_contracts?: Array<string>
+      }
+      last_sale?: any
       first_created?: {
-        minted_to?: string;
-        quantity?: number;
-        timestamp?: string;
-        block_number?: number;
-        transaction?: string;
-        transaction_initiator?: string;
-      };
+        minted_to?: string
+        quantity?: number
+        timestamp?: string
+        block_number?: number
+        transaction?: string
+        transaction_initiator?: string
+      }
       rarity?: {
-        rank?: number;
-        score?: number;
-        unique_attributes?: number;
-      };
+        rank?: number
+        score?: number
+        unique_attributes?: number
+      }
       royalty?: Array<{
-        source?: string;
-        total_creator_fee_basis_points?: number;
+        source?: string
+        total_creator_fee_basis_points?: number
         recipients?: Array<{
-          address?: string;
-          percentage?: number;
-          basis_points?: number;
-        }>;
-      }>;
+          address?: string
+          percentage?: number
+          basis_points?: number
+        }>
+      }>
       extra_metadata?: {
         attributes?: Array<{
-          trait_type?: string;
-          value?: string;
-          display_type?: any;
-        }>;
-        image_original_url?: string;
-        animation_original_url?: any;
-        metadata_original_url?: string;
-      };
-    }>;
+          trait_type?: string
+          value?: string
+          display_type?: any
+        }>
+        image_original_url?: string
+        animation_original_url?: any
+        metadata_original_url?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5600,11 +5581,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collection Historical Floor Prices
@@ -5623,44 +5604,44 @@ export class DefaultService {
     /**
      * The SimpleHash Collection ID
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * The frequency at which you'd like floor price data points
      */
-    granularity?: 'daily' | 'hourly';
+    granularity?: 'daily' | 'hourly'
     /**
      * A comma-separated list of marketplace ids to filter the floor price data. Options are: blur,opensea,x2y2,looksrare,magiceden,tensor
      */
-    marketplaceIds?: string;
+    marketplaceIds?: string
     /**
      * For "hourly" granularity only. Lower bound timestamp to filter data. Seconds since the Unix epoch.
      */
-    fromTimestamp?: string;
+    fromTimestamp?: string
     /**
      * For for "hourly" granularity only. Upper bound timestamp. Seconds since the Unix epoch.
      */
-    toTimestamp?: string;
+    toTimestamp?: string
     /**
      * For "daily" granularity only. Lower bound date to filter data. An ISO 8601 date stamp.
      */
-    startDate?: string;
+    startDate?: string
     /**
      * For "daily" granularity only. Upper bound date to filter data. An ISO 8601 date stamp.
      */
-    endDate?: string;
+    endDate?: string
   }): CancelablePromise<{
     payment_token?: {
-      payment_token_id?: string;
-      name?: string;
-      symbol?: string;
-      address?: any;
-      decimals?: number;
-    };
+      payment_token_id?: string
+      name?: string
+      symbol?: string
+      address?: any
+      decimals?: number
+    }
     floor_prices?: Array<{
-      marketplace_id?: string;
-      floor_price?: any;
-      timestamp?: string;
-    }>;
+      marketplace_id?: string
+      floor_price?: any
+      timestamp?: string
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5677,11 +5658,11 @@ export class DefaultService {
         end_date: endDate,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Reverse ENS Lookup
@@ -5694,11 +5675,11 @@ export class DefaultService {
     /**
      * Wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
   }): CancelablePromise<
     Array<{
-      address?: string;
-      ens?: string;
+      address?: string
+      ens?: string
     }>
   > {
     return this.httpRequest.request({
@@ -5708,11 +5689,11 @@ export class DefaultService {
         wallet_addresses: walletAddresses,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Sales by Contract Owner(s)
@@ -5733,75 +5714,75 @@ export class DefaultService {
     /**
      * Name of the chain(s) (e.g., optimism), comma-separated for multiple values (e.g, optimism,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5818,11 +5799,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Sales & Transfers by Contract Owner(s)
@@ -5844,79 +5825,79 @@ export class DefaultService {
     /**
      * Name of the chain(s) (e.g., optimism), comma-separated for multiple values (e.g, optimism,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the transfer within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Lower bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include lazy mint events alongside the on-chain activity. Only applies to the OpenSea shared contracts (`ethereum.0x495f947276749ce646f68ac8c248420045cb7b5e` and `polygon.0x2953399124f0cbb46d2cbacd8a89cf0599974963`)
      */
-    includeLazyMints?: '1' | '0';
+    includeLazyMints?: '1' | '0'
     /**
      * Filter results for only records with sales information (pass only_sales=1)
      */
-    onlySales?: '1' | '0';
+    onlySales?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are timestamp_desc (default) or timestamp_asc
      */
-    orderBy?: 'timestamp_desc' | 'timestamp_asc';
+    orderBy?: 'timestamp_desc' | 'timestamp_asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: any;
-    next?: any;
-    previous?: any;
+    next_cursor?: any
+    next?: any
+    previous?: any
     transfers?: Array<{
-      nft_id?: string;
-      chain?: string;
-      contract_address?: string;
-      token_id?: string;
-      collection_id?: string;
-      event_type?: string;
-      from_address?: string;
-      to_address?: string;
-      quantity?: number;
-      timestamp?: string;
-      block_number?: number;
-      block_hash?: string;
-      transaction?: string;
-      transaction_initiator?: string;
-      log_index?: number;
-      batch_transfer_index?: number;
+      nft_id?: string
+      chain?: string
+      contract_address?: string
+      token_id?: string
+      collection_id?: string
+      event_type?: string
+      from_address?: string
+      to_address?: string
+      quantity?: number
+      timestamp?: string
+      block_number?: number
+      block_hash?: string
+      transaction?: string
+      transaction_initiator?: string
+      log_index?: number
+      batch_transfer_index?: number
       sale_details?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        is_bundle_sale?: boolean;
+        marketplace_id?: string
+        marketplace_name?: string
+        is_bundle_sale?: boolean
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        unit_price?: number;
-        total_price?: number;
-      };
-    }>;
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        unit_price?: number
+        total_price?: number
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -5934,11 +5915,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Top Collections
@@ -5956,98 +5937,98 @@ export class DefaultService {
     /**
      * Name of the chain(s) (e.g., ethereum), comma-separated for multiple values (e.g., ethereum,polygon)
      */
-    chains?: string;
+    chains?: string
     /**
      * Time period for which total volume is calculated.  Options are: ```24h```: trailing 24 hours' volume, ending at the start of the prior hour (default); ```1d```: prior day's volume, ending at midnight GMT; ```7d```: prior seven days' volume; ```30d```: prior 30 days' volume
      */
-    timePeriod?: '24h' | '1d' | '7d' | '30d';
+    timePeriod?: '24h' | '1d' | '7d' | '30d'
     /**
      * Calculate volume relative to this date (must be in ```yyyy-mm-dd``` format)
      */
-    referenceDate?: string;
+    referenceDate?: string
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 100, capped at 100.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      volume?: number;
-      volume_string?: string;
-      volume_usd_cents?: number;
-      transaction_count?: number;
+      collection_id?: string
+      volume?: number
+      volume_string?: string
+      volume_usd_cents?: number
+      transaction_count?: number
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
       collection_details?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: string;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: string;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: string
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: string
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
         top_bids?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-        }>;
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        chains?: Array<string>;
-        top_contracts?: Array<string>;
-      };
-    }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+        }>
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        chains?: Array<string>
+        top_contracts?: Array<string>
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6061,11 +6042,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Trending Collections
@@ -6082,87 +6063,87 @@ export class DefaultService {
     /**
      * Name of the chain(s) (e.g., ethereum), comma-separated for multiple values (e.g., ethereum,polygon)
      */
-    chains?: string;
+    chains?: string
     /**
      * Time period for which total volume is calculated.  Options are: ```24h```: trailing 24 hours' volume, ending at the start of the prior hour (default); ```1d```: prior day's volume, ending at midnight GMT; ```7d```: prior seven days' volume; 30d: prior 30 days' volume
      */
-    timePeriod?: '24h' | '1d' | '7d' | '30d';
+    timePeriod?: '24h' | '1d' | '7d' | '30d'
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 100, capped at 100.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      volume?: number;
-      volume_string?: string;
-      volume_usd_cents?: number;
-      volume_percent_change?: number;
-      transaction_count?: number;
-      transaction_count_percent_change?: number;
+      collection_id?: string
+      volume?: number
+      volume_string?: string
+      volume_usd_cents?: number
+      volume_percent_change?: number
+      transaction_count?: number
+      transaction_count_percent_change?: number
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
       collection_details?: {
-        collection_id?: string;
-        name?: string;
-        description?: string;
-        image_url?: string;
-        banner_image_url?: string;
-        category?: any;
-        is_nsfw?: boolean;
-        external_url?: string;
-        twitter_username?: string;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: string
+        image_url?: string
+        banner_image_url?: string
+        category?: any
+        is_nsfw?: boolean
+        external_url?: string
+        twitter_username?: string
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        spam_score?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        spam_score?: number
         floor_prices?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          value?: number;
+          marketplace_id?: string
+          marketplace_name?: string
+          value?: number
           payment_token?: {
-            payment_token_id?: string;
-            name?: string;
-            symbol?: string;
-            address?: any;
-            decimals?: number;
-          };
-          value_usd_cents?: number;
-        }>;
-        top_bids?: any[];
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        chains?: Array<string>;
-        top_contracts?: Array<string>;
-      };
-    }>;
+            payment_token_id?: string
+            name?: string
+            symbol?: string
+            address?: any
+            decimals?: number
+          }
+          value_usd_cents?: number
+        }>
+        top_bids?: any[]
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        chains?: Array<string>
+        top_contracts?: Array<string>
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6175,11 +6156,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Collections by Wallet(s)
@@ -6202,39 +6183,39 @@ export class DefaultService {
     /**
      * Chain(s) to query - may be comma delimited (e.g., ethereum,arbitrum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Filter to collections with spam score less than or equal to this value (valid range: 0-100, inclusive)
      */
-    spamScoreLte?: number;
+    spamScoreLte?: number
     /**
      * Filter to collections with spam score less than this value (valid range: 1-101, inclusive)
      */
-    spamScoreLt?: number;
+    spamScoreLt?: number
     /**
      * Filter to collections with spam score greater than or equal to this value (valid range: 0-100, inclusive)
      */
-    spamScoreGte?: number;
+    spamScoreGte?: number
     /**
      * Filter to collections with spam score greater than this value (valid range: -1-99, inclusive)
      */
-    spamScoreGt?: number;
+    spamScoreGt?: number
     /**
      * Optional parameter to include a field called `nft_ids` providing the nft_ids from that collection held by the wallet(s)
      */
-    nftIds?: string;
+    nftIds?: string
     /**
      * Include the associated contract details for the addresses listed in ```top_contracts```
      */
-    includeTopContractDetails?: '1' | '0';
+    includeTopContractDetails?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * The default is `transfer_time__desc`.  For convenience, we have provided `transfer_time__desc` and `transfer_time__asc` as abstractions over acquired date, to provide more intuitive ordering when there are multiple copies acquired at different times or the same NFT is received and sent multiple times.
      */
@@ -6246,49 +6227,49 @@ export class DefaultService {
       | 'last_acquired_date__desc'
       | 'last_acquired_date__asc'
       | 'first_acquired_date__desc'
-      | 'first_acquired_date__asc';
+      | 'first_acquired_date__asc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     collections?: Array<{
-      collection_id?: string;
-      distinct_nfts_owned?: number;
-      distinct_nfts_owned_string?: string;
-      total_copies_owned?: number;
-      total_copies_owned_string?: string;
-      last_acquired_date?: string;
-      nft_ids?: Array<string>;
+      collection_id?: string
+      distinct_nfts_owned?: number
+      distinct_nfts_owned_string?: string
+      total_copies_owned?: number
+      total_copies_owned_string?: string
+      last_acquired_date?: string
+      nft_ids?: Array<string>
       collection_details?: {
-        collection_id?: string;
-        name?: string;
-        description?: any;
-        image_url?: string;
-        banner_image_url?: any;
-        category?: any;
-        is_nsfw?: any;
-        external_url?: any;
-        twitter_username?: any;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
-        marketplace_pages?: any[];
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        floor_prices?: any[];
-        top_bids?: any[];
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        chains?: Array<string>;
-        top_contracts?: Array<string>;
-      };
-    }>;
+        collection_id?: string
+        name?: string
+        description?: any
+        image_url?: string
+        banner_image_url?: any
+        category?: any
+        is_nsfw?: any
+        external_url?: any
+        twitter_username?: any
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
+        marketplace_pages?: any[]
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        floor_prices?: any[]
+        top_bids?: any[]
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        chains?: Array<string>
+        top_contracts?: Array<string>
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6307,11 +6288,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Contracts By Deployer(s)
@@ -6329,69 +6310,69 @@ export class DefaultService {
     /**
      * Chain(s) to query - may be comma delimited (e.g., ethereum,arbitrum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 50 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the total distinct count of contracts in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     contracts?: Array<{
-      chain?: string;
-      contract_address?: string;
-      name?: string;
-      type?: string;
-      symbol?: string;
-      distinct_nft_count?: number;
-      deployed_by?: string;
-      deployed_via_contract?: any;
-      deployment_date?: string;
-      owned_by?: string;
+      chain?: string
+      contract_address?: string
+      name?: string
+      type?: string
+      symbol?: string
+      distinct_nft_count?: number
+      deployed_by?: string
+      deployed_via_contract?: any
+      deployment_date?: string
+      owned_by?: string
       top_collections?: Array<{
-        collection_id?: string;
-        name?: string;
-        description?: any;
-        image_url?: any;
-        banner_image_url?: any;
-        category?: any;
-        is_nsfw?: boolean;
-        external_url?: any;
-        twitter_username?: any;
-        discord_url?: any;
-        instagram_username?: any;
-        medium_username?: any;
-        telegram_url?: any;
+        collection_id?: string
+        name?: string
+        description?: any
+        image_url?: any
+        banner_image_url?: any
+        category?: any
+        is_nsfw?: boolean
+        external_url?: any
+        twitter_username?: any
+        discord_url?: any
+        instagram_username?: any
+        medium_username?: any
+        telegram_url?: any
         marketplace_pages?: Array<{
-          marketplace_id?: string;
-          marketplace_name?: string;
-          marketplace_collection_id?: string;
-          collection_url?: string;
-          verified?: boolean;
-        }>;
-        metaplex_mint?: any;
-        metaplex_first_verified_creator?: any;
-        floor_prices?: any[];
-        distinct_owner_count?: number;
-        distinct_nft_count?: number;
-        total_quantity?: number;
-        chains?: Array<string>;
-        top_contracts?: Array<string>;
-      }>;
-    }>;
+          marketplace_id?: string
+          marketplace_name?: string
+          marketplace_collection_id?: string
+          collection_url?: string
+          verified?: boolean
+        }>
+        metaplex_mint?: any
+        metaplex_first_verified_creator?: any
+        floor_prices?: any[]
+        distinct_owner_count?: number
+        distinct_nft_count?: number
+        total_quantity?: number
+        chains?: Array<string>
+        top_contracts?: Array<string>
+      }>
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6404,11 +6385,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * ENS Lookup
@@ -6421,11 +6402,11 @@ export class DefaultService {
     /**
      * ENS name(s), comma-separated for multiple values (e.g., kilkka.eth,krocold.eth). Limit of 20 names.
      */
-    ensNames?: string;
+    ensNames?: string
   }): CancelablePromise<
     Array<{
-      ens?: string;
-      address?: string;
+      ens?: string
+      address?: string
     }>
   > {
     return this.httpRequest.request({
@@ -6435,11 +6416,11 @@ export class DefaultService {
         ens_names: ensNames,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Active Listings by Wallet(s)
@@ -6461,74 +6442,70 @@ export class DefaultService {
     /**
      * Name of the chain(s), comma-separated for multiple values (e.g., polygon,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Owner wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea, blur, x2y2, looksrare, tensor, cryptopunks, magiceden
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: string;
+    count?: string
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Available values are: listing_timestamp_desc (default), listing_timestamp_asc, price_asc, or price_desc
      */
-    orderBy?:
-      | 'listing_timestamp_desc'
-      | 'listing_timestamp_asc'
-      | 'price_asc'
-      | 'price_desc';
+    orderBy?: 'listing_timestamp_desc' | 'listing_timestamp_asc' | 'price_asc' | 'price_desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<{
-    next_cursor?: string;
-    next?: string;
-    previous?: any;
+    next_cursor?: string
+    next?: string
+    previous?: any
     listings?: Array<{
-      id?: string;
-      permalink?: string;
-      bundle_item_number?: any;
-      listing_timestamp?: string;
-      expiration_timestamp?: string;
-      seller_address?: string;
-      auction_type?: any;
-      quantity?: number;
-      quantity_remaining?: number;
-      price?: number;
-      marketplace_id?: string;
-      collection_id?: string;
-      nft_id?: string;
+      id?: string
+      permalink?: string
+      bundle_item_number?: any
+      listing_timestamp?: string
+      expiration_timestamp?: string
+      seller_address?: string
+      auction_type?: any
+      quantity?: number
+      quantity_remaining?: number
+      price?: number
+      marketplace_id?: string
+      collection_id?: string
+      nft_id?: string
       payment_token?: {
-        payment_token_id?: string;
-        name?: string;
-        symbol?: string;
-        address?: any;
-        decimals?: number;
-      };
-      is_private?: boolean;
-    }>;
+        payment_token_id?: string
+        name?: string
+        symbol?: string
+        address?: any
+        decimals?: number
+      }
+      is_private?: boolean
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6546,11 +6523,11 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
   /**
    * Active Bids By Collection
@@ -6572,43 +6549,39 @@ export class DefaultService {
     /**
      * The unique identifier of the collection (obtainable from an NFT response, or from the Collection endpoints)
      */
-    collectionId?: string;
+    collectionId?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Used to sort bids (defaults to bid_timestamp__desc)
      */
-    orderBy?:
-      | 'bid_timestamp__desc'
-      | 'bid_timestamp__asc'
-      | 'bid_price__asc'
-      | 'bid_price__desc';
+    orderBy?: 'bid_timestamp__desc' | 'bid_timestamp__asc' | 'bid_price__asc' | 'bid_price__desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6627,10 +6600,10 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
+        400: '400',
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Active Bids By NFT
@@ -6706,51 +6679,47 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Used to sort bids (defaults to bid_timestamp__desc)
      */
-    orderBy?:
-      | 'bid_timestamp__desc'
-      | 'bid_timestamp__asc'
-      | 'bid_price__asc'
-      | 'bid_price__desc';
+    orderBy?: 'bid_timestamp__desc' | 'bid_timestamp__asc' | 'bid_price__asc' | 'bid_price__desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6771,10 +6740,10 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
+        400: '400',
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Active Bids By Contract
@@ -6849,47 +6818,43 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Used to sort bids (defaults to bid_timestamp__desc)
      */
-    orderBy?:
-      | 'bid_timestamp__desc'
-      | 'bid_timestamp__asc'
-      | 'bid_price__asc'
-      | 'bid_price__desc';
+    orderBy?: 'bid_timestamp__desc' | 'bid_timestamp__asc' | 'bid_price__asc' | 'bid_price__desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6909,10 +6874,10 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
+        400: '400',
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Active Bids By Wallet
@@ -6935,47 +6900,43 @@ export class DefaultService {
     /**
      * Name of the chain(s), comma-separated for multiple values (e.g., polygon,ethereum)
      */
-    chains?: string;
+    chains?: string
     /**
      * Bidder wallet address(es), comma-separated for multiple values (e.g., 0xa12,0xb34). Limit of 20 addresses.
      */
-    walletAddresses?: string;
+    walletAddresses?: string
     /**
      * Include the associated NFT details for the listing within the response (pass include_nft_details=1)
      */
-    includeNftDetails?: '1' | '0';
+    includeNftDetails?: '1' | '0'
     /**
      * Marketplace IDs, comma separated for mulitple values (e.g., opensea, x2y2). Allowed values: opensea
      */
-    marketplaces?: string;
+    marketplaces?: string
     /**
      * Lower bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    fromTimestamp?: number;
+    fromTimestamp?: number
     /**
      * Upper bound listing timestamp (inclusive). Seconds since the Unix epoch.
      */
-    toTimestamp?: number;
+    toTimestamp?: number
     /**
      * Include the total distinct count of Listings in the response (pass count=1)
      */
-    count?: '1' | '0';
+    count?: '1' | '0'
     /**
      * Used to retrieve the next page of results
      */
-    cursor?: string;
+    cursor?: string
     /**
      * Used to sort bids (defaults to bid_timestamp__desc)
      */
-    orderBy?:
-      | 'bid_timestamp__desc'
-      | 'bid_timestamp__asc'
-      | 'bid_price__asc'
-      | 'bid_price__desc';
+    orderBy?: 'bid_timestamp__desc' | 'bid_timestamp__asc' | 'bid_price__asc' | 'bid_price__desc'
     /**
      * Limit. Defaults to 50, capped at 50.
      */
-    limit?: number;
+    limit?: number
   }): CancelablePromise<any> {
     return this.httpRequest.request({
       method: 'GET',
@@ -6993,10 +6954,10 @@ export class DefaultService {
         limit: limit,
       },
       errors: {
-        400: `400`,
-        401: `401`,
+        400: '400',
+        401: '401',
       },
-    });
+    })
   }
   /**
    * Trait Floor Prices by NFT
@@ -7063,35 +7024,35 @@ export class DefaultService {
       | 'scroll-sepolia'
       | 'zksync-era-testnet'
       | 'zora-testnet'
-      | 'zora-sepolia';
+      | 'zora-sepolia'
     /**
      * Address of the NFT contract
      */
-    contractAddress?: string;
+    contractAddress?: string
     /**
      * Token ID of the given NFT. For Solana and Bitcoin, this can be omitted or set to 0.
      */
-    tokenId?: string;
+    tokenId?: string
   }): CancelablePromise<{
     trait_floor_prices?: Array<{
       floor_price?: {
-        marketplace_id?: string;
-        marketplace_name?: string;
-        value?: number;
+        marketplace_id?: string
+        marketplace_name?: string
+        value?: number
         payment_token?: {
-          payment_token_id?: string;
-          name?: string;
-          symbol?: string;
-          address?: any;
-          decimals?: number;
-        };
-        listing_url?: string;
-      };
+          payment_token_id?: string
+          name?: string
+          symbol?: string
+          address?: any
+          decimals?: number
+        }
+        listing_url?: string
+      }
       trait?: {
-        trait_type?: string;
-        value?: string;
-      };
-    }>;
+        trait_type?: string
+        value?: string
+      }
+    }>
   }> {
     return this.httpRequest.request({
       method: 'GET',
@@ -7102,10 +7063,10 @@ export class DefaultService {
         token_id: tokenId,
       },
       errors: {
-        400: `400`,
-        401: `401`,
-        403: `403`,
+        400: '400',
+        401: '401',
+        403: '403',
       },
-    });
+    })
   }
 }

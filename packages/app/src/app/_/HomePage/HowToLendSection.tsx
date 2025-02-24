@@ -15,13 +15,13 @@ export const HowToLendSection = () => {
   return (
     <PageSection className="grid grid-cols-1 items-center gap-10 md:grid-cols-2" dark>
       <div className="relative h-96 overflow-hidden">
-        <FadeCover className="left-0 right-0 top-0 h-8 bg-gradient-to-b" />
+        <FadeCover className="top-0 right-0 left-0 h-8 bg-gradient-to-b" />
         <div className="flex animate-zoom-past-tb-medium flex-col items-start gap-6">
           {mockIntents.map((intent) => (
             <MockIntent key={intent.id} asking={intent.asking} collateral={intent.collateral} />
           ))}
         </div>
-        <FadeCover className="bottom-0 left-0 right-0 h-8 bg-gradient-to-t" />
+        <FadeCover className="right-0 bottom-0 left-0 h-8 bg-gradient-to-t" />
       </div>
       <div className="space-y-4">
         <Heading level={2}>How to lend?</Heading>

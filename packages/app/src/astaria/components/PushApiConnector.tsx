@@ -11,6 +11,7 @@ import { ENV } from '@/astaria/constants/environment'
 export const PushApiConnector = ({ isOpen }: { isOpen: boolean }) => {
   const { data: client } = useWeb3InboxClient()
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     try {
       const app = initializeApp({
@@ -33,7 +34,7 @@ export const PushApiConnector = ({ isOpen }: { isOpen: boolean }) => {
           }
         })
         .catch(() => undefined)
-    } catch (error) {
+    } catch (_error) {
       return
     }
   }, [client, isOpen])

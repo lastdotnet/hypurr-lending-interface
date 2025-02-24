@@ -1,7 +1,7 @@
-import { http, Chain, Transport, custom } from 'viem'
 import { VIEM_TIMEOUT_ON_FORKS } from '@/config/consts'
-import { getInjectedNetwork } from './getInjectedNetwork'
+import { http, Chain, Transport, custom } from 'viem'
 import { hyperEVM, hyperTestnet } from '../chain/constants'
+import { getInjectedNetwork } from './getInjectedNetwork'
 
 export interface GetTransportsParamsOptions {
   forkChain?: Chain

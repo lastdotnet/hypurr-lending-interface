@@ -10,7 +10,7 @@ export const NotConnectedDialog = () => (
       <div>Please connect your wallet to use this feature.</div>
     </DialogContent>
     <DialogActions>
-      <ConnectButton className="border-b-0 border-l-0 border-r-0" fullWidth rounded="dialog" />
+      <ConnectButton className="border-r-0 border-b-0 border-l-0" fullWidth rounded="dialog" />
     </DialogActions>
   </DialogContainer>
 )

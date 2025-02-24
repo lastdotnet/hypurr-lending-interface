@@ -54,9 +54,9 @@ export const ScanningTheSkiesSection = () => {
   return (
     <PageSection dark>
       <div className="space-y-8">
-        <p className="text-center text-2xl font-medium italic">Scanning the night sky for intents…</p>
-        <div className="relative -ml-8 -mr-8 overflow-x-hidden">
-          <FadeCover className="bottom-0 left-0 top-0 w-8 bg-gradient-to-r" />
+        <p className="text-center font-medium text-2xl italic">Scanning the night sky for intents…</p>
+        <div className="-ml-8 -mr-8 relative overflow-x-hidden">
+          <FadeCover className="top-0 bottom-0 left-0 w-8 bg-gradient-to-r" />
           <div className="space-y-6">
             {[...Array(numberOfRows).keys()].map((index) => {
               const startPoint = index * intentsPerRow
@@ -66,7 +66,7 @@ export const ScanningTheSkiesSection = () => {
               return <MockIntentsRow key={`intent-row-${index}`} className={getRandomSpeed()} intents={intents} />
             })}
           </div>
-          <FadeCover className="bottom-0 right-0 top-0 w-8 bg-gradient-to-l" />
+          <FadeCover className="top-0 right-0 bottom-0 w-8 bg-gradient-to-l" />
         </div>
       </div>
       <div className="-mt-96 flex justify-center">

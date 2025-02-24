@@ -1,11 +1,11 @@
 import { MarketInfo, Reserve } from '@/domain/market-info/marketInfo'
 
 import { CapAutomatorInfo } from '@/domain/cap-automator/types'
+import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 import { MarketOverview } from '../types'
 import { getReserveEModeCategoryTokens } from './getReserveEModeCategoryTokens'
 import { getSparkAirdropDetails } from './getSparkAirdropDetails'
-import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
-import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 
 export interface MakeMarketOverviewParams {
   marketInfo: MarketInfo

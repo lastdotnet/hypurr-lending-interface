@@ -547,4 +547,4 @@ export const ABI_JSON = [
     name: 'Unauthorized',
     inputs: [],
   },
-] as const;
+] as const

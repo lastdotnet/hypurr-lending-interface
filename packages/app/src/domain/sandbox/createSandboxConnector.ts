@@ -2,8 +2,8 @@ import { http, createWalletClient } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { CreateConnectorFn } from 'wagmi'
 
-import { createMockConnector } from '@/domain/wallet/createMockConnector'
 import { hyperTestnet } from '@/config/chain/constants'
+import { createMockConnector } from '@/domain/wallet/createMockConnector'
 
 export interface CreateSandboxWalletArgs {
   privateKey: `0x${string}`

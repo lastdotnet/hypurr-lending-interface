@@ -1,9 +1,9 @@
-import { zeroAddress } from 'viem';
+import { zeroAddress } from 'viem'
 
-import { ETHER_DECIMALS } from 'common';
-import { mainnet } from 'viem/chains';
+import { ETHER_DECIMALS } from 'common'
+import { mainnet } from 'viem/chains'
 
-import { type ERC20Asset } from '../types/erc20';
+import { type ERC20Asset } from '../types/erc20'
 
 export const FALLBACK_ERC20_TOKEN: ERC20Asset = {
   address: zeroAddress,
@@ -13,4 +13,4 @@ export const FALLBACK_ERC20_TOKEN: ERC20Asset = {
   name: 'Unknown',
   symbol: '?',
   usdValue: undefined,
-};
+}

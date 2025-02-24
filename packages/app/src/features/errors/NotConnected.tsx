@@ -1,9 +1,9 @@
-import { useAccountEffect } from 'wagmi'
 import { Button } from '@/ui/atoms/button/Button'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { ErrorLayout } from '@/ui/layouts/ErrorLayout'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { useRouter } from 'next/navigation'
+import { useAccountEffect } from 'wagmi'
 
 export function NotConnected({ fullScreen }: { fullScreen?: boolean }) {
   const { setShowAuthFlow } = useDynamicContext()

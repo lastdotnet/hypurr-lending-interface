@@ -1,3 +1,4 @@
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useBlockExplorerAddressLink } from '@/domain/hooks/useBlockExplorerAddressLink'
 import { useIsSmartContract } from '@/domain/hooks/useIsSmartContract'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
@@ -5,7 +6,6 @@ import { TokensInfo } from '@/domain/wallet/useTokens/TokenInfo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { UseFormReturn, useForm } from 'react-hook-form'
 import { Address } from 'viem'
-import { useAccount } from '@/domain/hooks/useAccount'
 import { Mode, ReceiverFormSchema, SendModeExtension } from '../types'
 import { getReceiverFormValidator } from './validation'
 

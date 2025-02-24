@@ -1,4 +1,4 @@
-import { bool, cleanEnv, str } from 'envalid';
+import { bool, cleanEnv, str } from 'envalid'
 
 export const ENV = cleanEnv(
   {
@@ -8,8 +8,7 @@ export const ENV = cleanEnv(
     NEXT_PUBLIC_CENTER_API_KEY: process.env.NEXT_PUBLIC_CENTER_API_KEY,
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    NEXT_PUBLIC_FIREBASE_PROJECT_ID:
-      process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
     NEXT_PUBLIC_FIREBASE_SENDER_ID: process.env.NEXT_PUBLIC_FIREBASE_SENDER_ID,
     NEXT_PUBLIC_FIREBASE_VAPID_KEY: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
     NEXT_PUBLIC_IGNORE_MAINTENANCE: process.env.NEXT_PUBLIC_IGNORE_MAINTENANCE,
@@ -17,17 +16,13 @@ export const ENV = cleanEnv(
     NEXT_PUBLIC_LOCAL_API: process.env.NEXT_PUBLIC_LOCAL_API,
     NEXT_PUBLIC_LOCAL_API_URL: process.env.NEXT_PUBLIC_LOCAL_API_URL,
     NEXT_PUBLIC_MAILCHIMP_URL: process.env.NEXT_PUBLIC_MAILCHIMP_URL,
-    NEXT_PUBLIC_MATCHING_SERVICE_CHAIN_ID:
-      process.env.NEXT_PUBLIC_MATCHING_SERVICE_CHAIN_ID,
-    NEXT_PUBLIC_MATCHING_SERVICE_PRIVATE_KEY:
-      process.env.NEXT_PUBLIC_MATCHING_SERVICE_PRIVATE_KEY,
-    NEXT_PUBLIC_MATCHING_SERVICE_URL:
-      process.env.NEXT_PUBLIC_MATCHING_SERVICE_URL,
+    NEXT_PUBLIC_MATCHING_SERVICE_CHAIN_ID: process.env.NEXT_PUBLIC_MATCHING_SERVICE_CHAIN_ID,
+    NEXT_PUBLIC_MATCHING_SERVICE_PRIVATE_KEY: process.env.NEXT_PUBLIC_MATCHING_SERVICE_PRIVATE_KEY,
+    NEXT_PUBLIC_MATCHING_SERVICE_URL: process.env.NEXT_PUBLIC_MATCHING_SERVICE_URL,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     NEXT_PUBLIC_SIMPLEHASH_API_KEY: process.env.NEXT_PUBLIC_SIMPLEHASH_API_KEY,
     NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
-    NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID:
-      process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
+    NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID,
   },
   {
     NEXT_PUBLIC_ALCHEMY_ID: str(),
@@ -44,8 +39,7 @@ export const ENV = cleanEnv(
     NEXT_PUBLIC_LOCAL_API: bool({ default: false }),
     NEXT_PUBLIC_LOCAL_API_URL: str({ default: 'http://localhost:3001' }),
     NEXT_PUBLIC_MAILCHIMP_URL: str({
-      default:
-        'https://xyz.us11.list-manage.com/subscribe/post-json?u=7ba25d0a2461b4e360ab05a54&amp;id=9c1bff8a37',
+      default: 'https://xyz.us11.list-manage.com/subscribe/post-json?u=7ba25d0a2461b4e360ab05a54&amp;id=9c1bff8a37',
     }),
     NEXT_PUBLIC_SENTRY_DSN: str({ default: '' }),
     NEXT_PUBLIC_SIMPLEHASH_API_KEY: str(),
@@ -53,5 +47,5 @@ export const ENV = cleanEnv(
       choices: ['development', 'preview', 'production'],
     }),
     NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: str(),
-  }
-);
+  },
+)

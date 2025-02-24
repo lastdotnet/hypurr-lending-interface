@@ -55,9 +55,8 @@ export const getIntent = async ({ shortId }: GETIntentParameters) => {
         if (intent) {
           isArchived = true
           return { ...intent, recall: null }
-        } else {
-          return null
         }
+        return null
       }),
   )
 
@@ -78,9 +77,8 @@ export const getIntent = async ({ shortId }: GETIntentParameters) => {
         if (intent) {
           isArchived = true
           return { ...intent, recall: null }
-        } else {
-          return null
         }
+        return null
       }),
   )
 

@@ -7,9 +7,9 @@ import { Contracts } from '@/astaria/types-internal/contract-types'
 import { getAssetsName } from '@/astaria/utils/getAssetsName'
 import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
-import { type ERC721 } from 'assets'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { wagmiConfig } from '@/astaria/config/wagmi'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC721 } from 'assets'
 
 export const useAllowanceERC721 = ({
   asset,

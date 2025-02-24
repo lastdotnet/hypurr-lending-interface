@@ -25,7 +25,7 @@ const EarnPointsPage = () => (
         <div key={type} className="border p-5">
           <div className="flex items-center gap-2">
             {icon}
-            <strong className="text-xl font-semibold">{howToEarnText}</strong>
+            <strong className="font-semibold text-xl">{howToEarnText}</strong>
           </div>
           {details?.map((item) => (
             <p key={item} className="mt-3">

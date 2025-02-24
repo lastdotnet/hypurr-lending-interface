@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { FaucetView } from './views/FaucetView'
-import { SuccessView } from './views/SuccessView'
-import { GuestView } from './views/GuestView'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { FaucetPanel } from './components/FaucetPanel'
-import { useTransaction } from 'wagmi'
+import { useState } from 'react'
 import { Address, formatUnits } from 'viem'
+import { useTransaction } from 'wagmi'
+import { FaucetPanel } from './components/FaucetPanel'
+import { FaucetView } from './views/FaucetView'
+import { GuestView } from './views/GuestView'
+import { SuccessView } from './views/SuccessView'
 
 function FaucetContainer() {
   const [mintTx, setMintTx] = useState<Address>()

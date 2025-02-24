@@ -8,9 +8,9 @@ import { SandboxNetwork } from '@/domain/state/sandbox'
 import { createMockConnector } from '@/domain/wallet/createMockConnector'
 
 import { viemAddressSchema } from '@/domain/common/validation'
-import { getConfig } from './config.default'
 import { hyperEVM, hyperTestnet } from '../chain/constants'
 import { VIEM_TIMEOUT_ON_FORKS } from '../consts'
+import { getConfig } from './config.default'
 
 export const PLAYWRIGHT_CHAIN_ID = '__PLAYWRIGHT_CHAIN_ID' as const
 export const PLAYWRIGHT_WALLET_ADDRESS_KEY = '__PLAYWRIGHT_WALLET_ADDRESS' as const

@@ -58,7 +58,7 @@ export const LoanCard = forwardRef<
       <LoanStatus loan={loan} skeleton={skeleton} />
       <CardSection>
         <div className="relative">
-          <ChainLogo chainId={loan?.chainId} className="absolute right-0 top-0 h-8 w-8" height="32" width="32" />
+          <ChainLogo chainId={loan?.chainId} className="absolute top-0 right-0 h-8 w-8" height="32" width="32" />
         </div>
         <CardLabelValue
           label={loan?.source === SourceType.LENDER ? 'Borrower balance' : 'Balance'}
@@ -66,7 +66,7 @@ export const LoanCard = forwardRef<
             <CurrencyAmountWrapper>
               <ERC20Image erc20={loan?.debt} skeleton={skeleton} />
               <ERC20AmountDisplay
-                className="text-2xl font-medium"
+                className="font-medium text-2xl"
                 erc20={
                   loan?.debt
                     ? {

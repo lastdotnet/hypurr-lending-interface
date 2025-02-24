@@ -50,13 +50,15 @@ export const isMatch = ({
     borrowIntent.collateral[0].amount < lendIntent.collateral[0].amount
   ) {
     return false
-  } else if (
+  }
+  if (
     borrowIntent.collateral[0].itemType === ItemType.ERC721 &&
     lendIntent.collateral[0].itemType === ItemType.ERC721 &&
     lendIntent.collateral[0].identifier !== borrowIntent.collateral[0].identifier
   ) {
     return false
-  } else if (borrowIntent.collateral[0].itemType !== lendIntent.collateral[0].itemType) {
+  }
+  if (borrowIntent.collateral[0].itemType !== lendIntent.collateral[0].itemType) {
     throw new Error(ITEM_TYPES_DONT_MATCH_ERROR)
   }
 

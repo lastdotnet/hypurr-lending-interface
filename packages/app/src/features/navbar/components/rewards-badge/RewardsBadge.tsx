@@ -3,10 +3,10 @@ import { USD_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { Tooltip, TooltipContentLong, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { testIds } from '@/ui/utils/testIds'
+import Image from 'next/image'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { RewardsDetails } from './RewardsDetails'
 import { Reward } from './types'
-import Image from 'next/image'
 
 export interface RewardsProps {
   rewards: Reward[]

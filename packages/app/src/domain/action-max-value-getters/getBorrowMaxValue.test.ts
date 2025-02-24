@@ -1,7 +1,7 @@
+import { USDXL_ADDRESS } from '@/config/consts'
+import { CheckedAddress } from '../types/CheckedAddress'
 import { NormalizedUnitNumber } from '../types/NumericValues'
 import { getBorrowMaxValue } from './getBorrowMaxValue'
-import { CheckedAddress } from '../types/CheckedAddress'
-import { USDXL_ADDRESS } from '@/config/consts'
 
 describe(getBorrowMaxValue.name, () => {
   describe('USDXL handling', () => {

@@ -1,10 +1,10 @@
+import { useAccount } from '@/domain/hooks/useAccount'
 import { SuspenseQueryWith } from '@/utils/types'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useChainId, useConfig } from 'wagmi'
 import { TokensInfo } from './TokenInfo'
 import { tokensQueryOptions } from './query'
 import { TokenConfig } from './types'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseTokensParams {
   tokens: TokenConfig[]

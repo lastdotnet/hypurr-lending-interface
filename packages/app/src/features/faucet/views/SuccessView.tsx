@@ -1,7 +1,7 @@
 import { hyperTestnet } from '@/config/chain/constants'
 import { paths } from '@/config/paths'
 import { useBlockExplorerLink } from '@/domain/hooks/useBlockExplorerLink'
-import { buttonVariants, LinkButton } from '@/ui/atoms/button/Button'
+import { LinkButton, buttonVariants } from '@/ui/atoms/button/Button'
 import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
 import { ArrowUpRight } from 'lucide-react'

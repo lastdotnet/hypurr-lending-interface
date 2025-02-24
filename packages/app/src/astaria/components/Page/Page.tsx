@@ -1,21 +1,18 @@
-import { type HTMLAttributes, forwardRef } from 'react';
+import { type HTMLAttributes, forwardRef } from 'react'
 
-import { type VariantProps, cva } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { type VariantProps, cva } from 'class-variance-authority'
+import { clsx } from 'clsx'
 
-const mainVariants = cva(
-  'flex flex-grow flex-col items-center bg-grid-pattern',
-  {
-    defaultVariants: {
-      padding: true,
+const mainVariants = cva('flex flex-grow flex-col items-center bg-grid-pattern', {
+  defaultVariants: {
+    padding: true,
+  },
+  variants: {
+    padding: {
+      true: 'p-2 2xl:p-12 lg:p-8 md:p-6 sm:p-4 xl:p-10',
     },
-    variants: {
-      padding: {
-        true: 'p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 2xl:p-12',
-      },
-    },
-  }
-);
+  },
+})
 
 const pageVariants = cva('w-full', {
   defaultVariants: {
@@ -29,34 +26,32 @@ const pageVariants = cva('w-full', {
       wide: '',
     },
   },
-});
+})
 
 export interface PageProps
   extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof mainVariants>,
     VariantProps<typeof pageVariants> {}
-export const Page = forwardRef<HTMLDivElement, PageProps>(
-  ({ children, className, padding, size, ...rest }, ref) => (
-    <main
+export const Page = forwardRef<HTMLDivElement, PageProps>(({ children, className, padding, size, ...rest }, ref) => (
+  <main
+    className={clsx(
+      mainVariants({
+        padding,
+      }),
+    )}
+  >
+    <div
+      ref={ref}
       className={clsx(
-        mainVariants({
-          padding,
-        })
+        pageVariants({
+          size,
+        }),
+        className,
       )}
+      {...rest}
     >
-      <div
-        ref={ref}
-        className={clsx(
-          pageVariants({
-            size,
-          }),
-          className
-        )}
-        {...rest}
-      >
-        {children}
-      </div>
-    </main>
-  )
-);
-Page.displayName = 'Page';
+      {children}
+    </div>
+  </main>
+))
+Page.displayName = 'Page'

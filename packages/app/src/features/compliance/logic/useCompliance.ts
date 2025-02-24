@@ -1,10 +1,10 @@
 import { useDisconnect } from 'wagmi'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useTermsOfService } from '@/domain/hooks/useTermsOfService'
+import { useSandboxState } from '@/domain/sandbox/useSandboxState'
 import { useCloseDialog } from '@/domain/state/dialogs'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
-import { useAccount } from '@/domain/hooks/useAccount'
-import { useSandboxState } from '@/domain/sandbox/useSandboxState'
 import { useIPAndAddressCheck } from './useIPAndAddressCheck'
 
 export type ModalInfo =

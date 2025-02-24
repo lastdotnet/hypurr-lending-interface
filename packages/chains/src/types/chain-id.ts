@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-import { base, foundry, mainnet, mode, sepolia } from 'viem/chains';
+import { base, foundry, mainnet, mode, sepolia } from 'viem/chains'
 
 export const ChainIdSchema = z.union([
   z.literal(base.id),
@@ -8,5 +8,5 @@ export const ChainIdSchema = z.union([
   z.literal(mainnet.id),
   z.literal(mode.id),
   z.literal(sepolia.id),
-]);
-export type ChainId = z.infer<typeof ChainIdSchema>;
+])
+export type ChainId = z.infer<typeof ChainIdSchema>

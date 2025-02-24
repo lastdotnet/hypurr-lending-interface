@@ -1,7 +1,7 @@
-import { type ChainId } from 'chains';
-import { base, foundry, mainnet, mode, sepolia } from 'viem/chains';
+import { type ChainId } from 'chains'
+import { base, foundry, mainnet, mode, sepolia } from 'viem/chains'
 
-import { ENV } from '../environment';
+import { ENV } from '../environment'
 
 //Allows for linting to check for missing chain lookups, while not requiring all rpc urls be set for development mode
 const RPCUrlLookup: Record<ChainId, string | undefined> = {
@@ -10,12 +10,12 @@ const RPCUrlLookup: Record<ChainId, string | undefined> = {
   [foundry.id]: ENV.RPC_URL_FOUNDRY,
   [mainnet.id]: ENV.RPC_URL_MAINNET,
   [sepolia.id]: ENV.RPC_URL_SEPOLIA,
-};
+}
 
 export const getRPCUrl = (chainId: ChainId) => {
-  const rpcUrl = RPCUrlLookup[chainId];
+  const rpcUrl = RPCUrlLookup[chainId]
   if (rpcUrl) {
-    return rpcUrl;
+    return rpcUrl
   }
-  throw new Error(`RPC_URL not configured for ${chainId}`);
-};
+  throw new Error(`RPC_URL not configured for ${chainId}`)
+}

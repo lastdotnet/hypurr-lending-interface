@@ -15,7 +15,7 @@ export const MarketERC20Display = ({
     <ERC20Image erc20={erc20} skeleton={skeleton} />
     <div>
       <div className="font-medium">{skeleton ? <SkeletonText /> : erc20?.name}</div>
-      <div className="text-xs font-medium text-zinc-400">{skeleton ? <SkeletonText /> : erc20?.symbol}</div>
+      <div className="font-medium text-xs text-zinc-400">{skeleton ? <SkeletonText /> : erc20?.symbol}</div>
     </div>
   </CurrencyAmountWrapper>
 )

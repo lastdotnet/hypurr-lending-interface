@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { UseEstimateGasParameters, useEstimateGas, useSendTransaction } from 'wagmi'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { sanityCheckTx } from './sanityChecks'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
 import { WriteStatus } from './useWrite'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseSendTxResult {
   send: () => void

@@ -1,3 +1,3 @@
-import { type Hex } from 'viem';
+import { type Hex } from 'viem'
 
-export const emptyBytes = '0x' as Hex;
+export const emptyBytes = '0x' as Hex

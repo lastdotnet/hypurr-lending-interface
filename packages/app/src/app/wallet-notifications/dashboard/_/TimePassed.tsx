@@ -33,12 +33,10 @@ export const TimePassed = ({ sentAt }: { sentAt: number }) => {
     <Tooltip
       className="text-black-500"
       content={formatDate(sentAt)}
-      trigger={
-        `${formatDuration({
-          concise: isConcise,
-          milliseconds: millisecondsPassed,
-        })} ` + `ago`
-      }
+      trigger={`${formatDuration({
+        concise: isConcise,
+        milliseconds: millisecondsPassed,
+      })} ago`}
       underline={true}
     />
   )

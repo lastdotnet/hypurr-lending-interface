@@ -652,4 +652,4 @@ export const AstariaV1SettlementABI = [
     stateMutability: 'view',
     type: 'function',
   },
-] as const;
+] as const

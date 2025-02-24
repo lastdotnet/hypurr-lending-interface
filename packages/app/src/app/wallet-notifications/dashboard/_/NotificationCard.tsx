@@ -44,7 +44,7 @@ export const NotificationCard = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div
-            className="text-lg font-bold"
+            className="font-bold text-lg"
             style={{
               color: type === RECALL_ID ? '#C21818' : '#000000',
             }}
@@ -63,6 +63,7 @@ export const NotificationCard = ({
         </div>
         <TimePassed sentAt={sentAt} />
       </div>
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
       <div dangerouslySetInnerHTML={{ __html: textBody || '' }} />
     </CardSection>
   )

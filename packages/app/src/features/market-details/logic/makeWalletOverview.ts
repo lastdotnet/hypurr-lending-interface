@@ -1,6 +1,7 @@
 import { NativeAssetInfo } from '@/config/chain/types'
 import { getBorrowMaxValue } from '@/domain/action-max-value-getters/getBorrowMaxValue'
 import { getDepositMaxValue } from '@/domain/action-max-value-getters/getDepositMaxValue'
+import { getWithdrawMaxValue } from '@/domain/action-max-value-getters/getWithdrawMaxValue'
 import { MarketInfo, Reserve } from '@/domain/market-info/marketInfo'
 import { getValidateBorrowArgs, validateBorrow } from '@/domain/market-validators/validateBorrow'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
@@ -8,7 +9,6 @@ import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { applyTransformers } from '@/utils/applyTransformers'
 import { assert } from '@/utils/assert'
 import { WalletOverview } from '../types'
-import { getWithdrawMaxValue } from '@/domain/action-max-value-getters/getWithdrawMaxValue'
 
 export interface MakeWalletOverviewParams {
   reserve: Reserve

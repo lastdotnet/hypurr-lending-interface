@@ -1,10 +1,10 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import type { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { SavingsOpportunity } from './SavingsOpportunity'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const meta: Meta<typeof SavingsOpportunity> = {
   title: 'Features/Savings/Components/SavingsOpportunity',

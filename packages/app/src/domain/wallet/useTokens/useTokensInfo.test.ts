@@ -1,3 +1,4 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { BaseUnitNumber, NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { testAddresses } from '@/test/integration/constants'
@@ -7,7 +8,6 @@ import { waitFor } from '@testing-library/react'
 import { erc20Abi, erc4626Abi, parseEther, zeroAddress } from 'viem'
 import { describe, test } from 'vitest'
 import { useTokensInfo } from './useTokensInfo'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const token = testAddresses.token
 const alice = testAddresses.alice

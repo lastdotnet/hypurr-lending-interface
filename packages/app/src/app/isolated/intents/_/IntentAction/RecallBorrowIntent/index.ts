@@ -1,1 +1,1 @@
-export * from './RecallBorrowIntent';
+export * from './RecallBorrowIntent'

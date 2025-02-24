@@ -1,3 +1,4 @@
+import { useAccount } from '@/domain/hooks/useAccount'
 import { assert } from '@/utils/assert'
 import { skipToken, useQuery } from '@tanstack/react-query'
 import { Address, Client, Hash, parseAbiItem } from 'viem'
@@ -9,7 +10,6 @@ import {
   useClient,
 } from 'wagmi'
 import { waitForTransactionReceiptQueryKey } from 'wagmi/query'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 const executionSuccessEvent = parseAbiItem('event ExecutionSuccess(bytes32 txHash, uint256 payment)')
 

@@ -12,4 +12,4 @@ module.exports = {
   rules: {
     'storybook/prefer-pascal-case': 'off',
   },
-};
+}

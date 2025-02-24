@@ -9,9 +9,9 @@ import { TransactionOverviewDetailsItem } from '@/features/dialogs/common/compon
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { assert } from '@/utils/assert'
+import Image from 'next/image'
 import { TransactionOverviewPlaceholder } from '../../../common/components/transaction-overview/components/TransactionOverviewPlaceholder'
 import { MigrateDialogTxOverview } from '../types'
-import Image from 'next/image'
 
 export interface TransactionOverviewProps {
   txOverview: MigrateDialogTxOverview

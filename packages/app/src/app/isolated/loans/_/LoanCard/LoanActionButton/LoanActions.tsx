@@ -11,11 +11,11 @@ import { CardActions, CardSection } from '@/astaria/components/Card'
 import { NotEnoughBalance } from '@/astaria/components/NotEnoughBalance'
 import { SkeletonText } from '@/astaria/components/SkeletonText'
 import { TimeLeft } from '@/astaria/components/TimeLeft'
+import { wagmiConfig } from '@/astaria/config/wagmi'
 import { type Loan, SourceType } from '@/astaria/types-internal/loan-schemas'
 import { checkIfLoanIsExpired } from '@/astaria/utils/loans/checkIfLoanIsExpired'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
-import { wagmiConfig } from '@/astaria/config/wagmi'
 
 export const LoanActions = ({
   loan,

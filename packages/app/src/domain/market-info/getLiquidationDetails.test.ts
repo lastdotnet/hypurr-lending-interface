@@ -6,8 +6,8 @@ import { Token } from '@/domain/types/Token'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { testAddresses } from '@/test/integration/constants'
 
-import { getLiquidationDetails } from './getLiquidationDetails'
 import { hyperTestnet } from '@/config/chain/constants'
+import { getLiquidationDetails } from './getLiquidationDetails'
 
 describe(getLiquidationDetails.name, () => {
   it('returns undefined when no collaterals and no borrows', () => {

@@ -129,7 +129,7 @@ export const FormDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<H
   ({ className, ...rest }, ref) => {
     const { formDescriptionId } = useFormField()
 
-    return <p ref={ref} className={clsx('text-sm text-muted-foreground', className)} id={formDescriptionId} {...rest} />
+    return <p ref={ref} className={clsx('text-muted-foreground text-sm', className)} id={formDescriptionId} {...rest} />
   },
 )
 FormDescription.displayName = 'FormDescription'
@@ -146,7 +146,7 @@ export const FormMessage = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElem
     return (
       <div
         ref={ref}
-        className={clsx('text-sm font-medium', { 'text-destructive': error }, className)}
+        className={clsx('font-medium text-sm', { 'text-destructive': error }, className)}
         id={formMessageId}
         {...rest}
       >

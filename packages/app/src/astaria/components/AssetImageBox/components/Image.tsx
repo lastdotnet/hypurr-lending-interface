@@ -55,7 +55,7 @@ export const Image = ({ alt, className, cover, height, rounded, skeleton, src, w
     return (
       <div
         className={clsx(
-          'flex h-full w-full items-center justify-center border bg-background text-4xl font-bold',
+          'flex h-full w-full items-center justify-center border bg-background font-bold text-4xl',
           className,
         )}
         style={{ height, width }}

@@ -106,7 +106,9 @@ export const runMatchingService = async ({
         if (!borrowerParams || !lenderCaveat || 'collateral' in lenderCaveat) {
           throw new Error('Borrower or Lender SignedCaveat not returned from map as expected')
         }
+        // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
         let hash
+
         // Borrower intent case
         if ('deadline' in borrowerParams) {
           const { owner: lender, ...caveat } = lenderCaveat

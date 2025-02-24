@@ -984,4 +984,4 @@ export const AstariaV1StatusABI = [
     name: 'Unauthorized',
     type: 'error',
   },
-] as const;
+] as const

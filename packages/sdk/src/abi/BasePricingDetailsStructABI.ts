@@ -19,4 +19,4 @@ export const BasePricingDetailsStructABI = {
   internalType: 'struct BasePricing.Details',
   name: '',
   type: 'tuple',
-} as const;
+} as const

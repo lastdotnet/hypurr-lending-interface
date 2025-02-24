@@ -1,1 +1,1 @@
-export * from './DailyPoints';
+export * from './DailyPoints'

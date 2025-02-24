@@ -1,7 +1,7 @@
 import { paths } from '@/config/paths'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { getTokenImage } from '@/ui/assets'
-import { buttonVariants, LinkButton } from '@/ui/atoms/button/Button'
+import { LinkButton, buttonVariants } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'

@@ -56,14 +56,13 @@ const handleCollateralAsset = (loanDetails: Loan, assetMetadata: Map<string, Ass
       amount: metadata && 'decimals' in metadata ? formatUnits(collateral.amount, metadata.decimals) : '?',
       name: metadata && 'name' in metadata ? handleNaming(metadata.name) : '?',
     }
-  } else {
-    return {
-      amount: undefined,
-      name:
-        metadata && 'collection' in metadata
-          ? `${handleNaming(metadata.collection.name)} ${String(collateral.identifier)}`
-          : '?',
-    }
+  }
+  return {
+    amount: undefined,
+    name:
+      metadata && 'collection' in metadata
+        ? `${handleNaming(metadata.collection.name)} ${String(collateral.identifier)}`
+        : '?',
   }
 }
 
@@ -95,7 +94,7 @@ const handleRecall = async (body: string): Promise<string> => {
             <br/><br/>
             Repay on the My Loans page soon to avoid a higher interest rate or liquidation.
         `
-  } catch (error) {
+  } catch (_error) {
     return 'Error occured while fetching the loan details.'
   }
 }

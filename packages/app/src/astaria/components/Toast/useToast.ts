@@ -101,6 +101,7 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue({ toastId })
       } else {
+        // biome-ignore lint/complexity/noForEach: <explanation>
         state.toasts.forEach((toast) => {
           addToRemoveQueue({ toastId: toast.id })
         })
@@ -138,6 +139,7 @@ let memoryState: State = { toasts: [] }
 
 const dispatch = (action: Action) => {
   memoryState = reducer(memoryState, action)
+  // biome-ignore lint/complexity/noForEach: <explanation>
   listeners.forEach((listener) => {
     listener(memoryState)
   })
@@ -182,6 +184,7 @@ export type ToastReturnType = ReturnType<typeof toast>
 export const useToast = () => {
   const [state, setState] = useState<State>(memoryState)
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     listeners.push(setState)
     return () => {

@@ -1,9 +1,9 @@
 import { Token } from '@/domain/types/Token'
 import { Dialog, DialogContent } from '@/ui/atoms/dialog/Dialog'
 
+import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
 import { CommonDialogProps, DialogConfig } from '../common/types'
 import { BorrowDialogContentContainer } from './BorrowDialogContentContainer'
-import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
 
 export interface BorrowDialogProps extends CommonDialogProps {
   token: Token

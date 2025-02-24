@@ -4,16 +4,16 @@ import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { PageLayout } from '@/ui/layouts/PageLayout'
 import { HealthFactorPanel } from '@/ui/organisms/health-factor-panel/HealthFactorPanel'
 
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 import { BorrowTable } from '../components/borrow-table/BorrowTable'
-import { DepositTable } from '../components/deposit-table/DepositTable'
 import { CreatePositionPanel } from '../components/create-position-panel/CreatePositionPanel'
+import { DepositTable } from '../components/deposit-table/DepositTable'
+import { MyBorrowsTable } from '../components/my-borrows-table/MyBorrowsTable'
 import { MyDepositsTable } from '../components/my-deposit-table/MyDepositsTable'
 import { Position } from '../components/position/Position'
 import { Borrow, Deposit } from '../logic/assets'
 import { PositionSummary } from '../logic/types'
 import { WalletCompositionInfo } from '../logic/wallet-composition'
-import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
-import { MyBorrowsTable } from '../components/my-borrows-table/MyBorrowsTable'
 
 export interface PositionViewProps {
   positionSummary: PositionSummary

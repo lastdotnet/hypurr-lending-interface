@@ -1,6 +1,6 @@
 import { assets } from '@/ui/assets'
-import { ReactNode } from 'react'
 import Image from 'next/image'
+import { ReactNode } from 'react'
 
 export interface KeyPointsProps {
   children: ReactNode

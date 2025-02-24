@@ -1,5 +1,5 @@
-import { useEffect, useCallback, useRef } from 'react'
 import { WidgetInstance } from 'friendly-challenge'
+import { useCallback, useEffect, useRef } from 'react'
 
 function FriendlyCaptcha({
   setCaptchaSolution,

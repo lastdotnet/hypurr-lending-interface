@@ -1,6 +1,6 @@
+import { assets } from '@/ui/assets'
 import { Meta, StoryObj } from '@storybook/react'
 import Image from 'next/image'
-import { assets } from '@/ui/assets'
 import { Sparkles } from './Sparkles'
 
 const meta: Meta<typeof Sparkles> = {

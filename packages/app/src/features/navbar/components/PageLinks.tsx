@@ -2,19 +2,19 @@ import { paths } from '@/config/paths'
 import { cn } from '@/ui/utils/style'
 import { FeedbackFish } from '@feedback-fish/react'
 
-import { SavingsInfoQueryResults } from '../types'
-import { focusVariants, NavLink, PlaceholderNavLink, textVariants } from './nav-link/NavLink'
-import {
-  ArrowRightLeftIcon,
-  LayoutGridIcon,
-  BarChartIcon,
-  MessageSquareIcon,
-  WalletCardsIcon,
-  DropletIcon,
-  ArrowDownUpIcon,
-  UserPlusIcon,
-} from 'lucide-react'
 import { isTestnet } from '@/config/consts'
+import {
+  ArrowDownUpIcon,
+  ArrowRightLeftIcon,
+  BarChartIcon,
+  DropletIcon,
+  LayoutGridIcon,
+  MessageSquareIcon,
+  UserPlusIcon,
+  WalletCardsIcon,
+} from 'lucide-react'
+import { SavingsInfoQueryResults } from '../types'
+import { NavLink, PlaceholderNavLink, focusVariants, textVariants } from './nav-link/NavLink'
 
 export interface PageLinksInfo {
   daiSymbol?: string

@@ -1,8 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { type Address } from 'viem'
 import { ETHER_DECIMALS } from 'common'
+import { type Address } from 'viem'
 
 import { Alert, AlertDescription, AlertTitle } from '@/astaria/components/Alert'
 import { getAssetName } from '@/astaria/components/AssetName'
@@ -11,8 +11,8 @@ import { useReadBalance } from '@/astaria/components/AssetSelector/ERC20Selector
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { getChain } from '@/astaria/utils/getChain'
 
-import { type ERC20Asset, getERC20TokenByAddress } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20Asset, getERC20TokenByAddress } from 'assets'
 
 export const ExternalERC20SelectorItem = ({
   address,

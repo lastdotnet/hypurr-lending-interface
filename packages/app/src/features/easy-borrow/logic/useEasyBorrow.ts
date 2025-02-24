@@ -1,5 +1,6 @@
 import { getChainConfigEntry } from '@/config/chain'
 import { TokenWithValue } from '@/domain/common/types'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useConditionalFreeze } from '@/domain/hooks/useConditionalFreeze'
 import { usePageChainId } from '@/domain/hooks/usePageChainId'
 import { RiskAcknowledgementInfo } from '@/domain/liquidation-risk-warning/types'
@@ -17,6 +18,7 @@ import { useTokensInfo } from '@/domain/wallet/useTokens/useTokensInfo'
 import { InjectedActionsContext, Objective } from '@/features/actions/logic/types'
 import { sandboxDialogConfig } from '@/features/dialogs/sandbox/SandboxDialog'
 import { assert } from '@/utils/assert'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useRef, useState } from 'react'
 import { UseFormReturn, useForm } from 'react-hook-form'
@@ -33,8 +35,6 @@ import { EasyBorrowFormSchema, getEasyBorrowFormValidator } from './form/validat
 import { ExistingPosition, PageState, PageStatus } from './types'
 import { useCreateObjectives } from './useCreateObjectives'
 import { useLiquidationDetails } from './useLiquidationDetails'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface BorrowFormAPYDetails {
   borrowAPY: Percentage

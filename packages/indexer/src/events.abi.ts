@@ -1645,4 +1645,4 @@ export const Events = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
-] as const;
+] as const

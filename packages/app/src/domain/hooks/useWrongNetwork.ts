@@ -1,5 +1,5 @@
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { SUPPORTED_CHAIN_IDS } from '@/config/chain/constants'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 
 export function useWrongNetwork(): boolean {
   const { primaryWallet, network } = useDynamicContext()

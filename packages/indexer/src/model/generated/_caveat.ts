@@ -1,4 +1,5 @@
-import assert from 'assert'
+// biome-ignore lint/nursery/noRestrictedImports: <explanation>
+import assert from 'node:assert'
 
 import * as marshal from './marshal'
 

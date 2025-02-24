@@ -26,8 +26,8 @@ import { sendNotification } from '@/astaria/utils/sendNotification'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 
-import { isERC20Asset } from 'assets'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { isERC20Asset } from 'assets'
 
 export const useWriteFillIntent = ({
   enabled,

@@ -1,6 +1,7 @@
 import { basePsm3Config } from '@/config/abis/basePsm3Abi'
 import { susdsAddresses } from '@/config/chain/constants'
 import { savingsDaiConfig } from '@/config/contracts-generated'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { JSONStringifyRich } from '@/utils/object'
 import { skipToken, useQuery } from '@tanstack/react-query'
 import { Abi, Address, ContractFunctionName, erc4626Abi, isAddressEqual } from 'viem'
@@ -8,7 +9,6 @@ import { estimateContractGas } from 'viem/actions'
 import { base, mainnet } from 'viem/chains'
 import { UseSimulateContractParameters, useChainId, usePublicClient } from 'wagmi'
 import { useOriginChainId } from './useOriginChainId'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 const GAS_LIMIT_BUFFER = 100_000n
 const TRANSACTIONS_WITH_INCREASED_GAS_LIMIT = [

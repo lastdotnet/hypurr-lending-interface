@@ -11,10 +11,10 @@ import {
 import { Link } from '@/ui/atoms/link/Link'
 import { links } from '@/ui/constants/links'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
+import Image from 'next/image'
 import { NavbarActionWrapper } from '../NavbarActionWrapper'
 import { BuildInfoItem } from './BuildInfoItem'
 import { SettingsDropdownItem } from './SettingsDropdownItem'
-import Image from 'next/image'
 
 export interface SettingsDropdownProps {
   onSandboxModeClick: () => void

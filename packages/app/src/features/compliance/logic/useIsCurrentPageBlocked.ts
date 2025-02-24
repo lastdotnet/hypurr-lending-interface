@@ -1,5 +1,5 @@
-import { usePathname } from 'next/navigation'
 import { paths } from '@/config/paths'
+import { usePathname } from 'next/navigation'
 
 import { useBlockedPages } from './useBlockedPages'
 

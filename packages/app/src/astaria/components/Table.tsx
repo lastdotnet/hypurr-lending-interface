@@ -11,7 +11,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     <div className={clsx('relative text-sm', className)}>
       <table
         ref={ref}
-        className="-my-0.5 w-full caption-bottom border-separate border-spacing-y-1 md:-my-2 md:border-spacing-y-2"
+        className="-my-0.5 md:-my-2 w-full caption-bottom border-separate border-spacing-y-1 md:border-spacing-y-2"
         {...rest}
       >
         {children}
@@ -46,7 +46,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
     <tr
       ref={ref}
       className={clsx(
-        'rounded-sm bg-panel-bg backdrop-blur-sm transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
+        'rounded-sm bg-panel-bg backdrop-blur-sm transition-colors data-[state=selected]:bg-muted hover:bg-muted/50',
         { '': bordered },
         className,
       )}
@@ -61,7 +61,7 @@ export const TableHead = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLT
     <th
       ref={ref}
       className={clsx(
-        'h-12 px-1 text-left align-middle font-medium first:rounded-bl-sm first:rounded-tl-sm last:rounded-br-sm last:rounded-tr-sm [&:has([role=checkbox])]:pr-0',
+        'h-12 px-1 text-left align-middle font-medium first:rounded-tl-sm last:rounded-tr-sm last:rounded-br-sm first:rounded-bl-sm [&:has([role=checkbox])]:pr-0',
         className,
       )}
       {...rest}
@@ -75,7 +75,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TdHTMLAttributes<HTMLT
     <td
       ref={ref}
       className={clsx(
-        'px-1 py-2 align-middle first:rounded-bl-sm first:rounded-tl-sm last:rounded-br-sm last:rounded-tr-sm md:px-2 md:py-3 [&:has([role=checkbox])]:pr-0',
+        'px-1 py-2 align-middle first:rounded-tl-sm last:rounded-tr-sm last:rounded-br-sm first:rounded-bl-sm md:px-2 md:py-3 [&:has([role=checkbox])]:pr-0',
         className,
       )}
       {...rest}
@@ -86,7 +86,7 @@ TableCell.displayName = 'TableCell'
 
 export const TableCaption = forwardRef<HTMLTableCaptionElement, HTMLAttributes<HTMLTableCaptionElement>>(
   ({ className, ...rest }, ref) => (
-    <caption ref={ref} className={clsx('mt-4 text-sm text-muted-foreground', className)} {...rest} />
+    <caption ref={ref} className={clsx('mt-4 text-muted-foreground text-sm', className)} {...rest} />
   ),
 )
 TableCaption.displayName = 'TableCaption'

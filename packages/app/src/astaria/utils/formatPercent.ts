@@ -1,12 +1,7 @@
-import {
-  PERCENT_DECIMAL_PLACES,
-  formatNumber,
-  percentToNumber,
-  toNormalizedValue,
-} from 'common';
+import { PERCENT_DECIMAL_PLACES, formatNumber, percentToNumber, toNormalizedValue } from 'common'
 
-const VERY_SMALL_NUMBER = 0.0001;
-const VERY_SMALL_NUMBER_CONCISE = 0.01;
+const VERY_SMALL_NUMBER = 0.0001
+const VERY_SMALL_NUMBER_CONCISE = 0.01
 
 export const formatPercent = ({
   conciseDisplay,
@@ -15,34 +10,31 @@ export const formatPercent = ({
   standardDecimals,
   useDashForZero,
 }: {
-  conciseDisplay?: boolean;
-  decimals?: number;
-  percent: bigint | number;
-  standardDecimals?: boolean;
-  useDashForZero?: boolean;
+  conciseDisplay?: boolean
+  decimals?: number
+  percent: bigint | number
+  standardDecimals?: boolean
+  useDashForZero?: boolean
 }): {
-  content: string;
-  trigger: string;
+  content: string
+  trigger: string
 } => {
-  const numberValue =
-    typeof percent === 'bigint' && decimals
-      ? toNormalizedValue(percent, decimals)
-      : Number(percent);
+  const numberValue = typeof percent === 'bigint' && decimals ? toNormalizedValue(percent, decimals) : Number(percent)
 
   if (numberValue > 0) {
     if (conciseDisplay && numberValue < VERY_SMALL_NUMBER_CONCISE) {
-      const trigger = '<1%';
+      const trigger = '<1%'
       return {
         content: trigger,
         trigger,
-      };
+      }
     }
     if (numberValue < VERY_SMALL_NUMBER) {
-      const trigger = '<0.01%';
+      const trigger = '<0.01%'
       return {
         content: trigger,
         trigger,
-      };
+      }
     }
   }
 
@@ -51,9 +43,9 @@ export const formatPercent = ({
     maxDecimals: PERCENT_DECIMAL_PLACES,
     standardDecimals,
     useDashForZero,
-  };
+  }
 
-  const contentPercent = formatNumber(baseFormat);
+  const contentPercent = formatNumber(baseFormat)
 
   const triggerPercent = conciseDisplay
     ? formatNumber({
@@ -61,10 +53,10 @@ export const formatPercent = ({
         maxDecimals: 0,
         useDashForZero,
       })
-    : contentPercent;
+    : contentPercent
 
   return {
     content: `${contentPercent}%`,
     trigger: `${triggerPercent}%`,
-  };
-};
+  }
+}

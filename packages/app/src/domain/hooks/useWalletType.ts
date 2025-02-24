@@ -1,8 +1,8 @@
 import { useAccount as useWagmiAccount } from 'wagmi'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useSandboxState } from '../sandbox/useSandboxState'
 import { useIsSmartContract } from './useIsSmartContract'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export type WalletType = 'gnosis-safe' | 'sandbox' | 'unknown' | string // string means connector type ie. 'walletconnect' or 'metamask'
 

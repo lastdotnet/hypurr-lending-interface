@@ -1,1 +1,1 @@
-export * from './IntentAction';
+export * from './IntentAction'

@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import { assets } from '@/ui/assets'
-import { focusVariants } from './nav-link/NavLink'
-import { cn } from '@/ui/utils/style'
 import { links } from '@/ui/constants/links'
+import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
+import { focusVariants } from './nav-link/NavLink'
 
 const socialLinks = [
   {

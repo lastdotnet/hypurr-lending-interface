@@ -7,12 +7,12 @@ import { WagmiProvider, createConfig, useAccount, useConnect } from 'wagmi'
 import { I18nAppProvider } from '@/domain/i18n/I18nAppProvider'
 import { TooltipProvider } from '@/ui/atoms/tooltip/Tooltip'
 
+import { hyperTestnet } from '@/config/chain/constants'
 import { Dialog, DialogContent } from '@/ui/atoms/dialog/Dialog'
 import { erc20Abi } from 'viem'
 import { mock } from 'wagmi/connectors'
 import { DevContainer } from './DevContainer'
 import { STORYBOOK_TIMESTAMP } from './consts'
-import { hyperTestnet } from '@/config/chain/constants'
 
 export function WithTooltipProvider() {
   return function WithTooltipProvider(Story: StoryFn) {

@@ -4,11 +4,11 @@ import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { assets } from '@/ui/assets'
+import { base } from 'viem/chains'
+import { USDXL_ADDRESS } from '../consts'
 import { AppConfig } from '../feature-flags'
 import { hyperEVM, hyperTestnet } from './constants'
 import { ChainConfigEntry, ChainMeta, SupportedChainId } from './types'
-import { USDXL_ADDRESS } from '../consts'
-import { base } from 'viem/chains'
 
 const commonTokenSymbolToReplacedName = {
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },

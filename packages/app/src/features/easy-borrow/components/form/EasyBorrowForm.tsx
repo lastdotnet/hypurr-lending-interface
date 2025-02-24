@@ -5,16 +5,16 @@ import { Button } from '@/ui/atoms/button/Button'
 import { Form } from '@/ui/atoms/form/Form'
 import { ConnectOrSandboxCTAButtonGroup } from '@/ui/molecules/connect-or-sandbox-cta-button-group/ConnectOrSandboxCTAButtonGroup'
 import { nonZeroOrDefault } from '@/utils/bigNumber'
+import Image from 'next/image'
 import { UseFormReturn } from 'react-hook-form'
 import { FormFieldsForAssetClass } from '../../logic/form/form'
 import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition, PageStatus } from '../../logic/types'
+import { BorrowFormAPYDetails } from '../../logic/useEasyBorrow'
 import { Borrow } from './Borrow'
 import { Deposits } from './Deposits'
 import { LoanToValue } from './LoanToValue'
 import { LoanToValueSlider } from './LoanToValueSlider'
-import { BorrowFormAPYDetails } from '../../logic/useEasyBorrow'
-import Image from 'next/image'
 
 interface EasyBorrowFlowProps {
   form: UseFormReturn<EasyBorrowFormSchema>

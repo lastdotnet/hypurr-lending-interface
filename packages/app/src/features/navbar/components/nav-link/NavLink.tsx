@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { cn } from '@/ui/utils/style'
 import { cva } from 'class-variance-authority'
 import { LucideIcon } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface NavLinkComponentProps {
   children: React.ReactNode

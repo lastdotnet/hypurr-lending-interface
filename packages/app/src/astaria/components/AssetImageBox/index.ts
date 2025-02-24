@@ -1,1 +1,1 @@
-export * from './AssetImageBox';
+export * from './AssetImageBox'

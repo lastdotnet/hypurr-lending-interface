@@ -32,27 +32,15 @@ module.exports = {
       },
     },
   ],
-  plugins: [
-    'jsx-a11y',
-    'no-relative-import-paths',
-    'react',
-    'react-hooks',
-    'validate-jsx-nesting',
-  ],
+  plugins: ['jsx-a11y', 'no-relative-import-paths', 'react', 'react-hooks', 'validate-jsx-nesting'],
   rules: {
     '@next/next/no-server-import-in-page': 'off',
     'import/first': 'error',
     'import/no-cycle': 'error',
     'import/no-duplicates': 'error',
     'import/no-unresolved': 'error',
-    'no-relative-import-paths/no-relative-import-paths': [
-      'error',
-      { allowSameFolder: false, rootDir: 'src' },
-    ],
-    'react/jsx-curly-brace-presence': [
-      'error',
-      { children: 'never', propElementValues: 'always', props: 'never' },
-    ],
+    'no-relative-import-paths/no-relative-import-paths': ['error', { allowSameFolder: false, rootDir: 'src' }],
+    'react/jsx-curly-brace-presence': ['error', { children: 'never', propElementValues: 'always', props: 'never' }],
     'react/jsx-no-leaked-render': ['error', { validStrategies: ['ternary'] }],
     'react/jsx-no-useless-fragment': 'error',
     'react/jsx-sort-props': [
@@ -66,4 +54,4 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'validate-jsx-nesting/no-invalid-jsx-nesting': 'error',
   },
-};
+}

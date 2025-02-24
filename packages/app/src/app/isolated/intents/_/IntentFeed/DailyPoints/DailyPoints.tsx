@@ -14,9 +14,9 @@ import { TimeLeft } from '@/astaria/components/TimeLeft'
 import { useChainId } from '@/astaria/hooks/useChainId'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 import { TIME_HAS_PASSED_TIME, timeHasPassed } from '@/astaria/utils/timeHasPassed'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 const ButtonText = ({
   canClaimDailyPoints,

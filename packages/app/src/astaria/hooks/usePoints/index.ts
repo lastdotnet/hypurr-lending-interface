@@ -1,1 +1,1 @@
-export * from './usePoints';
+export * from './usePoints'

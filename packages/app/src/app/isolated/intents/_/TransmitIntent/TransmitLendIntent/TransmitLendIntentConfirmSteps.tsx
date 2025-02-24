@@ -24,8 +24,8 @@ import { convertAPYFieldToBigInt } from '@/astaria/utils/convertAPYFieldToBigInt
 import { convertAssetAndAmountToAsset } from '@/astaria/utils/convertAssetAndAmountToAsset'
 import { sendSafaryClubEvent } from '@/astaria/utils/sendSafaryClubEvent'
 
-import { isERC20Asset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { isERC20Asset } from 'assets'
 import { Address } from 'viem'
 
 const IntentDetails = () => {
@@ -63,7 +63,7 @@ const IntentDetails = () => {
           label="Willing to lend"
           value={
             <ERC20Display
-              className="text-2xl font-medium"
+              className="font-medium text-2xl"
               erc20={{
                 ...borrowAsset,
                 amount: borrowAmount || 0n,

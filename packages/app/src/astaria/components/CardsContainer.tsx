@@ -1,16 +1,12 @@
-import { type HTMLAttributes, forwardRef } from 'react';
+import { type HTMLAttributes, forwardRef } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
-export const CardsContainer = forwardRef<
-  HTMLDivElement,
-  HTMLAttributes<HTMLDivElement>
->(({ children, className }, ref) => (
-  <div
-    ref={ref}
-    className={clsx('grid gap-4 sm:grid-cols-2 lg:grid-cols-3', className)}
-  >
-    {children}
-  </div>
-));
-CardsContainer.displayName = 'CardsContainer';
+export const CardsContainer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({ children, className }, ref) => (
+    <div ref={ref} className={clsx('grid gap-4 lg:grid-cols-3 sm:grid-cols-2', className)}>
+      {children}
+    </div>
+  ),
+)
+CardsContainer.displayName = 'CardsContainer'

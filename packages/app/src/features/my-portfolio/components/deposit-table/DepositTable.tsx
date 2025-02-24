@@ -1,17 +1,17 @@
 import { sortByAPY, sortByUsdValue } from '@/domain/common/sorters'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
 import { Button } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ApyTooltip } from '@/ui/molecules/apy-tooltip/ApyTooltip'
 import { ActionsCell } from '@/ui/molecules/data-table/components/ActionsCell'
+import { CheckmarkCell } from '@/ui/molecules/data-table/components/CheckmarkCell'
 import { CompactValueCell } from '@/ui/molecules/data-table/components/CompactValueCell'
 import { PercentageCell } from '@/ui/molecules/data-table/components/PercentageCell'
 import { TokenWithLogo } from '@/ui/molecules/data-table/components/TokenWithLogo'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { Deposit } from '../../logic/assets'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { CheckmarkCell } from '@/ui/molecules/data-table/components/CheckmarkCell'
 
 export interface DepositTableProps {
   assets: Deposit[]

@@ -16,10 +16,10 @@ import { getIntentCopy } from '@/astaria/utils/getIntentCopy'
 import { getSecondsLeft } from '@/astaria/utils/getSecondsLeft'
 import { isBeingRecalled, isLendIntent } from '@/astaria/utils/intentStates'
 
-import { isERC20Asset } from 'assets'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { Address } from 'viem'
 import { wagmiConfig } from '@/astaria/config/wagmi'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { isERC20Asset } from 'assets'
+import { Address } from 'viem'
 
 const ActionAssetDisplay = ({
   intent,

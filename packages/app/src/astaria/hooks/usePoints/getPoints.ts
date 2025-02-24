@@ -18,7 +18,7 @@ export const getPoints = async ({ address }: GETPointsParameters) => {
   const dataSource = await initializeDataSource()
   const points = await dataSource
     .getRepository(Point)
-    .createQueryBuilder(`point`)
+    .createQueryBuilder('point')
     .where(
       `point.chainId != :chainId
       AND ((point.event = :loanEvent AND (point.data->>'borrower' = :address OR point.data->>'lender' = :address))

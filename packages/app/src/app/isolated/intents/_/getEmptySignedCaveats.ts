@@ -1,17 +1,13 @@
-import { zeroHash } from 'viem';
+import { zeroHash } from 'viem'
 
-import {
-  type AbiParametersToPrimitiveTypes,
-  type ExtractAbiFunction,
-} from 'abitype';
+import { type AbiParametersToPrimitiveTypes, type ExtractAbiFunction } from 'abitype'
 
-import { type StarportABI } from 'sdk/abi/StarportABI';
+import { type StarportABI } from 'sdk/abi/StarportABI'
 
 type StarportContractOriginationParameters = AbiParametersToPrimitiveTypes<
   ExtractAbiFunction<typeof StarportABI, 'originate'>['inputs']
->;
-export type StarportContractSignedCaveats =
-  StarportContractOriginationParameters[1];
+>
+export type StarportContractSignedCaveats = StarportContractOriginationParameters[1]
 
 export const getEmptySignedCaveats = (): StarportContractSignedCaveats => ({
   caveats: [],
@@ -19,4 +15,4 @@ export const getEmptySignedCaveats = (): StarportContractSignedCaveats => ({
   salt: zeroHash,
   signature: zeroHash,
   singleUse: false,
-});
+})

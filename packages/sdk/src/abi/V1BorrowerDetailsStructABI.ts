@@ -152,4 +152,4 @@ export const V1BorrowerDetailsStructABI = {
   internalType: 'struct AstariaV1BorrowerEnforcer.Details',
   name: '',
   type: 'tuple',
-} as const;
+} as const

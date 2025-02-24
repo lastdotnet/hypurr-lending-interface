@@ -2,15 +2,15 @@ import { BorrowEligibilityStatus } from '@/domain/market-info/reserve-status'
 import { OpenDialogFunction } from '@/domain/state/dialogs'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { borrowDialogConfig } from '@/features/dialogs/borrow/BorrowDialog'
 import { depositDialogConfig } from '@/features/dialogs/deposit/DepositDialog'
+import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { ActionRow } from './components/ActionRow'
 import { BorrowRow } from './components/BorrowRow'
 import { TokenBalance } from './components/TokenBalance'
 import { WalletPanelContent } from './components/WalletPanelContent'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { withdrawDialogConfig } from '@/features/dialogs/withdraw/WithdrawDialog'
 
 export interface MyWalletProps {
   token: Token

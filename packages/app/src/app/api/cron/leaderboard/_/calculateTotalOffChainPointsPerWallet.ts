@@ -8,6 +8,7 @@ type OffChainPoint = {
 export const calculateTotalOffChainPointsPerWallet = (otherPoints: OffChainPoint[]): WalletWithPoints[] => {
   const totalPointsMap = new Map()
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   otherPoints.forEach((point) => {
     const walletAddress = point.address
     const points = point.points

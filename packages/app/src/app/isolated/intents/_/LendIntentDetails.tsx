@@ -13,7 +13,7 @@ export const LendIntentDetails = ({
   <CardSection>
     <CardLabelValue
       label="Willing to lend"
-      value={<AssetDisplay asset={lendIntent?.borrow} className="text-2xl font-medium" skeleton={skeleton} />}
+      value={<AssetDisplay asset={lendIntent?.borrow} className="font-medium text-2xl" skeleton={skeleton} />}
     />
     <div className="mt-2 flex items-center justify-between gap-3">
       <CardLabelValue

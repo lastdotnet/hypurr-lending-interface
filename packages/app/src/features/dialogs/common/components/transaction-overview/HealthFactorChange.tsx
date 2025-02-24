@@ -3,9 +3,9 @@ import BigNumber from 'bignumber.js'
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 
+import Image from 'next/image'
 import { RiskIndicator } from './RiskIndicator'
 import { TransactionOverviewDetailsItem } from './TransactionOverviewDetailsItem'
-import Image from 'next/image'
 
 interface HealthFactorChangeProps {
   currentHealthFactor?: BigNumber

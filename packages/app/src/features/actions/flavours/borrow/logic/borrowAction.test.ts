@@ -1,5 +1,6 @@
 import { poolAbi } from '@/config/abis/poolAbi'
-import { InterestRate, NATIVE_ASSET_MOCK_ADDRESS, HYPURR_UI_REFERRAL_CODE } from '@/config/consts'
+import { hyperTestnet } from '@/config/chain/constants'
+import { HYPURR_UI_REFERRAL_CODE, InterestRate, NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
@@ -10,7 +11,6 @@ import { toBigInt } from '@/utils/bigNumber'
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createBorrowActionConfig } from './borrowAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const borrowValue = NormalizedUnitNumber(1)
 const borrowToken = getMockToken({ symbol: TokenSymbol('TEST') })

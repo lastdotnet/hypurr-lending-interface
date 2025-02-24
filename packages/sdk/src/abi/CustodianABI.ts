@@ -689,4 +689,4 @@ export const CustodianABI = [
     name: 'NotStarport',
     type: 'error',
   },
-] as const;
+] as const

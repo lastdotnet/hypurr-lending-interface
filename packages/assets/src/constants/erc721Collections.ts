@@ -1,4 +1,4 @@
-import { type Address } from 'viem';
+import { type Address } from 'viem'
 
 const mainnetCollections: Address[] = [
   '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', // Bored Ape Yacht Club
@@ -34,15 +34,12 @@ const mainnetCollections: Address[] = [
 
   // DYAD
   '0xDc400bBe0B8B79C07A962EA99a642F5819e3b712',
-];
+]
 
 const baseCollections: Address[] = [
   '0xfb019ec15dABEB24cb084e71f60358E032b1451C', // Basebird
   '0xC57bded689c0c528a16ED435b073E4E9a10d85dC', // Based Mfers
   '0x2D53D0545CD1275B69040e3C50587E2CC4443A52', // Based Gods
-];
+]
 
-export const ERC_721_COLLECTIONS_WHITELIST: Address[] = [
-  ...mainnetCollections,
-  ...baseCollections,
-];
+export const ERC_721_COLLECTIONS_WHITELIST: Address[] = [...mainnetCollections, ...baseCollections]

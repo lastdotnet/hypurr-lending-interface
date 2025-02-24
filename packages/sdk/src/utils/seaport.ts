@@ -1,4 +1,4 @@
-import { type Address, zeroAddress, zeroHash } from 'viem';
+import { type Address, zeroAddress, zeroHash } from 'viem'
 
 import {
   type ConsiderationItem,
@@ -7,14 +7,14 @@ import {
   OrderType,
   type ReceivedItem,
   type SpentItem,
-} from '../types/seaport';
+} from '../types/seaport'
 
 export function buildOrderParameters(
   offerer: Address,
   lendIntent: LendIntentItem[],
   consideration: ConsiderationItem[],
   startTime: bigint,
-  endTime: bigint
+  endTime: bigint,
 ): OrderParameters {
   return {
     conduitKey: zeroHash,
@@ -28,32 +28,26 @@ export function buildOrderParameters(
     totalOriginalConsiderationItems: BigInt(consideration.length),
     zone: zeroAddress,
     zoneHash: zeroHash,
-  };
+  }
 }
 
-export function spentItemsToLendIntentItems(
-  spentItems: readonly SpentItem[]
-): LendIntentItem[] {
+export function spentItemsToLendIntentItems(spentItems: readonly SpentItem[]): LendIntentItem[] {
   return spentItems.map(({ amount, identifier, itemType, token }) => ({
     endAmount: amount,
     identifierOrCriteria: identifier,
     itemType,
     startAmount: amount,
     token,
-  }));
+  }))
 }
 
-export function receivedItemsToConsiderationItems(
-  receivedItems: ReceivedItem[]
-): ConsiderationItem[] {
-  return receivedItems.map(
-    ({ amount, identifier, itemType, recipient, token }) => ({
-      endAmount: amount,
-      identifierOrCriteria: identifier,
-      itemType,
-      recipient,
-      startAmount: amount,
-      token,
-    })
-  );
+export function receivedItemsToConsiderationItems(receivedItems: ReceivedItem[]): ConsiderationItem[] {
+  return receivedItems.map(({ amount, identifier, itemType, recipient, token }) => ({
+    endAmount: amount,
+    identifierOrCriteria: identifier,
+    itemType,
+    recipient,
+    startAmount: amount,
+    token,
+  }))
 }

@@ -44,7 +44,7 @@ const RepayDialogContent = ({
         label="Repaying"
         value={
           <ERC20Display
-            className="text-2xl font-medium"
+            className="font-medium text-2xl"
             erc20={{ ...loan.debt, amount: repayAmount }}
             highPrecision
             linkAssetToBlockExplorer

@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js'
 
+import { hyperTestnet } from '@/config/chain/constants'
 import { NativeAssetInfo } from '@/config/chain/types'
 import { AaveUserReserve, AaveUserSummary } from '@/domain/market-info/aave-data-layer/query'
 import {
@@ -14,7 +15,6 @@ import { NormalizedUnitNumber, Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { zeroAddress } from 'viem'
-import { hyperTestnet } from '@/config/chain/constants'
 
 export const testAddresses = {
   alice: createDummyAddress('a11ce'),

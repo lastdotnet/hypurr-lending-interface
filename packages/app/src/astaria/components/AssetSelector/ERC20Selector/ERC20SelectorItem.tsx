@@ -5,8 +5,8 @@ import { type Address, isAddressEqual } from 'viem'
 import { ERC20SelectorItemDisplay } from '@/astaria/components/AssetSelector/ERC20Selector/ERC20SelectorItemDisplay'
 import { useReadBalance } from '@/astaria/components/AssetSelector/ERC20Selector/useReadBalance'
 
-import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
 
 export const ERC20SelectorItem = ({
   asset,

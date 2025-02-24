@@ -1,13 +1,13 @@
 import { getChainConfigEntry } from '@/config/chain'
 import { getAirdropsData } from '@/config/chain/utils/airdrops'
+import { reserveBlacklist } from '@/config/consts'
 import { paths } from '@/config/paths'
 import { MarketInfo, Reserve } from '@/domain/market-info/marketInfo'
 import { RowClickOptions } from '@/ui/molecules/data-table/DataTable'
 import { Transformer, TransformerResult, applyTransformers } from '@/utils/applyTransformers'
 import { raise } from '@/utils/assert'
-import { MarketEntry } from '../types'
-import { reserveBlacklist } from '@/config/consts'
 import { sortReserves } from '@/utils/sortReserves'
+import { MarketEntry } from '../types'
 export interface MarketEntryRowData extends MarketEntry {
   rowClickOptions: RowClickOptions
 }

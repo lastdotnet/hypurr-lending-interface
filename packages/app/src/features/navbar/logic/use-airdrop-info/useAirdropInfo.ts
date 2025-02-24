@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { useQuery } from '@tanstack/react-query'
 
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { airdropInfo } from '@/features/navbar/logic/use-airdrop-info/airdropInfo'

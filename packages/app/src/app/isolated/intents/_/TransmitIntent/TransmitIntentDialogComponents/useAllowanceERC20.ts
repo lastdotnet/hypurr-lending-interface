@@ -10,9 +10,9 @@ import { type Contracts } from '@/astaria/types-internal/contract-types'
 import { getAssetsName } from '@/astaria/utils/getAssetsName'
 import { getContractAddress } from '@/astaria/utils/getContractAddress'
 
-import { type ERC20 } from 'assets'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { wagmiConfig } from '@/astaria/config/wagmi'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20 } from 'assets'
 
 const USDT_APPROVE_ABI = parseAbi(['function approve(address _spender, uint _value) public'] as const)
 

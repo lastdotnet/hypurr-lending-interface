@@ -1,11 +1,11 @@
 import { assert } from '@/utils/assert'
 
+import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 import { calculateMaxBorrowBasedOnCollateral } from '../action-max-value-getters/calculateMaxBorrowBasedOnCollateral'
 import { MarketInfo, Reserve, UserPositionSummary } from '../market-info/marketInfo'
 import { ReserveStatus } from '../market-info/reserve-status'
 import { CheckedAddress } from '../types/CheckedAddress'
 import { NormalizedUnitNumber } from '../types/NumericValues'
-import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
 
 export interface ValidateBorrowParams {
   value: NormalizedUnitNumber

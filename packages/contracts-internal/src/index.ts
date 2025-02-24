@@ -1,2 +1,2 @@
-export * from './contracts-foundry';
-export * from './contracts';
+export * from './contracts-foundry'
+export * from './contracts'

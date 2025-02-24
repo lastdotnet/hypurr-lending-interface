@@ -4,8 +4,10 @@ import { RiskAcknowledgementInfo } from '@/domain/liquidation-risk-warning/types
 import { useLiquidationRiskWarning } from '@/domain/liquidation-risk-warning/useLiquidationRiskWarning'
 import { useAaveDataLayer } from '@/domain/market-info/aave-data-layer/useAaveDataLayer'
 import { EPOCH_LENGTH } from '@/domain/market-info/consts'
+import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 import { updatePositionSummary } from '@/domain/market-info/updatePositionSummary'
 import { useMarketInfo } from '@/domain/market-info/useMarketInfo'
+import { Percentage } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { useMarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
 import { InjectedActionsContext, Objective } from '@/features/actions/logic/types'
@@ -19,8 +21,6 @@ import { FormFieldsForDialog, PageState, PageStatus } from '../../common/types'
 import { getBorrowOptions } from './assets'
 import { createBorrowObjectives } from './createBorrowObjectives'
 import { getBorrowDialogFormValidator, getFormFieldsForBorrowDialog, setDesiredLoanToValue } from './form'
-import { Percentage } from '@/domain/types/NumericValues'
-import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 export interface UseBorrowDialogOptions {
   initialToken: Token
 }

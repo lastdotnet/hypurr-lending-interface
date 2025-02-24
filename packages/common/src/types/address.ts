@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-const ADDRESS_LENGTH = 42;
+const ADDRESS_LENGTH = 42
 export const AddressSchema = z
   .string()
   .startsWith('0x', { message: 'Enter an address that starts with 0x' })
@@ -9,4 +9,4 @@ export const AddressSchema = z
   })
   .toLowerCase()
   .trim()
-  .transform((val) => val as `0x${string}`);
+  .transform((val) => val as `0x${string}`)

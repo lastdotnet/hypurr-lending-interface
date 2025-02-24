@@ -1,8 +1,8 @@
 import { Column as Column_, Entity as Entity_, Index as Index_, PrimaryColumn as PrimaryColumn_ } from 'typeorm'
 
-import * as marshal from './marshal'
 import { SpentItem } from './_spentItem'
 import { Terms } from './_terms'
+import * as marshal from './marshal'
 
 @Index_(['chainId', 'id'], { unique: false })
 @Entity_()

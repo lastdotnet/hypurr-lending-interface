@@ -1,11 +1,11 @@
 import { NativeAssetInfo } from '@/config/chain/types'
+import { reserveBlacklist } from '@/config/consts'
 import { TokenWithBalance } from '@/domain/common/types'
 import { MarketInfo, Reserve, UserPosition } from '@/domain/market-info/marketInfo'
-import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { UpgradeOptions } from './useUpgradeOptions'
 import { Token } from '@/domain/types/Token'
-import { reserveBlacklist } from '@/config/consts'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
+import { UpgradeOptions } from './useUpgradeOptions'
 
 const blacklistedDepositableAssets = ['USDXL']
 export function getDepositableAssets(positions: UserPosition[], walletInfo: MarketWalletInfo): TokenWithBalance[] {

@@ -1,11 +1,11 @@
 import type { AaveFormattedReserve, AaveUserSummary } from './query'
 
-import BigNumber from 'bignumber.js'
 import { Percentage } from '@/domain/types/NumericValues'
 import { weightedAverageAPY } from '@/utils/ghoUtils'
 import { displayGhoForMintableMarket } from '@/utils/ghoUtils'
 import { FormattedGhoUserData } from '@aave/math-utils'
 import { FormattedGhoReserveData } from '@aave/math-utils'
+import BigNumber from 'bignumber.js'
 
 export interface NetApyDetails {
   netSupplyApy: Percentage

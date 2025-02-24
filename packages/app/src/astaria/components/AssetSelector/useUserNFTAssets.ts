@@ -9,8 +9,8 @@ import { ENV } from '@/astaria/constants/environment'
 import { SIMPLE_HASH_NETWORK_MAP } from '@/astaria/constants/simpleHash'
 import { useChainId } from '@/astaria/hooks/useChainId'
 
-import { type ERC721 } from 'assets'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC721 } from 'assets'
 
 const NFTS_PER_PAGE = 8
 

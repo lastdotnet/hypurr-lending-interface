@@ -25,7 +25,7 @@ export const ClaimButton = ({
 
   return (
     <Button
-      className="border-b-0 border-l-0 border-r-0"
+      className="border-r-0 border-b-0 border-l-0"
       fullWidth
       loading={isLoadingClaim || isConfirmingClaim}
       onClick={handleClaim}

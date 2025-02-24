@@ -1,10 +1,10 @@
-import { calculateNetApy } from './calculateNetApy'
 import {
+  getMockAaveFormattedUserSummary,
   getMockAaveFormattedUserSummaryReserve,
   getMockUserReservesData,
-  getMockAaveFormattedUserSummary,
   testAddresses,
 } from '@/test/integration/constants'
+import { calculateNetApy } from './calculateNetApy'
 
 const whypeAddress = testAddresses.token
 const usdcAddress = testAddresses.token2

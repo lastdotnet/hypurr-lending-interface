@@ -1,4 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
+import { hyperTestnet } from '@/config/chain/constants'
 import { NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { aaveDataLayerQueryKey } from '@/domain/market-info/aave-data-layer/query'
@@ -13,7 +14,6 @@ import { toBigInt } from '@/utils/bigNumber'
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createWithdrawActionConfig } from './withdrawAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const withdrawValue = NormalizedUnitNumber(1)
 const marketInfo = getMockMarketInfo()

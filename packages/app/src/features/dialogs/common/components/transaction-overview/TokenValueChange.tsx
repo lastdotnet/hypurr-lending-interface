@@ -1,8 +1,8 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
-import { TransactionOverviewDetailsItem } from './TransactionOverviewDetailsItem'
 import Image from 'next/image'
+import { TransactionOverviewDetailsItem } from './TransactionOverviewDetailsItem'
 
 interface TokenValueChangeProps {
   token: Token

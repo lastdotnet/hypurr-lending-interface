@@ -1,1 +1,1 @@
-export * from './useClaimDailyPoints';
+export * from './useClaimDailyPoints'

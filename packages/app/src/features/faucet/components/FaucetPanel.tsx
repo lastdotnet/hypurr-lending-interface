@@ -1,10 +1,10 @@
+import { isTestnet } from '@/config/consts'
+import { assets } from '@/ui/assets'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { PageLayout } from '@/ui/layouts/PageLayout'
-import { PropsWithChildren } from 'react'
-import { assets } from '@/ui/assets'
-import { isTestnet } from '@/config/consts'
 import Image from 'next/image'
+import { PropsWithChildren } from 'react'
 
 export function FaucetPanel({ children }: PropsWithChildren) {
   return (

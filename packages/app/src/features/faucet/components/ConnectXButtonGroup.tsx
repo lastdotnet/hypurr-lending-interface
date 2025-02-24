@@ -2,16 +2,16 @@
 
 import { useCallback, useEffect, useState } from 'react'
 
+import { twitterFollowUrl } from '@/config/consts'
+import { buttonVariants } from '@/ui/atoms/button/Button'
+import { Button } from '@/ui/atoms/button/Button'
+import { links } from '@/ui/constants/links'
+import { cn } from '@/ui/utils/style'
+import { trackEvent } from '@/utils/fathom'
 import { useAuthenticateConnectedUser } from '@dynamic-labs/sdk-react-core'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { useSocialAccounts } from '@dynamic-labs/sdk-react-core'
 import { ProviderEnum } from '@dynamic-labs/types'
-import { buttonVariants } from '@/ui/atoms/button/Button'
-import { Button } from '@/ui/atoms/button/Button'
-import { twitterFollowUrl } from '@/config/consts'
-import { cn } from '@/ui/utils/style'
-import { trackEvent } from '@/utils/fathom'
-import { links } from '@/ui/constants/links'
 
 function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => void }) {
   const [following, setFollowing] = useState(false)

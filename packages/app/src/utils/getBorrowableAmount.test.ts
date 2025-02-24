@@ -1,8 +1,8 @@
-import { getBorrowableAmount } from './getBorrowableAmount'
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { USDXL_ADDRESS } from '@/config/consts'
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
-import { USDXL_ADDRESS } from '@/config/consts'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
+import { getBorrowableAmount } from './getBorrowableAmount'
 
 describe(getBorrowableAmount.name, () => {
   const facilitatorAmount = NormalizedUnitNumber(100)

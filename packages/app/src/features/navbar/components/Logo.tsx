@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { assets } from '@/ui/assets'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export function Logo() {

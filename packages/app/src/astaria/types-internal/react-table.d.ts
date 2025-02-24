@@ -1,4 +1,4 @@
-import '@tanstack/react-table';
+import '@tanstack/react-table'
 
 declare module '@tanstack/react-table' {
   // Allow className to be added to columns
@@ -6,6 +6,6 @@ declare module '@tanstack/react-table' {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   interface ColumnMeta {
-    className?: string;
+    className?: string
   }
 }

@@ -1,16 +1,16 @@
-import { IconExternalLink } from '@tabler/icons-react';
-import Link from 'next/link';
-import { type MouseEventHandler, type ReactNode } from 'react';
+import { IconExternalLink } from '@tabler/icons-react'
+import Link from 'next/link'
+import { type MouseEventHandler, type ReactNode } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
 export type TextLinkProps = {
-  children: ReactNode;
-  className?: string;
-  href: string;
-  onClick?: MouseEventHandler<void> | undefined;
-  showIcon?: boolean;
-};
+  children: ReactNode
+  className?: string
+  href: string
+  onClick?: MouseEventHandler<void> | undefined
+  showIcon?: boolean
+}
 
 export const TextLink = ({
   children,
@@ -30,22 +30,13 @@ export const TextLink = ({
         {...rest}
       >
         {children}
-        {showIcon ? (
-          <IconExternalLink
-            size={16}
-            style={{ display: 'inline', verticalAlign: 'middle' }}
-          />
-        ) : null}
+        {showIcon ? <IconExternalLink size={16} style={{ display: 'inline', verticalAlign: 'middle' }} /> : null}
       </a>
-    );
+    )
   }
   return (
-    <Link
-      className={clsx('text-primary underline', className)}
-      href={href}
-      {...rest}
-    >
+    <Link className={clsx('text-primary underline', className)} href={href} {...rest}>
       {children}
     </Link>
-  );
-};
+  )
+}

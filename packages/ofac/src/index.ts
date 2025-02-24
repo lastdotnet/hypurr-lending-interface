@@ -1,1 +1,1 @@
-export * from './ofacBlacklist';
+export * from './ofacBlacklist'

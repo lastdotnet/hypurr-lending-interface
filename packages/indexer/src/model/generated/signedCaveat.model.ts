@@ -1,8 +1,8 @@
 import { Column as Column_, Entity as Entity_, Index as Index_, PrimaryColumn as PrimaryColumn_ } from 'typeorm'
 
-import * as marshal from './marshal'
 import { Caveat } from './_caveat'
 import { CaveatStatus } from './_caveatStatus'
+import * as marshal from './marshal'
 
 @Entity_()
 export class SignedCaveat {

@@ -1,8 +1,8 @@
+import { useAccount } from '@/domain/hooks/useAccount'
 import { sandboxDialogConfig } from '@/features/dialogs/sandbox/SandboxDialog'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { useSwitchChain } from 'wagmi'
 import { useOpenDialog } from '../state/dialogs'
-import { useAccount } from '@/domain/hooks/useAccount'
 export interface UseUnsupportedChainResult {
   isGuestMode: boolean
   openConnectModal: () => void

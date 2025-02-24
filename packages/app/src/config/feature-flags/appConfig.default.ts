@@ -1,7 +1,7 @@
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { AppConfig } from '.'
-import { clientEnv } from './clientEnv'
 import { hyperTestnet } from '../chain/constants'
+import { clientEnv } from './clientEnv'
 
 export function getDefaultAppConfig(): AppConfig {
   return {

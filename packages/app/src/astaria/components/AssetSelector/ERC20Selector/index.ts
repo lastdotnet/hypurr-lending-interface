@@ -1,1 +1,1 @@
-export * from './ERC20Selector';
+export * from './ERC20Selector'

@@ -1,14 +1,14 @@
+import { formatPercentage } from '@/domain/common/format'
+import { UserPositionSummary } from '@/domain/market-info/marketInfo'
+import { Percentage } from '@/domain/types/NumericValues'
 import { DialogPanel } from '@/features/dialogs/common/components/DialogPanel'
 import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPanelTitle'
+import { LoanToValue } from '@/features/easy-borrow/components/form/LoanToValue'
+import { LoanToValueSlider } from '@/features/easy-borrow/components/form/LoanToValueSlider'
+import { TransactionOverviewDetailsItem } from '@/features/farm-details/dialogs/common/components/TransactionOverviewDetailsItem'
+import { nonZeroOrDefault } from '@/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { HealthFactorChange } from '../../common/components/transaction-overview/HealthFactorChange'
-import { Percentage } from '@/domain/types/NumericValues'
-import { formatPercentage } from '@/domain/common/format'
-import { TransactionOverviewDetailsItem } from '@/features/farm-details/dialogs/common/components/TransactionOverviewDetailsItem'
-import { LoanToValueSlider } from '@/features/easy-borrow/components/form/LoanToValueSlider'
-import { LoanToValue } from '@/features/easy-borrow/components/form/LoanToValue'
-import { UserPositionSummary } from '@/domain/market-info/marketInfo'
-import { nonZeroOrDefault } from '@/utils/bigNumber'
 
 export interface BorrowOverviewPanelProps {
   currentHealthFactor?: BigNumber

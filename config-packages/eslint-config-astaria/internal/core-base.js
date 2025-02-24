@@ -1,4 +1,4 @@
-const MINIMUM_VARIABLE_LENGTH = 2;
+const MINIMUM_VARIABLE_LENGTH = 2
 
 module.exports = {
   extends: [
@@ -23,12 +23,7 @@ module.exports = {
       },
     },
     {
-      files: [
-        '**/*.test.tsx',
-        '**/*.test.ts',
-        '**/*.stories.tsx',
-        'mock-data.ts',
-      ],
+      files: ['**/*.test.tsx', '**/*.test.ts', '**/*.stories.tsx', 'mock-data.ts'],
       rules: {
         'no-magic-numbers': 'off',
       },
@@ -70,30 +65,14 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     curly: ['error', 'all'],
     eqeqeq: ['error', 'always'],
-    'id-length': [
-      MINIMUM_VARIABLE_LENGTH,
-      { exceptions: ['a', 'b'], properties: 'never' },
-    ],
+    'id-length': [MINIMUM_VARIABLE_LENGTH, { exceptions: ['a', 'b'], properties: 'never' }],
     'no-console': 'error',
-    'no-magic-numbers': [
-      'error',
-      { ignore: [-1, 0, 1, '0n', '1n'], ignoreArrayIndexes: true },
-    ],
+    'no-magic-numbers': ['error', { ignore: [-1, 0, 1, '0n', '1n'], ignoreArrayIndexes: true }],
     'no-nested-ternary': 'error',
     'no-restricted-imports': [
       'error',
       {
-        paths: [
-          '.',
-          '../.',
-          '../../.',
-          './',
-          '.././',
-          '../.././',
-          '../',
-          '../../',
-          '../../../',
-        ],
+        paths: ['.', '../.', '../../.', './', '.././', '../.././', '../', '../../', '../../../'],
         patterns: [
           {
             group: [
@@ -110,15 +89,8 @@ module.exports = {
             message: 'Import from the package directly instead.',
           },
           {
-            group: [
-              '^indexer$',
-              '^indexer/lib',
-              '^indexer/lib/*',
-              '^indexer/src',
-              '^indexer/src/*',
-            ],
-            message:
-              'Import from `indexer/model` instead, else the web-app will try to run sqd.',
+            group: ['^indexer$', '^indexer/lib', '^indexer/lib/*', '^indexer/src', '^indexer/src/*'],
+            message: 'Import from `indexer/model` instead, else the web-app will try to run sqd.',
           },
           {
             group: ['sdk/src', 'sdk/src/*'],
@@ -145,10 +117,7 @@ module.exports = {
     'security/detect-possible-timing-attacks': 'off',
     // turn on to test literals - it's buggy though
     // 'sentence-case/sentence-case': 'error',
-    'sort-destructure-keys/sort-destructure-keys': [
-      'error',
-      { caseSensitive: false },
-    ],
+    'sort-destructure-keys/sort-destructure-keys': ['error', { caseSensitive: false }],
     'sort-keys-fix/sort-keys-fix': [
       'error',
       'asc',
@@ -170,4 +139,4 @@ module.exports = {
       },
     ],
   },
-};
+}

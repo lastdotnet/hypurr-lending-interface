@@ -1,1 +1,1 @@
-export * from './BlockExplorerLink';
+export * from './BlockExplorerLink'

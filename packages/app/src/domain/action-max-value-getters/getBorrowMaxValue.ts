@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 
-import { NormalizedUnitNumber } from '../types/NumericValues'
-import { CheckedAddress } from '../types/CheckedAddress'
 import { getBorrowableAmount } from '@/utils/getBorrowableAmount'
+import { CheckedAddress } from '../types/CheckedAddress'
+import { NormalizedUnitNumber } from '../types/NumericValues'
 
 interface GetBorrowMaxValueParams {
   asset: {

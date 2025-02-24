@@ -1,6 +1,6 @@
-import { type Dispatch, type SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
 export const StepBubbles = ({
   className,
@@ -8,10 +8,10 @@ export const StepBubbles = ({
   step,
   steps,
 }: {
-  className?: string;
-  setStep: Dispatch<SetStateAction<number>>;
-  step: number;
-  steps: number;
+  className?: string
+  setStep: Dispatch<SetStateAction<number>>
+  step: number
+  steps: number
 }) => (
   <div className={clsx('flex items-center justify-center gap-4', className)}>
     {[...Array(steps).keys()].map((id) => (
@@ -24,4 +24,4 @@ export const StepBubbles = ({
       />
     ))}
   </div>
-);
+)

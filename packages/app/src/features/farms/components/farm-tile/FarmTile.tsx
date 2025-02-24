@@ -7,8 +7,8 @@ import { LinkDecorator } from '@/ui/atoms/link-decorator/LinkDecorator'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
-import { useState } from 'react'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export interface FarmTileProps {
   entryAssetsGroup: AssetsGroup

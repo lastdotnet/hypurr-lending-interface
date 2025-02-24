@@ -1,6 +1,6 @@
+import { useSavingsStore } from '@/domain/hooks/useSavingsStore'
 import { useSavingsDaiInfo } from '@/domain/savings-info/useSavingsDaiInfo'
 import { useSavingsUsdsInfo } from '@/domain/savings-info/useSavingsUsdsInfo'
-import { useSavingsStore } from '@/domain/hooks/useSavingsStore'
 import { useCompliance } from '@/features/compliance/logic/useCompliance'
 
 export interface UseWelcomeDialogParams {

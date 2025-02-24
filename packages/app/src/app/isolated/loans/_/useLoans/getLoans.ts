@@ -44,7 +44,7 @@ const getLoanAssetIdentifiers = ({ loans }: { loans: IndexerLoan[] }) =>
 
 export const getLoans = async ({ address, isTestnet, limit, offset }: GETLoansParameters) => {
   if (!address) {
-    throw new BadRequestError(`Borrower Address OR Lender Address is Required.`)
+    throw new BadRequestError('Borrower Address OR Lender Address is Required.')
   }
 
   const dataSource = await initializeDataSource()

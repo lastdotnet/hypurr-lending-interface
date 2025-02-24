@@ -33,7 +33,7 @@ export const LeadershipAndInvestorsSection = () => (
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-4">
-              <span className="text-xl font-semibold md:text-2xl">Justin Bram</span>
+              <span className="font-semibold text-xl md:text-2xl">Justin Bram</span>
               <TextLink aria-label="Justin on Twitter" href="https://twitter.com/JustinCBram" showIcon={false}>
                 <IconBrandX />
               </TextLink>
@@ -50,7 +50,7 @@ export const LeadershipAndInvestorsSection = () => (
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-4">
-              <span className="text-xl font-semibold md:text-2xl">Joseph Delong</span>
+              <span className="font-semibold text-xl md:text-2xl">Joseph Delong</span>
               <TextLink aria-label="Joe on Twitter" href="https://twitter.com/josephdelong" showIcon={false}>
                 <IconBrandX />
               </TextLink>
@@ -110,43 +110,43 @@ export const LeadershipAndInvestorsSection = () => (
     <Card>
       <CardsContainer>
         <CardSection>
-          <div className="text-xl font-semibold">Tim Beiko</div>
+          <div className="font-semibold text-xl">Tim Beiko</div>
           <div className="italic">Ethereum</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Anthony Sassano</div>
+          <div className="font-semibold text-xl">Anthony Sassano</div>
           <div className="italic">The Daily Gwei</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Alex Svanevik</div>
+          <div className="font-semibold text-xl">Alex Svanevik</div>
           <div className="italic">Nansen</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">James Prestwich</div>
+          <div className="font-semibold text-xl">James Prestwich</div>
           <div className="italic">Ethereum</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Marc Weinstein</div>
+          <div className="font-semibold text-xl">Marc Weinstein</div>
           <div className="italic">Mechanism Capital</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Meltem Demoirs</div>
+          <div className="font-semibold text-xl">Meltem Demoirs</div>
           <div className="italic">Coinshares</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Nathan Alman</div>
+          <div className="font-semibold text-xl">Nathan Alman</div>
           <div className="italic">Ondo</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Size Chad</div>
+          <div className="font-semibold text-xl">Size Chad</div>
           <div className="italic">Arbitrum</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Sam Kazemian</div>
+          <div className="font-semibold text-xl">Sam Kazemian</div>
           <div className="italic">Frax</div>
         </CardSection>
         <CardSection>
-          <div className="text-xl font-semibold">Zak Cole</div>
+          <div className="font-semibold text-xl">Zak Cole</div>
           <div className="italic">Number Group</div>
         </CardSection>
       </CardsContainer>

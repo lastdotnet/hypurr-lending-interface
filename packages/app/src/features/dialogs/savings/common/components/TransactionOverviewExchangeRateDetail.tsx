@@ -2,8 +2,8 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { TransactionOverviewDetailsItem } from '@/features/dialogs/common/components/transaction-overview/TransactionOverviewDetailsItem'
 import { assets } from '@/ui/assets'
-import { TokenValue } from './TokenValue'
 import Image from 'next/image'
+import { TokenValue } from './TokenValue'
 
 export interface TransactionOverviewDetailsItemProps {
   toToken: Token

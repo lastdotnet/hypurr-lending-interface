@@ -1,6 +1,6 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server'
 
-import { StatusCodes } from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes'
 
 export const POST = async (request: NextRequest) => {
   if (!['preview', 'production'].includes(process.env?.VERCEL_ENV ?? '')) {
@@ -12,8 +12,8 @@ export const POST = async (request: NextRequest) => {
         },
         success: false,
       },
-      { status: StatusCodes.BAD_REQUEST }
-    );
+      { status: StatusCodes.BAD_REQUEST },
+    )
   }
 
   if (request.headers.get('content-type') !== 'application/csp-report') {
@@ -25,11 +25,11 @@ export const POST = async (request: NextRequest) => {
         },
         success: false,
       },
-      { status: StatusCodes.BAD_REQUEST }
-    );
+      { status: StatusCodes.BAD_REQUEST },
+    )
   }
 
-  const report = await request.json();
+  const report = await request.json()
 
   // Example data:
   // {
@@ -46,22 +46,19 @@ export const POST = async (request: NextRequest) => {
   // }
 
   // Send the report to Slack temporary channel
-  await fetch(
-    'https://hooks.slack.com/services/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',
-    {
-      body: JSON.stringify(
-        // eslint-disable-next-line no-magic-numbers
-        { text: `\`\`\`${JSON.stringify(report, null, 2)}\`\`\`` },
-        null,
-        // eslint-disable-next-line no-magic-numbers
-        2
-      ),
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'POST',
-    }
-  );
+  await fetch('https://hooks.slack.com/services/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', {
+    body: JSON.stringify(
+      // eslint-disable-next-line no-magic-numbers
+      { text: `\`\`\`${JSON.stringify(report, null, 2)}\`\`\`` },
+      null,
+      // eslint-disable-next-line no-magic-numbers
+      2,
+    ),
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+  })
 
   return NextResponse.json(
     {
@@ -71,6 +68,6 @@ export const POST = async (request: NextRequest) => {
       },
       success: true,
     },
-    { status: StatusCodes.OK }
-  );
-};
+    { status: StatusCodes.OK },
+  )
+}

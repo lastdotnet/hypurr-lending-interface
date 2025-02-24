@@ -1,9 +1,9 @@
 import { test } from '@playwright/test'
 import { mainnet } from 'viem/chains'
 
+import { MyPortfolioPageObject } from '@/containers/MyPortfolio.PageObject'
 import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
 import { NavbarPageObject } from '@/features/navbar/Navbar.PageObject'
-import { MyPortfolioPageObject } from '@/containers/MyPortfolio.PageObject'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'
 import { ClaimRewardsDialogPageObject } from './ClaimRewardsDialog.PageObject'

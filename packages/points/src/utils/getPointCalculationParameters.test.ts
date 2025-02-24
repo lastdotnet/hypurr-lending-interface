@@ -1,13 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest'
 
-import {
-  ETHER_DECIMALS,
-  getNowInSeconds,
-  numberToBigInt,
-  removeDecimals,
-} from 'common';
+import { ETHER_DECIMALS, getNowInSeconds, numberToBigInt, removeDecimals } from 'common'
 
-import { POINTS_DECIMALS, POINT_AMOUNT } from '../constants';
+import { POINTS_DECIMALS, POINT_AMOUNT } from '../constants'
 import {
   BASE_USDC,
   BASE_WETH,
@@ -16,9 +11,9 @@ import {
   baseDenominatorUSDC,
   baseDenominatorWETH,
   start,
-} from '../constants/test-constants';
-import { calculatePoints } from './calculatePoints';
-import { getPointCalculationParameters } from './getPointCalculationParameters';
+} from '../constants/test-constants'
+import { calculatePoints } from './calculatePoints'
+import { getPointCalculationParameters } from './getPointCalculationParameters'
 
 const dynamicPointUSDC = {
   address: BASE_USDC.address,
@@ -34,7 +29,7 @@ const dynamicPointUSDC = {
   },
   event: 'Loan',
   isDynamic: true,
-};
+}
 const dynamicPointWETH = {
   address: BASE_WETH.address,
   data: {
@@ -49,7 +44,7 @@ const dynamicPointWETH = {
   },
   event: 'Loan',
   isDynamic: true,
-};
+}
 
 const dynamicPointWETHClosedLoan = {
   address: BASE_WETH.address,
@@ -68,7 +63,7 @@ const dynamicPointWETHClosedLoan = {
   },
   event: 'Loan',
   isDynamic: true,
-};
+}
 
 const nonDynamicPointWETH = {
   address: BASE_WETH.address,
@@ -87,16 +82,16 @@ const nonDynamicPointWETH = {
   },
   event: 'CheckedIntentFeed',
   isDynamic: false,
-};
+}
 
 describe('getPointCalculationParameters', () => {
   describe('dynamic points', () => {
     it('should handle USDC same as in calculatePointsForPoint', () => {
-      const startTime = getNowInSeconds();
+      const startTime = getNowInSeconds()
       const result = getPointCalculationParameters({
         points: [dynamicPointUSDC],
         startTime,
-      });
+      })
       expect(result).toStrictEqual({
         startPoints: numberToBigInt({
           amount: USDC_EXPECTED_POINTS,
@@ -107,14 +102,14 @@ describe('getPointCalculationParameters', () => {
           amount: 0.25, // this value is equal to the one in calculatePointsForPoint.test
           decimals: ETHER_DECIMALS,
         }),
-      });
-    });
+      })
+    })
     it('should handle USDC plus WETH', () => {
-      const startTime = getNowInSeconds();
+      const startTime = getNowInSeconds()
       const result = getPointCalculationParameters({
         points: [dynamicPointUSDC, dynamicPointWETH],
         startTime,
-      });
+      })
       expect(result).toStrictEqual({
         startPoints:
           numberToBigInt({
@@ -135,14 +130,14 @@ describe('getPointCalculationParameters', () => {
             amount: 1,
             decimals: ETHER_DECIMALS,
           }), // these values are taken from calculatePointsForPoint.test
-      });
-    });
+      })
+    })
     it('should handle USDC plus closed WETH', () => {
-      const startTime = getNowInSeconds();
+      const startTime = getNowInSeconds()
       const result = getPointCalculationParameters({
         points: [dynamicPointUSDC, dynamicPointWETHClosedLoan],
         startTime,
-      });
+      })
       expect(result).toStrictEqual({
         startPoints:
           numberToBigInt({
@@ -158,16 +153,16 @@ describe('getPointCalculationParameters', () => {
           amount: 0.25,
           decimals: ETHER_DECIMALS,
         }),
-      });
-    });
-  });
+      })
+    })
+  })
   describe('nonDynamic points', () => {
     it('should handle WETH', () => {
-      const startTime = getNowInSeconds();
+      const startTime = getNowInSeconds()
       const result = getPointCalculationParameters({
         points: [nonDynamicPointWETH],
         startTime,
-      });
+      })
       expect(result).toStrictEqual({
         startPoints: numberToBigInt({
           amount: 100,
@@ -175,16 +170,16 @@ describe('getPointCalculationParameters', () => {
         }),
         startTime,
         totalActiveLoanTokenAmount: 0n,
-      });
-    });
-  });
+      })
+    })
+  })
   describe('nonDynamic and dynamic points', () => {
     it('should handle both simultaneously', () => {
-      const startTime = getNowInSeconds();
+      const startTime = getNowInSeconds()
       const result = getPointCalculationParameters({
         points: [nonDynamicPointWETH, dynamicPointWETH],
         startTime,
-      });
+      })
       expect(result.startPoints).toEqual(
         numberToBigInt({
           amount: 100,
@@ -193,33 +188,30 @@ describe('getPointCalculationParameters', () => {
           numberToBigInt({
             amount: WETH_EXPECTED_POINTS,
             decimals: ETHER_DECIMALS,
-          })
-      );
+          }),
+      )
       expect(result.totalActiveLoanTokenAmount).toEqual(
         numberToBigInt({
           amount: 1,
           decimals: ETHER_DECIMALS,
-        })
-      );
-    });
-  });
+        }),
+      )
+    })
+  })
   describe('calculatePoints function', () => {
     it('should calculate points correctly', () => {
       // Define inputs
-      const totalActiveLoanTokenAmount = 10n;
-      const startTime = 50;
-      const endTime = 60;
-      const startPoints = 5n;
+      const totalActiveLoanTokenAmount = 10n
+      const startTime = 50
+      const endTime = 60
+      const startPoints = 5n
 
       // Define expected output
       const expectedPoints =
         removeDecimals({
           decimals: POINTS_DECIMALS,
-          value:
-            BigInt(endTime - startTime) *
-            totalActiveLoanTokenAmount *
-            POINT_AMOUNT,
-        }) + startPoints;
+          value: BigInt(endTime - startTime) * totalActiveLoanTokenAmount * POINT_AMOUNT,
+        }) + startPoints
 
       // Call the function
       const result = calculatePoints({
@@ -227,10 +219,10 @@ describe('getPointCalculationParameters', () => {
         startPoints,
         startTime,
         totalActiveLoanTokenAmount,
-      });
+      })
 
       // Check if the result matches the expected output
-      expect(result).toEqual(expectedPoints);
-    });
-  });
-});
+      expect(result).toEqual(expectedPoints)
+    })
+  })
+})

@@ -1,8 +1,8 @@
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 import { cn } from '@/ui/utils/style'
+import Image from 'next/image'
 import { MultiPanelDialog } from '../../common/components/MultiPanelDialog'
 import { Chain } from '../types'
-import Image from 'next/image'
 export interface SelectNetworkDialogViewProps {
   chains: Chain[]
 }

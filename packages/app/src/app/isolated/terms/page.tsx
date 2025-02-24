@@ -64,7 +64,7 @@ const TermsOfUsePage = () => (
           access or use the Content or {APP_DATA?.NAME} Products.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           2. Modification of Terms of Use
         </Heading>
 
@@ -79,7 +79,7 @@ const TermsOfUsePage = () => (
           the Interface.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           3. Eligibility
         </Heading>
 
@@ -108,11 +108,11 @@ const TermsOfUsePage = () => (
           {APP_DATA?.NAME} Products for any illegal activity.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           4. Representations, Warranties, and Risks
         </Heading>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.1. No Representation or Warranty
         </Heading>
 
@@ -129,7 +129,7 @@ const TermsOfUsePage = () => (
           ERROR-FREE.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.2. Disclaimer of Fiduciary Duties
         </Heading>
 
@@ -141,7 +141,7 @@ const TermsOfUsePage = () => (
           PRODUCTS, OR THE CONTENT, OR HOLDERS OF THE TOKENS.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.3. Sophistication and Risk of Cryptographic Systems
         </Heading>
 
@@ -163,7 +163,7 @@ const TermsOfUsePage = () => (
           whatsoever in respect of any underlying software protocols, whether Forked or not.{' '}
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.4. Risk of Regulatory Actions in One or More Jurisdictions
         </Heading>
 
@@ -174,7 +174,7 @@ const TermsOfUsePage = () => (
           including access to your funds.{' '}
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.5. Risk of Weaknesses or Exploits in the Field of Cryptography
         </Heading>
 
@@ -193,7 +193,7 @@ const TermsOfUsePage = () => (
           to guarantee or otherwise represent full security of the system.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.6. Volatility of Cryptocurrency
         </Heading>
 
@@ -206,7 +206,7 @@ const TermsOfUsePage = () => (
           increased costs.{' '}
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.7. Application Security
         </Heading>
 
@@ -220,7 +220,7 @@ const TermsOfUsePage = () => (
           applications.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.8. Website Accuracy
         </Heading>
 
@@ -240,7 +240,7 @@ const TermsOfUsePage = () => (
           relevant tools.
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           4.9. Technical Knowledge
         </Heading>
 
@@ -250,7 +250,7 @@ const TermsOfUsePage = () => (
           and warrant that you possess relevant knowledge and skills.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           5. Indemnity
         </Heading>
 
@@ -267,7 +267,7 @@ const TermsOfUsePage = () => (
           the defense of such matter.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           6. Limitation on Liability
         </Heading>
 
@@ -303,7 +303,7 @@ const TermsOfUsePage = () => (
           INDIVIDUALS IN THEIR PERSONAL CAPACITY.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           7. Proprietary Rights
         </Heading>
 
@@ -316,7 +316,7 @@ const TermsOfUsePage = () => (
           based on the Protocol, {APP_DATA?.NAME} Products and Content, in whole or in part.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           8. Links
         </Heading>
 
@@ -331,7 +331,7 @@ const TermsOfUsePage = () => (
           or reliance on any such content, goods or services available on or through any such site or resource.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           9. Termination and Suspension
         </Heading>
 
@@ -343,7 +343,7 @@ const TermsOfUsePage = () => (
           NO THIRD-PARTY BENEFICIARIES; BINDING ARBITRATION AND CLASS ACTION WAIVER; GENERAL INFORMATION.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           10. No Third-Party Beneficiaries
         </Heading>
 
@@ -352,7 +352,7 @@ const TermsOfUsePage = () => (
           beneficiaries to the Terms.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           11. Notice and Procedure For Making Claims of Copyright Infringement
         </Heading>
 
@@ -383,11 +383,11 @@ const TermsOfUsePage = () => (
           </li>
         </ul>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           12. Arbitration and Class Action Waiver
         </Heading>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           12.1. Initial Dispute Resolution
         </Heading>
 
@@ -397,7 +397,7 @@ const TermsOfUsePage = () => (
           arbitration.{' '}
         </p>
 
-        <Heading className="mb-3 mt-6" level={4}>
+        <Heading className="mt-6 mb-3" level={4}>
           12.2. Binding Arbitration
         </Heading>
 
@@ -425,7 +425,7 @@ const TermsOfUsePage = () => (
           continue to apply.
         </p>
 
-        <Heading className="mb-4 mt-6" level={3}>
+        <Heading className="mt-6 mb-4" level={3}>
           13. Severability Clause
         </Heading>
 

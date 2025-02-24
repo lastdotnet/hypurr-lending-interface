@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import Script from 'next/script';
+import Script from 'next/script'
 
 export function SafariClubAnalytics() {
   return (
@@ -13,5 +13,5 @@ export function SafariClubAnalytics() {
       src="https://tag.safary.club/stag-0.1.8.js"
       strategy="beforeInteractive"
     />
-  );
+  )
 }

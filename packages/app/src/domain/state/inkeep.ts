@@ -1,8 +1,8 @@
 'use client'
 
-import { StateCreator } from 'zustand'
 import { StoreState } from '@/domain/state'
 import { InkeepEmbedConfig } from '@inkeep/uikit-js/dist/types'
+import { StateCreator } from 'zustand'
 
 export interface InkeepSlice {
   inkeep: {

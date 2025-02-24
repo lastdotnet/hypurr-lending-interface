@@ -34,7 +34,7 @@ const RecallDialogContent = ({ loan }: { loan: Loan }) => (
         value={
           <CurrencyAmountWrapper>
             <ERC20Image erc20={loan.debt} />
-            <CurrentDebt apy={loan.apy} className="text-2xl font-medium" erc20={loan.debt} startTime={loan.startTime} />
+            <CurrentDebt apy={loan.apy} className="font-medium text-2xl" erc20={loan.debt} startTime={loan.startTime} />
           </CurrencyAmountWrapper>
         }
       />

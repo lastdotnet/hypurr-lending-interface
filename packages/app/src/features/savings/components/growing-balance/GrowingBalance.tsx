@@ -4,8 +4,8 @@ import { getTokenImage } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { getFractionalPart, getWholePart } from '@/utils/bigNumber'
 import { useTimestamp } from '@/utils/useTimestamp'
-import { SavingsOverview } from '../../logic/makeSavingsOverview'
 import Image from 'next/image'
+import { SavingsOverview } from '../../logic/makeSavingsOverview'
 
 export interface GrowingBalanceProps {
   savingsTokenWithBalance: TokenWithBalance

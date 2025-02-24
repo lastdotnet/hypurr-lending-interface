@@ -2,8 +2,8 @@ import { Address, type Chain, type Transport, createWalletClient } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { createConfig } from 'wagmi'
 
-import { createMockConnector } from '../../domain/wallet/createMockConnector'
 import { hyperTestnet } from '@/config/chain/constants'
+import { createMockConnector } from '../../domain/wallet/createMockConnector'
 
 export type WalletOptions = { address: Address } | { privateKey: `0x${string}` }
 export interface CreateWagmiTestConfigOptions {

@@ -1,1 +1,1 @@
-export * from './getAssetsMetadata';
+export * from './getAssetsMetadata'

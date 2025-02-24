@@ -19,4 +19,4 @@ export const BasePricingDetailsStructABI = {
       internalType: 'uint256',
     },
   ],
-} as const;
+} as const

@@ -2,8 +2,8 @@ import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { Token } from '@/domain/types/Token'
 import { Alert } from '@/features/dialogs/common/components/alert/Alert'
 import { TokenIcon } from '@/ui/atoms/token-icon/TokenIcon'
-import { TokenLinksDropdown } from './TokenLinksDropdown'
 import { Typography } from '@/ui/atoms/typography/Typography'
+import { TokenLinksDropdown } from './TokenLinksDropdown'
 
 interface HeaderProps {
   token: Token

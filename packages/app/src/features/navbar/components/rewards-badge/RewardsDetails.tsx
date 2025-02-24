@@ -1,8 +1,8 @@
 import { getTokenImage } from '@/ui/assets'
 import { Button } from '@/ui/atoms/button/Button'
 import { testIds } from '@/ui/utils/testIds'
-import { Reward } from './types'
 import Image from 'next/image'
+import { Reward } from './types'
 export interface RewardsDetailsProps {
   rewards: Reward[]
   onClaim: () => void

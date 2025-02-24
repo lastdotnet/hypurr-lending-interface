@@ -24,7 +24,7 @@ import { withChainCheckDialog } from '@/astaria/utils/withChainCheckDialog'
 const ClaimDialogContent = ({ loan }: { loan: Loan }) => (
   <Card receiptStyle>
     <CardSection>
-      <CardLabelValue label="Claiming" value={<AssetDisplay asset={loan.asset} className="text-2xl font-medium" />} />
+      <CardLabelValue label="Claiming" value={<AssetDisplay asset={loan.asset} className="font-medium text-2xl" />} />
     </CardSection>
   </Card>
 )

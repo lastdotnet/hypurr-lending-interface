@@ -239,4 +239,4 @@ export const AstariaV1LenderEnforcerABI = [
     name: 'UnsupportedDecimalValue',
     type: 'error',
   },
-] as const;
+] as const

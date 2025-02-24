@@ -1,6 +1,7 @@
 import { X } from 'lucide-react'
 import { forwardRef } from 'react'
 
+import { truncateWithEllipsis } from '@/domain/common/format'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { Token } from '@/domain/types/Token'
 import { assets as uiAssets } from '@/ui/assets'
@@ -11,7 +12,6 @@ import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { parseBigNumber } from '@/utils/bigNumber'
 import BigNumber from 'bignumber.js'
-import { truncateWithEllipsis } from '@/domain/common/format'
 import Image from 'next/image'
 
 export type AssetInputProps = {

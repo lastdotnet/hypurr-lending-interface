@@ -1,10 +1,10 @@
 import { assets } from '@/ui/assets'
 
-import { Button, ButtonProps } from '../../atoms/button/Button'
-import { getEventNameByAction, trackEvent } from '@/utils/fathom'
-import { ReactNode } from 'react'
 import { Action } from '@/features/actions/logic/types'
+import { getEventNameByAction, trackEvent } from '@/utils/fathom'
 import Image from 'next/image'
+import { ReactNode } from 'react'
+import { Button, ButtonProps } from '../../atoms/button/Button'
 
 export interface ActionButtonProps extends ButtonProps {
   isLoading?: boolean

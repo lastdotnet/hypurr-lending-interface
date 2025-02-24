@@ -1,6 +1,6 @@
-import React from 'react'
-import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { cn } from '@/ui/utils/style'
+import NextLink, { LinkProps as NextLinkProps } from 'next/link'
+import React from 'react'
 
 export type LinkProps = NextLinkProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement> & {

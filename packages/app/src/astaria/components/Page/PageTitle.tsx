@@ -17,13 +17,13 @@ export const PageTitle = forwardRef<HTMLDivElement, PageTitleProps>(
       className={clsx('flex min-h-[42px] flex-wrap justify-between gap-2 border-b-2', className)}
       {...rest}
     >
-      <Heading className="px-3 py-2 text-base sm:px-4 md:px-5" level={level}>
+      <Heading className="px-3 py-2 text-base md:px-5 sm:px-4" level={level}>
         {children}
       </Heading>
       {link || setting ? (
         <div className="flex flex-wrap items-center gap-2">
-          {link ? <div className="px-3 py-2 sm:px-4 md:px-5">{link}</div> : null}
-          {setting ? <div className="px-3 py-2 sm:px-4 md:px-5">{setting}</div> : null}
+          {link ? <div className="px-3 py-2 md:px-5 sm:px-4">{link}</div> : null}
+          {setting ? <div className="px-3 py-2 md:px-5 sm:px-4">{setting}</div> : null}
         </div>
       ) : null}
     </div>

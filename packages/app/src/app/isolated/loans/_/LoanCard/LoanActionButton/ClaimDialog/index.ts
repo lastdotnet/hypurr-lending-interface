@@ -1,1 +1,1 @@
-export * from './ClaimDialog';
+export * from './ClaimDialog'

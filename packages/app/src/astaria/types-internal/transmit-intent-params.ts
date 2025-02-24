@@ -1,6 +1,6 @@
-import { getBigIntPercentBasedOnDecimals, getSecondsBigInt } from 'common';
+import { getBigIntPercentBasedOnDecimals, getSecondsBigInt } from 'common'
 
-import { type ERC20 } from 'assets';
+import { type ERC20 } from 'assets'
 
 export const TRANSMIT_INTENT_PARAMS = {
   carryRate: (borrow: ERC20) =>
@@ -23,4 +23,4 @@ export const TRANSMIT_INTENT_PARAMS = {
   recallStakeDuration: getSecondsBigInt({ days: 0 }), // Days of interest a permisionless recaller must stake
   recallWindow: getSecondsBigInt({ days: 1 }), // Period for which the recall is active (after a recall is initiated)
   startRate: 1n, // rate at which a borrow intent auction begins
-};
+}

@@ -18,9 +18,11 @@ import { type ERC20 } from 'assets'
 
 export const WithdrawFundsInner = withChainCheckDialog(
   ({
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
     dialogOpen,
     erc20,
     hasVaultUsage,
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
     inView,
     setDialogOpen,
     setWithdrawInProgress,
@@ -32,8 +34,6 @@ export const WithdrawFundsInner = withChainCheckDialog(
     setDialogOpen: Dispatch<SetStateAction<boolean>>
     setWithdrawInProgress: Dispatch<SetStateAction<boolean>>
   }) => {
-    // eslint-disable-next-line no-console
-    console.log('WithdrawFundsInner', dialogOpen, inView) // TODO: use in react-query
     return (
       <DialogContainer>
         <DialogHeader>
@@ -51,7 +51,7 @@ export const WithdrawFundsInner = withChainCheckDialog(
         </DialogContent>
         <DialogActions>
           <Button
-            className="border-b-0 border-l-0 border-r-0"
+            className="border-r-0 border-b-0 border-l-0"
             fullWidth
             onClick={() => {
               setWithdrawInProgress(true)

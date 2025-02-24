@@ -4,10 +4,10 @@ import { Config, createConfig } from 'wagmi'
 
 import { SandboxNetwork } from '@/domain/state/sandbox'
 
+import { hyperTestnet } from '../chain/constants'
 import { getChains } from './getChains'
 import { getTransports } from './getTransports'
 import { createWagmiStorage } from './storage'
-import { hyperTestnet } from '../chain/constants'
 
 export function getConfig(sandboxNetwork?: SandboxNetwork): Config {
   const forkChain = getForkChainFromSandboxConfig(sandboxNetwork)

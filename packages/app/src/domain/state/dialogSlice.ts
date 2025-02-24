@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand'
-import { StoreState } from './index'
 import { DialogSlice } from './dialogs'
+import { StoreState } from './index'
 
 // eslint-disable-next-line func-style
 export const initDialogSlice: StateCreator<StoreState, [], [], DialogSlice> = (set) => ({

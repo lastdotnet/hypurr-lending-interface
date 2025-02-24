@@ -1,5 +1,5 @@
-import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
 import { SavingsPageObject } from '@/containers/Savings.PageObject'
+import { ActionsPageObject } from '@/features/actions/ActionsContainer.PageObject'
 import { LITE_PSM_ACTIONS_OPERABLE } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'

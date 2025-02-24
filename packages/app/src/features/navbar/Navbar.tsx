@@ -1,14 +1,14 @@
 'use client'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { cn } from '@/ui/utils/style'
+import { FooterLinks } from './components/FooterLinks'
+import { Logo } from './components/Logo'
 import { MobileMenuButton } from './components/MobileMenuButton'
 import { PageLinks } from './components/PageLinks'
-import { useNavbar } from './logic/useNavbar'
 import { AirdropBadge } from './components/airdrop-badge/AirdropBadge'
-import { useAccount } from '@/domain/hooks/useAccount'
-import { Logo } from './components/Logo'
-import { FooterLinks } from './components/FooterLinks'
 import { WalletButton } from './components/wallet-button/WalletButton'
+import { useNavbar } from './logic/useNavbar'
 export interface NavbarProps {
   mobileMenuCollapsed: boolean
   setMobileMenuCollapsed: (collapsed: boolean) => void

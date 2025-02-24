@@ -1,3 +1,4 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { getMockToken, testAddresses } from '@/test/integration/constants'
@@ -10,7 +11,6 @@ import { waitFor } from '@testing-library/react'
 import { erc20Abi } from 'viem'
 import { describe, test } from 'vitest'
 import { createApproveActionConfig } from './approveAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const defaultValue = NormalizedUnitNumber(1)
 const token = getMockToken({ symbol: TokenSymbol('TEST') })

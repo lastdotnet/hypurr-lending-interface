@@ -2,8 +2,8 @@ import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { SPK_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
-import { formatAirdropAmount } from './utils/formatAirdropAmount'
 import Image from 'next/image'
+import { formatAirdropAmount } from './utils/formatAirdropAmount'
 
 interface AirdropDetailsProps {
   amount: NormalizedUnitNumber

@@ -1,26 +1,26 @@
-import { formatUnits } from 'viem';
+import { formatUnits } from 'viem'
 
-import { ETHER_DECIMALS, numberToBigInt } from 'common';
+import { ETHER_DECIMALS, numberToBigInt } from 'common'
 
 export const getUSDValue = ({
   amount = 0n,
   decimals,
   usdValue,
 }: {
-  amount: bigint | undefined;
-  decimals: number;
-  usdValue?: number | null;
+  amount: bigint | undefined
+  decimals: number
+  usdValue?: number | null
 }) => {
   if (!usdValue) {
-    return undefined;
+    return undefined
   }
 
   const usdValueBigInt = numberToBigInt({
     amount: usdValue,
     decimals: ETHER_DECIMALS,
-  });
+  })
 
-  const totalValue = amount * usdValueBigInt;
+  const totalValue = amount * usdValueBigInt
 
-  return Number(formatUnits(totalValue, decimals + ETHER_DECIMALS));
-};
+  return Number(formatUnits(totalValue, decimals + ETHER_DECIMALS))
+}

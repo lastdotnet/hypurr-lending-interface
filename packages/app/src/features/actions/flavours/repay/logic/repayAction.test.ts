@@ -1,4 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
+import { hyperTestnet } from '@/config/chain/constants'
 import { InterestRate, NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { lendingPoolAddress, wethGatewayAbi, wethGatewayAddress } from '@/config/contracts-generated'
 import { aaveDataLayerQueryKey } from '@/domain/market-info/aave-data-layer/query'
@@ -16,7 +17,6 @@ import { waitFor } from '@testing-library/react'
 import { generatePrivateKey } from 'viem/accounts'
 import { describe, test } from 'vitest'
 import { createRepayActionConfig } from './repayAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const repayValue = NormalizedUnitNumber(1)
 const repayToken = getMockToken({ symbol: TokenSymbol('TEST') })

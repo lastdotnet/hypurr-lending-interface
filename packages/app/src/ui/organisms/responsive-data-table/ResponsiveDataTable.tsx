@@ -1,11 +1,11 @@
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/ui/atoms/table/Table'
 import { ColumnDefinition } from '@/ui/molecules/data-table/types'
+import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useBreakpoint } from '@/ui/utils/useBreakpoint'
 import { Fragment } from 'react'
 import { DataTable } from '../../molecules/data-table/DataTable'
 import { CollapsibleCell } from './components/CollapsibleCell'
-import { cn } from '@/ui/utils/style'
 
 export interface ResponsiveDataTableProps<T> {
   columnDefinition: { [key: string]: ColumnDefinition<T> }

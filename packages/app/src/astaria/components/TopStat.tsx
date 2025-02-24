@@ -11,6 +11,6 @@ export const TopStat = ({
 }) => (
   <CardSection className="w-full">
     <div className="font-medium">{label}</div>
-    <div className="text-2xl font-medium">{value}</div>
+    <div className="font-medium text-2xl">{value}</div>
   </CardSection>
 )

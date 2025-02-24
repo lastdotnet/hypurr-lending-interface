@@ -41,7 +41,7 @@ const Story: StoryFn<typeof Dialog> = () => (
         </div>
       </DialogContent>
       <DialogActions>
-        <Button className="border-b-0 border-l-0 border-r-0" fullWidth rounded="dialog" type="submit">
+        <Button className="border-r-0 border-b-0 border-l-0" fullWidth rounded="dialog" type="submit">
           Save changes
         </Button>
       </DialogActions>
@@ -97,7 +97,7 @@ const StoryWithError: StoryFn<typeof Dialog> = () => (
         <DialogError error={{ message: 'error message', name: 'error name' }} />
       </DialogContent>
       <DialogActions>
-        <Button className="border-b-0 border-l-0 border-r-0" fullWidth rounded="dialog" type="submit">
+        <Button className="border-r-0 border-b-0 border-l-0" fullWidth rounded="dialog" type="submit">
           Save changes
         </Button>
       </DialogActions>

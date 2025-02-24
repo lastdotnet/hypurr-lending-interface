@@ -2,10 +2,10 @@ import { cn } from '@/ui/utils/style'
 
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { ConnectedWalletInfo, RewardsInfo } from '../types'
+import { AirdropBadge } from './airdrop-badge/AirdropBadge'
 import { RewardsBadge } from './rewards-badge/RewardsBadge'
 import { ConnectButton } from './wallet-button/ConnectButton'
 import { UserProfileButton } from './wallet-button/UserProfileButton'
-import { AirdropBadge } from './airdrop-badge/AirdropBadge'
 
 export interface NavbarActionsProps {
   mobileMenuCollapsed: boolean

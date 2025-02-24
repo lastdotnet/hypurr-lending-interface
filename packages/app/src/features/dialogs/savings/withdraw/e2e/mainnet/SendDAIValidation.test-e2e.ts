@@ -1,5 +1,5 @@
-import { receiverValidationIssueToMessage } from '@/domain/savings/validateReceiver'
 import { SavingsPageObject } from '@/containers/Savings.PageObject'
+import { receiverValidationIssueToMessage } from '@/domain/savings/validateReceiver'
 import { DEFAULT_BLOCK_NUMBER } from '@/test/e2e/constants'
 import { setupFork } from '@/test/e2e/forking/setupFork'
 import { setup } from '@/test/e2e/setup'

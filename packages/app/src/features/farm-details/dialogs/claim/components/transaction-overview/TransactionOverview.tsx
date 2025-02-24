@@ -2,8 +2,8 @@ import { DialogPanel } from '@/features/dialogs/common/components/DialogPanel'
 import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPanelTitle'
 import { getTokenImage } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
-import { TxOverview } from '../../types'
 import Image from 'next/image'
+import { TxOverview } from '../../types'
 
 export interface TransactionOverviewProps {
   txOverview: TxOverview

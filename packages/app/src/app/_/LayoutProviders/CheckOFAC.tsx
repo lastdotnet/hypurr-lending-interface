@@ -7,8 +7,8 @@ import { EVENT } from 'notifications'
 import { RestrictedPage } from '@/astaria/components/RestrictedPage'
 import { trackInternalEvent } from '@/astaria/utils/trackInternalEvent'
 
-import { OFAC_BLACKLIST } from 'ofac'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { OFAC_BLACKLIST } from 'ofac'
 import { Address } from 'viem'
 
 export const CheckOFAC = ({ children }: { children: ReactNode }) => {

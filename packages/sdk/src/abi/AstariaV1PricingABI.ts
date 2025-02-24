@@ -805,4 +805,4 @@ export const AstariaV1PricingABI = [
     name: 'UnsupportedDecimalValue',
     type: 'error',
   },
-] as const;
+] as const

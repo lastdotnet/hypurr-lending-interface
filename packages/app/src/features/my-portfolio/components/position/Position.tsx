@@ -1,3 +1,5 @@
+import { formatPercentage } from '@/domain/common/format'
+import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { USD_MOCK_TOKEN } from '@/domain/types/Token'
 import { getTokenColor } from '@/ui/assets'
@@ -9,8 +11,6 @@ import { getRandomColor } from '@/ui/utils/get-random-color'
 import { testIds } from '@/ui/utils/testIds'
 import { getPositionFormattedValue, getTicks } from '../../logic/position'
 import { PositionSummary } from '../../logic/types'
-import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
-import { formatPercentage } from '@/domain/common/format'
 
 export interface PositionProps {
   positionSummary?: PositionSummary

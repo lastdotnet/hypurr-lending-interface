@@ -1788,4 +1788,4 @@ export const StarportABI = [
     name: 'UnauthorizedAdditionalTransferIncluded',
     type: 'error',
   },
-] as const;
+] as const

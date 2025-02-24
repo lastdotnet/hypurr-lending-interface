@@ -1,1 +1,1 @@
-export * from './IntentFeed';
+export * from './IntentFeed'

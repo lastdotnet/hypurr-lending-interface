@@ -1,3 +1,4 @@
+import { useAccount } from '@/domain/hooks/useAccount'
 import { Action } from '@/features/actions/logic/types'
 import { UseContractActionParams, useContractAction } from '@/features/actions/logic/useContractAction'
 import { raise } from '@/utils/assert'
@@ -5,7 +6,6 @@ import { useMemo } from 'react'
 import { TransactionReceipt } from 'viem'
 import { useChainId, useConfig } from 'wagmi'
 import { SetupHookRendererArgs, setupHookRenderer } from './setupHookRenderer'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export function setupUseContractActionRenderer(
   defaultArgs: Omit<SetupHookRendererArgs<typeof useActionWrapper>, 'hook'>,

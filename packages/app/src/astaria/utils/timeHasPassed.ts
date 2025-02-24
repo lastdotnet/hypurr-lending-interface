@@ -1,17 +1,17 @@
-export const TIME_HAS_PASSED_TIME = 1; // 1ms after the start of time
+export const TIME_HAS_PASSED_TIME = 1 // 1ms after the start of time
 
 export const timeHasPassed = ({
   nextTime,
 }: {
-  nextTime: number | undefined;
+  nextTime: number | undefined
 }) => {
   if (nextTime === undefined) {
-    return false;
+    return false
   }
   if (nextTime === TIME_HAS_PASSED_TIME) {
-    return true;
+    return true
   }
-  const timeUntilNext = nextTime - Date.now();
+  const timeUntilNext = nextTime - Date.now()
 
-  return timeUntilNext <= 0;
-};
+  return timeUntilNext <= 0
+}

@@ -1,16 +1,16 @@
 import { ReactNode } from 'react'
 
-import Image from 'next/image'
 import { assets } from '@/ui/assets'
 import { Tooltip, TooltipContentShort, TooltipTrigger } from '@/ui/atoms/tooltip/Tooltip'
 import { ActionButton } from '@/ui/molecules/action-button/ActionButton'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
 import { useIsTruncated } from '@/ui/utils/useIsTruncated'
+import Image from 'next/image'
 
+import { Action as ActionType } from '@/features/actions/logic/types'
 import { ActionHandlerState } from '../../logic/types'
 import { ActionRowVariant } from './types'
-import { Action as ActionType } from '@/features/actions/logic/types'
 
 interface ActionRowProps {
   children: ReactNode

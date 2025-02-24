@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const AMOUNT_VALIDATION = z
   .bigint({
@@ -8,4 +8,4 @@ export const AMOUNT_VALIDATION = z
   .positive('Enter an amount greater than 0')
   .refine((value) => value !== undefined, {
     message: 'Enter an amount',
-  });
+  })

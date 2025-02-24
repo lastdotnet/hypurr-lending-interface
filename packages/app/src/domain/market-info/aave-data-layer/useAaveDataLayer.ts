@@ -3,9 +3,9 @@ import { useConfig } from 'wagmi'
 
 import { SuspenseQueryWith } from '@/utils/types'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useMemo } from 'react'
 import { AaveData, aaveDataLayer, aaveDataLayerSelectFn } from './query'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface UseAaveDataLayerParams {
   chainId: number

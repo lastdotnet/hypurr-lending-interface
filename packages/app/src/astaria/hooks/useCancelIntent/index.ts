@@ -1,1 +1,1 @@
-export * from './useCancelIntent';
+export * from './useCancelIntent'

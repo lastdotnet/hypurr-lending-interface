@@ -1,5 +1,7 @@
 import { TokenWithBalance, TokenWithValue } from '@/domain/common/types'
 import { RiskAcknowledgementInfo } from '@/domain/liquidation-risk-warning/types'
+import { UserPositionSummary } from '@/domain/market-info/marketInfo'
+import { Percentage } from '@/domain/types/NumericValues'
 import { InjectedActionsContext, Objective } from '@/features/actions/logic/types'
 import { DialogActionsPanel } from '@/features/dialogs/common/components/DialogActionsPanel'
 import { FormAndOverviewWrapper } from '@/features/dialogs/common/components/FormAndOverviewWrapper'
@@ -12,8 +14,6 @@ import { RiskAcknowledgement } from '@/ui/organisms/risk-acknowledgement/RiskAck
 import BigNumber from 'bignumber.js'
 import { UseFormReturn } from 'react-hook-form'
 import { BorrowOverviewPanel } from '../components/BorrowOverviewPanel'
-import { Percentage } from '@/domain/types/NumericValues'
-import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 
 export interface BorrowViewProps {
   updatedPositionSummary: UserPositionSummary

@@ -1,4 +1,5 @@
 import { debtTokenAbi } from '@/config/abis/debtTokenAbi'
+import { hyperTestnet } from '@/config/chain/constants'
 import { NATIVE_ASSET_MOCK_ADDRESS } from '@/config/consts'
 import { wethGatewayAddress } from '@/config/contracts-generated'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
@@ -13,7 +14,6 @@ import { waitFor } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 import { createApproveDelegationActionConfig } from './approveDelegationAction'
 import { getBorrowAllowanceQueryKey } from './query'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const approveValue = NormalizedUnitNumber(1)
 const token = getMockToken({ symbol: TokenSymbol('ETH'), address: NATIVE_ASSET_MOCK_ADDRESS })

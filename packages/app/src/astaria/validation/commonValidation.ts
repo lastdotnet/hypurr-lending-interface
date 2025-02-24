@@ -1,3 +1,3 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
-export const EMAIL_VALIDATION = z.string().min(1, 'Enter your email').email();
+export const EMAIL_VALIDATION = z.string().min(1, 'Enter your email').email()

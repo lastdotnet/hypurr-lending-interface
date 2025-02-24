@@ -1,4 +1,5 @@
 import { SANDBOX_NETWORKS_CHAIN_ID_PREFIX } from '@/config/consts'
+import { useAccount } from '@/domain/hooks/useAccount'
 import { createSandboxConnector } from '@/domain/sandbox/createSandboxConnector'
 import { useSandboxState } from '@/domain/sandbox/useSandboxState'
 import { useStore } from '@/domain/state'
@@ -13,7 +14,6 @@ import { useConfig } from 'wagmi'
 import { connect, getChains, switchChain } from 'wagmi/actions'
 import { SandboxMode } from '../types'
 import { createSandbox, getChainIdWithPrefix } from './createSandbox'
-import { useAccount } from '@/domain/hooks/useAccount'
 export type UseSandboxMutationResult = Omit<UseMutationResult<void, Error, void, unknown>, 'mutate'> & {
   startSandbox: () => void
 }

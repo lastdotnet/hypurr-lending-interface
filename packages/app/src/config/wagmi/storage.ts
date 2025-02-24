@@ -1,5 +1,5 @@
 import { createStorage, noopStorage } from 'wagmi'
-import { hyperEVM, hyperTestnet, SUPPORTED_CHAINS } from '../chain/constants'
+import { SUPPORTED_CHAINS, hyperEVM, hyperTestnet } from '../chain/constants'
 import { isTestnet } from '../consts'
 
 export function createWagmiStorage(): ReturnType<typeof createStorage> {

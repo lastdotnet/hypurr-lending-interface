@@ -37,7 +37,7 @@ export const intentFeedColumns: ColumnDef<BorrowIntent | LendIntent>[] = [
 
       return (
         <>
-          <div className={clsx('absolute bottom-0 left-0 top-0 w-2 rounded-bl-sm rounded-tl-sm', style)} />
+          <div className={clsx('absolute top-0 bottom-0 left-0 w-2 rounded-tl-sm rounded-bl-sm', style)} />
           <AssetDisplay asset={collateral} />
         </>
       )

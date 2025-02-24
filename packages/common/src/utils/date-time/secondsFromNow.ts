@@ -1,4 +1,3 @@
-import { getNowInSeconds } from './getNowInSeconds';
+import { getNowInSeconds } from './getNowInSeconds'
 
-export const secondsFromNow = (timestamp?: number) =>
-  timestamp ? timestamp - getNowInSeconds() : 0;
+export const secondsFromNow = (timestamp?: number) => (timestamp ? timestamp - getNowInSeconds() : 0)

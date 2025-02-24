@@ -137,4 +137,4 @@ export const CustodianCommandStructABI = {
   internalType: 'struct Custodian.Command',
   name: '',
   type: 'tuple',
-} as const;
+} as const

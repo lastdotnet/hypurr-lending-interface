@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const NUMBER_VALIDATION = z
   .number({
@@ -9,4 +9,4 @@ export const NUMBER_VALIDATION = z
   .optional()
   .refine((value) => value !== undefined, {
     message: 'Enter a number',
-  });
+  })

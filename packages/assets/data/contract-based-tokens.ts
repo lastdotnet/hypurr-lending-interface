@@ -1,6 +1,6 @@
-import { foundry, sepolia } from 'viem/chains';
+import { foundry, sepolia } from 'viem/chains'
 
-import { FOUNDRY_CONTRACTS, CONTRACTS } from 'contracts-internal';
+import { CONTRACTS, FOUNDRY_CONTRACTS } from 'contracts-internal'
 
 export const CONTRACT_BASED_TOKENS = [
   {
@@ -19,4 +19,4 @@ export const CONTRACT_BASED_TOKENS = [
     name: 'Test20',
     symbol: 'TST20',
   },
-];
+]

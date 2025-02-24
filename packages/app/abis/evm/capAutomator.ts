@@ -1,473 +1,473 @@
 export const capAutomatorABI = [
   {
-    "type": "constructor",
-    "inputs": [
+    type: 'constructor',
+    inputs: [
       {
-        "name": "poolAddressesProvider",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'poolAddressesProvider',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "borrowCapConfigs",
-    "inputs": [
+    type: 'function',
+    name: 'borrowCapConfigs',
+    inputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "max",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'max',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "gap",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'gap',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'increaseCooldown',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "lastUpdateBlock",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'lastUpdateBlock',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "lastIncreaseTime",
-        "type": "uint48",
-        "internalType": "uint48"
-      }
+        name: 'lastIncreaseTime',
+        type: 'uint48',
+        internalType: 'uint48',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "exec",
-    "inputs": [
+    type: 'function',
+    name: 'exec',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "newSupplyCap",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'newSupplyCap',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "newBorrowCap",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: 'newBorrowCap',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "execBorrow",
-    "inputs": [
+    type: 'function',
+    name: 'execBorrow',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: '',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "execSupply",
-    "inputs": [
+    type: 'function',
+    name: 'execSupply',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: '',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "owner",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'owner',
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "pool",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'pool',
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "contract IPool"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'contract IPool',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "poolConfigurator",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'poolConfigurator',
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "contract IPoolConfigurator"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'contract IPoolConfigurator',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "removeBorrowCapConfig",
-    "inputs": [
+    type: 'function',
+    name: 'removeBorrowCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "removeSupplyCapConfig",
-    "inputs": [
+    type: 'function',
+    name: 'removeSupplyCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "renounceOwnership",
-    "inputs": [],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    type: 'function',
+    name: 'renounceOwnership',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "setBorrowCapConfig",
-    "inputs": [
+    type: 'function',
+    name: 'setBorrowCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "max",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'max',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "gap",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'gap',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: 'increaseCooldown',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "setSupplyCapConfig",
-    "inputs": [
+    type: 'function',
+    name: 'setSupplyCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "max",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'max',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "gap",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'gap',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: 'increaseCooldown',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "supplyCapConfigs",
-    "inputs": [
+    type: 'function',
+    name: 'supplyCapConfigs',
+    inputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "max",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'max',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "gap",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'gap',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'increaseCooldown',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "lastUpdateBlock",
-        "type": "uint48",
-        "internalType": "uint48"
+        name: 'lastUpdateBlock',
+        type: 'uint48',
+        internalType: 'uint48',
       },
       {
-        "name": "lastIncreaseTime",
-        "type": "uint48",
-        "internalType": "uint48"
-      }
+        name: 'lastIncreaseTime',
+        type: 'uint48',
+        internalType: 'uint48',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "transferOwnership",
-    "inputs": [
+    type: 'function',
+    name: 'transferOwnership',
+    inputs: [
       {
-        "name": "newOwner",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'newOwner',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "event",
-    "name": "OwnershipTransferred",
-    "inputs": [
+    type: 'event',
+    name: 'OwnershipTransferred',
+    inputs: [
       {
-        "name": "previousOwner",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'previousOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "newOwner",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: 'newOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "RemoveBorrowCapConfig",
-    "inputs": [
+    type: 'event',
+    name: 'RemoveBorrowCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "RemoveSupplyCapConfig",
-    "inputs": [
+    type: 'event',
+    name: 'RemoveSupplyCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "SetBorrowCapConfig",
-    "inputs": [
+    type: 'event',
+    name: 'SetBorrowCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "max",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'max',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "gap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'gap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'increaseCooldown',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "SetSupplyCapConfig",
-    "inputs": [
+    type: 'event',
+    name: 'SetSupplyCapConfig',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "max",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'max',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "gap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'gap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "increaseCooldown",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'increaseCooldown',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "UpdateBorrowCap",
-    "inputs": [
+    type: 'event',
+    name: 'UpdateBorrowCap',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "oldBorrowCap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'oldBorrowCap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "newBorrowCap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'newBorrowCap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "UpdateSupplyCap",
-    "inputs": [
+    type: 'event',
+    name: 'UpdateSupplyCap',
+    inputs: [
       {
-        "name": "asset",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'asset',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "oldSupplyCap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        name: 'oldSupplyCap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
       },
       {
-        "name": "newSupplyCap",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'newSupplyCap',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "error",
-    "name": "OwnableInvalidOwner",
-    "inputs": [
+    type: 'error',
+    name: 'OwnableInvalidOwner',
+    inputs: [
       {
-        "name": "owner",
-        "type": "address",
-        "internalType": "address"
-      }
-    ]
+        name: 'owner',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
   },
   {
-    "type": "error",
-    "name": "OwnableUnauthorizedAccount",
-    "inputs": [
+    type: 'error',
+    name: 'OwnableUnauthorizedAccount',
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
-      }
-    ]
-  }
+        name: 'account',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+  },
 ] as const

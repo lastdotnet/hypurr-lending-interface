@@ -1,6 +1,6 @@
-import { Button } from '@/ui/atoms/button/Button'
-import MenuIcon from '@/ui/assets/menu.svg'
 import CloseIcon from '@/ui/assets/close.svg'
+import MenuIcon from '@/ui/assets/menu.svg'
+import { Button } from '@/ui/atoms/button/Button'
 
 // Then in the component:
 

@@ -137,4 +137,4 @@ export const V1LenderDetailsStructABI = {
   internalType: 'struct AstariaV1LenderEnforcer.Details',
   name: '',
   type: 'tuple',
-} as const;
+} as const

@@ -1,7 +1,7 @@
-import { TokenSymbol } from '@/domain/types/TokenSymbol'
-import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { USDXL_ADDRESS } from '@/config/consts'
+import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
+import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { zeroAddress } from 'viem'
 
 export function getBorrowableAmount({

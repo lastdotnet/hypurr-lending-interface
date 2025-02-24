@@ -7,10 +7,10 @@ import { Button } from '@/astaria/components/Button'
 import { Connected } from '@/astaria/components/Connected'
 import { CurrencyAmount } from '@/astaria/components/CurrencyAmount'
 
-import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { Address } from 'viem'
 import { wagmiConfig } from '@/astaria/config/wagmi'
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
+import { type ERC20Asset, type IntentAsset, isERC20Asset } from 'assets'
+import { Address } from 'viem'
 
 const BalanceAndMaxSectionConnected = ({
   amountFieldName,

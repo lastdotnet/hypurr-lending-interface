@@ -7,6 +7,7 @@ import {
   VerifyTransactionResultBase,
 } from '@/features/actions/logic/types'
 import { mapWriteResultToActionState } from '@/features/actions/logic/utils'
+import { getEventNameByAction, trackEvent } from '@/utils/fathom'
 import { QueryKey, queryOptions, skipToken, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createApproveDelegationActionConfig } from '../flavours/approve-delegation/logic/approveDelegationAction'
 import { createApproveActionConfig } from '../flavours/approve/logic/approveAction'
@@ -26,7 +27,6 @@ import { createUpgradeActionConfig } from '../flavours/upgrade/logic/upgradeActi
 import { createWithdrawFromSavingsActionConfig } from '../flavours/withdraw-from-savings/logic/withdrawFromSavingsAction'
 import { createWithdrawActionConfig } from '../flavours/withdraw/logic/withdrawAction'
 import { ActionConfig, ActionContext, InitialParamsQueryResult, VerifyTransactionResult } from './types'
-import { getEventNameByAction, trackEvent } from '@/utils/fathom'
 
 export interface UseContractActionParams {
   context: ActionContext

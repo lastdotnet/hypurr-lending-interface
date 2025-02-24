@@ -22,6 +22,7 @@ interface SpentItemWoIdentifier {
 const tranformArrayToInput = (loanArray: ObjectLiteral[]) => {
   const newMap: Map<Address, number[]> = new Map()
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   loanArray.forEach((item) => {
     const timeStamp = Number(item.start)
     const borrowToken = AddressSchema.parse(item.address)

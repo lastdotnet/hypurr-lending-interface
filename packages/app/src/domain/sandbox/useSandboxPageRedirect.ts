@@ -1,8 +1,8 @@
 'use client'
 
 import { useSandboxState } from '@/domain/sandbox/useSandboxState'
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import { useConfig } from 'wagmi'
 import { watchChainId } from 'wagmi/actions'
 

@@ -60,7 +60,7 @@ const CollateralInput = ({ copy }: { copy: Copy }) => {
               />
             </FormControl>
             <FormMessage>
-              <USDValue amount={collateralAmount} asset={collateralAsset} className="text-xs font-medium" />
+              <USDValue amount={collateralAmount} asset={collateralAsset} className="font-medium text-xs" />
             </FormMessage>
           </FormItem>
         )}
@@ -190,7 +190,7 @@ const CollateralAsset = ({
             {isERC721Asset(collateralAsset) ? (
               <>
                 {collateralAsset.collection.name ? (
-                  <div className="text-right text-xs font-bold">{collateralAsset.collection.name}</div>
+                  <div className="text-right font-bold text-xs">{collateralAsset.collection.name}</div>
                 ) : null}
                 {collateralAsset?.address &&
                 !ERC_721_COLLECTIONS_WHITELIST.some(

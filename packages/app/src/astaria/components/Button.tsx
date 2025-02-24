@@ -1,12 +1,12 @@
-import { Slot } from '@radix-ui/react-slot';
-import { IconLoader2 } from '@tabler/icons-react';
-import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from 'react';
+import { Slot } from '@radix-ui/react-slot'
+import { IconLoader2 } from '@tabler/icons-react'
+import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from 'react'
 
-import { type VariantProps, cva } from 'class-variance-authority';
-import { clsx } from 'clsx';
+import { type VariantProps, cva } from 'class-variance-authority'
+import { clsx } from 'clsx'
 
 export const buttonVariants = cva(
-  'inline-flex items-center border text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50',
+  'inline-flex items-center border font-semibold text-sm ring-offset-background transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
   {
     defaultVariants: {
       emphasis: 'high',
@@ -22,10 +22,9 @@ export const buttonVariants = cva(
       },
       emphasis: {
         fakeInput: 'bg-background text-primary',
-        high: 'bg-primary tracking-widest text-primary-foreground hover:bg-background hover:text-primary',
+        high: 'bg-primary text-primary-foreground tracking-widest hover:bg-background hover:text-primary',
         low: 'border-transparent text-primary hover:border-primary',
-        medium:
-          'bg-background text-primary hover:bg-primary hover:text-primary-foreground',
+        medium: 'bg-background text-primary hover:bg-primary hover:text-primary-foreground',
       },
       fullWidth: {
         true: 'w-full',
@@ -38,30 +37,28 @@ export const buttonVariants = cva(
         false: 'uppercase',
       },
       rounded: {
-        dialog: 'rounded-bl-sm rounded-br-sm',
+        dialog: 'rounded-br-sm rounded-bl-sm',
         false: '',
         sm: 'rounded-sm',
       },
       size: {
         icon: 'h-11 w-11',
         'icon-xs':
-          'after:-l-3 after:-r-3 relative h-8 w-8 after:absolute after:top-1/2 after:h-full after:min-h-11 after:min-w-11 after:-translate-y-1/2 after:content-[""]',
+          'after:-l-3 after:-r-3 after:-translate-y-1/2 relative h-8 w-8 after:absolute after:top-1/2 after:h-full after:min-h-11 after:min-w-11 after:content-[""]',
         lg: 'h-13 min-w-11 gap-2 px-8',
         md: 'h-11 min-w-11 gap-2 px-5',
         'md-narrow': 'h-11 min-w-11 gap-0.5 px-2',
-        xs: 'after:-l-3 after:-r-3 relative h-8 min-w-8 gap-0.5 px-2 after:absolute after:top-1/2 after:h-full after:min-h-11 after:min-w-11 after:-translate-y-1/2 after:content-[""]',
+        xs: 'after:-l-3 after:-r-3 after:-translate-y-1/2 relative h-8 min-w-8 gap-0.5 px-2 after:absolute after:top-1/2 after:h-full after:min-h-11 after:min-w-11 after:content-[""]',
       },
     },
-  }
-);
+  },
+)
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-  children: ReactNode;
-  loading?: boolean;
-  noUppercase?: boolean;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  children: ReactNode
+  loading?: boolean
+  noUppercase?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -82,19 +79,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const getType = () => {
       if (type) {
-        return type;
+        return type
       }
       if (asChild) {
-        return undefined;
+        return undefined
       }
-      return 'button';
-    };
+      return 'button'
+    }
 
-    const Comp = asChild ? Slot : 'button';
+    const Comp = asChild ? Slot : 'button'
     return (
       <Comp
         ref={ref}
@@ -107,7 +104,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             noUppercase,
             rounded,
             size,
-          })
+          }),
         )}
         disabled={disabled || disabledWithTooltip || loading}
         type={getType()}
@@ -122,7 +119,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           children
         )}
       </Comp>
-    );
-  }
-);
-Button.displayName = 'Button';
+    )
+  },
+)
+Button.displayName = 'Button'

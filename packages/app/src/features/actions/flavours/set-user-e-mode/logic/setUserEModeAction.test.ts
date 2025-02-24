@@ -1,4 +1,5 @@
 import { poolAbi } from '@/config/abis/poolAbi'
+import { hyperTestnet } from '@/config/chain/constants'
 import { lendingPoolAddress } from '@/config/contracts-generated'
 import { aaveDataLayerQueryKey } from '@/domain/market-info/aave-data-layer/query'
 import { testAddresses } from '@/test/integration/constants'
@@ -7,7 +8,6 @@ import { setupUseContractActionRenderer } from '@/test/integration/setupUseContr
 import { waitFor } from '@testing-library/react'
 import { describe, test } from 'vitest'
 import { createSetUserEModeActionConfig } from './setUserEModeAction'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const account = testAddresses.alice
 const chainId = hyperTestnet.id

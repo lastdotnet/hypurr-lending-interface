@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 import { captureError } from '@/utils/sentry'
 

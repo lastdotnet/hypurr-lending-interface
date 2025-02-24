@@ -1,10 +1,10 @@
+import { hyperTestnet } from '@/config/chain/constants'
 import { Percentage } from '@/domain/types/NumericValues'
 import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { WithClassname, WithTooltipProvider } from '@storybook/decorators'
 import { Meta, StoryObj } from '@storybook/react'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 import { SavingsOpportunityGuestMode } from './SavingsOpportunityGuestMode'
-import { hyperTestnet } from '@/config/chain/constants'
 
 const meta: Meta<typeof SavingsOpportunityGuestMode> = {
   title: 'Features/Savings/Components/SavingsOpportunityGuestMode',

@@ -1,48 +1,43 @@
-'use client';
+'use client'
 
-import * as ContextMenuPrimitive from '@radix-ui/react-context-menu';
-import { IconCheck, IconChevronRight, IconCircle } from '@tabler/icons-react';
-import {
-  type ComponentPropsWithoutRef,
-  type ElementRef,
-  type HTMLAttributes,
-  forwardRef,
-} from 'react';
+import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
+import { IconCheck, IconChevronRight, IconCircle } from '@tabler/icons-react'
+import { type ComponentPropsWithoutRef, type ElementRef, type HTMLAttributes, forwardRef } from 'react'
 
-import { clsx } from 'clsx';
+import { clsx } from 'clsx'
 
-export const ContextMenu = ContextMenuPrimitive.Root;
+export const ContextMenu = ContextMenuPrimitive.Root
 
-export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
+export const ContextMenuTrigger = ContextMenuPrimitive.Trigger
 
-export const ContextMenuGroup = ContextMenuPrimitive.Group;
+export const ContextMenuGroup = ContextMenuPrimitive.Group
 
-export const ContextMenuPortal = ContextMenuPrimitive.Portal;
+export const ContextMenuPortal = ContextMenuPrimitive.Portal
 
-export const ContextMenuSub = ContextMenuPrimitive.Sub;
+export const ContextMenuSub = ContextMenuPrimitive.Sub
 
-export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
+export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
 export const ContextMenuSubTrigger = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
   ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubTrigger> & {
-    inset?: boolean;
+    inset?: boolean
   }
 >(({ children, className, inset, ...rest }, ref) => (
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={clsx(
-      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
+      'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[state=open]:bg-accent focus:bg-accent data-[state=open]:text-accent-foreground focus:text-accent-foreground',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...rest}
   >
     {children}
     <IconChevronRight className="ml-auto h-4 w-4" />
   </ContextMenuPrimitive.SubTrigger>
-));
-ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
+))
+ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 
 export const ContextMenuSubContent = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.SubContent>,
@@ -51,13 +46,13 @@ export const ContextMenuSubContent = forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={clsx(
-      'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-      className
+      'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=open]:animate-in',
+      className,
     )}
     {...rest}
   />
-));
-ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName;
+))
+ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName
 
 export const ContextMenuContent = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Content>,
@@ -67,32 +62,32 @@ export const ContextMenuContent = forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={clsx(
-        'z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in fade-in-80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        className
+        'fade-in-80 data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] animate-in overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=closed]:animate-out data-[state=open]:animate-in',
+        className,
       )}
       {...rest}
     />
   </ContextMenuPrimitive.Portal>
-));
-ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName;
+))
+ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 
 export const ContextMenuItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Item>,
   ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Item> & {
-    inset?: boolean;
+    inset?: boolean
   }
 >(({ className, inset, ...rest }, ref) => (
   <ContextMenuPrimitive.Item
     ref={ref}
     className={clsx(
-      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
+      'relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled=true]:pointer-events-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:opacity-50',
       inset && 'pl-8',
-      className
+      className,
     )}
     {...rest}
   />
-));
-ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName;
+))
+ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
 
 export const ContextMenuCheckboxItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
@@ -102,8 +97,8 @@ export const ContextMenuCheckboxItem = forwardRef<
     ref={ref}
     checked={checked}
     className={clsx(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
-      className
+      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-none data-[disabled=true]:pointer-events-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:opacity-50',
+      className,
     )}
     {...rest}
   >
@@ -114,9 +109,8 @@ export const ContextMenuCheckboxItem = forwardRef<
     </span>
     {children}
   </ContextMenuPrimitive.CheckboxItem>
-));
-ContextMenuCheckboxItem.displayName =
-  ContextMenuPrimitive.CheckboxItem.displayName;
+))
+ContextMenuCheckboxItem.displayName = ContextMenuPrimitive.CheckboxItem.displayName
 
 export const ContextMenuRadioItem = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.RadioItem>,
@@ -125,8 +119,8 @@ export const ContextMenuRadioItem = forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={clsx(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
-      className
+      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-none data-[disabled=true]:pointer-events-none focus:bg-accent focus:text-accent-foreground data-[disabled=true]:opacity-50',
+      className,
     )}
     {...rest}
   >
@@ -137,49 +131,32 @@ export const ContextMenuRadioItem = forwardRef<
     </span>
     {children}
   </ContextMenuPrimitive.RadioItem>
-));
-ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName;
+))
+ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 
 export const ContextMenuLabel = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Label>,
   ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Label> & {
-    inset?: boolean;
+    inset?: boolean
   }
 >(({ className, inset, ...rest }, ref) => (
   <ContextMenuPrimitive.Label
     ref={ref}
-    className={clsx(
-      'px-2 py-1.5 text-sm font-semibold text-foreground',
-      inset && 'pl-8',
-      className
-    )}
+    className={clsx('px-2 py-1.5 font-semibold text-foreground text-sm', inset && 'pl-8', className)}
     {...rest}
   />
-));
-ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName;
+))
+ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName
 
 export const ContextMenuSeparator = forwardRef<
   ElementRef<typeof ContextMenuPrimitive.Separator>,
   ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Separator>
 >(({ className, ...rest }, ref) => (
-  <ContextMenuPrimitive.Separator
-    ref={ref}
-    className={clsx('-mx-1 my-1 h-px bg-border', className)}
-    {...rest}
-  />
-));
-ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName;
+  <ContextMenuPrimitive.Separator ref={ref} className={clsx('-mx-1 my-1 h-px bg-border', className)} {...rest} />
+))
+ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName
 
-export const ContextMenuShortcut = ({
-  className,
-  ...rest
-}: HTMLAttributes<HTMLSpanElement>) => (
-  <span
-    className={clsx(
-      'ml-auto text-xs tracking-widest text-muted-foreground',
-      className
-    )}
-    {...rest}
-  />
-);
-ContextMenuShortcut.displayName = 'ContextMenuShortcut';
+export const ContextMenuShortcut = ({ className, ...rest }: HTMLAttributes<HTMLSpanElement>) => (
+  <span className={clsx('ml-auto text-muted-foreground text-xs tracking-widest', className)} {...rest} />
+)
+ContextMenuShortcut.displayName = 'ContextMenuShortcut'

@@ -1,12 +1,12 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useConfig } from 'wagmi'
 
+import { useAccount } from '@/domain/hooks/useAccount'
 import { useMarketInfo } from '../market-info/useMarketInfo'
 import { NormalizedUnitNumber } from '../types/NumericValues'
 import { Token } from '../types/Token'
 import { TokenSymbol } from '../types/TokenSymbol'
 import { marketBalances } from './marketBalances'
-import { useAccount } from '@/domain/hooks/useAccount'
 
 export interface WalletBalance {
   balance: NormalizedUnitNumber

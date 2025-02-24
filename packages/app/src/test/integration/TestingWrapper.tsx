@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 
-import { useAutoConnect } from '@/domain/wallet/useAutoConnect'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { useAutoConnect } from '@/domain/wallet/useAutoConnect'
 import { Suspense } from 'react'
 import { createWagmiTestConfig } from './wagmi-config'
 
