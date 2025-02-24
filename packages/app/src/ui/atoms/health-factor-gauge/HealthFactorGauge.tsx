@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-
+import { Trans } from '@lingui/react/macro'
 import { RiskLevel, healthFactorToRiskLevel } from '@/domain/common/risk'
 
 export interface HealthFactorGaugeProps {
@@ -53,7 +53,7 @@ export function HealthFactorGauge(props: HealthFactorGaugeProps) {
             1
           </text>
           <text x="-25" y="10" fontSize="12" textAnchor="start" className="font-extralight font-sans">
-            Liquidation
+            <Trans>Liquidation</Trans>
           </text>
         </g>
       )

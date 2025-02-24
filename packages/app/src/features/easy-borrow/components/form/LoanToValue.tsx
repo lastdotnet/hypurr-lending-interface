@@ -15,7 +15,9 @@ export function LoanToValue({ className, loanToValue, maxLoanToValue }: LoanToVa
   return (
     <div className={className}>
       <div className="flex flex-row justify-between">
-        <Typography variant="h4">Loan to Value (LTV)</Typography>
+        <Typography variant="h4">
+          <Trans>Loan to Value (LTV)</Trans>
+        </Typography>
         <Typography variant="h4" data-testid={testIds.easyBorrow.form.ltv}>
           {formatPercentage(loanToValue)}
         </Typography>

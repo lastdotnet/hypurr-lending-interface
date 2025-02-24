@@ -14,7 +14,7 @@ import { Deposits } from './Deposits'
 import { LoanToValue } from './LoanToValue'
 import { LoanToValueSlider } from './LoanToValueSlider'
 import { BorrowFormAPYDetails } from '../../logic/useEasyBorrow'
-
+import { Trans, useLingui } from '@lingui/react/macro'
 interface EasyBorrowFlowProps {
   form: UseFormReturn<EasyBorrowFormSchema>
   updatedPositionSummary: UserPositionSummary
@@ -33,6 +33,7 @@ interface EasyBorrowFlowProps {
 }
 
 export function EasyBorrowForm(props: EasyBorrowFlowProps) {
+  const { t } = useLingui()
   const {
     form,
     onSubmit,
@@ -104,14 +105,14 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
         {guestMode ? (
           <ConnectOrSandboxCTAButtonGroup
             className="mt-8"
-            buttonText="Connect wallet"
+            buttonText={t`Connect wallet`}
             action={openConnectModal}
             openSandboxModal={openSandboxModal}
           />
         ) : (
           !disabled && (
             <Button type="submit" className="mt-8" rounded="full" disabled={!form.formState.isValid}>
-              Continue
+              <Trans>Continue</Trans>
             </Button>
           )
         )}

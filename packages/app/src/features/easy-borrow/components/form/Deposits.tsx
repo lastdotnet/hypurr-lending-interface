@@ -14,7 +14,7 @@ import { EasyBorrowFormSchema } from '../../logic/form/validation'
 import { ExistingPosition } from '../../logic/types'
 import { formatPercentage } from '@/domain/common/format'
 import { TokenSummary } from './TokenSummary'
-
+import { Trans } from '@lingui/react/macro'
 export interface DepositsProps {
   selectedAssets: TokenWithBalance[]
   allAssets: TokenWithBalance[]
@@ -37,14 +37,21 @@ export function Deposits(props: DepositsProps) {
     <div className="flex flex-1 flex-col" data-testid={testIds.easyBorrow.form.deposits}>
       <div className="flex h-10 flex-row items-center justify-between">
         <div className="flex flex-row gap-1">
-          <Typography variant="h4">Deposit</Typography>
+          <Typography variant="h4">
+            <Trans>Deposit</Trans>
+          </Typography>
           <Info>
-            Some assets (e.g., isolated assets) are only accessible via the{' '}
-            <Link href={paths.dashboard}>Dashboard</Link> at this time.
+            <Trans>
+              Some assets (e.g., isolated assets) are only accessible via the{' '}
+              <Link href={paths.dashboard}>Dashboard</Link> at this time.
+            </Trans>
           </Info>
         </div>
         <Typography>
-          <span className="mr-1 text-white/50">APY</span> {formatPercentage(depositAPY)}
+          <span className="mr-1 text-white/50">
+            <Trans>APY</Trans>
+          </span>{' '}
+          {formatPercentage(depositAPY)}
         </Typography>
       </div>
 
