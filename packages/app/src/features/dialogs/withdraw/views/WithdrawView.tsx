@@ -12,6 +12,7 @@ import { RiskAcknowledgement } from '@/ui/organisms/risk-acknowledgement/RiskAck
 import { UseFormReturn } from 'react-hook-form'
 import { WithdrawOverviewPanel } from '../components/WithdrawOverviewPanel'
 import { PositionOverview } from '../logic/types'
+import { Trans } from '@lingui/react/macro'
 
 export interface WithdrawViewProps {
   withdrawOptions: TokenWithBalance[]
@@ -40,7 +41,9 @@ export function WithdrawView({
 }: WithdrawViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>{`Withdraw ${withdrawAsset.token.symbol}`}</DialogTitle>
+      <DialogTitle>
+        <Trans>Withdraw {withdrawAsset.token.symbol}</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsToWithdrawFields} selectorAssets={withdrawOptions} />

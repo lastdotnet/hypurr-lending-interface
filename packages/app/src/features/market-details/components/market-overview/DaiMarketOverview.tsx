@@ -11,7 +11,7 @@ import { Legend } from '../charts/market-overview/components/Legend'
 import { DetailsGrid } from './components/DetailsGrid'
 import { DetailsGridItem } from './components/DetailsGridItem'
 import { MarketOverviewContent } from './components/MarketOvierviewContent'
-
+import { Trans } from '@lingui/react/macro'
 export interface DaiMarketOverviewProps {
   token: Token
   borrowed: NormalizedUnitNumber
@@ -42,31 +42,43 @@ export function DaiMarketOverview({
   return (
     <Panel.Wrapper>
       <MarketOverviewContent>
-        <h4 className="font-semibold text-base md:text-xl">Market Overview</h4>
+        <h4 className="font-semibold text-base md:text-xl">
+          <Trans>Market Overview</Trans>
+        </h4>
         <MarketOverviewChart data={chartData}>
           <Legend token={token} utilized={borrowed} total={marketSize} utilizationRate={utilizationRate} />
         </MarketOverviewChart>
         <DetailsGrid>
           <DetailsGridItem>
-            <DetailsGridItem.Title variant="blue">Borrowed</DetailsGridItem.Title>
+            <DetailsGridItem.Title variant="blue">
+              <Trans>Borrowed</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>{token.formatUSD(borrowed, { compact: true })}</DetailsGridItem.Value>
           </DetailsGridItem>
           <DetailsGridItem>
-            <DetailsGridItem.Title>Market size</DetailsGridItem.Title>
+            <DetailsGridItem.Title>
+              <Trans>Market size</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>{token.formatUSD(marketSize, { compact: true })}</DetailsGridItem.Value>
           </DetailsGridItem>
           <DetailsGridItem>
-            <DetailsGridItem.Title>Total available</DetailsGridItem.Title>
+            <DetailsGridItem.Title>
+              <Trans>Total available</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>{token.formatUSD(totalAvailable, { compact: true })}</DetailsGridItem.Value>
           </DetailsGridItem>
 
           <DetailsGridItem>
-            <DetailsGridItem.Title>Utilization rate</DetailsGridItem.Title>
+            <DetailsGridItem.Title>
+              <Trans>Utilization rate</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>{formatPercentage(utilizationRate)}</DetailsGridItem.Value>
           </DetailsGridItem>
 
           <DetailsGridItem>
-            <DetailsGridItem.Title variant="green">Instantly available</DetailsGridItem.Title>
+            <DetailsGridItem.Title variant="green">
+              <Trans>Instantly available</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>
               {token.formatUSD(instantlyAvailable, { compact: true })}
 
@@ -77,7 +89,9 @@ export function DaiMarketOverview({
             </DetailsGridItem.Value>
           </DetailsGridItem>
           <DetailsGridItem>
-            <DetailsGridItem.Title variant="orange">Capacity</DetailsGridItem.Title>
+            <DetailsGridItem.Title variant="orange">
+              <Trans>Capacity</Trans>
+            </DetailsGridItem.Title>
             <DetailsGridItem.Value>{token.formatUSD(skyCapacity, { compact: true })}</DetailsGridItem.Value>
           </DetailsGridItem>
         </DetailsGrid>

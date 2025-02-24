@@ -10,6 +10,7 @@ import { MarketEntry } from '../../types'
 import { AssetStatusBadge } from '../asset-status-badge/AssetStatusBadge'
 import { ApyWithRewardsCell } from './components/ApyWithRewardsCell'
 import { AssetNameCell } from './components/AssetNameCell'
+import { Trans } from '@lingui/react/macro'
 
 export interface MarketsTableProps {
   entries: MarketEntry[]
@@ -27,13 +28,13 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
       data-testid={dataTestId}
       columnDefinition={{
         asset: {
-          header: 'Assets',
+          header: <Trans>Assets</Trans>,
           renderCell: ({ token, reserveStatus }) => (
             <AssetNameCell token={token} reserveStatus={reserveStatus} data-testid={testIds.markets.table.cell.asset} />
           ),
         },
         totalSupplied: {
-          header: 'Total supplied',
+          header: <Trans>Total supplied</Trans>,
           headerAlign: 'right',
           sortable: true,
           sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'totalSupplied'),
@@ -50,7 +51,11 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
           ),
         },
         depositAPY: {
-          header: <ApyTooltip variant="supply">Deposit APY</ApyTooltip>,
+          header: (
+            <ApyTooltip variant="supply">
+              <Trans>Deposit APY</Trans>
+            </ApyTooltip>
+          ),
           headerAlign: 'right',
           sortable: true,
           sortingFn: (a, b) => sortByAPY(a.original.depositAPYDetails.apy, b.original.depositAPYDetails.apy),
@@ -65,7 +70,7 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
           ),
         },
         totalBorrowed: {
-          header: 'Total borrowed',
+          header: <Trans>Total borrowed</Trans>,
           headerAlign: 'right',
           sortable: true,
           sortingFn: (a, b) => sortByUsdValue(a.original, b.original, 'totalBorrowed'),
@@ -82,7 +87,11 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
           ),
         },
         borrowAPY: {
-          header: <ApyTooltip variant="borrow">Borrow APY</ApyTooltip>,
+          header: (
+            <ApyTooltip variant="borrow">
+              <Trans>Borrow APY</Trans>
+            </ApyTooltip>
+          ),
           headerAlign: 'right',
           sortable: true,
           sortingFn: (a, b) => sortByAPY(a.original.borrowAPYDetails.apy, b.original.borrowAPYDetails.apy),
@@ -98,7 +107,7 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
           ),
         },
         status: {
-          header: 'Status',
+          header: <Trans>Status</Trans>,
           headerAlign: 'center',
           renderCell: ({ marketStatus }) => (
             <div className="flex w-full flex-row justify-center">
@@ -122,7 +131,7 @@ export function MarketsTable({ entries, chainId, hideTableHeader, 'data-testid':
                   variant={reserveStatus !== 'active' ? 'secondary' : 'primary'}
                   href={paths.marketDetails.replace(':chainId', chainId.toString()).replace(':asset', token.address)}
                 >
-                  Details
+                  <Trans>Details</Trans>
                 </LinkButton>
               </ActionsCell>
             )

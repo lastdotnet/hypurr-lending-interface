@@ -17,6 +17,7 @@ import { InfoTilesGrid } from './components/InfoTilesGrid'
 import { StatusPanelGrid } from './components/StatusPanelGrid'
 import { Subheader } from './components/Subheader'
 import { StatusIcon } from './components/status-icon/StatusIcon'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 interface SupplyStatusPanelProps {
   status: SupplyAvailabilityStatus
@@ -49,7 +50,9 @@ export function SupplyStatusPanel({
         <Subheader status={status} />
         <InfoTilesGrid>
           <InfoTile>
-            <InfoTile.Label>Total supplied</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Total supplied</Trans>
+            </InfoTile.Label>
             <InfoTile.Value>
               {token.format(totalSupplied, { style: 'compact' })} {token.symbol}
             </InfoTile.Value>
@@ -57,7 +60,9 @@ export function SupplyStatusPanel({
           </InfoTile>
           <InfoTile>
             <InfoTile.Label>
-              <ApyTooltip variant="supply">Deposit APY</ApyTooltip>
+              <ApyTooltip variant="supply">
+                <Trans>Deposit APY</Trans>
+              </ApyTooltip>
             </InfoTile.Label>
             <InfoTile.Value>{formatPercentage(apy)}</InfoTile.Value>
           </InfoTile>
@@ -80,6 +85,7 @@ interface CapAutomatorInfoTileProps {
 }
 
 function CapAutomatorInfoTile({ token, capAutomatorInfo, supplyCap }: CapAutomatorInfoTileProps) {
+  const { t } = useLingui()
   return (
     <div className={cn('grid grid-cols-subgrid gap-[inherit]', capAutomatorInfo && 'sm:col-span-2')}>
       {capAutomatorInfo && (
@@ -95,7 +101,7 @@ function CapAutomatorInfoTile({ token, capAutomatorInfo, supplyCap }: CapAutomat
       )}
 
       <InfoTile>
-        <InfoTile.Label>{capAutomatorInfo ? 'Instantly available supply cap:' : 'Supply cap'}</InfoTile.Label>
+        <InfoTile.Label>{capAutomatorInfo ? t`Instantly available supply cap:` : t`Supply cap`}</InfoTile.Label>
         <InfoTile.Value data-testid={testIds.marketDetails.capAutomator.cap}>
           {token.format(supplyCap, { style: 'compact' })} {token.symbol}
           {capAutomatorInfo && (

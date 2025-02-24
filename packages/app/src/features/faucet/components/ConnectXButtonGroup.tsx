@@ -12,6 +12,7 @@ import { twitterFollowUrl } from '@/config/consts'
 import { cn } from '@/ui/utils/style'
 import { trackEvent } from '@/utils/fathom'
 import { links } from '@/ui/constants/links'
+import { Trans } from '@lingui/react/macro'
 
 function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => void }) {
   const [following, setFollowing] = useState(false)
@@ -94,13 +95,17 @@ function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => voi
   }, [error])
 
   if (following && isXLinked) {
-    return <p className="rounded-lg bg-white/4 p-4 text-center font-medium">You are claiming 2X testnet HYPE!</p>
+    return (
+      <p className="rounded-lg bg-white/4 p-4 text-center font-medium">
+        <Trans>You are claiming 2X testnet HYPE!</Trans>
+      </p>
+    )
   }
 
   if (!user || !isXLinked) {
     return (
       <Button onClick={handleSignAndConnect} className="w-full" rounded="full">
-        1. Sign and connect X - (2X HYPE boost)
+        <Trans>1. Sign and connect X - (2X HYPE boost)</Trans>
       </Button>
     )
   }
@@ -118,20 +123,28 @@ function ConnectXButtonGroup({ setHandle }: { setHandle: (handle: string) => voi
             onClick={() => setFollowButtonClicked(true)}
             className={cn(buttonVariants({ variant: 'primary', rounded: 'full' }))}
           >
-            2. Follow @hypurrfi on X - (2X HYPE boost)
+            <Trans>2. Follow @hypurrfi on X - (2X HYPE boost)</Trans>
           </a>
 
           <p className="mt-2 text-center font-normal text-sm text-white/70">
-            Already following with account{' '}
+            <Trans>Already following with account</Trans>{' '}
             <span className="font-bold text-sm text-white">{connectedAccountInfo?.username}</span>?
             <button onClick={checkIfFollowing} className="ml-1 p-1 text-primary hover:text-primary-hover">
-              Click to verify.
+              <Trans>Click to verify.</Trans>
             </button>
           </p>
         </div>
       )}
-      {error && <p className="text-center text-red-500 text-sm">Error linking X account</p>}
-      {checkingError && <p className="text-center text-red-500 text-sm">Error checking if following on X</p>}
+      {error && (
+        <p className="text-center text-red-500 text-sm">
+          <Trans>Error linking X account</Trans>
+        </p>
+      )}
+      {checkingError && (
+        <p className="text-center text-red-500 text-sm">
+          <Trans>Error checking if following on X</Trans>
+        </p>
+      )}
     </div>
   )
 }

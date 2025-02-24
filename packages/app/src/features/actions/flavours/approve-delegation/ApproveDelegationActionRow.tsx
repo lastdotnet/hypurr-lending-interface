@@ -5,7 +5,7 @@ import { ActionRow } from '../../components/action-row/ActionRow'
 import { ActionRowBaseProps } from '../../components/action-row/types'
 import { getFormattedValue } from '../../components/action-row/utils'
 import { ApproveDelegationAction } from './types'
-
+import { Trans } from '@lingui/react/macro'
 export interface ApproveDelegationActionRowProps extends ActionRowBaseProps {
   action: ApproveDelegationAction
 }
@@ -25,7 +25,7 @@ export function ApproveDelegationActionRow({
       <ActionRow.Icon path={assets.actions.approve} actionStatus={status} />
 
       <ActionRow.Title icon={<TokenIcon token={action.token} className="h-6" />} actionStatus={status}>
-        Approve delegation {formattedValue}
+        <Trans>Approve delegation</Trans> {formattedValue}
       </ActionRow.Title>
 
       <ActionRow.Description
@@ -37,7 +37,7 @@ export function ApproveDelegationActionRow({
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Approve
+        <Trans>Approve</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

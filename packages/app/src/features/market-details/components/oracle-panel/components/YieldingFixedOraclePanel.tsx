@@ -6,6 +6,7 @@ import { BlockExplorerAddressLink } from '@/ui/molecules/block-explorer-address-
 import { InfoTile } from '@/ui/molecules/info-tile/InfoTile'
 import { testIds } from '@/ui/utils/testIds'
 import { ProvidersList } from './ProvidersList'
+import { Trans } from '@lingui/react/macro'
 
 const oracleTestIds = testIds.marketDetails.oraclePanel
 
@@ -23,10 +24,12 @@ export function YieldingFixedOraclePanel({
   return (
     <Panel.Wrapper className="flex flex-col gap-4 p-4 sm:px-8 sm:py-6">
       <div>
-        <div className="mb-1 text-sm text-white/50 leading-none sm:text-xs sm:leading-none">Oracle type</div>
+        <div className="mb-1 text-sm text-white/50 leading-none sm:text-xs sm:leading-none">
+          <Trans>Oracle type</Trans>
+        </div>
         <Panel.Header className="flex items-center gap-2">
           <Panel.Title className="text-xl">
-            Yielding Fixed Price{' '}
+            <Trans>Yielding Fixed Price</Trans>{' '}
             {providedBy.length > 1 && <span className="font-medium text-white/30">(Redundant)</span>}
           </Panel.Title>
         </Panel.Header>
@@ -53,7 +56,8 @@ export function YieldingFixedOraclePanel({
               {formatUSDPriceWithPrecision(baseAssetPrice)}
             </div>
             <div className="md:-bottom-6 text-white/50 text-xs md:absolute">
-              <span data-testid={oracleTestIds.yieldingFixed.baseAssetSymbol}>{baseAssetSymbol}</span> Oracle Price
+              <span data-testid={oracleTestIds.yieldingFixed.baseAssetSymbol}>{baseAssetSymbol}</span>{' '}
+              <Trans>Oracle Price</Trans>
             </div>
           </div>
           <img src={assets.equal} alt="equal sign" className="w-3.5 place-self-center" />
@@ -70,7 +74,9 @@ export function YieldingFixedOraclePanel({
 
         <div className="grid gap-9 sm:grid-cols-3">
           <InfoTile>
-            <InfoTile.Label>Ratio Contract</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Ratio Contract</Trans>
+            </InfoTile.Label>
             <InfoTile.Value className="w-full">
               <BlockExplorerAddressLink
                 address={token.address}
@@ -81,7 +87,9 @@ export function YieldingFixedOraclePanel({
           </InfoTile>
 
           <InfoTile>
-            <InfoTile.Label>Oracle Contract</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Oracle Contract</Trans>
+            </InfoTile.Label>
             <InfoTile.Value className="w-full">
               <BlockExplorerAddressLink
                 address={baseAssetOracle}
@@ -92,7 +100,9 @@ export function YieldingFixedOraclePanel({
           </InfoTile>
 
           <InfoTile>
-            <InfoTile.Label>Price Contract</InfoTile.Label>
+            <InfoTile.Label>
+              <Trans>Price Contract</Trans>
+            </InfoTile.Label>
             <InfoTile.Value className="w-full">
               <BlockExplorerAddressLink
                 address={priceOracleAddress}

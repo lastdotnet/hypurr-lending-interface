@@ -11,6 +11,7 @@ import BigNumber from 'bignumber.js'
 import { CollateralAlert } from '../components/CollateralAlert'
 import { CollateralOverviewPanel } from '../components/CollateralOverviewPanel'
 import { CollateralSetting } from '../types'
+import { Trans } from '@lingui/react/macro'
 
 interface CollateralViewProps {
   collateralSetting: CollateralSetting
@@ -35,7 +36,9 @@ export function CollateralView({
 }: CollateralViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>Collateral</DialogTitle>
+      <DialogTitle>
+        <Trans>Collateral</Trans>
+      </DialogTitle>
 
       <CollateralAlert collateralSetting={collateralSetting} issue={validationIssue} />
 

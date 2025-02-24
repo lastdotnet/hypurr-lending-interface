@@ -1,9 +1,8 @@
-import { eModeCategoryIdToName } from '@/domain/e-mode/constants'
+import { eModeCategoryIdToName, eModeCategoryIdToTranslation } from '@/domain/e-mode/constants'
 import { EModeCategoryId, EModeCategoryName } from '@/domain/e-mode/types'
 import { MarketInfo } from '@/domain/market-info/marketInfo'
 
 import { EModeCategory } from '../types'
-
 export function getEModeCategories(
   marketInfo: MarketInfo,
   selectedEModeCategoryId: EModeCategoryId,
@@ -18,6 +17,7 @@ export function getEModeCategories(
   function getEModeCategory(eModeCategoryId: EModeCategoryId): EModeCategory {
     return {
       name: eModeCategoryIdToName[eModeCategoryId],
+      translatedName: eModeCategoryIdToTranslation[eModeCategoryId],
       tokens: reserves
         .filter((reserve) => (eModeCategoryId === 0 ? true : eModeCategoryId === reserve.eModeCategory?.id))
         .map((reserve) => reserve.token),

@@ -3,6 +3,7 @@ import { SPK_MOCK_TOKEN } from '@/domain/types/Token'
 import { assets } from '@/ui/assets'
 import { Skeleton } from '@/ui/atoms/skeleton/Skeleton'
 import { formatAirdropAmount } from './utils/formatAirdropAmount'
+import { Trans } from '@lingui/react/macro'
 
 interface AirdropDetailsProps {
   amount: NormalizedUnitNumber
@@ -16,7 +17,9 @@ export function AirdropDetails({ amount, precision, isLoading, isGrowing, placeh
   if (placeholder) {
     return (
       <div className="px-4 py-2 text-sm">
-        <p>Coming soon!</p>
+        <p>
+          <Trans>Coming soon!</Trans>
+        </p>
       </div>
     )
   }

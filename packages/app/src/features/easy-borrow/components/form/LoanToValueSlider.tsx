@@ -8,6 +8,10 @@ import { Percentage } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { cn } from '@/ui/utils/style'
+import { msg } from '@lingui/core/macro'
+import { MessageDescriptor } from '@lingui/core'
+import { Trans } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react'
 
 export interface LoanToValueSliderProps {
   className: string
@@ -30,6 +34,7 @@ export function LoanToValueSlider({
   const value = ltv.toNumber() * maxSliderValue
   const maxSelectableValue = maxAvailableLtv.toNumber() * maxSliderValue
   const liquidationValue = liquidationLtv.toNumber() * 100
+  const { _ } = useLingui()
 
   // eslint-disable-next-line func-style
   const onValueChange = (values: number[]) => {
@@ -65,27 +70,30 @@ export function LoanToValueSlider({
           />
         )}
 
-        {steps.map((step, index) => (
-          <div
-            key={step.label}
-            className={cn(
-              'absolute flex h-full items-center justify-center transition-all duration-300',
-              (value / maxSliderValue) * 100 >= step.from &&
-                (step.noUpperLimit || (value / maxSliderValue) * 100 < step.from + step.width)
-                ? step.colorActive
-                : step.colorInactive,
-              index === 0 && 'rounded-s-lg',
-            )}
-            style={{
-              width: `${step.width}%`,
-              left: `${step.from}%`,
-            }}
-          >
-            <Typography variant="prompt" className={cn('-bottom-6 absolute text-white')}>
-              {step.label}
-            </Typography>
-          </div>
-        ))}
+        {steps.map((step, index) => {
+          const label = _(step.label)
+          return (
+            <div
+              key={label}
+              className={cn(
+                'absolute flex h-full items-center justify-center transition-all duration-300',
+                (value / maxSliderValue) * 100 >= step.from &&
+                  (step.noUpperLimit || (value / maxSliderValue) * 100 < step.from + step.width)
+                  ? step.colorActive
+                  : step.colorInactive,
+                index === 0 && 'rounded-s-lg',
+              )}
+              style={{
+                width: `${step.width}%`,
+                left: `${step.from}%`,
+              }}
+            >
+              <Typography variant="prompt" className={cn('-bottom-6 absolute text-white')}>
+                {label}
+              </Typography>
+            </div>
+          )
+        })}
 
         <div
           className="absolute h-full w-1 bg-primary-bg"
@@ -104,7 +112,7 @@ export function LoanToValueSlider({
             variant="prompt"
             className={cn('absolute text-product-red', liquidationValue < 70 ? '-bottom-14' : '-bottom-6')}
           >
-            Liquidation
+            <Trans>Liquidation</Trans>
           </Typography>
           <Typography className={cn('absolute bottom-8 text-product-red')} variant="prompt">
             {formatPercentage(liquidationLtv)}
@@ -127,7 +135,7 @@ export function LoanToValueSlider({
 const maxSliderValue = 10000
 
 interface Step {
-  label: string
+  label: MessageDescriptor
   width: number
   from: number
   colorActive: string
@@ -141,7 +149,7 @@ function getSliderSteps(liquidationThreshold: Percentage): Step[] {
     width: healthFactorToLtv(MODERATE_HEALTH_FACTOR_THRESHOLD, liquidationThreshold).toNumber() * 100,
     colorActive: 'backdrop-brightness-100',
     colorInactive: 'backdrop-brightness-75',
-    label: 'Conservative',
+    label: msg`Conservative`,
   }
 
   const moderate: Step = {
@@ -149,7 +157,7 @@ function getSliderSteps(liquidationThreshold: Percentage): Step[] {
     width: healthFactorToLtv(RISKY_HEALTH_FACTOR_THRESHOLD, liquidationThreshold).toNumber() * 100 - conservative.width,
     colorActive: 'backdrop-brightness-100',
     colorInactive: 'backdrop-brightness-75',
-    label: 'Moderate',
+    label: msg`Moderate`,
   }
 
   const aggressive: Step = {
@@ -157,7 +165,7 @@ function getSliderSteps(liquidationThreshold: Percentage): Step[] {
     width: liquidationThreshold.toNumber() * 100 - conservative.width - moderate.width,
     colorActive: 'backdrop-brightness-100',
     colorInactive: 'backdrop-brightness-75',
-    label: 'Aggressive',
+    label: msg`Aggressive`,
     noUpperLimit: true,
   }
 

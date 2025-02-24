@@ -4,7 +4,7 @@ import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPan
 import { HealthFactorChange } from '../../common/components/transaction-overview/HealthFactorChange'
 import { TokenValueChange } from '../../common/components/transaction-overview/TokenValueChange'
 import { PositionOverview } from '../logic/types'
-
+import { useLingui } from '@lingui/react/macro'
 export interface RepayOverviewPanelProps {
   debtAsset: Token
   currentPositionOverview: PositionOverview
@@ -15,14 +15,15 @@ export function RepayOverviewPanel({
   currentPositionOverview,
   updatedPositionOverview,
 }: RepayOverviewPanelProps) {
+  const { t } = useLingui()
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
       <TokenValueChange
         token={debtAsset}
         currentValue={currentPositionOverview.debt}
         updatedValue={updatedPositionOverview?.debt}
-        label="Debt"
+        label={t`Debt`}
       />
       <HealthFactorChange
         currentHealthFactor={currentPositionOverview.healthFactor}

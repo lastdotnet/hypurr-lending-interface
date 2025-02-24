@@ -4,6 +4,7 @@ import { shortenAddress } from '@/ui/utils/shortenAddress'
 import { DynamicUserProfile, useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { WalletIcon } from '@dynamic-labs/wallet-book'
 import { Address } from 'viem'
+import { Trans } from '@lingui/react/macro'
 
 export function UserProfileButton({ className }: { className?: string }) {
   const { primaryWallet, setShowDynamicUserProfile, networkConfigurations, network } = useDynamicContext()
@@ -18,7 +19,7 @@ export function UserProfileButton({ className }: { className?: string }) {
           {networkIcon && <img src={networkIcon} alt="" className="h-4 w-4" />}
           {Number(network) === hyperTestnet.id && (
             <Typography variant="span" className="text-xs">
-              Testnet
+              <Trans>Testnet</Trans>
             </Typography>
           )}
         </div>

@@ -17,7 +17,7 @@ import { CategoriesGrid } from '../components/CategoriesGrid'
 import { EModeCategoryTile } from '../components/EModeCategoryTile'
 import { EModeOverviewPanel } from '../components/EModeOverviewPanel'
 import { EModeCategory, PositionOverview } from '../types'
-
+import { Trans } from '@lingui/react/macro'
 interface EModeViewProps {
   eModeCategories: Record<EModeCategoryName, EModeCategory>
   selectedEModeCategoryName: EModeCategoryName
@@ -41,10 +41,12 @@ export function EModeView({
 }: EModeViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>Set E-Mode Category</DialogTitle>
+      <DialogTitle>
+        <Trans>Set E-Mode Category</Trans>
+      </DialogTitle>
 
       <p className="text-basics-dark-grey text-sm leading-tight">
-        E-Mode allows you to borrow assets belonging to the selected category.
+        <Trans>E-Mode allows you to borrow assets belonging to the selected category.</Trans>
         {/* Please visit our{' '}
         <Link href={links.docs.eMode} external>
           FAQ guide

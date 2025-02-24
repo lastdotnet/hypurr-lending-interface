@@ -3,6 +3,7 @@ import { Token } from '@/domain/types/Token'
 
 import { BorrowEligibilityStatus } from '@/domain/market-info/reserve-status'
 import { ActionRow } from './ActionRow'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 interface BorrowRowProps {
   token: Token
@@ -12,20 +13,30 @@ interface BorrowRowProps {
 }
 
 export function BorrowRow({ token, availableToBorrow, eligibility, onAction }: BorrowRowProps) {
+  const { t } = useLingui()
+
   if (eligibility === 'no') {
-    return <InfoWrapper>Borrowing is not enabled for this asset.</InfoWrapper>
+    return (
+      <InfoWrapper>
+        <Trans>Borrowing is not enabled for this asset.</Trans>
+      </InfoWrapper>
+    )
   }
 
   if (availableToBorrow.isZero()) {
-    return <InfoWrapper>To borrow you need to deposit any other asset first.</InfoWrapper>
+    return (
+      <InfoWrapper>
+        <Trans>To borrow you need to deposit any other asset first.</Trans>
+      </InfoWrapper>
+    )
   }
 
   return (
     <ActionRow
       token={token}
       value={availableToBorrow}
-      label="Available to borrow"
-      buttonText="Borrow"
+      label={t`Available to borrow`}
+      buttonText={t`Borrow`}
       onAction={onAction}
     />
   )

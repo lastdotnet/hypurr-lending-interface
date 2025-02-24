@@ -1,6 +1,7 @@
 import { Button } from '@/ui/atoms/button/Button'
 import { cn } from '@/ui/utils/style'
 import { testIds } from '@/ui/utils/testIds'
+import { Trans } from '@lingui/react/macro'
 import { AlertTriangle } from 'lucide-react'
 
 export interface PageNotSupportedWarningProps {
@@ -9,7 +10,7 @@ export interface PageNotSupportedWarningProps {
   className?: string
 }
 
-export function PageNotSupportedWarning({ pageName, openNetworkSelectDialog }: PageNotSupportedWarningProps) {
+export function PageNotSupportedWarning({ openNetworkSelectDialog }: PageNotSupportedWarningProps) {
   return (
     <>
       <div className="fixed inset-0 z-[1000]">
@@ -25,9 +26,11 @@ export function PageNotSupportedWarning({ pageName, openNetworkSelectDialog }: P
             <AlertTriangle className="h-8 w-8 text-[#FC4F37]" />
             <div className="flex flex-col gap-0.5">
               <p className="font-semibold text-lg">
-                {pageName} {pageName.endsWith('s') ? 'are' : 'is'} not supported on the network you are connected to.
+                <Trans>This page is not supported on the network you are connected to.</Trans>
               </p>
-              <p className="text-white/50">Switch to other supported networks to unlock this page.</p>
+              <p className="text-white/50">
+                <Trans>Switch to other supported networks to unlock this page.</Trans>
+              </p>
             </div>
           </div>
           <Button
@@ -35,7 +38,7 @@ export function PageNotSupportedWarning({ pageName, openNetworkSelectDialog }: P
             onClick={openNetworkSelectDialog}
             data-testid={testIds.component.SwitchNotSupportedNetworkButton}
           >
-            Switch network
+            <Trans>Switch network</Trans>
           </Button>
         </div>
       </div>

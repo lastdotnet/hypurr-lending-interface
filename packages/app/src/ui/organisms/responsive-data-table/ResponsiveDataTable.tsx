@@ -6,6 +6,7 @@ import { Fragment } from 'react'
 import { DataTable } from '../../molecules/data-table/DataTable'
 import { CollapsibleCell } from './components/CollapsibleCell'
 import { cn } from '@/ui/utils/style'
+import { Trans } from '@lingui/react/macro'
 
 export interface ResponsiveDataTableProps<T> {
   columnDefinition: { [key: string]: ColumnDefinition<T> }
@@ -78,7 +79,9 @@ export function ResponsiveDataTable<T extends { [k: string]: any }>({
                 {header}
               </TableHead>
             ))}
-            <TableHead className="py-2 text-white text-xs">More</TableHead>
+            <TableHead className="py-2 text-white text-xs">
+              <Trans>More</Trans>
+            </TableHead>
           </TableRow>
         </TableHeader>
       )}

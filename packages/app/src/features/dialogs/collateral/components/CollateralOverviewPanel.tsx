@@ -4,7 +4,7 @@ import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPan
 import BigNumber from 'bignumber.js'
 import { HealthFactorChange } from '../../common/components/transaction-overview/HealthFactorChange'
 import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
-
+import { useLingui } from '@lingui/react/macro'
 export interface CollateralOverviewPanelProps {
   collateral: TokenWithBalance
   currentHealthFactor?: BigNumber
@@ -15,10 +15,11 @@ export function CollateralOverviewPanel({
   currentHealthFactor,
   updatedHealthFactor,
 }: CollateralOverviewPanelProps) {
+  const { t } = useLingui()
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
-      <TransactionOverviewDetailsItem label="Deposit balance">
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
+      <TransactionOverviewDetailsItem label={t`Deposit balance`}>
         <div className="flex flex-col items-end gap-0.5">
           <p className="text-base">
             {token.format(balance, { style: 'auto' })} {token.symbol}

@@ -6,6 +6,7 @@ import { UpDownMarker } from '../../components/action-row/UpDownMarker'
 import { ActionRowBaseProps } from '../../components/action-row/types'
 import { getFormattedValue } from '../../components/action-row/utils'
 import { BorrowAction } from './types'
+import { Trans } from '@lingui/react/macro'
 
 export interface BorrowActionRowProps extends ActionRowBaseProps {
   action: BorrowAction
@@ -20,7 +21,7 @@ export function BorrowActionRow({ index, action, actionHandlerState, onAction, v
       <ActionRow.Icon path={assets.actions.borrow} actionStatus={status} />
 
       <ActionRow.Title icon={<TokenIcon token={action.token} className="h-6" />} actionStatus={status}>
-        Borrow {formattedValue}
+        <Trans>Borrow</Trans> {formattedValue}
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={`Borrowed ${formattedValue}!`} actionStatus={status} variant={variant}>
@@ -30,7 +31,7 @@ export function BorrowActionRow({ index, action, actionHandlerState, onAction, v
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Borrow
+        <Trans>Borrow</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

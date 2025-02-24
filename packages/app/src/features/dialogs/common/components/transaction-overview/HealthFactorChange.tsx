@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 
 import { assets } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
-
+import { useLingui } from '@lingui/react/macro'
 import { RiskIndicator } from './RiskIndicator'
 import { TransactionOverviewDetailsItem } from './TransactionOverviewDetailsItem'
 
@@ -12,9 +12,10 @@ interface HealthFactorChangeProps {
 }
 
 export function HealthFactorChange({ currentHealthFactor, updatedHealthFactor }: HealthFactorChangeProps) {
+  const { t } = useLingui()
   if (currentHealthFactor === undefined && updatedHealthFactor !== undefined) {
     return (
-      <TransactionOverviewDetailsItem label="Health factor">
+      <TransactionOverviewDetailsItem label={t`Health factor`}>
         <RiskIndicator healthFactor={updatedHealthFactor} data-testid={testIds.dialog.healthFactor.after} />
       </TransactionOverviewDetailsItem>
     )
@@ -22,7 +23,7 @@ export function HealthFactorChange({ currentHealthFactor, updatedHealthFactor }:
 
   if (currentHealthFactor !== undefined) {
     return (
-      <TransactionOverviewDetailsItem label="Health factor">
+      <TransactionOverviewDetailsItem label={t`Health factor`}>
         <div className="flex flex-row items-center gap-2">
           <RiskIndicator healthFactor={currentHealthFactor} data-testid={testIds.dialog.healthFactor.before} />
           {updatedHealthFactor && (

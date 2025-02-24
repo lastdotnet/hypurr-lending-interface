@@ -4,22 +4,24 @@ import { ActionRowBaseProps } from '@/features/actions/components/action-row/typ
 import { assets, getTokenImage } from '@/ui/assets'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { UnstakeAction } from './types'
+import { useLingui } from '@lingui/react/macro'
 
 export interface UnstakeActionRowProps extends ActionRowBaseProps {
   action: UnstakeAction
 }
 
 export function UnstakeActionRow({ action, index, actionHandlerState, onAction, variant }: UnstakeActionRowProps) {
+  const { t } = useLingui()
   const tokenIconPaths = [getTokenImage(action.rewardToken.symbol), getTokenImage(action.stakingToken.symbol)]
   const status = actionHandlerState.status
 
   const formattedAmount = action.stakingToken.format(action.amount, { style: 'auto' })
-  const unstakeSuccessMessage = `Withdrew ${formattedAmount} ${action.stakingToken.symbol}`
-  const exitSuccessMessage = `${unstakeSuccessMessage} and claimed rewards`
+  const unstakeSuccessMessage = t`Withdrew ${formattedAmount} ${action.stakingToken.symbol}`
+  const exitSuccessMessage = t`${unstakeSuccessMessage} and claimed rewards`
   const successMessage = `${action.exit ? exitSuccessMessage : unstakeSuccessMessage}!`
 
-  const unstakeActionTitle = `Withdraw ${action.stakingToken.symbol} from ${action.rewardToken.symbol} Farm`
-  const exitActionTitle = `Exit from ${action.rewardToken.symbol} Farm`
+  const unstakeActionTitle = t`Withdraw ${action.stakingToken.symbol} from ${action.rewardToken.symbol} Farm`
+  const exitActionTitle = t`Exit from ${action.rewardToken.symbol} Farm`
 
   return (
     <ActionRow index={index}>
@@ -36,7 +38,7 @@ export function UnstakeActionRow({ action, index, actionHandlerState, onAction, 
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        {action.exit ? 'Exit' : 'Withdraw'}
+        {action.exit ? t`Exit` : t`Withdraw`}
       </ActionRow.Action>
     </ActionRow>
   )

@@ -8,6 +8,7 @@ import { colors } from '@/ui/charts/colors'
 import { Margins, defaultMargins } from '@/ui/charts/defaults'
 import { Chart } from './components/Chart'
 import { getYields } from './logic/getYields'
+import { Trans } from '@lingui/react/macro'
 
 export interface InterestYieldChartProps {
   optimalUtilizationRate: Percentage
@@ -57,11 +58,15 @@ export function InterestYieldChart({
       <div className="ml-10 flex items-center gap-4">
         <div className="flex items-center gap-1.5">
           <Circle size={4} fill={colors.primary} stroke="0" />
-          <div className="text-white/50 text-xs">Borrow APY</div>
+          <div className="text-white/50 text-xs">
+            <Trans>Borrow APY</Trans>
+          </div>
         </div>
         <div className="flex items-center gap-1.5">
           <Circle size={4} fill={colors.secondary} stroke="0" />
-          <div className="text-white/50 text-xs">Utilization Rate</div>
+          <div className="text-white/50 text-xs">
+            <Trans>Utilization Rate</Trans>
+          </div>
         </div>
       </div>
       <Chart {...chartProps} />

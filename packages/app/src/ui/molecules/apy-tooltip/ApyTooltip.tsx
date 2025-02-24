@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 // import { links } from '@/ui/constants/links'
 
 import { Info } from '../info/Info'
+import { Trans } from '@lingui/react/macro'
 
 interface ApyTooltipProps {
   children: ReactNode
@@ -23,13 +24,17 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
   supply: (
     <>
       <p>
-        The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each
-        reserve pool.
+        <Trans>
+          The APY for supplying assets on Hypurr is a dynamic metric that adjusts based on the utilization rate of each
+          reserve pool.
+        </Trans>
       </p>
       <p>
-        As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This means
-        that the APY for supplying assets is responsive to market conditions and can vary based on the demand for
-        borrowing within each pool.
+        <Trans>
+          As the utilization rate fluctuates, the interest rates offered to suppliers also change accordingly. This
+          means that the APY for supplying assets is responsive to market conditions and can vary based on the demand
+          for borrowing within each pool.
+        </Trans>
       </p>
       {/* <p>
         <Link href={links.docs.supplying} external>
@@ -42,11 +47,16 @@ const variantToText: Record<ApyTooltipProps['variant'], ReactNode> = {
   borrow: (
     <>
       <p>
-        The interest rate for borrowing on Hypurr is a live metric that adjusts with each block confirmation, reflecting
-        the most recent data based on the token pool's utilization rate.
+        <Trans>
+          The interest rate for borrowing on Hypurr is a live metric that adjusts with each block confirmation,
+          reflecting the most recent data based on the token pool's utilization rate.
+        </Trans>
       </p>
       <p>
-        This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their loans.
+        <Trans>
+          This, in turn, affects the APY for borrowers, as it influences the nominal interest rate applied to their
+          loans.
+        </Trans>
       </p>
       {/* <p> This doesn't apply to DAI as Sky Ecosystem Governance defines the borrowing rate.</p>
       <p>

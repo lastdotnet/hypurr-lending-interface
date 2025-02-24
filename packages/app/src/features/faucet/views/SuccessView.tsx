@@ -4,6 +4,7 @@ import { useBlockExplorerLink } from '@/domain/hooks/useBlockExplorerLink'
 import { buttonVariants, LinkButton } from '@/ui/atoms/button/Button'
 import { useConfettiContext } from '@/ui/molecules/confetti/Confetti'
 import { cn } from '@/ui/utils/style'
+import { Trans } from '@lingui/react/macro'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Address } from 'viem'
@@ -18,12 +19,14 @@ export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmoun
 
   return (
     <div className="flex flex-col">
-      <p className="mb-4">Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)</p>
+      <p className="mb-4">
+        <Trans>Purrfecto! You minted 100 sUSDe, 100 USDC, 0.01 SolvBTC, and {hypeAmount} HYPE (testnet)</Trans>
+      </p>
       <LinkButton
         className={cn(buttonVariants({ variant: 'primary', size: 'md', rounded: 'full' }), 'w-full')}
         href={paths.dashboard}
       >
-        View in dashboard
+        <Trans>View in dashboard</Trans>
       </LinkButton>
       <div className="mt-5 flex justify-between gap-4">
         <div className="flex items-center gap-4">
@@ -37,7 +40,7 @@ export function SuccessView({ mintTx, hypeAmount }: { mintTx: Address; hypeAmoun
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-sm opacity-50 hover:opacity-80"
         >
-          View Transaction <ArrowUpRight className="h-4 w-4" />
+          <Trans>View Transaction</Trans> <ArrowUpRight className="h-4 w-4" />
         </a>
       </div>
     </div>
@@ -66,13 +69,15 @@ function CopyLinkButton({ link }: { link: string }) {
   }, [isCopied])
 
   return isCopied ? (
-    <p className="animate-fade-in text-primary-bg text-sm">Link copied to clipboard!</p>
+    <p className="animate-fade-in text-primary-bg text-sm">
+      <Trans>Link copied to clipboard!</Trans>
+    </p>
   ) : (
     <button
       onClick={copyToClipboard}
       className="animate-fade-in text-sm text-white/50 transition-colors hover:text-white/80"
     >
-      Copy link
+      <Trans>Copy link</Trans>
     </button>
   )
 }
@@ -87,7 +92,7 @@ function TweetButton({ text, url }: { text: string; url: string }) {
       rel="noopener noreferrer"
       className="rounded border border-white/4 bg-white/10 px-4 py-1 text-sm text-white transition-colors hover:bg-primary-bg/70"
     >
-      Share on X
+      <Trans>Share on X</Trans>
     </a>
   )
 }

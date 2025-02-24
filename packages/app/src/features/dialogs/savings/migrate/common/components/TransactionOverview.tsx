@@ -11,7 +11,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { assert } from '@/utils/assert'
 import { TransactionOverviewPlaceholder } from '../../../common/components/transaction-overview/components/TransactionOverviewPlaceholder'
 import { MigrateDialogTxOverview } from '../types'
-
+import { useLingui } from '@lingui/react/macro'
 export interface TransactionOverviewProps {
   txOverview: MigrateDialogTxOverview
   selectedToken: Token
@@ -19,6 +19,7 @@ export interface TransactionOverviewProps {
 }
 
 export function TransactionOverview({ txOverview, selectedToken, showAPY }: TransactionOverviewProps) {
+  const { t } = useLingui()
   if (txOverview.status !== 'success') {
     return <TransactionOverviewPlaceholder badgeToken={selectedToken.symbol} showAPY={showAPY} />
   }
@@ -31,9 +32,9 @@ export function TransactionOverview({ txOverview, selectedToken, showAPY }: Tran
   return (
     <div className="isolate">
       <DialogPanel className="shadow-none">
-        <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+        <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
         {apyChange && (
-          <TransactionOverviewDetailsItem label="APY">
+          <TransactionOverviewDetailsItem label={t`APY`}>
             <div className="flex flex-row items-center gap-2">
               <div data-testid={testIds.dialog.savings.transactionOverview.apyChange.before}>
                 {formatPercentage(apyChange.current)}
@@ -45,7 +46,7 @@ export function TransactionOverview({ txOverview, selectedToken, showAPY }: Tran
             </div>
           </TransactionOverviewDetailsItem>
         )}
-        <TransactionOverviewDetailsItem label="Route">
+        <TransactionOverviewDetailsItem label={t`Route`}>
           <div className="flex flex-col items-end gap-2 md:flex-row">
             {route.map((item, index) => (
               <RouteItem
@@ -58,7 +59,7 @@ export function TransactionOverview({ txOverview, selectedToken, showAPY }: Tran
             ))}
           </div>
         </TransactionOverviewDetailsItem>
-        <TransactionOverviewDetailsItem label="Outcome">
+        <TransactionOverviewDetailsItem label={t`Outcome`}>
           <TransactionOutcome outcome={outcome} />
         </TransactionOverviewDetailsItem>
       </DialogPanel>

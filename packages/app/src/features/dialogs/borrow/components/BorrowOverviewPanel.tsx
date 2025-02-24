@@ -9,6 +9,7 @@ import { LoanToValueSlider } from '@/features/easy-borrow/components/form/LoanTo
 import { LoanToValue } from '@/features/easy-borrow/components/form/LoanToValue'
 import { UserPositionSummary } from '@/domain/market-info/marketInfo'
 import { nonZeroOrDefault } from '@/utils/bigNumber'
+import { useLingui } from '@lingui/react/macro'
 
 export interface BorrowOverviewPanelProps {
   currentHealthFactor?: BigNumber
@@ -24,13 +25,14 @@ export function BorrowOverviewPanel({
   updatedPositionSummary,
   setDesiredLoanToValue,
 }: BorrowOverviewPanelProps) {
+  const { t } = useLingui()
   if (currentHealthFactor === undefined && updatedHealthFactor === undefined && borrowAPY === undefined) {
     return null
   }
 
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
       <LoanToValue
         className="mt-10"
         loanToValue={updatedPositionSummary.loanToValue}
@@ -46,7 +48,9 @@ export function BorrowOverviewPanel({
           setDesiredLoanToValue(e)
         }}
       />
-      <TransactionOverviewDetailsItem label="Borrow APY">{formatPercentage(borrowAPY)}</TransactionOverviewDetailsItem>
+      <TransactionOverviewDetailsItem label={t`Borrow APY`}>
+        {formatPercentage(borrowAPY)}
+      </TransactionOverviewDetailsItem>
       <HealthFactorChange currentHealthFactor={currentHealthFactor} updatedHealthFactor={updatedHealthFactor} />
     </DialogPanel>
   )

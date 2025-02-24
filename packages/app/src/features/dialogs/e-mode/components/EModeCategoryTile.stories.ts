@@ -5,6 +5,7 @@ import { getHoveredStory } from '@storybook/utils'
 import { getMobileStory, getTabletStory } from '@storybook/viewports'
 
 import { EModeCategoryTile } from './EModeCategoryTile'
+import { msg } from '@lingui/core/macro'
 
 const meta: Meta<typeof EModeCategoryTile> = {
   title: 'Features/Dialogs/Components/EModeCategoryTile',
@@ -19,6 +20,7 @@ export const ETHCorrelated: Story = {
   args: {
     eModeCategory: {
       name: 'ETH Correlated',
+      translatedName: msg`ETH Correlated`,
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: false,
       isSelected: false,
@@ -31,6 +33,7 @@ export const ETHCorrelatedSelected: Story = {
   args: {
     eModeCategory: {
       name: 'ETH Correlated',
+      translatedName: msg`ETH Correlated`,
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: false,
       isSelected: true,
@@ -43,6 +46,7 @@ export const ETHCorrelatedActive: Story = {
   args: {
     eModeCategory: {
       name: 'ETH Correlated',
+      translatedName: msg`ETH Correlated`,
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: true,
       isSelected: false,
@@ -57,6 +61,7 @@ export const Stablecoins: Story = {
   args: {
     eModeCategory: {
       name: 'Stablecoins',
+      translatedName: msg`Stablecoins`,
       tokens: [tokens.DAI, tokens.USDC, tokens.USDT],
       isActive: false,
       isSelected: false,
@@ -69,6 +74,7 @@ export const StablecoinsActive: Story = {
   args: {
     eModeCategory: {
       name: 'Stablecoins',
+      translatedName: msg`Stablecoins`,
       tokens: [tokens.DAI, tokens.USDC, tokens.USDT],
       isActive: true,
       isSelected: false,
@@ -81,6 +87,7 @@ export const NoCategory: Story = {
   args: {
     eModeCategory: {
       name: 'No E-Mode',
+      translatedName: msg`No E-Mode`,
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH, tokens.DAI, tokens.USDC, tokens.USDT],
       isActive: false,
       isSelected: false,
@@ -93,6 +100,7 @@ export const NoCategoryActive: Story = {
   args: {
     eModeCategory: {
       name: 'No E-Mode',
+      translatedName: msg`No E-Mode`,
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH, tokens.DAI, tokens.USDC, tokens.USDT],
       isActive: true,
       isSelected: false,

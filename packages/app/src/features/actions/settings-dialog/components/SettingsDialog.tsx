@@ -9,6 +9,7 @@ import { testIds } from '@/ui/utils/testIds'
 
 import { UseSettingsDialogResult } from '../logic/useSettingsDialog'
 import { SettingsDialogContent } from './SettingsDialogContent'
+import { Trans } from '@lingui/react/macro'
 
 export interface SettingsDialogProps extends UseSettingsDialogResult {
   disabled?: boolean
@@ -56,7 +57,9 @@ const DisabledTooltip = React.forwardRef<HTMLSpanElement, DisabledTooltipProps>(
       <TooltipTrigger asChild>
         <span ref={ref}>{children}</span>
       </TooltipTrigger>
-      <TooltipContentShort>Settings are disabled while actions are in progress.</TooltipContentShort>
+      <TooltipContentShort>
+        <Trans>Settings are disabled while actions are in progress.</Trans>
+      </TooltipContentShort>
     </Tooltip>
   )
 })

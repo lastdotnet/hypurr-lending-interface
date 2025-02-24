@@ -12,6 +12,7 @@ import { testIds } from '@/ui/utils/testIds'
 import { parseBigNumber } from '@/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { truncateWithEllipsis } from '@/domain/common/format'
+import { Trans } from '@lingui/react/macro'
 
 export type AssetInputProps = {
   token: Token
@@ -118,7 +119,7 @@ export const AssetInput = forwardRef<HTMLInputElement, AssetInputProps>(
                   variant="text"
                   data-testid={testIds.component.AssetInput.maxButton}
                 >
-                  MAX
+                  <Trans>MAX</Trans>
                 </Button>
               )}
               {balance && (

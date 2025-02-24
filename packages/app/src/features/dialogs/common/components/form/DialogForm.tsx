@@ -8,7 +8,7 @@ import { AssetSelectorWithInput } from '@/ui/organisms/asset-selector-with-input
 import { AssetInputSchema } from '../../logic/form'
 import { FormFieldsForDialog } from '../../types'
 import { DialogPanelTitle } from '../DialogPanelTitle'
-
+import { useLingui } from '@lingui/react/macro'
 export interface DialogFormProps {
   selectorAssets: TokenWithBalance[]
   assetsFields: FormFieldsForDialog
@@ -18,11 +18,12 @@ export interface DialogFormProps {
 }
 
 export function DialogForm({ selectorAssets, assetsFields, form, variant, walletIconLabel }: DialogFormProps) {
+  const { t } = useLingui()
   const { selectedAsset, changeAsset, maxSelectedFieldName, maxValue } = assetsFields
 
   return (
     <Form {...form}>
-      <DialogPanelTitle>Amount</DialogPanelTitle>
+      <DialogPanelTitle>{t`Amount`}</DialogPanelTitle>
       <AssetSelectorWithInput
         fieldName="value"
         control={form.control}

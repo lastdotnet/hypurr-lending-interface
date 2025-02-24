@@ -6,6 +6,7 @@ import React, { ComponentProps, forwardRef, ReactNode, useState } from 'react'
 import { cn } from '@/ui/utils/style'
 
 import { Typography } from '../typography/Typography'
+import { Trans } from '@lingui/react/macro'
 
 export interface CollapsibleRawPanelProps {
   children: [ReactNode, ReactNode]
@@ -69,12 +70,12 @@ function PanelHeader({ className, ...rest }: JSX.IntrinsicElements['div']) {
             <Typography variant="prompt">
               {open ? (
                 <>
-                  Hide
+                  <Trans>Hide</Trans>
                   <ChevronUp className="-translate-y-[1px] ml-1 inline-block" size={16} />
                 </>
               ) : (
                 <>
-                  Show
+                  <Trans>Show</Trans>
                   <ChevronDown className="-translate-y-[1px] ml-1 inline-block" size={16} />
                 </>
               )}

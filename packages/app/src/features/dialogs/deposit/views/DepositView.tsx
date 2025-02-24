@@ -13,6 +13,7 @@ import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 
 import { DepositOverviewPanel } from '../components/DepositOverviewPanel'
 import { PositionOverview } from '../logic/types'
+import { Trans } from '@lingui/react/macro'
 
 export interface DepositViewProps {
   initialToken: Token
@@ -37,7 +38,9 @@ export function DepositView({
 }: DepositViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>{`Deposit ${initialToken.symbol}`}</DialogTitle>
+      <DialogTitle>
+        <Trans>Deposit {initialToken.symbol}</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsFields} selectorAssets={selectableAssets} />

@@ -4,22 +4,25 @@ import { ActionRowBaseProps } from '@/features/actions/components/action-row/typ
 import { assets, getTokenImage } from '@/ui/assets'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { DowngradeAction } from './types'
-
+import { Trans, useLingui } from '@lingui/react/macro'
 export interface DowngradeActionRowProps extends ActionRowBaseProps {
   action: DowngradeAction
 }
 
 export function DowngradeActionRow({ action, index, actionHandlerState, onAction, variant }: DowngradeActionRowProps) {
+  const { t } = useLingui()
   const tokenIconPaths = [getTokenImage(action.fromToken.symbol), getTokenImage(action.toToken.symbol)]
   const status = actionHandlerState.status
-  const successMessage = `Downgraded ${action.fromToken.symbol}!`
+  const successMessage = t`Downgraded ${action.fromToken.symbol}!`
 
   return (
     <ActionRow index={index}>
       <ActionRow.Icon path={assets.actions.downgrade} actionStatus={status} />
 
       <ActionRow.Title icon={<IconStack paths={tokenIconPaths} stackingOrder="last-on-top" />} actionStatus={status}>
-        Downgrade {action.fromToken.symbol} to {action.toToken.symbol}
+        <Trans>
+          Downgrade {action.fromToken.symbol} to {action.toToken.symbol}
+        </Trans>
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={successMessage} actionStatus={status} variant={variant}>
@@ -29,7 +32,7 @@ export function DowngradeActionRow({ action, index, actionHandlerState, onAction
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Downgrade
+        <Trans>Downgrade</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

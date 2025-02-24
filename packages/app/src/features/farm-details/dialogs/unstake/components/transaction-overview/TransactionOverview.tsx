@@ -11,13 +11,14 @@ import { TxOverview } from '../../logic/createTxOverview'
 import { FarmRouteItem } from './FarmRouteItem'
 import { TransactionOutcome } from './TransactionOutcome'
 import { TransactionOverviewPlaceholder } from './TransactionOverviewPlaceholder'
-
+import { useLingui } from '@lingui/react/macro'
 export interface TransactionOverviewProps {
   txOverview: TxOverview
   selectedToken: Token
 }
 
 export function TransactionOverview({ txOverview, selectedToken }: TransactionOverviewProps) {
+  const { t } = useLingui()
   if (txOverview.status !== 'success') {
     return <TransactionOverviewPlaceholder badgeToken={selectedToken.symbol} />
   }
@@ -32,8 +33,8 @@ export function TransactionOverview({ txOverview, selectedToken }: TransactionOv
   return (
     <div className="isolate">
       <DialogPanel className="shadow-none">
-        <DialogPanelTitle>Transaction overview</DialogPanelTitle>
-        <TransactionOverviewDetailsItem label="Route">
+        <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
+        <TransactionOverviewDetailsItem label={t`Route`}>
           <div className={cn('flex flex-col items-end gap-2', !displayRouteVertically && 'md:flex-row')}>
             <FarmRouteItem
               stakingToken={stakingToken.symbol}
@@ -51,7 +52,7 @@ export function TransactionOverview({ txOverview, selectedToken }: TransactionOv
             ))}
           </div>
         </TransactionOverviewDetailsItem>
-        <TransactionOverviewDetailsItem label="Outcome">
+        <TransactionOverviewDetailsItem label={t`Outcome`}>
           <TransactionOutcome
             outcomeTokenRouteItem={outcomeTokenRouteItem}
             rewardToken={rewardToken}

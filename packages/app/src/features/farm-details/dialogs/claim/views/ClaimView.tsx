@@ -6,7 +6,7 @@ import { PageStatus } from '@/features/dialogs/common/types'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
 import { TransactionOverview } from '../components/transaction-overview/TransactionOverview'
 import { TxOverview } from '../types'
-
+import { Trans } from '@lingui/react/macro'
 export interface ClaimViewProps {
   objectives: Objective[]
   pageStatus: PageStatus
@@ -17,7 +17,9 @@ export interface ClaimViewProps {
 export function ClaimView({ objectives, pageStatus, txOverview, actionsContext }: ClaimViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>Claim rewards</DialogTitle>
+      <DialogTitle>
+        <Trans>Claim rewards</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <TransactionOverview txOverview={txOverview} />

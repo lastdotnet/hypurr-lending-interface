@@ -4,6 +4,7 @@ import { ActionRowBaseProps } from '@/features/actions/components/action-row/typ
 import { assets, getTokenImage } from '@/ui/assets'
 import { IconStack } from '@/ui/molecules/icon-stack/IconStack'
 import { DepositToSavingsAction } from './types'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 export interface DepositToSavingsActionRowProps extends ActionRowBaseProps {
   action: DepositToSavingsAction
@@ -16,16 +17,19 @@ export function DepositToSavingsActionRow({
   onAction,
   variant,
 }: DepositToSavingsActionRowProps) {
+  const { t } = useLingui()
   const tokenIconPaths = [getTokenImage(action.token.symbol), getTokenImage(action.savingsToken.symbol)]
   const status = actionHandlerState.status
-  const successMessage = `Converted ${action.token.format(action.value, { style: 'auto' })} ${action.token.symbol}!`
+  const successMessage = t`Converted ${action.token.format(action.value, { style: 'auto' })} ${action.token.symbol}!`
 
   return (
     <ActionRow index={index}>
       <ActionRow.Icon path={assets.actions.exchange} actionStatus={status} />
 
       <ActionRow.Title icon={<IconStack paths={tokenIconPaths} stackingOrder="last-on-top" />} actionStatus={status}>
-        Convert {action.token.symbol} to {action.savingsToken.symbol}
+        <Trans>
+          Convert {action.token.symbol} to {action.savingsToken.symbol}
+        </Trans>
       </ActionRow.Title>
 
       <ActionRow.Description successMessage={successMessage} actionStatus={status} variant={variant}>
@@ -35,7 +39,7 @@ export function DepositToSavingsActionRow({
       <ActionRow.ErrorWarning variant={variant} actionHandlerState={actionHandlerState} />
 
       <ActionRow.Action onAction={onAction} status={status} action={action}>
-        Convert
+        <Trans>Convert</Trans>
       </ActionRow.Action>
     </ActionRow>
   )

@@ -11,6 +11,7 @@ import { Info } from '@/ui/molecules/info/Info'
 import { cn } from '@/ui/utils/style'
 
 import { LiquidationOverview } from './components/LiquidationOverview'
+import { Trans } from '@lingui/react/macro'
 
 export interface HealthFactorPanelProps {
   hf?: BigNumber
@@ -26,19 +27,25 @@ export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelPro
         <Panel.Header className="flex w-full flex-row justify-between">
           <div className="flex flex-row items-center gap-1">
             <Panel.Title className="text-xl" gradient>
-              Health Factor
+              <Trans>Health Factor</Trans>
             </Panel.Title>
             <Info>
               <p>
-                The health factor is a number that shows how safe your assets are in the protocol. It's calculated by
-                comparing the value of what you've deposited to what you've borrowed.
+                <Trans>
+                  The health factor is a number that shows how safe your assets are in the protocol. It's calculated by
+                  comparing the value of what you've deposited to what you've borrowed.
+                </Trans>
               </p>
               <p>
-                A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering
-                the chance of liquidating your assets.
+                <Trans>
+                  A higher health factor means your deposited assets are worth more (or you've borrowed less), lowering
+                  the chance of liquidating your assets.
+                </Trans>
               </p>
               <p>
-                Keep in mind that these calculations follow the protocol's rules, which might change over time.
+                <Trans>
+                  Keep in mind that these calculations follow the protocol's rules, which might change over time.
+                </Trans>
                 {/* For more
                 information about Health Factor, you can visit{' '}
                 <Link href={links.docs.healthFactor} external>
