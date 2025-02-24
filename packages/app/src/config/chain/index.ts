@@ -12,6 +12,7 @@ import { USDXL_ADDRESS } from '../consts'
 const commonTokenSymbolToReplacedName = {
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
+  [TokenSymbol('wstHYPE')]: { name: 'Staked Hype', symbol: TokenSymbol('wstHYPE') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
