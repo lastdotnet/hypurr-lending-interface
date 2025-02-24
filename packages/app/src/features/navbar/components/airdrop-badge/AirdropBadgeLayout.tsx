@@ -30,7 +30,7 @@ export function AirdropBadgeLayout({
   const points = account ? (
     SPK_MOCK_TOKEN.format(amount, { style: 'compact' })
   ) : (
-    <MinusIcon className="h-4 w-4 pr-0.5" />
+    <MinusIcon className="h-4 w-4 pr-0.5" strokeWidth={3} />
   )
 
   return (
