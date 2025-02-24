@@ -1,6 +1,7 @@
 import { USD_MOCK_TOKEN } from '@/domain/types/Token'
 import { TxOverviewRouteItem } from '@/features/dialogs/common/types'
 import { testIds } from '@/ui/utils/testIds'
+import { Trans } from '@lingui/react/macro'
 
 export interface TransactionOutcomeProps {
   outcome: TxOverviewRouteItem
@@ -12,7 +13,10 @@ export function TransactionOutcome({ outcome }: TransactionOutcomeProps) {
       <span>
         {outcome.token.format(outcome.value, { style: 'auto' })} {outcome.token.symbol}
       </span>
-      <span> worth </span>
+      <span>
+        {' '}
+        <Trans>worth</Trans>{' '}
+      </span>
       <span className="font-semibold">{USD_MOCK_TOKEN.formatUSD(outcome.usdValue)}</span>
     </div>
   )

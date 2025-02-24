@@ -5,20 +5,23 @@ import { HealthFactorChange } from '../../common/components/transaction-overview
 import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
 import { collateralTypeToDescription } from '../logic/collateralization'
 import { PositionOverview } from '../logic/types'
-
+import { useLingui as useLinguiMacro } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react'
 export interface DepositOverviewPanelProps {
   currentPositionOverview: PositionOverview
   updatedPositionOverview?: PositionOverview
 }
 export function DepositOverviewPanel({ currentPositionOverview, updatedPositionOverview }: DepositOverviewPanelProps) {
+  const { t } = useLinguiMacro()
+  const { _ } = useLingui()
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
-      <TransactionOverviewDetailsItem label="Supply APY">
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
+      <TransactionOverviewDetailsItem label={t`Supply APY`}>
         {formatPercentage(currentPositionOverview.supplyAPY)}
       </TransactionOverviewDetailsItem>
-      <TransactionOverviewDetailsItem label="Collateralization">
-        {collateralTypeToDescription(currentPositionOverview.collateralization)}
+      <TransactionOverviewDetailsItem label={t`Collateralization`}>
+        {_(collateralTypeToDescription(currentPositionOverview.collateralization))}
       </TransactionOverviewDetailsItem>
       <HealthFactorChange
         currentHealthFactor={currentPositionOverview.healthFactor}

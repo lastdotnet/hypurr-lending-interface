@@ -6,6 +6,7 @@ import { Objective } from '@/features/actions/logic/types'
 import { Reward } from '@/features/navbar/components/rewards-badge/types'
 import { PageStatus } from '../../common/types'
 import { ClaimRewardsOverviewPanel } from '../components/ClaimRewardsOverviewPanel'
+import { Trans } from '@lingui/react/macro'
 
 export interface ClaimRewardsViewProps {
   rewards: Reward[]
@@ -16,7 +17,9 @@ export interface ClaimRewardsViewProps {
 export function ClaimRewardsView({ rewards, pageStatus, objectives }: ClaimRewardsViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>Claim rewards</DialogTitle>
+      <DialogTitle>
+        <Trans>Claim rewards</Trans>
+      </DialogTitle>
 
       <ClaimRewardsOverviewPanel rewards={rewards} />
 

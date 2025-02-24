@@ -13,6 +13,7 @@ import { TransactionOverview } from '../../common/components/transaction-overvie
 import { SavingsDialogTxOverview } from '../../common/types'
 import { UpgradeToSusdsSwitch } from '../components/UpgradeToSusdsSwitch'
 import { SavingsUsdsSwitchInfo } from '../logic/useSavingsDepositDialog'
+import { Trans } from '@lingui/react/macro'
 
 export interface SavingsDepositViewProps {
   selectableAssets: TokenWithBalance[]
@@ -39,7 +40,9 @@ export function SavingsDepositView({
 
   return (
     <MultiPanelDialog panelRef={ref}>
-      <DialogTitle>Deposit to Savings</DialogTitle>
+      <DialogTitle>
+        <Trans>Deposit to Savings</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsFields} selectorAssets={selectableAssets} />

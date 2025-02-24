@@ -4,6 +4,7 @@ import { cva } from 'class-variance-authority'
 import { formatHealthFactor } from '@/domain/common/format'
 import { healthFactorToRiskLevel, riskLevelToTitle } from '@/domain/common/risk'
 import { Typography } from '@/ui/atoms/typography/Typography'
+import { useLingui } from '@lingui/react'
 
 export interface RiskIndicatorProps {
   healthFactor: BigNumber
@@ -24,7 +25,7 @@ const badgeVariants = cva('rounded-lg p-2.5 text-xs', {
 
 export function RiskIndicator({ healthFactor, ...props }: RiskIndicatorProps) {
   const riskLevel = healthFactorToRiskLevel(healthFactor)
-
+  const { _ } = useLingui()
   return (
     <div className="flex flex-col items-center gap-1" {...props}>
       <div
@@ -32,7 +33,7 @@ export function RiskIndicator({ healthFactor, ...props }: RiskIndicatorProps) {
           variant: riskLevel,
         })}
       >
-        {riskLevelToTitle[riskLevel]}
+        {_(riskLevelToTitle[riskLevel])}
       </div>
       <Typography variant="prompt">{formatHealthFactor(healthFactor)}</Typography>
     </div>

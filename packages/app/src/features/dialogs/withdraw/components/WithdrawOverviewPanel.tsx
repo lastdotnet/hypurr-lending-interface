@@ -6,7 +6,7 @@ import { HealthFactorChange } from '../../common/components/transaction-overview
 import { TokenValueChange } from '../../common/components/transaction-overview/TokenValueChange'
 import { TransactionOverviewDetailsItem } from '../../common/components/transaction-overview/TransactionOverviewDetailsItem'
 import { PositionOverview } from '../logic/types'
-
+import { useLingui } from '@lingui/react/macro'
 export interface WithdrawOverviewPanelProps {
   withdrawAsset: TokenWithValue
   currentPositionOverview: PositionOverview
@@ -17,17 +17,18 @@ export function WithdrawOverviewPanel({
   currentPositionOverview,
   updatedPositionOverview,
 }: WithdrawOverviewPanelProps) {
+  const { t } = useLingui()
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
-      <TransactionOverviewDetailsItem label="Supply APY">
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
+      <TransactionOverviewDetailsItem label={t`Supply APY`}>
         {formatPercentage(currentPositionOverview.supplyAPY)}
       </TransactionOverviewDetailsItem>
       <TokenValueChange
         token={withdrawAsset.token}
         currentValue={currentPositionOverview.tokenSupply}
         updatedValue={updatedPositionOverview?.tokenSupply}
-        label="Supply"
+        label={t`Supply`}
       />
       <HealthFactorChange
         currentHealthFactor={currentPositionOverview.healthFactor}

@@ -7,7 +7,7 @@ import { TransactionOverviewDetailsItem } from '@/features/dialogs/common/compon
 import { TransactionOutcome } from '../../../common/components/transaction-overview/TransactionOutcome'
 import { TransactionOverviewPlaceholder } from '../../../common/components/transaction-overview/TransactionOverviewPlaceholder'
 import { TxOverview } from '../../logic/createTxOverview'
-
+import { useLingui } from '@lingui/react/macro'
 export interface TransactionOverviewProps {
   inToken: Token
   outToken: Token
@@ -15,6 +15,7 @@ export interface TransactionOverviewProps {
 }
 
 export function TransactionOverview({ inToken, outToken, txOverview }: TransactionOverviewProps) {
+  const { t } = useLingui()
   const badgeTokens = [inToken.symbol, outToken.symbol]
 
   if (txOverview.status !== 'success') {
@@ -26,8 +27,8 @@ export function TransactionOverview({ inToken, outToken, txOverview }: Transacti
   return (
     <div className="isolate">
       <DialogPanel className="shadow-none">
-        <DialogPanelTitle>Transaction overview</DialogPanelTitle>
-        <TransactionOverviewDetailsItem label="Route">
+        <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
+        <TransactionOverviewDetailsItem label={t`Route`}>
           <div className="flex flex-col items-end gap-2 md:flex-row">
             {route.map((item, index) => (
               <RouteItem
@@ -40,7 +41,7 @@ export function TransactionOverview({ inToken, outToken, txOverview }: Transacti
             ))}
           </div>
         </TransactionOverviewDetailsItem>
-        <TransactionOverviewDetailsItem label="Outcome">
+        <TransactionOverviewDetailsItem label={t`Outcome`}>
           <TransactionOutcome outcome={outcome} />
         </TransactionOverviewDetailsItem>
       </DialogPanel>

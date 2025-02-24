@@ -10,7 +10,7 @@ import { DialogForm } from '@/features/dialogs/common/components/form/DialogForm
 import { AssetInputSchema } from '@/features/dialogs/common/logic/form'
 import { FormFieldsForDialog, PageStatus } from '@/features/dialogs/common/types'
 import { DialogTitle } from '@/ui/atoms/dialog/Dialog'
-
+import { Trans } from '@lingui/react/macro'
 import { RepayOverviewPanel } from '../components/RepayOverviewPanel'
 import { PositionOverview } from '../logic/types'
 
@@ -37,7 +37,9 @@ export function RepayView({
 }: RepayViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>{`Repay ${debtAsset.symbol}`}</DialogTitle>
+      <DialogTitle>
+        <Trans>Repay {debtAsset.symbol}</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsToRepayFields} selectorAssets={repayOptions} />

@@ -9,6 +9,7 @@ import { TransactionOverview } from '../components/transaction-overview/Transact
 import { TxOverview } from '../logic/createTxOverview'
 import { ConvertStablesFormSchema } from '../logic/form/schema'
 import { ConvertStablesFormFields } from '../types'
+import { Trans } from '@lingui/react/macro'
 
 export interface ConvertStablesViewProps {
   formFields: ConvertStablesFormFields
@@ -29,7 +30,9 @@ export function ConvertStablesView({
 }: ConvertStablesViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>Convert Tokens</DialogTitle>
+      <DialogTitle>
+        <Trans>Convert Tokens</Trans>
+      </DialogTitle>
 
       <ConvertStablesForm form={form} formFields={formFields} />
 

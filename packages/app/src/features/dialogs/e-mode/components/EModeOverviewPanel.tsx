@@ -4,7 +4,7 @@ import { HealthFactorChange } from '../../common/components/transaction-overview
 import { EModeCategory, PositionOverview } from '../types'
 import { AvailableAssets } from './AvailableAssets'
 import { LTVChange } from './LTVChange'
-
+import { useLingui } from '@lingui/react/macro'
 export interface EModeOverviewPanelProps {
   eModeCategory: EModeCategory
   currentPositionOverview: PositionOverview
@@ -15,9 +15,10 @@ export function EModeOverviewPanel({
   currentPositionOverview,
   updatedPositionOverview,
 }: EModeOverviewPanelProps) {
+  const { t } = useLingui()
   return (
     <DialogPanel>
-      <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+      <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
       <AvailableAssets categoryName={eModeCategory.name} tokens={eModeCategory.tokens} />
       <HealthFactorChange
         currentHealthFactor={currentPositionOverview.healthFactor}

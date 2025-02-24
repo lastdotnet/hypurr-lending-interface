@@ -12,13 +12,14 @@ import { FarmDestinationRouteItem } from './FarmDestinationRouteItem'
 import { RewardsDetails } from './RewardsDetails'
 import { TransactionOutcome } from './TransactionOutcome'
 import { TransactionOverviewPlaceholder } from './TransactionOverviewPlaceholder'
-
+import { useLingui } from '@lingui/react/macro'
 export interface TransactionOverviewProps {
   txOverview: TxOverview
   selectedToken: Token
 }
 
 export function TransactionOverview({ txOverview, selectedToken }: TransactionOverviewProps) {
+  const { t } = useLingui()
   if (txOverview.status !== 'success') {
     return (
       <TransactionOverviewPlaceholder
@@ -38,13 +39,13 @@ export function TransactionOverview({ txOverview, selectedToken }: TransactionOv
   return (
     <div className="isolate">
       <DialogPanel className="shadow-none">
-        <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+        <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
         {txOverview.showEstimatedRewards && (
-          <TransactionOverviewDetailsItem label="Estimated Rewards">
+          <TransactionOverviewDetailsItem label={t`Estimated Rewards`}>
             <RewardsDetails apy={apy} rewardsPerYear={rewardsPerYear} rewardToken={rewardToken} />
           </TransactionOverviewDetailsItem>
         )}
-        <TransactionOverviewDetailsItem label="Route">
+        <TransactionOverviewDetailsItem label={t`Route`}>
           <div className={cn('flex flex-col items-end gap-2', !displayRouteVertically && 'md:flex-row')}>
             {routeToStakingToken.map((item, index) => (
               <RouteItem
@@ -62,7 +63,7 @@ export function TransactionOverview({ txOverview, selectedToken }: TransactionOv
             />
           </div>
         </TransactionOverviewDetailsItem>
-        <TransactionOverviewDetailsItem label="Outcome">
+        <TransactionOverviewDetailsItem label={t`Outcome`}>
           <TransactionOutcome stakingTokenRouteItem={stakingTokenRouteItem} rewardToken={rewardToken.symbol} />
         </TransactionOverviewDetailsItem>
       </DialogPanel>

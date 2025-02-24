@@ -1,3 +1,5 @@
+import { MessageDescriptor } from '@lingui/core'
+import { msg } from '@lingui/core/macro'
 import BigNumber from 'bignumber.js'
 
 export type RiskLevel = 'liquidation' | 'risky' | 'moderate' | 'healthy' | 'unknown' | 'no debt'
@@ -30,11 +32,11 @@ export function healthFactorToRiskLevel(hf: BigNumber | undefined): RiskLevel {
   }
 }
 
-export const riskLevelToTitle: Record<RiskLevel, string> = {
-  unknown: 'Unknown',
-  liquidation: 'Liquidation',
-  risky: 'Risky',
-  moderate: 'Moderate',
-  healthy: 'Healthy',
-  'no debt': 'No debt',
+export const riskLevelToTitle: Record<RiskLevel, MessageDescriptor> = {
+  unknown: msg`Unknown`,
+  liquidation: msg`Liquidation`,
+  risky: msg`Risky`,
+  moderate: msg`Moderate`,
+  healthy: msg`Healthy`,
+  'no debt': msg`No debt`,
 }

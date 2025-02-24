@@ -14,6 +14,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { BorrowOverviewPanel } from '../components/BorrowOverviewPanel'
 import { Percentage } from '@/domain/types/NumericValues'
 import { UserPositionSummary } from '@/domain/market-info/marketInfo'
+import { Trans } from '@lingui/react/macro'
 
 export interface BorrowViewProps {
   updatedPositionSummary: UserPositionSummary
@@ -48,7 +49,9 @@ export function BorrowView({
 }: BorrowViewProps) {
   return (
     <MultiPanelDialog>
-      <DialogTitle>{`Borrow ${borrowAsset.token.symbol}`}</DialogTitle>
+      <DialogTitle>
+        <Trans>Borrow {borrowAsset.token.symbol}</Trans>
+      </DialogTitle>
 
       <FormAndOverviewWrapper>
         <DialogForm form={form} assetsFields={assetsFields} selectorAssets={selectableAssets} />

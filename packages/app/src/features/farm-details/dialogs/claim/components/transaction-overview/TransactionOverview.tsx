@@ -3,12 +3,13 @@ import { DialogPanelTitle } from '@/features/dialogs/common/components/DialogPan
 import { getTokenImage } from '@/ui/assets'
 import { testIds } from '@/ui/utils/testIds'
 import { TxOverview } from '../../types'
-
+import { useLingui } from '@lingui/react/macro'
 export interface TransactionOverviewProps {
   txOverview: TxOverview
 }
 
 export function TransactionOverview({ txOverview }: TransactionOverviewProps) {
+  const { t } = useLingui()
   const {
     reward: { token, value },
   } = txOverview
@@ -16,7 +17,7 @@ export function TransactionOverview({ txOverview }: TransactionOverviewProps) {
   return (
     <div className="isolate">
       <DialogPanel className="shadow-none">
-        <DialogPanelTitle>Transaction overview</DialogPanelTitle>
+        <DialogPanelTitle>{t`Transaction overview`}</DialogPanelTitle>
         <div className="mt-6 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={getTokenImage(token.symbol)} className="h-6 w-6" />

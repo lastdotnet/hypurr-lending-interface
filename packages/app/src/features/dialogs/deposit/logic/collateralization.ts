@@ -1,19 +1,21 @@
 import { UserConfiguration, UserPosition, UserPositionSummary } from '@/domain/market-info/marketInfo'
+import { MessageDescriptor } from '@lingui/core'
+import { msg } from '@lingui/core/macro'
 
 export type CollateralType = 'disabled' | 'enabled' | 'unavailable' | 'isolated_enabled' | 'isolated_disabled'
 
-export function collateralTypeToDescription(type: CollateralType): string {
+export function collateralTypeToDescription(type: CollateralType): MessageDescriptor {
   switch (type) {
     case 'disabled':
-      return 'Disabled'
+      return msg`Disabled`
     case 'enabled':
-      return 'Enabled'
+      return msg`Enabled`
     case 'unavailable':
-      return 'Unavailable'
+      return msg`Unavailable`
     case 'isolated_enabled':
-      return 'Enabled (Isolated)'
+      return msg`Enabled (Isolated)`
     case 'isolated_disabled':
-      return 'Disabled (Isolated)'
+      return msg`Disabled (Isolated)`
   }
 }
 
