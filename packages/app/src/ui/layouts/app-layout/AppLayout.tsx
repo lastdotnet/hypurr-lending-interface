@@ -11,8 +11,10 @@ import { cn } from '@/ui/utils/style'
 import { TOP_BANNER_ID, TopBanner } from '../../atoms/top-banner/TopBanner'
 import { PageNotSupportedWarning } from './components/PageNotSupportedWarning'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
-import { hyperTestnet } from '@/config/chain/constants'
+import { hyperEVM, hyperTestnet } from '@/config/chain/constants'
 import { InkeepFloatingButton } from '@/ui/atoms/inkeep/InkeepFloatingButton'
+import { useWrongNetwork } from '@/domain/hooks/useWrongNetwork'
+import { isTestnet } from '@/config/consts'
 
 interface AppLayoutProps {
   children: React.ReactNode
@@ -21,9 +23,9 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   const [mobileMenuCollapsed, setMobileMenuCollapsed] = useState(true)
   const { pageSupported, pageName } = usePageChainId()
-  const { primaryWallet, network } = useDynamicContext()
+  const { primaryWallet } = useDynamicContext()
+  const isWrongNetwork = useWrongNetwork()
   const { handleCloseBanner, showBanner } = useBannerVisibility(TOP_BANNER_ID)
-  const isWrongNetwork = primaryWallet?.connector.supportsNetworkSwitching() && network && network !== hyperTestnet.id
 
   return (
     <div className={cn('flex min-h-screen flex-col')}>
@@ -49,7 +51,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             createPortal(
               <PageNotSupportedWarning
                 pageName={pageName}
-                openNetworkSelectDialog={() => primaryWallet?.switchNetwork(hyperTestnet.id)}
+                openNetworkSelectDialog={() => primaryWallet?.switchNetwork(isTestnet ? hyperTestnet.id : hyperEVM.id)}
                 className="z-[1000]"
               />,
               document.body,

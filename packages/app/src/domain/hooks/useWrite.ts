@@ -81,6 +81,10 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   // @note: workaround for wagmi serving results from cache even if enabled = false. https://github.com/wevm/wagmi/issues/888
   const simulationError = enabled ? _simulationError : undefined
 
+  if (simulationError) {
+    console.error(simulationError)
+  }
+
   const {
     writeContract,
     data: txHash,

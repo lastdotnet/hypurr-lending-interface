@@ -58,4 +58,4 @@ export function GuestView({
 }
 
 const tokens = assets.token
-const TOKEN_ICONS = [tokens.sdai, tokens.dai, tokens.usdc, tokens.usdt]
+const TOKEN_ICONS = [tokens.usdxl, tokens.usdc, tokens.hype, tokens.khype, tokens.solvbtc]

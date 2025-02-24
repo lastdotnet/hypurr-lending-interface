@@ -24,4 +24,4 @@ export function UnsupportedChainView({ isGuestMode, openChainModal, openConnectM
 }
 
 const tokens = assets.token
-const TOKEN_ICONS = [tokens.usds, tokens.susds, tokens.dai, tokens.sdai, tokens.usdc]
+const TOKEN_ICONS = [tokens.usdxl, tokens.usdc, tokens.hype, tokens.khype, tokens.solvbtc]

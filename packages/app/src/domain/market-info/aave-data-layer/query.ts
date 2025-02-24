@@ -1,7 +1,7 @@
 import { calculateAllUserIncentives, formatReservesAndIncentives, formatUserSummary } from '@aave/math-utils'
 import { Address, formatUnits } from 'viem'
 import { Config } from 'wagmi'
-import { multicall } from 'wagmi/actions'
+import { multicall, readContract } from 'wagmi/actions'
 
 import {
   lendingPoolAddressProviderAddress,
@@ -15,7 +15,7 @@ import {
 import { CheckedAddress } from '@/domain/types/CheckedAddress'
 import { queryOptions } from '@tanstack/react-query'
 import { getContractAddress } from '../../hooks/useContractAddress'
-import { A_USDXL_ADDRESS, USDXL_ADDRESS } from '@/config/consts'
+import { A_USDXL_ADDRESS, isTestnet, USDXL_ADDRESS } from '@/config/consts'
 import { calculateNetApy } from './calculateNetApy'
 
 export interface AaveDataLayerQueryKeyArgs {
@@ -77,6 +77,19 @@ function aaveDataLayerQueryFn({
   account,
 }: AaveDataLayerQueryFnArgs) {
   return async () => {
+    let facilitatorBucketData: [bigint, bigint] = [0n, 0n]
+
+    if (isTestnet) {
+      const [bucketCapacity, currentBucketLevel] = await readContract(wagmiConfig, {
+        chainId,
+        address: USDXL_ADDRESS,
+        abi: usdxlTokenAbi,
+        functionName: 'getFacilitatorBucket',
+        args: [A_USDXL_ADDRESS],
+      })
+      facilitatorBucketData = [bucketCapacity, currentBucketLevel]
+    }
+
     const contractData = await multicall(wagmiConfig, {
       allowFailure: false,
       chainId,
@@ -97,7 +110,7 @@ function aaveDataLayerQueryFn({
           address: uiPoolDataProvider,
           abi: uiPoolDataProviderAbi,
           functionName: 'getUserReservesData',
-          args: [lendingPoolAddressProvider, account ?? uiPoolDataProvider], // little hack to support properly formatted data for guest
+          args: [lendingPoolAddressProvider, account ?? uiPoolDataProvider],
         },
         {
           address: uiIncentiveDataProvider,
@@ -105,17 +118,12 @@ function aaveDataLayerQueryFn({
           functionName: 'getUserReservesIncentivesData',
           args: [lendingPoolAddressProvider, account ?? uiPoolDataProvider],
         },
-        {
-          address: USDXL_ADDRESS,
-          abi: usdxlTokenAbi,
-          functionName: 'getFacilitatorBucket',
-          args: [A_USDXL_ADDRESS],
-        },
       ],
     })
 
     return {
       contractData,
+      facilitatorBucketData,
       chainId,
       lendingPoolAddressProvider,
     }
@@ -128,14 +136,14 @@ export interface AaveDataLayerSelectFnParams {
 
 export function aaveDataLayerSelectFn({ timeAdvance }: AaveDataLayerSelectFnParams = {}) {
   return (data: AaveDataLayerQueryReturnType) => {
-    const { contractData, chainId, lendingPoolAddressProvider } = data
+    const { contractData, chainId, facilitatorBucketData, lendingPoolAddressProvider } = data
     const [
       [reserves, baseCurrencyInfo],
       reservesIncentiveData,
       [userReserves, userEmodeCategoryId],
       userReserveIncentivesData,
-      [bucketCapacity, currentBucketLevel],
     ] = contractData
+    const [bucketCapacity, currentBucketLevel] = facilitatorBucketData
 
     const currentTimestamp = Math.floor(Date.now() / 1000) + (timeAdvance ?? 0)
     const facilitatorBorrowLimit = formatUnits(bucketCapacity - currentBucketLevel, 18)

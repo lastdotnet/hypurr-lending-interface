@@ -21,6 +21,7 @@ export function getConfig(sandboxNetwork?: SandboxNetwork): Config {
     transports,
     storage,
     multiInjectedProviderDiscovery: false,
+    ssr: true,
   })
 
   return config

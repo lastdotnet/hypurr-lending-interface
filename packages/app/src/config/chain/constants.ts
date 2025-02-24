@@ -4,10 +4,11 @@ import { TokenSymbol } from '@/domain/types/TokenSymbol'
 import { base, mainnet } from 'viem/chains'
 
 import { type Chain } from 'viem'
+import { isTestnet } from '../consts'
 
 export const hyperTestnet = {
   id: 998,
-  name: 'HyperEVM',
+  name: 'Hyperliquid EVM Testnet',
   nativeCurrency: { name: 'Hype', symbol: 'HYPE', decimals: 18 },
   rpcUrls: {
     default: { http: ['https://rpc.hyperliquid-testnet.xyz/evm'] },
@@ -26,9 +27,9 @@ export const hyperTestnetDynamic = {
   blockExplorerUrls: [hyperTestnet.blockExplorers.default.url],
   chainId: hyperTestnet.id,
   networkId: hyperTestnet.id,
-  chainName: 'HyperEVM Testnet',
+  chainName: hyperTestnet.name,
   name: hyperTestnet.name,
-  vanityName: hyperTestnet.name,
+  vanityName: 'HyperEVM Testnet',
   iconUrls: ['/hyper-evm-logo.png'],
   nativeCurrency: {
     ...hyperTestnet.nativeCurrency,
@@ -37,7 +38,40 @@ export const hyperTestnetDynamic = {
   rpcUrls: [hyperTestnet.rpcUrls.default.http[0]],
 }
 
-export const SUPPORTED_CHAINS = [hyperTestnet] as const
+export const hyperEVM = {
+  id: 999,
+  name: 'HyperEVM',
+  nativeCurrency: { name: 'Hype', symbol: 'HYPE', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://rpc.hyperliquid.xyz/evm'] },
+  },
+  blockExplorers: {
+    default: { name: 'Blockscout', url: 'https://hyperliquid.cloud.blockscout.com' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+    },
+  },
+} as const satisfies Chain
+
+export const hyperEVMDynamic = {
+  blockExplorerUrls: [hyperEVM.blockExplorers.default.url],
+  chainId: hyperEVM.id,
+  networkId: hyperEVM.id,
+  chainName: hyperEVM.name,
+  name: hyperEVM.name,
+  vanityName: hyperEVM.name,
+  iconUrls: ['/hyper-evm-logo.png'],
+  nativeCurrency: {
+    ...hyperEVM.nativeCurrency,
+    iconUrl: '/hyper-evm-logo.png',
+  },
+  rpcUrls: [hyperEVM.rpcUrls.default.http[0]],
+}
+
+export const SUPPORTED_CHAINS = isTestnet ? [hyperTestnet] : [hyperEVM]
+export const SUPPORTED_CHAINS_DYNAMIC = isTestnet ? [hyperTestnetDynamic] : [hyperEVMDynamic]
 export const SUPPORTED_CHAIN_IDS = SUPPORTED_CHAINS.map((chain) => chain.id)
 
 export const farmStablecoinsEntryGroup: Record<1 | 8453, AssetsGroup> = {
