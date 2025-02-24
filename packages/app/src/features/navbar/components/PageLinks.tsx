@@ -15,6 +15,7 @@ import {
   UserPlusIcon,
 } from 'lucide-react'
 import { isTestnet } from '@/config/consts'
+import { useLingui } from '@lingui/react'
 
 export interface PageLinksInfo {
   daiSymbol?: string
@@ -72,6 +73,7 @@ const links = [
 ]
 
 export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksProps) {
+  const { i18n } = useLingui()
   return (
     <div
       className={cn(
@@ -81,7 +83,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
     >
       {links.map((link) =>
         link.to ? (
-          <NavLink key={link.label} to={link.to} onClick={closeMobileMenu} Icon={link.icon}>
+          <NavLink key={link.label} to={link.to} onClick={closeMobileMenu} Icon={link.icon} locale={i18n.locale}>
             {link.label}
           </NavLink>
         ) : (
