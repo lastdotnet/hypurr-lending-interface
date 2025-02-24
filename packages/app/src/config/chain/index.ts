@@ -12,6 +12,7 @@ import { USDXL_ADDRESS } from '../consts'
 const commonTokenSymbolToReplacedName = {
   [TokenSymbol('USDC')]: { name: 'Circle USD', symbol: TokenSymbol('USDC') },
   [TokenSymbol('SolvBTC')]: { name: 'SolvBTC', symbol: TokenSymbol('SolvBTC') },
+  [TokenSymbol('wstHYPE')]: { name: 'Staked Hype', symbol: TokenSymbol('wstHYPE') },
 }
 
 const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
@@ -123,7 +124,13 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
     permitSupport: {},
     tokensWithMalformedApprove: [],
     airdrop: {},
-    extraTokens: [],
+    extraTokens: [
+      {
+        symbol: TokenSymbol('wstHYPE'),
+        oracleType: 'zero-price',
+        address: CheckedAddress('0x94e8396e0869c9F2200760aF0621aFd240E1CF38'),
+      },
+    ],
     markets: {
       defaultAssetToBorrow: TokenSymbol('WHYPE'),
       nativeAssetInfo: {
@@ -138,6 +145,10 @@ const chainConfig: Record<SupportedChainId, ChainConfigEntry> = {
       },
       oracles: {
         [TokenSymbol('WHYPE')]: {
+          type: 'market-price',
+          providedBy: ['pyth'],
+        },
+        [TokenSymbol('wstHYPE')]: {
           type: 'market-price',
           providedBy: ['pyth'],
         },
