@@ -7,6 +7,7 @@ import BigNumber from 'bignumber.js'
 import { Percentage } from '@/domain/types/NumericValues'
 
 import { EModeView } from './EModeView'
+import { msg } from '@lingui/core/macro'
 
 const meta: Meta<typeof EModeView> = {
   title: 'Features/Dialogs/Views/EMode',
@@ -21,6 +22,7 @@ const meta: Meta<typeof EModeView> = {
     eModeCategories: {
       'No E-Mode': {
         name: 'No E-Mode',
+        translatedName: msg`No E-Mode`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH, tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: true,
         isSelected: false,
@@ -28,6 +30,7 @@ const meta: Meta<typeof EModeView> = {
       },
       'ETH Correlated': {
         name: 'ETH Correlated',
+        translatedName: msg`ETH Correlated`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: false,
         isSelected: true,
@@ -35,6 +38,7 @@ const meta: Meta<typeof EModeView> = {
       },
       Stablecoins: {
         name: 'Stablecoins',
+        translatedName: msg`Stablecoins`,
         tokens: [tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: false,
         isSelected: false,
@@ -82,6 +86,7 @@ export const ValidationIssue: Story = {
     eModeCategories: {
       'No E-Mode': {
         name: 'No E-Mode',
+        translatedName: msg`No E-Mode`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH, tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: false,
         isSelected: true,
@@ -89,6 +94,7 @@ export const ValidationIssue: Story = {
       },
       'ETH Correlated': {
         name: 'ETH Correlated',
+        translatedName: msg`ETH Correlated`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: true,
         isSelected: false,
@@ -96,6 +102,7 @@ export const ValidationIssue: Story = {
       },
       Stablecoins: {
         name: 'Stablecoins',
+        translatedName: msg`Stablecoins`,
         tokens: [tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: false,
         isSelected: false,
@@ -124,6 +131,7 @@ export const RiskWarning: Story = {
     eModeCategories: {
       'No E-Mode': {
         name: 'No E-Mode',
+        translatedName: msg`No E-Mode`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH, tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: false,
         isSelected: true,
@@ -131,6 +139,7 @@ export const RiskWarning: Story = {
       },
       'ETH Correlated': {
         name: 'ETH Correlated',
+        translatedName: msg`ETH Correlated`,
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: true,
         isSelected: false,
@@ -138,6 +147,7 @@ export const RiskWarning: Story = {
       },
       Stablecoins: {
         name: 'Stablecoins',
+        translatedName: msg`Stablecoins`,
         tokens: [tokens.DAI, tokens.USDC, tokens.USDT],
         isActive: false,
         isSelected: false,

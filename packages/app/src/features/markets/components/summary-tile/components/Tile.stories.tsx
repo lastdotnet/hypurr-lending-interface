@@ -4,6 +4,7 @@ import { getMobileStory, getTabletStory } from '@storybook/viewports'
 
 import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { assets } from '@/ui/assets'
+import { msg } from '@lingui/core/macro'
 
 import { Tile } from './Tile'
 
@@ -13,7 +14,7 @@ const meta: Meta<typeof Tile> = {
   decorators: [WithTooltipProvider()],
   args: {
     icon: assets.markets.lock,
-    title: 'Total value locked',
+    title: msg`Total value locked`,
     USDValue: NormalizedUnitNumber(12_300_000_000),
     description: 'Total value locked lengthy description',
   },

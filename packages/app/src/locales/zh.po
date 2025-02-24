@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/features/actions/flavours/withdraw-from-savings/WithdrawFromSavingsActionRow.tsx:34
 msgid " and send"
@@ -549,6 +555,12 @@ msgstr ""
 msgid "Estimated Rewards"
 msgstr ""
 
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:33
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:97
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:142
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:23
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:36
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:49
 #: src/domain/e-mode/constants.ts:11
 msgid "ETH Correlated"
 msgstr ""
@@ -733,6 +745,11 @@ msgstr ""
 msgid "No debt"
 msgstr ""
 
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:25
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:89
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:134
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:90
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:103
 #: src/domain/e-mode/constants.ts:10
 msgid "No E-Mode"
 msgstr ""
@@ -893,6 +910,11 @@ msgstr ""
 msgid "Soon"
 msgstr ""
 
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:41
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:105
+#: src/features/dialogs/e-mode/views/EModeView.stories.ts:150
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:64
+#: src/features/dialogs/e-mode/components/EModeCategoryTile.stories.ts:77
 #: src/domain/e-mode/constants.ts:12
 msgid "Stablecoins"
 msgstr ""
@@ -1002,6 +1024,7 @@ msgid "Total supplied"
 msgstr ""
 
 #: src/features/markets/components/summary-tile/SummaryTile.tsx:23
+#: src/features/markets/components/summary-tile/components/Tile.stories.tsx:17
 msgid "Total value locked"
 msgstr ""
 
