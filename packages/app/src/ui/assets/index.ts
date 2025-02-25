@@ -69,6 +69,7 @@ import walletConnect from './wallet-icons/wallet-connect.svg?url'
 import wallet from './wallet.svg?url'
 import warning from './warning.svg?url'
 import xCircle from './x-circle.svg?url'
+import wsthype from './tokens/wsthype.svg?url'
 
 export const assets = {
   hypurrPaw,
@@ -151,6 +152,7 @@ export const assets = {
     solvbtc,
     sttesth,
     khype,
+    wsthype,
     unknown,
   },
   oracleProviders: {
