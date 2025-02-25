@@ -17,11 +17,7 @@ export function NewsletterDialogContent() {
             }}
             src="https://embeds.beehiiv.com/ef1709ee-371e-4dd3-b334-431881f91eb9"
             data-test-id="beehiiv-embed"
-            className="aspect-square w-full xl:aspect-[3/2]"
-            style={{
-              border: 'none',
-              maxHeight: '70vh',
-            }}
+            className="aspect-square max-h-[70vh] w-full xl:aspect-[3/2]"
           />
         </div>
       </DialogPanel>
