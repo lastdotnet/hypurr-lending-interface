@@ -26,8 +26,8 @@ const meta: Meta<typeof EModeView> = {
         isSelected: false,
         onSelect: () => {},
       },
-      'ETH Correlated': {
-        name: 'ETH Correlated',
+      'HYPE Correlated': {
+        name: 'HYPE Correlated',
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: false,
         isSelected: true,
@@ -41,7 +41,7 @@ const meta: Meta<typeof EModeView> = {
         onSelect: () => {},
       },
     },
-    selectedEModeCategoryName: 'ETH Correlated',
+    selectedEModeCategoryName: 'HYPE Correlated',
     currentPositionOverview: {
       healthFactor: new BigNumber(2.5),
       maxLTV: Percentage(0.8),
@@ -87,8 +87,8 @@ export const ValidationIssue: Story = {
         isSelected: true,
         onSelect: () => {},
       },
-      'ETH Correlated': {
-        name: 'ETH Correlated',
+      'HYPE Correlated': {
+        name: 'HYPE Correlated',
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: true,
         isSelected: false,
@@ -129,8 +129,8 @@ export const RiskWarning: Story = {
         isSelected: true,
         onSelect: () => {},
       },
-      'ETH Correlated': {
-        name: 'ETH Correlated',
+      'HYPE Correlated': {
+        name: 'HYPE Correlated',
         tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
         isActive: true,
         isSelected: false,

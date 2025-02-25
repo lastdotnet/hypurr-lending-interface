@@ -17,8 +17,8 @@ export const NoEMode: Story = {
   },
 }
 
-export const ETHCorrelated: Story = {
-  name: 'ETH Correlated',
+export const HYPECorrelated: Story = {
+  name: 'HYPE Correlated',
   args: {
     categoryId: 1,
   },

@@ -42,7 +42,7 @@ export function getLiquidationDetails({
     (collateral) => marketInfo.findOneReserveBySymbol(collateral.token.symbol).eModeCategory?.id,
   )
   const allCollateralsETHCorrelated = collateralEModeIds.every(
-    (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'ETH Correlated',
+    (id) => eModeCategoryIdToName[id as keyof typeof eModeCategoryIdToName] === 'HYPE Correlated',
   )
   const WETHPrice = marketInfo.findTokenBySymbol(TokenSymbol('WHYPE'))?.unitPriceUsd
   if (allCollateralsETHCorrelated && WETHPrice) {

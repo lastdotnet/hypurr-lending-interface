@@ -553,7 +553,7 @@ test.describe('Withdraw dialog', () => {
       await myPortfolioPage.expectHealthFactor('2.3')
       await myPortfolioPage.clickEModeButtonAction()
       const eModeDialog = new EModeDialogPageObject(page)
-      await eModeDialog.clickEModeCategoryTileAction('ETH Correlated')
+      await eModeDialog.clickEModeCategoryTileAction('HYPE Correlated')
       await eModeDialog.actionsContainer.acceptAllActionsAction(1)
       await eModeDialog.viewInMyPortfolioAction()
       await myPortfolioPage.expectHealthFactor('2.69')
