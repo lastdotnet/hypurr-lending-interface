@@ -12,7 +12,7 @@ import { EModeDialogPageObject } from './EModeDialog.PageObject'
 test.describe('E-Mode dialog', () => {
   const fork = setupFork({ blockNumber: DEFAULT_BLOCK_NUMBER, chainId: mainnet.id, useTenderlyVnet: true })
 
-  test.describe('ETH correlated assets borrowed', () => {
+  test.describe('HYPE correlated assets borrowed', () => {
     let eModeDialog: EModeDialogPageObject
     let borrowDialog: DialogPageObject
     let myPortfolioPage: MyPortfolioPageObject
@@ -44,10 +44,10 @@ test.describe('E-Mode dialog', () => {
       await borrowDialog.viewInMyPortfolioAction()
     })
 
-    test('can switch from no e-mode to eth correlated', async () => {
+    test('can switch from no e-mode to hype correlated', async () => {
       await myPortfolioPage.clickEModeButtonAction()
       await eModeDialog.expectEModeCategoryTileStatus('No E-Mode', 'Active')
-      await eModeDialog.expectEModeCategoryTileStatus('ETH Correlated', 'Inactive')
+      await eModeDialog.expectEModeCategoryTileStatus('HYPE Correlated', 'Inactive')
       await eModeDialog.expectEModeTransactionOverview({
         variant: 'e-mode-no-change',
         availableAssets: {
@@ -57,12 +57,12 @@ test.describe('E-Mode dialog', () => {
         maxLtv: '68.50%',
       })
 
-      await eModeDialog.clickEModeCategoryTileAction('ETH Correlated')
+      await eModeDialog.clickEModeCategoryTileAction('HYPE Correlated')
       await eModeDialog.actionsContainer.expectActions([{ type: 'setUserEMode', eModeCategoryId: 1 }])
       await eModeDialog.expectEModeTransactionOverview({
         variant: 'e-mode-change',
         availableAssets: {
-          category: 'ETH Correlated',
+          category: 'HYPE Correlated',
           assets: 'WETH, wstETH, rETH',
         },
         hf: {
@@ -76,9 +76,9 @@ test.describe('E-Mode dialog', () => {
       })
 
       await eModeDialog.actionsContainer.acceptAllActionsAction(1)
-      await eModeDialog.expectEModeSuccessPage('ETH Correlated')
+      await eModeDialog.expectEModeSuccessPage('HYPE Correlated')
       await eModeDialog.viewInMyPortfolioAction()
-      await myPortfolioPage.expectEModeButtonText('ETH Correlated')
+      await myPortfolioPage.expectEModeButtonText('HYPE Correlated')
     })
 
     test('cannot switch from no e-mode to stablecoins', async () => {
@@ -90,13 +90,13 @@ test.describe('E-Mode dialog', () => {
       await eModeDialog.actionsContainer.expectDisabledActions([{ type: 'setUserEMode', eModeCategoryId: 2 }])
     })
 
-    test('can enter eth correlated e-mode and switch back to no e-mode', async () => {
+    test('can enter hype correlated e-mode and switch back to no e-mode', async () => {
       await myPortfolioPage.clickEModeButtonAction()
-      await eModeDialog.setEModeAction('ETH Correlated')
-      await myPortfolioPage.expectEModeButtonText('ETH Correlated')
+      await eModeDialog.setEModeAction('HYPE Correlated')
+      await myPortfolioPage.expectEModeButtonText('HYPE Correlated')
       await myPortfolioPage.clickEModeButtonAction()
 
-      await eModeDialog.expectEModeCategoryTileStatus('ETH Correlated', 'Active')
+      await eModeDialog.expectEModeCategoryTileStatus('HYPE Correlated', 'Active')
       await eModeDialog.expectEModeCategoryTileStatus('No E-Mode', 'Inactive')
       await eModeDialog.clickEModeCategoryTileAction('No E-Mode')
 
@@ -122,8 +122,8 @@ test.describe('E-Mode dialog', () => {
 
     test('cannot switch back to no e-mode if hf below 1', async () => {
       await myPortfolioPage.clickEModeButtonAction()
-      await eModeDialog.setEModeAction('ETH Correlated')
-      await myPortfolioPage.expectEModeButtonText('ETH Correlated')
+      await eModeDialog.setEModeAction('HYPE Correlated')
+      await myPortfolioPage.expectEModeButtonText('HYPE Correlated')
 
       await myPortfolioPage.clickBorrowButtonAction('WETH')
       await borrowDialog.fillAmountAction(10)
@@ -203,9 +203,9 @@ test.describe('E-Mode dialog', () => {
       await myPortfolioPage.expectEModeButtonText('Stablecoins')
     })
 
-    test('cannot switch from no e-mode to eth correlated', async () => {
+    test('cannot switch from no e-mode to hype correlated', async () => {
       await myPortfolioPage.clickEModeButtonAction()
-      await eModeDialog.clickEModeCategoryTileAction('ETH Correlated')
+      await eModeDialog.clickEModeCategoryTileAction('HYPE Correlated')
       await eModeDialog.expectAlertMessage(
         setUserEModeValidationIssueToMessage['borrowed-assets-emode-category-mismatch'],
       )
@@ -304,16 +304,16 @@ test.describe('E-Mode dialog', () => {
       await eModeDialog.actionsContainer.expectDisabledActions([{ type: 'setUserEMode', eModeCategoryId: 2 }])
     })
 
-    test('cannot switch from no e-mode to eth correlated', async () => {
+    test('cannot switch from no e-mode to hype correlated', async () => {
       await myPortfolioPage.clickEModeButtonAction()
       await eModeDialog.expectEModeCategoryTileStatus('No E-Mode', 'Active')
-      await eModeDialog.expectEModeCategoryTileStatus('ETH Correlated', 'Inactive')
+      await eModeDialog.expectEModeCategoryTileStatus('HYPE Correlated', 'Inactive')
 
-      await eModeDialog.clickEModeCategoryTileAction('ETH Correlated')
+      await eModeDialog.clickEModeCategoryTileAction('HYPE Correlated')
       await eModeDialog.expectEModeTransactionOverview({
         variant: 'e-mode-change',
         availableAssets: {
-          category: 'ETH Correlated',
+          category: 'HYPE Correlated',
           assets: 'WETH, wstETH, rETH',
         },
         hf: {
@@ -356,14 +356,14 @@ test.describe('E-Mode dialog', () => {
     test('can switch from no e-mode to eth correleated', async () => {
       await myPortfolioPage.clickEModeButtonAction()
       await eModeDialog.expectEModeCategoryTileStatus('No E-Mode', 'Active')
-      await eModeDialog.expectEModeCategoryTileStatus('ETH Correlated', 'Inactive')
+      await eModeDialog.expectEModeCategoryTileStatus('HYPE Correlated', 'Inactive')
 
-      await eModeDialog.clickEModeCategoryTileAction('ETH Correlated')
+      await eModeDialog.clickEModeCategoryTileAction('HYPE Correlated')
       await eModeDialog.actionsContainer.expectActions([{ type: 'setUserEMode', eModeCategoryId: 1 }])
       await eModeDialog.expectEModeTransactionOverview({
         variant: 'no-borrow',
         availableAssets: {
-          category: 'ETH Correlated',
+          category: 'HYPE Correlated',
           assets: 'WETH, wstETH, rETH',
         },
         maxLtv: {
@@ -373,9 +373,9 @@ test.describe('E-Mode dialog', () => {
       })
 
       await eModeDialog.actionsContainer.acceptAllActionsAction(1)
-      await eModeDialog.expectEModeSuccessPage('ETH Correlated')
+      await eModeDialog.expectEModeSuccessPage('HYPE Correlated')
       await eModeDialog.viewInMyPortfolioAction()
-      await myPortfolioPage.expectEModeButtonText('ETH Correlated')
+      await myPortfolioPage.expectEModeButtonText('HYPE Correlated')
     })
 
     test('can switch from no e-mode to stablecoins', async () => {
@@ -461,8 +461,8 @@ test.describe('E-Mode dialog', () => {
         await myPortfolioPage.expectAssetToBeInBorrowTable('WETH')
 
         await myPortfolioPage.clickEModeButtonAction()
-        await eModeDialog.setEModeAction('ETH Correlated')
-        await myPortfolioPage.expectEModeButtonText('ETH Correlated')
+        await eModeDialog.setEModeAction('HYPE Correlated')
+        await myPortfolioPage.expectEModeButtonText('HYPE Correlated')
       })
 
       test('shows risk warning', async () => {

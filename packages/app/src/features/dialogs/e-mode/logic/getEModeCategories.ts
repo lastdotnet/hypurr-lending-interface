@@ -29,7 +29,7 @@ export function getEModeCategories(
 
   return {
     'No E-Mode': getEModeCategory(0),
-    'ETH Correlated': getEModeCategory(1),
+    'HYPE Correlated': getEModeCategory(1),
     Stablecoins: getEModeCategory(2),
   }
 }

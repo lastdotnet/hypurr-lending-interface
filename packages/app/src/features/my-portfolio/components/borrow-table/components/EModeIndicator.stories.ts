@@ -22,8 +22,8 @@ export const EModeOff: Story = {
   },
 }
 
-export const EModeETHCorrelated: Story = {
-  name: 'E-Mode ETH Correlated',
+export const EModeHYPECorrelated: Story = {
+  name: 'E-Mode HYPE Correlated',
   args: {
     eModeCategoryId: 1,
   },

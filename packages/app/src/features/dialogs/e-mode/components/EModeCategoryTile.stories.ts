@@ -18,7 +18,7 @@ type Story = StoryObj<typeof EModeCategoryTile>
 export const ETHCorrelated: Story = {
   args: {
     eModeCategory: {
-      name: 'ETH Correlated',
+      name: 'HYPE Correlated',
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: false,
       isSelected: false,
@@ -30,7 +30,7 @@ export const ETHCorrelated: Story = {
 export const ETHCorrelatedSelected: Story = {
   args: {
     eModeCategory: {
-      name: 'ETH Correlated',
+      name: 'HYPE Correlated',
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: false,
       isSelected: true,
@@ -42,7 +42,7 @@ export const ETHCorrelatedSelected: Story = {
 export const ETHCorrelatedActive: Story = {
   args: {
     eModeCategory: {
-      name: 'ETH Correlated',
+      name: 'HYPE Correlated',
       tokens: [tokens.ETH, tokens.rETH, tokens.wstETH],
       isActive: true,
       isSelected: false,

@@ -104,7 +104,7 @@ describe(getLiquidationDetails.name, () => {
     })
   })
 
-  it('calculates liquidation price for eth correlated assets', () => {
+  it('calculates liquidation price for hype correlated assets', () => {
     const marketInfo = getMockedMarketInfo()
     const collaterals = [
       { token: ethLike, value: NormalizedUnitNumber(2) },
@@ -135,7 +135,7 @@ function getMockedMarketInfo(): MarketInfo {
       return {
         token: ethLike,
         eModeCategory: {
-          id: 1, // ETH Correlated
+          id: 1, // HYPE Correlated
         },
       }
     }
@@ -144,7 +144,7 @@ function getMockedMarketInfo(): MarketInfo {
       return {
         token: wstETHLike,
         eModeCategory: {
-          id: 1, // ETH Correlated
+          id: 1, // HYPE Correlated
         },
       }
     }
