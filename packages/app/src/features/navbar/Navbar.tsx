@@ -5,7 +5,6 @@ import { MobileMenuButton } from './components/MobileMenuButton'
 import { PageLinks } from './components/PageLinks'
 import { useNavbar } from './logic/useNavbar'
 import { AirdropBadge } from './components/airdrop-badge/AirdropBadge'
-import { useAccount } from '@/domain/hooks/useAccount'
 import { Logo } from './components/Logo'
 import { FooterLinks } from './components/FooterLinks'
 import { WalletButton } from './components/wallet-button/WalletButton'
@@ -17,7 +16,6 @@ export interface NavbarProps {
 }
 
 export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner, className }: NavbarProps) {
-  const account = useAccount()
   const { savingsInfo, pageLinksInfo } = useNavbar()
 
   function closeMobileMenu() {
@@ -55,11 +53,9 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner
             pageLinksInfo={pageLinksInfo}
           />
 
-          {account && (
-            <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
-              <AirdropBadge isLoading={false} isError={false} className="w-full py-1.5 xl:w-40" />
-            </div>
-          )}
+          <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
+            <AirdropBadge isLoading={false} isError={false} className="w-full py-1.5 xl:w-40" />
+          </div>
         </div>
 
         <FooterLinks mobileMenuCollapsed={mobileMenuCollapsed} />

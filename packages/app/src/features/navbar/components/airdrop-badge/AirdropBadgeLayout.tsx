@@ -8,6 +8,8 @@ import { AirdropDetails } from './AirdropDetails'
 import { DropdownMenuContent, DropdownMenuTrigger } from '@/ui/atoms/dropdown/DropdownMenu'
 import { DropdownMenu } from '@/ui/atoms/dropdown/DropdownMenu'
 import { cn } from '@/ui/utils/style'
+import { useAccount } from '@/domain/hooks/useAccount'
+import { MinusIcon } from 'lucide-react'
 
 interface AirdropBadgeLayoutProps {
   amount?: NormalizedUnitNumber
@@ -24,6 +26,13 @@ export function AirdropBadgeLayout({
   isGrowing,
   className,
 }: AirdropBadgeLayoutProps) {
+  const account = useAccount()
+  const points = account ? (
+    SPK_MOCK_TOKEN.format(amount, { style: 'compact' })
+  ) : (
+    <MinusIcon className="h-4 w-4 pr-0.5" strokeWidth={3} />
+  )
+
   return (
     <NavbarActionWrapper label="">
       <DropdownMenu>
@@ -38,8 +47,8 @@ export function AirdropBadgeLayout({
                 {isLoading ? (
                   <Skeleton className="h-5 w-7" />
                 ) : (
-                  <span className="font-bold text-white text-xs" data-chromatic="ignore">
-                    {SPK_MOCK_TOKEN.format(amount, { style: 'compact' })} points
+                  <span className="flex items-center font-bold text-white text-xs" data-chromatic="ignore">
+                    {points} points
                   </span>
                 )}
               </span>
