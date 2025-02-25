@@ -7,7 +7,6 @@ import { Opaque } from './types'
  */
 export type TokenSymbol = Opaque<string, 'TokenSymbol'>
 export function TokenSymbol(symbol: string): TokenSymbol {
-  assert(symbol.length > 0 && symbol.length <= 9, 'Token symbol should be between 1 and 9 characters.')
-
+  assert(symbol.length > 0, 'Token symbol should have at least 1 character.')
   return symbol as TokenSymbol
 }
