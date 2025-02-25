@@ -7,8 +7,8 @@ import { ASSET_DETAILS_QUERY_KEY, PER_PAGE } from '@/app/isolated/markets/_/Asse
 import { getAssetDetails } from '@/app/isolated/markets/_/AssetDetails/getAssetDetails'
 import { MARKET_DETAILS_QUERY_KEY } from '@/app/isolated/markets/_/MarketDetails/fetching-constants'
 import { getMarketDetails } from '@/app/isolated/markets/_/MarketDetails/getMarketDetails'
-import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 const PAGE_TITLE = 'Isolated markets'
 export const metadata = {
@@ -30,15 +30,17 @@ const MarketsPage = async () => {
   })
 
   return (
-    <Page className="space-y-4">
-      <Heading className="text-center" level={1}>
-        {PAGE_TITLE}
-      </Heading>
+    <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+      <div className="flex flex-row items-center gap-4">
+        <Typography variant="h2" gradient>
+          {PAGE_TITLE}
+        </Typography>
+      </div>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MarketDetails />
         <AssetDetails />
       </HydrationBoundary>
-    </Page>
+    </PageLayout>
   )
 }
 

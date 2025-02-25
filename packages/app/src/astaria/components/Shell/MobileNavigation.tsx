@@ -18,7 +18,7 @@ export const MobileNavigation = () => {
     <>
       <Sheet onOpenChange={setIsOpen} open={isOpen}>
         <SheetTrigger asChild>
-          <Button className="shrink-0 lg:hidden" emphasis="low" size="icon">
+          <Button className="shrink-0 sm:hidden" emphasis="low" size="icon">
             {isOpen ? (
               <IconX aria-label="Close navigation menu" />
             ) : (

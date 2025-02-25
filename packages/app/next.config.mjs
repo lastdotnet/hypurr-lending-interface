@@ -4,9 +4,6 @@ const buildSha = execSync('git rev-parse --short HEAD').toString().trimEnd()
 const buildTime = new Date().toLocaleString('en-gb')
 
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   reactStrictMode: true,
   distDir: './dist',
   poweredByHeader: false,
@@ -114,9 +111,14 @@ const nextConfig = {
       ...(config.ignoreWarnings || []),
       { module: /typeorm/ },
       { module: /@subsquid/ },
+      { module: /@opentelemetry/ },
+      { module: /require-in-the-middle/ },
       {
-        message: /the request of a dependency is an expression/,
-        module: /app-root-path/,
+        message: /Critical dependency: the request of a dependency is an expression/,
+      },
+      {
+        message:
+          /Critical dependency: require function is used in a way in which dependencies cannot be statically extracted/,
       },
     ]
     config.ignoreWarnings = warning

@@ -4,11 +4,11 @@ import Link from 'next/link'
 import { Leaderboard } from '@/app/isolated/points/leaderboard/_'
 import { PER_PAGE, POINTS_LEADERBOARD_QUERY_KEY } from '@/app/isolated/points/leaderboard/_/fetching-constants'
 import { getLeaderboard } from '@/app/isolated/points/leaderboard/_/getLeaderboard'
-import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page'
 import { Tabs, TabsList, TabsTrigger } from '@/astaria/components/Tabs'
 import { TextLink } from '@/astaria/components/TextLink'
 import { ROUTES } from '@/astaria/constants/routes'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 const PAGE_TITLE = 'Points leaderboard'
 export const metadata = {
@@ -25,16 +25,16 @@ const LeaderboardPage = async () => {
   })
 
   return (
-    <Page className="space-y-4" size="narrow">
-      <section>
-        <Heading className="text-center" level={1}>
+    <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+      <div className="flex flex-row items-center justify-between gap-4">
+        <Typography variant="h2" gradient>
           {PAGE_TITLE}
-        </Heading>
+        </Typography>
         <div className="text-center">
           <TextLink href={ROUTES.POINTS_HOW_TO_EARN}>How do I earn points?</TextLink>
         </div>
-      </section>
-      <Tabs defaultValue="leaderboard">
+      </div>
+      <Tabs className="mx-auto max-w-sm" defaultValue="leaderboard">
         <TabsList>
           <TabsTrigger asChild value="history">
             <Link href={ROUTES.POINTS_HISTORY}>Points history</Link>
@@ -45,7 +45,7 @@ const LeaderboardPage = async () => {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Leaderboard />
       </HydrationBoundary>
-    </Page>
+    </PageLayout>
   )
 }
 export default LeaderboardPage

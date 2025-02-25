@@ -1,6 +1,6 @@
 import { NotificationToggle } from '@/app/wallet-notifications/settings/_/NotificationToggle'
-import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 const PAGE_TITLE = 'Notification settings'
 export const metadata = {
@@ -8,12 +8,14 @@ export const metadata = {
 }
 
 const NotificationsSettingsPage = async () => (
-  <Page className="space-y-4">
-    <Heading className="text-center" level={1}>
-      {PAGE_TITLE}
-    </Heading>
+  <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+    <div className="flex flex-row items-center gap-4">
+      <Typography variant="h2" gradient>
+        {PAGE_TITLE}
+      </Typography>
+    </div>
     <NotificationToggle />
-  </Page>
+  </PageLayout>
 )
 
 export default NotificationsSettingsPage

@@ -1,10 +1,10 @@
 import { type ReactElement, type ReactNode } from 'react'
 
 import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page/Page'
 import { PageContent } from '@/astaria/components/Page/PageContent'
 import { TextLink } from '@/astaria/components/TextLink'
 import { ASTARIA_STATUS } from '@/astaria/constants/urls'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 interface ErrorPage {
   actions?: ReactElement
@@ -13,9 +13,9 @@ interface ErrorPage {
 }
 
 export const ErrorPageWrapper = ({ children }: { children: ReactNode }) => (
-  <Page>
+  <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
     <PageContent className="mx-auto max-w-xl space-y-4 text-center">{children}</PageContent>
-  </Page>
+  </PageLayout>
 )
 
 export const ErrorPage = ({ actions, message, title }: ErrorPage) => (

@@ -1,18 +1,20 @@
 import { Card, CardSection } from '@/astaria/components/Card'
 import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page/Page'
 import { APP_DATA, APP_TERMS } from '@/astaria/config/config'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 ////////////////////////////////////////////////////////////////
 //  IMPORTANT: DO *NOT* UPDATE THE CONTENTS OF THIS FILE!!!   //
 ////////////////////////////////////////////////////////////////
 
 const PrivacyPolicyCaliforniaPage = () => (
-  <Page size="paper">
-    <Heading className="mb-6 text-center" level={1}>
-      Astaria Privacy Policy (California Residents)
-    </Heading>
-
+  <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+    <div className="flex flex-row items-center gap-4">
+      <Typography variant="h2" gradient>
+        Astaria Privacy Policy (California Residents)
+      </Typography>
+    </div>
     <Card>
       <CardSection>
         <Heading className="mb-4" level={3}>
@@ -366,7 +368,7 @@ const PrivacyPolicyCaliforniaPage = () => (
         <p>UPDATED: {APP_TERMS.UPDATED_AT}</p>
       </CardSection>
     </Card>
-  </Page>
+  </PageLayout>
 )
 
 export default PrivacyPolicyCaliforniaPage

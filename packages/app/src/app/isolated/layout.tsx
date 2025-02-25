@@ -1,9 +1,12 @@
 import { SiteNavigation } from '@/astaria/components/Shell/SiteNavigation'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 export default function ({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-20 flex h-full min-h-screen min-w-80 flex-col">
-      <SiteNavigation />
+    <div>
+      <PageLayout className="max-w-6xl gap-8 pt-0 pb-0">
+        <SiteNavigation />
+      </PageLayout>
       {children}
     </div>
   )

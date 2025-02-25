@@ -4,9 +4,9 @@ import { ExpertMode } from '@/app/isolated/intents/_/ExpertMode'
 import { IntentFeed } from '@/app/isolated/intents/_/IntentFeed'
 import { TransmitIntentDialog } from '@/app/isolated/intents/_/TransmitIntent/TransmitIntentDialog'
 import { INTENTS_QUERY_KEY, PER_PAGE } from '@/app/isolated/intents/_/constants'
-import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page'
 import { getIntents } from '@/astaria/hooks/useIntents/getIntents'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 const IntentFeedPage = async () => {
   const queryClient = new QueryClient()
@@ -28,18 +28,22 @@ const IntentFeedPage = async () => {
   })
 
   return (
-    <Page className="space-y-5">
-      <div className="flex items-center justify-end gap-5">
+    <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+      <div className="flex flex-row justify-between gap-4">
+        <Typography variant="h2" gradient>
+          Intents
+        </Typography>
         <TransmitIntentDialog />
       </div>
-      <div className="flex items-center justify-between gap-5">
-        <Heading level={1}>Intents</Heading>
+
+      <div className="flex items-center justify-end gap-5">
         <ExpertMode />
       </div>
+
       <HydrationBoundary state={dehydrate(queryClient)}>
         <IntentFeed />
       </HydrationBoundary>
-    </Page>
+    </PageLayout>
   )
 }
 

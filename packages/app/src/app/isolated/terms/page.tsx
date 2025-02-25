@@ -1,21 +1,23 @@
 import { Card, CardSection } from '@/astaria/components/Card'
 import { Heading } from '@/astaria/components/Heading'
-import { Page } from '@/astaria/components/Page/Page'
 import { SupportLink } from '@/astaria/components/SupportLink'
 import { TextLink } from '@/astaria/components/TextLink'
 import { APP_DATA, APP_TERMS } from '@/astaria/config/config'
 import { CONTACT_EMAIL } from '@/astaria/constants/emails'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { PageLayout } from '@/ui/layouts/PageLayout'
 
 ////////////////////////////////////////////////////////////////
 //  IMPORTANT: DO *NOT* UPDATE THE CONTENTS OF THIS FILE!!!   //
 ////////////////////////////////////////////////////////////////
 
 const TermsOfUsePage = () => (
-  <Page size="paper">
-    <Heading className="mb-6 text-center" level={1}>
-      Astaria Terms of Use
-    </Heading>
-
+  <PageLayout className="max-w-6xl gap-8 px-3 lg:px-0">
+    <div className="flex flex-row items-center gap-4">
+      <Typography variant="h2" gradient>
+        Astaria Terms of Use
+      </Typography>
+    </div>
     <Card>
       <CardSection>
         <Heading className="mb-4" level={3}>
@@ -440,7 +442,7 @@ const TermsOfUsePage = () => (
         <p>UPDATED: {APP_TERMS?.UPDATED_AT}</p>
       </CardSection>
     </Card>
-  </Page>
+  </PageLayout>
 )
 
 export default TermsOfUsePage
