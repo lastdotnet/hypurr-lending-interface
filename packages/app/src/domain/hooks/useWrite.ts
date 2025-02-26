@@ -86,7 +86,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isSimulationError) {
-      console.error('simulationError', simulationError)
+      console.error(simulationError)
     }
   }, [isSimulationError])
 
