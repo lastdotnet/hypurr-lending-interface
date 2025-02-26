@@ -54,7 +54,6 @@ export function FarmDetailsView({
   openDefaultedStakeDialog,
   openClaimDialog,
   openConnectModal,
-  openSandboxModal,
   openUnstakeDialog,
   pointsSyncStatus,
 }: FarmDetailsViewProps) {
@@ -119,7 +118,6 @@ export function FarmDetailsView({
             iconPaths={farm.entryAssetsGroup.assets.map((token) => getTokenImage(token))}
             action={openConnectModal}
             buttonText="Connect wallet"
-            openSandboxModal={openSandboxModal}
           />
         )}
       </div>

@@ -14,7 +14,6 @@ const meta: Meta<typeof UnsupportedChainView> = {
   args: {
     openChainModal: () => {},
     openConnectModal: () => {},
-    openSandboxModal: () => {},
     isGuestMode: false,
   },
 }

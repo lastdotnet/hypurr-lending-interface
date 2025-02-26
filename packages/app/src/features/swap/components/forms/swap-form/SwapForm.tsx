@@ -1,0 +1,50 @@
+import { Buy } from './Buy'
+import { Sell } from './Sell'
+import { Form } from '@/ui/atoms/form/Form'
+import { UseFormReturn } from 'react-hook-form'
+import { SwapFormSchema } from '@/features/swap/logic/useSwap'
+import { ToggleButton } from './ToggleButton'
+import { Button } from '@/ui/atoms/button/Button'
+import { Typography } from '@/ui/atoms/typography/Typography'
+import { TokenWithBalance } from '@/domain/common/types'
+import { PriceImpactWarning } from '@/features/swap/components/PriceImpactWarning'
+import { Percentage } from '@/domain/types/NumericValues'
+
+interface SwapFormProps {
+  form: UseFormReturn<SwapFormSchema>
+  guestMode: boolean
+  assets: TokenWithBalance[]
+  openConnectModal: () => void
+}
+
+export function SwapForm(props: SwapFormProps) {
+  const { form, guestMode, assets, openConnectModal } = props
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(() => {})}>
+        <div className="relative z-10">
+          <Sell control={form.control} assets={assets} selectedAssets={assets} />
+          <ToggleButton className="absolute right-1/2 bottom-0 translate-x-1/2 translate-y-3/4" />
+        </div>
+        <Buy control={form.control} assets={assets} selectedAssets={assets} />
+
+        {guestMode ? (
+          <Button className="mt-4 w-full rounded-lg" onClick={openConnectModal}>
+            Connect wallet
+          </Button>
+        ) : (
+          <Button className="mt-4 w-full rounded-lg">Wrap</Button>
+        )}
+      </form>
+
+      <div className="flex justify-between">
+        <PriceImpactWarning percentage={Percentage(0.01)} />
+
+        <Typography variant="span" className="text-white/50 text-xs">
+          Fees: $0.1
+        </Typography>
+      </div>
+    </Form>
+  )
+}

@@ -45,6 +45,7 @@ const links = [
     icon: BarChartIcon,
   },
   {
+    to: paths.swap,
     label: 'Swap',
     icon: ArrowDownUpIcon,
   },

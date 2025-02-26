@@ -16,7 +16,6 @@ interface GuestViewProps {
   originChainId: SupportedChainId
   savingsMeta: SavingsMeta
   openConnectModal: () => void
-  openSandboxModal: () => void
   savingsChartsInfo: UseSavingsChartsInfoQueryResult
   savingsTokenDetails: SavingsTokenDetails
 }
@@ -24,7 +23,6 @@ interface GuestViewProps {
 export function GuestView({
   originChainId,
   openConnectModal,
-  openSandboxModal,
   savingsMeta,
   savingsChartsInfo,
   savingsTokenDetails,
@@ -45,7 +43,6 @@ export function GuestView({
           originChainId={originChainId}
           openConnectModal={openConnectModal}
           savingsMeta={savingsMeta}
-          openSandboxModal={openSandboxModal}
         />
         {displaySavingsChart && <Charts {...savingsChartsInfo} />}
       </SavingsViewGrid>
@@ -55,7 +52,6 @@ export function GuestView({
         iconPaths={TOKEN_ICONS}
         action={openConnectModal}
         buttonText="Connect wallet"
-        openSandboxModal={openSandboxModal}
       />
     </PageLayout>
   )

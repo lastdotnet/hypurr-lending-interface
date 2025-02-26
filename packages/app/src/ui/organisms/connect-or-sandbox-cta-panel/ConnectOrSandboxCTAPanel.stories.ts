@@ -14,7 +14,6 @@ const meta: Meta<typeof ConnectOrSandboxCTAPanel> = {
     buttonText: 'Connect wallet',
     iconPaths: WALLET_ICONS_PATHS,
     action: () => {},
-    openSandboxModal: () => {},
   },
 }
 

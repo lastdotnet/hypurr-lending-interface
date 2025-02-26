@@ -4,10 +4,9 @@ import { ConnectOrSandboxCTAPanel } from '@/ui/organisms/connect-or-sandbox-cta-
 
 export interface GuestViewProps {
   openConnectModal: () => void
-  openSandboxModal: () => void
 }
 
-export function GuestView({ openConnectModal, openSandboxModal }: GuestViewProps) {
+export function GuestView({ openConnectModal }: GuestViewProps) {
   return (
     <PageLayout className="max-w-6xl">
       <ConnectOrSandboxCTAPanel
@@ -15,7 +14,6 @@ export function GuestView({ openConnectModal, openSandboxModal }: GuestViewProps
         iconPaths={WALLET_ICONS_PATHS}
         action={openConnectModal}
         buttonText="Connect wallet"
-        openSandboxModal={openSandboxModal}
       />
     </PageLayout>
   )
