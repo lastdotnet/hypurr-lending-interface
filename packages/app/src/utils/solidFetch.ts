@@ -1,17 +1,9 @@
-import fetchRetry from 'fetch-retry'
+import { HttpClient } from './http/HttpClient';
 
-export const solidFetch = fetchRetry(fetch, {
-  retries: 5,
-  retryOn(_attempt, error, response) {
-    const retry = error !== null || !response?.ok
-    if (retry) {
-      // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-      console.log('Retrying failed fetch', { error, status: response?.status })
-    }
-
-    return retry
-  },
-  retryDelay(attempt) {
-    return 2 ** attempt * 150
-  },
-})
+export const solidFetch = async (url: string, options: RequestInit = {}): Promise<Response> => {
+  const httpClient = HttpClient.getInstance();
+  return httpClient.fetch(url, {
+    ...options,
+    retries: 5,
+  });
+};
