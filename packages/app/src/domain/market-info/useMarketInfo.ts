@@ -7,6 +7,7 @@ import { useMemo } from 'react'
 import { aaveDataLayer } from './aave-data-layer/query'
 import { MarketInfo, marketInfoSelectFn } from './marketInfo'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 
 export interface UseMarketInfoParams {
   chainId: number
@@ -27,6 +28,7 @@ export function useMarketInfo({ chainId, timeAdvance }: UseMarketInfoParams): Us
       account,
     }),
     select: useMemo(() => marketInfoSelectFn({ timeAdvance }), [timeAdvance]),
+    refetchInterval: QUERY_REFETCH_INTERVAL,
   })
 
   return {

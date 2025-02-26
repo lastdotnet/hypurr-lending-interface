@@ -17,6 +17,7 @@ import { useIncreasedGasLimit } from './useIncreasedGasLimit'
 import { useOriginChainId } from './useOriginChainId'
 import { useWaitForTransactionReceiptUniversal } from './useWaitForTransactionReceiptUniversal'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { useEffect } from 'react'
 
 export type WriteStatus =
   | { kind: 'disabled' }
@@ -68,6 +69,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     error: _simulationError,
     refetch: resimulate,
     isLoading: isSimulationLoading,
+    isError: isSimulationError,
   } = useSimulateContract({
     account,
     gas: gasLimit,
@@ -81,9 +83,12 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
   // @note: workaround for wagmi serving results from cache even if enabled = false. https://github.com/wevm/wagmi/issues/888
   const simulationError = enabled ? _simulationError : undefined
 
-  if (simulationError) {
-    console.error(simulationError)
-  }
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isSimulationError) {
+      console.error(simulationError)
+    }
+  }, [isSimulationError])
 
   const {
     writeContract,
@@ -91,6 +96,7 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     isPending: isTxSending,
     isSuccess: wasTxSent,
     error: _txSubmissionError,
+    isError: isTxSubmissionError,
     reset,
   } = useWriteContract({ mutationKey: getWriteContractMutationKey(args as any) })
 
@@ -102,6 +108,13 @@ export function useWrite<TAbi extends Abi, TFunctionName extends ContractFunctio
     hash: txHash,
   })
   const txSubmissionError = enabled ? _txSubmissionError : undefined
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isTxSubmissionError) {
+      console.error(txSubmissionError)
+    }
+  }, [isTxSubmissionError])
 
   useOnDepsChange(() => {
     if (txReceipt) {
