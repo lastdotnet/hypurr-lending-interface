@@ -1,16 +1,21 @@
-import { i18n } from '@lingui/core'
+'use client'
+
 import { I18nProvider } from '@lingui/react'
-import { ReactNode, useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { type Messages, setupI18n } from '@lingui/core'
+import { useState } from 'react'
 
-import { defaultLocale, switchLocale } from './locales'
+interface Props {
+  children: React.ReactNode
+  initialLocale: string
+  initialMessages: Messages
+}
 
-export function I18nAppProvider({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    switchLocale(defaultLocale).catch((error) => {
-      toast.error('Failed to load locale', error)
+export function I18nAppProvider({ children, initialLocale, initialMessages }: Props) {
+  const [i18n] = useState(() => {
+    return setupI18n({
+      locale: initialLocale,
+      messages: { [initialLocale]: initialMessages },
     })
-  }, [])
-
+  })
   return <I18nProvider i18n={i18n}>{children}</I18nProvider>
 }

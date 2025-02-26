@@ -102,7 +102,7 @@ export function ZeroAllowanceWagmiDecorator({ requestFnOverride }: { requestFnOv
 export function WithI18n() {
   return function WithI18n(Story: StoryFn) {
     return (
-      <I18nAppProvider>
+      <I18nAppProvider initialLocale="en" initialMessages={{}}>
         <Story />
       </I18nAppProvider>
     )
