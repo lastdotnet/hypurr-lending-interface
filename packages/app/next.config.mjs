@@ -19,11 +19,6 @@ const nextConfig = withImages({
     swcPlugins: [['@lingui/swc-plugin', {}]],
     webpackBuildWorker: true,
   },
-  i18n: {
-    locales: ['en', 'pl'],
-    defaultLocale: 'en',
-  },
-
   webpack(config) {
     // Disable webpack caching in production
     if (process.env.NODE_ENV === 'production') {
