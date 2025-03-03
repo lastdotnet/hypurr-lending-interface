@@ -85,8 +85,8 @@ export const baseDynamic = {
   rpcUrls: [base.rpcUrls.default.http[0]],
 }
 
-export const SUPPORTED_CHAINS = isTestnet ? [hyperTestnet, base] : [hyperEVM]
-export const SUPPORTED_CHAINS_DYNAMIC = isTestnet ? [hyperTestnetDynamic, baseDynamic] : [hyperEVMDynamic]
+export const SUPPORTED_CHAINS = isTestnet ? [hyperTestnet, base] : [hyperEVM, base]
+export const SUPPORTED_CHAINS_DYNAMIC = isTestnet ? [hyperTestnetDynamic, baseDynamic] : [hyperEVMDynamic, baseDynamic]
 export const SUPPORTED_CHAIN_IDS = SUPPORTED_CHAINS.map((chain) => chain.id)
 
 export const farmStablecoinsEntryGroup: Record<1 | 8453, AssetsGroup> = {
