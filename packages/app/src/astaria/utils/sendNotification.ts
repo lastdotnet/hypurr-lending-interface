@@ -94,7 +94,7 @@ function getLink({
   chainId: ChainId
   intent: BorrowIntent | LendIntent
 }) {
-  return `[Link ↗](https://hypurr.fi//isolated/i/${intent?.shortId}?utm_source=tg) | ${chainHashtagMap[chainId]}`
+  return `[Link ↗](https://app.hypurr.fi//isolated/i/${intent?.shortId}?utm_source=tg) | ${chainHashtagMap[chainId]}`
 }
 
 async function sendTelegramNotification({ payload, type }: SendTelegramNotificationArgs) {

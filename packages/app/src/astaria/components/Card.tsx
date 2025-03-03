@@ -11,7 +11,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={clsx(
-        'space-y-2 rounded shadow-sm',
+        'flex min-w-full max-w-3xl flex-col gap-6 self-center rounded-lg border bg-panel-bg p-4 shadow-sm backdrop-blur-sm md:p-8',
         {
           'bg-stone-300': higherEmphasis,
           'border-2 bg-panel-bg p-2 backdrop-blur-sm': !receiptStyle,
@@ -31,7 +31,7 @@ export const CardSection = forwardRef<HTMLDivElement, CardSectionProps>(({ class
   <div
     ref={ref}
     className={clsx(
-      'rounded-sm border border-stone-300 bg-card p-3 text-card-foreground md:p-4',
+      'flex w-full flex-col gap-6 rounded-lg border bg-panel-bg p-4 px-6 py-4 shadow-sm backdrop-blur-sm md:px-8 md:py-6',
 
       className,
     )}

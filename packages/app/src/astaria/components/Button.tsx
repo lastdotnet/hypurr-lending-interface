@@ -22,9 +22,9 @@ export const buttonVariants = cva(
       },
       emphasis: {
         fakeInput: 'bg-background text-primary',
-        high: 'bg-primary text-primary-foreground tracking-widest hover:bg-background hover:text-primary',
+        high: 'bg-primary-bg text-primary-foreground hover:bg-primary-hover hover:text-body',
         low: 'border-transparent text-primary hover:border-primary',
-        medium: 'bg-background text-primary hover:bg-primary hover:text-primary-foreground',
+        medium: 'bg-primary-bg text-primary-foreground hover:bg-primary-hover hover:text-body',
       },
       fullWidth: {
         true: 'w-full',

@@ -15,6 +15,7 @@ import { WALLET_CONNECT_URL } from '@/astaria/constants/urls'
 import { RECALL_ID } from '@/astaria/constants/walletNotificationId'
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core'
 import { Address } from 'viem'
+import { Typography } from '@/ui/atoms/typography/Typography'
 
 export const NotificationToggle = () => {
   const [isSkeleton, setSkeleton] = useState(true)
@@ -48,10 +49,15 @@ export const NotificationToggle = () => {
   return (
     <div>
       <Card className="md:mx-auto md:w-1/3">
-        <CardSection className="space-y-6">
+        <div className="mb-8 flex items-center gap-2">
+          <Typography variant="h2" gradient className="self-start text-4xl">
+            Notification Settings
+          </Typography>
+        </div>
+        <CardSection>
           <p>Toggle the events for which you’d like to receive notifications.</p>
           <p>
-            {"Astaria utilizes WalletConnect's notification kit. "}
+            {"HypurrFi utilizes WalletConnect's notification kit. "}
             <TextLink href={WALLET_CONNECT_URL}>Learn more</TextLink>
           </p>
         </CardSection>

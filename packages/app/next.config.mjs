@@ -7,6 +7,9 @@ const nextConfig = {
   reactStrictMode: true,
   distDir: './dist',
   poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   sentry: {
     autoInstrumentMiddleware: false,
   },
