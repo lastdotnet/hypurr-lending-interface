@@ -20,6 +20,9 @@ export function createSetUserEModeActionConfig(action: SetUserEModeAction, conte
       })
     },
 
-    invalidates: () => [aaveDataLayerQueryKey({ chainId, account })],
+    invalidates: () => [
+      aaveDataLayerQueryKey({ chainId, account }),
+      aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
+    ],
   }
 }

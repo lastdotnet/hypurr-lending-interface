@@ -41,6 +41,7 @@ export function createBorrowActionConfig(action: BorrowAction, context: ActionCo
     invalidates: () => [
       getBalancesQueryKeyPrefix({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account }),
+      aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
       getBorrowAllowanceQueryKey({
         fromUser: account,
         toUser: wethGatewayAddress,

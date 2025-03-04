@@ -63,6 +63,7 @@ export function createDepositActionConfig(action: DepositAction, context: Action
       allowanceQueryKey({ token: action.token.address, spender: lendingPool, account, chainId }),
       getBalancesQueryKeyPrefix({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account }),
+      aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
     ],
   }
 }
