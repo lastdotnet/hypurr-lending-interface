@@ -7,6 +7,7 @@ import { Token } from '../types/Token'
 import { TokenSymbol } from '../types/TokenSymbol'
 import { marketBalances } from './marketBalances'
 import { useAccount } from '@/domain/hooks/useAccount'
+import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 
 export interface WalletBalance {
   balance: NormalizedUnitNumber
@@ -28,7 +29,7 @@ export interface MarketWalletInfo {
 export function useMarketWalletInfo({ chainId }: MarketWalletInfoParams): MarketWalletInfo {
   const account = useAccount()
   const wagmiConfig = useConfig()
-  const { marketInfo } = useMarketInfo({ chainId })
+  const { marketInfo } = useMarketInfo({ chainId, refetchInterval: QUERY_REFETCH_INTERVAL })
 
   const { data: balanceData } = useSuspenseQuery({
     ...marketBalances({

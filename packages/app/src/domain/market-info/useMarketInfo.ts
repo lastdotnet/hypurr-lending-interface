@@ -7,17 +7,21 @@ import { useMemo } from 'react'
 import { aaveDataLayer } from './aave-data-layer/query'
 import { MarketInfo, marketInfoSelectFn } from './marketInfo'
 import { useAccount } from '@/domain/hooks/useAccount'
-import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 
 export interface UseMarketInfoParams {
   chainId: number
   timeAdvance?: number
+  refetchInterval?: number
 }
 export type UseMarketInfoResultOnSuccess = SuspenseQueryWith<{
   marketInfo: MarketInfo
 }>
 
-export function useMarketInfo({ chainId, timeAdvance }: UseMarketInfoParams): UseMarketInfoResultOnSuccess {
+export function useMarketInfo({
+  chainId,
+  timeAdvance,
+  refetchInterval,
+}: UseMarketInfoParams): UseMarketInfoResultOnSuccess {
   const account = useAccount()
   const wagmiConfig = useConfig()
 
@@ -26,9 +30,10 @@ export function useMarketInfo({ chainId, timeAdvance }: UseMarketInfoParams): Us
       wagmiConfig,
       chainId,
       account,
+      refetchEnabled: !!refetchInterval,
     }),
     select: useMemo(() => marketInfoSelectFn({ timeAdvance }), [timeAdvance]),
-    refetchInterval: QUERY_REFETCH_INTERVAL,
+    refetchInterval,
   })
 
   return {

@@ -6,7 +6,7 @@ import { usePageChainId } from '@/domain/hooks/usePageChainId'
 import { MarketEntry } from '../types'
 import { MarketStats, aggregateStats } from './aggregate-stats'
 import { transformReserves } from './transformers'
-
+import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 export interface UseMarketsResults {
   marketStats: MarketStats
   chainName: string
@@ -17,7 +17,7 @@ export interface UseMarketsResults {
 
 export function useMarkets(): UseMarketsResults {
   const { chainId } = usePageChainId()
-  const { marketInfo } = useMarketInfo({ chainId })
+  const { marketInfo } = useMarketInfo({ chainId, refetchInterval: QUERY_REFETCH_INTERVAL })
   // const { D3MInfo } = useD3MInfo({ chainId })
   const { meta: chainMeta } = getChainConfigEntry(chainId)
 
