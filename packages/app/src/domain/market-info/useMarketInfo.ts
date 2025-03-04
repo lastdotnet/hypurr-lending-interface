@@ -7,7 +7,7 @@ import { useMemo } from 'react'
 import { aaveDataLayer } from './aave-data-layer/query'
 import { MarketInfo, marketInfoSelectFn } from './marketInfo'
 import { useAccount } from '@/domain/hooks/useAccount'
-
+import { QUERY_STALE_TIME } from '@/config/consts'
 export interface UseMarketInfoParams {
   chainId: number
   timeAdvance?: number
@@ -34,6 +34,7 @@ export function useMarketInfo({
     }),
     select: useMemo(() => marketInfoSelectFn({ timeAdvance }), [timeAdvance]),
     refetchInterval,
+    staleTime: QUERY_STALE_TIME,
   })
 
   return {

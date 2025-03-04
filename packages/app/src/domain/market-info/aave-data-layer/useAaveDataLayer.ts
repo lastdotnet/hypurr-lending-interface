@@ -6,7 +6,7 @@ import { SuspenseQueryWith } from '@/utils/types'
 import { useMemo } from 'react'
 import { AaveData, aaveDataLayer, aaveDataLayerSelectFn } from './query'
 import { useAccount } from '@/domain/hooks/useAccount'
-
+import { QUERY_STALE_TIME } from '@/config/consts'
 export interface UseAaveDataLayerParams {
   chainId: number
   refetchInterval?: number
@@ -31,6 +31,7 @@ export function useAaveDataLayer({
     }),
     select: useMemo(() => aaveDataLayerSelectFn(), []),
     refetchInterval,
+    staleTime: QUERY_STALE_TIME,
   })
 
   return {
