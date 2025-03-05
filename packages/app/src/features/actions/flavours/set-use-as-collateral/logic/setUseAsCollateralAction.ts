@@ -24,7 +24,6 @@ export function createSetUseAsCollateralActionConfig(
     },
 
     invalidates: () => [
-      aaveDataLayerQueryKey({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
     ],
   }
