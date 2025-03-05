@@ -7,16 +7,15 @@ import { NavBarDialogue } from '@/features/newsletter/NavBarDialogue'
 const socialLinks = [
   {
     href: links.social.x,
-    icon: <img src={assets.socialLogos.x} alt="X" />,
+    icon: <assets.socialLogos.x className="h-4 w-4 text-white" />,
   },
   {
     href: links.social.telegram,
-    icon: <img src={assets.socialLogos.telegram} alt="Telegram" />,
+    icon: <assets.socialLogos.telegram className="h-5 w-5 text-white" />,
   },
-
   {
     href: links.social.github,
-    icon: <img src={assets.socialLogos.github} alt="Github" />,
+    icon: <assets.socialLogos.github className="h-5 w-5 text-white" />,
   },
 ]
 
