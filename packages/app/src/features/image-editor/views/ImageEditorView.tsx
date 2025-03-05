@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { ImageEditor } from '../components/ImageEditor'
 import { Button } from '@/ui/atoms/button/Button'
 
-type Props = {
+interface Props {
   points: string
 }
 
 export function ImageEditorView({ points }: Props) {
   const [imageUrl, setImageUrl] = useState<string | null>(null)
 
-  const handleImageGenerated = (imageDataUrl: string) => {
+  function handleImageGenerated(imageDataUrl: string) {
     setImageUrl(imageDataUrl)
   }
 
@@ -20,10 +20,13 @@ export function ImageEditorView({ points }: Props) {
       </div>
 
       {imageUrl && (
-        <div className="mt-8 flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-5">
           <img src={imageUrl} alt="Generated image" className="max-w-full rounded-lg" />
+          <p className="text-white/50 text-xs">
+            Referral copy goes here referral copy goes here referral copy goes here lorem ipsum
+          </p>
           <Button
-            className="w-full"
+            className="w-full font-bold text-xs"
             onClick={() => {
               const link = document.createElement('a')
               link.href = imageUrl
@@ -33,7 +36,7 @@ export function ImageEditorView({ points }: Props) {
               document.body.removeChild(link)
             }}
           >
-            Share Image
+            Share image
           </Button>
         </div>
       )}

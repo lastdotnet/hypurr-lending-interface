@@ -29,9 +29,11 @@ export function PointsView() {
 
   return (
     <PageLayout className="max-w-6xl gap-4 px-3 lg:px-0">
-      <Typography variant="h2" gradient className="mb-8">
-        Points
-      </Typography>
+      <div>
+        <Typography variant="h2" gradient className="mb-8">
+          Points
+        </Typography>
+      </div>
 
       {isAllLoading ? (
         <PointsSkeleton />

@@ -24,7 +24,7 @@ export function ImageEditor({ imageUrl, text, onImageGenerated }: ImageEditorPro
       ctx.drawImage(img, 0, 0)
 
       // Draw text
-      ctx.font = '64px Arial'
+      ctx.font = '64px Manrope'
       ctx.fillStyle = 'white'
       ctx.textAlign = 'left'
       ctx.textBaseline = 'middle'

@@ -16,7 +16,6 @@ export function SocialPanel() {
             target="_blank"
             rel="noopener noreferrer"
             external
-            size="sm"
             className="flex flex-1 gap-2 font-bold text-xs"
           >
             <assets.socialLogos.x className="mr-1 h-4 w-4" /> Follow on X
@@ -27,7 +26,6 @@ export function SocialPanel() {
             target="_blank"
             rel="noopener noreferrer"
             external
-            size="sm"
             className="flex flex-1 gap-2 font-bold text-xs"
           >
             <assets.socialLogos.telegram className="mr-1 h-4 w-4" /> Join Telegram group
