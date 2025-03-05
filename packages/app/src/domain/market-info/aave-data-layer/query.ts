@@ -21,9 +21,10 @@ import { calculateNetApy } from './calculateNetApy'
 export interface AaveDataLayerQueryKeyArgs {
   chainId: number
   account?: Address
+  refetchEnabled?: boolean
 }
-export function aaveDataLayerQueryKey({ chainId, account }: AaveDataLayerQueryKeyArgs): unknown[] {
-  return ['reserves', account, chainId]
+export function aaveDataLayerQueryKey({ chainId, account, refetchEnabled }: AaveDataLayerQueryKeyArgs): unknown[] {
+  return ['reserves', account, chainId, refetchEnabled ? 'refetch' : 'no-refetch']
 }
 export interface AaveDataLayerArgs extends AaveDataLayerQueryKeyArgs {
   wagmiConfig: Config
@@ -41,13 +42,13 @@ export type AaveUserSummaryReservesData = AaveUserSummary['userReservesData']
 export type AaveDataLayerQueryReturnType = Awaited<ReturnType<ReturnType<typeof aaveDataLayerQueryFn>>>
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function aaveDataLayer({ wagmiConfig, chainId, account, timeAdvance }: AaveDataLayerArgs) {
+export function aaveDataLayer({ wagmiConfig, chainId, account, timeAdvance, refetchEnabled }: AaveDataLayerArgs) {
   const uiPoolDataProvider = getContractAddress(uiPoolDataProviderAddress, chainId)
   const lendingPoolAddressProvider = getContractAddress(lendingPoolAddressProviderAddress, chainId)
   const uiIncentiveDataProvider = getContractAddress(uiIncentiveDataProviderAddress, chainId)
 
   return queryOptions({
-    queryKey: aaveDataLayerQueryKey({ chainId, account }),
+    queryKey: aaveDataLayerQueryKey({ chainId, account, refetchEnabled }),
     queryFn: aaveDataLayerQueryFn({
       uiPoolDataProvider,
       lendingPoolAddressProvider,

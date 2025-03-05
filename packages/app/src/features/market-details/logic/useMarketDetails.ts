@@ -18,6 +18,7 @@ import { MarketOverview, WalletOverview } from '../types'
 import { makeMarketOverview } from './makeMarketOverview'
 import { makeWalletOverview } from './makeWalletOverview'
 import { useMarketDetailsParams } from './useMarketDetailsParams'
+import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 
 export interface UseMarketDetailsResult {
   token: Token
@@ -35,7 +36,7 @@ export function useMarketDetails(): UseMarketDetailsResult {
   const params = useMarketDetailsParams()
   const { chainId, asset } = params
 
-  const { marketInfo } = useMarketInfo({ chainId })
+  const { marketInfo } = useMarketInfo({ chainId, refetchInterval: QUERY_REFETCH_INTERVAL })
   // const { D3MInfo } = useD3MInfo({ chainId })
   const walletInfo = useMarketWalletInfo({ chainId })
   const { meta: chainMeta } = getChainConfigEntry(chainId)

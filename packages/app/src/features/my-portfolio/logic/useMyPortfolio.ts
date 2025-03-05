@@ -13,7 +13,7 @@ import { makePositionSummary } from './position'
 import { PositionSummary } from './types'
 import { WalletCompositionInfo, makeWalletComposition } from './wallet-composition'
 import { NetApyDetails } from '@/domain/market-info/aave-data-layer/calculateNetApy'
-
+import { QUERY_REFETCH_INTERVAL } from '@/config/consts'
 export interface UseMyPortfolioResults {
   positionSummary: PositionSummary
   deposits: Deposit[]
@@ -28,7 +28,7 @@ export interface UseMyPortfolioResults {
 
 export function useMyPortfolio(): UseMyPortfolioResults {
   const { chainId } = usePageChainId()
-  const { marketInfo } = useMarketInfo({ chainId })
+  const { marketInfo } = useMarketInfo({ chainId, refetchInterval: QUERY_REFETCH_INTERVAL })
   const walletInfo = useMarketWalletInfo({ chainId })
   const [compositionWithDeposits, setCompositionWithDeposits] = useState(true)
   const nativeAssetInfo = getNativeAssetInfo(marketInfo.chainId)
