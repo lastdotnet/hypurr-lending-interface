@@ -54,7 +54,12 @@ export function Navbar({ mobileMenuCollapsed, setMobileMenuCollapsed, showBanner
           />
 
           <div className={cn(mobileMenuCollapsed && 'hidden xl:block')}>
-            <AirdropBadge isLoading={false} isError={false} className="w-full py-1.5 xl:w-40" />
+            <AirdropBadge
+              isLoading={false}
+              isError={false}
+              className="w-full py-1.5 xl:w-40"
+              closeMobileMenu={closeMobileMenu}
+            />
           </div>
         </div>
 
