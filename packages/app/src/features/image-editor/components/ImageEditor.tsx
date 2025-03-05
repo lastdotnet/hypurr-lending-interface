@@ -28,7 +28,7 @@ export function ImageEditor({ imageUrl, text, onImageGenerated }: ImageEditorPro
       ctx.fillStyle = 'white'
       ctx.textAlign = 'left'
       ctx.textBaseline = 'middle'
-      ctx.fillText(text, 20, canvas.height / 2)
+      ctx.fillText(`${text} pts`, 40, canvas.height / 1.6)
 
       const imageDataUrl = canvas.toDataURL('image/png')
       onImageGenerated(imageDataUrl)
