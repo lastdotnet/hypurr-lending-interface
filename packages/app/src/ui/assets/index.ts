@@ -173,7 +173,7 @@ export function getTokenImage(symbol: TokenSymbol): string {
 export function getTokenColor(symbol: TokenSymbol, options?: { alpha?: Percentage; fallback?: string }): string {
   const color = tokenColors[symbol]
   const alpha = (options?.alpha ?? Percentage(1)).toFixed(2)
-  const fallback = options?.fallback ?? `rgb(217 217 217 / ${alpha})`
+  const fallback = options?.fallback ?? `rgb(235 175 76 / ${alpha})`
 
   return color ? `rgb(${color} / ${alpha})` : fallback
 }
@@ -186,4 +186,5 @@ const tokenColors: Record<TokenSymbol, `${number} ${number} ${number}`> = {
   [TokenSymbol('stTESTH')]: '157 217 175',
   [TokenSymbol('WHYPE')]: '161 252 231',
   [TokenSymbol('SolvBTC')]: '235 175 76',
+  [TokenSymbol('wstHYPE')]: '106 197 176',
 }

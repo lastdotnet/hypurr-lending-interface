@@ -18,7 +18,7 @@ export function ConnectOrSandboxCTAPanel({
   openSandboxModal,
 }: ConnectOrSandboxCTAPanelProps) {
   return (
-    <Panel.Wrapper>
+    <Panel.Wrapper className="w-full max-w-md">
       <Panel.Content className="flex flex-col gap-6 p-6 text-center md:px-8">
         <div className="flex flex-col items-center gap-6">
           {iconPaths && <IconStack paths={iconPaths} size="lg" stackingOrder="first-on-top" />}
