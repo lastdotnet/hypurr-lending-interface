@@ -8,15 +8,40 @@ import { getBalancesQueryKeyPrefix } from '@/domain/wallet/getBalancesQueryKeyPr
 import { allowanceQueryKey } from '@/features/actions/flavours/approve/logic/query'
 import { toBigInt } from '@/utils/bigNumber'
 import { getTimestampInSeconds } from '@/utils/time'
-import { ActionConfig, ActionContext } from '../../../logic/types'
+import { QueryKey, queryOptions } from '@tanstack/react-query'
+import { ActionConfig, ActionContext, VerifyTransactionResultBase } from '../../../logic/types'
 import { RepayAction } from '../types'
 
 export function createRepayActionConfig(action: RepayAction, context: ActionContext): ActionConfig {
+  const { marketInfo } = context
   const { account, chainId, permitStore } = context
   const lendingPool = getContractAddress(lendingPoolConfig.address, chainId)
   const wethGateway = getContractAddress(wethGatewayConfig.address, chainId)
 
   return {
+    verifyTransactionQueryOptions: () => {
+      if (!marketInfo) {
+        return queryOptions<any, Error, VerifyTransactionResultBase, QueryKey>({
+          queryKey: ['repay-verification-skipped'] as QueryKey,
+          queryFn: () => ({ success: true }),
+        })
+      }
+
+      const position = marketInfo.findOnePositionByToken(action.reserve.token)
+      const repayValue = toBigInt(action.reserve.token.toBaseUnit(action.value))
+
+      return queryOptions<any, Error, VerifyTransactionResultBase, QueryKey>({
+        queryKey: ['repay-verification', action.reserve.token.address, repayValue.toString()] as QueryKey,
+        queryFn: () => {
+          const currentDebt = toBigInt(action.reserve.token.toBaseUnit(position.borrowBalance))
+          const tolerance = repayValue / 1000n // 0.1% of repay value
+          const success = currentDebt === 0n || (repayValue >= currentDebt) || (currentDebt - repayValue <= tolerance)
+          
+          return { success }
+        },
+      })
+    },
+    
     getWriteConfig: () => {
       const useAToken = action.useAToken
       const token = action.reserve.token
@@ -72,7 +97,6 @@ export function createRepayActionConfig(action: RepayAction, context: ActionCont
 
     invalidates: () => [
       getBalancesQueryKeyPrefix({ chainId, account }),
-      aaveDataLayerQueryKey({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
       allowanceQueryKey({ token: action.reserve.token.address, spender: lendingPool, account, chainId }),
     ],

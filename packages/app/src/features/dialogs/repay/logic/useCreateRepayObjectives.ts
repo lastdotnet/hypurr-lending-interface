@@ -1,6 +1,7 @@
 import { GetRepayMaxValueParams, getRepayMaxValue } from '@/domain/action-max-value-getters/getRepayMaxValue'
 import { MarketInfo } from '@/domain/market-info/marketInfo'
 import { MarketWalletInfo } from '@/domain/wallet/useMarketWalletInfo'
+import { NormalizedUnitNumber } from '@/domain/types/NumericValues'
 import { RepayObjective } from '@/features/actions/flavours/repay/types'
 import { DialogFormNormalizedData } from '../../common/logic/form'
 
@@ -51,10 +52,21 @@ export function useCreateRepayObjectives({
 
   const tryFullRepay = repaymentAsset.isMaxSelected && balance.gt(repayMaxValueIn1Epoch)
 
+  const applyMaxBuffer = (amount: NormalizedUnitNumber): NormalizedUnitNumber => {
+    if (tryFullRepay) {
+      // subtract a small amount (0.01%)
+      return NormalizedUnitNumber(amount.multipliedBy(0.9999))
+    }
+    return amount
+  }
+
+  const repayValue = tryFullRepay ? repayMaxValueIn2Epochs : repaymentAsset.value
+  const bufferedRepayValue = applyMaxBuffer(repayValue)
+
   return [
     {
       type: 'repay',
-      value: tryFullRepay ? repayMaxValueIn2Epochs : repaymentAsset.value,
+      value: bufferedRepayValue,
       requiredApproval: tryFullRepay ? repayMaxValueIn1Epoch : repaymentAsset.value,
       reserve: repaymentAsset.reserve,
       useAToken: repaymentAsset.token.isAToken,

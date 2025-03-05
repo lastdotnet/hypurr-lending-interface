@@ -46,7 +46,6 @@ export function createWithdrawActionConfig(action: WithdrawAction, context: Acti
     invalidates: () => [
       allowanceQueryKey({ token: aTokenAddress, spender: wethGatewayAddress, account, chainId }),
       getBalancesQueryKeyPrefix({ chainId, account }),
-      aaveDataLayerQueryKey({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
     ],
   }
