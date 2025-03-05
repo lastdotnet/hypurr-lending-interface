@@ -4,14 +4,23 @@ import { PropsWithChildren } from 'react'
 import Image from 'next/image'
 import { assets } from '@/ui/assets'
 import { MoveUpIcon } from 'lucide-react'
+import { WeeklyPoints } from '../../logic/useWeeklyPoints'
+import { useCalculateWeeklyStats } from '../../logic/useCalculateWeeklyStats'
 
-export function SummaryPanel() {
+type Props = {
+  weeklyPoints?: WeeklyPoints[]
+  isLoading?: boolean
+}
+
+export function SummaryPanel({ weeklyPoints }: Props) {
+  const { totalPoints, activeWeeks } = useCalculateWeeklyStats(weeklyPoints)
+
   return (
     <Panel.Wrapper className="flex flex-1 justify-between gap-2 px-9 py-11">
       <SummaryItem label="Total points">
         <Typography variant="h3" gradient className="flex items-center gap-1 font-semibold text-3xl">
           <Image src={assets.hypurrPaw} alt="Points" width={32} height={26} className="block w-8 pt-1" />
-          13,109
+          {totalPoints}
         </Typography>
       </SummaryItem>
 
@@ -24,7 +33,7 @@ export function SummaryPanel() {
 
       <SummaryItem label="Weeks active">
         <Typography variant="h3" className="font-semibold text-3xl">
-          5
+          {activeWeeks}
         </Typography>
       </SummaryItem>
     </Panel.Wrapper>

@@ -1,3 +1,4 @@
+import { ImageEditorView } from '@/features/image-editor/views/ImageEditorView'
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
 
@@ -7,6 +8,7 @@ export function ImageSharePanel() {
       <Typography variant="h3" gradient>
         Image
       </Typography>
+      <ImageEditorView points="1000" />
     </Panel.Wrapper>
   )
 }
