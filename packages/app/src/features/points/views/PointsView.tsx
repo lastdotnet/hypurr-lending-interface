@@ -28,7 +28,7 @@ export function PointsView() {
     (isLeaderboardLoading && isLeaderboardFetching)
 
   return (
-    <PageLayout className="max-w-6xl gap-4 px-3 lg:px-0">
+    <PageLayout className="max-w-6xl gap-4 lg:px-3">
       <div>
         <Typography variant="h2" gradient className="mb-8">
           Points

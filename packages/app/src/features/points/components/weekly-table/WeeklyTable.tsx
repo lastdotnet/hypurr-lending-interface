@@ -17,15 +17,24 @@ export function WeeklyTable({ weeklyPoints }: Props) {
           week: {
             header: 'Week',
             headerAlign: 'left',
-            renderCell: (weeklyPoint) => (
-              <div>
-                <div className="flex w-full flex-row justify-start pl-3 text-sm">{formatWeeklyPoint(weeklyPoint)}</div>
-              </div>
-            ),
+            showOnMobile: true,
+            renderCell: (weeklyPoint) => {
+              const { short, long } = formatWeeklyPoint(weeklyPoint)
+
+              return (
+                <div>
+                  <div className="flex w-full flex-row justify-start text-sm md:pl-3">
+                    <span className="hidden md:block">{short}</span>
+                    <span className="block md:hidden">{long}</span>
+                  </div>
+                </div>
+              )
+            },
           },
           points: {
             header: 'Points',
             headerAlign: 'center',
+            showOnMobile: true,
             renderCell: ({ points }) => (
               <div>
                 <div className="flex w-full flex-row justify-center text-sm">{points}</div>
@@ -35,9 +44,10 @@ export function WeeklyTable({ weeklyPoints }: Props) {
           referral: {
             header: <ReferralPointsTooltip>Referral Points</ReferralPointsTooltip>,
             headerAlign: 'right',
+            showOnMobile: true,
             renderCell: ({ referralPoints }) => (
               <div>
-                <div className="flex w-full flex-row justify-end pr-3 text-sm">{referralPoints || 0}</div>
+                <div className="flex w-full flex-row justify-end text-sm md:pr-3">{referralPoints || 0}</div>
               </div>
             ),
           },

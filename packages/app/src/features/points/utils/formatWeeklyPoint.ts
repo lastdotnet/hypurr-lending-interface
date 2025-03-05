@@ -1,6 +1,6 @@
 import { WeeklyPoints } from '../logic/useWeeklyPoints'
 
-export const formatWeeklyPoint = (week: WeeklyPoints): string => {
+export function formatWeeklyPoint(week: WeeklyPoints): { short: string; long: string } {
   const startStr = week.startDate.toLocaleDateString('en-GB', {
     weekday: 'short',
     day: 'numeric',
@@ -14,5 +14,19 @@ export const formatWeeklyPoint = (week: WeeklyPoints): string => {
     year: 'numeric',
   })
 
-  return `${startStr} - ${endStr}`
+  const startStrMobile = week.startDate.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'numeric',
+    year: '2-digit',
+  })
+  const endStrMobile = week.endDate.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'numeric',
+    year: '2-digit',
+  })
+
+  return {
+    short: `${startStr} - ${endStr}`,
+    long: `${startStrMobile} - ${endStrMobile}`,
+  }
 }

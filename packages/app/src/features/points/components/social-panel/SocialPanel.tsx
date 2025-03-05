@@ -1,10 +1,11 @@
 import { assets } from '@/ui/assets'
 import { LinkButton } from '@/ui/atoms/button/Button'
 import { Panel } from '@/ui/atoms/panel/Panel'
+import { links } from '@/ui/constants/links'
 
 export function SocialPanel() {
   return (
-    <Panel.Wrapper className="flex flex-1 items-center px-6 py-7">
+    <Panel.Wrapper className="flex flex-1 items-center justify-center px-6 py-7">
       <div className="flex flex-col gap-3">
         <p className="font-medium text-white/50 text-xs">
           Get the latest Hyperliquid and HypurrFi news and alpha by joining our socials. All killer no filler!
@@ -12,7 +13,7 @@ export function SocialPanel() {
 
         <div className="flex items-center gap-2">
           <LinkButton
-            href="https://x.com/hypurrfi"
+            href={links.social.x}
             target="_blank"
             rel="noopener noreferrer"
             external
@@ -22,7 +23,7 @@ export function SocialPanel() {
           </LinkButton>
 
           <LinkButton
-            href="https://x.com/hypurrfi"
+            href={links.social.telegram}
             target="_blank"
             rel="noopener noreferrer"
             external

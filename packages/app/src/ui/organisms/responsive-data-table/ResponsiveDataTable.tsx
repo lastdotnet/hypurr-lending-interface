@@ -65,6 +65,8 @@ export function ResponsiveDataTable<T extends { [k: string]: any }>({
 
   const headerDefs = [rowHeaderDefinition, ...visibleDefinitions].map((def) => def?.header ?? '')
 
+  const noHiddenColumns = collapsedDefinitions.length === 0
+
   return (
     <Table data-testid={dataTestId}>
       {!hideTableHeader && (
@@ -78,14 +80,14 @@ export function ResponsiveDataTable<T extends { [k: string]: any }>({
                 {header}
               </TableHead>
             ))}
-            <TableHead className="py-2 text-white text-xs">More</TableHead>
+            {!noHiddenColumns && <TableHead className="py-2 text-white text-xs">More</TableHead>}
           </TableRow>
         </TableHeader>
       )}
       <TableBody>
         {data.map((value, index) => (
           <TableRow key={index} data-testid={testIds.component.DataTable.row(index)}>
-            <CollapsibleCell>
+            <CollapsibleCell noHiddenColumns={noHiddenColumns}>
               {[rowHeaderDefinition, ...visibleDefinitions].map((def, index) => (
                 <div className={cn('flex-1', index !== 0 && 'px-2')} key={index}>
                   {def?.renderCell(value, {

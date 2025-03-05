@@ -3,6 +3,7 @@ import { Typography } from '@/ui/atoms/typography/Typography'
 import { SeasonLeaderboard } from '../../logic/useSeasonLeaderboard'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { shortenAddress } from '@/ui/utils/shortenAddress'
+import { PointsCell } from '@/ui/molecules/data-table/components/PointsCell'
 
 interface Props {
   seasonLeaderboard?: SeasonLeaderboard[]
@@ -16,11 +17,12 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
       </Typography>
 
       <ResponsiveDataTable
-        gridTemplateColumnsClassName="grid-cols-[1fr_3fr_2fr_2fr_2fr]"
+        gridTemplateColumnsClassName="grid-cols-[1fr_3fr_2fr_2fr] md:grid-cols-[1fr_3fr_2fr_2fr_2fr]"
         columnDefinition={{
           week: {
             header: 'Ranking',
             headerAlign: 'left',
+            showOnMobile: true,
             renderCell: ({ ranking }) => (
               <div>
                 <div className="flex w-full flex-row justify-start pl-3 text-sm">{ranking || 0}</div>
@@ -30,6 +32,7 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
           user: {
             header: 'User',
             headerAlign: 'left',
+            showOnMobile: true,
             renderCell: ({ walletAddress }) => (
               <div>
                 <div className="flex w-full flex-row justify-start pl-3 text-sm">
@@ -41,24 +44,21 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
           points: {
             header: 'Points',
             headerAlign: 'center',
-            renderCell: ({ points }) => (
-              <div>
-                <div className="flex w-full flex-row justify-center text-sm">{points}</div>
-              </div>
+            renderCell: ({ points }, mobileViewOptions) => (
+              <PointsCell points={points} mobileViewOptions={mobileViewOptions} />
             ),
           },
           referral: {
             header: 'Referral Points',
             headerAlign: 'center',
-            renderCell: ({ referralPoints }) => (
-              <div>
-                <div className="flex w-full flex-row justify-center text-sm">{referralPoints || 0}</div>
-              </div>
+            renderCell: ({ referralPoints }, mobileViewOptions) => (
+              <PointsCell points={referralPoints || 0} mobileViewOptions={mobileViewOptions} />
             ),
           },
           totalPoints: {
             header: 'Total points',
             headerAlign: 'right',
+            showOnMobile: true,
             renderCell: ({ points, referralPoints }) => (
               <div>
                 <div className="flex w-full flex-row justify-end pr-3">
