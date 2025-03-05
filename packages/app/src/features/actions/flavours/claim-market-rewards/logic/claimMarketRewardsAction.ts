@@ -21,6 +21,10 @@ export function createClaimMarketRewardsActionConfig(
       })
     },
 
-    invalidates: () => [aaveDataLayerQueryKey({ chainId, account }), getBalancesQueryKeyPrefix({ chainId, account })],
+    invalidates: () => [
+      aaveDataLayerQueryKey({ chainId, account }),
+      aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
+      getBalancesQueryKeyPrefix({ chainId, account }),
+    ],
   }
 }

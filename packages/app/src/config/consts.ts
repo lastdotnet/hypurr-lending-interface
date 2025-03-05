@@ -11,6 +11,7 @@ export const NATIVE_ASSET_MOCK_ADDRESS = CheckedAddress('0xEeeeeEeeeEeEeeEeEeEee
 export const MAX_INT = BigInt(2 ** 256 - 1)
 
 export const QUERY_REFETCH_INTERVAL = 2000
+export const QUERY_STALE_TIME = 2000
 
 export const ZUSTAND_APP_STORE_LOCAL_STORAGE_KEY = 'zustand-app-store'
 export const ZUSTAND_APP_STORE_LOCAL_STORAGE_VERSION = 2
