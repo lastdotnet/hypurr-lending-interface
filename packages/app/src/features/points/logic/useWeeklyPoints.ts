@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { Address } from 'viem'
 
 export type PointHistory = {
@@ -120,7 +120,7 @@ export function calculatePointsByWeek(pointsHistory: PointHistory[]): WeeklyPoin
   return weeks
 }
 
-export function useWeeklyPoints(account?: Address) {
+export function useWeeklyPoints(account?: Address): UseQueryResult<WeeklyPoints[], Error> {
   const data = useQuery({
     queryKey: ['pointsHistory', account],
     queryFn: async (_account) => {

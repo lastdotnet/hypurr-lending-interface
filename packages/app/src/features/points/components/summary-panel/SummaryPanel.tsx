@@ -7,7 +7,7 @@ import { MoveUpIcon } from 'lucide-react'
 import { WeeklyPoints } from '../../logic/useWeeklyPoints'
 import { useCalculateWeeklyStats } from '../../logic/useCalculateWeeklyStats'
 
-type Props = {
+interface Props {
   weeklyPoints?: WeeklyPoints[]
   isLoading?: boolean
 }

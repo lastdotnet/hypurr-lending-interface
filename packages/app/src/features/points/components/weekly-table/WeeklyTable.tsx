@@ -3,6 +3,7 @@ import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/Respon
 import { ReferralPointsTooltip } from './ReferralPointsTooltip'
 import { WeeklyPoints } from '../../logic/useWeeklyPoints'
 import { formatWeeklyPoint } from '../../utils/formatWeeklyPoint'
+import { PointsCell } from '@/ui/molecules/data-table/components/PointsCell'
 
 interface Props {
   weeklyPoints?: WeeklyPoints[]
@@ -35,20 +36,20 @@ export function WeeklyTable({ weeklyPoints }: Props) {
             header: 'Points',
             headerAlign: 'center',
             showOnMobile: true,
-            renderCell: ({ points }) => (
-              <div>
-                <div className="flex w-full flex-row justify-center text-sm">{points}</div>
-              </div>
+            renderCell: ({ points }, mobileViewOptions) => (
+              <PointsCell points={points} mobileViewOptions={mobileViewOptions} className="justify-center" />
             ),
           },
           referral: {
             header: <ReferralPointsTooltip>Referral Points</ReferralPointsTooltip>,
             headerAlign: 'right',
             showOnMobile: true,
-            renderCell: ({ referralPoints }) => (
-              <div>
-                <div className="flex w-full flex-row justify-end text-sm md:pr-3">{referralPoints || 0}</div>
-              </div>
+            renderCell: ({ referralPoints }, mobileViewOptions) => (
+              <PointsCell
+                points={referralPoints || 0}
+                mobileViewOptions={mobileViewOptions}
+                className="justify-center md:justify-end md:pr-3"
+              />
             ),
           },
         }}

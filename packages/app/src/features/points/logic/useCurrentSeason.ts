@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 
 export type Season = {
   id: string
@@ -26,7 +26,7 @@ const dummySeason: Season = {
   updated_at: '2025-02-19',
 }
 
-export function useCurrentSeason() {
+export function useCurrentSeason(): UseQueryResult<Season, Error> {
   const data = useQuery({
     queryKey: ['currentSeason'],
     queryFn: async (_account) => {

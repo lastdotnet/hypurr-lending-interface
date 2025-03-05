@@ -17,7 +17,7 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
       </Typography>
 
       <ResponsiveDataTable
-        gridTemplateColumnsClassName="grid-cols-[1fr_3fr_2fr_2fr] md:grid-cols-[1fr_3fr_2fr_2fr_2fr]"
+        gridTemplateColumnsClassName="grid-cols-[1fr_2fr_2fr_1fr] md:grid-cols-[1fr_3fr_2fr_2fr_2fr]"
         columnDefinition={{
           week: {
             header: 'Ranking',
@@ -35,7 +35,7 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
             showOnMobile: true,
             renderCell: ({ walletAddress }) => (
               <div>
-                <div className="flex w-full flex-row justify-start pl-3 text-sm">
+                <div className="flex w-full flex-row justify-center text-sm md:justify-start md:pl-3">
                   {shortenAddress(walletAddress, { startLength: 5, endLength: 3 })}
                 </div>
               </div>
@@ -43,30 +43,33 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
           },
           points: {
             header: 'Points',
-            headerAlign: 'center',
+            headerAlign: 'left',
             renderCell: ({ points }, mobileViewOptions) => (
-              <PointsCell points={points} mobileViewOptions={mobileViewOptions} />
+              <PointsCell points={points} mobileViewOptions={mobileViewOptions} className="md:justify-start" />
             ),
           },
           referral: {
             header: 'Referral Points',
-            headerAlign: 'center',
+            headerAlign: 'left',
             renderCell: ({ referralPoints }, mobileViewOptions) => (
-              <PointsCell points={referralPoints || 0} mobileViewOptions={mobileViewOptions} />
+              <PointsCell
+                points={referralPoints || 0}
+                mobileViewOptions={mobileViewOptions}
+                className="md:justify-start"
+              />
             ),
           },
           totalPoints: {
             header: 'Total points',
-            headerAlign: 'right',
+            headerAlign: 'left',
             showOnMobile: true,
-            renderCell: ({ points, referralPoints }) => (
-              <div>
-                <div className="flex w-full flex-row justify-end pr-3">
-                  <Typography className="font-bold text-sm" gradient>
-                    {points + Number(referralPoints || 0)}
-                  </Typography>
-                </div>
-              </div>
+            renderCell: ({ points, referralPoints }, mobileViewOptions) => (
+              <PointsCell
+                points={points + Number(referralPoints || 0)}
+                mobileViewOptions={mobileViewOptions}
+                className="justify-center md:justify-start"
+                gradient={true}
+              />
             ),
           },
         }}
