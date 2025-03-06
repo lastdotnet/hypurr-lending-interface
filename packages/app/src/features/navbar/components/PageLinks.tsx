@@ -1,9 +1,8 @@
 import { paths } from '@/config/paths'
 import { cn } from '@/ui/utils/style'
-import { FeedbackFish } from '@feedback-fish/react'
 
 import { SavingsInfoQueryResults } from '../types'
-import { focusVariants, NavLink, PlaceholderNavLink, textVariants } from './nav-link/NavLink'
+import { NavLink, PlaceholderNavLink } from './nav-link/NavLink'
 import {
   ArrowRightLeftIcon,
   LayoutGridIcon,
@@ -92,7 +91,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
         ),
       )}
 
-      <FeedbackFish projectId={process.env.NEXT_PUBLIC_FEEDBACK_FISH_PROJECT_ID || ''}>
+      {/* <FeedbackFish projectId={process.env.NEXT_PUBLIC_FEEDBACK_FISH_PROJECT_ID || ''}>
         <button
           className={cn(
             focusVariants(),
@@ -102,7 +101,7 @@ export function PageLinks({ mobileMenuCollapsed, closeMobileMenu }: PageLinksPro
         >
           <MessageSquareIcon className="h-5 w-5" /> Give Feedback
         </button>
-      </FeedbackFish>
+      </FeedbackFish> */}
     </div>
   )
 }

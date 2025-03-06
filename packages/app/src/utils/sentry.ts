@@ -21,6 +21,7 @@ Sentry.init({
     'User rejected methods', // Happens sometimes with mobile wallets
     'User disapproved requested methods', // Happens when user rejects transaction using mobile wallet (connected by WalletConnect)
     'disconnect is not a function',
+    'Cannot convert undefined to a BigInt', // Happens when user opens Dynamic wallet
   ],
   beforeSend(event, hint) {
     const error = hint.originalException

@@ -29,15 +29,15 @@ export default meta
 type Story = StoryObj<typeof EModeStatusPanel>
 
 export const ETHDesktop: Story = {
-  name: 'ETH Correlated',
+  name: 'HYPE Correlated',
 }
 export const ETHMobile: Story = {
   ...getMobileStory(ETHDesktop),
-  name: 'ETH Correlated (Mobile)',
+  name: 'HYPE Correlated (Mobile)',
 }
 export const ETHTablet: Story = {
   ...getTabletStory(ETHDesktop),
-  name: 'ETH Correlated (Tablet)',
+  name: 'HYPE Correlated (Tablet)',
 }
 
 export const DAIDesktop: Story = {

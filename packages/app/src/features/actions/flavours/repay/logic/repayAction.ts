@@ -73,6 +73,7 @@ export function createRepayActionConfig(action: RepayAction, context: ActionCont
     invalidates: () => [
       getBalancesQueryKeyPrefix({ chainId, account }),
       aaveDataLayerQueryKey({ chainId, account }),
+      aaveDataLayerQueryKey({ chainId, account, refetchEnabled: true }),
       allowanceQueryKey({ token: action.reserve.token.address, spender: lendingPool, account, chainId }),
     ],
   }

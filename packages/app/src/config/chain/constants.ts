@@ -46,7 +46,7 @@ export const hyperEVM = {
     default: { http: ['https://rpc.hyperliquid.xyz/evm'] },
   },
   blockExplorers: {
-    default: { name: 'Blockscout', url: 'https://hyperliquid.cloud.blockscout.com' },
+    default: { name: 'Purrsec', url: 'https://purrsec.com' },
   },
   contracts: {
     multicall3: {

@@ -9,10 +9,6 @@ describe(TokenSymbol.name, () => {
   })
 
   it('throws for an empty token symbol', () => {
-    expect(() => TokenSymbol('')).toThrow('Token symbol should be between 1 and 9 characters.')
-  })
-
-  it('throws for a token symbol longer than 9 characters', () => {
-    expect(() => TokenSymbol('DAI-WETH-USDC')).toThrow('Token symbol should be between 1 and 9 characters.')
+    expect(() => TokenSymbol('')).toThrow('Token symbol should have at least 1 character.')
   })
 })
