@@ -36,7 +36,7 @@ export function ImageEditorView({ points }: Props) {
               document.body.removeChild(link)
             }}
           >
-            Share image
+            Download image
           </Button>
         </div>
       )}

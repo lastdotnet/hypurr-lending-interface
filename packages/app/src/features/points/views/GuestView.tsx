@@ -10,7 +10,7 @@ export function GuestView({ openConnectModal }: GuestViewProps) {
   return (
     <PageLayout className="min-h-[80vh] items-center justify-center xl:min-h-screen">
       <ConnectOrSandboxCTAPanel
-        header="Connect your wallet to use Hypurr"
+        header="Connect your wallet to use HypurrFi"
         iconPaths={WALLET_ICONS_PATHS}
         action={openConnectModal}
         buttonText="Connect wallet"

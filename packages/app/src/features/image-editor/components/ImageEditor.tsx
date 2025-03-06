@@ -21,14 +21,21 @@ export function ImageEditor({ imageUrl, text, onImageGenerated }: ImageEditorPro
     img.onload = () => {
       canvas.width = img.width
       canvas.height = img.height
+
       ctx.drawImage(img, 0, 0)
 
-      // Draw text
-      ctx.font = '64px Manrope'
+      const textY = canvas.height / 1.6
+
+      ctx.font = 'bold 64px Manrope'
       ctx.fillStyle = 'white'
       ctx.textAlign = 'left'
       ctx.textBaseline = 'middle'
-      ctx.fillText(`${text} pts`, 40, canvas.height / 1.6)
+      ctx.fillText(`${text}`, 40, textY)
+
+      const mainTextWidth = ctx.measureText(`${text}`).width
+      ctx.font = 'bold 32px Manrope'
+      const hpX = 40 + mainTextWidth + 10
+      ctx.fillText('HP', hpX, textY + 8)
 
       const imageDataUrl = canvas.toDataURL('image/png')
       onImageGenerated(imageDataUrl)
