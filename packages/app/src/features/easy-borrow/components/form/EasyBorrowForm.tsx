@@ -46,7 +46,6 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
     disabled,
     guestMode,
     openConnectModal,
-    openSandboxModal,
   } = props
 
   return (
@@ -102,12 +101,7 @@ export function EasyBorrowForm(props: EasyBorrowFlowProps) {
         />
 
         {guestMode ? (
-          <ConnectOrSandboxCTAButtonGroup
-            className="mt-8"
-            buttonText="Connect wallet"
-            action={openConnectModal}
-            openSandboxModal={openSandboxModal}
-          />
+          <ConnectOrSandboxCTAButtonGroup className="mt-8" buttonText="Connect wallet" action={openConnectModal} />
         ) : (
           !disabled && (
             <Button type="submit" className="mt-8" rounded="full" disabled={!form.formState.isValid}>

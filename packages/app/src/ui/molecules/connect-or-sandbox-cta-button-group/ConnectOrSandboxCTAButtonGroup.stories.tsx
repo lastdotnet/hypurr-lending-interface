@@ -9,7 +9,6 @@ const meta: Meta<typeof ConnectOrSandboxCTAButtonGroup> = {
     header: 'Connect your wallet and start saving!',
     buttonText: 'Connect wallet',
     action: () => {},
-    openSandboxModal: () => {},
   },
 }
 

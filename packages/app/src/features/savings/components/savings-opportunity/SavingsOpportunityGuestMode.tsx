@@ -13,7 +13,6 @@ interface SavingsOpportunityGuestModeProps {
   originChainId: SupportedChainId
   savingsMeta: SavingsMeta
   openConnectModal: () => void
-  openSandboxModal: () => void
 }
 
 export function SavingsOpportunityGuestMode({
@@ -21,7 +20,6 @@ export function SavingsOpportunityGuestMode({
   originChainId,
   savingsMeta,
   openConnectModal,
-  openSandboxModal,
 }: SavingsOpportunityGuestModeProps) {
   return (
     <Panel.Wrapper variant="green" className="p-6 md:px-8">
@@ -38,9 +36,6 @@ export function SavingsOpportunityGuestMode({
         <div className="flex flex-wrap gap-2 md:gap-4">
           <Button variant="green" onClick={openConnectModal} className="flex-1">
             Connect wallet
-          </Button>
-          <Button variant="secondary" onClick={openSandboxModal} className="flex-1">
-            Activate sandbox
           </Button>
         </div>
       </div>

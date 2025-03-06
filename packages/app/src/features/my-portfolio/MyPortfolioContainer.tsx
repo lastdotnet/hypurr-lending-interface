@@ -17,13 +17,12 @@ function MyPortfolioContainer() {
     eModeCategoryId,
     guestMode,
     liquidationDetails,
-    openSandboxModal,
   } = useMyPortfolio()
   const { setShowAuthFlow } = useDynamicContext()
   const openDialog = useOpenDialog()
 
   if (guestMode) {
-    return <GuestView openConnectModal={() => setShowAuthFlow(true)} openSandboxModal={openSandboxModal} />
+    return <GuestView openConnectModal={() => setShowAuthFlow(true)} />
   }
 
   return (
