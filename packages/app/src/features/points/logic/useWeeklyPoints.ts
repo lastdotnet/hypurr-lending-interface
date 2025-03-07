@@ -1,5 +1,5 @@
+import { API_REFERRAL } from '@/config/consts'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
-import { Address } from 'viem'
 
 export type PointHistory = {
   id: string
@@ -20,7 +20,7 @@ export type WeeklyPoints = {
   referralPoints?: number
 }
 
-const dummyPointsHistory: PointHistory[] = [
+const _dummyPointsHistory: PointHistory[] = [
   {
     id: 'txn-1',
     user_id: '0x00',
@@ -88,8 +88,6 @@ export function calculatePointsByWeek(pointsHistory: PointHistory[]): WeeklyPoin
     (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
   )
 
-  if (sortedPointsHistory.length === 0) return []
-
   const firstDate = new Date('2025-02-10')
   const lastDate = new Date()
 
@@ -120,21 +118,17 @@ export function calculatePointsByWeek(pointsHistory: PointHistory[]): WeeklyPoin
   return weeks
 }
 
-export function useWeeklyPoints(account?: Address): UseQueryResult<WeeklyPoints[], Error> {
+export function useWeeklyPoints(userId?: string): UseQueryResult<WeeklyPoints[], Error> {
   const data = useQuery({
-    queryKey: ['pointsHistory', account],
-    queryFn: async (_account) => {
-      /*
-          const response = await fetch(`/users/${account}/points/history`)
-          const result = response.json()
-          */
+    queryKey: ['pointsHistory', userId],
+    queryFn: async () => {
+      const response = await fetch(`${API_REFERRAL}/users/${userId}/points/history`)
 
-      // TODO: temporary, remove when api is ready
-      const result = dummyPointsHistory as unknown as PointHistory[]
+      const result = (await response.json()) as unknown as PointHistory[]
 
       return calculatePointsByWeek(result)
     },
-    enabled: Boolean(account),
+    enabled: Boolean(userId),
     refetchOnMount: false,
   })
 

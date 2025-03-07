@@ -1,3 +1,5 @@
+'use client'
+
 import { Typography } from '@/ui/atoms/typography/Typography'
 import { PageLayout } from '@/ui/layouts/PageLayout'
 import { SummaryPanel } from '../components/summary-panel/SummaryPanel'
@@ -8,24 +10,23 @@ import { LeaderboardTable } from '../components/leaderboard-table/LeaderboardTab
 import { useWeeklyPoints } from '../logic/useWeeklyPoints'
 import { useAccount } from '@/domain/hooks/useAccount'
 import { PointsSkeleton } from '../components/skeleton/PointsSkeleton'
-import { useCurrentSeason } from '../logic/useCurrentSeason'
-import { useSeasonLeaderboard } from '../logic/useSeasonLeaderboard'
+import { useGetUser } from '../logic/useGetUser'
+import { useWeeklyLeaderboard } from '../logic/useWeeklyLeaderboard'
 
 export function PointsView() {
   const account = useAccount()
 
-  const { data: season, isLoading: isSeasonLoading, isFetching: isSeasonFetching } = useCurrentSeason()
-  const { data: weeklyPoints, isLoading, isFetching } = useWeeklyPoints(account)
+  const { data } = useGetUser('0xF499A4dB77Be9E79bfD3F72d788035b4648F7937')
+
+  const { data: weeklyPoints, isLoading, isFetching } = useWeeklyPoints('8b379836-1375-4683-bdd0-db00216d2dfc')
+
   const {
-    data: seasonLeaderboard,
+    data: weeklyLeaderboard,
     isLoading: isLeaderboardLoading,
     isFetching: isLeaderboardFetching,
-  } = useSeasonLeaderboard(season?.id)
+  } = useWeeklyLeaderboard()
 
-  const isAllLoading =
-    (isLoading && isFetching) ||
-    (isSeasonLoading && isSeasonFetching) ||
-    (isLeaderboardLoading && isLeaderboardFetching)
+  const isAllLoading = (isLoading && isFetching) || (isLeaderboardLoading && isLeaderboardFetching)
 
   return (
     <PageLayout className="max-w-6xl gap-4 lg:px-3">
@@ -57,7 +58,7 @@ export function PointsView() {
             </div>
           </div>
 
-          <LeaderboardTable seasonLeaderboard={seasonLeaderboard} />
+          <LeaderboardTable weeklyLeaderboard={weeklyLeaderboard} />
         </>
       )}
     </PageLayout>

@@ -1,3 +1,4 @@
+import { API_REFERRAL } from '@/config/consts'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 
 export type Season = {
@@ -13,7 +14,7 @@ export type Season = {
   updated_at: string
 }
 
-const dummySeason: Season = {
+const _dummySeason: Season = {
   id: 'season-1',
   name: 'Season 1',
   start_date: '2025-02-20',
@@ -30,12 +31,9 @@ export function useCurrentSeason(): UseQueryResult<Season, Error> {
   const data = useQuery({
     queryKey: ['currentSeason'],
     queryFn: async (_account) => {
-      /*
-            const response = await fetch(`/seasons/current`)
-            const result = response.json()
-            */
+      const response = await fetch(`${API_REFERRAL}/seasons/current`)
 
-      return dummySeason
+      return response.json()
     },
     refetchOnMount: false,
   })

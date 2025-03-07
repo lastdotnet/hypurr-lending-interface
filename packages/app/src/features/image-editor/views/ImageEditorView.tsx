@@ -22,9 +22,6 @@ export function ImageEditorView({ points }: Props) {
       {imageUrl && (
         <div className="flex flex-col items-center gap-5">
           <img src={imageUrl} alt="Generated image" className="max-w-full rounded-lg" />
-          <p className="text-white/50 text-xs">
-            Referral copy goes here referral copy goes here referral copy goes here lorem ipsum
-          </p>
           <Button
             className="w-full font-bold text-xs"
             onClick={() => {

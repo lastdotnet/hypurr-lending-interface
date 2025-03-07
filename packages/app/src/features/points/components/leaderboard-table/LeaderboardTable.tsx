@@ -1,15 +1,15 @@
 import { Panel } from '@/ui/atoms/panel/Panel'
 import { Typography } from '@/ui/atoms/typography/Typography'
-import { SeasonLeaderboard } from '../../logic/useSeasonLeaderboard'
 import { ResponsiveDataTable } from '@/ui/organisms/responsive-data-table/ResponsiveDataTable'
 import { shortenAddress } from '@/ui/utils/shortenAddress'
 import { PointsCell } from '@/ui/molecules/data-table/components/PointsCell'
+import { WeeklyLeaderboard } from '../../logic/useWeeklyLeaderboard'
 
 interface Props {
-  seasonLeaderboard?: SeasonLeaderboard[]
+  weeklyLeaderboard?: WeeklyLeaderboard
 }
 
-export function LeaderboardTable({ seasonLeaderboard }: Props) {
+export function LeaderboardTable({ weeklyLeaderboard }: Props) {
   return (
     <Panel.Wrapper className="flex flex-1 flex-col items-start gap-2 px-6 py-4">
       <Typography variant="h3" className="text-lg" gradient>
@@ -23,9 +23,9 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
             header: 'Ranking',
             headerAlign: 'left',
             showOnMobile: true,
-            renderCell: ({ ranking }) => (
+            renderCell: ({ rank }) => (
               <div>
-                <div className="flex w-full flex-row justify-start pl-3 text-sm">{ranking || 0}</div>
+                <div className="flex w-full flex-row justify-start pl-3 text-sm">{rank || 0}</div>
               </div>
             ),
           },
@@ -33,10 +33,10 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
             header: 'User',
             headerAlign: 'left',
             showOnMobile: true,
-            renderCell: ({ walletAddress }) => (
+            renderCell: ({ wallet_address }) => (
               <div>
                 <div className="flex w-full flex-row justify-center text-sm md:justify-start md:pl-3">
-                  {shortenAddress(walletAddress, { startLength: 5, endLength: 3 })}
+                  {shortenAddress(wallet_address, { startLength: 5, endLength: 3 })}
                 </div>
               </div>
             ),
@@ -51,9 +51,9 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
           referral: {
             header: 'Referral Points',
             headerAlign: 'left',
-            renderCell: ({ referralPoints }, mobileViewOptions) => (
+            renderCell: ({ referral_points }, mobileViewOptions) => (
               <PointsCell
-                points={referralPoints || 0}
+                points={referral_points || 0}
                 mobileViewOptions={mobileViewOptions}
                 className="md:justify-start"
               />
@@ -63,9 +63,9 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
             header: 'Total points',
             headerAlign: 'left',
             showOnMobile: true,
-            renderCell: ({ points, referralPoints }, mobileViewOptions) => (
+            renderCell: ({ points, referral_points }, mobileViewOptions) => (
               <PointsCell
-                points={points + Number(referralPoints || 0)}
+                points={points + Number(referral_points || 0)}
                 mobileViewOptions={mobileViewOptions}
                 className="justify-center md:justify-start"
                 gradient={true}
@@ -73,7 +73,7 @@ export function LeaderboardTable({ seasonLeaderboard }: Props) {
             ),
           },
         }}
-        data={seasonLeaderboard || []}
+        data={weeklyLeaderboard?.entries || []}
       />
     </Panel.Wrapper>
   )

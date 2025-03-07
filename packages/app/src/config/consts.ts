@@ -41,3 +41,5 @@ export const A_USDXL_ADDRESS = isTestnet
 export const reserveBlacklist: string[] = []
 
 export const VIEM_TIMEOUT_ON_FORKS = 60_000 // forks tend to be slow. This improves reliability/performance. Default is 10_000
+
+export const API_REFERRAL = process.env.NEXT_PUBLIC_API_REFERRAL
