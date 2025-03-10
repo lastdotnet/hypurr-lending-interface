@@ -88,7 +88,7 @@ export function calculatePointsByWeek(pointsHistory: PointHistory[]): WeeklyPoin
     (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
   )
 
-  const firstDate = new Date('2025-02-10')
+  const firstDate = new Date('2025-02-20')
   const lastDate = new Date()
 
   const weeks: WeeklyPoints[] = []
@@ -122,14 +122,20 @@ export function useWeeklyPoints(userId?: string): UseQueryResult<WeeklyPoints[],
   const data = useQuery({
     queryKey: ['pointsHistory', userId],
     queryFn: async () => {
-      const response = await fetch(`${API_REFERRAL}/users/${userId}/points/history`)
+      try {
+        if (!userId) {
+          return calculatePointsByWeek([])
+        }
 
-      const result = (await response.json()) as unknown as PointHistory[]
+        const response = await fetch(`${API_REFERRAL}/users/${userId}/points/history`)
 
-      return calculatePointsByWeek(result)
+        const result = (await response.json()) as unknown as PointHistory[]
+
+        return calculatePointsByWeek(result)
+      } catch (_e) {
+        return calculatePointsByWeek([])
+      }
     },
-    enabled: Boolean(userId),
-    refetchOnMount: false,
   })
 
   return data
