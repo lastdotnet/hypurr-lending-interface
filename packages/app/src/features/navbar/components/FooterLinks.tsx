@@ -25,10 +25,10 @@ const infoLinks = [
     href: links.docs.home,
     label: 'Dev docs',
   },
-  // {
-  //   href: links.security,
-  //   label: 'Security',
-  // },
+  {
+    href: links.docs.security,
+    label: 'Audits',
+  },
   // {
   //   href: links.privacy,
   //   label: 'Privacy',

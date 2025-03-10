@@ -17,6 +17,7 @@ export const links = {
     borrowing: '',
     sparkAirdrop: '',
     farmingRewards: '',
+    security: 'https://docs.hypurr.fi/introduction/security',
   },
   aaveTechnicalPaper: '',
   termsOfUse: '',
@@ -27,5 +28,4 @@ export const links = {
     github: 'https://github.com/lastdotnet',
   },
   audits: '/',
-  security: '/',
 } as const
