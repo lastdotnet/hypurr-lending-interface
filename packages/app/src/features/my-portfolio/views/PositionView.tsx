@@ -44,7 +44,7 @@ export function PositionView({
         <HealthFactorPanel
           hf={positionSummary.healthFactor}
           className="order-1 flex-grow md:max-w-md"
-          variant="with-liquidation-price"
+          variant={eModeCategoryId ? 'with-e-mode-redemption-price' : 'with-liquidation-price'}
           liquidationDetails={liquidationDetails}
         />
         <Position
