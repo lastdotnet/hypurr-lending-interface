@@ -10,15 +10,19 @@ import { LeaderboardTable } from '../components/leaderboard-table/LeaderboardTab
 import { useWeeklyPoints } from '../logic/useWeeklyPoints'
 import { useAccount } from '@/domain/hooks/useAccount'
 import { PointsSkeleton } from '../components/skeleton/PointsSkeleton'
-import { useGetUser } from '../logic/useGetUser'
 import { useWeeklyLeaderboard } from '../logic/useWeeklyLeaderboard'
+import { useGetUserDetails } from '../logic/useGetUserDetails'
 
 export function PointsView() {
   const account = useAccount()
 
-  const { data } = useGetUser('0xF499A4dB77Be9E79bfD3F72d788035b4648F7937')
+  const {
+    data: userDetails,
+    isLoading: isUserDetailsLoading,
+    isFetching: isUserDetailsFetching,
+  } = useGetUserDetails(account)
 
-  const { data: weeklyPoints, isLoading, isFetching } = useWeeklyPoints('8b379836-1375-4683-bdd0-db00216d2dfc')
+  const { data: weeklyPoints, isLoading, isFetching } = useWeeklyPoints(userDetails?.user_id)
 
   const {
     data: weeklyLeaderboard,
@@ -26,7 +30,10 @@ export function PointsView() {
     isFetching: isLeaderboardFetching,
   } = useWeeklyLeaderboard()
 
-  const isAllLoading = (isLoading && isFetching) || (isLeaderboardLoading && isLeaderboardFetching)
+  const isAllLoading =
+    (isLoading && isFetching) ||
+    (isLeaderboardLoading && isLeaderboardFetching) ||
+    (isUserDetailsLoading && isUserDetailsFetching)
 
   return (
     <PageLayout className="max-w-6xl gap-4 lg:px-3">
@@ -42,7 +49,7 @@ export function PointsView() {
         <>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-[5fr_3fr]">
             <div className="order-1 flex">
-              <SummaryPanel weeklyPoints={weeklyPoints} />
+              <SummaryPanel weeklyPoints={weeklyPoints} userDetails={userDetails} />
             </div>
 
             <div className="order-2 flex lg:order-3">
@@ -54,7 +61,7 @@ export function PointsView() {
             </div>
 
             <div className="order-4 flex">
-              <ImageSharePanel />
+              <ImageSharePanel userDetails={userDetails} />
             </div>
           </div>
 

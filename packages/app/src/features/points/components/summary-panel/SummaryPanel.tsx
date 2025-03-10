@@ -3,31 +3,31 @@ import { Typography } from '@/ui/atoms/typography/Typography'
 import { PropsWithChildren } from 'react'
 import Image from 'next/image'
 import { assets } from '@/ui/assets'
-import { MoveUpIcon } from 'lucide-react'
 import { WeeklyPoints } from '../../logic/useWeeklyPoints'
 import { useCalculateWeeklyStats } from '../../logic/useCalculateWeeklyStats'
+import { UserDetails } from '../../logic/useGetUserDetails'
 
 interface Props {
+  userDetails?: UserDetails
   weeklyPoints?: WeeklyPoints[]
   isLoading?: boolean
 }
 
-export function SummaryPanel({ weeklyPoints }: Props) {
-  const { totalPoints, activeWeeks } = useCalculateWeeklyStats(weeklyPoints)
+export function SummaryPanel({ weeklyPoints, userDetails }: Props) {
+  const { activeWeeks } = useCalculateWeeklyStats(weeklyPoints)
 
   return (
     <Panel.Wrapper className="flex flex-1 justify-between gap-2 px-9 py-11">
       <SummaryItem label="Total points">
         <Typography variant="h3" gradient className="flex items-center gap-1 font-semibold text-3xl">
           <Image src={assets.hypurrPaw} alt="Points" width={32} height={26} className="block w-8 pt-1" />
-          {totalPoints}
+          {userDetails?.points?.total_points || 0}
         </Typography>
       </SummaryItem>
 
       <SummaryItem label="Ranking">
         <Typography variant="h3" className="flex items-center font-semibold text-3xl">
-          <MoveUpIcon className="h-5 w-5 text-primary" />
-          18
+          {userDetails?.ranking?.current_rank || '∞'}
         </Typography>
       </SummaryItem>
 
