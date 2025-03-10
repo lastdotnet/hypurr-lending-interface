@@ -16,7 +16,7 @@ export interface HealthFactorPanelProps {
   hf?: BigNumber
   className?: string
   liquidationDetails?: LiquidationDetails
-  variant: 'full-details' | 'with-liquidation-price'
+  variant: 'full-details' | 'with-liquidation-price' | 'with-e-mode-redemption-price'
 }
 
 export const HealthFactorPanel = forwardRef<HTMLDivElement, HealthFactorPanelProps>(

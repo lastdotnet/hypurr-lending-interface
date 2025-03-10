@@ -57,7 +57,7 @@ interface LiquidationPricesProps {
 function LiquidationPrices({ liquidationDetails, variant, className }: LiquidationPricesProps) {
   return (
     <div className={cn('flex flex-col', className)}>
-      <DetailsRow variant={variant}>
+     {variant !== 'with-e-mode-redemption-price' && (<DetailsRow variant={variant}>
         <div className="flex flex-row items-center gap-1">
           Liquidation Price
           <Info>
@@ -65,7 +65,7 @@ function LiquidationPrices({ liquidationDetails, variant, className }: Liquidati
           </Info>
         </div>
         <div>{USD_MOCK_TOKEN.formatUSD(liquidationDetails.liquidationPrice)}</div>
-      </DetailsRow>
+      </DetailsRow>)}
       <DetailsRow variant={variant}>
         <div className="flex flex-row items-center gap-1">
           Current {liquidationDetails.tokenWithPrice.symbol} Price
